@@ -103,6 +103,15 @@ ul {
     top: auto;
     width: 397px;
   }
+
+  .mobile .anchor {
+    @media screen and (orientation:portrait) {
+      top: -170px;
+    }
+    @media screen and (orientation:landscape) {
+      top: -100px;
+    }
+  }
 }
 
 @media #{$media-large} {
@@ -159,14 +168,22 @@ ul {
   }
   #mainmenu {
     @include pos(38, 0, 100, $pos: fixed);
-    width: 415px;
+    width: 450px;
     padding: 0 0 0 30px;
     background: url(/img/menu-bg.png) top right no-repeat;
 
     li {
+      font-size: 22px;
+
       a {
         margin-right: 18px;
       }
+    }
+  }
+  .mobile {
+    #header,
+    #mainmenu {
+      position: absolute !important;
     }
   }
 }
@@ -210,6 +227,14 @@ ul {
 
 @media #{$media-medium} {
   #about-section {
+    h1 {
+      @media screen and (orientation:portrait) {
+        margin-top: 80px;
+      }
+      @media screen and (orientation:landscape) {
+        margin-top: 15px;
+      }
+    }
     position: relative;
     height: 900px;
     padding-top: 170px;

@@ -1,4 +1,17 @@
+function displayPage() {
+  $('#wrapper').css('display', 'block');
+}
+
 $(document).ready(function() {
+
+  var ua = navigator.userAgent;
+  var isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
+
+  if (isMobileWebkit) {
+    $('html').addClass('mobile');
+    displayPage();
+    return;
+  }
 
   // Detect OS
   // from http://stackoverflow.com/a/11752533
@@ -28,7 +41,7 @@ $(document).ready(function() {
   $('#footer-bg').css('margin-top', '-36px');
 
   // Display page
-  $('#wrapper').css('display', 'block');
+  displayPage();
 
   // Detect CSS3 transform availability
   // from http://stackoverflow.com/a/12625986
@@ -171,30 +184,24 @@ $(document).ready(function() {
     }
   }
 
-/*  function historyHandler() {
-    var currentState = History.getState(false);
-  }; */
-
   // Don't mess with the mousewheel on Macs due to the notorious (and
   // unresolvable) touchpad vs oldschool-clicky-mousewheel issue
-    $(document).mousewheel(function(event, delta, deltaX, deltaY) {
-      if (isMac) { 
-        if (scrollToSection) {
-          event.preventDefault();
-        }
-      } else {
+  $(document).mousewheel(function(event, delta, deltaX, deltaY) {
+    if (isMac) { 
+      if (scrollToSection) {
         event.preventDefault();
-        if (!scrollToSection) {
-            scrollTop = $(window).scrollTop();
-            scrollTo(scrollTop + (-WHEEL_STEP * delta));
-        }
       }
-    });
+    } else {
+      event.preventDefault();
+      if (!scrollToSection) {
+          scrollTop = $(window).scrollTop();
+          scrollTo(scrollTop + (-WHEEL_STEP * delta));
+      }
+    }
+  });
 
-	$(document).keydown(keyDownHandler);
-	$(document).scroll(scrollHandler);
-
-//  History.Adapter.bind(window, 'statechange', historyHandler);
+  $(document).keydown(keyDownHandler);
+  $(document).scroll(scrollHandler);
 
   // Install parallax
   $.stellar({
