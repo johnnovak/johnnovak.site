@@ -7,7 +7,7 @@ $(document).ready(function() {
   var isLinux = navigator.platform.toUpperCase().indexOf('LINUX') !== -1;
 
   // Adjust static section heights & image positions for a nice parallax effect
-  $('#about-section').css('height', '700px');
+  $('#about-section').css('height', '750px');
   $('#music-section').css('height', '700px');
   $('#photo-section').css('height', '700px');
   $('#code-section').css('height', '1400px');
