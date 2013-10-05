@@ -1,0 +1,8 @@
+name:         John Novak's blog
+description:  Personal blog of John Novak
+url:          http://johnnovak.net
+
+baseurl:      /blog
+
+permalink:    :year/:month/:day/:title/
+encoding:     UTF8-MAC

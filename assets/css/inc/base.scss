@@ -1,0 +1,79 @@
+$bg-color:    #e9e9e9;
+$font-color:  #000;
+$gray:        #666;
+$red:         #ed0000;
+$lightred:    #f26767;
+
+$thin:   300;
+$normal: 400;
+$bold:   600;
+$xbold:  700;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', Calibri, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  color: $font-color;
+  background: $bg-color;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+$selection-color: #fcc;
+
+::selection {
+  background: $selection-color;
+  color: black;
+  text-shadow: none;
+}
+::-moz-selection {
+  background: $selection-color;
+  color: black;
+  text-shadow: none;
+}
+::-webkit-selection {
+  background: $selection-color;
+  color: black;
+  text-shadow: none;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #ccc;
+}
+::-webkit-scrollbar-thumb {
+  background: #777;
+
+  &:hover {
+    background: #888;
+  }
+  &:active {
+    background: $gray;
+  }
+}
+
+img {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: $font-color;
+
+  &:hover {
+    color: $gray;
+  }
+}
+

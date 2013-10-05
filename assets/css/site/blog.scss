@@ -1,0 +1,226 @@
+@import '../inc/base.scss';
+
+body {
+  font-size: 18px;
+  margin: 0 25px;
+}
+
+#wrapper {
+  margin-bottom: 50px;
+}
+
+#header {
+  height: 150px;
+
+  h1 {
+    position: absolute;
+    top: 70px;
+    right: 58px;
+    font-size: 30px;
+    font-weight: normal;
+    text-transform: uppercase;
+
+    a {
+      color: $red;
+    }
+  }
+}
+
+#jn-logo {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  width: 300px;
+}
+
+.archives {
+  margin-top: 15px;
+
+  .entry {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: $bold;
+    margin: 0 0 15px 0;
+    line-height: 1;
+  }
+  h2 {
+    font-weight: normal;
+    font-size: 20px;
+    margin: 0 0 6px 0;
+    padding: 0;
+    line-height: 1;
+  }
+  h3 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: $gray;
+    line-height: 1;
+  }
+}
+
+.post {
+  h1 {
+    font-size: 36px;
+    font-weight: $thin;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .date {
+    display: block;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.8;
+    text-transform: uppercase;
+    margin: 0 0 30px 0;
+  }
+
+  h2 {
+    margin: 2em 0 1em;
+    font-size: 20px;
+    font-weight: $xbold;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 2em 0 1em;
+    font-size: 20px;
+    font-weight: $bold;
+  }
+
+  a {
+    color: $red;
+    font-weight: $xbold;
+
+    &:hover {
+      color: #e44;
+      text-decoration: underline;
+    }
+  }
+}
+
+$monospace: Menlo,Courier;
+
+pre {
+  padding: 10px;
+  background: #fff;
+  line-height: 1.2;
+
+  code {
+    font: 14px $monospace;
+  }
+  overflow-x: auto;
+}
+p {
+  code {
+    font: bold 15px $monospace;
+  }
+}
+ul {
+  list-style: square;
+}
+
+/* Pygments syntax highlighting */
+
+.c { color: $gray } /* Comment */
+.k { font-weight: bold } /* Keyword */
+.cm { color: $gray } /* Comment.Multiline */
+.cp { color: $gray } /* Comment.Preproc */
+.c1 { color: $gray } /* Comment.Single */
+.cs { color: $gray } /* Comment.Special */
+.kc { font-weight: bold } /* Keyword.Constant */
+.kd { font-weight: bold } /* Keyword.Declaration */
+.kn { font-weight: bold } /* Keyword.Namespace */
+.kp { font-weight: bold } /* Keyword.Pseudo */
+.kr { font-weight: bold } /* Keyword.Reserved */
+.kt { color: $red; font-weight: bold } /* Keyword.Type */
+.s { color: $red } /* Literal.String */
+.no { } /* Name.Constant */
+.nf { } /* Name.Function */
+.nv { } /* Name.Variable */
+.sb { color: $red } /* Literal.String.Backtick */
+.sc { color: $red } /* Literal.String.Char */
+.sd { color: $red } /* Literal.String.Doc */
+.s2 { color: $red } /* Literal.String.Double */
+.se { color: $red } /* Literal.String.Escape */
+.sh { color: $red } /* Literal.String.Heredoc */
+.si { color: $red } /* Literal.String.Interpol */
+.sx { color: $red } /* Literal.String.Other */
+.sr { color: $red } /* Literal.String.Regex */
+.s1 { color: $red } /* Literal.String.Single */
+.ss { color: $red } /* Literal.String.Symbol */
+.vc { color: $gray; font-weight: bold } /* Name.Variable.Class */
+.vg { color: $gray; font-weight: bold } /* Name.Variable.Global */
+.vi { color: $gray; font-weight: bold } /* Name.Variable.Instance */
+
+@media only screen and (min-width: 500px) {
+  #jn-logo {
+    top: 20px;
+    width: 397px;
+    height: 120px;
+  }
+  #header {
+    height: 220px;
+
+    h1 {
+      top: 100px;
+      right: 68px;
+      font-size: 40px;
+    }
+  }
+  .archives {
+    h1 {
+      float: left;
+      font-size: 34px;
+      margin: 0;
+    }
+    h2 {
+      margin: 0 0 0 200px;
+      line-height: 1.6;
+    }
+    h3 {
+      position: absolute;
+      top: 0;
+      margin: 2px 0 0 110px;;
+      line-height: 1.5;
+    }
+  }
+  .post {
+    h1 {
+      font-size: 40px;
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  body {
+    margin: 0;
+  }
+  #wrapper {
+    width: 600px;
+    margin: 0 auto 100px auto;
+    position: relative;
+    left: -8%;
+  }
+  #header {
+    height: 280px;
+  }
+  #jn-logo {
+    right: 0;
+  }
+  #header-bg {
+    position: absolute;
+    top: -90px;
+    right: -415px;
+    width: 473px;
+    height: 434px;
+    background: url(/img/bg-about.png);
+  }
+}

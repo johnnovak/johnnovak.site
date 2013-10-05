@@ -1,0 +1,331 @@
+@import '../inc/base.scss';
+
+body {
+  text-transform: uppercase;
+}
+
+$content-width: 420px;
+$main-width: 720px;
+$header-height: 189px;
+
+@mixin pos($top, $left, $z-index: 0, $pos: absolute) {
+  position: $pos;
+  top: #{$top}px;
+  left: #{$left}px;
+  z-index: $z-index;
+}
+
+@mixin bg-img($width, $height, $bg-image) {
+  width: #{$width}px;
+  height: #{$height}px;
+  background: url(/img/#{$bg-image}) top left no-repeat;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  top: -#{$header-height};
+  visibility: hidden;
+}
+
+h1 {
+  width: $main-width;
+  font-size: 48px;
+  font-weight: $thin;
+  text-align: right;
+  color: $red;
+}
+h2 {
+  font-size: 19px;
+  font-weight: $xbold;
+  margin: 30px 0 0 0;
+  color: $red;
+
+  .lower {
+    text-transform: lowercase;
+  }
+}
+
+.sidebar {
+  list-style: none;
+  font-weight: $xbold;
+  margin: 0;
+  padding-left: $main-width + 50px;
+}
+
+.section-content {
+  text-align: right;
+  width: $content-width;
+  margin-left: $main-width - $content-width;
+  float: left;
+
+  & h2:first-child {
+    margin-top: 0;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+//****************************************************************************
+// HEADER 
+//****************************************************************************
+
+#header {
+  @include pos(0, 0, 1, $pos: fixed);
+  width: 100%;
+  height: $header-height;
+  background: url(/img/header-bg.png) repeat-x;
+}
+
+#jn-logo {
+  @include pos(20, 350, 1);
+}
+
+#mainmenu {
+  @include pos(38, 0, 100, $pos: fixed);
+  width: 415px;
+  list-style: none;
+  background: url(/img/menu-bg.png) top right no-repeat;
+
+  li {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: $bold;
+
+    a {
+      color: $red;
+      margin: 0 18px 0 0;
+
+      &:hover {
+        color: $lightred;
+      }
+    }
+  }
+}
+
+//****************************************************************************
+// ABOUT 
+//****************************************************************************
+
+#about-section {
+  position: relative;
+  height: 900px;
+  padding-top: 170px;
+
+  h1 {
+    margin-bottom: 0em;
+  }
+
+  p {
+    margin: 0;
+    font-weight: $xbold;
+  }
+
+  .interests {
+    li {
+      display: inline-block;
+      color: $gray;
+
+      &:after {
+        content: " / ";
+      }
+    }
+  }
+}
+
+#about-bg {
+  @include pos(190, -88, 10);
+  @include bg-img(473, 434, 'bg-about.png');
+}
+
+//****************************************************************************
+// MUSIC 
+//****************************************************************************
+
+#music-section {
+  position: relative;
+  height: 900px;
+
+  .oldstuff {
+    @include pos(346, 160, 15);
+    text-align: left;
+    background: url(/img/disk.png) 0 2px no-repeat;
+    padding-left: 50px;
+
+    h2 {
+      line-height: 1.0;
+      margin: 0;
+    }
+    p {
+      margin: 0 0 0.4em 0;
+      font-weight: $bold;
+      font-size: 15px;
+      color: $red;
+    }
+  }
+}
+
+#music-bg {
+  @include pos(-70, 0, 10);
+  @include bg-img(578, 546, 'bg-music.png');
+}
+
+//****************************************************************************
+// PHOTO 
+//****************************************************************************
+
+#photo-section {
+  position: relative;
+  height: 900px;
+
+  h1 {
+    width: 440px;
+  }
+
+  .photos {
+    img {
+      transition: .4s;
+
+      &:hover {
+        opacity: .7;
+        transition: .1s;
+      }
+    }
+  }
+
+  .photo1  { @include pos(105, 380); }
+  .photo2  { @include pos(105, 485); }
+  .photo3  { @include pos(  0, 485); }
+  .photo4  { @include pos(105, 695); }
+  .photo5  { @include pos(210, 485); }
+  .photo6  { @include pos(210, 590); }
+  .photo7  { @include pos(210, 695); }
+  .photo8  { @include pos(315, 485); }
+  .photo9  { @include pos(315, 590); }
+  .photo10 { @include pos(315, 800); }
+  .photo11 { @include pos(420, 695); }
+
+  .photo-spacer1 {
+    @include pos(315, 380);
+    width: 100px;
+    height: 100px;
+    background: $red;
+  }
+  .photo-spacer2 {
+    @include pos(315, 695);
+    width: 100px;
+    height: 100px;
+    background: #aaa;
+  }
+
+  .sidebar {
+    .gallery {
+      font-size: 20px;
+
+      a {
+        color: $red;
+
+        &:hover {
+          color: $lightred;
+        }
+        span {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}
+
+#photo-bg-leg1 {
+  @include pos(120, 0, 30);
+  @include bg-img(357, 222, 'bg-photo-leg1.png');
+}
+#photo-bg-leg2 {
+  @include pos(-170, 0, 20);
+  @include bg-img(244, 286, 'bg-photo-leg2.png');
+}
+#photo-bg-skull {
+  @include pos(140, 0, 10);
+  @include bg-img(421, 499, 'bg-photo-skull.png');
+}
+
+//****************************************************************************
+// CODE 
+//****************************************************************************
+
+#code-section {
+  position: relative;
+  height: 1400px;
+}
+
+#code-bg {
+  @include pos(-20, -20, 10);
+  @include bg-img(513, 547, 'bg-code.png');
+}
+
+//****************************************************************************
+// ABOUT 
+//****************************************************************************
+
+#footer-section {
+  position: relative;
+  height: 230px;
+  background: $red;
+  color: #fff;
+  font-size: 18px;
+
+  a {
+    color: #fff;
+    font-weight: $xbold;
+
+    &:hover {
+      color: #fcc;
+    }
+  }
+  .github {
+    position: absolute;
+    top: 180px;
+    right: 40px;
+  }
+}
+
+#footer-bg-building {
+  @include pos(-250, 390, 50);
+  @include bg-img(860, 404, 'bg-footer-building.png');
+}
+#footer-bg-gate {
+  @include pos(-138, 190, 10);
+  @include bg-img(173, 180, 'bg-footer-gate.png');
+}
+#footer-bg-sun {
+  @include pos(-70, 172, 1);
+  @include bg-img(205, 205, 'bg-footer-sun.png');
+}
+#footer-bg {
+  position: absolute;
+  margin-top: 0px;
+  z-index: 20;
+  width: 100%;
+  height: 230px;
+  background: $red;
+}
+
+@media only screen and (min-width: 980px) {
+  $main-width: 780px;
+
+  h1 {
+    width: $main-width;
+  }
+  .sidebar {
+    padding-left: $main-width + 50px;
+  }
+  .section-content {
+    margin-left: $main-width - $content-width;
+  }
+  #jn-logo {
+    left: 410px;
+  }
+}

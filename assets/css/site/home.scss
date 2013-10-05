@@ -1,0 +1,427 @@
+@import '../inc/base.scss';
+
+body {
+  text-transform: uppercase;
+}
+
+$content-width: 420px;
+$main-width: 720px;
+$header-height: 189px;
+
+@mixin pos($top, $left, $z-index: 0, $pos: absolute) {
+  position: $pos;
+  top: #{$top}px;
+  left: #{$left}px;
+  z-index: $z-index;
+}
+
+@mixin bg-img($width, $height, $bg-image) {
+  width: #{$width}px;
+  height: #{$height}px;
+  background: url(/img/#{$bg-image}) top left no-repeat;
+}
+
+.anchor {
+  display: block;
+  position: relative;
+  top: -#{$header-height};
+  visibility: hidden;
+}
+
+h1 {
+  width: $main-width;
+  font-size: 48px;
+  font-weight: $thin;
+  text-align: right;
+  color: $red;
+  transition: .6s;
+}
+h2 {
+  font-size: 19px;
+  font-weight: $xbold;
+  margin: 30px 0 0 0;
+  color: $red;
+
+  .lower {
+    text-transform: lowercase;
+  }
+}
+
+.sidebar {
+  list-style: none;
+  font-weight: $xbold;
+  transition: .4s;
+}
+
+.section-content {
+  text-align: right;
+  width: $content-width;
+  margin-left: $main-width - $content-width;
+  transition: margin-left .8s;
+
+  & h2:first-child {
+    margin-top: 0;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+//****************************************************************************
+// HEADER 
+//****************************************************************************
+
+#header {
+  @include pos(0, 0, 1, $pos: fixed);
+  width: 100%;
+  height: $header-height;
+  background: url(/img/header-bg.png) repeat-x;
+}
+
+#jn-logo {
+  @include pos(20, 350, 1);
+  transition: 1s;
+}
+
+#mainmenu {
+  @include pos(38, 0, 100, $pos: fixed);
+  width: 415px;
+  list-style: none;
+  background: url(/img/menu-bg.png) top right no-repeat;
+
+  li {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: $bold;
+
+    a {
+      color: $red;
+      margin: 0 18px 0 0;
+
+      &:hover {
+        color: $lightred;
+      }
+    }
+  }
+}
+
+//****************************************************************************
+// ABOUT 
+//****************************************************************************
+
+#about-section {
+  position: relative;
+  height: 900px;
+  padding-top: 170px;
+
+  h1 {
+    margin-bottom: 0em;
+  }
+
+  p {
+    margin: 0;
+    font-weight: $xbold;
+  }
+
+  .interests {
+    li {
+      display: inline-block;
+      color: $gray;
+
+      &:after {
+        content: " / ";
+      }
+    }
+  }
+}
+
+#about-bg {
+  @include pos(190, -78, 10);
+  @include bg-img(473, 434, 'bg-about.png');
+  transition: left 1.2s;
+}
+
+//****************************************************************************
+// MUSIC 
+//****************************************************************************
+
+#music-section {
+  position: relative;
+  height: 900px;
+
+  .oldstuff {
+    h2 {
+      margin-top: 30px;
+      line-height: 1.0;
+    }
+    p {
+      margin: 0 0 0.4em 0;
+      font-weight: $bold;
+      font-size: 15px;
+      color: $red;
+    }
+  }
+  .sidebar {
+    position: absolute;
+    top: 345px;
+    left: 120px;
+  }
+}
+
+#music-bg {
+  @include pos(-70, -10, 10);
+  @include bg-img(578, 546, 'bg-music.png');
+  transition: left .5s;
+}
+
+//****************************************************************************
+// PHOTO 
+//****************************************************************************
+
+#photo-section {
+  position: relative;
+  height: 900px;
+
+  h1 {
+    width: $main-width;
+  }
+
+  .photos {
+    img {
+      transition: .4s;
+
+      &:hover {
+        opacity: .7;
+        transition: .1s;
+      }
+    }
+  }
+
+  .photo1  { @include pos(105, 300); }
+  .photo2  { @include pos(105, 405); }
+  .photo3  { @include pos(  0, 405); }
+  .photo4  { @include pos(105, 615); }
+  .photo5  { @include pos(210, 405); }
+  .photo6  { @include pos(210, 510); }
+  .photo7  { @include pos(210, 615); }
+  .photo8  { @include pos(315, 405); }
+  .photo9  { @include pos(315, 510); }
+  .photo10 { @include pos(420, 510); }
+  .photo11 { @include pos(420, 615); }
+
+  .photo-spacer1 {
+    @include pos(315, 300);
+    width: 100px;
+    height: 100px;
+    background: $red;
+    transition: .4s;
+  }
+  .photo-spacer2 {
+    @include pos(315, 615);
+    width: 100px;
+    height: 100px;
+    background: #aaa;
+    opacity: 0;
+    transition: .4s;
+  }
+
+  .sidebar {
+    position: absolute;
+    top: 440px;
+    left: 260px;
+
+    .gallery {
+      font-size: 20px;
+
+      a {
+        color: $red;
+
+        &:hover {
+          color: $lightred;
+        }
+        span {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}
+
+#photo-bg-leg1 {
+  @include pos(120, -80, 30);
+  @include bg-img(357, 222, 'bg-photo-leg1.png');
+  transition: left .8s;
+}
+#photo-bg-leg2 {
+  @include pos(-170, 0, 20);
+  @include bg-img(244, 286, 'bg-photo-leg2.png');
+  transition: left .6s;
+}
+#photo-bg-skull {
+  @include pos(140, -80, 10);
+  @include bg-img(421, 499, 'bg-photo-skull.png');
+  transition: left .9s;
+}
+
+//****************************************************************************
+// CODE 
+//****************************************************************************
+
+#code-section {
+  position: relative;
+  height: 1400px;
+}
+
+#code-bg {
+  @include pos(-20, -100, 10);
+  @include bg-img(513, 547, 'bg-code.png');
+  transition: left .8s;
+}
+
+//****************************************************************************
+// FOOTER 
+//****************************************************************************
+
+#footer-section {
+  position: relative;
+  height: 230px;
+  background: $red;
+  color: #fff;
+  font-size: 18px;
+
+  a {
+    color: #fff;
+    font-weight: $xbold;
+
+    &:hover {
+      color: #fcc;
+    }
+  }
+  .github {
+    position: absolute;
+    top: 180px;
+    right: 40px;
+  }
+}
+
+#footer-bg-building {
+  @include pos(-250, 280, 50);
+  @include bg-img(860, 404, 'bg-footer-building.png');
+  transition: left 1.1s;
+}
+#footer-bg-gate {
+  @include pos(-138, 90, 10);
+  @include bg-img(173, 180, 'bg-footer-gate.png');
+  transition: left .8s;
+}
+#footer-bg-sun {
+  @include pos(-70, 72, 1);
+  @include bg-img(205, 205, 'bg-footer-sun.png');
+  transition: left .8s;
+}
+#footer-bg {
+  position: absolute;
+  margin-top: 0px;
+  z-index: 20;
+  width: 100%;
+  height: 230px;
+  background: $red;
+}
+
+//****************************************************************************
+// IPAD 
+//****************************************************************************
+
+@media only screen and (min-width: 767px) {
+}
+
+@media only screen and (min-width: 980px) {
+  $main-width: 780px;
+
+  h1 {
+    width: $main-width;
+  }
+  .sidebar {
+    padding-left: $main-width + 50px;
+  }
+  .section-content {
+    margin-left: $main-width - $content-width;
+    float: left;
+  }
+  #jn-logo {
+    left: 410px;
+  }
+
+  #about-bg {
+    left: -18px;
+  }
+
+  #music-section {
+    .oldstuff {
+      @include pos(346, 160, 15);
+      text-align: left;
+      background: url(/img/disk.png) 0 2px no-repeat;
+      padding-left: 50px;
+      transition: .4s;
+
+      h2 {
+        margin: 0;
+      }
+    }
+
+    .sidebar {
+      position: static;
+    }
+  }
+  #music-bg {
+    left: 0;
+  }
+
+  #photo-section {
+    h1 {
+      width: 440px;
+    }
+    .sidebar {
+      position: static;
+    }
+    .photo1  { left: 380px; }
+    .photo2  { left: 485px; }
+    .photo3  { left: 485px; }
+    .photo4  { left: 695px; }
+    .photo5  { left: 485px; }
+    .photo6  { left: 590px; }
+    .photo7  { left: 695px; }
+    .photo8  { left: 485px; }
+    .photo9  { left: 590px; }
+    .photo10 { @include pos(315, 800); }
+    .photo11 { left: 695px; }
+
+    .photo-spacer1 {
+      left: 380px;
+    }
+    .photo-spacer2 {
+      left: 695px;
+      opacity: 1;
+    }
+  }
+  #photo-bg-leg1,
+  #photo-bg-skull {
+    left: 0;
+  }
+
+  #code-bg {
+    left: -20px;
+  }
+
+  #footer-bg-building {
+    left: 390px;
+  }
+  #footer-bg-gate {
+    left: 190px;
+  }
+  #footer-bg-sun {
+    left: 172px;
+  }
+}
