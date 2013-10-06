@@ -578,6 +578,10 @@
                     var id = particle.$element.context.id;
                     if (id == 'footer-bg-gate') {
                         newPositionTop = Math.max(newPositionTop, -174);
+                    } else if (id == 'footer-bg-building') {
+                        newPositionTop = Math.max(newPositionTop, -300);
+                    } else if (id == 'footer-bg-sun') {
+                        newPositionTop = Math.max(newPositionTop, -110);
                     }
 
 					this._setPosition(particle.$element, newPositionLeft, particle.startingPositionLeft, newPositionTop, particle.startingPositionTop);
