@@ -1,0 +1,24 @@
+$media-medium: "only screen and (min-width: 767px)";
+
+@media #{$media-medium} {
+  #about-section      { height: 750px }
+  #music-section      { height: 700px }
+  #photo-section      { height: 700px }
+  #code-section       { height: 1400px }
+
+  #about-bg           { top: 190px }
+  #music-bg           { top: -120px }
+
+  #photo-bg-leg1      { top: 60px }
+  #photo-bg-leg2      { top: -330px }
+  #photo-bg-skull     { top: 100px }
+
+  #code-bg            { top: -200px }
+
+  #footer-section     { height: 350px }
+  #footer-bg-building { top: -450px }
+  #footer-bg-gate     { top: -690px }
+  #footer-bg-sun      { top: -325px }
+
+  #footer-bg          { margin-top: -36px; height: 300px }
+}
