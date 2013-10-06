@@ -208,8 +208,7 @@ $(document).ready(function() {
     // Fallback to 'position' for IE8
     positionProperty: hasTransform() ? 'transform' : 'position',
     horizontalScrolling: false,
-    parallaxBackgrounds: false,
-    hideDistantElements: true
+    parallaxBackgrounds: false
   });
 
   // Install main menu callbacks
