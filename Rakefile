@@ -21,7 +21,7 @@ SASS_LOCATION = "#{CSS_DIR}:#{DEST_CSS_DIR}"
 task :default => 'build_all'
 
 desc "Generate full site"
-task :build_all => [:blog, :photo, :home, :img, :js, :css]
+task :build_all => [:blog, :photo, :home]
 
 desc "Generate Jekyll blog"
 task :blog do
@@ -33,8 +33,14 @@ task :photo do
   puts 'build_photo'
 end
 
-desc "Copy static homepage files"
-task :home do
+desc "Generate home page"
+task :home => [:home_static, :img, :js, :css] do
+  files = FileList[File.join HOME_DIR, "*"]
+  cp_r files, DEST_DIR
+end
+
+desc "Copy static home page files"
+task :home_static do
   files = FileList[File.join HOME_DIR, "*"]
   cp_r files, DEST_DIR
 end
