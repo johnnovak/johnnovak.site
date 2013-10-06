@@ -36,13 +36,12 @@ $media-large:  "only screen and (min-width: 980px)";
   width: 280px;
 }
 h1 {
-  border-bottom: 2px solid $red;
   line-height: 1;
   font-size: 45px;
   font-weight: $thin;
   color: $red;
   transition: .6s;
-  margin-bottom: 20px;
+  margin: 50px 0 10px 0;
 }
 h2 {
   font-size: 18px;
@@ -138,6 +137,7 @@ ul {
 #mainmenu {
   list-style: none;
   padding: 80px 0 0 0;
+  text-align: right;
 
   li {
     display: inline-block;
@@ -259,8 +259,8 @@ ul {
 #music-section {
   .oldstuff {
     h2 {
-      margin-top: 30px;
-      line-height: 1.0;
+      margin-top: 20px;
+      line-height: 1;
     }
     p {
       margin: 0 0 0.4em 0;
@@ -281,6 +281,14 @@ ul {
       top: 336px;
       left: -140px;
       text-align: left;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+    .oldstuff {
+      h2 {
+        margin-top: 30px;
+      }
     }
   }
   #music-bg {
@@ -498,7 +506,7 @@ ul {
   #footer-section {
     position: relative;
     margin-top: 0;
-    height: 230px;
+    height: 250px;
     background: $red;
     color: #fff;
     font-size: 18px;
@@ -538,7 +546,7 @@ ul {
     margin-top: 0px;
     z-index: 20;
     width: 100%;
-    height: 230px;
+    height: 180px;
     background: $red;
   }
 }
