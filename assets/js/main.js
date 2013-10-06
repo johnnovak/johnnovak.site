@@ -46,7 +46,9 @@ $(document).ready(function() {
   // Detect CSS3 transform availability
   // from http://stackoverflow.com/a/12625986
   function hasTransform() {
-    var prefixes = 'transformProperty WebkitTransform MozTransform OTransform msTransform'.split(' ');
+    // TODO: why doesn't work in IE9 and Opera?
+    // var prefixes = 'transformProperty WebkitTransform MozTransform OTransform msTransform'.split(' ');
+    var prefixes = 'transformProperty WebkitTransform MozTransform OTransform'.split(' ');
     for (var i = 0; i < prefixes.length; i++) {
       if (document.createElement('div').style[prefixes[i]] !== undefined) {
         return prefixes[i];

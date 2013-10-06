@@ -168,9 +168,10 @@ ul {
   }
   #mainmenu {
     @include pos(38, 0, 100, $pos: fixed);
-    width: 450px;
+    width: 440px;
     padding: 0 0 0 30px;
     background: url(/img/menu-bg.png) top right no-repeat;
+    text-align: left;
 
     li {
       font-size: 22px;
@@ -506,7 +507,7 @@ ul {
   #footer-section {
     position: relative;
     margin-top: 0;
-    height: 250px;
+    height: 350px;
     background: $red;
     color: #fff;
     font-size: 18px;
@@ -546,7 +547,7 @@ ul {
     margin-top: 0px;
     z-index: 20;
     width: 100%;
-    height: 180px;
+    height: 300px;
     background: $red;
   }
 }
