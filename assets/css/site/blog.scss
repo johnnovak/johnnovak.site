@@ -6,7 +6,7 @@ body {
 }
 
 #wrapper {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 #header {
@@ -127,39 +127,6 @@ ul {
   list-style: square;
 }
 
-/* Pygments syntax highlighting */
-
-.c { color: $gray } /* Comment */
-.k { font-weight: bold } /* Keyword */
-.cm { color: $gray } /* Comment.Multiline */
-.cp { color: $gray } /* Comment.Preproc */
-.c1 { color: $gray } /* Comment.Single */
-.cs { color: $gray } /* Comment.Special */
-.kc { font-weight: bold } /* Keyword.Constant */
-.kd { font-weight: bold } /* Keyword.Declaration */
-.kn { font-weight: bold } /* Keyword.Namespace */
-.kp { font-weight: bold } /* Keyword.Pseudo */
-.kr { font-weight: bold } /* Keyword.Reserved */
-.kt { color: $red; font-weight: bold } /* Keyword.Type */
-.s { color: $red } /* Literal.String */
-.no { } /* Name.Constant */
-.nf { } /* Name.Function */
-.nv { } /* Name.Variable */
-.sb { color: $red } /* Literal.String.Backtick */
-.sc { color: $red } /* Literal.String.Char */
-.sd { color: $red } /* Literal.String.Doc */
-.s2 { color: $red } /* Literal.String.Double */
-.se { color: $red } /* Literal.String.Escape */
-.sh { color: $red } /* Literal.String.Heredoc */
-.si { color: $red } /* Literal.String.Interpol */
-.sx { color: $red } /* Literal.String.Other */
-.sr { color: $red } /* Literal.String.Regex */
-.s1 { color: $red } /* Literal.String.Single */
-.ss { color: $red } /* Literal.String.Symbol */
-.vc { color: $gray; font-weight: bold } /* Name.Variable.Class */
-.vg { color: $gray; font-weight: bold } /* Name.Variable.Global */
-.vi { color: $gray; font-weight: bold } /* Name.Variable.Instance */
-
 @media only screen and (min-width: 500px) {
   #jn-logo {
     top: 20px;
@@ -225,4 +192,15 @@ ul {
     background-image: url(/img/bg-about.svg), none;
     background-size: 474px 434px;
   }
+}
+
+#disqus_thread {
+  margin-top: 140px;
+}
+#no-disqus {
+  padding: 5px 0 ;
+  margin-top: 50px;
+  border-top: 1px dashed $font-color;
+  border-bottom: 1px dashed $font-color;
+  text-align: center;
 }
