@@ -9,7 +9,23 @@
   <title>johnnovak.net</title>
 
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" />
+
   <link rel="stylesheet" type="text/css" href="/css/home.css" />
+  <script type="text/javascript">
+    var isDesktop =    window.orientation === undefined
+                    || window.devicePixelRatio === undefined
+                    || window.screenX !== 0
+                    || document.documentElement.clientWidth !== screen.width;
+
+    var ua = navigator.userAgent;
+    var isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
+    if (isMobileWebkit) {
+      isDesktop = false;
+    }
+    if (isDesktop) {
+      document.write('<link rel="stylesheet" type="text/css" href="/css/home-js.css" />');
+    }
+  </script>
 </head>
 
 <body>
@@ -17,11 +33,17 @@
     
   <div id="wrapper">
   <script type="text/javascript">
-    document.getElementById('wrapper').style.display = "none";
+    if (isDesktop) {
+      document.getElementById('wrapper').style.display = "none";
+    }
   </script>
 
   <div id="header">
-    <a href="/"><img id="jn-logo" src="/img/jn-logo.png" alt="John Novak" /></a>
+    <a href="/">
+      <svg id="jn-logo" width="397" height="120">
+        <image xlink:href="/img/jn-logo.svg" src="/img/jn-logo@2x.png" width="400" height="124" />
+      </svg>
+    </a>
   </div>
    
   <ul id="mainmenu">
@@ -41,7 +63,7 @@
     <div class="section-content">
       <ul class="info">
         <li>Male, 33</li>
-        <li>Software Engineer</li>
+        <li>Software Engineer / Digital Artist</li>
         <li>Brisbane, Australia</li>
       </ul>
 
@@ -49,24 +71,24 @@
       <ul class="interests">
         <li><a href="#">Design</a></li>
         <li><a href="#">Drawing</a></li>
-        <li><a href="#">Generative</a> <a href="#">Art</a></li>
+        <li><a href="http://nodebox.net/">Generative</a> <a href="#">Art</a></li>
 
-        <li><a href="#">Programming</a> <a href="#">Languages</a></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Guitars</a></li>
-        <li><a href="#">Sci</a><a href="#">-</a><a href="#">fi</a></li>
+        <li><a href="http://schemers.org/">Programming</a> <a href="http://clojure.org/">Languages</a></li>
+        <li><a href="http://www.kahvi.org/">Music</a></li>
+        <li><a href="http://www.benreuters.de/squid_eng.htm">Guitars</a></li>
+        <li><a href="http://www.philipkdickfans.com/">Sci</a><a href="http://english.lem.pl/">-</a><a href="http://www.williamgibsonbooks.com/">fi</a></li>
         <li><a href="#">Audio</a> <a href="#">Engineering</a></li>
-        <li><a href="#">Sid</a> <a href="#">Tunes</a></li>
+        <li><a href="http://www.hvsc.c64.org/">Sid</a> <a href="http://remix.kwed.org/">Tunes</a></li>
 
-        <li><a href="#">Amiga</a> <a href="#">&</a> <a href="#">C64</a></li>
-        <li><a href="#">Demoscene</a></li>
-        <li><a href="#">Adventure</a> <a href="#">Games</a></li>
+        <li><a href="http://en.wikipedia.org/wiki/Amiga_500">Amiga</a> <a href="http://oldcomputers.net/amiga500.html">&</a> <a href="http://6502.org/">C64</a></li>
+        <li><a href="http://www.pouet.net/">Demoscene</a></li>
+        <li><a href="http://www.adventureclassicgaming.com/">Adventure</a> <a href="http://scummvm.org/">Games</a></li>
         <li><a href="#">Books</a></li>
-        <li><a href="#">Illustrations</a></li>
+        <li><a href="http://thanuka.com/">Illustrations</a></li>
 
-        <li><a href="#">Photography</a></li>
+        <li><a href="http://www.michaelkenna.net/">Photography</a></li>
         <li><a href="#">Science</a></li>
-        <li><a href="#">Psychology</a></li>
+        <li><a href="http://en.wikipedia.org/wiki/Carl_Jung">Psychology</a></li>
         <li><a href="#">Minimalism</a></li>
 
         <li><a href="#">Surrealism</a></li>
@@ -192,7 +214,12 @@
   <script src="/js/lib/jquery-1.10.1.js"></script>
   <script src="/js/lib/jquery.stellar.js"></script>
   <script src="/js/lib/jquery.mousewheel.js"></script>
-  <script src="/js/main.js"></script>
+
+  <script type="text/javascript">
+    if (isDesktop) {
+      document.write('<script src="/js/main.js"></scr'+'ipt>');
+    }
+  </script>
 
   </div>
 </body>

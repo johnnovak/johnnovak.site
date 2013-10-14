@@ -1,47 +1,53 @@
-function displayPage() {
-  $('#wrapper').css('display', 'block');
-}
-
 $(document).ready(function() {
 
-  var ua = navigator.userAgent;
-  var isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
+  //// GLOBALS ///////////////////////////////////////////////////////////////
+  
+  var sectionPositions;
 
-  if (isMobileWebkit) {
-    $('html').addClass('mobile');
-    displayPage();
+  var MAX_ACCELERATION = 25;
+  var SCROLL_EASE = .1;
+  var WHEEL_STEP = 250;
+
+  var animatingScroll = false;
+  var scrollToSection = false;
+  var scrollInterval;
+  var currentScroll;
+  var scrollDest;
+  var speed = 0;
+
+  var resizeTimer;
+  var isParallaxInstalled = false;
+  var isParallax = false;
+  var isMac;
+
+  //// INIT //////////////////////////////////////////////////////////////////
+  
+  displayPage();
+
+  if (!isDesktop) {
     return;
+  } else {
+    $('html').addClass('desktop');
   }
 
   // Detect OS
   // from http://stackoverflow.com/a/11752533
-  var isMac = navigator.platform.toUpperCase().indexOf('MAC') !== -1;
-  var isWindows = navigator.platform.toUpperCase().indexOf('WIN') !== -1;
-  var isLinux = navigator.platform.toUpperCase().indexOf('LINUX') !== -1;
+  isMac = navigator.platform.toUpperCase().indexOf('MAC') !== -1;
 
-  // Adjust static section heights & image positions for a nice parallax effect
-  $('#about-section').css('height', '750px');
-  $('#music-section').css('height', '700px');
-  $('#photo-section').css('height', '700px');
-  $('#code-section').css('height', '1400px');
+  $(document).bind('mousewheel', mouseWheelHandler);
+  $(document).bind('keydown', keyDownHandler);
+  $(document).bind('scroll', scrollHandler);
 
-  $('#about-bg').css('top', '190px');
+  isParallax = !isMobileView();
+  if (isParallax) {
+    installParallax();
+  }
 
-  $('#music-bg').css('top', '-120px');
-
-  $('#photo-bg-leg1').css('top', '60px');
-  $('#photo-bg-leg2').css('top', '-330px');
-  $('#photo-bg-skull').css('top', '100px');
-
-  $('#code-bg').css('top', '-200px');
-
-  $('#footer-bg-building').css('top', '-450px');
-  $('#footer-bg-gate').css('top', '-690px');
-  $('#footer-bg-sun').css('top', '-325px');
-  $('#footer-bg').css('margin-top', '-36px');
-
-  // Display page
-  displayPage();
+  //// FUNCTIONS /////////////////////////////////////////////////////////////
+  
+  function displayPage() {
+    $('#wrapper').css('display', 'block');
+  }
 
   // Detect CSS3 transform availability
   // from http://stackoverflow.com/a/12625986
@@ -57,19 +63,9 @@ $(document).ready(function() {
     return false;
   }
 
-  sectionPositions = [
-    $('#about').offset().top,
-    $('#music').offset().top,
-    $('#photo').offset().top,
-    $('#code').offset().top
-  ];
-
-  sectionNames = [
-    'about',
-    'music',
-    'photo',
-    'code'
-  ];
+  function isMobileView() {
+    return $('#mainmenu').css('position') != 'fixed';
+  }
 
   function getCurrentSection() {
     var minDist = 9999999;
@@ -83,17 +79,6 @@ $(document).ready(function() {
     }
     return currentSection;
   }
-
-  var MAX_ACCELERATION = 25;
-  var SCROLL_EASE = .1;
-  var WHEEL_STEP = 250;
-
-  var animatingScroll = false;
-  var scrollInterval;
-  var currentScroll;
-
-  var scrollDest;
-  var speed = 0;
 
   // Scrolling code ripped from http://www.ascensionlatorre.com/home
   function scrollTo(target) {
@@ -140,6 +125,9 @@ $(document).ready(function() {
   }
 
   function keyDownHandler(event) {
+    if (!isParallax) {
+      return;
+    }
     var destSection = getCurrentSection();
     switch (event.keyCode) {
       case 38: // up arrow
@@ -177,18 +165,18 @@ $(document).ready(function() {
     scrollTo(sectionPositions[destSection]);
   }
 
-  var scrollToSection = false;
-
-  function scrollHandler(event) {
-    if (!scrollToSection) {
-        currentSection = getCurrentSection();
-        //History.replaceState(null, null, '/' + sectionNames[currentSection]);
+  function scrollHandler() {
+    if (isParallax && !scrollToSection) {
+      currentSection = getCurrentSection();
     }
   }
-
-  // Don't mess with the mousewheel on Macs due to the notorious (and
-  // unresolvable) touchpad vs oldschool-clicky-mousewheel issue
-  $(document).mousewheel(function(event, delta, deltaX, deltaY) {
+  
+  function mouseWheelHandler(event, delta, deltaX, deltaY) {
+    // Don't mess with the mousewheel on Macs due to the notorious (and
+    // unresolvable) touchpad vs oldschool-clicky-mousewheel issue
+    if (!isParallax) {
+      return;
+    }
     if (isMac) { 
       if (scrollToSection) {
         event.preventDefault();
@@ -200,51 +188,74 @@ $(document).ready(function() {
           scrollTo(scrollTop + (-WHEEL_STEP * delta));
       }
     }
-  });
+  }
 
-  $(document).keydown(keyDownHandler);
-  $(document).scroll(scrollHandler);
+  function installParallax() {
+    sectionPositions = [
+      $('#about').offset().top,
+      $('#music').offset().top,
+      $('#photo').offset().top,
+      $('#code').offset().top
+    ];
 
-  // Install parallax
-  $.stellar({
-    // Fallback to 'position' for IE8
-    positionProperty: hasTransform() ? 'transform' : 'position',
-    horizontalScrolling: false,
-    parallaxBackgrounds: false
+    // Install parallax
+    $.stellar({
+      // Fallback to 'position' for IE8
+      positionProperty: hasTransform() ? 'transform' : 'position',
+      horizontalScrolling: false,
+      parallaxBackgrounds: false
+    });
+
+    isParallaxInstalled = true;
+  }
+
+  function resizeHandler() {
+    isParallax = !isMobileView();
+    if (!isParallaxInstalled && isParallax) {
+      installParallax();
+    }
+  }
+
+  $(window).bind('resize', function() { 
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(resizeHandler, 100);
   });
 
   // Install main menu callbacks
-  $('#menu-about').click(function(e) {
-    e.preventDefault();
-    var i = 0;
-    scrollToSection = true;
-    scrollTo(sectionPositions[i]);
-    //History.replaceState(null, null, '/' + sectionNames[i]);
+  $('#menu-about').click(function(event) {
+    if (isParallax) {
+      event.preventDefault();
+      var i = 0;
+      scrollToSection = true;
+      scrollTo(sectionPositions[i]);
+    }
   });
 
-  $('#menu-music').click(function(e) {
-    e.preventDefault();
-    var i = 1;
-    scrollToSection = true;
-    scrollTo(sectionPositions[i]);
-    //History.replaceState(null, null, '/' + sectionNames[i]);
+  $('#menu-music').click(function(event) {
+    if (isParallax) {
+      event.preventDefault();
+      var i = 1;
+      scrollToSection = true;
+      scrollTo(sectionPositions[i]);
+    }
   });
 
-  $('#menu-photo').click(function(e) {
-    e.preventDefault();
-    var i = 2;
-    scrollToSection = true;
-    scrollTo(sectionPositions[i]);
-    //History.replaceState(null, null, '/' + sectionNames[i]);
+  $('#menu-photo').click(function(event) {
+    if (isParallax) {
+      event.preventDefault();
+      var i = 2;
+      scrollToSection = true;
+      scrollTo(sectionPositions[i]);
+    }
   });
 
-  $('#menu-code').click(function(e) {
-    e.preventDefault();
-    var i = 3;
-    scrollToSection = true;
-    scrollTo(sectionPositions[i]);
-    //History.replaceState(null, null, '/' + sectionNames[i]);
+  $('#menu-code').click(function(event) {
+    if (isParallax) {
+      event.preventDefault();
+      var i = 3;
+      scrollToSection = true;
+      scrollTo(sectionPositions[i]);
+    }
   });
-
 });
 

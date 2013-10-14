@@ -221,6 +221,8 @@ ul {
     right: -415px;
     width: 473px;
     height: 434px;
-    background: url(/img/bg-about.png);
+    background: url(/img/bg-about@2x.png) 1px 1px no-repeat;
+    background-image: url(/img/bg-about.svg), none;
+    background-size: 474px 434px;
   }
 }
