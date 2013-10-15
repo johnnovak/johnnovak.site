@@ -6,7 +6,7 @@ body {
 }
 
 #wrapper {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 #header {
@@ -109,9 +109,10 @@ body {
 $monospace: Menlo,Courier;
 
 pre {
-  padding: 10px;
+  padding: 13px;
   background: #fff;
   line-height: 1.2;
+  border-radius: 12px;
 
   code {
     font: 14px $monospace;
@@ -127,11 +128,65 @@ ul {
   list-style: square;
 }
 
+#navigation {
+  margin-top: 60px;
+  border-top: 1px solid #aaa;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;
+
+    li {
+      width: 100%;
+      a {
+        font-size: 20px;
+        font-weight: $bold;
+      }
+    }
+
+    .next {
+      text-align: right;
+    }
+  }
+}
+
+#disqus_thread {
+  margin-top: 140px;
+}
+#no-disqus {
+  padding: 15px 0 ;
+  margin-top: 50px;
+  border-top: 1px dashed $font-color;
+  border-bottom: 1px dashed $font-color;
+  text-align: center;
+}
+
+#footer {
+  margin-top: 40px;
+  padding: 4px 0;
+  border: 1px solid #aaa;
+  border-width: 1px 0;
+  text-transform: uppercase;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline;
+      margin: 0 20px;
+    }
+  }
+}
+
 @media only screen and (min-width: 500px) {
   #jn-logo {
     top: 20px;
-    width: 397px;
-    height: 120px;
+    width: 400px;
+    height: 124px;
   }
   #header {
     height: 220px;
@@ -172,7 +227,7 @@ ul {
   }
   #wrapper {
     width: 600px;
-    margin: 0 auto 100px auto;
+    margin: 0 auto 40px auto;
     position: relative;
     left: -8%;
   }
@@ -192,15 +247,8 @@ ul {
     background-image: url(/img/bg-about.svg), none;
     background-size: 474px 434px;
   }
+  #footer {
+    margin-top: 60px;
+  }
 }
 
-#disqus_thread {
-  margin-top: 140px;
-}
-#no-disqus {
-  padding: 5px 0 ;
-  margin-top: 50px;
-  border-top: 1px dashed $font-color;
-  border-bottom: 1px dashed $font-color;
-  text-align: center;
-}

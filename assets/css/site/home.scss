@@ -108,7 +108,7 @@ ul {
   }
   #jn-logo {
     top: auto;
-    width: 397px;
+    width: 400px;
   }
 
   .desktop .anchor {
@@ -127,9 +127,6 @@ ul {
   .section-content {
     margin-left: $main-width - $content-width;
     float: left;
-  }
-  #jn-logo {
-    left: 410px;
   }
 }
 
@@ -166,7 +163,7 @@ ul {
     background: url(/img/header-bg.png) repeat-x;
   }
   #jn-logo {
-    @include pos(20, 350, 1);
+    @include pos(20, 348, 1);
     transition: 1s;
   }
   #mainmenu {
@@ -194,7 +191,7 @@ ul {
 
 @media #{$media-large} {
   #jn-logo {
-    left: 410px;
+    left: 408px;
   }
 }
 
