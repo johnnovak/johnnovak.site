@@ -24,7 +24,7 @@ desc "Generate full site"
 task :build_all => [:blog, :photo, :home]
 
 desc "Generate Jekyll blog"
-task :blog do
+task :blog => [:img, :css] do
   sh "jekyll build -s #{BLOG_DIR} -d #{DEST_BLOG_DIR}"
 end
 
