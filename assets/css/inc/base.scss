@@ -1,13 +1,17 @@
+@import 'mixins.scss';
+
 $bg-color:    #e9e9e9;
 $font-color:  #000;
 $gray:        #666;
 $red:         #ed0000;
 $lightred:    #f26767;
+$sel-color:   #fcc;
 
 $thin:   300;
 $normal: 400;
 $bold:   600;
 $xbold:  700;
+
 
 body {
   margin: 0;
@@ -15,8 +19,9 @@ body {
   font-family: 'Source Sans Pro', Calibri, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   color: $font-color;
@@ -28,20 +33,18 @@ html {
   overflow-x: hidden;
 }
 
-$selection-color: #fcc;
-
 ::selection {
-  background: $selection-color;
+  background: $sel-color;
   color: black;
   text-shadow: none;
 }
 ::-moz-selection {
-  background: $selection-color;
+  background: $sel-color;
   color: black;
   text-shadow: none;
 }
 ::-webkit-selection {
-  background: $selection-color;
+  background: $sel-color;
   color: black;
   text-shadow: none;
 }
@@ -76,4 +79,3 @@ a {
     color: $gray;
   }
 }
-

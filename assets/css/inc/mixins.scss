@@ -1,0 +1,38 @@
+@mixin pos($top, $horiz, $z-index: 0, $pos: absolute, $align: 'left') {
+  position: $pos;
+  top: #{$top}px;
+  @if $align == 'left' {
+    left: #{$horiz}px;
+  } @else {
+    right: #{$horiz}px;
+  }
+  z-index: $z-index;
+}
+
+@mixin bg-img($width, $height, $imgname, $suffix: '@2x.png', $svg: false) {
+  width: #{$width + 2}px;
+  height: #{$height + 2}px;
+  background: url(/img/#{$imgname}) 1px 1px no-repeat;
+  @if $svg {
+    background-image: url(/img/#{$imgname}.svg), none;
+  }
+  background-size: #{$width}px #{$height}px;
+}
+
+@mixin transition($duration, $property: '') {
+  @if $property != '' {
+    -webkit-transition: $property $duration;
+    transition: $property $duration;
+  } @else {
+    -webkit-transition: $duration;
+    transition: $duration;
+  }
+}
+
+@mixin opacity($value) {
+  -moz-opacity: $value;
+  -webkit-opacity: $value;
+  -o-opacity: $value;
+  -ms-opacity: $value;
+  opacity: $value;
+}

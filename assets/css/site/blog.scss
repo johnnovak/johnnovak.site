@@ -1,8 +1,8 @@
 @import '../inc/base.scss';
 
 body {
-  font-size: 18px;
   margin: 0 25px;
+  font-size: 18px;
 }
 
 #wrapper {
@@ -13,9 +13,7 @@ body {
   height: 150px;
 
   h1 {
-    position: absolute;
-    top: 70px;
-    right: 58px;
+    @include pos(70, 58, $align: 'right');
     font-size: 30px;
     font-weight: normal;
     text-transform: uppercase;
@@ -27,9 +25,7 @@ body {
 }
 
 #jn-logo {
-  position: absolute;
-  top: 10px;
-  right: 25px;
+  @include pos(10, 25, $align: 'right');
   width: 300px;
 }
 
@@ -42,16 +38,16 @@ body {
   }
 
   h1 {
+    margin: 0 0 15px 0;
     font-size: 28px;
     font-weight: $bold;
-    margin: 0 0 15px 0;
     line-height: 1;
   }
   h2 {
-    font-weight: normal;
-    font-size: 20px;
     margin: 0 0 6px 0;
     padding: 0;
+    font-weight: normal;
+    font-size: 20px;
     line-height: 1;
   }
   h3 {
@@ -60,58 +56,59 @@ body {
     font-weight: normal;
     font-size: 18px;
     text-transform: uppercase;
-    color: $gray;
     line-height: 1;
+    color: $gray;
   }
 }
 
 .post {
   h1 {
+    margin: 0;
     font-size: 36px;
     font-weight: $thin;
     line-height: 1;
-    margin: 0;
   }
-
-  .date {
-    display: block;
-    font-size: 20px;
-    font-weight: normal;
-    line-height: 1.8;
-    text-transform: uppercase;
-    margin: 0 0 30px 0;
-  }
-
   h2 {
     margin: 2em 0 1em;
     font-size: 20px;
     font-weight: $xbold;
     text-transform: uppercase;
   }
-
   h3 {
     margin: 2em 0 1em;
     font-size: 20px;
     font-weight: $bold;
   }
-
   a {
-    color: $red;
     font-weight: $xbold;
+    color: $red;
 
     &:hover {
-      color: #e44;
       text-decoration: underline;
+      color: #e44;
     }
+  }
+  .date {
+    display: block;
+    margin: 0 0 30px 0;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.8;
+    text-transform: uppercase;
+  }
+  hr {
+    margin-top: 40px;
+    width: 100px;
+    border: 1px solid #aaa;
   }
 }
 
-$monospace: Menlo,Courier;
+$monospace: Menlo, Courier;
 
 pre {
   padding: 13px;
-  background: #fff;
   line-height: 1.2;
+  background: #fff;
   border-radius: 12px;
 
   code {
@@ -133,9 +130,9 @@ ul {
   border-top: 1px solid #aaa;
 
   ul {
-    list-style: none;
-    padding: 0;
     margin: 10px 0 20px 0;
+    padding: 0;
+    list-style: none;
 
     li {
       width: 100%;
@@ -144,7 +141,6 @@ ul {
         font-weight: $bold;
       }
     }
-
     .next {
       text-align: right;
     }
@@ -152,11 +148,11 @@ ul {
 }
 
 #disqus_thread {
-  margin-top: 140px;
+  margin-top: 200px;
 }
 #no-disqus {
-  padding: 15px 0 ;
   margin-top: 50px;
+  padding: 15px 0 ;
   border-top: 1px dashed $font-color;
   border-bottom: 1px dashed $font-color;
   text-align: center;
@@ -165,19 +161,18 @@ ul {
 #footer {
   margin-top: 40px;
   padding: 4px 0;
-  border: 1px solid #aaa;
-  border-width: 1px 0;
+  border-top: 1px solid #aaa;
   text-transform: uppercase;
   text-align: center;
 
   ul {
-    list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    list-style: none;
 
     li {
-      display: inline;
       margin: 0 20px;
+      display: inline;
     }
   }
 }
@@ -199,9 +194,9 @@ ul {
   }
   .archives {
     h1 {
+      margin: 0;
       float: left;
       font-size: 34px;
-      margin: 0;
     }
     h2 {
       margin: 0 0 0 200px;
@@ -226,10 +221,10 @@ ul {
     margin: 0;
   }
   #wrapper {
-    width: 600px;
-    margin: 0 auto 40px auto;
     position: relative;
     left: -8%;
+    width: 600px;
+    margin: 0 auto 40px auto;
   }
   #header {
     height: 280px;
@@ -238,17 +233,10 @@ ul {
     right: 0;
   }
   #header-bg {
-    position: absolute;
-    top: -90px;
-    right: -415px;
-    width: 473px;
-    height: 434px;
-    background: url(/img/bg-about@2x.png) 1px 1px no-repeat;
-    background-image: url(/img/bg-about.svg), none;
-    background-size: 474px 434px;
+    @include pos(-90, -415, $align: 'right');
+    @include bg-img(474, 434, 'bg-about', $svg: true);
   }
   #footer {
     margin-top: 60px;
   }
 }
-

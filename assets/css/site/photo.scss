@@ -1,33 +1,32 @@
 @import '../inc/base.scss';
 
-$bg-color:    #fff;
-$font-color:  #333;
+$bg-color:   #fff;
+$font-color: #333;
+$sel-color:  #ccc;
+
+$width: 670px;
+
 
 body {
   text-transform: uppercase;
   background: $bg-color;
 }
 
-$selection-color: #ccc;
-
 ::selection {
-  background: $selection-color;
+  background: $sel-color;
   color: black;
   text-shadow: none;
 }
 ::-moz-selection {
-  background: $selection-color;
+  background: $sel-color;
   color: black;
   text-shadow: none;
 }
 ::-webkit-selection {
-  background: $selection-color;
+  background: $sel-color;
   color: black;
   text-shadow: none;
 }
-
-
-$width: 670px;
 
 #header {
   margin: 20px 0 0 30px;
@@ -65,7 +64,6 @@ $width: 670px;
     text-align: center;
     line-height: 1;
   }
-
   img {
     float: left;
     margin: 7px;
@@ -77,7 +75,6 @@ $width: 670px;
       transition: opacity .4s;
     }
   }
-
   .nav {
     margin: 0;
   }
@@ -113,20 +110,6 @@ $width: 670px;
     padding: 30px 0 10px 0;
     margin: 0;
   }
-
-  img {
-    opacity: 1;
-    transition: opacity .15s;
-
-    &:hover {
-      opacity: .7;
-      transition: opacity .4s;
-    }
-  }
-  .album {
-    float: left;
-    margin: 0 30px 30px 0;
-  }
   h2 {
     font-size: 18px;
     font-weight: $normal;
@@ -140,5 +123,18 @@ $width: 670px;
       font-size: 16px;
       padding-top: 2px;
     }
+  }
+  img {
+    opacity: 1;
+    transition: opacity .15s;
+
+    &:hover {
+      opacity: .7;
+      transition: opacity .4s;
+    }
+  }
+  .album {
+    float: left;
+    margin: 0 30px 30px 0;
   }
 }

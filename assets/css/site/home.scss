@@ -1,10 +1,5 @@
 @import '../inc/base.scss';
 
-body {
-  text-transform: uppercase;
-  margin: 20px;
-}
-
 $content-width: 420px;
 $main-width: 780px;
 $medium-width-delta: 60px;
@@ -13,22 +8,9 @@ $header-height: 200px;
 $media-medium: "only screen and (min-width: 767px)";
 $media-large:  "only screen and (min-width: 980px)";
 
-@media #{$media-medium} {
-}
-
-@mixin pos($top, $left, $z-index: 0, $pos: absolute) {
-  position: $pos;
-  top: #{$top}px;
-  left: #{$left}px;
-  z-index: $z-index;
-}
-
-@mixin bg-img($width, $height, $bg-image) {
-  width: #{$width + 2}px;
-  height: #{$height + 2}px;
-  background: url(/img/#{$bg-image}@2x.png) 1px 1px no-repeat;
-//  background-image: url(/img/#{$bg-image}.svg), none;
-  background-size: #{$width}px #{$height}px;
+body {
+  text-transform: uppercase;
+  margin: 20px;
 }
 
 #jn-logo {
@@ -37,37 +19,41 @@ $media-large:  "only screen and (min-width: 980px)";
   right: 20px;
   width: 280px;
 }
+
 h1 {
-  line-height: 1;
+  margin: 50px 0 10px 0;
   font-size: 45px;
   font-weight: $thin;
+  line-height: 1;
   color: $red;
-  transition: .6s;
-  margin: 50px 0 10px 0;
+  @include transition(.6s);
 }
+
 h2 {
+  margin: 20px 0 0 0;
   font-size: 18px;
   font-weight: $xbold;
-  margin: 20px 0 0 0;
   color: $red;
 
   .lower {
     text-transform: lowercase;
   }
 }
+
 ul {
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
+
 .sidebar {
-  font-weight: $xbold;
-  transition: .4s;
   margin-top: 20px;
+  font-weight: $xbold;
+  @include transition(.4s);
 }
 
 .section-content {
-  transition: margin-left .8s;
+  @include transition(.8s, margin-left);
 
   & h2:first-child {
     margin-top: 0;
@@ -80,18 +66,18 @@ ul {
   }
   h1 {
     width: $main-width - $medium-width-delta;
+    border: none;
     font-size: 48px;
     text-align: right;
-    border: none;
   }
   h2 {
-    font-size: 19px;
     margin-top: 30px;
+    font-size: 19px;
   }
   .section-content,
   .sidebar {
-    width: $content-width;
     margin-left: $main-width - $content-width - $medium-width-delta;
+    width: $content-width;
     text-align: right;
   }
   .anchor {
@@ -121,8 +107,8 @@ ul {
     width: $main-width;
   }
   .sidebar {
-    text-align: left;
     margin-left: $main-width + 50px;
+    text-align: left;
   }
   .section-content {
     margin-left: $main-width - $content-width;
@@ -135,9 +121,9 @@ ul {
 //****************************************************************************
 
 #mainmenu {
-  list-style: none;
   padding: 80px 0 0 0;
   text-align: right;
+  list-style: none;
 
   li {
     display: inline-block;
@@ -145,8 +131,8 @@ ul {
     font-weight: $bold;
 
     a {
-      color: $red;
       margin: 0 10px 0 0;
+      color: $red;
 
       &:hover {
         color: $lightred;
@@ -164,14 +150,14 @@ ul {
   }
   #jn-logo {
     @include pos(20, 348, 1);
-    transition: 1s;
+    @include transition(1s);
   }
   #mainmenu {
     @include pos(38, 0, 100);
     width: 440px;
     padding: 0 0 0 30px;
-    background: url(/img/menu-bg.png) top right no-repeat;
     text-align: left;
+    background: url(/img/menu-bg.png) top right no-repeat;
 
     li {
       font-size: 22px;
@@ -243,7 +229,7 @@ ul {
   #about-bg {
     @include pos(189, -77, 10);
     @include bg-img(474, 434, 'bg-about');
-    transition: left 1.2s;
+    @include transition(1.2s, left);
   }
 }
 
@@ -295,7 +281,7 @@ ul {
   #music-bg {
     @include pos(-69, -9, 10);
     @include bg-img(592, 546, 'bg-music');
-    transition: left .5s;
+    @include transition(.5s, left);
   }
 }
 
@@ -303,10 +289,11 @@ ul {
   #music-section {
     .oldstuff {
       @include pos(345, 159, 15);
-      text-align: left;
-      background: url(/img/disk.png) 0 2px no-repeat;
       padding-left: 50px;
-      transition: .4s;
+      text-align: left;
+      background: url(/img/disk@2x.png) 0 2px no-repeat;
+      background-size: 35px 36px;
+      @include transition(.4s);
 
       h2 {
         margin: 0;
@@ -356,6 +343,9 @@ ul {
 
 @media #{$media-medium} {
   #photo-section {
+    $photo-thumb-size: 100px;
+    $photo-thumb-transition: .4s;
+
     position: relative;
     height: 900px;
 
@@ -365,13 +355,13 @@ ul {
     .photos {
       img {
         float: none;
-        width: 100px;
-        height: 100px;
-        transition: .4s;
+        width: $photo-thumb-size;
+        height: $photo-thumb-size;
+        @include transition(.4s);
 
         &:hover {
-          opacity: .7;
-          transition: .1s;
+          @include opacity(.7);
+          @include transition(.1s);
         }
       }
     }
@@ -387,20 +377,25 @@ ul {
     .photo10 { @include pos(420, 510); }
     .photo11 { @include pos(420, 615); }
 
+    .photo-spacer1,
+    .photo-spacer2 {
+      width: $photo-thumb-size;
+      height: $photo-thumb-size;
+      @include transition(.6s);
+
+      &:hover {
+        @include opacity(.7);
+        @include transition(.3s);
+      }
+    }
     .photo-spacer1 {
       @include pos(315, 300);
-      width: 100px;
-      height: 100px;
       background: $red;
-      transition: .4s;
     }
     .photo-spacer2 {
       @include pos(315, 615);
-      width: 100px;
-      height: 100px;
       background: #aaa;
-      opacity: 0;
-      transition: .4s;
+      @include opacity(0);
     }
     .sidebar {
       text-align: left;
@@ -417,18 +412,18 @@ ul {
   #photo-bg-leg1 {
     @include pos(119, -79, 30);
     @include bg-img(362, 222, 'bg-photo-leg1');
-    transition: left .8s;
+    @include transition(.8s, left);
   }
   #photo-bg-leg2 {
     @include pos(-169, -3, 20);
     @include bg-img(244, 279, 'bg-photo-leg2');
-    transition: left .6s;
+    @include transition(.6s, left);
   }
   #photo-bg-skull {
     @include pos(139, -79, 10);
     @include bg-img(422, 500, 'bg-photo-skull');
     background-image: url('/img/skull@2x.png');
-    transition: left .9s;
+    @include transition(.9s, left);
   }
 }
 
@@ -458,7 +453,7 @@ ul {
     }
     .photo-spacer2 {
       left: 695px;
-      opacity: 1;
+      @include opacity(1);
     }
   }
   #photo-bg-leg1,
@@ -476,11 +471,10 @@ ul {
     position: relative;
     height: 1400px;
   }
-
   #code-bg {
     @include pos(-19, -99, 10);
     @include bg-img(513, 547, 'bg-code');
-    transition: left .8s;
+    @include transition(.8s, left);
   }
 }
 
@@ -535,17 +529,17 @@ ul {
   #footer-bg-building {
     @include pos(-249, 279, 50);
     @include bg-img(860, 405, 'bg-footer-building');
-    transition: left 1.1s;
+    @include transition(1.1s, left);
   }
   #footer-bg-gate {
     @include pos(-137, 89, 10);
     @include bg-img(173, 173, 'bg-footer-gate');
-    transition: left .8s;
+    @include transition(.8s, left);
   }
   #footer-bg-sun {
     @include pos(-69, 71, 1);
     @include bg-img(205, 205, 'bg-footer-sun');
-    transition: left .8s;
+    @include transition(.8s, left);
   }
   #footer-bg {
     position: absolute;
@@ -568,4 +562,3 @@ ul {
     left: 172px;
   }
 }
-
