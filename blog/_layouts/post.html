@@ -9,16 +9,7 @@ layout: default
 
 {{ content }}
 
-<div id="navigation">
-  <ul>
-    {% if page.next %} 
-    <li class="next"><a rel="next" href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title }} &rarr;</a></li>
-    {% endif %}
-    {% if page.previous %} 
-    <li class="prev"><a rel="prev" href="{{ site.baseurl }}{{ page.previous.url }}">&larr; {{ page.previous.title }}</a></li>
-    {% endif %}
-  <ul>
-</div>
+<hr />
 
 <noscript><p id="no-disqus"><i>Please enable JavaScript to view the comments.</i></p></noscript>
 <div id="disqus_thread"></div>
