@@ -2,8 +2,6 @@ $(document).ready(function() {
 
   //// GLOBALS ///////////////////////////////////////////////////////////////
   
-  var sectionPositions;
-
   var MAX_ACCELERATION = 25;
   var SCROLL_EASE = .1;
   var WHEEL_STEP = 250;
@@ -19,6 +17,9 @@ $(document).ready(function() {
   var isParallaxInstalled = false;
   var isParallax = false;
   var isMac;
+
+  var sectionNames = ['about', 'music', 'photo', 'code'];
+  var sectionPositions = [];
 
   //// INIT //////////////////////////////////////////////////////////////////
   
@@ -191,12 +192,9 @@ $(document).ready(function() {
   }
 
   function installParallax() {
-    sectionPositions = [
-      $('#about').offset().top,
-      $('#music').offset().top,
-      $('#photo').offset().top,
-      $('#code').offset().top
-    ];
+    for (var i = 0; i < sectionNames.length; i++) {
+      sectionPositions[i] = $('#' + sectionNames[i]).offset().top;
+    }
 
     // Install parallax
     $.stellar({
@@ -221,41 +219,20 @@ $(document).ready(function() {
     resizeTimer = setTimeout(resizeHandler, 100);
   });
 
+  function generateMainMenuHandler(i) {
+    return function(event) {
+      if (isParallax) {
+        event.preventDefault();
+        scrollToSection = true;
+        scrollTo(sectionPositions[i]);
+      }
+    }
+  }
+
   // Install main menu callbacks
-  $('#menu-about').click(function(event) {
-    if (isParallax) {
-      event.preventDefault();
-      var i = 0;
-      scrollToSection = true;
-      scrollTo(sectionPositions[i]);
-    }
-  });
-
-  $('#menu-music').click(function(event) {
-    if (isParallax) {
-      event.preventDefault();
-      var i = 1;
-      scrollToSection = true;
-      scrollTo(sectionPositions[i]);
-    }
-  });
-
-  $('#menu-photo').click(function(event) {
-    if (isParallax) {
-      event.preventDefault();
-      var i = 2;
-      scrollToSection = true;
-      scrollTo(sectionPositions[i]);
-    }
-  });
-
-  $('#menu-code').click(function(event) {
-    if (isParallax) {
-      event.preventDefault();
-      var i = 3;
-      scrollToSection = true;
-      scrollTo(sectionPositions[i]);
-    }
-  });
+  for (var i = 0; i < sectionNames.length; i++) {
+    name = sectionNames[i];
+    $('#menu-' + sectionNames[i]).bind('click', generateMainMenuHandler(i));
+  }
 });
 
