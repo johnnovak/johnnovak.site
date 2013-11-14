@@ -1,140 +1,296 @@
 @import '../inc/base.scss';
 
 $bg-color:   #fff;
-$font-color: #333;
+$font-color: #444;
+$hover-color: #777;
 $sel-color:  #ccc;
 
-$width: 670px;
+@include selection-color($sel-color, 'black');
 
+html {
+  margin: 0 20px;
+}
 
 body {
-  text-transform: uppercase;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0;
   background: $bg-color;
+  color: $font-color;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: none;
 }
 
-::selection {
-  background: $sel-color;
-  color: black;
-  text-shadow: none;
-}
-::-moz-selection {
-  background: $sel-color;
-  color: black;
-  text-shadow: none;
-}
-::-webkit-selection {
-  background: $sel-color;
-  color: black;
-  text-shadow: none;
+@mixin titlecaps {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: $normal;
+  line-height: .8;
+  text-transform: uppercase;
 }
 
 #header {
-  margin: 20px 0 0 30px;
-}
-
-.nav {
-  font-size: 18px;
-  font-weight: $normal;
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-
-  li {
-    display: inline-block;
-
-    &.prev, &.next {
-      margin-right: 20px;
-    }
-
-    span {
-      font-size: 20px;
-    }
-  }
-}
-
-#thumbs {
-  width: $width;
-  margin: 0 auto;
-  text-align: center;
-  padding: 0;
-
-  h1 {
-    font-size: 20px;
-    font-weight: $normal;
-    text-align: center;
-    line-height: 1;
-  }
-  img {
-    float: left;
-    margin: 7px;
-    opacity: 1;
-    transition: opacity .15s;
-
-    &:hover {
-      opacity: .7;
-      transition: opacity .4s;
-    }
-  }
-  .nav {
-    margin: 0;
-  }
-}
-
-#photo {
-  width: 900px;
-  margin: 0 auto;
-  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 35px;
+  margin-bottom: 0px;
+  background: #fff;
 
   h1 {
     font-size: 18px;
-    font-weight: $bold;
-    margin: 10px 0 0 0;
-    line-height: 1;
+    font-weight: $xbold;
+    text-transform: uppercase;
+    
+    a:hover {
+      color: $font-color;
+    }
+
+    span {
+      margin-left: 5px;
+      font-weight: $normal !important;
+      display: none;
+    }
   }
-  h2 {
-    font-size: 16px;
-    font-weight: $normal;
-    margin: 5px 0 0 0;
+  .menu {
+    position: absolute;
+    top: -7px;
+    right: 0;
+    font-size: 14px;
     line-height: 1;
+
+    li {
+      display: inline;
+      margin-left: 8px;
+      padding-right: 11px;
+      border-right: 1px solid $font-color;
+
+      &.last {
+        padding: 0;
+        border: none;
+      }
+    }
+  }
+}
+
+a {
+  color: $font-color;
+  text-decoration: none;
+
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+#about {
+  margin-top: 30px;
+
+  img {
+    width: 100%;
+    margin: 0 20px 20px 0;
+  }
+
+  .text {
+    width: 100%;
+    
+    p {
+      margin: 0 0 1em 0;
+      padding: 0;
+    }
   }
 }
 
 #albums {
-  width: 720px;
-  margin: 0 auto;
+  margin: 30px auto;
 
-  h1 {
-    clear: both;
-    font-size: 32px;
-    font-weight: $thin;
-    padding: 30px 0 10px 0;
-    margin: 0;
-  }
-  h2 {
+  .categories {
     font-size: 18px;
-    font-weight: $normal;
-    text-align: center;
-    line-height: 1;
+
+    ul {
+      padding: 0;
+      margin: 0 0 20px 0;
+      font-weight: $thin;
+      line-height: 1.3;
+      list-style: none;
+
+      .sel {
+        font-weight: $bold;
+      }
+    }
+  }
+  .thumbs {
+    h2 {
+      @include titlecaps;
+    }
+    img {
+      width: 100%;
+      opacity: 1;
+      transition: opacity .3s;
+
+      &:hover {
+        opacity: .8;
+        transition: opacity .3s;
+      }
+    }
+    .album {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+#nav {
+  margin-top: 10px;
+  text-align: center;
+
+  .counter {
+    position: relative;
+    padding: 0;
     margin: 0;
-    padding: 5px 0 0 0;
+    font-size: 15px;
+    list-style: none;
 
-    .date {
-      display: block;
-      font-size: 16px;
-      padding-top: 2px;
+    li {
+      display: inline-block;
+    }
+    #prev {
+      @include icon(10, 17, 'icon-prev');
+      margin-right: 10px;
+    }
+    #next {
+      @include icon(10, 17, 'icon-next');
+      margin-left: 8px;
+    }
+    #imgcounter {
+      position: relative;
+      top: -3px;
+    }
+    #fullscreen {
+      @include icon(16, 16, 'icon-expand', 'icon-expand-hover');
+      position: absolute;
+      margin-left: 50px;
     }
   }
+}
+
+#prev, #next, #fullscreen {
+  cursor: pointer;
+}
+
+#fotorama {
+  text-align: center;
+
   img {
-    opacity: 1;
-    transition: opacity .15s;
+    width: 100%;
+    margin-top: 40px;
+  }
 
-    &:hover {
-      opacity: .7;
-      transition: opacity .4s;
+  h2 {
+    @include titlecaps;
+  }
+}
+
+.fotorama__fullscreen-icon { 
+  display: none;
+}
+
+.fotorama__caption {
+  @include titlecaps;
+  font-size: 14px;
+  color: $font-color;
+}
+.fullscreen {
+  .fotorama__caption {
+    color: #888;
+    padding-bottom: 3px;
+  }
+  .fotorama__caption__wrap {
+    background-color: #000 !important;
+  }
+}
+
+@media only screen and (min-width: 460px) {
+  #header h1 span {
+    display: inline;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  html {
+    margin: 0 30px;
+  }
+
+  body {
+    margin: 20px auto 0 auto;
+  }
+  #header {
+    height: 60px;
+
+    .menu {
+      font-size: 16px;
+      top: -9px;
+    }
+    h1 {
+      font-size: 20px;
     }
   }
-  .album {
-    float: left;
-    margin: 0 30px 30px 0;
+  #nav {
+    .counter {
+      position: static;
+      font-size: 16px;
+    }
+  }
+  .fotorama__caption {
+    font-size: 15px;
+  }
+  #albums {
+    .categories {
+      font-size: 20px;
+    }
+    .thumbs {
+      .last {
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  #about {
+    margin-top: 60px;
+
+    img {
+      width: 40%;
+      float: left;
+    }
+    .text {
+      width: 50%;
+      margin: 0 0 60px 50%;
+
+      p {
+        padding-right: 50px;
+        margin-bottom: 2em;
+      }
+    }
+  }
+  #albums {
+    margin-top: 50px;
+
+    .categories {
+      float: right;
+      width: 30%;
+
+      ul {
+        font-size: 22px;
+      }
+    }
+    .thumbs {
+      float: left;
+      width: 62%;
+
+      h2 {
+        line-height: 1;
+      }
+    }
   }
 }

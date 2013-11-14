@@ -1,16 +1,20 @@
 @import '../inc/base.scss';
 
+@include selection-color($sel-color, 'black');
+
 $content-width: 420px;
 $main-width: 780px;
 $medium-width-delta: 60px;
 $header-height: 200px;
 
-$media-medium: "only screen and (min-width: 767px)";
-$media-large:  "only screen and (min-width: 980px)";
-
 body {
   text-transform: uppercase;
   margin: 20px;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 #jn-logo {
@@ -360,7 +364,7 @@ ul {
         @include transition(.4s);
 
         &:hover {
-          @include opacity(.7);
+          opacity: .7;
           @include transition(.1s);
         }
       }
@@ -384,7 +388,7 @@ ul {
       @include transition(.6s);
 
       &:hover {
-        @include opacity(.7);
+        opacity: .7;
         @include transition(.3s);
       }
     }
@@ -395,7 +399,7 @@ ul {
     .photo-spacer2 {
       @include pos(315, 615);
       background: #aaa;
-      @include opacity(0);
+      opacity: 0;
     }
     .sidebar {
       text-align: left;
@@ -453,7 +457,7 @@ ul {
     }
     .photo-spacer2 {
       left: 695px;
-      @include opacity(1);
+      opacity: 1;
     }
   }
   #photo-bg-leg1,

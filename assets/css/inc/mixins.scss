@@ -29,10 +29,39 @@
   }
 }
 
-@mixin opacity($value) {
-  -moz-opacity: $value;
-  -webkit-opacity: $value;
-  -o-opacity: $value;
-  -ms-opacity: $value;
-  opacity: $value;
+@mixin icon($width, $height, $imgname, $hoverimgname: '') {
+  width: #{$width}px;
+  height: #{$height}px;
+  background-image: url(/img/#{$imgname}.png);
+  background-size: #{$width}px #{$height}px;
+  background-repeat: no-repeat;
+  background-position: top left;
+
+  @if $hoverimgname != '' {
+    &:hover {
+      background-image: url(/img/#{$hoverimgname}.png);
+    }
+  }
+
+  span {
+    display: none;
+  }
+}
+
+@mixin selection-color($bgcolor, $color) {
+  ::selection {
+    background: $bgcolor;
+    color: $color;
+    text-shadow: none;
+  }
+  ::-moz-selection {
+    background: $bgcolor;
+    color: $color;
+    text-shadow: none;
+  }
+  ::-webkit-selection {
+    background: $bgcolor;
+    color: $color;
+    text-shadow: none;
+  }
 }

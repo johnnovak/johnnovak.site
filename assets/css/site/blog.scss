@@ -1,8 +1,15 @@
 @import '../inc/base.scss';
 
+@include selection-color($sel-color, 'black');
+
 body {
   margin: 0 25px;
   font-size: 18px;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 #wrapper {
@@ -241,3 +248,5 @@ ul {
     margin-top: 60px;
   }
 }
+
+@import '../inc/pygments.scss';

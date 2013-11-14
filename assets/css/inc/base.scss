@@ -12,6 +12,9 @@ $normal: 400;
 $bold:   600;
 $xbold:  700;
 
+$media-medium: "only screen and (min-width: 767px)";
+$media-large:  "only screen and (min-width: 980px)";
+
 
 body {
   margin: 0;
@@ -26,27 +29,6 @@ body {
   -ms-text-size-adjust: 100%;
   color: $font-color;
   background: $bg-color;
-  overflow-x: hidden;
-}
-
-html {
-  overflow-x: hidden;
-}
-
-::selection {
-  background: $sel-color;
-  color: black;
-  text-shadow: none;
-}
-::-moz-selection {
-  background: $sel-color;
-  color: black;
-  text-shadow: none;
-}
-::-webkit-selection {
-  background: $sel-color;
-  color: black;
-  text-shadow: none;
 }
 
 ::-webkit-scrollbar {

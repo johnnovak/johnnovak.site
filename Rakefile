@@ -14,7 +14,7 @@ DEST_CSS_DIR  = File.join DEST_DIR, 'css'
 DEST_BLOG_DIR = File.join DEST_DIR, 'blog'
 
 SASS_CACHE    = File.join ASSETS_DIR, 'css/.sass-cache'
-SASS_OPTS     = "--cache-location=#{SASS_CACHE}"
+SASS_OPTS     = "--cache-location=#{SASS_CACHE} --style=compressed"
 SASS_LOCATION = "#{CSS_DIR}:#{DEST_CSS_DIR}"
 
 
