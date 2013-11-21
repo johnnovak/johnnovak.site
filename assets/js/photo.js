@@ -143,9 +143,27 @@ var photo = function() {
   var fotorama;
   var fotoramaApi;
 
-  function removeHtmlOnlyStuff() {
-    $('#fotorama a').remove();
-    $('#fotorama h2').remove();
+  function fotoramaize() {
+    var a = $('#fotorama a');
+    var img = $('#fotorama img');
+    var h2 = $('#fotorama h2');
+
+    for (var i = 0; i < a.length; i++) {
+      var link = $(a[i]);
+      var caption = link.attr('name');
+      link.remove();
+
+      var heading = $(h2[i]);
+      var title = heading.text();
+      console.log(title);
+      heading.remove();
+
+      var image = $(img[i]);
+      image.attr('id', caption);
+      image.attr('data-caption', title);
+      image.attr('style', null);
+
+    }
   }
 
   function createNavigation() {
@@ -232,7 +250,7 @@ var photo = function() {
 
   function init() {
     installMenuClickHandler()
-    removeHtmlOnlyStuff();
+    fotoramaize();
     createNavigation();
     createFotorama();
     installNavButtonHandlers();
