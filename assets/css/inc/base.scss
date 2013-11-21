@@ -7,6 +7,11 @@ $red:         #ed0000;
 $lightred:    #f26767;
 $sel-color:   #fcc;
 
+$scrollbar-bg:    #ccc;
+$scrollbar-color: #777;
+$scrollbar-hover: #888;
+$scrollbar-drag:  #666;
+
 $thin:   300;
 $normal: 400;
 $bold:   600;
@@ -36,16 +41,16 @@ body {
 	height: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: #ccc;
+  background: $scrollbar-bg;
 }
 ::-webkit-scrollbar-thumb {
-  background: #777;
+  background: $scrollbar-color;
 
   &:hover {
-    background: #888;
+    background: $scrollbar-hover;
   }
   &:active {
-    background: $gray;
+    background: $scrollbar-drag;
   }
 }
 

@@ -11,47 +11,54 @@
   <link rel="stylesheet" type="text/css" href="/css/fotorama.css">
   <link rel="stylesheet" type="text/css" href="/css/photo.css">
 
-  <!--  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> --->
-  <script src="/js/lib/jquery-1.10.1.js"></script>
-  <script src="/js/lib/fotorama/fotorama.js"></script>
-  <script src="/js/photo.js"></script>
+  <script type="text/javascript" src="/js/lib/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/js/lib/fotorama/fotorama.js"></script>
+  <script type="text/javascript" src="/js/photo.js"></script>
 </head>
 
 <body>
+  <script src="/js/lib/respond.min.js"></script>
+  <script type="text/javascript">document.body.className = 'js';</script>
+
   <div id="header">
     <h1><a href="/">John Novak <span>Photography</span></a></h1>
 
     <ul class="menu">
-      <li><a href="#">Albums</a></li>
-      <li class="last"><a href="#">About</a></li>
+      <li><a href="/photo/">Albums</a></li>
+      <li class="last"><a href="/photo/about/">About</a></li>
     </ul>
   </div>
 
-  <div id="fotorama">
+  <div id="fotorama" data-auto="false">
     <a name="1"></a>
-    <img src="photo/mannequin/albino-twins.jpg" data-caption="Albino Twins">
+    <img src="/photo/mannequins/album1/albino-twins.jpg" data-caption="Albino Twins" id="albino-twins">
     <h2>The Miraculous Miss Anderson</h2>
 
     <a name="2"></a>
-    <img src="photo/mannequin/alter-ego.jpg" data-caption="Alter Ego">
+    <img src="/photo/mannequins/album1/alter-ego.jpg" data-caption="Alter Ego" id="alter-ego">
     <h2>Alterego</h2>
 
-    <img src="photo/mannequin/alterego.jpg" data-caption="Alter Ego">
-    <img src="photo/mannequin/bad-conscience.jpg" data-caption="Bad Conscience">
-    <!--    <img src="photo/mannequin/double-dolce.jpg"> -->
-    <img src="photo/mannequin/doubt.jpg" data-caption="Doubt">
-    <img src="photo/mannequin/exposed.jpg" data-caption="Exposed">
-    <img src="photo/mannequin/feathers.jpg" data-caption="Feathers">
-    <!--      <img src="photo/mannequin/for-sale.jpg"> -->
-    <img src="photo/mannequin/lure-of-the-temptress.jpg" data-caption="Lure of the Temptress">
-    <img src="photo/mannequin/mandarine-sisters.jpg" data-caption="Mandarine sisters">
-    <img src="photo/mannequin/memories-of-sarah.jpg" data-caption="Memories of Sarah">
-    <img src="photo/mannequin/miss-blurryhand.jpg" data-caption="Miss Blurryhand">
-    <img src="photo/mannequin/second-skin.jpg" data-caption="Second Skin">
-    <img src="photo/mannequin/this-is-the-night.jpg" data-caption="This is the Night">
+    <img src="/photo/mannequins/album1/alterego.jpg" data-caption="Alter Ego 2" id="alter-ego-2">
+    <img src="/photo/mannequins/album1/bad-conscience.jpg" data-caption="Bad Conscience" id="bad-conscience">
+    <img src="/photo/mannequins/album1/double-dolce.jpg" data-caption="Double Dolce" id="double-dolce"> 
+    <img src="/photo/mannequins/album1/doubt.jpg" data-caption="Doubt" id="doubt">
+    <img src="/photo/mannequins/album1/exposed.jpg" data-caption="Exposed" id="exposed">
+    <img src="/photo/mannequins/album1/feathers.jpg" data-caption="Feathers" id="feathers">
+    <img src="/photo/mannequins/album1/lure-of-the-temptress.jpg" data-caption="Lure of the Temptress" id="lure-of-the-temptress">
+    <img src="/photo/mannequins/album1/mandarine-sisters.jpg" data-caption="Mandarine sisters" id="mandarine-sisters">
+    <img src="/photo/mannequins/album1/memories-of-sarah.jpg" data-caption="Memories of Sarah" id="memories-of-sarah">
+    <img src="/photo/mannequins/album1/miss-blurryhand.jpg" data-caption="Miss Blurryhand" id="miss-blurryhand">
+    <img src="/photo/mannequins/album1/second-skin.jpg" data-caption="Second Skin" id="second-skin">
+    <img src="/photo/mannequins/album1/this-is-the-night.jpg" data-caption="This is the Night" id="this-is-the-night">
   </div>
 
   <div id="nav"></div>
+
+  <script type="text/javascript">
+    $(function() {
+      (site.currentPage = site.photo).init();
+    });
+  </script>
 </body>
 </html>
 

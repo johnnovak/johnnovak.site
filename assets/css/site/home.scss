@@ -2,6 +2,14 @@
 
 @include selection-color($sel-color, 'black');
 
+@include flat-scrollbar(
+  12px,
+  $bg-color:    #ccc,
+  $color:       #777,
+  $hover-color: #888,
+  $drag-color:  #666
+);
+
 $content-width: 420px;
 $main-width: 780px;
 $medium-width-delta: 60px;
@@ -61,6 +69,14 @@ ul {
 
   & h2:first-child {
     margin-top: 0;
+  }
+}
+
+a {
+  @include transition(.15s, color);
+
+  &:hover {
+    @include transition(.15s, color);
   }
 }
 
@@ -516,9 +532,11 @@ ul {
     a {
       color: #fff;
       font-weight: $xbold;
+      @include transition(.2s, color);
 
       &:hover {
         color: #fcc;
+        @include transition(.2s, color);
       }
     }
     p {

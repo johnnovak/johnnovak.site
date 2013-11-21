@@ -29,19 +29,13 @@
   }
 }
 
-@mixin icon($width, $height, $imgname, $hoverimgname: '') {
-  width: #{$width}px;
-  height: #{$height}px;
+@mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h) {
+  width: #{$w}px;
+  height: #{$h}px;
   background-image: url(/img/#{$imgname}.png);
-  background-size: #{$width}px #{$height}px;
+  background-size: #{$bg_w}px #{$bg_h}px;
   background-repeat: no-repeat;
-  background-position: top left;
-
-  @if $hoverimgname != '' {
-    &:hover {
-      background-image: url(/img/#{$hoverimgname}.png);
-    }
-  }
+  background-position: #{-$x}px #{-$y}px;
 
   span {
     display: none;
@@ -65,3 +59,24 @@
     text-shadow: none;
   }
 }
+
+@mixin flat-scrollbar($size, $bg-color, $color, $hover-color, $drag-color) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $bg-color;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $color;
+
+    &:hover {
+      background: $hover-color;
+    }
+    &:active {
+      background: $drag-color;
+    }
+  }
+}
+

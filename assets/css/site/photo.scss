@@ -1,14 +1,32 @@
 @import '../inc/base.scss';
 
-$bg-color:   #fff;
-$font-color: #444;
-$hover-color: #777;
-$sel-color:  #ccc;
+$bg-color:    #fff;
+$font-color:  #444;
+$hover-color: #999;
+$sel-color:   #ccc;
 
 @include selection-color($sel-color, 'black');
 
+@include flat-scrollbar(
+  12px,
+  $bg-color:    #fff,
+  $color:       #bbb,
+  $hover-color: #ccc,
+  $drag-color:  #ccc
+);
+
+@mixin titlecaps {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: $normal;
+  line-height: .8;
+  text-transform: uppercase;
+}
+
 html {
   margin: 0 20px;
+  overflow-y: scroll;
 }
 
 body {
@@ -22,13 +40,15 @@ body {
   text-transform: none;
 }
 
-@mixin titlecaps {
-  margin: 0;
-  padding: 0;
-  font-size: 15px;
-  font-weight: $normal;
-  line-height: .8;
-  text-transform: uppercase;
+a {
+  color: $font-color;
+  text-decoration: none;
+  @include transition(.15s, color);
+
+  &:hover {
+    color: $hover-color;
+    @include transition(.15s, color);
+  }
 }
 
 #header {
@@ -71,15 +91,6 @@ body {
         border: none;
       }
     }
-  }
-}
-
-a {
-  color: $font-color;
-  text-decoration: none;
-
-  &:hover {
-    color: $hover-color;
   }
 }
 
@@ -126,11 +137,11 @@ a {
     img {
       width: 100%;
       opacity: 1;
-      transition: opacity .3s;
+      @include transition(.3s, opacity);
 
       &:hover {
         opacity: .8;
-        transition: opacity .3s;
+        @include transition(.3s, opacity);
       }
     }
     .album {
@@ -138,6 +149,9 @@ a {
     }
   }
 }
+
+$icons_bg_w: 62;
+$icons_bg_h: 36;
 
 #nav {
   margin-top: 10px;
@@ -154,19 +168,41 @@ a {
       display: inline-block;
     }
     #prev {
-      @include icon(10, 17, 'icon-prev');
+      @include icon('icons',
+        $bg_w: $icons_bg_w,
+        $bg_h: $icons_bg_h,
+        $x: 0, $y: 18, $w: 10, $h: 18
+      );
       margin-right: 10px;
+
+      &:hover {
+        background-position: -20px -18px;
+      }
+      &.disabled {
+        background-position: -10px -18px;
+      }
     }
     #next {
-      @include icon(10, 17, 'icon-next');
+      @include icon('icons',
+        $bg_w: $icons_bg_w,
+        $bg_h: $icons_bg_h,
+        $x: 0, $y: 0, $w: 10, $h: 18
+      );
       margin-left: 8px;
+
+      &:hover {
+        background-position: -20px 0px;
+      }
+      &.disabled {
+        background-position: -10px 0px;
+      }
     }
     #imgcounter {
       position: relative;
       top: -3px;
     }
     #fullscreen {
-      @include icon(16, 16, 'icon-expand', 'icon-expand-hover');
+//      @include icon(0, 30, 16, 16, 'icons');
       position: absolute;
       margin-left: 50px;
     }
@@ -291,6 +327,25 @@ a {
       h2 {
         line-height: 1;
       }
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Animation
+///////////////////////////////////////////////////////////////////////////////
+
+.js {
+  #albums {
+    .categories li,
+    .album {
+      opacity: 0;
+    }
+  }
+  #about {
+    img,
+    .text {
+      opacity: 0;
     }
   }
 }

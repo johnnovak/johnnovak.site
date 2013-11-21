@@ -85,7 +85,7 @@ $(document).ready(function() {
   function scrollTo(target) {
     animatingScroll = true;
 
-		var windowHeight = $(window).height();
+    var windowHeight = $(window).height();
     var documentHeight = $(document).height();
     var maxScrollDest = documentHeight - windowHeight;
 
