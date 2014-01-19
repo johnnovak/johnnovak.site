@@ -242,7 +242,7 @@ ul {
   }
   #header-bg {
     @include pos(-90, -415, $align: 'right');
-    @include bg-img(474, 434, 'bg-about', $svg: true);
+    @include bg-img(474, 434, 'bg-about');
   }
   #footer {
     margin-top: 60px;

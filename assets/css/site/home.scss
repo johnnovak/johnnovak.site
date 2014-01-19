@@ -442,7 +442,6 @@ a {
   #photo-bg-skull {
     @include pos(139, -79, 10);
     @include bg-img(422, 500, 'bg-photo-skull');
-    background-image: url('/img/skull@2x.png');
     @include transition(.9s, left);
   }
 }
