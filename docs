@@ -1,0 +1,42 @@
+Optimizing content for different browsers: the RIGHT way
+http://www.w3.org/community/webed/wiki/Optimizing_content_for_different_browsers:_the_RIGHT_way
+
+Progressive enhancement is still important
+http://jakearchibald.com/2013/progressive-enhancement-still-important/
+
+Browser detection using the user agent
+https://developer.mozilla.org/en-US/docs/Browser_detection_using_the_user_agent#Mobile.2C_Tablet_or_Desktop
+
+“Fuck You.”
+http://bradfrostweb.com/blog/post/fuck-you/
+
+Responsive News
+http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
+
+
+Undetectables
+https://github.com/Modernizr/Modernizr/wiki/Undetectables
+
+
+
+
+
+REQUIREMENTS
+
+jekyll
+pngcrush
+sass
+rake
+uglify-js
+
+
+INSTALL
+
+sudo port ruby19
+sudo port rb-rake
+
+sudo port install npm
+sudo npm install uglify-js -g
+
+
+https://github.com/aahan/pygments-github-style/blob/master/github.css

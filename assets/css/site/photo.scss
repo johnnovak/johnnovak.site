@@ -32,7 +32,7 @@ html {
 body {
   position: relative;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0;
   background: $bg-color;
   color: $font-color;
@@ -54,8 +54,8 @@ a {
 #header {
   position: relative;
   width: 100%;
-  height: 35px;
-  margin-bottom: 0px;
+  height: 20px;
+  margin-bottom: 0;
   background: #fff;
 
   h1 {
@@ -229,7 +229,9 @@ $icons_bg_h: 36;
 .fotorama__fullscreen-icon { 
   display: none;
 }
-
+.fotorama__caption__wrap {
+  padding: 0;
+}
 .fotorama__caption {
   @include titlecaps;
   font-size: 14px;
@@ -260,7 +262,7 @@ $icons_bg_h: 36;
     margin: 20px auto 0 auto;
   }
   #header {
-    height: 60px;
+    height: 20px;
 
     .menu {
       font-size: 16px;
@@ -278,6 +280,9 @@ $icons_bg_h: 36;
   }
   .fotorama__caption {
     font-size: 15px;
+  }
+  .fotorama__caption__wrap {
+    padding: 5px 10px;
   }
   #albums {
     .categories {

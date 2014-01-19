@@ -1,0 +1,22 @@
+name: Black & White
+date: 2003-2010
+category: bw
+
+images:
+  - filename:  b.jpg
+    title:     Image B
+    location:  Brisbane
+    date:      2011
+    keywords:  asdf,qwer,sdfg
+
+  - filename:  c.jpg
+    title:     Image C
+    location:  Amsterdam
+    date:      2010
+    keywords:  12,23,34
+
+  - filename:  a.jpg
+    title:     Image A
+    location:  Hungary
+    date:      2008
+    keywords:  zxcv,erty,adfg
