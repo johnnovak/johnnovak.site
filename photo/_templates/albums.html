@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width; target-densityDpi=160; initial-scale=1; maximum-scale=1">
-  <meta name="description" content="John Novak Photography">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width; target-densityDpi=160; initial-scale=1; maximum-scale=1" />
+  <meta name="description" content="John Novak Photography" />
 
   <title>John Novak Photography</title>
 
-  <link rel="stylesheet" type="text/css" href="/css/photo.css">
+  <link rel="stylesheet" type="text/css" href="/css/fotorama.css">
+  <link rel="stylesheet" type="text/css" href="/css/photo.css" />
 
   <script type="text/javascript" src="/js/lib/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="/js/lib/fotorama/fotorama.js"></script>
   <script type="text/javascript" src="/js/lib/EventEmitter.min.js"></script>
   <script type="text/javascript" src="/js/lib/eventie.js"></script>
   <script type="text/javascript" src="/js/lib/imagesloaded.js"></script>
@@ -30,26 +32,28 @@
     </ul>
   </div>
 
-  <div id="albums">
-    <div class="categories">
-      <ul>
-        <li class="sel"><a href="/photo/mannequins/">Mannequins</a></li>
-        <li><a href="/photo/urban/">Urban Landscapes</a></li>
-        <li><a href="/photo/people/">People</a></li>
-      </ul>
-    </div>
-    <div class="thumbs">
-      <div class="album">
-        <a href="/photo/mannequins/album1/"><img src="/photo/mannequins/album1/album.jpg" alt="" /></a>
-        <h2><a href="#">Sisters</a></h2>
+  <div id="content">
+    <div id="albums">
+      <div class="categories">
+        <ul>
+          <li class="sel"><a href="/photo/mannequins/">Mannequins</a></li>
+          <li><a href="/photo/urban/">Urban Landscapes</a></li>
+          <li><a href="/photo/people/">People</a></li>
+        </ul>
       </div>
-      <div class="album">
-        <a href="#"><img src="/photo/mannequins/album2/album.jpg" alt="" /></a>
-        <h2><a href="#">Lights &amp; Shadows</a></h2>
-      </div>
-      <div class="album last">
-        <a href="#"><img src="/photo/mannequins/album3/album.jpg" alt="" /></a>
-        <h2><a href="#">Albino Twins</a></h2>
+      <div class="thumbs">
+        <div class="album">
+          <a href="/photo/mannequins/album1/"><img src="/photo/mannequins/album1/album.jpg" alt="" /></a>
+          <h2><a href="/photo/mannequins/album1/">Sisters</a></h2>
+        </div>
+        <div class="album">
+          <a href="/photo/mannequins/album2/"><img src="/photo/mannequins/album2/album.jpg" alt="" /></a>
+          <h2><a href="/photo/mannequins/album2/">Lights &amp; Shadows</a></h2>
+        </div>
+        <div class="album last">
+          <a href="/photo/mannequins/album3/"><img src="/photo/mannequins/album3/album.jpg" alt="" /></a>
+          <h2><a href="/photo/mannequins/album3/">Albino Twins</a></h2>
+        </div>
       </div>
     </div>
   </div>

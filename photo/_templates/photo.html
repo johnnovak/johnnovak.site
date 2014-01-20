@@ -13,6 +13,9 @@
 
   <script type="text/javascript" src="/js/lib/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="/js/lib/fotorama/fotorama.js"></script>
+  <script type="text/javascript" src="/js/lib/EventEmitter.min.js"></script>
+  <script type="text/javascript" src="/js/lib/eventie.js"></script>
+  <script type="text/javascript" src="/js/lib/imagesloaded.js"></script>
   <script type="text/javascript" src="/js/photo.js"></script>
 </head>
 
@@ -29,30 +32,67 @@
     </ul>
   </div>
 
-  <div id="fotorama" data-auto="false">
-    <a name="1"></a>
-    <img src="/photo/mannequins/album1/albino-twins.jpg" data-caption="Albino Twins" id="albino-twins">
-    <h2>The Miraculous Miss Anderson</h2>
+  <div id="content">
+    <div id="fotorama" data-auto="false">
+      <a name="albino-twins"></a>
+      <img src="/photo/mannequins/album1/albino-twins.jpg" style="max-width: 900px">
+      <h2>The Miraculous Miss Anderson</h2>
 
-    <a name="2"></a>
-    <img src="/photo/mannequins/album1/alter-ego.jpg" data-caption="Alter Ego" id="alter-ego">
-    <h2>Alterego</h2>
+      <a name="alter-ego"></a>
+      <img src="/photo/mannequins/album1/alter-ego.jpg" style="max-width: 900px">
+      <h2>Alterego</h2>
 
-    <img src="/photo/mannequins/album1/alterego.jpg" data-caption="Alter Ego 2" id="alter-ego-2">
-    <img src="/photo/mannequins/album1/bad-conscience.jpg" data-caption="Bad Conscience" id="bad-conscience">
-    <img src="/photo/mannequins/album1/double-dolce.jpg" data-caption="Double Dolce" id="double-dolce"> 
-    <img src="/photo/mannequins/album1/doubt.jpg" data-caption="Doubt" id="doubt">
-    <img src="/photo/mannequins/album1/exposed.jpg" data-caption="Exposed" id="exposed">
-    <img src="/photo/mannequins/album1/feathers.jpg" data-caption="Feathers" id="feathers">
-    <img src="/photo/mannequins/album1/lure-of-the-temptress.jpg" data-caption="Lure of the Temptress" id="lure-of-the-temptress">
-    <img src="/photo/mannequins/album1/mandarine-sisters.jpg" data-caption="Mandarine sisters" id="mandarine-sisters">
-    <img src="/photo/mannequins/album1/memories-of-sarah.jpg" data-caption="Memories of Sarah" id="memories-of-sarah">
-    <img src="/photo/mannequins/album1/miss-blurryhand.jpg" data-caption="Miss Blurryhand" id="miss-blurryhand">
-    <img src="/photo/mannequins/album1/second-skin.jpg" data-caption="Second Skin" id="second-skin">
-    <img src="/photo/mannequins/album1/this-is-the-night.jpg" data-caption="This is the Night" id="this-is-the-night">
+      <a name="alter-ego-2"></a>
+      <img src="/photo/mannequins/album1/alterego.jpg" style="max-width: 550px">
+      <h2>Alter Ego 2</h2>
+
+      <a name="bad-conscience"></a>
+      <img src="/photo/mannequins/album1/bad-conscience.jpg" style="max-width: 900px">
+      <h2>Bad Conscience</h2>
+
+      <a name="double-dolce"></a>
+      <img src="/photo/mannequins/album1/double-dolce.jpg" style="max-width: 550px">
+      <h2>Double Dolce</h2>
+
+      <a name="doubt"></a>
+      <img src="/photo/mannequins/album1/doubt.jpg" style="max-width: 900px">
+      <h2>Doubt</h2>
+
+      <a name="exposed"></a>
+      <img src="/photo/mannequins/album1/exposed.jpg" style="max-width: 900px">
+      <h2>Exposed</h2>
+
+      <a name="feathers"></a>
+      <img src="/photo/mannequins/album1/feathers.jpg" style="max-width: 900px">
+      <h2>Feathers</h2>
+
+      <a name="lure-of-the-temptress"></a>
+      <img src="/photo/mannequins/album1/lure-of-the-temptress.jpg" style="max-width: 900px">
+      <h2>Lure of the Temptress</h2>
+
+      <a name="mandarine-sisters"></a>
+      <img src="/photo/mannequins/album1/mandarine-sisters.jpg" style="max-width: 900px">
+      <h2>Mandarine sisters</h2>
+
+      <a name="memories-of-sarah"></a>
+      <img src="/photo/mannequins/album1/memories-of-sarah.jpg" style="max-width: 900px">
+      <h2>Memories of Sarah</h2>
+
+      <a name="miss-blurryhand"></a>
+      <img src="/photo/mannequins/album1/miss-blurryhand.jpg" style="max-width: 900px">
+      <h2>Miss Blurryhand</h2>
+
+      <a name="second-skin"></a>
+      <img src="/photo/mannequins/album1/second-skin.jpg" style="max-width: 900px">
+      <h2>Second Skin</h2>
+
+      <a name="this-is-the-night"></a>
+      <img src="/photo/mannequins/album1/this-is-the-night.jpg" style="max-width: 900px">
+      <h2>This is the Night</h2>
+    </div>
+
+    <div id="nav"></div>
   </div>
-
-  <div id="nav"></div>
 
   <script type="text/javascript">
     $(function() {
