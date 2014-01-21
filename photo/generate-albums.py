@@ -6,6 +6,8 @@ import shutil
 import sys
 import yaml
 
+from collections import OrderedDict
+from jinja2 import Environment, FileSystemLoader
 from optparse import OptionParser
 from pprint import pprint
 
@@ -25,26 +27,38 @@ def info(msg):
 def read_config(fname):
     stream = file(fname, 'r')
     return yaml.load(stream)
+    
+def load_album_config(path):
+    fname = os.path.join(path, 'album.yaml')
+    config = read_config(fname)
+    config['basepath'] = path
+    return config
 
 
-def load_album_configs(path, conf=[]):
-    for p in os.listdir(path):
-        curr_path = os.path.join(path, p)
-        if p == 'album.yaml':
-            c = read_config(curr_path)
-            c['basepath'] = path
-            conf.append(c)
-        elif os.path.isdir(curr_path):
-            load_album_configs(curr_path, conf)
-    return conf
+def load_album_configs_in_directory(path):
+    configs = []
+    for fname in os.listdir(path):
+        album_path = os.path.join(path, fname)
+        if os.path.isdir(album_path):
+            configs.append(load_album_config(album_path))
+    return configs
+
+
+def load_album_configs(path, categories):
+    configs = []
+    for cat in categories:
+        curr_path = os.path.join(path, cat['name'])
+        configs += load_album_configs_in_directory(curr_path)
+    return configs
 
 
 def load_category_config(path):
     return read_config(os.path.join(path, 'categories.yaml'))
 
 
-def preprocess_categories(categories):
-    info('Preprocessing categories')
+def process_categories(categories):
+    info('Processing categories')
+    conf = OrderedDict()
     conf = {}
     for c in categories:
         name = c['name']
@@ -53,38 +67,58 @@ def preprocess_categories(categories):
     return conf
 
 
-def preprocess_albums(conf, albums):
+def process_albums(conf, albums):
     for a in albums:
-        info("Preprocessing album config '%s'" % a['basepath'])
+        info("Processing album config '%s'" % a['basepath'])
         category = a['category']
         if category not in conf:
             raise ConfigException(
                 "Album '%s' references non-existing category: '%s'" 
                 % (a['name'], a['category']))
         del a['category']
-        conf[category] = a
+        if not 'albums' in conf[category]:
+            conf[category]['albums'] = []
+        conf[category]['albums'].append(a)
     return conf
 
 
-def preprocess_config(categories, albums):
-    conf = preprocess_categories(categories)
-    return preprocess_albums(conf, albums)
+def process_config(categories, albums):
+    conf = process_categories(categories)
+    pprint(conf)
+    return process_albums(conf, albums)
 
 
 def load_config(path):
     categories = load_category_config(path)
-    albums = []
-    load_album_configs(path, albums)
-    return preprocess_config(categories, albums)
+    albums = load_album_configs(path, categories)
+    return process_config(categories, albums)
 
 
-def generate_albums(input_dir, output_dir, options):
+def generate_albums(config, input_dir, output_dir):
     shutil.rmtree(output_dir)
     os.mkdir(output_dir)
 
-    generate_album_page(config, input_dir, output_dir)
-    generate_image_pages(config, input_dir, output_dir)
+    env = Environment(loader=FileSystemLoader('_templates'))
 
+    generate_album_pages(env, config, input_dir, output_dir)
+    generate_image_pages(env, config, input_dir, output_dir)
+
+
+def generate_album_pages(env, config, input_dir, output_dir):
+    template = env.get_template('album.html')
+    categories = []
+    for k, cat in config.iteritems():
+        categories.append({
+            'href': cat['basepath'],
+            'caption': cat['name']}
+        )
+
+
+        html = template.render(categories=categories, albums=albums) 
+        print html
+
+def generate_image_pages(config, input_dir, output_dir):
+    pass
 
 def urlize_title(title):
     s = ''
@@ -108,7 +142,7 @@ def write_file(fname, data):
     outf = open(fname, 'w')
     outf.write(data.encode('utf8'))
     outf.close()
-
+    
 
 def copy_file(fname, dest_dir):
     dest_fname = os.path.join(dest_dir, fname)
@@ -141,9 +175,10 @@ def main():
     input_dir = args[0]
     output_dir = args[1]
 
-    conf = load_config('.')
+    config = load_config(input_dir)
+    pprint(config)
 
-#    generate_albums(input_dir, output_dir, options)
+    generate_albums(config, input_dir, output_dir)
     return 0
 
 

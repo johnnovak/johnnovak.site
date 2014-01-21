@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <div id="albums">
+      <div class="categories">
+        <ul>
+        {% for category in categories %}
+          <li><a href="{{ category.href }}">{{ category.caption }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+
+      <div class="thumbs">
+      {% for album in albums %}    
+        <div class="album{% if loop.last %} last{% endif %}">
+          <a href="{{ album.href }}"><img src="{{ album.img_href }}" alt="{{ album.caption }}" /></a>
+          <h2><a href="{{ album.href }}">{{ album.caption }}</a></h2>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+{% endblock %}

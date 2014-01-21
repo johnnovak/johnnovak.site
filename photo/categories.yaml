@@ -1,11 +1,11 @@
-- title: Black & White
-  name:  bw
-
 - title: Mannequins
-  name:  mann
+  name:  mannequins
 
 - title: Urban Landscapes
   name:  urban
 
 - title: People
   name:  people
+
+- title: Black & White
+  name:  bw
