@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
     <div id="fotorama" data-auto="false">
-
-    {% for photo in photos %}
+    {%- for photo in photos %}
       <a name="{{ photo.id }}"></a>
       <img src="{{ photo.href }}" alt="{{ photo.caption }}" style="max-width: {{ photo.width }}px">
       <h2>{{ photo.caption }}</h2>
-    {% endfor %}
-
+    {% endfor -%}
     </div>
 
     <div id="nav"></div>
