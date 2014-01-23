@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import collections
 import os
 import shutil
 import sys
@@ -15,7 +16,25 @@ from PIL import Image
 
 VERBOSE = False
 
+CATEGORIES_CONFIG_FNAME = '_categories.yaml'
+ALBUM_CONFIG_FNAME = '_album.yaml'
+ALBUM_IMAGE_FNAME = '_album.jpg'
 
+
+# {{{ YAML ORDERDICT EXTENSION
+
+# From: http://stackoverflow.com/a/21048064
+
+def dict_representer(dumper, data):                                                            
+    return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.iteritems())                                                                                         
+def dict_constructor(loader, node):                                                            
+    return collections.OrderedDict(loader.construct_pairs(node))                               
+
+yaml.add_representer(collections.OrderedDict, dict_representer)                                
+yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, dict_constructor)         
+
+
+# }}}
 # {{{ UTILS
 
 
@@ -53,6 +72,13 @@ def read_image_size(fname):
 def read_yaml(fname):
     stream = file(fname, 'r')
     return yaml.load(stream)
+
+
+def write_yaml(data, outfile):
+    stream = yaml.dump(data, default_flow_style=False)
+    stream = stream.replace('\n- ', '\n\n- ')
+    f = open(outfile, 'w')
+    f.write(stream)
     
 
 def write_file(fname, data):
@@ -67,12 +93,92 @@ def copy_file(fname, dest_dir):
     shutil.copy2(fname, dest_fname)
 
 
+def get_categories_config_fname(path):
+    return joinpath(path, CATEGORIES_CONFIG_FNAME)
+
+
+def get_album_config_fname(path):
+    return joinpath(path, ALBUM_CONFIG_FNAME)
+
+
+def get_album_image_fname(path):
+    return joinpath(path, ALBUM_IMAGE_FNAME)
+
+
+# }}}
+# {{{ CREATE CONFIG
+
+
+def create_configs(path):
+    info('Creating categories config')
+    create_categories_config(path)
+
+    info('Creating album configs')
+    create_all_album_configs(path)
+
+
+def create_categories_config(path):
+    categories = []
+    for fname in os.listdir(path):
+        category_path = joinpath(path, fname)
+
+        if os.path.isdir(category_path):
+            category_name = fname
+            info("  Category found: '%s'" % category_name)
+            cat = OrderedDict([
+                ('title', category_name),
+                ('name', category_name)
+            ])
+            categories.append(cat)
+
+    categories_config_fname = get_categories_config_fname(path)
+    info("  Writing categories config '%s'\n" % categories_config_fname)
+    write_yaml(categories, categories_config_fname)
+
+
+def create_all_album_configs(path):
+    for category_name in os.listdir(path):
+        category_path = joinpath(path, category_name)
+        if os.path.isdir(category_path):
+            info("  Creating album configs for category: '%s'" % category_name)
+            create_album_configs_for_category(category_path, category_name)
+
+
+def create_album_configs_for_category(category_path, category_name):
+    for album_name in os.listdir(category_path):
+        album_path = joinpath(category_path, album_name)
+        if os.path.isdir(album_path):
+            info("    Album found: '%s'" % album_name)
+            album = create_album_config(album_path, category_name, album_name)
+            album_config_fname = get_album_config_fname(album_path)
+            info("      Writing album config: '%s'\n" % album_config_fname)
+            write_yaml(album, album_config_fname)
+
+
+def create_album_config(album_path, category_name, album_name):
+    album = OrderedDict()
+    album['name'] = album_name
+    album['date'] = ''
+    album['category'] = category_name
+
+    images = []
+    for fname in os.listdir(album_path):
+        if fname.endswith('.jpg') and fname != ALBUM_IMAGE_FNAME:
+            info("      Image found: '%s'" % fname)
+            img = OrderedDict([
+                ('filename', fname),
+                ('title', fname),
+                ('location', ''),
+                ('date', '')
+            ])
+            images.append(img)
+
+    album['images'] = images
+    return album
+
+
 # }}}
 # {{{ LOAD CONFIG
-
-
-CATEGORIES_FNAME = 'categories.yaml'
-ALBUMS_FNAME = 'album.yaml'
 
 
 def load_config(path):
@@ -82,7 +188,7 @@ def load_config(path):
 
 
 def load_categories_config(path):
-    fname = joinpath(path, CATEGORIES_FNAME)
+    fname = get_categories_config_fname(path)
     info("Loading categories config '%s'" % fname)
     return read_yaml(fname)
 
@@ -122,10 +228,6 @@ def load_album_config(basepath, rel_album_path):
     config['rel_path'] = rel_album_path
     config['abs_path'] = album_path
     return config
-
-
-def get_album_config_fname(path):
-    return joinpath(path, ALBUMS_FNAME)
 
 
 # }}}
@@ -230,7 +332,7 @@ def assign_albums(category):
     for album in category['albums']:
         a.append({
             'href': album['rel_path'],
-            'img_href': joinpath(album['rel_path'], '_album.jpg'),
+            'img_href': get_album_image_fname(album['rel_path']),
             'caption': album['name']
         })
     return a
@@ -257,8 +359,17 @@ def assign_photos(album):
 
 
 def main():
-    usage = 'Usage: %prog [OPTIONS] INPUT-DIR OUTPUT-DIR'
+    usage = ('\n'
+             '  1. Generate default configuration files:\n'
+             '         %prog -c [OPTIONS] INPUT-DIR\n\n'
+             '  2. Generate site:\n'
+             '         %prog [OPTIONS] INPUT-DIR OUTPUT-DIR')
+
     parser = OptionParser(usage=usage)
+
+    parser.add_option('-c', '--create-configs',
+                      default=False, action='store_true',
+                      help='create default configuration files')
 
     parser.add_option('-v', '--verbose',
                       default=False, action='store_true',
@@ -270,22 +381,32 @@ def main():
         global VERBOSE
         VERBOSE = True
 
-    if len(args) == 0:
-        parser.error('input and output directories must be specified')
-        return 2
+    if options.create_configs:
+        if len(args) == 0:
+            parser.error('input directory must be specified')
+            return 2
 
-    if len(args) == 1:
-        parser.error('output directory must be specified')
-        return 2
+        input_dir = args[0]
+        create_configs(input_dir)
 
-    input_dir = args[0]
-    output_dir = args[1]
+    else:
+        if len(args) == 0:
+            parser.error('input and output directories must be specified')
+            return 2
 
-    (categories, albums) = load_config(input_dir)
-    config = process_config(categories, albums)
-    pprint(config)
+        if len(args) == 1:
+            parser.error('output directory must be specified')
+            return 2
 
-    generate_albums(config, input_dir, output_dir)
+        input_dir = args[0]
+        output_dir = args[1]
+
+        (categories, albums) = load_config(input_dir)
+        config = process_config(categories, albums)
+        pprint(config)
+
+        generate_albums(config, input_dir, output_dir)
+
     return 0
 
 
