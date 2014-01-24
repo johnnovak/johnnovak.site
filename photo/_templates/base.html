@@ -8,15 +8,15 @@
 
   <title>John Novak Photography</title>
 
-  <link rel="stylesheet" type="text/css" href="/css/fotorama.css">
-  <link rel="stylesheet" type="text/css" href="/css/photo.css" />
+  <link rel="stylesheet" type="text/css" href="{{ basepath }}/css/fotorama.css">
+  <link rel="stylesheet" type="text/css" href="{{ basepath }}/css/photo.css" />
 
   <script type="text/javascript" src="/js/lib/jquery-1.10.2.min.js"></script>
-  <script type="text/javascript" src="/js/lib/fotorama/fotorama.js"></script>
-  <script type="text/javascript" src="/js/lib/EventEmitter.min.js"></script>
-  <script type="text/javascript" src="/js/lib/eventie.js"></script>
-  <script type="text/javascript" src="/js/lib/imagesloaded.js"></script>
-  <script type="text/javascript" src="/js/photo.js"></script>
+  <script type="text/javascript" src="{{ basepath }}/js/lib/fotorama/fotorama.js"></script>
+  <script type="text/javascript" src="{{ basepath }}/js/lib/EventEmitter.min.js"></script>
+  <script type="text/javascript" src="{{ basepath }}/js/lib/eventie.js"></script>
+  <script type="text/javascript" src="{{ basepath }}/js/lib/imagesloaded.js"></script>
+  <script type="text/javascript" src="{{ basepath }}/js/photo.js"></script>
 </head> 
 
 <body>
@@ -24,17 +24,15 @@
   <script type="text/javascript">document.body.className = 'js';</script>
 
   <div id="header">
-    <h1><a href="/">John Novak <span>Photography</span></a></h1>
+    <h1><a href="{{ basepath }}/">John Novak <span>Photography</span></a></h1>
 
     <ul class="menu">
-      <li><a href="/photo/">Albums</a></li>
-      <li class="last"><a href="/photo/about/">About</a></li>
+      <li><a href="{{ basepath }}/">Albums</a></li>
+      <li class="last"><a href="{{ basepath }}/about/">About</a></li>
     </ul>
   </div>
 
-  <div id="content">
-      {% block content %}{% endblock %}
-  </div>
+  <div id="content">{% block content %}{% endblock %}</div>
 
   <script type="text/javascript">
     $(function() {

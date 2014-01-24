@@ -53,7 +53,6 @@ def warn(msg):
 
 
 def read_image_size(fname):
-    info("  Reading image dimensions: '%s'" % fname)
     im = Image.open(fname)
     return im.size
 
@@ -84,8 +83,20 @@ def get_album_config_fname(path):
     return joinpath(path, ALBUM_CONFIG_FNAME)
 
 
-def get_album_image_fname(path):
-    return joinpath(path, ALBUM_IMAGE_FNAME)
+def get_category_path(category, path=''):
+    return joinpath(path, category['name'], '')
+
+
+def get_album_path(album, path=''):
+    return joinpath(path, album['category'], album['name'], '')
+
+
+def get_image_path(album, image, path=''):
+    return joinpath(get_album_path(album, path=path), image['filename'])
+
+
+def get_album_image_fname(album, path=''):
+    return joinpath(get_album_path(album, path=path), ALBUM_IMAGE_FNAME)
 
 
 # }}}
@@ -93,14 +104,15 @@ def get_album_image_fname(path):
 
 
 def create_configs(path):
-    info('Creating categories config')
-    create_categories_config(path)
+    categories = build_categories_config(path)
+    write_categories_config(categories, path)
 
     info('Creating album configs')
     create_all_album_configs(path)
 
 
-def create_categories_config(path):
+def build_categories_config(path):
+    info('Building categories config')
     categories = []
     for fname in os.listdir(path):
         category_path = joinpath(path, fname)
@@ -114,9 +126,13 @@ def create_categories_config(path):
             ])
             categories.append(cat)
 
-    categories_config_fname = get_categories_config_fname(path)
-    info("  Writing categories config '%s'\n" % categories_config_fname)
-    write_yaml(categories, categories_config_fname)
+    return categories
+
+
+def write_categories_config(config, path):
+    fname = get_categories_config_fname(path)
+    info("  Writing categories config '%s'\n" % fname)
+    write_yaml(config, fname)
 
 
 def create_all_album_configs(path):
@@ -134,14 +150,17 @@ def create_album_configs_for_category(category_path, category_name):
 
         if os.path.isdir(album_path):
             info("    Album found: '%s'" % album_name)
-            album = create_album_config(album_path, category_name, album_name)
-
-            album_config_fname = get_album_config_fname(album_path)
-            info("      Writing album config: '%s'\n" % album_config_fname)
-            write_yaml(album, album_config_fname)
+            album = build_album_config(album_path, category_name, album_name)
+            write_album_config(album_path, album)
 
 
-def create_album_config(album_path, category_name, album_name):
+def write_album_config(path, config):
+    fname = get_album_config_fname(path)
+    info("      Writing album config: '%s'\n" % fname)
+    write_yaml(config, fname)
+
+
+def build_album_config(album_path, category_name, album_name):
     album = OrderedDict()
     album['name'] = album_name
     album['date'] = ''
@@ -189,12 +208,15 @@ def load_all_album_configs(path, categories):
 def load_album_configs_in_category(basepath, category_name):
     category_path = joinpath(basepath, category_name)
     configs = []
+
     for fname in os.listdir(category_path):
         rel_album_path = joinpath(category_name, fname)
         album_path = joinpath(basepath, rel_album_path)
+
         if os.path.isdir(album_path):
             if check_album_config_exists(album_path): 
                 configs.append(load_album_config(basepath, rel_album_path))
+
     return configs
 
 
@@ -210,19 +232,16 @@ def load_album_config(basepath, rel_album_path):
     album_path = joinpath(basepath, rel_album_path)
     fname = get_album_config_fname(album_path)
     info("Loading album config '%s'" % fname)
-    config = read_yaml(fname)
-    config['rel_path'] = rel_album_path
-    config['abs_path'] = album_path
-    return config
+    return read_yaml(fname)
 
 
 # }}}
 # {{{ PROCESS CONFIG
 
 
-def process_config(categories, albums):
+def process_config(categories, albums, input_dir):
     conf = process_categories(categories)
-    return process_albums(conf, albums)
+    return process_albums(conf, albums, input_dir)
 
 
 def process_categories(categories):
@@ -236,16 +255,15 @@ def process_categories(categories):
     return conf
 
 
-def process_albums(conf, albums):
+def process_albums(conf, albums, input_dir):
     for album in albums:
-        info("Processing album config '%s'" % album['rel_path'])
+        info("Processing album config '%s'" % album['name'])
         check_category_exists(conf, album)
 
         category = album['category']
         store_album_in_config(conf, album, category)
-        del album['category']
 
-        process_images(album)
+        process_images(album, input_dir)
 
     return conf
 
@@ -266,9 +284,10 @@ def store_album_in_config(conf, album, category):
     conf[category][albums_key].append(album)
 
 
-def process_images(album):
+def process_images(album, input_dir):
     for image in album['images']:
-        fname = joinpath(album['abs_path'], image['filename'])
+        fname = get_image_path(album, image, path=input_dir)
+        info("  Reading image dimensions: '%s'" % fname)
         (image['width'], image['height']) = read_image_size(fname)
 
 
@@ -276,7 +295,7 @@ def process_images(album):
 # {{{ GENERATE OUTPUT
 
 
-def generate_albums(config, input_dir, output_dir):
+def generate_albums(config, input_dir, output_dir, basepath):
     try:
         info("\nDeleting output directory '%s'" % output_dir)
         shutil.rmtree(output_dir)
@@ -288,9 +307,9 @@ def generate_albums(config, input_dir, output_dir):
 
     env = Environment(loader=FileSystemLoader('_templates'))
 
-    generate_album_pages(env, config, output_dir)
-    generate_photo_pages(env, config, output_dir)
-    copy_images(config, output_dir)
+    generate_album_pages(env, config, output_dir, basepath)
+    generate_photo_pages(env, config, output_dir, basepath)
+    copy_images(config, input_dir, output_dir)
 
 
 def get_categories(config):
@@ -305,73 +324,73 @@ def get_images(album):
     return album['images']
 
 
-def generate_album_pages(env, config, output_dir):
+def generate_album_pages(env, config, output_dir, basepath):
     template = env.get_template('album.html')
-    categories = assign_categories(config)
+    categories = assign_categories(config, basepath)
 
     for category in get_categories(config):
         dirname = joinpath(output_dir, category['name'])
         info("\nCreating category directory '%s'" % dirname)
         os.mkdir(dirname)
 
-        html = template.render(categories=categories,
-                               albums=assign_albums(category)) 
+        html = template.render(page='albums', basepath=basepath,
+                               categories=categories,
+                               albums=assign_albums(category, basepath)) 
 
         fname = joinpath(dirname, 'index.html')
         info("Writing album page '%s'" % fname)
         write_file(html, fname)
 
 
-def generate_photo_pages(env, config, output_dir):
+def generate_photo_pages(env, config, output_dir, basepath):
     template = env.get_template('photo.html')
     for category in get_categories(config):
         for album in get_albums(category):
-            dirname = joinpath(output_dir, album['rel_path'])
+            dirname = get_album_path(album, path=output_dir)
             info("\nCreating album directory '%s'" % dirname)
             os.mkdir(dirname)
 
-            html = template.render(photos=assign_photos(album)) 
+            html = template.render(page='photo', basepath=basepath,
+                                   photos=assign_photos(album)) 
 
             fname = joinpath(dirname, 'index.html')
             info("Writing photo page '%s'" % fname)
             write_file(html, fname)
 
 
-def copy_images(config, output_dir):
+def copy_images(config, input_dir, output_dir):
     for category in get_categories(config):
         info("\nCopying images in category '%s'" % category['name'])
 
         for album in get_albums(category):
             info("\n  Copying images in album '%s'" % album['name'])
-            destdir = joinpath(output_dir, album['rel_path'])
-
-            info("\n    Copying album image")
-            shutil.copy2(get_album_image_fname(album['abs_path']),
-                         get_album_image_fname(destdir))
+            info("    Copying album image")
+            shutil.copy2(get_album_image_fname(album, path=input_dir),
+                         get_album_image_fname(album, path=output_dir))
 
             for image in get_images(album):
-                srcpath = joinpath(album['abs_path'], image['filename'])
-                destpath = joinpath(destdir, image['filename'])
+                srcpath = get_image_path(album, image, path=input_dir)
+                destpath = get_image_path(album, image, path=output_dir)
                 info("    Copying image '%s' to '%s" % (srcpath, destpath))
                 shutil.copy2(srcpath, destpath)
 
 
-def assign_categories(config):
+def assign_categories(config, basepath):
     c = []
     for category in get_categories(config):
         c.append({
-            'href': category['name'],
+            'href': get_category_path(category, path=basepath),
             'caption': category['title']
         })
     return c
 
 
-def assign_albums(category):
+def assign_albums(category, basepath):
     a = []
     for album in get_albums(category):
         a.append({
-            'href': album['rel_path'],
-            'img_href': get_album_image_fname(album['rel_path']),
+            'href': get_album_path(album, path=basepath),
+            'img_href': get_album_image_fname(album, path=basepath),
             'caption': album['name']
         })
     return a
@@ -379,7 +398,6 @@ def assign_albums(category):
 
 def assign_photos(album):
     i = []
-    album_path = album['rel_path']
     for image in album['images']:
         image_id = image['filename']
         caption = image['title']
@@ -408,6 +426,10 @@ def main():
     parser.add_option('-c', '--create-configs',
                       default=False, action='store_true',
                       help='create default configuration files')
+
+    parser.add_option('-p', '--basepath',
+                      default='/',
+                      help='basepath for absolute URLs (default: /)')
 
     parser.add_option('-v', '--verbose',
                       default=False, action='store_true',
@@ -438,13 +460,12 @@ def main():
 
         input_dir = args[0]
         output_dir = args[1]
+        basepath = '/'  + options.basepath.strip('/')
 
         (categories, albums) = load_config(input_dir)
-        config = process_config(categories, albums)
-        #TODO
-        #pprint(config)
+        config = process_config(categories, albums, input_dir)
 
-        generate_albums(config, input_dir, output_dir)
+        generate_albums(config, input_dir, output_dir, basepath)
 
     return 0
 
