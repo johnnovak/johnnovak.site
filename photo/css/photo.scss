@@ -1,4 +1,4 @@
-@import '../inc/base.scss';
+@import '../../common/css/base.scss';
 
 $bg-color:    #fff;
 $font-color:  #444;
@@ -171,7 +171,8 @@ $icons_bg_h: 36;
       @include icon('icons',
         $bg_w: $icons_bg_w,
         $bg_h: $icons_bg_h,
-        $x: 0, $y: 18, $w: 10, $h: 18
+        $x: 0, $y: 18, $w: 10, $h: 18,
+        $basepath: '/photo/img'
       );
       margin-right: 10px;
 
@@ -186,7 +187,8 @@ $icons_bg_h: 36;
       @include icon('icons',
         $bg_w: $icons_bg_w,
         $bg_h: $icons_bg_h,
-        $x: 0, $y: 0, $w: 10, $h: 18
+        $x: 0, $y: 0, $w: 10, $h: 18,
+        $basepath: '/photo/img'
       );
       margin-left: 8px;
 

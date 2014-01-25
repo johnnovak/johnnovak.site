@@ -4,7 +4,7 @@
       <div class="categories">
         <ul>
         {%- for category in categories %}
-          <li><a href="{{ category.href }}">{{ category.caption }}</a></li>
+        <li{% if current_category == category.name %} class="sel"{% endif %}><a href="{{ category.href }}">{{ category.caption }}</a></li>
         {%- endfor %}
         </ul>
       </div>

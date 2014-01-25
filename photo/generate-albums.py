@@ -247,8 +247,6 @@ def process_config(categories, albums, input_dir):
 def process_categories(categories):
     info('\nProcessing categories')
     conf = OrderedDict()
-    # TODO remove after debugging
-    conf = {}
     for c in categories:
         name = c['name']
         conf[name] = c
@@ -305,9 +303,11 @@ def generate_albums(config, input_dir, output_dir, basepath):
     info("Creating output directory '%s'" % output_dir)
     os.mkdir(output_dir)
 
-    env = Environment(loader=FileSystemLoader('_templates'))
+    env = Environment(loader=FileSystemLoader(joinpath(input_dir,
+                                                       '_templates')))
 
     generate_album_pages(env, config, output_dir, basepath)
+    copy_default_album_page(config, output_dir)
     generate_photo_pages(env, config, output_dir, basepath)
     copy_images(config, input_dir, output_dir)
 
@@ -334,6 +334,7 @@ def generate_album_pages(env, config, output_dir, basepath):
         os.mkdir(dirname)
 
         html = template.render(page='albums', basepath=basepath,
+                               current_category=category['name'],
                                categories=categories,
                                albums=assign_albums(category, basepath)) 
 
@@ -341,6 +342,13 @@ def generate_album_pages(env, config, output_dir, basepath):
         info("Writing album page '%s'" % fname)
         write_file(html, fname)
 
+
+def copy_default_album_page(config, output_dir):
+    src_dir = get_category_path(config.items()[0][1], path=output_dir)
+    srcpath = joinpath(src_dir, 'index.html')
+    info("Copying default album page '%s' to '%s" % (srcpath, output_dir))
+    shutil.copy2(srcpath, output_dir)
+    
 
 def generate_photo_pages(env, config, output_dir, basepath):
     template = env.get_template('photo.html')
@@ -380,7 +388,8 @@ def assign_categories(config, basepath):
     for category in get_categories(config):
         c.append({
             'href': get_category_path(category, path=basepath),
-            'caption': category['title']
+            'caption': category['title'],
+            'name': category['name']
         })
     return c
 

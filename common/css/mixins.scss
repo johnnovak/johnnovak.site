@@ -9,10 +9,11 @@
   z-index: $z-index;
 }
 
-@mixin bg-img($width, $height, $imgname, $suffix: '@2x.png') {
+@mixin bg-img($width, $height, $imgname, $suffix: '@2x.png',
+              $basepath: '/img') {
   width: #{$width + 2}px;
   height: #{$height + 2}px;
-  background: url(/img/#{$imgname}#{$suffix}) 1px 1px no-repeat;
+  background: url(#{$basepath}/#{$imgname}#{$suffix}) 1px 1px no-repeat;
   background-size: #{$width}px #{$height}px;
 }
 
@@ -26,10 +27,10 @@
   }
 }
 
-@mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h) {
+@mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h, $basepath: '/img') {
   width: #{$w}px;
   height: #{$h}px;
-  background-image: url(/img/#{$imgname}.png);
+  background-image: url(#{$basepath}/#{$imgname}.png);
   background-size: #{$bg_w}px #{$bg_h}px;
   background-repeat: no-repeat;
   background-position: #{-$x}px #{-$y}px;

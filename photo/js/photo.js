@@ -17,12 +17,12 @@ $.fn.find2 = function(selector) {
 // NOTE: The following two global params work only with my custom hacked
 // fotorama.js
 var CAPTION_HEIGHT = 80;
-// iphone: var CAPTION_HEIGHT = 50;
+// TODO iphone: var CAPTION_HEIGHT = 50;
 
 // Value to be subtracted from the stage height calculations (e.g. when
 // height: '100%' is used)
 var HEIGHT_OFFSET = 85;
-// iphone: var HEIGHT_OFFSET = 70;
+// TODO iphone: var HEIGHT_OFFSET = 70;
 
 
 /// GLOBAL MODULE START ////////////////////////////////////////////////////////
@@ -205,8 +205,8 @@ var photo = function() {
       transitionDuration: 400,
       allowfullscreen: 'native',
       arrows: false,
-      hash: true,
-      keyboard: true,
+      hash: true
+      // TODO investigate why this is broken keyboard: true,
     };
     if (hasHistoryApi) {
       opts.startIndex = location.hash.replace(/^#/, '');
@@ -243,7 +243,11 @@ var photo = function() {
       if (curr < 10) {
         curr = '0' + curr;
       }
-      $('#imgcounter').text(curr + ' / ' + fotoramaApi.size);
+      max = fotoramaApi.size
+      if (max < 10) {
+        max = '0' + max;
+      }
+      $('#imgcounter').text(curr + ' / ' + max);
       $('#caption').text(fotoramaApi.activeFrame.caption);
     };
 
