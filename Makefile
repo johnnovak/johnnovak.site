@@ -1,6 +1,6 @@
-DEST_DIR=out_test
+DEST_DIR=../johnnovak.local
 
-DEST_HOME_DIR=$(DEST_DIR)
+DEST_HOME_DIR=$(DEST_DIR)/home
 DEST_PHOTO_DIR=$(DEST_DIR)/photo
 DEST_BLOG_DIR=$(DEST_DIR)/blog
 
@@ -12,7 +12,16 @@ BLOG_CSS_LOCATION=blog/css:$(DEST_BLOG_DIR)/css
 
 
 default: all
-all: home photo blog
+all: common home photo blog
+
+
+### HOME ######################################################################
+
+.PHONY: common
+
+common:
+	cp -r common/img $(DEST_DIR)
+	cp -r common/js $(DEST_DIR)
 
 
 ### HOME ######################################################################
@@ -20,7 +29,8 @@ all: home photo blog
 .PHONY: home watch_home_css
 
 home:
-	cp home/index.html $(DEST_HOME_DIR)
+	mkdir -p $(DEST_HOME_DIR)
+	cp home/index.html $(DEST_DIR)
 	cp -r home/img $(DEST_HOME_DIR)
 	cp -r home/js $(DEST_HOME_DIR)
 	mkdir -p $(DEST_HOME_DIR)/css

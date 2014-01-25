@@ -1,0 +1,183 @@
+.fotorama__arr,
+.fotorama__fullscreen-icon,
+.fotorama__video-play,
+.fotorama__video-close {
+  display: block;
+  position: absolute;
+  z-index: 11;
+  cursor: pointer;
+  @extend %no-tap;
+  @extend %no-select;
+
+  .fotorama__wrap--css3 & {
+    @extend %initial-translate;
+  }
+}
+
+//.fotorama__arr {
+//  width: $arrSize * 1.5;
+//  height: 100%;
+//  top: 0;
+//  bottom: 0;
+//}
+
+.fotorama__arr {
+  //@extend %gpu;
+  position: absolute;
+  width: $arrSize;
+  height: $arrSize;
+  //left: 50%;
+  top: 50%;
+  //margin-left: -($arrSize / 2);
+  margin-top: -($arrSize / 2);
+  @extend %sprite;
+}
+
+.fotorama__arr--prev {
+  left: 0;
+  //.fotorama__arr__arr {
+    background-position: 0 0;
+  //}
+}
+
+.fotorama__arr--next {
+  right: 0;
+  //.fotorama__arr__arr {
+    background-position: (-$arrSize) 0;
+  //}
+}
+
+.fotorama__arr--disabled {
+  pointer-events: none;
+  cursor: default;
+  *display: none;
+  opacity: .1;
+}
+
+.fotorama__fullscreen-icon {
+  width: $arrSize;
+  height: $arrSize;
+  top: 0;
+  right: 0;
+  @extend %sprite;
+  background-position: 0 (-$arrSize);
+  z-index: 20;
+}
+
+.fotorama--fullscreen {
+  .fotorama__fullscreen-icon {
+    background-position: (-$arrSize) (-$arrSize);
+  }
+}
+
+.fotorama__video-play {
+  width: $arrSize * 3;
+  height: $arrSize * 3;
+  left: 50%;
+  top: 50%;
+  margin-left: -($arrSize * 3 / 2);
+  margin-top: -($arrSize * 3 / 2);
+  @extend %sprite;
+  background-position: 0 (-$arrSize*2);
+  display: none;
+
+  .fotorama__wrap--css3 & {
+    display: block;
+    opacity: 0;
+  }
+
+  .fotorama__loaded &,
+  .fotorama__error & {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.fotorama__nav__frame {
+  .fotorama__video-play {
+    width: $arrSize;
+    height: $arrSize;
+    margin-left: -($arrSize / 2);
+    margin-top: -($arrSize / 2);
+    background-position: (-$arrSize*2) (-$arrSize);
+    opacity: 1 !important;
+    display: block !important;
+  }
+}
+
+.fotorama__video-close {
+  width: $arrSize;
+  height: $arrSize;
+  top: 0;
+  right: 0;
+  display: none;
+  @extend %sprite;
+  background-position: (-$arrSize*2) 0;
+  z-index: 20;
+}
+
+.fotorama__wrap--no-controls,
+.fotorama__wrap--video {
+  .fotorama__arr,
+  .fotorama__fullscreen-icon {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.fotorama__wrap--css3 {
+  &.fotorama__wrap--slide.fotorama__wrap--no-controls,
+  &.fotorama__wrap--video {
+    .fotorama__fullscreen-icon {
+      display: block;
+      transform: translate3d($arrSize, -$arrSize, 0);
+    }
+    .fotorama__arr--prev {
+      display: block;
+      transform: translate3d(-$arrSize * 1.5, 0, 0);
+    }
+    .fotorama__arr--next {
+      display: block;
+      transform: translate3d($arrSize * 1.5, 0, 0);
+    }
+  }
+}
+
+.fotorama__wrap--video {
+  .fotorama__stage .fotorama__video-play {
+    display: none;
+  }
+  .fotorama__video-close {
+    display: block;
+  }
+}
+
+.fotorama__wrap--css3 {
+  .fotorama__video-close {
+    display: block;
+    opacity: 0;
+    transform: translate3d($arrSize, -$arrSize, 0);
+  }
+  &.fotorama__wrap--video {
+    .fotorama__stage .fotorama__video-play {
+      display: block;
+      opacity: 0;
+      z-index: -1;
+    }
+    .fotorama__video-close {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
+
+.fotorama__wrap--css3 {
+  .fotorama__arr,
+  .fotorama__fullscreen-icon,
+  .fotorama__video-play,
+  .fotorama__video-close {
+    transition-property: transform, opacity;
+    transition-duration: $time;
+  }
+}
+
