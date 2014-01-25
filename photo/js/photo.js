@@ -128,6 +128,12 @@ function pushState(url) {
   historyPushed = true;
 }
 
+function replaceState(url) {
+  console.log('*** replaceState:', url);
+  history.replaceState(null, null, url);
+  historyPushed = true;
+}
+
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
     if (historyPushed) {
@@ -251,20 +257,30 @@ var photo = function() {
       $('#caption').text(fotoramaApi.activeFrame.caption);
     };
 
-    function pushCurrentPhoto(e, fotorama) {
+    function pushCurrentPhoto(e, fotorama, replace) {
       var hash = fotorama.activeFrame.id || fotorama.activeIndex;
       if (location.hash.replace(/^#/, '') != hash) {
-        pushState('#' + hash);
+        if (replace) {
+            replaceState('#' + hash);
+        } else {
+            pushState('#' + hash);
+        }
       }
     }
 
     fotorama.on('fotorama:show', function(e, fotorama) { 
       if (hasHistoryApi) {
-        pushCurrentPhoto(e, fotorama);
+        pushCurrentPhoto(e, fotorama, false);
       }
       updateNav(e, fotorama);
     });
-    fotorama.on('fotorama:load', updateNav);
+
+    fotorama.on('fotorama:load', function(e, fotorama) {
+      if (hasHistoryApi) {
+        pushCurrentPhoto(e, fotorama, true);
+      }
+      updateNav(e, fotorama);
+    });
   }
 
   function init() {

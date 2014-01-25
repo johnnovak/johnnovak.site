@@ -1,2 +1,0 @@
-// My Underscore :-)
-var _ = {};

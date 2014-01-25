@@ -83,20 +83,20 @@ def get_album_config_fname(path):
     return joinpath(path, ALBUM_CONFIG_FNAME)
 
 
-def get_category_path(category, path=''):
+def get_category_path(path, category):
     return joinpath(path, category['name'], '')
 
 
-def get_album_path(album, path=''):
+def get_album_path(path, album):
     return joinpath(path, album['category'], album['name'], '')
 
 
-def get_image_path(album, image, path=''):
-    return joinpath(get_album_path(album, path=path), image['filename'])
+def get_image_path(path, album, image):
+    return joinpath(get_album_path(path, album), image['filename'])
 
 
-def get_album_image_fname(album, path=''):
-    return joinpath(get_album_path(album, path=path), ALBUM_IMAGE_FNAME)
+def get_album_image_fname(path, album):
+    return joinpath(get_album_path(path, album), ALBUM_IMAGE_FNAME)
 
 
 # }}}
@@ -284,7 +284,7 @@ def store_album_in_config(conf, album, category):
 
 def process_images(album, input_dir):
     for image in album['images']:
-        fname = get_image_path(album, image, path=input_dir)
+        fname = get_image_path(input_dir, album, image)
         info("  Reading image dimensions: '%s'" % fname)
         (image['width'], image['height']) = read_image_size(fname)
 
@@ -344,7 +344,7 @@ def generate_album_pages(env, config, output_dir, basepath):
 
 
 def copy_default_album_page(config, output_dir):
-    src_dir = get_category_path(config.items()[0][1], path=output_dir)
+    src_dir = get_category_path(output_dir, config.items()[0][1])
     srcpath = joinpath(src_dir, 'index.html')
     info("Copying default album page '%s' to '%s" % (srcpath, output_dir))
     shutil.copy2(srcpath, output_dir)
@@ -354,7 +354,7 @@ def generate_photo_pages(env, config, output_dir, basepath):
     template = env.get_template('photo.html')
     for category in get_categories(config):
         for album in get_albums(category):
-            dirname = get_album_path(album, path=output_dir)
+            dirname = get_album_path(output_dir, album)
             info("\nCreating album directory '%s'" % dirname)
             os.mkdir(dirname)
 
@@ -373,12 +373,12 @@ def copy_images(config, input_dir, output_dir):
         for album in get_albums(category):
             info("\n  Copying images in album '%s'" % album['name'])
             info("    Copying album image")
-            shutil.copy2(get_album_image_fname(album, path=input_dir),
-                         get_album_image_fname(album, path=output_dir))
+            shutil.copy2(get_album_image_fname(input_dir, album),
+                         get_album_image_fname(output_dir, album))
 
             for image in get_images(album):
-                srcpath = get_image_path(album, image, path=input_dir)
-                destpath = get_image_path(album, image, path=output_dir)
+                srcpath = get_image_path(input_dir, album, image)
+                destpath = get_image_path(output_dir, album, image)
                 info("    Copying image '%s' to '%s" % (srcpath, destpath))
                 shutil.copy2(srcpath, destpath)
 
@@ -387,7 +387,7 @@ def assign_categories(config, basepath):
     c = []
     for category in get_categories(config):
         c.append({
-            'href': get_category_path(category, path=basepath),
+            'href': get_category_path(basepath, category),
             'caption': category['title'],
             'name': category['name']
         })
@@ -398,8 +398,8 @@ def assign_albums(category, basepath):
     a = []
     for album in get_albums(category):
         a.append({
-            'href': get_album_path(album, path=basepath),
-            'img_href': get_album_image_fname(album, path=basepath),
+            'href': get_album_path(basepath, album),
+            'img_href': get_album_image_fname(basepath, album),
             'caption': album['name']
         })
     return a
@@ -408,7 +408,7 @@ def assign_albums(category, basepath):
 def assign_photos(album):
     i = []
     for image in album['images']:
-        image_id = image['filename']
+        image_id = os.path.splitext(image['filename'])[0]
         caption = image['title']
         i.append({
             'id': image_id,

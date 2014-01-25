@@ -29,11 +29,9 @@ common:
 .PHONY: home watch_home_css
 
 home:
-	mkdir -p $(DEST_HOME_DIR)
-	cp home/index.html $(DEST_DIR)
-	cp -r home/img $(DEST_HOME_DIR)
-	cp -r home/js $(DEST_HOME_DIR)
 	mkdir -p $(DEST_HOME_DIR)/css
+	cp home/index.html $(DEST_DIR)
+	cp -r home/img home/js $(DEST_HOME_DIR)
 	sass $(SASS_OPTS) --force --style=compressed --update $(HOME_CSS_LOCATION)
 
 watch_home_css:
@@ -42,13 +40,19 @@ watch_home_css:
 
 ### PHOTO #####################################################################
 
-.PHONY: photo watch_photo_css
+.PHONY: photo fotorama watch_photo_css
 
 photo:
-	photo/generate-albums.py -p photo photo/input-test $(DEST_PHOTO_DIR)
-	cp -r photo/img $(DEST_PHOTO_DIR)
-	cp -r photo/js $(DEST_PHOTO_DIR)
+	photo/generate-albums.py -p photo photo/source $(DEST_PHOTO_DIR)
+	mkdir -p $(DEST_PHOTO_DIR)/css
+	cp -r photo/img photo/js $(DEST_PHOTO_DIR)
+	cp photo/js/fotorama/out/fotorama.js $(DEST_PHOTO_DIR)/js/lib
+	cp photo/js/fotorama/out/fotorama.css $(DEST_PHOTO_DIR)/css
+	touch $(DEST_PHOTO_DIR)/js/lib/fotorama.png
 	sass $(SASS_OPTS) --force --style=compressed --update $(PHOTO_CSS_LOCATION)
+
+fotorama:
+	cd photo/js/fotorama; npm install && grunt build
 
 watch_photo_css:
 	sass $(SASS_OPTS) --watch $(PHOTO_CSS_LOCATION)
@@ -59,10 +63,9 @@ watch_photo_css:
 .PHONY: blog watch_blog watch_blog_css
 
 blog:
-	jekyll build -s blog -d $(DEST_BLOG_DIR)
-	cp -r blog/img $(DEST_BLOG_DIR)
-	cp -r blog/js $(DEST_BLOG_DIR)
 	mkdir -p $(DEST_BLOG_DIR)/css
+	jekyll build -s blog -d $(DEST_BLOG_DIR)
+	cp -r blog/img blog/js $(DEST_BLOG_DIR)
 	sass $(SASS_OPTS) --force --style=compressed --update $(BLOG_CSS_LOCATION)
 
 watch_blog:
@@ -81,3 +84,4 @@ clean:
 
 clean_dest:
 	rm -rf $(DEST_DIR)/*
+
