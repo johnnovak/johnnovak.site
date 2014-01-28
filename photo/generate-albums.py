@@ -405,11 +405,14 @@ def assign_categories(config, basepath):
 def assign_albums(category, basepath):
     a = []
     for album in get_albums(category):
+        caption = album['name']
+        if album['date']:
+            caption += ', ' + str(album['date'])
+
         a.append({
             'href': get_album_path(basepath, album),
             'img_href': get_album_image_fname(basepath, album),
-            'name': album['name'],
-            'date': album['date']
+            'caption': caption
         })
     return a
 
@@ -418,11 +421,13 @@ def assign_photos(album):
     i = []
     for image in album['images']:
         image_id = os.path.splitext(image['filename'])[0]
+
         caption = image['title']
         if image['location']:
             caption += ' &mdash; ' + image['location']
         if image['date']:
             caption += ', ' + str(image['date'])
+
         i.append({
             'id': image_id,
             'href': image['filename'],
