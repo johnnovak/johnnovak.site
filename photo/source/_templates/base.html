@@ -26,10 +26,14 @@
   <div id="header">
     <h1><a href="{{ basepath }}/">John Novak <span>Photography</span></a></h1>
 
-    <ul class="menu">
-      <li><a href="{{ basepath }}/">Albums</a></li>
-      <li class="last"><a href="{{ basepath }}/about/">About</a></li>
-    </ul>
+    <div class="menu">
+      <ul class="categories">
+        {%- for category in categories %}
+        <li><a href="{{ category.href }}">{{ category.caption }}</a></li>
+        {%- endfor %}
+      </ul>
+      <p class="about"><a href="{{ basepath }}/about/">About</a></p>
+    </div>
   </div>
 
   <div id="content">{% block content %}{% endblock %}</div>

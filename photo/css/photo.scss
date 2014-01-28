@@ -5,6 +5,9 @@ $font-color:  #444;
 $hover-color: #999;
 $sel-color:   #ccc;
 
+$font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+
+
 @include selection-color($sel-color, 'black');
 
 @include flat-scrollbar(
@@ -36,7 +39,7 @@ body {
   margin: 0;
   background: $bg-color;
   color: $font-color;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: $font-family;
   text-transform: none;
 }
 
@@ -75,22 +78,26 @@ a {
   }
   .menu {
     position: absolute;
-    top: -7px;
+    top: 5px;
     right: 0;
+  }
+  .categories {
+    display: inline;
     font-size: 14px;
     line-height: 1;
 
     li {
       display: inline;
-      margin-left: 8px;
-      padding-right: 11px;
-      border-right: 1px solid $font-color;
-
-      &.last {
-        padding: 0;
-        border: none;
-      }
+      margin-left: 15px;
     }
+  }
+  .about {
+    display: inline;
+    padding: 0;
+    border: none;
+    margin-left: 10px;
+    padding-left: 12px;
+    border-left: 1px solid $font-color;
   }
 }
 
@@ -115,21 +122,6 @@ a {
 #albums {
   margin: 30px auto;
 
-  .categories {
-    font-size: 18px;
-
-    ul {
-      padding: 0;
-      margin: 0 0 20px 0;
-      font-weight: $thin;
-      line-height: 1.3;
-      list-style: none;
-
-      .sel {
-        font-weight: $bold;
-      }
-    }
-  }
   .thumbs {
     h2 {
       @include titlecaps;
@@ -145,7 +137,6 @@ a {
       }
     }
     .album {
-      margin-bottom: 20px;
     }
   }
 }
@@ -154,7 +145,7 @@ $icons_bg_w: 62;
 $icons_bg_h: 36;
 
 #nav {
-  margin-top: 10px;
+  margin-top: 5px;
   text-align: center;
 
   .counter {
@@ -201,7 +192,7 @@ $icons_bg_h: 36;
     }
     #imgcounter {
       position: relative;
-      top: -3px;
+      top: -4px;
     }
     #fullscreen {
 //      @include icon(0, 30, 16, 16, 'icons');
@@ -236,8 +227,10 @@ $icons_bg_h: 36;
 }
 .fotorama__caption {
   @include titlecaps;
+  font-family: $font-family;
   font-size: 14px;
   color: $font-color;
+  text-transform: none;
 }
 .fullscreen {
   .fotorama__caption {
@@ -266,7 +259,7 @@ $icons_bg_h: 36;
   #header {
     height: 20px;
 
-    .menu {
+    .categories {
       font-size: 16px;
       top: -9px;
     }
@@ -277,19 +270,15 @@ $icons_bg_h: 36;
   #nav {
     .counter {
       position: static;
-      font-size: 16px;
     }
   }
   .fotorama__caption {
     font-size: 15px;
   }
   .fotorama__caption__wrap {
-    padding: 5px 10px;
+    padding: 8px 10px;
   }
   #albums {
-    .categories {
-      font-size: 20px;
-    }
     .thumbs {
       .last {
         margin-bottom: 50px;
@@ -319,17 +308,13 @@ $icons_bg_h: 36;
   #albums {
     margin-top: 50px;
 
-    .categories {
-      float: right;
-      width: 30%;
-
-      ul {
-        font-size: 22px;
-      }
-    }
     .thumbs {
-      float: left;
-      width: 62%;
+      .album {
+        width: 47%;
+        margin-right: 2.5%;
+        float: left;
+        margin-bottom: 2%;
+      }
 
       h2 {
         line-height: 1;
@@ -344,7 +329,6 @@ $icons_bg_h: 36;
 
 .js {
   #albums {
-    .categories li,
     .album {
       opacity: 0;
     }

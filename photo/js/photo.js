@@ -16,12 +16,12 @@ $.fn.find2 = function(selector) {
 
 // NOTE: The following two global params work only with my custom hacked
 // fotorama.js
-var CAPTION_HEIGHT = 80;
-// TODO iphone: var CAPTION_HEIGHT = 50;
+var CAPTION_HEIGHT = 75;
+// TODO iphone: var CAPTION_HEIGHT = 46;
 
 // Value to be subtracted from the stage height calculations (e.g. when
 // height: '100%' is used)
-var HEIGHT_OFFSET = 85;
+var HEIGHT_OFFSET = 80;
 // TODO iphone: var HEIGHT_OFFSET = 70;
 
 
@@ -120,23 +120,21 @@ function pageFromPathName(pathname) {
   return pageMappings[pageNameFromPathName(pathname)];
 }
 
-var historyPushed = false;
+var historyChanged = false;
 
 function pushState(url) {
-  console.log('*** pushState:', url);
   history.pushState(null, null, url);
-  historyPushed = true;
+  historyChanged = true;
 }
 
 function replaceState(url) {
-  console.log('*** replaceState:', url);
   history.replaceState(null, null, url);
-  historyPushed = true;
+  historyChanged = true;
 }
 
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
-    if (historyPushed) {
+    if (historyChanged) {
       var currPage = site.currentPage;
       var pathname = location.pathname;
       var newPage = pageFromPathName(pathname);
@@ -160,7 +158,7 @@ if (hasHistoryApi) {
   installPopStateHandler();
 }
 
-/// PHOTO /////////////////////////////////////////////////////////////////////
+// {{{ PHOTO /////////////////////////////////////////////////////////////////
 
 var photo = function() {
   var fotorama;
@@ -335,10 +333,10 @@ var photo = function() {
   };
 }();
 
-/// ALBUMS ////////////////////////////////////////////////////////////////////
+// }}}
+// {{{ ALBUMS ////////////////////////////////////////////////////////////////
 
 var albums = function() {
-  var categories;
   var loading = false;
 
   function fadeInAlbums(initialDelay) {
@@ -347,12 +345,13 @@ var albums = function() {
     initialDelay |= 0;
 
     $('.album').each(function(i, album) {
-      $(album).delay(initialDelay + i * fadeInDelay) .fadeTo(fadeInDuration, 1);
+      $(album).delay(initialDelay + i * fadeInDelay)
+              .fadeTo(fadeInDuration, 1);
     });
   }
 
-  var fadeOutAlbumsDelay = 120;
-  var fadeOutAlbumDuration = 200;
+  var fadeOutAlbumsDelay = 40;
+  var fadeOutAlbumDuration = 20;
 
   function fadeOutAlbums() {
     $('.album').each(function(i, album) {
@@ -394,25 +393,6 @@ var albums = function() {
     });
   }
 
-  function fadeInCategories() {
-    categories.each(function(i, album) {
-      $(album).delay(500 + i * 130).fadeTo(300, 1);
-    });
-  }
-
-  var fadeOutCategoriesInitialDelay = 50;
-  var fadeOutCategoriesDelay = 120;
-  var fadeOutCategoryDuration = 200;
-
-  function fadeOutCategories() {
-    categories.each(function(i, album) {
-      $(album).delay(fadeOutCategoriesInitialDelay + i * fadeOutCategoriesDelay).fadeTo(fadeOutCategoryDuration, 0);
-    });
-  }
-
-  function fadeOutCategoriesDuration() {
-    return fadeOutCategoriesInitialDelay + ($('.album').length - 1) * fadeOutCategoriesDelay + fadeOutCategoryDuration;
-  }
 
   function installCategoryClickHandler() {
     categories.find('a').each(function(i, link) {
@@ -444,7 +424,6 @@ var albums = function() {
       installAlbumClickHandler();
     }
     fadeInAlbums(250);
-    fadeInCategories();
   }
 
   function ajaxInit(url, delay) {
@@ -461,12 +440,11 @@ var albums = function() {
   }
 
   function destroy() {
-    fadeOutCategories()
     fadeOutAlbums();
   }
 
   function destroyDuration() {
-    return Math.max(fadeOutCategoriesDuration(), fadeOutAlbumsDuration());
+    return fadeOutAlbumsDuration();
   }
 
   function popStateHandler() {
@@ -484,7 +462,8 @@ var albums = function() {
   }
 }();
 
-/// ABOUT /////////////////////////////////////////////////////////////////////
+// }}}
+// {{{ ABOUT /////////////////////////////////////////////////////////////////
 
 var about = function() {
   function fadeIn() {
@@ -528,7 +507,6 @@ var about = function() {
   }
 
   function destroy() {
-    console.log("destroy about");
     fadeOut();
   }
 
@@ -551,6 +529,7 @@ var pageMappings = {
   'photo': photo
 }
 
+// }}}
 /// GLOBAL MODULE EXPORTS //////////////////////////////////////////////////////
 
 return {
@@ -563,3 +542,5 @@ return {
 }();
 
 /// GLOBAL MODULE END //////////////////////////////////////////////////////////
+
+// vim:et ts=4 sts=4 foldmethod=marker

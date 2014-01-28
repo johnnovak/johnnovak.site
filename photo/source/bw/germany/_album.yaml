@@ -1,0 +1,29 @@
+name: germany
+date: 2005
+category: bw
+images: 
+
+- filename: candles.jpg
+  title: Candles
+  location: Germany
+  date: 2005
+
+- filename: clockwork.jpg
+  title: Clockwork
+  location: Germany
+  date: 2005
+
+- filename: neuschwanstein-castle.jpg
+  title: Neuschwanstein Castle
+  location: Neuschwanstein, Germany
+  date: 2005
+
+- filename: port-lindau.jpg
+  title: Port Lindau
+  location: Lindau, Germany
+  date: 2005
+
+- filename: view-from-neuschwanstein-castle.jpg
+  title: View from Neuschwanstein Castle
+  location: Neuschwanstein, Germany
+  date: 2005

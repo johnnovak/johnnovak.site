@@ -1,6 +1,12 @@
-- title: urban
+- title: Mannequins
+  name: mannequins
+
+- title: Urban
   name: urban
 
-- title: mannequins
-  name: mannequins
+- title: People
+  name: people
+
+- title: B&W
+  name: bw
 

@@ -57,6 +57,10 @@ fotorama:
 watch_photo_css:
 	sass $(SASS_OPTS) --watch $(PHOTO_CSS_LOCATION)
 
+symlink_photo_js:
+	rm $(DEST_PHOTO_DIR)/js/photo.js
+	ln -s photo/js/photo.js $(DEST_PHOTO_DIR)/js/photo.js
+
 
 ### BLOG ######################################################################
 

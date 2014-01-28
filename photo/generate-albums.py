@@ -88,7 +88,7 @@ def get_category_path(path, category):
 
 
 def get_album_path(path, album):
-    return joinpath(path, album['category'], album['name'], '')
+    return joinpath(path, album['category'], album['url'], '')
 
 
 def get_image_path(path, album, image):
@@ -117,7 +117,7 @@ def build_categories_config(path):
     for fname in os.listdir(path):
         category_path = joinpath(path, fname)
 
-        if os.path.isdir(category_path):
+        if not fname.startswith('_') and os.path.isdir(category_path):
             category_name = fname
             info("  Category found: '%s'" % category_name)
             cat = OrderedDict([
@@ -215,7 +215,8 @@ def load_album_configs_in_category(basepath, category_name):
 
         if os.path.isdir(album_path):
             if check_album_config_exists(album_path): 
-                configs.append(load_album_config(basepath, rel_album_path))
+                configs.append(load_album_config(basepath, rel_album_path,
+                                                 fname))
 
     return configs
 
@@ -228,11 +229,13 @@ def check_album_config_exists(album_path):
     return True
 
 
-def load_album_config(basepath, rel_album_path):
+def load_album_config(basepath, rel_album_path, album_fname):
     album_path = joinpath(basepath, rel_album_path)
     fname = get_album_config_fname(album_path)
     info("Loading album config '%s'" % fname)
-    return read_yaml(fname)
+    config = read_yaml(fname)
+    config['url'] = album_fname
+    return config
 
 
 # }}}
@@ -326,17 +329,18 @@ def get_images(album):
 
 def generate_album_pages(env, config, output_dir, basepath):
     template = env.get_template('album.html')
-    categories = assign_categories(config, basepath)
 
     for category in get_categories(config):
         dirname = joinpath(output_dir, category['name'])
         info("\nCreating category directory '%s'" % dirname)
         os.mkdir(dirname)
 
-        html = template.render(page='albums', basepath=basepath,
-                               current_category=category['name'],
-                               categories=categories,
-                               albums=assign_albums(category, basepath)) 
+        html = template.render(
+            page='albums', basepath=basepath,
+            current_category=category['name'],
+            categories=assign_categories(config, basepath),
+            albums=assign_albums(category, basepath)
+        )
 
         fname = joinpath(dirname, 'index.html')
         info("Writing album page '%s'" % fname)
@@ -358,8 +362,12 @@ def generate_photo_pages(env, config, output_dir, basepath):
             info("\nCreating album directory '%s'" % dirname)
             os.mkdir(dirname)
 
-            html = template.render(page='photo', basepath=basepath,
-                                   photos=assign_photos(album)) 
+            html = template.render(
+                page='photo', basepath=basepath,
+                current_category=category['name'],
+                categories=assign_categories(config, basepath),
+                photos=assign_photos(album)
+            ) 
 
             fname = joinpath(dirname, 'index.html')
             info("Writing photo page '%s'" % fname)
@@ -400,7 +408,8 @@ def assign_albums(category, basepath):
         a.append({
             'href': get_album_path(basepath, album),
             'img_href': get_album_image_fname(basepath, album),
-            'caption': album['name']
+            'name': album['name'],
+            'date': album['date']
         })
     return a
 
@@ -410,6 +419,10 @@ def assign_photos(album):
     for image in album['images']:
         image_id = os.path.splitext(image['filename'])[0]
         caption = image['title']
+        if image['location']:
+            caption += ' &mdash; ' + image['location']
+        if image['date']:
+            caption += ', ' + str(image['date'])
         i.append({
             'id': image_id,
             'href': image['filename'],

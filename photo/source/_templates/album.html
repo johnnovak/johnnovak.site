@@ -1,14 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
     <div id="albums">
-      <div class="categories">
-        <ul>
-        {%- for category in categories %}
-        <li{% if current_category == category.name %} class="sel"{% endif %}><a href="{{ category.href }}">{{ category.caption }}</a></li>
-        {%- endfor %}
-        </ul>
-      </div>
-
       <div class="thumbs">
       {%- for album in albums %}    
         <div class="album{% if loop.last %} last{% endif %}">
