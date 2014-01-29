@@ -188,9 +188,15 @@ $icons_bg_h: 36;
       top: -4px;
     }
     #fullscreen {
-//      @include icon(0, 30, 16, 16, 'icons');
+      @include icon('icons',
+        $bg_w: $icons_bg_w,
+        $bg_h: $icons_bg_h,
+        $x: 30, $y: 0, $w: 16, $h: 16,
+        $basepath: '/photo/img'
+      );
       position: absolute;
-      margin-left: 50px;
+      margin-top: 1px;
+      margin-left: 20px;
     }
   }
 }
@@ -227,7 +233,7 @@ $icons_bg_h: 36;
 }
 .fullscreen {
   .fotorama__caption {
-    color: #888;
+    color: #999;
     padding-bottom: 3px;
   }
   .fotorama__caption__wrap {
@@ -290,6 +296,7 @@ $icons_bg_h: 36;
 @media only screen and (min-width: 800px) {
   #header {
     margin-bottom: 0;
+    height: 20px;
 
     .menu {
       position: absolute;
