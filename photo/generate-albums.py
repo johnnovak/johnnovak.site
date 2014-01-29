@@ -311,8 +311,11 @@ def generate_albums(config, input_dir, output_dir, basepath):
 
     generate_album_pages(env, config, output_dir, basepath)
     copy_default_album_page(config, output_dir)
+
     generate_photo_pages(env, config, output_dir, basepath)
     copy_images(config, input_dir, output_dir)
+
+    generate_about_page(env, config, output_dir, basepath)
 
 
 def get_categories(config):
@@ -435,6 +438,21 @@ def assign_photos(album):
             'width': image['width']
         })
     return i
+
+
+def generate_about_page(env, config, output_dir, basepath):
+    template = env.get_template('about.html')
+    about_dir = joinpath(output_dir, 'about')
+
+    info("Creating directory '%s'" % about_dir)
+    os.mkdir(about_dir)
+
+    html = template.render(page='about', basepath=basepath,
+                           categories=assign_categories(config, basepath)) 
+
+    fname = joinpath(about_dir, 'index.html')
+    info("Writing about page '%s'" % fname)
+    write_file(html, fname)
 
 
 # }}}
