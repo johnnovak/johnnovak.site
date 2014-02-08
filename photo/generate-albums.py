@@ -17,7 +17,10 @@ from PIL import Image
 VERBOSE = False
 
 CATEGORIES_CONFIG_FNAME = '_categories.yaml'
-ALBUM_CONFIG_FNAME = '_album.yaml'
+ALBUMS_CONFIG_FNAME = '_albums.yaml'
+
+# rename 'photos' to 'images'
+PHOTOS_CONFIG_FNAME = '_photos.yaml'
 ALBUM_IMAGE_FNAME = '_album.jpg'
 
 
@@ -79,8 +82,12 @@ def get_categories_config_fname(path):
     return joinpath(path, CATEGORIES_CONFIG_FNAME)
 
 
-def get_album_config_fname(path):
-    return joinpath(path, ALBUM_CONFIG_FNAME)
+def get_albums_config_fname(path):
+    return joinpath(path, ALBUMS_CONFIG_FNAME)
+
+
+def get_photos_config_fname(path):
+    return joinpath(path, PHOTOS_CONFIG_FNAME)
 
 
 def get_category_path(path, category):
@@ -121,8 +128,8 @@ def build_categories_config(path):
             category_name = fname
             info("  Category found: '%s'" % category_name)
             cat = OrderedDict([
-                ('title', category_name),
-                ('name', category_name)
+                ('name', category_name),
+                ('title', category_name)
             ])
             categories.append(cat)
 
@@ -188,8 +195,8 @@ def build_album_config(album_path, category_name, album_name):
 
 def load_config(path):
     categories = load_categories_config(path)
-    albums = load_all_album_configs(path, categories)
-    return categories, albums
+    config = load_all_album_configs(path, categories)
+    return config
 
 
 def load_categories_config(path):
@@ -199,42 +206,40 @@ def load_categories_config(path):
 
 
 def load_all_album_configs(path, categories):
-    configs = []
-    for cat in categories:
-        configs += load_album_configs_in_category(path, cat['name'])
+    configs = OrderedDict()
+    for category in categories:
+        category_name = category['name']
+        configs[category_name] = {
+            'name': category_name,
+            'title': category['title'],
+            'albums': load_album_configs_in_category(path, category_name)
+        }
     return configs
 
 
 def load_album_configs_in_category(basepath, category_name):
-    category_path = joinpath(basepath, category_name)
-    configs = []
+    config = load_albums_config(basepath, category_name)
 
-    for fname in os.listdir(category_path):
-        rel_album_path = joinpath(category_name, fname)
-        album_path = joinpath(basepath, rel_album_path)
+    for album in config:
+        album_dir = album['name']
+        album_path = joinpath(basepath, category_name, album_dir)
+        album['images'] = load_images_config(album_path)
+        album['url'] = album_dir
+        album['category'] = category_name
 
-        if os.path.isdir(album_path):
-            if check_album_config_exists(album_path): 
-                configs.append(load_album_config(basepath, rel_album_path,
-                                                 fname))
-
-    return configs
+    return config
 
 
-def check_album_config_exists(album_path):
-    fname = get_album_config_fname(album_path)
-    if not os.path.exists(fname):
-        warn("Album config '%s' doesn't exist" % fname)
-        return False
-    return True
-
-
-def load_album_config(basepath, rel_album_path, album_fname):
-    album_path = joinpath(basepath, rel_album_path)
-    fname = get_album_config_fname(album_path)
-    info("Loading album config '%s'" % fname)
+def load_albums_config(basepath, category_name):
+    fname = get_albums_config_fname(joinpath(basepath, category_name))
     config = read_yaml(fname)
-    config['url'] = album_fname
+    return config
+    
+
+def load_images_config(album_path):
+    fname = get_photos_config_fname(album_path)
+    info("Loading images config '%s'" % fname)
+    config = read_yaml(fname)
     return config
 
 
@@ -242,54 +247,10 @@ def load_album_config(basepath, rel_album_path, album_fname):
 # {{{ PROCESS CONFIG
 
 
-def process_config(categories, albums, input_dir):
-    conf = process_categories(categories)
-    return process_albums(conf, albums, input_dir)
-
-
-def process_categories(categories):
-    info('\nProcessing categories')
-    conf = OrderedDict()
-    for c in categories:
-        name = c['name']
-        conf[name] = c
-    return conf
-
-
-def process_albums(conf, albums, input_dir):
-    for album in albums:
-        info("Processing album config '%s'" % album['name'])
-        check_category_exists(conf, album)
-
-        category = album['category']
-        store_album_in_config(conf, album, category)
-
-        process_images(album, input_dir)
-
-    return conf
-
-
-def check_category_exists(conf, album):
-    category = album['category']
-    if category not in conf:
-        raise ConfigException(
-            "Album '%s' (in '%s') references non-existing category: '%s'" 
-            % (album['name'], album['rel_path'], category))
-
-
-def store_album_in_config(conf, album, category):
-    # TODO use default dict
-    albums_key = 'albums'
-    if not albums_key in conf[category]:
-        conf[category][albums_key] = []
-    conf[category][albums_key].append(album)
-
-
 def process_images(album, input_dir):
     for image in album['images']:
         fname = get_image_path(input_dir, album, image)
         info("  Reading image dimensions: '%s'" % fname)
-        (image['width'], image['height']) = read_image_size(fname)
 
 
 # }}}
@@ -312,7 +273,7 @@ def generate_albums(config, input_dir, output_dir, basepath):
     generate_album_pages(env, config, output_dir, basepath)
     copy_default_album_page(config, output_dir)
 
-    generate_photo_pages(env, config, output_dir, basepath)
+    generate_photo_pages(env, config, input_dir, output_dir, basepath)
     copy_images(config, input_dir, output_dir)
 
     generate_about_page(env, config, output_dir, basepath)
@@ -357,7 +318,7 @@ def copy_default_album_page(config, output_dir):
     shutil.copy2(srcpath, output_dir)
     
 
-def generate_photo_pages(env, config, output_dir, basepath):
+def generate_photo_pages(env, config, input_dir, output_dir, basepath):
     template = env.get_template('photo.html')
     for category in get_categories(config):
         for album in get_albums(category):
@@ -369,7 +330,7 @@ def generate_photo_pages(env, config, output_dir, basepath):
                 page='photo', basepath=basepath,
                 current_category=category['name'],
                 categories=assign_categories(config, basepath),
-                photos=assign_photos(album)
+                photos=assign_photos(album, input_dir)
             ) 
 
             fname = joinpath(dirname, 'index.html')
@@ -408,7 +369,7 @@ def assign_categories(config, basepath):
 def assign_albums(category, basepath):
     a = []
     for album in get_albums(category):
-        caption = album['name']
+        caption = album['title']
         if album['date']:
             caption += ', ' + str(album['date'])
 
@@ -420,10 +381,15 @@ def assign_albums(category, basepath):
     return a
 
 
-def assign_photos(album):
+def assign_photos(album, input_dir):
     i = []
     for image in album['images']:
         image_id = os.path.splitext(image['filename'])[0]
+
+        image_fname = joinpath(get_album_path(input_dir, album),
+                               image['filename'])
+
+        (width, height) = read_image_size(image_fname)
 
         caption = image['title']
         if image['location']:
@@ -435,7 +401,7 @@ def assign_photos(album):
             'id': image_id,
             'href': image['filename'],
             'caption': caption,
-            'width': image['width']
+            'width': width
         })
     return i
 
@@ -507,8 +473,7 @@ def main():
         output_dir = args[1]
         basepath = '/'  + options.basepath.strip('/')
 
-        (categories, albums) = load_config(input_dir)
-        config = process_config(categories, albums, input_dir)
+        config = load_config(input_dir)
 
         generate_albums(config, input_dir, output_dir, basepath)
 

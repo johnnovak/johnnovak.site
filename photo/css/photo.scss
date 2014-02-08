@@ -130,6 +130,10 @@ a {
     }
     .album {
       margin-bottom: 20px;
+
+      &.last {
+        margin-bottom: 40px;
+      }
     }
   }
 }
@@ -286,9 +290,6 @@ $icons_bg_h: 36;
       h2 {
         margin-top: 3px;
       }
-      .last {
-        margin-bottom: 50px;
-      }
     }
   }
 }
@@ -343,13 +344,42 @@ $icons_bg_h: 36;
       }
       .album {
         width: 47%;
-        margin-right: 2.5%;
+        @include transition(.8s, width);
+
         float: left;
         margin-bottom: 2%;
+
+        &.odd {
+          margin-right: 1.25%;
+        }
+        &.even {
+          margin-left: 1.25%;
+        }
       }
 
       h2 {
         line-height: 1;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  #albums {
+    .thumbs {
+      .album {
+        width: 48.75%;
+        @include transition(.8s, width);
+        margin-right: 0;
+        float: left;
+        margin-bottom: 2%;
+
+        &.odd {
+          margin-right: 1.25%;
+        }
+        &.even {
+          margin-left: 1.25%;
+        }
       }
     }
   }

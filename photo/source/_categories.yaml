@@ -1,12 +1,12 @@
-- title: Mannequins
-  name: mannequins
+#- name: mannequins
+#  title: Mannequins
 
-- title: Urban
-  name: urban
+- name: urban
+  title: Urban
 
-- title: People
-  name: people
+#- name: people
+#  title: People
 
-- title: B&W
-  name: bw
+- name: bw
+  title: B&W
 

@@ -3,7 +3,7 @@
     <div id="albums">
       <div class="thumbs">
       {%- for album in albums %}    
-        <div class="album{% if loop.last %} last{% endif %}">
+      <div class="album {% if loop.index is odd %}odd{% else %}even{% endif %}{% if loop.last %} last{% endif %}">
           <a href="{{ album.href }}"><img src="{{ album.img_href }}" alt="{{ album.caption }}" /></a>
           <h2><a href="{{ album.href }}">{{ album.caption }}</a></h2>
         </div>
