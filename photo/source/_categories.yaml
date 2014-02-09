@@ -1,5 +1,5 @@
-#- name: mannequins
-#  title: Mannequins
+- name: mannequins
+  title: Mannequins
 
 - name: urban
   title: Urban

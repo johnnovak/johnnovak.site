@@ -105,6 +105,9 @@ def get_image_path(path, album, image):
 def get_album_image_fname(path, album):
     return joinpath(get_album_path(path, album), ALBUM_IMAGE_FNAME)
 
+def format_date(date):
+    return date.replace('-', '&ndash;')
+
 
 # }}}
 # {{{ CREATE CONFIG
@@ -371,7 +374,7 @@ def assign_albums(category, basepath):
     for album in get_albums(category):
         caption = album['title']
         if album['date']:
-            caption += ', ' + str(album['date'])
+            caption += ', ' + format_date(str(album['date']))
 
         a.append({
             'href': get_album_path(basepath, album),
