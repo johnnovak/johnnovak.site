@@ -4,8 +4,8 @@
 - name: urban
   title: Urban
 
-#- name: people
-#  title: People
+- name: people
+  title: People
 
 - name: bw
   title: B&W

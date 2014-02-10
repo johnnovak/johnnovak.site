@@ -59,7 +59,7 @@ watch_photo_css:
 
 symlink_photo_js:
 	rm $(DEST_PHOTO_DIR)/js/photo.js
-	ln -s photo/js/photo.js $(DEST_PHOTO_DIR)/js/photo.js
+	ln -s $(PWD)/photo/js/photo.js $(DEST_PHOTO_DIR)/js/photo.js
 
 
 ### BLOG ######################################################################

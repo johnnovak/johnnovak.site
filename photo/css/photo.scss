@@ -5,8 +5,7 @@ $font-color:  #444;
 $hover-color: #999;
 $sel-color:   #ccc;
 
-$font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-
+$font-family: Helvetica, Arial, sans-serif;
 
 @include selection-color($sel-color, 'black');
 
@@ -210,6 +209,7 @@ $icons_bg_h: 36;
 }
 
 #fotorama {
+  margin-top: 10px;
   text-align: center;
 
   img {
@@ -343,10 +343,8 @@ $icons_bg_h: 36;
         margin-top: 0;
       }
       .album {
+        display: inline-block;
         width: 47%;
-        @include transition(.8s, width);
-
-        float: left;
         margin-bottom: 2%;
 
         &.odd {
@@ -368,17 +366,13 @@ $icons_bg_h: 36;
   #albums {
     .thumbs {
       .album {
-        width: 48.75%;
-        @include transition(.8s, width);
-        margin-right: 0;
-        float: left;
-        margin-bottom: 2%;
+        width: 583px;
 
         &.odd {
-          margin-right: 1.25%;
+          margin-right: 15px;
         }
         &.even {
-          margin-left: 1.25%;
+          margin-left: 15px;
         }
       }
     }

@@ -3,6 +3,16 @@
   location: Vienna, Austria
   date: 2010
 
+- filename: fatima-flame.jpg
+  title: Fatima Flame
+  location: Sydney, Australia
+  date: 2011
+
+- filename: the-miraculous-miss-anderson.jpg
+  title: The Miraculous Miss Anderson
+  location: Sydney, Australia
+  date: 2011
+
 - filename: bo-bride.jpg
   title: Bo Bride
   location: Brisbane, Australia
@@ -23,15 +33,10 @@
   location: Vienna, Austria
   date: 2010
 
-- filename: fatima-flame.jpg
-  title: Fatima Flame
+- filename: priscilla-pearl.jpg
+  title: Priscilla Pearl
   location: Sydney, Australia
   date: 2011
-
-- filename: in-grey.jpg
-  title: In Grey
-  location: Budapest, Hungary
-  date: 2008
 
 - filename: medusa.jpg
   title: Medusa
@@ -43,20 +48,15 @@
   location: Bern, Switzerland
   date: 2007
 
-- filename: priscilla-pearl.jpg
-  title: Priscilla Pearl
-  location: Sydney, Australia
-  date: 2011
+- filename: in-grey.jpg
+  title: In Grey
+  location: Budapest, Hungary
+  date: 2008
 
 - filename: sleeping-beauty.jpg
   title: Sleeping Beauty
   location: London, UK
   date: 2008
-
-- filename: the-miraculous-miss-anderson.jpg
-  title: The Miraculous Miss Anderson
-  location: Sydney, Australia
-  date: 2011
 
 - filename: vanessa-vivid.jpg
   title: Vanessa Vivid

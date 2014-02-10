@@ -21,7 +21,7 @@ var CAPTION_HEIGHT = 75;
 
 // Value to be subtracted from the stage height calculations (e.g. when
 // height: '100%' is used)
-var HEIGHT_OFFSET = 80;
+var HEIGHT_OFFSET = 85;
 // TODO iphone: var HEIGHT_OFFSET = 70;
 
 
