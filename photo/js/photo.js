@@ -73,24 +73,47 @@ function switchPage(newPage, pathname) {
   site.currentPage = newPage;
 }
 
-function switchPageByPathName(pathname) {
+function switchPageByPathName(pathname, doPushState) {
   var newPage = pageFromPathName(pathname);
-  if (newPage.name != site.currentPage.name) {
+  var currPage = site.currentPage;
+
+  if (currPage.name == newPage.name) {
+    if (currPage.updatePageHandler) {
+      currPage.updatePageHandler(pathname);
+    }
+  } else {
     switchPage(newPage, pathname);
-    pushState(pathname);
+    if (doPushState) {
+      pushState(pathname);
+    }
+  }
+}
+
+function installMainClickHandlers() {
+  if (!mainClickHandlersInstalled) {
+    installMenuClickHandler();
+    installLogoClickHandler();
+    mainClickHandlerInstalled = true;
   }
 }
 
 function installMenuClickHandler() {
-  if (!menuClickHandlerInstalled) {
-    $('#header .menu a').each(function(i, link) {
-      $(link).on('click', function(event) {
-        event.preventDefault();
-        switchPageByPathName(link.pathname);
-      });
+  $('#header .menu a').each(function(i, link) {
+    $(link).on('click', function(event) {
+      event.preventDefault();
+      switchPageByPathName(link.pathname, true);
     });
-    menuClickHandlerInstalled = true;
-  }
+  });
+};
+
+function installLogoClickHandler() {
+  var link = $('#header h1 a');
+  link.on('click', function(event) {
+      event.preventDefault();
+      var pathname = link[0].pathname
+      switchPageByPathName(pathname, true);
+      pushState(pathname);
+  });
 };
 
 function splitPathName(pathname) {
@@ -135,23 +158,13 @@ function replaceState(url) {
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
     if (historyChanged) {
-      var currPage = site.currentPage;
-      var pathname = location.pathname;
-      var newPage = pageFromPathName(pathname);
-
-      if (currPage.name == newPage.name) {
-        if (currPage.popStateHandler) {
-          currPage.popStateHandler();
-        }
-      } else {
-        switchPage(newPage, pathname);
-      }
+      switchPageByPathName(location.pathname, false);
     }
   });
 }
 
 var currentPage;
-var menuClickHandlerInstalled = false;
+var mainClickHandlersInstalled = false;
 var hasHistoryApi = !!(window.history && history.pushState);
 
 if (hasHistoryApi) {
@@ -283,7 +296,7 @@ var photo = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installMenuClickHandler()
+      installMainClickHandlers()
     }
     fotoramaize();
     createNavigation();
@@ -316,8 +329,8 @@ var photo = function() {
     return fadeOutDuration;
   }
 
-  function popStateHandler() {
-    var hash = location.hash.replace(/^#/, '');
+  function updatePageHandler(pathname) {
+    var hash = pathname.replace(/.*#/, '');
     if (hash) {
       fotoramaApi.show(hash);
     }
@@ -329,7 +342,7 @@ var photo = function() {
     ajaxInit: ajaxInit,
     destroy: destroy,
     destroyDuration: destroyDuration,
-    popStateHandler: popStateHandler
+    updatePageHandler: updatePageHandler
   };
 }();
 
@@ -393,7 +406,6 @@ var albums = function() {
     });
   }
 
-
   function installCategoryClickHandler() {
     categories.find('a').each(function(i, link) {
       $(link).on('click', function(event) {
@@ -409,7 +421,7 @@ var albums = function() {
       $('a', album).each(function(i, link) {
         $(link).on('click', function(event) {
           event.preventDefault();
-          switchPageByPathName(link.pathname);
+          switchPageByPathName(link.pathname, true);
         });
       });
     });
@@ -419,7 +431,7 @@ var albums = function() {
     categories = $('.categories li');
     // refactor into globalInit
     if (hasHistoryApi) {
-      installMenuClickHandler()
+      installMainClickHandlers()
       installCategoryClickHandler();
       installAlbumClickHandler();
     }
@@ -447,8 +459,8 @@ var albums = function() {
     return fadeOutAlbumsDuration();
   }
 
-  function popStateHandler() {
-    changeCategory(location.pathname);
+  function updatePageHandler(pathname) {
+    changeCategory(pathname);
   }
 
   return {
@@ -458,7 +470,7 @@ var albums = function() {
     destroy: destroy,
     destroyDuration: destroyDuration,
     changeCategory: changeCategory,
-    popStateHandler: popStateHandler
+    updatePageHandler: updatePageHandler
   }
 }();
 
@@ -488,7 +500,7 @@ var about = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installMenuClickHandler()
+      installMainClickHandlers()
     }
     fadeIn();
   }
