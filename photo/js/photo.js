@@ -13,16 +13,15 @@ $.fn.find2 = function(selector) {
     return this.filter(selector).add(this.find(selector));
 };
 
+var smallScreen = $(window).height() < 350;
 
 // NOTE: The following two global params work only with my custom hacked
 // fotorama.js
-var CAPTION_HEIGHT = 75;
-// TODO iphone: var CAPTION_HEIGHT = 46;
+var CAPTION_HEIGHT = smallScreen ? 50 : 75;
 
 // Value to be subtracted from the stage height calculations (e.g. when
 // height: '100%' is used)
-var HEIGHT_OFFSET = 85;
-// TODO iphone: var HEIGHT_OFFSET = 70;
+var HEIGHT_OFFSET = smallScreen ? 70 : 85;
 
 
 /// GLOBAL MODULE START ////////////////////////////////////////////////////////
