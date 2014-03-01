@@ -1,4 +1,4 @@
-DEST_DIR=../johnnovak.local
+DEST_DIR=../johnnovak.github.io
 
 DEST_HOME_DIR=$(DEST_DIR)/home
 DEST_PHOTO_DIR=$(DEST_DIR)/photo
