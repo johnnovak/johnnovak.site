@@ -28,14 +28,15 @@ ALBUM_IMAGE_FNAME = '_album.jpg'
 
 # From: http://stackoverflow.com/a/21048064
 
-def dict_representer(dumper, data):                                                            
-    return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.iteritems())                                                                                         
-yaml.add_representer(collections.OrderedDict, dict_representer)                                
+def dict_representer(dumper, data):
+    return dumper.represent_mapping(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, data.iteritems())
 
-#def dict_constructor(loader, node):                                                            
-#    return collections.OrderedDict(loader.construct_pairs(node))                               
+yaml.add_representer(collections.OrderedDict, dict_representer)
+
+#def dict_constructor(loader, node):
+#    return collections.OrderedDict(loader.construct_pairs(node))
 #
-#yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, dict_constructor)         
+#yaml.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, dict_constructor)
 
 
 # }}}
@@ -70,13 +71,13 @@ def write_yaml(data, fname):
     stream = stream.replace('\n- ', '\n\n- ')
     f = open(fname, 'w')
     f.write(stream)
-    
+
 
 def write_file(data, fname):
     outf = open(fname, 'w')
     outf.write(data.encode('utf8'))
     outf.close()
-    
+
 
 def get_categories_config_fname(path):
     return joinpath(path, CATEGORIES_CONFIG_FNAME)
@@ -237,7 +238,7 @@ def load_albums_config(basepath, category_name):
     fname = get_albums_config_fname(joinpath(basepath, category_name))
     config = read_yaml(fname)
     return config
-    
+
 
 def load_images_config(album_path):
     fname = get_photos_config_fname(album_path)
@@ -319,7 +320,7 @@ def copy_default_album_page(config, output_dir):
     srcpath = joinpath(src_dir, 'index.html')
     info("Copying default album page '%s' to '%s" % (srcpath, output_dir))
     shutil.copy2(srcpath, output_dir)
-    
+
 
 def generate_photo_pages(env, config, input_dir, output_dir, basepath):
     template = env.get_template('photo.html')
@@ -334,7 +335,7 @@ def generate_photo_pages(env, config, input_dir, output_dir, basepath):
                 current_category=category['name'],
                 categories=assign_categories(config, basepath),
                 photos=assign_photos(album, input_dir)
-            ) 
+            )
 
             fname = joinpath(dirname, 'index.html')
             info("Writing photo page '%s'" % fname)
@@ -417,7 +418,7 @@ def generate_about_page(env, config, output_dir, basepath):
     os.mkdir(about_dir)
 
     html = template.render(page='about', basepath=basepath,
-                           categories=assign_categories(config, basepath)) 
+                           categories=assign_categories(config, basepath))
 
     fname = joinpath(about_dir, 'index.html')
     info("Writing about page '%s'" % fname)

@@ -277,6 +277,12 @@ a {
       font-size: 15px;
       color: $red;
     }
+    .formats {
+      margin-left: 23px;
+      font-size: 14px;
+      font-weight: $bold;
+      color: #888;
+    }
   }
 }
 
@@ -398,6 +404,7 @@ a {
     .photo9  { @include pos(315, 510); }
     .photo10 { @include pos(420, 510); }
     .photo11 { @include pos(420, 615); }
+    .photo12 { @include pos(210, 800); }
 
     .photo-spacer1,
     .photo-spacer2 {

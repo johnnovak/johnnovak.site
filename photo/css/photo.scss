@@ -67,7 +67,7 @@ a {
     font-weight: $xbold;
     text-transform: uppercase;
     margin-bottom: 6px;
-    
+
     a:hover {
       color: $font-color;
     }
@@ -105,7 +105,7 @@ a {
 
   .text {
     width: 100%;
-    
+
     p {
       margin: 0 0 1em 0;
       padding: 0;
@@ -214,7 +214,7 @@ a {
 }
 
 #fotorama {
-  margin-top: 10px;
+  margin: 10px 0 30px 0;
   text-align: center;
 
   img {
@@ -225,9 +225,12 @@ a {
   h2 {
     @include titlecaps;
   }
+  .anchor {
+    //
+  }
 }
 
-.fotorama__fullscreen-icon { 
+.fotorama__fullscreen-icon {
   display: none;
 }
 .fotorama__caption__wrap {
@@ -248,9 +251,10 @@ a {
   .fotorama__caption__wrap {
     background-color: #000 !important;
   }
-  .fotorama__fullscreen-icon { 
+  .fotorama__fullscreen-icon {
+    display: block;
     top: auto;
-    bottom: 3px;
+    bottom: 6px;
     right: 6px;
 
     @include icon('icons',
@@ -422,5 +426,8 @@ a {
     .text {
       opacity: 0;
     }
+  }
+  #fotorama {
+    margin-bottom: 0;
   }
 }

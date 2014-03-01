@@ -177,24 +177,25 @@ var photo = function() {
   var fotoramaApi;
 
   function fotoramaize() {
-    var a = $('#fotorama a');
+    var a = $('#fotorama a').not('.anchor');
     var img = $('#fotorama img');
     var h2 = $('#fotorama h2');
+    var anchor = $('#fotorama a.anchor');
 
     for (var i = 0; i < a.length; i++) {
       var link = $(a[i]);
-      var caption = link.attr('name');
-      link.remove();
-
+      var caption = $(anchor[i]).attr('name');
       var heading = $(h2[i]);
       var title = heading.text();
-      heading.remove();
 
       var image = $(img[i]);
       image.attr('id', caption);
       image.attr('data-caption', title);
       image.attr('style', null);
 
+      link.remove();
+      heading.remove();
+      anchor.remove();
     }
   }
 
@@ -222,7 +223,6 @@ var photo = function() {
       allowfullscreen: 'native',
       arrows: false,
       hash: true
-      // TODO investigate why this is broken keyboard: true,
     };
     if (hasHistoryApi) {
       opts.startIndex = location.hash.replace(/^#/, '');
