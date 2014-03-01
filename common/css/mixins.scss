@@ -9,12 +9,21 @@
   z-index: $z-index;
 }
 
-@mixin bg-img($width, $height, $imgname, $suffix: '@2x.png',
+@mixin bg-img($width, $height, $imgname, $suffix: '.png',
               $basepath: '/img') {
+
   width: #{$width + 2}px;
   height: #{$height + 2}px;
   background: url(#{$basepath}/#{$imgname}#{$suffix}) 1px 1px no-repeat;
   background-size: #{$width}px #{$height}px;
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5) {
+
+    background-image: url(#{$basepath}/#{$imgname}@2x#{$suffix});
+  }
 }
 
 @mixin transition($duration, $property: '') {
@@ -27,13 +36,23 @@
   }
 }
 
-@mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h, $basepath: '/img') {
+@mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h,  $suffix: '.png',
+            $basepath: '/img') {
+
   width: #{$w}px;
   height: #{$h}px;
-  background-image: url(#{$basepath}/#{$imgname}.png);
+  background-image: url(#{$basepath}/#{$imgname}#{$suffix});
   background-size: #{$bg_w}px #{$bg_h}px;
   background-repeat: no-repeat;
   background-position: #{-$x}px #{-$y}px;
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (-o-min-device-pixel-ratio: 3/2),
+       only screen and (min--moz-device-pixel-ratio: 1.5),
+       only screen and (min-device-pixel-ratio: 1.5) {
+
+    background-image: url(#{$basepath}/#{$imgname}@2x#{$suffix});
+  }
 
   span {
     display: none;

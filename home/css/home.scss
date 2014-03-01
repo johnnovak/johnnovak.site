@@ -317,11 +317,12 @@ a {
   #music-section {
     .oldstuff {
       @include pos(345, 159, 15);
+      @include bg-img(35, 36, 'disk', $basepath: $img_path);
+      @include transition(.4s);
+      width: auto;
+      height: auto;
       padding-left: 50px;
       text-align: left;
-      background: url(/home/img/disk@2x.png) 0 2px no-repeat;
-      background-size: 35px 36px;
-      @include transition(.4s);
 
       h2 {
         margin: 0;

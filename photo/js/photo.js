@@ -204,10 +204,10 @@ var photo = function() {
                   + '<li id="prev"><span>prev</span></li>'
                   + '<li id="imgcounter"></li>'
                   + '<li id="next"><span>next</span></li>'
-                  + '<li id="fullscreen"></div>'
+                  + '<li id="fullscreen"></li>'
                   + '</ul>';
 
-    $(navHtml).appendTo($('#nav'));
+    $('#nav').append(navHtml);
     $('#imgcounter').disableSelection();
   }
 
