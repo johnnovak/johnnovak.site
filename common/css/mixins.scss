@@ -9,22 +9,41 @@
   z-index: $z-index;
 }
 
+
+@function imgurl($basepath, $imgname, $suffix, $x2: false) {
+  $_base: #{$basepath}/#{$imgname};
+
+  @if $x2 {
+    @return '#{$_base}@2x#{$suffix}';
+  } @else {
+    @return '#{$_base}#{$suffix}';
+  }
+}
+
+
+@mixin bg-img-hires($imgurl) {
+  // Use hires image when pixel ratio is greater than 1.0
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.01),
+       only screen and (-o-min-device-pixel-ratio: 101/100),
+       only screen and (min--moz-device-pixel-ratio: 1.01),
+       only screen and (min-device-pixel-ratio: 1.01) {
+
+    background-image: url($imgurl);
+  }
+}
+
+
 @mixin bg-img($width, $height, $imgname, $suffix: '.png',
               $basepath: '/img') {
 
   width: #{$width + 2}px;
   height: #{$height + 2}px;
-  background: url(#{$basepath}/#{$imgname}#{$suffix}) 1px 1px no-repeat;
+  background: url(imgurl($basepath, $imgname, $suffix)) 1px 1px no-repeat;
   background-size: #{$width}px #{$height}px;
 
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (-o-min-device-pixel-ratio: 3/2),
-       only screen and (min--moz-device-pixel-ratio: 1.5),
-       only screen and (min-device-pixel-ratio: 1.5) {
-
-    background-image: url(#{$basepath}/#{$imgname}@2x#{$suffix});
-  }
+  @include bg-img-hires(imgurl($basepath, $imgname, $suffix, true));
 }
+
 
 @mixin transition($duration, $property: '') {
   @if $property != '' {
@@ -36,28 +55,24 @@
   }
 }
 
+
 @mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h,  $suffix: '.png',
             $basepath: '/img') {
 
   width: #{$w}px;
   height: #{$h}px;
-  background-image: url(#{$basepath}/#{$imgname}#{$suffix});
+  background-image: url(imgurl($basepath, $imgname, $suffix));
   background-size: #{$bg_w}px #{$bg_h}px;
   background-repeat: no-repeat;
   background-position: #{-$x}px #{-$y}px;
 
-  @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (-o-min-device-pixel-ratio: 3/2),
-       only screen and (min--moz-device-pixel-ratio: 1.5),
-       only screen and (min-device-pixel-ratio: 1.5) {
-
-    background-image: url(#{$basepath}/#{$imgname}@2x#{$suffix});
-  }
+  @include bg-img-hires(imgurl($basepath, $imgname, $suffix, true));
 
   span {
     display: none;
   }
 }
+
 
 @mixin selection-color($bgcolor, $color) {
   ::selection {
@@ -76,6 +91,7 @@
     text-shadow: none;
   }
 }
+
 
 @mixin flat-scrollbar($size, $bg-color, $color, $hover-color, $drag-color) {
   ::-webkit-scrollbar {
