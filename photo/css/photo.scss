@@ -64,7 +64,6 @@ a {
   margin-top: -35px;
   z-index: 100;
   overflow: auto;
-  display: none;
 
   @include bg-img(35, 35, 'spinner', $suffix: '.gif', $basepath: '/photo/img');
 }

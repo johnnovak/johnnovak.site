@@ -48,7 +48,7 @@ function loadFragment(opts) {
 
   var showSpinnerTimeout = setTimeout(function() {
       $('#spinner').show();
-  }, minDelay + 300);
+  }, minDelay + 0);
 
   setTimeout(function() {
     var interval = setInterval(function() {
@@ -177,6 +177,13 @@ var hasHistoryApi = !!(window.history && history.pushState);
 if (hasHistoryApi) {
   installPopStateHandler();
 }
+
+// Create spinner
+$(function() {
+  $('body').append('<div id="spinner"></div>');
+  $('#spinner').hide();
+});
+
 
 // {{{ PHOTO /////////////////////////////////////////////////////////////////
 
