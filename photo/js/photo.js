@@ -48,7 +48,7 @@ function loadFragment(opts) {
 
   var showSpinnerTimeout = setTimeout(function() {
       $('#spinner').show();
-  }, minDelay + 0);
+  }, minDelay + 500);
 
   setTimeout(function() {
     var interval = setInterval(function() {
