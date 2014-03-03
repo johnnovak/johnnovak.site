@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" />
 
   <link rel="stylesheet" type="text/css" href="/home/css/home.css" />
-  <script type="text/javascript">
+  <script>
     var isDesktop =    window.orientation === undefined
                     || window.devicePixelRatio === undefined
                     || window.screenX !== 0
@@ -32,7 +32,7 @@
   <script src="/js/lib/respond.js"></script>
 
   <div id="wrapper">
-  <script type="text/javascript">
+  <script>
     if (isDesktop) {
       document.getElementById('wrapper').style.display = "none";
     }
@@ -201,10 +201,15 @@
   </div>
 
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script>
+    if (!window.jQuery) {
+      document.write('<script src="/js/lib/jquery-1.11.0.min.js"><\/script>');
+    }
+  </script>
   <script src="/home/js/lib/jquery.stellar.js"></script>
   <script src="/home/js/lib/jquery.mousewheel.js"></script>
 
-  <script type="text/javascript">
+  <script>
     if (isDesktop) {
       document.write('<script src="/home/js/home.js"></scr'+'ipt>');
     }
