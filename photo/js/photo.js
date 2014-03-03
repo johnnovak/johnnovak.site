@@ -46,10 +46,16 @@ function loadFragment(opts) {
   var minDelay = opts.minDelay || 0;
   var pollInterval = opts.pollInterval || 20;
 
+  var showSpinnerTimeout = setTimeout(function() {
+      $('#spinner').show();
+  }, minDelay + 300);
+
   setTimeout(function() {
     var interval = setInterval(function() {
       if (fragment) {
         clearInterval(interval);
+        clearTimeout(showSpinnerTimeout);
+        $('#spinner').hide();
         opts.onLoad(fragment);
       }
     }, pollInterval);

@@ -389,7 +389,7 @@ a {
         @include transition(.4s);
 
         &:hover {
-          opacity: .7;
+          @include opacity(.7);
           @include transition(.1s);
         }
       }
@@ -414,7 +414,7 @@ a {
       @include transition(.6s);
 
       &:hover {
-        opacity: .7;
+        @include opacity(.7);
         @include transition(.3s);
       }
     }
@@ -425,7 +425,7 @@ a {
     .photo-spacer2 {
       @include pos(315, 615);
       background: #aaa;
-      opacity: 0;
+      @include opacity(0);
     }
     .sidebar {
       text-align: left;
@@ -482,7 +482,7 @@ a {
     }
     .photo-spacer2 {
       left: 695px;
-      opacity: 1;
+      @include opacity(1);
     }
   }
   #photo-bg-leg1,

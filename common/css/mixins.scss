@@ -55,6 +55,10 @@
   }
 }
 
+@mixin opacity($value) {
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$value * 100})";
+}
 
 @mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h,  $suffix: '.png',
             $basepath: '/img') {
