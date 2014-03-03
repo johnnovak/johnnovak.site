@@ -128,7 +128,8 @@ function splitPathName(pathname) {
 }
 
 function pageNameFromPathName(pathname) {
-  var path = splitPathName(pathname); 
+  pathnameNoHash = pathname.replace(/#.*$/, '');
+  var path = splitPathName(pathnameNoHash);
   if (path.length == 2 && path[1] == 'about') {
     return 'about';
   } else if (path.length == 1 || path.length == 2) {
@@ -157,7 +158,8 @@ function replaceState(url) {
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
     if (historyChanged) {
-      switchPageByPathName(location.pathname, false);
+      var pathname = location.pathname + location.hash
+      switchPageByPathName(pathname, false);
     }
   });
 }
@@ -278,7 +280,7 @@ var photo = function() {
       }
     }
 
-    fotorama.on('fotorama:show', function(e, fotorama) { 
+    fotorama.on('fotorama:show', function(e, fotorama) {
       if (hasHistoryApi) {
         pushCurrentPhoto(e, fotorama, false);
       }
