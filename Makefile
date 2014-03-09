@@ -34,7 +34,7 @@ clean_common:
 
 home:
 	mkdir -p $(DEST_HOME_DIR)/css
-	cp home/index.html $(DEST_DIR)
+	cp home/*.html $(DEST_DIR)
 	cp -r home/img home/js $(DEST_HOME_DIR)
 	sass $(SASS_BUILD_OPTS) --update $(HOME_CSS_LOCATION)
 
