@@ -2,7 +2,7 @@
 {% block content %}
     <div id="fotorama" data-auto="false">
     {%- for photo in photos %}
-      <a class="anchor" name="{{ photo.id }}"></a>
+      <a class="anchor" id="{{ photo.id }}"></a>
       <img src="{{ photo.href }}" alt="{{ photo.caption }}" style="max-width: {{ photo.width }}px">
       <a href="#{{ photo.id }}"><h2>{{ photo.caption }}</h2></a>
     {% endfor -%}
