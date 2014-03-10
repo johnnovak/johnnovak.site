@@ -75,10 +75,10 @@ ul {
 }
 
 a {
-  @include transition(.15s, color);
+  @include transition(1.2s, color);
 
   &:hover {
-    @include transition(.15s, color);
+    @include transition(.4s, color);
   }
 }
 
@@ -139,7 +139,7 @@ a {
 }
 
 //****************************************************************************
-// HEADER 
+// HEADER
 //****************************************************************************
 
 #mainmenu {
@@ -204,7 +204,7 @@ a {
 }
 
 //****************************************************************************
-// ABOUT 
+// ABOUT
 //****************************************************************************
 
 #about-section {
@@ -262,7 +262,7 @@ a {
 }
 
 //****************************************************************************
-// MUSIC 
+// MUSIC
 //****************************************************************************
 
 #music-section {
@@ -304,10 +304,13 @@ a {
       h2 {
         margin-top: 30px;
       }
+      .formats {
+        display: none;
+      }
     }
   }
   #music-bg {
-    @include pos(-69, -9, 10);
+    @include pos(-69, -80, 10);
     @include bg-img(592, 546, 'bg-music', $basepath: $img_path);
     @include transition(.5s, left);
   }
@@ -327,9 +330,13 @@ a {
       h2 {
         margin: 0;
       }
+      .formats {
+        display: inline;
+      }
     }
     .sidebar {
       position: static;
+      margin-top: 42px;
     }
   }
   #music-bg {
@@ -338,7 +345,7 @@ a {
 }
 
 //****************************************************************************
-// PHOTO 
+// PHOTO
 //****************************************************************************
 
 #photo-section {
@@ -405,7 +412,7 @@ a {
     .photo9  { @include pos(315, 510); }
     .photo10 { @include pos(420, 510); }
     .photo11 { @include pos(420, 615); }
-    .photo12 { @include pos(210, 800); }
+    .photo12 { @include pos(315, 615); }
 
     .photo-spacer1,
     .photo-spacer2 {
@@ -463,6 +470,7 @@ a {
     }
     .sidebar {
       margin-left: 820px;
+      margin-top: 10px;
       position: static;
     }
     .photo1  { left: 380px; }
@@ -476,6 +484,7 @@ a {
     .photo9  { left: 590px; }
     .photo10 { @include pos(315, 800); }
     .photo11 { left: 695px; }
+    .photo12 { top: 210px; left: 800px; }
 
     .photo-spacer1 {
       left: 380px;
@@ -492,7 +501,7 @@ a {
 }
 
 //****************************************************************************
-// CODE 
+// CODE
 //****************************************************************************
 
 @media #{$media-medium} {
@@ -511,10 +520,12 @@ a {
   #code-bg {
     left: -20px;
   }
+  #code-section {
+  }
 }
 
 //****************************************************************************
-// FOOTER 
+// FOOTER
 //****************************************************************************
 
 #footer-section {
