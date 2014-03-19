@@ -388,7 +388,7 @@ a {
       }
       .album {
         display: inline-block;
-        width: 47%;
+        width: 48.3%;
         margin-bottom: 2%;
 
         &.odd {
@@ -401,23 +401,6 @@ a {
 
       h2 {
         line-height: 1;
-      }
-    }
-  }
-}
-
-@media only screen and (min-width: 1300px) {
-  #albums {
-    .thumbs {
-      .album {
-        width: 583px;
-
-        &.odd {
-          margin-right: 15px;
-        }
-        &.even {
-          margin-left: 15px;
-        }
       }
     }
   }
