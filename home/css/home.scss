@@ -4,10 +4,10 @@
 
 @include flat-scrollbar(
   12px,
-  $bg-color:    #ccc,
-  $color:       #777,
-  $hover-color: #888,
-  $drag-color:  #666
+  $bg-color:    #6e7275,
+  $color:       #ddd,
+  $hover-color: #fff,
+  $drag-color:  #bbb
 );
 
 $content-width: 380px;
@@ -17,7 +17,10 @@ $header-height: 200px;
 
 $img_path: '/home/img';
 
+$footer-color: #555;
+
 body {
+  @include enable-selection(false);
   text-transform: uppercase;
   margin: 20px;
   overflow-x: hidden;
@@ -37,9 +40,9 @@ html {
 h1 {
   margin: 50px 0 10px 0;
   font-size: 45px;
-  font-weight: $thin;
+  font-weight: $xthin;
   line-height: 1;
-  color: $red;
+  color: $accent-color;
   @include transition(.6s);
 }
 
@@ -47,7 +50,7 @@ h2 {
   margin: 20px 0 0 0;
   font-size: 18px;
   font-weight: $xbold;
-  color: $red;
+  color: $accent-color;
 
   .lower {
     text-transform: lowercase;
@@ -64,21 +67,22 @@ ul {
   margin-top: 20px;
   font-weight: $xbold;
   @include transition(.4s);
+
+  a {
+    color: $accent-color;
+
+    &:hover {
+      color: $light-accent-color;
+    }
+  }
 }
 
 .section-content {
   @include transition(.8s, margin-left);
+  @include enable-selection(true);
 
   & h2:first-child {
     margin-top: 0;
-  }
-}
-
-a {
-  @include transition(1.2s, color);
-
-  &:hover {
-    @include transition(.4s, color);
   }
 }
 
@@ -89,7 +93,7 @@ a {
   h1 {
     width: $main-width - $medium-width-delta;
     border: none;
-    font-size: 48px;
+    font-size: 58px;
     text-align: right;
   }
   h2 {
@@ -150,14 +154,24 @@ a {
   li {
     display: inline-block;
     font-size: 20px;
-    font-weight: $bold;
+    font-weight: $normal;
+    padding: 0;
+    color: $accent-color;
+
+    &:not(.last):after {
+      margin-left: -5px;
+      margin-right: 8px;
+      content: "/";
+    }
 
     a {
-      margin: 0 10px 0 0;
-      color: $red;
+      color: $accent-color;
+      @include transition(1.2s, color);
 
       &:hover {
-        color: $lightred;
+        text-decoration: none;
+        color: $light-accent-color;
+        @include transition(.4s, color);
       }
     }
   }
@@ -168,7 +182,11 @@ a {
     @include pos(0, 0, 1);
     width: 100%;
     height: $header-height;
+    background-color: $bg-color;
     background: url(/home/img/header-bg.png) repeat-x;
+    background-image: -webkit-linear-gradient(top, rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%);
+    background-image: linear-gradient(to bottom, rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%);
+//    background-image: linear-gradient($bg-color, #f06d06);
   }
   #jn-logo {
     @include pos(20, 348, 1);
@@ -216,9 +234,10 @@ a {
     font-weight: $xbold;
   }
   .interests {
+    @include enable-selection(true);
     li {
       display: inline-block;
-      color: $gray;
+      color: $light-font-color;
 
       &:after {
         content: " / ";
@@ -226,10 +245,12 @@ a {
     }
   }
   .info {
+    @include enable-selection(true);
     margin-top: 10px;
     font-weight: $xbold;
   }
   .contact {
+    @include enable-selection(true);
     font-weight: $xbold;
   }
 }
@@ -250,7 +271,7 @@ a {
   }
   #about-bg {
     @include pos(189, -77, 10);
-    @include bg-img(474, 434, 'bg-about', $basepath: '/img');
+    @include bg-img(474, 444, 'bg-about', $basepath: '/img');
     @include transition(1.2s, left);
   }
 }
@@ -267,6 +288,8 @@ a {
 
 #music-section {
   .oldstuff {
+    @include enable-selection(true);
+
     h2 {
       margin-top: 20px;
       line-height: 1;
@@ -275,13 +298,13 @@ a {
       margin: 0 0 0.4em 0;
       font-weight: $bold;
       font-size: 15px;
-      color: $red;
+      color: $accent-color;
     }
     .formats {
       margin-left: 23px;
       font-size: 14px;
       font-weight: $bold;
-      color: #888;
+      color: mix($light-font-color, $bg-color, 70);
     }
   }
 }
@@ -311,15 +334,16 @@ a {
   }
   #music-bg {
     @include pos(-69, -80, 10);
-    @include bg-img(592, 546, 'bg-music', $basepath: $img_path);
+    @include bg-img(592, 564, 'bg-music', $basepath: $img_path);
     @include transition(.5s, left);
+    pointer-events: none;
   }
 }
 
 @media #{$media-large} {
   #music-section {
     .oldstuff {
-      @include pos(345, 159, 15);
+      @include pos(345, 159, 0);
       @include bg-img(35, 36, 'disk', $basepath: $img_path);
       @include transition(.4s);
       width: auto;
@@ -364,11 +388,6 @@ a {
       font-size: 18px;
 
       a {
-        color: $red;
-
-        &:hover {
-          color: $lightred;
-        }
         span {
           font-size: 26px;
         }
@@ -380,7 +399,6 @@ a {
 @media #{$media-medium} {
   #photo-section {
     $photo-thumb-size: 100px;
-    $photo-thumb-transition: .4s;
 
     position: relative;
     height: 900px;
@@ -393,44 +411,43 @@ a {
         float: none;
         width: $photo-thumb-size;
         height: $photo-thumb-size;
-        @include transition(.4s);
 
         &:hover {
-          @include opacity(.7);
-          @include transition(.1s);
+          @include opacity(.8);
+          -webkit-filter: brightness(1.2);
         }
       }
     }
-    .photo1  { @include pos(105, 300); }
-    .photo2  { @include pos(105, 405); }
-    .photo3  { @include pos(  0, 405); }
-    .photo4  { @include pos(105, 615); }
-    .photo5  { @include pos(210, 405); }
-    .photo6  { @include pos(210, 510); }
-    .photo7  { @include pos(210, 615); }
-    .photo8  { @include pos(315, 405); }
-    .photo9  { @include pos(315, 510); }
-    .photo10 { @include pos(420, 510); }
-    .photo11 { @include pos(420, 615); }
-    .photo12 { @include pos(315, 615); }
+    .photo1  { @include pos(100, 300); }
+    .photo2  { @include pos(100, 400); }
+    .photo3  { @include pos(  0, 400); }
+    .photo4  { @include pos(100, 600); }
+    .photo5  { @include pos(200, 400); }
+    .photo6  { @include pos(200, 500); }
+    .photo7  { @include pos(200, 600); }
+    .photo8  { @include pos(300, 400); }
+    .photo9  { @include pos(300, 500); }
+    .photo10 { @include pos(400, 500); }
+    .photo11 { @include pos(400, 600); }
+    .photo12 { @include pos(300, 600); }
 
     .photo-spacer1,
     .photo-spacer2 {
       width: $photo-thumb-size;
       height: $photo-thumb-size;
-      @include transition(.6s);
+      @include transition(1s);
 
       &:hover {
         @include opacity(.7);
-        @include transition(.3s);
+        @include transition(0);
       }
     }
     .photo-spacer1 {
-      @include pos(315, 300);
-      background: $red;
+      @include pos(300, 300);
+      background: $accent-color;
     }
     .photo-spacer2 {
-      @include pos(315, 615);
+      @include pos(300, 600);
       background: #aaa;
       @include opacity(0);
     }
@@ -448,17 +465,17 @@ a {
   }
   #photo-bg-leg1 {
     @include pos(119, -79, 30);
-    @include bg-img(362, 222, 'bg-photo-leg1', $basepath:  $img_path);
+    @include bg-img(362, 233, 'bg-photo-leg1', $basepath:  $img_path);
     @include transition(.8s, left);
   }
   #photo-bg-leg2 {
     @include pos(-169, -3, 20);
-    @include bg-img(244, 279, 'bg-photo-leg2', $basepath:  $img_path);
+    @include bg-img(244, 294, 'bg-photo-leg2', $basepath:  $img_path);
     @include transition(.6s, left);
   }
   #photo-bg-skull {
     @include pos(139, -79, 10);
-    @include bg-img(422, 500, 'bg-photo-skull', $basepath:  $img_path);
+    @include bg-img(420, 509, 'bg-photo-skull', $basepath:  $img_path);
     @include transition(.9s, left);
   }
 }
@@ -474,23 +491,23 @@ a {
       position: static;
     }
     .photo1  { left: 380px; }
-    .photo2  { left: 485px; }
-    .photo3  { left: 485px; }
-    .photo4  { left: 695px; }
-    .photo5  { left: 485px; }
-    .photo6  { left: 590px; }
-    .photo7  { left: 695px; }
-    .photo8  { left: 485px; }
-    .photo9  { left: 590px; }
-    .photo10 { @include pos(315, 800); }
-    .photo11 { left: 695px; }
-    .photo12 { top: 210px; left: 800px; }
+    .photo2  { left: 480px; }
+    .photo3  { left: 480px; }
+    .photo4  { left: 680px; }
+    .photo5  { left: 480px; }
+    .photo6  { left: 580px; }
+    .photo7  { left: 680px; }
+    .photo8  { left: 480px; }
+    .photo9  { left: 580px; }
+    .photo10 { @include pos(300, 780); }
+    .photo11 { left: 680px; }
+    .photo12 { top: 200px; left: 780px; }
 
     .photo-spacer1 {
       left: 380px;
     }
     .photo-spacer2 {
-      left: 695px;
+      left: 680px;
       @include opacity(1);
     }
   }
@@ -544,18 +561,18 @@ a {
     position: relative;
     margin-top: 0;
     height: 230px;
-    background: $red;
-    color: #fff;
+    background: $footer-color;
+    color: $font-color;
     font-size: 18px;
     border-top: none;
 
     a {
-      color: #fff;
+      color: $font-color;
       font-weight: $xbold;
       @include transition(.2s, color);
 
       &:hover {
-        color: #fcc;
+        color: $light-accent-color;
         @include transition(.2s, color);
       }
     }
@@ -589,7 +606,8 @@ a {
     z-index: 20;
     width: 100%;
     height: 180px;
-    background: $red;
+    background: $footer-color;
+//    background-image: linear-gradient($bg-color, #f06d06);
   }
 }
 

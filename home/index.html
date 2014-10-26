@@ -8,7 +8,7 @@
 
   <title>www.johnnovak.net</title>
 
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" />
 
   <link rel="stylesheet" type="text/css" href="/home/css/home.css" />
   <script>
@@ -39,14 +39,14 @@
   </script>
 
   <div id="header">
-    <a href="http://www.johnnovak.net/"><img id="jn-logo" src="/img/jn-logo@2x.png" alt="John Novak" /></a>
+    <a href="http://www.johnnovak.net/"><img id="jn-logo" src="/img/jn-logo.png" alt="John Novak" /></a>
   </div>
 
   <ul id="mainmenu">
     <li><a id="menu-about" href="#">About</a></li>
     <li><a id="menu-music" href="#music">Music</a></li>
     <li><a id="menu-photo" href="#photo">Photo</a></li>
-    <li><a id="menu-code" href="#code">Code</a></li>
+    <li class="last"><a id="menu-code" href="#code">Code</a></li>
   </ul>
 
   <!-- ******* ABOUT ******* -->
@@ -116,13 +116,25 @@
       </ul>
 
       <div class="oldstuff">
-        <h2>Old Stuff</h2>
+        <h2>Old Tracker Stuff</h2>
         <p>As elijah/Majic 12</p>
         <ul>
-          <li><a href="https://soundcloud.com/elijah-xm1">Soundcloud</a></li>
-          <li><a href="http://www.exotica.org.uk/mediawiki/index.php?title=Special%3AModland&amp;ss=1&amp;title=Special%3AModland&amp;md=aut&amp;id=3134">Modland <span class="formats">MOD / XM / MP3 / OGG</span></a></li>
-          <li><a href="http://modarchive.org/index.php?request=view_artist_modules&amp;query=82371">The Mod Archive <span class="formats">MOD / XM</span></a></li>
-          <li><a href="http://amp.dascene.net/detail.php?detail=modules&amp;view=2430">Amiga Music Preservation (AMP) <span class="formats">MOD / XM</span></a></li>
+          <li>
+            <a href="https://soundcloud.com/elijah-xm1">Soundcloud</a>
+            <span class="formats">[ MP3 ]</span>
+          </li>
+          <li>
+            <a href="http://www.exotica.org.uk/mediawiki/index.php?title=Special%3AModland&amp;ss=1&amp;title=Special%3AModland&amp;md=aut&amp;id=3134">Modland</a>
+            <span class="formats">[ MOD / XM / MP3 / OGG ]</span>
+          </li>
+          <li>
+            <a href="http://modarchive.org/index.php?request=view_artist_modules&amp;query=82371">The Mod Archive</a>
+            <span class="formats">[ MOD / XM ]</span>
+          </li>
+          <li>
+            <a href="http://amp.dascene.net/detail.php?detail=modules&amp;view=2430">Amiga Music Preservation (AMP)</a>
+            <span class="formats">[ MOD / XM ]</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -199,14 +211,14 @@
     </div>
   </div>
 
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
     if (!window.jQuery) {
-      document.write('<script src="/js/lib/jquery-1.11.0.min.js"><\/script>');
+      document.write('<script src="/js/lib/jquery-1.11.1.min.js"><\/script>');
     }
   </script>
   <script src="/home/js/lib/jquery.stellar.js"></script>
-  <script src="/home/js/lib/jquery.mousewheel.js"></script>
+  <script src="/home/js/lib/jquery.mousewheel.min.js"></script>
 
   <script>
     if (isDesktop) {

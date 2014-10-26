@@ -26,7 +26,7 @@ html {
     text-transform: uppercase;
 
     a {
-      color: $red;
+      color: $accent-color;
     }
   }
 }
@@ -64,7 +64,7 @@ html {
     font-size: 18px;
     text-transform: uppercase;
     line-height: 1;
-    color: $gray;
+    color: $light-font-color;
   }
 }
 
@@ -88,7 +88,7 @@ html {
   }
   a {
     font-weight: $xbold;
-    color: $red;
+    color: $accent-color;
 
     &:hover {
       text-decoration: underline;
@@ -242,7 +242,7 @@ ul {
   }
   #header-bg {
     @include pos(-90, -415, $align: 'right');
-    @include bg-img(474, 434, 'bg-about', $basepath: '/img');
+    @include bg-img(474, 444, 'bg-about', $basepath: '/img');
   }
   #footer {
     margin-top: 60px;

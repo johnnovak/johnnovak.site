@@ -35,6 +35,7 @@ html {
 }
 
 body {
+  @include enable-selection(false);
   position: relative;
   width: 100%;
   max-width: 1200px;
@@ -52,6 +53,7 @@ a {
 
   &:hover {
     color: $hover-color;
+    text-decoration: none;
     @include transition(.15s, color);
   }
 }
