@@ -157,7 +157,7 @@ $(document).ready(function() {
       case 39: // right
         event.preventDefault();
         return;
-      
+
       default:
         return;
     }

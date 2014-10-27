@@ -10,6 +10,16 @@ $font-family: Helvetica, Arial, sans-serif;
 $icons_bg_w: 62;
 $icons_bg_h: 36;
 
+@mixin titlecaps {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: $normal;
+  line-height: .8;
+  text-transform: uppercase;
+}
+
+
 @include selection-color($sel-color, 'black');
 
 @include flat-scrollbar(
@@ -19,15 +29,6 @@ $icons_bg_h: 36;
   $hover-color: #ccc,
   $drag-color:  #ccc
 );
-
-@mixin titlecaps {
-  margin: 0;
-  padding: 0;
-  font-size: 15px;
-  font-weight: $normal;
-  line-height: .8;
-  text-transform: uppercase;
-}
 
 html {
   margin: 0 20px;
@@ -82,11 +83,7 @@ a {
     text-transform: uppercase;
     margin-bottom: 6px;
 
-    a:hover {
-      color: $font-color;
-    }
-
-    span {
+    .photo {
       margin-left: 5px;
       font-weight: $normal !important;
     }
@@ -160,7 +157,6 @@ a {
 }
 
 #nav {
-  margin-top: 5px;
   text-align: center;
 
   .counter {
@@ -239,31 +235,24 @@ a {
   h2 {
     @include titlecaps;
   }
-  .anchor {
-    //
-  }
 }
 
 .fotorama__fullscreen-icon {
   display: none;
 }
-.fotorama__caption__wrap {
-  padding: 0;
-}
-.fotorama__caption {
+#caption {
   font-family: $font-family;
   font-size: 13px;
   line-height: 1.3;
   margin: 0;
   color: $font-color;
+  text-align: center;
 }
+
 .fullscreen {
-  .fotorama__caption {
+  #caption {
     color: #999;
     padding-bottom: 3px;
-  }
-  .fotorama__caption__wrap {
-    background-color: #000 !important;
   }
   .fotorama__fullscreen-icon {
     display: block;
@@ -278,6 +267,28 @@ a {
       $basepath: '/photo/img'
     );
   }
+}
+
+.fotorama__nav {
+  /* Lie to the fotorama about nav height to reserve space for your controls */
+  /* thumbheight + thumbmargin * 2 + controlheight = 64 + 2 * 2 + 40 = 108 */
+  height: 108px;
+}
+.fotorama__nav:after,
+.fotorama__nav:before {
+  /* Restore shadows height */
+  /* controlheight */
+  bottom: 40px;
+}
+.fotorama-control {
+  /* controlheight */
+  height: 40px;
+  /* -controlheight */
+  margin-top: -40px;
+  position: relative;
+  z-index: 10;
+  display: none;
+  background-color: red; /* just for debugging */
 }
 
 @media only screen and (max-width: 750px) {
@@ -316,12 +327,10 @@ a {
       font-size: 15px;
     }
   }
-  .fotorama__caption {
+  #caption {
     font-size: 15px;
     line-height: 0.8;
-  }
-  .fotorama__caption__wrap {
-    padding: 8px 10px;
+    padding: 15px 0 10px;
   }
   #albums {
     .thumbs {
@@ -408,9 +417,9 @@ a {
   }
 }
 
-///////////////////////////////////////////////////////////////////////////////
-// Animation
-///////////////////////////////////////////////////////////////////////////////
+//****************************************************************************
+// ANIMATION
+//****************************************************************************
 
 .js {
   #albums {

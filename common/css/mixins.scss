@@ -25,7 +25,8 @@
   // Use hires image when pixel ratio is greater than 1.0
   @media only screen and (-webkit-min-device-pixel-ratio: 1.01),
        only screen and (-o-min-device-pixel-ratio: 101/100),
-       only screen and (min--moz-device-pixel-ratio: 1.01),
+       // TODO check
+       only screen and (min-moz-device-pixel-ratio: 1.01),
        only screen and (min-device-pixel-ratio: 1.01) {
 
     background-image: url($imgurl);
@@ -55,10 +56,22 @@
   }
 }
 
+
+@mixin gradient($orientation, $colors) {
+  background-image: -webkit-linear-gradient($orientation, $colors);
+  background-image: -moz-linear-gradient($orientation, $colors);
+  background-image: -ms-linear-gradient($orientation, $colors);
+  background-image: -o-linear-gradient($orientation, $colors);
+  // TODO
+  background-image: linear-gradient(to bottom, $colors);
+}
+
+
 @mixin opacity($value) {
   opacity: $value;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$value * 100})";
 }
+
 
 @mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h,  $suffix: '.png',
             $basepath: '/img') {

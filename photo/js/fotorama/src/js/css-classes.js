@@ -12,6 +12,8 @@ var _fotoramaClass = 'fotorama',
     wrapPanYClass = wrapClass + '--pan-y',
     wrapRtlClass = wrapClass + '--rtl',
     wrapOnlyActiveClass = wrapClass + '--only-active',
+    wrapNoCaptionsClass = wrapClass + '--no-captions',
+    wrapToggleArrowsClass = wrapClass + '--toggle-arrows',
 
     stageClass = _fotoramaClass + '__stage',
     stageFrameClass = stageClass + '__frame',
@@ -77,4 +79,6 @@ var _fotoramaClass = 'fotorama',
     captionClass = _fotoramaClass + '__caption',
     captionWrapClass = _fotoramaClass + '__caption__wrap',
 
-    spinnerClass = _fotoramaClass + '__spinner';
+    spinnerClass = _fotoramaClass + '__spinner',
+
+    buttonAttributes = '" tabindex="0" role="button';

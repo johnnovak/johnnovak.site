@@ -2,7 +2,160 @@
 
 > https://github.com/artpolikarpov/fotorama/releases
 
-## 4.4.9, Dec 30 2013
+## 4.6.0, 7 August 2014
+
+<!--4.6.0:name-->
+
+Position
+
+<!--/4.6.0:name-->
+
+<!--4.6.0:notes-->
+
+* New `position` and `thumbposition` options.
+* Fix some IE7 & IE8 bugs (#273, #279).
+* Fix thumbnail fit.
+* Better auto initialization.
+* Fix blocking event flow in some odd situations.
+* #267 “Play” triangles on video thumbnails are back.
+* Finally fix `clicktransition` behaviour.
+* Fix `fotorama:show` event triggering.
+* Some minor fixes and optimization.
+
+### `position`
+
+Fotorama centers photos by default when fits them into a stage. Now you can change this:
+
+```html
+<!-- Align photos to the left-top corner -->
+<div class="fotorama" data-position="0 0">
+  <img src="1.jpg">
+
+  <!-- Override position for a single photo,
+       center 2.jpg horizontally, and move up by 10px -->
+  <img src="2.jpg" data-position="50% -10px">
+
+  <!-- Show the right-bottom corner of 3.jpg -->
+  <img src="3.jpg" data-position="100% 100%">
+</div>
+```
+
+### `thumbposition`
+
+Works just like `position` but for thumnbails.
+
+<!--/4.6.0:notes-->
+
+## 4.5.2, 23 June 2014
+
+<!--4.5.2:name-->
+
+Three years
+
+<!--/4.5.2:name-->
+
+<!--4.5.2:notes-->
+
+:birthday:
+
+* Keyboard accessibility, allow tabbing on arrows and thumbs.
+* #255 Better styles for printing.
+* New `controlsonstart` option. Set it to `false` if you want controls to appear only after hover or tap.
+* New `thumbfit` option.
+* New `thumbratio:'auto'` option (experimental :skull:).
+* #232 Simplify and fix logic when to trigger show events
+* #236 Fix video loading on https
+* Default cursor is now `pointer` because for desktop users one click is enough to switch the frame. Cursor changes to `grab` only on dragging and swiping.
+* #246 Make fotorama monolithic with z-index.
+* #251 Now fotorama’s dimensions are really the dimensions of the first image (by order, not by loading time).
+* #253 Do not cache `$('html')` and `$('body')` for correct fullscreen in single-page-apps (Meteor, Angular, Derby).
+* Fix `clicktransition` behaviour.
+* #243 Add missing dependencies and repository-setting to package.json
+* Better image fit, work nice with odd width without Retina artefacts.
+* Adjust animations.
+* Disabled trackpad by default.
+* Fix loop conditions.
+
+:candy: :candy: :candy:
+
+Today is the third anniversary of Fotorama.
+
+Using Fotorama? Be sure to drop me a link, wanna see it in action:
+* [:envelope: fotoramajs@gmail.com](fotoramajs@gmail.com)
+
+### Thanks for your thanks :+1:
+
+* PayPal: [fotoramajs@gmail.com](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7M9KK5AQPG6CC)
+* Yandex.Money: [4100139676157](https://money.yandex.ru/direct-payment.xml?receiver=4100139676157)
+* Bitcoin: [1AbXUmE6xzinqKaHu<wbr/>TVFRXtnxffFqvKkka](bitcoin:1AbXUmE6xzinqKaHuTVFRXtnxffFqvKkka)
+* Flattr: [Fotorama](https://flattr.com/thing/1845948/)
+
+<!--/4.5.2:notes-->
+
+## 4.5.1, 29 March 2014
+
+<!--4.5.1:name-->
+
+Keep it ace
+
+<!--/4.5.1:name-->
+
+<!--4.5.1:notes-->
+
+* Fix animations and visibility of arrows and captions.
+* #181 Always visible arrows via `arrows:'always'`.
+* #214 Fullscreen mode now using complete width and surpass the `maxwidth` limit.
+* #218 Allow to hide captions via setOptions.
+* Make `loop:true` and `clicktransition:'crossfade'` play well together.
+* #219 Extended keyboard support.
+* Fix some measures collisions.
+* Optimize, test.
+
+### Extended keyboard support
+The old `data-keyboard="true"` enables keyboard navigation with the arrows. Extend it passing the object with keys you want to turn on:
+
+```javascript
+<div class="fotorama"
+     data-keyboard='{"space":true, "home":true, "end":true}'>
+  <img src="1.jpg">
+  <img src="2.jpg">
+</div>
+```
+
+<!--/4.5.1:notes-->
+
+## 4.5.0, 20 March 2014
+
+<!--4.5.0:name-->
+
+Yana
+
+<!--/4.5.0:name-->
+
+<!--4.5.0:notes-->
+
+New options:
+* `navwidth` — sets the special width of the nav;
+* `clicktransition` — alternative transition after click, now it is possible to slide after swipe and fade after click.
+
+Now fotorama shows only first raw slide while initialization.
+Class `.fotorama--unobtrusive` makes fotorama unobtrusive and shows all raw slides,
+use it when you care about users without JavaScript.
+
+Closed issues:
+
+* #159 Found the balance between swipe, click, and arrows.
+* #160 Fixed tiny drag on the arrows.
+* #174 Crush sprite files (via @zslabs).
+* #187 Fix compatibility with `$.noConflict(true)` (via @Lendar).
+* #192 Fixed `stopautoplayontouch`.
+* #205 Fixed a typo that forced using the http protocol (via @dhayab).
+
+Fixed `glimpse`, nav overflow bug, and other minors.
+
+<!--/4.5.0:notes-->
+
+## 4.4.9, 30 December 2013
 
 <!--4.4.9:name-->
 
@@ -21,7 +174,7 @@ Fixed issues:
 
 <!--/4.4.9:notes-->
 
-## 4.4.8, Nov 13 2013
+## 4.4.8, 13 November 2013
 
 <!--4.4.8:name-->
 
@@ -39,7 +192,7 @@ Five hot fixes
 
 <!--/4.4.8:notes-->
 
-## 4.4.7, Nov 5 2013
+## 4.4.7, 5 November 2013
 
 <!--4.4.7:name-->
 
@@ -56,7 +209,7 @@ Spin the spinner
 
 <!--/4.4.7:notes-->
 
-## 4.4.6, Oct 20 2013
+## 4.4.6, 20 October 2013
 
 <!--4.4.6:name-->
 
@@ -70,7 +223,7 @@ Optimizations
 
 <!--/4.4.6:notes-->
 
-## 4.4.5, Oct 17 2013
+## 4.4.5, 17 October 2013
 
 <!--4.4.5:name-->
 

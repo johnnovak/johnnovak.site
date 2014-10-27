@@ -59,7 +59,7 @@ photo:
 	cp photo/js/*.js $(DEST_PHOTO_DIR)/js
 	cp photo/js/fotorama/out/fotorama.js $(DEST_PHOTO_DIR)/js/lib/
 	cp photo/js/fotorama/out/fotorama.css $(DEST_PHOTO_DIR)/css/
-	touch $(DEST_PHOTO_DIR)/js/lib/fotorama.png
+	touch $(DEST_PHOTO_DIR)/css/fotorama.png
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 fotorama:

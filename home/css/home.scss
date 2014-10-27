@@ -1,5 +1,15 @@
 @import '../../common/css/base.scss';
 
+$content-width: 380px;
+$main-width: 780px;
+$medium-width-delta: 60px;
+$header-height: 200px;
+
+$img_path: '/home/img';
+
+$footer-color: #555;
+
+
 @include selection-color($sel-color, 'black');
 
 @include flat-scrollbar(
@@ -10,23 +20,14 @@
   $drag-color:  #bbb
 );
 
-$content-width: 380px;
-$main-width: 780px;
-$medium-width-delta: 60px;
-$header-height: 200px;
-
-$img_path: '/home/img';
-
-$footer-color: #555;
+html {
+  overflow-x: hidden;
+}
 
 body {
   @include enable-selection(false);
   text-transform: uppercase;
   margin: 20px;
-  overflow-x: hidden;
-}
-
-html {
   overflow-x: hidden;
 }
 
@@ -184,8 +185,8 @@ ul {
     height: $header-height;
     background-color: $bg-color;
     background: url(/home/img/header-bg.png) repeat-x;
-    background-image: -webkit-linear-gradient(top, rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%);
-    background-image: linear-gradient(to bottom, rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%);
+    // TODO
+    @include gradient(top, "rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%")
 //    background-image: linear-gradient($bg-color, #f06d06);
   }
   #jn-logo {

@@ -13,15 +13,6 @@ $.fn.find2 = function(selector) {
     return this.filter(selector).add(this.find(selector));
 };
 
-var smallScreen = $(window).height() < 350;
-
-// NOTE: The following two global params work only with my custom hacked
-// fotorama.js
-var CAPTION_HEIGHT = smallScreen ? 50 : 75;
-
-// Value to be subtracted from the stage height calculations (e.g. when
-// height: '100%' is used)
-var HEIGHT_OFFSET = smallScreen ? 70 : 85;
 
 
 /// GLOBAL MODULE START ////////////////////////////////////////////////////////
@@ -227,17 +218,27 @@ var photo = function() {
   }
 
   function createFotorama() {
+    var smallScreen = $(window).height() < 350;
+
     fotorama = $('#fotorama');
     var opts = {
       width: '100%',
       height: '100%',
       nav: 'none',
-      captions: true,
+      captions: false,
       transition: 'crossfade',
       transitionDuration: 400,
       allowfullscreen: 'native',
       arrows: false,
-      hash: true
+      hash: true,
+
+      // NOTE: The following two global params work only with my custom hacked
+      // fotorama.js
+      captionHeight: smallScreen ? 50 : 75,
+
+      // Value to be subtracted from the stage height calculations (e.g. when
+      // height: '100%' is used)
+      heightOffset: 0 //smallScreen ? 70 : 85
     };
     if (hasHistoryApi) {
       opts.startIndex = location.hash.replace(/^#/, '');

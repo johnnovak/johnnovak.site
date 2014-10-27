@@ -26,7 +26,7 @@ $.Fotorama.jst.video = function(v) {
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 __p += '<div class="fotorama__video"><iframe src="';
- print((v.type == 'youtube' ? 'http://youtube.com/embed/' + v.id +'?autoplay=1' : v.type == 'vimeo' ? 'http://player.vimeo.com/video/' + v.id + '?autoplay=1&badge=0' : v.id)  + (v.s && v.type != 'custom' ? '&' + v.s : '')) ;
-__p += '" frameborder="0" allowfullscreen></iframe></div>';
+ print((v.type == 'youtube' ? v.p + 'youtube.com/embed/' + v.id +'?autoplay=1' : v.type == 'vimeo' ? v.p + 'player.vimeo.com/video/' + v.id + '?autoplay=1&badge=0' : v.id)  + (v.s && v.type != 'custom' ? '&' + v.s : '')) ;
+__p += '" frameborder="0" allowfullscreen></iframe></div>\n';
 return __p
 };
