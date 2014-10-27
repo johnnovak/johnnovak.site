@@ -29,6 +29,7 @@ body {
   text-transform: uppercase;
   margin: 20px;
   overflow-x: hidden;
+  cursor: default;
 }
 
 #jn-logo {
@@ -81,6 +82,7 @@ ul {
 .section-content {
   @include transition(.8s, margin-left);
   @include enable-selection(true);
+  cursor: text;
 
   & h2:first-child {
     margin-top: 0;
@@ -148,22 +150,16 @@ ul {
 //****************************************************************************
 
 #mainmenu {
-  padding: 80px 0 0 0;
+  padding: 75px 15px 0 0;
   text-align: right;
   list-style: none;
 
   li {
     display: inline-block;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: $normal;
-    padding: 0;
+    padding: 0 0 0 10px;
     color: $accent-color;
-
-    &:not(.last):after {
-      margin-left: -5px;
-      margin-right: 8px;
-      content: "/";
-    }
 
     a {
       color: $accent-color;
@@ -202,9 +198,16 @@ ul {
 
     li {
       font-size: 22px;
+      padding: 0;
 
       a {
         margin-right: 18px;
+      }
+
+      &:not(.last):after {
+        margin-left: -5px;
+        margin-right: 8px;
+        content: "/";
       }
     }
   }
@@ -538,7 +541,8 @@ ul {
   #code-bg {
     left: -20px;
   }
-  #code-section {
+  .sidebar {
+    margin-top: 13px;
   }
 }
 
