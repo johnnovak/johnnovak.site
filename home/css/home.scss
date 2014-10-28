@@ -31,6 +31,7 @@ body {
   margin: 20px;
   overflow-x: hidden;
   cursor: default;
+  background: $bg-color;
 }
 #wrapper {
   margin: 20px;
@@ -186,11 +187,8 @@ ul {
     @include pos(0, 0, 1);
     width: 100%;
     height: $header-height;
-    background-color: $bg-color;
-    background: url(/home/img/header-bg.png) repeat-x;
-    // TODO
-    @include gradient(top, "rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%")
-//    background-image: linear-gradient($bg-color, #f06d06);
+    background: $bg-color;
+    @include vertical-gradient(rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%);
   }
   #jn-logo {
     @include pos(20, 348, 1);
