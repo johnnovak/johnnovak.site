@@ -13,7 +13,7 @@ PHOTO_CSS_LOCATION=photo/css:$(DEST_PHOTO_DIR)/css
 BLOG_CSS_LOCATION=blog/css:$(DEST_BLOG_DIR)/css
 
 default: all
-all: common home photo blog
+all: common home photo
 
 
 ### HOME ######################################################################
@@ -21,7 +21,6 @@ all: common home photo blog
 .PHONY: common clean_common
 
 common:
-	cp -r common/img $(DEST_DIR)
 	cp -r common/js $(DEST_DIR)
 
 clean_common:

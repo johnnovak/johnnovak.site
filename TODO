@@ -1,1 +1,27 @@
-- use 2x logo image for high-res displays
+GENERAL:
+
+* IE testing
+
+
+PHOTO:
+
+* about page text
+* small screen testing & fixes
+* keyboard navigation fix
+* fotorama custom navbar without hacking
+
+
+HOME:
+
+* use 2x logo image for high-res displays
+* layout adjustments for small screens
+* footer text
+* footer scrolling fixes
+* footer sunset
+* footer sprite animation easter egg
+
+
+BLOG:
+
+* white background theme
+

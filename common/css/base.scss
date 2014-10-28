@@ -1,21 +1,10 @@
 @import 'mixins.scss';
 
-$bg-color:           #6e7275;
-$font-color:         #fff;
-$light-font-color:   #d0d2d2;
-$accent-color:       #d8ff00;
-$light-accent-color: #fb0;
-$sel-color:          #bbb;
-
 $xthin:  200;
 $thin:   300;
 $normal: 400;
 $bold:   600;
 $xbold:  700;
-
-$media-medium: 'only screen and (min-width: 767px)';
-$media-large:  'only screen and (min-width: 980px)';
-
 
 body {
   margin: 0;
@@ -28,7 +17,6 @@ body {
   font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  color: $font-color;
 }
 
 img {
@@ -37,10 +25,8 @@ img {
 
 a {
   text-decoration: none;
-  color: $font-color;
 
   &:hover {
     text-decoration: underline;
-    color: $light-font-color;
   }
 }

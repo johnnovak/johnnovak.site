@@ -1,5 +1,13 @@
 @import '../../common/css/base.scss';
 
+$bg-color:           #6e7275;
+$font-color:         #fff;
+$light-font-color:   #d0d2d2;
+$accent-color:       #d8ff00;
+$light-accent-color: #fb0;
+$sel-color:          #bbb;
+
+
 @include selection-color($sel-color, 'black');
 
 body {

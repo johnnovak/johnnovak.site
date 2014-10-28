@@ -1,4 +1,13 @@
 @import '../../common/css/base.scss';
+@import 'common.scss';
+
+
+$bg-color:           #6e7275;
+$font-color:         #fff;
+$light-font-color:   #d0d2d2;
+$accent-color:       #d8ff00;
+$light-accent-color: #fb0;
+$sel-color:          #bbb;
 
 $content-width: 380px;
 $main-width: 780px;
@@ -11,7 +20,6 @@ $footer-color: #555;
 
 
 @include selection-color($sel-color, 'black');
-
 
 @include flat-scrollbar(
   12px,
@@ -32,9 +40,7 @@ body {
   overflow-x: hidden;
   cursor: default;
   background: $bg-color;
-}
-#wrapper {
-  margin: 20px;
+  color: $font-color;
 }
 
 #jn-logo {
@@ -70,6 +76,15 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: $font-color;
+
+  &:hover {
+    color: $light-font-color;
+  }
+}
+
 .sidebar {
   margin-top: 20px;
   font-weight: $xbold;
@@ -96,9 +111,6 @@ ul {
 
 @media #{$media-medium} {
   body {
-    margin: 0;
-  }
-  #wrapper {
     margin: 0;
   }
   h1 {
@@ -280,7 +292,7 @@ ul {
   }
   #about-bg {
     @include pos(189, -77, 10);
-    @include bg-img(474, 444, 'bg-about', $basepath: '/img');
+    @include bg-img(474, 444, 'bg-about', $basepath: $img_path);
     @include transition(1.2s, left);
   }
 }
