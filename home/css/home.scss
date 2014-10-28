@@ -12,12 +12,13 @@ $footer-color: #555;
 
 @include selection-color($sel-color, 'black');
 
+
 @include flat-scrollbar(
   12px,
-  $bg-color:    #6e7275,
-  $color:       #ddd,
-  $hover-color: #fff,
-  $drag-color:  #bbb
+  $bg-color:    $bg-color,
+  $color:       #bbb,
+  $hover-color: #eee,
+  $drag-color:  #aaa
 );
 
 html {
@@ -30,6 +31,9 @@ body {
   margin: 20px;
   overflow-x: hidden;
   cursor: default;
+}
+#wrapper {
+  margin: 20px;
 }
 
 #jn-logo {
@@ -91,6 +95,9 @@ ul {
 
 @media #{$media-medium} {
   body {
+    margin: 0;
+  }
+  #wrapper {
     margin: 0;
   }
   h1 {

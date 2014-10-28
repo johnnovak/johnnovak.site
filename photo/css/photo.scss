@@ -250,6 +250,11 @@ a {
 }
 
 .fullscreen {
+  #fotorama {
+    img {
+      margin-top: 0;
+    }
+  }
   #caption {
     color: #999;
     padding-bottom: 3px;
@@ -267,28 +272,6 @@ a {
       $basepath: '/photo/img'
     );
   }
-}
-
-.fotorama__nav {
-  /* Lie to the fotorama about nav height to reserve space for your controls */
-  /* thumbheight + thumbmargin * 2 + controlheight = 64 + 2 * 2 + 40 = 108 */
-  height: 108px;
-}
-.fotorama__nav:after,
-.fotorama__nav:before {
-  /* Restore shadows height */
-  /* controlheight */
-  bottom: 40px;
-}
-.fotorama-control {
-  /* controlheight */
-  height: 40px;
-  /* -controlheight */
-  margin-top: -40px;
-  position: relative;
-  z-index: 10;
-  display: none;
-  background-color: red; /* just for debugging */
 }
 
 @media only screen and (max-width: 750px) {

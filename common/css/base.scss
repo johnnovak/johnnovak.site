@@ -7,11 +7,6 @@ $accent-color:       #d8ff00;
 $light-accent-color: #fb0;
 $sel-color:          #bbb;
 
-$scrollbar-bg:    #ccc;
-$scrollbar-color: #777;
-$scrollbar-hover: #888;
-$scrollbar-drag:  #666;
-
 $xthin:  200;
 $thin:   300;
 $normal: 400;
@@ -35,24 +30,6 @@ body {
   -ms-text-size-adjust: 100%;
   color: $font-color;
   background: $bg-color;
-}
-
-::-webkit-scrollbar {
-	width: 12px;
-	height: 12px;
-}
-::-webkit-scrollbar-track {
-  background: $scrollbar-bg;
-}
-::-webkit-scrollbar-thumb {
-  background: $scrollbar-color;
-
-  &:hover {
-    background: $scrollbar-hover;
-  }
-  &:active {
-    background: $scrollbar-drag;
-  }
 }
 
 img {

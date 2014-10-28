@@ -13,6 +13,8 @@ $.fn.find2 = function(selector) {
     return this.filter(selector).add(this.find(selector));
 };
 
+// Prevent Fotorama from making dubious requests to mc.yandex.ru
+window.blockFotoramaData = true;
 
 
 /// GLOBAL MODULE START ////////////////////////////////////////////////////////
@@ -103,7 +105,7 @@ function installMenuClickHandler() {
 };
 
 function installLogoClickHandler() {
-  var link = $('#header h1 a');
+  var link = $('#header h1 a.photo');
   link.on('click', function(event) {
       event.preventDefault();
       var pathname = link[0].pathname
@@ -206,7 +208,8 @@ var photo = function() {
   }
 
   function createNavigation() {
-    var navHtml =   '<ul class="counter">'
+    var navHtml =   '<div id="caption"></div>'
+                  + '<ul class="counter">'
                   + '<li id="prev"><span>prev</span></li>'
                   + '<li id="imgcounter"></li>'
                   + '<li id="next"><span>next</span></li>'
@@ -230,6 +233,7 @@ var photo = function() {
       transitionDuration: 400,
       allowfullscreen: 'native',
       arrows: false,
+//      keyboard: true,
       hash: true,
 
       // NOTE: The following two global params work only with my custom hacked

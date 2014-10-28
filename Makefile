@@ -63,7 +63,7 @@ photo:
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 fotorama:
-	cd photo/js/fotorama; npm install && grunt build
+	cd photo/js/fotorama; grunt build
 
 watch_photo_css:
 	sass $(SASS_WATCH_OPTS) --watch $(PHOTO_CSS_LOCATION)
