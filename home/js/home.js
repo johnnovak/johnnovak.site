@@ -1,51 +1,57 @@
 $(document).ready(function() {
 
-  //// GLOBALS ///////////////////////////////////////////////////////////////
-  
   var MAX_ACCELERATION = 25;
   var SCROLL_EASE = .1;
   var WHEEL_STEP = 250;
 
-  var animatingScroll = false;
-  var scrollToSection = false;
-  var scrollInterval;
-  var currentScroll;
-  var scrollDest;
-  var speed = 0;
+  var SECTION_NAMES = ['about', 'music', 'photo', 'code'];
 
-  var resizeTimer;
-  var isParallaxInstalled = false;
-  var isParallax = false;
-  var isMac;
+  var g_animatingScroll = false;
+  var g_scrollToSection = false;
+  var g_scrollInterval;
+  var g_currentScroll;
+  var g_scrollDest;
+  var g_speed = 0;
 
-  var sectionNames = ['about', 'music', 'photo', 'code'];
-  var sectionPositions = [];
+  var g_resizeTimer;
+  var g_isParallaxInstalled = false;
+  var g_isParallax = false;
+  var g_isMac;
 
-  //// INIT //////////////////////////////////////////////////////////////////
-  
-  displayPage();
+  var g_sectionPositions = [];
 
-  if (!isDesktop) {
-    return;
-  } else {
-    $('html').addClass('desktop');
+  init();
+
+/////////////////////////////////////////////////////////////////////////////
+
+  function init() {
+    displayPage();
+
+    if (!isDesktop) {
+      return;
+    } else {
+      $('html').addClass('desktop');
+    }
+
+    // Detect OS
+    // from http://stackoverflow.com/a/11752533
+    g_isMac = navigator.platform.toUpperCase().indexOf('MAC') !== -1;
+
+    installInputHandlers();
+
+    g_isParallax = !isMobileView();
+    if (g_isParallax) {
+      installParallax();
+    }
+
+    if (getDevicePixelRatio() > 1) {
+      replaceImages();
+    }
+
+    installResizeHandler();
+    installMainMenuHandlers();
   }
 
-  // Detect OS
-  // from http://stackoverflow.com/a/11752533
-  isMac = navigator.platform.toUpperCase().indexOf('MAC') !== -1;
-
-  $(document).bind('mousewheel', mouseWheelHandler);
-  $(document).bind('keydown', keyDownHandler);
-  $(document).bind('scroll', scrollHandler);
-
-  isParallax = !isMobileView();
-  if (isParallax) {
-    installParallax();
-  }
-
-  //// FUNCTIONS /////////////////////////////////////////////////////////////
-  
   function displayPage() {
     $('#wrapper').css('display', 'block');
   }
@@ -55,7 +61,8 @@ $(document).ready(function() {
   function hasTransform() {
     // TODO: why doesn't work in IE9 and Opera?
     // var prefixes = 'transformProperty WebkitTransform MozTransform OTransform msTransform'.split(' ');
-    var prefixes = 'transformProperty WebkitTransform MozTransform OTransform'.split(' ');
+    var p = 'transformProperty WebkitTransform MozTransform OTransform';
+    var prefixes = p.split(' ');
     for (var i = 0; i < prefixes.length; i++) {
       if (document.createElement('div').style[prefixes[i]] !== undefined) {
         return prefixes[i];
@@ -68,11 +75,16 @@ $(document).ready(function() {
     return $('#mainmenu').css('position') != 'fixed';
   }
 
+  function getDevicePixelRatio() {
+    var r = window.devicePixelRatio;
+    return r === undefined ? 1 : r;
+  }
+
   function getCurrentSection() {
     var minDist = 9999999;
     var currentSection = 0;
-    for (i = 0; i < sectionPositions.length; i++) {
-      var d = Math.abs(currentScroll - sectionPositions[i])
+    for (i = 0; i < g_sectionPositions.length; i++) {
+      var d = Math.abs(g_currentScroll - g_sectionPositions[i])
       if (d < minDist) {
         minDist = d;
         currentSection = i;
@@ -83,50 +95,58 @@ $(document).ready(function() {
 
   // Scrolling code ripped from http://www.ascensionlatorre.com/home
   function scrollTo(target) {
-    animatingScroll = true;
+    g_animatingScroll = true;
 
     var windowHeight = $(window).height();
     var documentHeight = $(document).height();
     var maxScrollDest = documentHeight - windowHeight;
 
-    scrollDest = target;
-    if (scrollDest < 0) {
-      scrollDest = 0;
-    } else if (scrollDest > maxScrollDest) {
-      scrollDest = maxScrollDest;
+    g_scrollDest = target;
+    if (g_scrollDest < 0) {
+      g_scrollDest = 0;
+    } else if (g_scrollDest > maxScrollDest) {
+      g_scrollDest = maxScrollDest;
     }
-    
-    if (scrollInterval) {
+
+    if (g_scrollInterval) {
       return;
     }
 
-    currentScroll = $(window).scrollTop();
+    g_currentScroll = $(window).scrollTop();
 
-    scrollInterval = setInterval(function() {
-      var scrollDiff = (scrollDest - currentScroll) * SCROLL_EASE;
+    g_scrollInterval = setInterval(function() {
+      var scrollDiff = (g_scrollDest - g_currentScroll) * SCROLL_EASE;
       var way = scrollDiff / Math.abs(scrollDiff);
-      speed += MAX_ACCELERATION * way;
+      g_speed += MAX_ACCELERATION * way;
 
-      if (Math.abs(scrollDiff) > Math.abs(speed)) {
-        scrollDiff = speed;
+      if (Math.abs(scrollDiff) > Math.abs(g_speed)) {
+        scrollDiff = g_speed;
       } else {
-        speed = scrollDiff;
+        g_speed = scrollDiff;
       }
-      currentScroll += scrollDiff;
-      $(window).scrollTop(currentScroll);
+      g_currentScroll += scrollDiff;
+      $(window).scrollTop(g_currentScroll);
 
-      if (Math.abs(currentScroll - scrollDest) < .5) {
-        animatingScroll = false;
-        currentScroll = scrollDest;
-        clearInterval(scrollInterval);
-        scrollInterval = undefined;
-        scrollToSection = false;
+      if (Math.abs(g_currentScroll - g_scrollDest) < .5) {
+        g_animatingScroll = false;
+        g_currentScroll = g_scrollDest;
+
+        clearInterval(g_scrollInterval);
+
+        g_scrollInterval = undefined;
+        g_scrollToSection = false;
       }
     }, 1000 / 60);
   }
 
+  function installInputHandlers() {
+    $(document).bind('mousewheel', mouseWheelHandler);
+    $(document).bind('keydown', keyDownHandler);
+    $(document).bind('scroll', scrollHandler);
+  }
+
   function keyDownHandler(event) {
-    if (!isParallax) {
+    if (!g_isParallax) {
       return;
     }
     var destSection = getCurrentSection();
@@ -150,7 +170,7 @@ $(document).ready(function() {
 
       case 35: // end
         event.preventDefault();
-        destSection = sectionPositions.length - 1;
+        destSection = g_sectionPositions.length - 1;
         break;
 
       case 37: // left
@@ -161,30 +181,32 @@ $(document).ready(function() {
       default:
         return;
     }
-    destSection = Math.max(Math.min(destSection, sectionPositions.length - 1), 0);
-    scrollToSection = true;
-    scrollTo(sectionPositions[destSection]);
+    destSection = Math.max(Math.min(destSection,
+                                    g_sectionPositions.length - 1), 0);
+
+    g_scrollToSection = true;
+    scrollTo(g_sectionPositions[destSection]);
   }
 
   function scrollHandler() {
-    if (isParallax && !scrollToSection) {
+    if (g_isParallax && !g_scrollToSection) {
       currentSection = getCurrentSection();
     }
   }
-  
+
   function mouseWheelHandler(event, delta, deltaX, deltaY) {
     // Don't mess with the mousewheel on Macs due to the notorious (and
     // unresolvable) touchpad vs oldschool-clicky-mousewheel issue
-    if (!isParallax) {
+    if (!g_isParallax) {
       return;
     }
-    if (isMac) { 
-      if (scrollToSection) {
+    if (g_isMac) { 
+      if (g_scrollToSection) {
         event.preventDefault();
       }
     } else {
       event.preventDefault();
-      if (!scrollToSection) {
+      if (!g_scrollToSection) {
           scrollTop = $(window).scrollTop();
           scrollTo(scrollTop + (-WHEEL_STEP * delta));
       }
@@ -192,9 +214,7 @@ $(document).ready(function() {
   }
 
   function installParallax() {
-    for (var i = 0; i < sectionNames.length; i++) {
-      sectionPositions[i] = $('#' + sectionNames[i]).offset().top;
-    }
+    initSectionPositions();
 
     // Install parallax
     $.stellar({
@@ -204,35 +224,45 @@ $(document).ready(function() {
       parallaxBackgrounds: false
     });
 
-    isParallaxInstalled = true;
+    g_isParallaxInstalled = true;
+  }
+
+  function initSectionPositions() {
+    for (var i = 0; i < SECTION_NAMES.length; i++) {
+      g_sectionPositions[i] = $('#' + SECTION_NAMES[i]).offset().top;
+    }
+  }
+
+  function installResizeHandler() {
+    $(window).bind('resize', function() { 
+      clearTimeout(g_resizeTimer);
+      g_resizeTimer = setTimeout(resizeHandler, 100);
+    });
   }
 
   function resizeHandler() {
-    isParallax = !isMobileView();
-    if (!isParallaxInstalled && isParallax) {
+    g_isParallax = !isMobileView();
+    if (!g_isParallaxInstalled && g_isParallax) {
       installParallax();
     }
   }
 
-  $(window).bind('resize', function() { 
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(resizeHandler, 100);
-  });
-
-  function generateMainMenuHandler(i) {
-    return function(event) {
-      if (isParallax) {
-        event.preventDefault();
-        scrollToSection = true;
-        scrollTo(sectionPositions[i]);
-      }
+  function installMainMenuHandlers() {
+    for (var i = 0; i < SECTION_NAMES.length; i++) {
+      name = SECTION_NAMES[i];
+      $('#menu-' + SECTION_NAMES[i]).bind('click',
+                                          generateMainMenuHandler(i));
     }
   }
 
-  // Install main menu callbacks
-  for (var i = 0; i < sectionNames.length; i++) {
-    name = sectionNames[i];
-    $('#menu-' + sectionNames[i]).bind('click', generateMainMenuHandler(i));
+  function generateMainMenuHandler(i) {
+    return function(event) {
+      if (g_isParallax) {
+        event.preventDefault();
+        g_scrollToSection = true;
+        scrollTo(g_sectionPositions[i]);
+      }
+    }
   }
 });
 

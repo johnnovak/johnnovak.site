@@ -40,6 +40,10 @@ home:
 watch_home_css:
 	sass $(SASS_WATCH_OPTS) --watch $(HOME_CSS_LOCATION)
 
+symlink_home_js:
+	rm $(DEST_HOME_DIR)/js/home.js
+	ln -s $(PWD)/home/js/home.js $(DEST_HOME_DIR)/js/home.js
+
 clean_home:
 	rm -rf $(DEST_HOME_DIR) $(DEST_DIR)/index.html
 
