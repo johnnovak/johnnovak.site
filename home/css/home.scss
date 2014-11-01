@@ -4,7 +4,7 @@
 
 $bg-color:           #6e7275;
 $font-color:         #fff;
-$light-font-color:   #d0d2d2;
+$light-font-color:   #d4d6d6;
 $accent-color:       #d8ff00;
 $light-accent-color: #fb0;
 $sel-color:          #bbb;
@@ -92,9 +92,12 @@ a {
 
   a {
     color: $accent-color;
+    @include transition(.2s, color);
 
     &:hover {
+      text-decoration: none;
       color: $light-accent-color;
+      @include transition(.2s, color);
     }
   }
 }
@@ -574,7 +577,7 @@ a {
   p {
     font-size: 14px;
     margin: 0;
-    text-align: left;
+    text-align: right;
   }
 }
 
@@ -594,6 +597,7 @@ a {
       @include transition(.2s, color);
 
       &:hover {
+        text-decoration: none;
         color: $light-accent-color;
         @include transition(.2s, color);
       }
