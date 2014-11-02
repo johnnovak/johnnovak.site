@@ -1,19 +1,29 @@
 @import '../../common/css/base.scss';
 
-$bg-color:           #6e7275;
-$font-color:         #fff;
-$light-font-color:   #d0d2d2;
-$accent-color:       #d8ff00;
-$light-accent-color: #fb0;
-$sel-color:          #bbb;
+$bg-color:           #fff;
+$font-color:         #000;
+$light-font-color:   #555;
+$accent-color:       #4abeaa;
+$light-accent-color: #b7e5dd;
+$link-color:         #b54155;
+$sel-color:          #dcfc86;
+
+$img-path: '/blog/img';
+
+$monospace: Menlo, Courier;
+
+$media-medium: 'only screen and (min-width: 500px)';
+$media-large:  'only screen and (min-width: 900px)';
 
 
 @include selection-color($sel-color, 'black');
 
 body {
   margin: 0 25px;
-  font-size: 18px;
+  line-height: 1.6;
   overflow-x: hidden;
+  color: $font-color;
+  font-size: 18px;
 }
 
 html {
@@ -24,18 +34,18 @@ html {
   margin-bottom: 30px;
 }
 
+a {
+  color: $accent-color;
+}
+
 #header {
   height: 150px;
 
   h1 {
     @include pos(70, 58, $align: 'right');
     font-size: 30px;
-    font-weight: normal;
+    font-weight: $normal;
     text-transform: uppercase;
-
-    a {
-      color: $accent-color;
-    }
   }
 }
 
@@ -53,92 +63,108 @@ html {
   }
 
   h1 {
-    margin: 0 0 15px 0;
-    font-size: 28px;
-    font-weight: $bold;
+    margin: 0 0 20px 0;
+    font-size: 38px;
+    font-weight: $thin;
     line-height: 1;
+    color: #444;
   }
   h2 {
     margin: 0 0 6px 0;
     padding: 0;
-    font-weight: normal;
-    font-size: 20px;
+    font-weight: $normal;
+    font-size: 22px;
     line-height: 1;
+
+    a {
+      color: #000;
+    }
   }
   h3 {
     margin: 0;
     padding: 0;
-    font-weight: normal;
-    font-size: 18px;
+    font-weight: $normal;
+    font-size: 20px;
     text-transform: uppercase;
     line-height: 1;
-    color: $light-font-color;
+    color: #777;
   }
 }
 
 .post {
   h1 {
     margin: 0;
-    font-size: 36px;
-    font-weight: $thin;
-    line-height: 1;
-  }
-  h2 {
-    margin: 2em 0 1em;
-    font-size: 20px;
+    font-size: 28px;
     font-weight: $xbold;
+    line-height: 1;
     text-transform: uppercase;
   }
+  h2 {
+    margin: 1em 0 .5em;
+    font-size: 24px;
+    font-weight: $bold;
+    color: $accent-color;
+  }
   h3 {
-    margin: 2em 0 1em;
+    margin: 1.5em 0 .5em;
     font-size: 20px;
     font-weight: $bold;
-  }
-  a {
-    font-weight: $xbold;
     color: $accent-color;
+  }
+  p a {
+    color: $link-color;
+    font-weight: $bold;
 
     &:hover {
       text-decoration: underline;
-      color: #e44;
     }
+  }
+  .caption {
+    margin-top: -.5em;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+  }
+  ul {
+    list-style: square;
+  }
+  code {
+    font: 15px $monospace;
+    background: #eee;
+    color: #333;
+    padding: 2px 4px;
   }
   .date {
     display: block;
     margin: 0 0 30px 0;
-    font-size: 20px;
-    font-weight: normal;
+    font-size: 24px;
+    font-weight: $normal;
     line-height: 1.8;
     text-transform: uppercase;
+    color: $accent-color;
   }
   hr {
     margin-top: 40px;
     width: 100px;
     border: none;
-    border-top: 1px solid #aaa;
+    border-top: 0px solid #aaa;
   }
-}
-
-$monospace: Menlo, Courier;
-
-pre {
-  padding: 13px;
-  line-height: 1.2;
-  background: #fff;
-  border-radius: 12px;
-
-  code {
+  pre {
+    padding: 13px;
     font: 14px $monospace;
+    line-height: 1.0;
+    padding-left: 1em;
+    border: dotted #bbb;
+    border-width: 1px 0;
+
+    code {
+      font: 14px $monospace;
+      line-height: 1.2;
+      background: none;
+      color: #333;
+    }
+    overflow-x: auto;
   }
-  overflow-x: auto;
-}
-p {
-  code {
-    font: bold 15px $monospace;
-  }
-}
-ul {
-  list-style: square;
 }
 
 #navigation {
@@ -164,7 +190,7 @@ ul {
 }
 
 #disqus_thread {
-  margin-top: 200px;
+  margin-top: 150px;
 }
 #no-disqus {
   margin-top: 50px;
@@ -193,11 +219,11 @@ ul {
   }
 }
 
-@media only screen and (min-width: 500px) {
+@media #{$media-medium} {
   #jn-logo {
     top: 20px;
     width: 400px;
-    height: 124px;
+    height: 120px;
   }
   #header {
     height: 220px;
@@ -212,17 +238,17 @@ ul {
     h1 {
       margin: 0;
       float: left;
-      font-size: 34px;
+      font-size: 38px;
     }
     h2 {
-      margin: 0 0 0 200px;
-      line-height: 1.6;
+      margin: 0 0 0 205px;
+      line-height: 1.4;
     }
     h3 {
       position: absolute;
       top: 0;
-      margin: 2px 0 0 110px;;
-      line-height: 1.5;
+      margin: 2px 0 0 115px;;
+      line-height: 1.4;
     }
   }
   .post {
@@ -232,29 +258,50 @@ ul {
   }
 }
 
-@media only screen and (min-width: 800px) {
+@media #{$media-large} {
   body {
     margin: 0;
   }
   #wrapper {
     position: relative;
     left: -8%;
-    width: 600px;
+    width: 700px;
     margin: 0 auto 40px auto;
   }
   #header {
-    height: 280px;
+    height: 340px;
   }
   #jn-logo {
     right: 0;
   }
   #header-bg {
-    @include pos(-90, -415, $align: 'right');
-    @include bg-img(474, 444, 'bg-about', $basepath: '/img');
+    @include pos(-63, -355, $align: 'right');
+    @include bg-img(450, 413, 'bg-header', $basepath: $img-path);
+    z-index: 10;
   }
   #footer {
     margin-top: 60px;
   }
+}
+
+.header-link {
+  margin-left: 10px;
+  font-weight: $xbold;
+  font-size: 16px;
+  text-decoration: none;
+  color: #aaa;
+  visibility: hidden;
+}
+.header-link:hover {
+  text-decoration: underline;
+}
+
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  visibility: visible;
 }
 
 @import 'pygments.scss';

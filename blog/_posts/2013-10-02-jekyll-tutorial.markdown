@@ -54,12 +54,34 @@ Before we dive in, I want to note that you can see the results on my
 
 To make things easier, every post will store its tags in a data- attribute:
 
-{% highlight javascript %}
-{% for post in site.posts %}
-li class="post" data-tags="{{ post.tags | join:',' }}"
-h1 class="title" a href="{{ post.url }}">{{ post.title }} h1
-/li 
-{% endfor %}
+
+{% highlight c %}
+/* Finds and returns the small sub-tree in the forest */
+
+int findSmaller (Node *array[], int differentFrom){
+    int smaller;
+    int i = 0;
+
+    while (array[i]->value == -1) i++;
+    smaller = i;
+
+    if (i == differentFrom) {
+        i++;
+        while (array[i] -> value == -1)
+            i++;
+        smaller = i;
+    }
+
+    for (i = 1; i < 27; i++) {
+        if (array[i]->value == -1)
+            continue;
+        if (i == differentFrom)
+            continue;
+        if (array[i]->value<array[smaller]->value)
+            smaller = i;
+    }
+    return smaller;
+}
 {% endhighlight %}
 
 
@@ -93,24 +115,17 @@ function updateTags() {
 }
 
 $(window).bind('hashchange', updateTags)
-updateTags();
+  updateTags();
 })
 {% endhighlight %}
 
+<p class="caption">Listing 1 &mdash; updateTags() function in JavaScript</p>
 
-### Bonus: Group Posts by Year
+
+### Bonus --- Group Posts by Year
 
 Imagine you want to divide your post listing into different years to achieve
-something like this:
-
-* 2012
-  * Post 4
-  * Post 3
-* 2011
-  * Post 2
-  * Post 1
-
-It's fairly easy with standard Liquid if you know how. We store the year of the
+something like this. It's fairly easy with standard Liquid if you know how. We store the year of the
 previous post, extract the year of the current one, compare both and output a
 header if the two differ.
 

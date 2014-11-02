@@ -40,6 +40,9 @@ home:
 watch_home_css:
 	sass $(SASS_WATCH_OPTS) --watch $(HOME_CSS_LOCATION)
 
+home_css:
+	sass $(SASS_WATCH_OPTS) --update $(HOME_CSS_LOCATION)
+
 symlink_home_js:
 	rm $(DEST_HOME_DIR)/js/home.js
 	ln -s $(PWD)/home/js/home.js $(DEST_HOME_DIR)/js/home.js
@@ -71,6 +74,9 @@ fotorama:
 watch_photo_css:
 	sass $(SASS_WATCH_OPTS) --watch $(PHOTO_CSS_LOCATION)
 
+watch_photo_css:
+	sass $(SASS_WATCH_OPTS) --update $(PHOTO_CSS_LOCATION)
+
 symlink_photo_js:
 	rm $(DEST_PHOTO_DIR)/js/photo.js
 	ln -s $(PWD)/photo/js/photo.js $(DEST_PHOTO_DIR)/js/photo.js
@@ -94,6 +100,9 @@ watch_blog:
 
 watch_blog_css:
 	sass $(SASS_WATCH_OPTS) --watch $(BLOG_CSS_LOCATION)
+
+blog_css:
+	sass $(SASS_WATCH_OPTS) --update $(BLOG_CSS_LOCATION)
 
 clean_blog:
 	rm -rf $(DEST_BLOG_DIR)

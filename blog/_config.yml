@@ -6,3 +6,5 @@ baseurl:      /blog
 
 permalink:    :year/:month/:day/:title/
 encoding:     UTF8-MAC
+
+pygments:     false
