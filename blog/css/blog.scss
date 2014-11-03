@@ -1,16 +1,22 @@
-@import '../../common/css/base.scss';
+@import '../../common/css/mixins.scss';
+
+$xthin:  200;
+$thin:   300;
+$normal: 400;
+$bold:   600;
+$xbold:  700;
 
 $bg-color:           #fff;
-$font-color:         #000;
-$light-font-color:   #555;
+$font-color:         #555;
+$light-font-color:   #666;
 $accent-color:       #4abeaa;
-$light-accent-color: #b7e5dd;
+$light-accent-color: mix($accent-color, $bg-color, 70);
 $link-color:         #b54155;
 $sel-color:          #dcfc86;
 
 $img-path: '/blog/img';
 
-$monospace: Menlo, Courier;
+$monospace: Menlo, Monaco, "Courier New", monospace;
 
 $media-medium: 'only screen and (min-width: 500px)';
 $media-large:  'only screen and (min-width: 900px)';
@@ -18,12 +24,24 @@ $media-large:  'only screen and (min-width: 900px)';
 
 @include selection-color($sel-color, 'black');
 
+@include flat-scrollbar(
+  12px,
+  $bg-color:    #fff,
+  $color:       #bbb,
+  $hover-color: #ccc,
+  $drag-color:  #ccc
+);
+
 body {
-  margin: 0 25px;
+  margin: 0 20px;
   line-height: 1.6;
   overflow-x: hidden;
   color: $font-color;
+  font-family: 'Source Sans Pro', Calibri, Arial, sans-serif;
   font-size: 18px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 html {
@@ -34,18 +52,58 @@ html {
   margin-bottom: 30px;
 }
 
+img {
+  border: none;
+}
+
 a {
   color: $accent-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 #header {
   height: 150px;
+  @include enable-selection(false);
 
   h1 {
     @include pos(70, 58, $align: 'right');
     font-size: 30px;
     font-weight: $normal;
     text-transform: uppercase;
+  }
+
+  ul {
+    padding-top: 80px;
+    text-align: right;
+    list-style: none;
+    color: $accent-color;
+
+    li {
+      display: inline;
+      margin: 0 15px 0 0;
+      padding: 0;
+      font-size: 19px;
+      font-weight: $normal;
+      text-transform: uppercase;
+
+      a {
+        padding-right: 10px;
+
+        &:hover {
+          text-decoration: none;
+          color: $light-accent-color;
+        }
+      }
+
+      &:not(:last-child):after {
+        margin-right: -10px;
+        content: "/";
+      }
+    }
   }
 }
 
@@ -92,6 +150,8 @@ a {
 }
 
 .post {
+  position: relative;
+
   h1 {
     margin: 0;
     font-size: 28px;
@@ -100,16 +160,20 @@ a {
     text-transform: uppercase;
   }
   h2 {
-    margin: 1em 0 .5em;
-    font-size: 24px;
-    font-weight: $bold;
+    margin: .5em 0 .5em;
+    font-size: 28px;
+    font-weight: $normal;
     color: $accent-color;
+    float: left;
   }
   h3 {
-    margin: 1.5em 0 .5em;
-    font-size: 20px;
-    font-weight: $bold;
+    margin: 1em 0 0;
+    font-size: 22px;
+    font-weight: $normal;
     color: $accent-color;
+  }
+  p {
+    clear: both;
   }
   p a {
     color: $link-color;
@@ -120,7 +184,7 @@ a {
     }
   }
   .caption {
-    margin-top: -.5em;
+    margin: -1.5em 0 2em 0;
     text-align: center;
     font-size: 16px;
     color: #666;
@@ -136,12 +200,37 @@ a {
   }
   .date {
     display: block;
-    margin: 0 0 30px 0;
+    width: 100%;
+    margin: 0 440px 00px 0;
     font-size: 24px;
-    font-weight: $normal;
+    font-weight: $thin;
     line-height: 1.8;
     text-transform: uppercase;
     color: $accent-color;
+  }
+  .tags {
+    list-style: none;
+    margin: 10px 0 30px 0;
+    padding: 0;
+    color: $accent-color;
+
+    li {
+      display: inline-block;
+
+      a {
+        padding: 2px 8px;
+        font-size: 15px;
+        text-transform: uppercase;
+        background: $accent-color;
+        color: #fff;
+        border-radius: 3px;
+
+        &:hover {
+          text-decoration: none;
+          background: $light-accent-color;
+        }
+      }
+    }
   }
   hr {
     margin-top: 40px;
@@ -150,6 +239,7 @@ a {
     border-top: 0px solid #aaa;
   }
   pre {
+    margin: 2em 0;
     padding: 13px;
     font: 14px $monospace;
     line-height: 1.0;
@@ -161,31 +251,9 @@ a {
       font: 14px $monospace;
       line-height: 1.2;
       background: none;
-      color: #333;
+      color: #666;
     }
     overflow-x: auto;
-  }
-}
-
-#navigation {
-  margin-top: 60px;
-  border-top: 1px solid #aaa;
-
-  ul {
-    margin: 10px 0 20px 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      width: 100%;
-      a {
-        font-size: 20px;
-        font-weight: $bold;
-      }
-    }
-    .next {
-      text-align: right;
-    }
   }
 }
 
@@ -200,26 +268,10 @@ a {
   text-align: center;
 }
 
-#footer {
-  margin-top: 40px;
-  padding: 4px 0;
-  border-top: 1px solid #aaa;
-  text-transform: uppercase;
-  text-align: center;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      margin: 0 20px;
-      display: inline;
-    }
-  }
-}
-
 @media #{$media-medium} {
+  body {
+    margin: 0 25px;
+  }
   #jn-logo {
     top: 20px;
     width: 400px;
@@ -232,6 +284,23 @@ a {
       top: 100px;
       right: 68px;
       font-size: 40px;
+    }
+
+    ul {
+      padding-top: 118px;
+      padding-right: 35px;
+      text-align: right;
+      list-style: none;
+      color: $accent-color;
+
+      li {
+        margin-right: 16px;
+        font-size: 20px;
+
+        a {
+          padding-right: 11px;
+        }
+      }
     }
   }
   .archives {
@@ -255,6 +324,20 @@ a {
     h1 {
       font-size: 40px;
     }
+    .date {
+      font-size: 28px;
+    }
+    .tags {
+      font-size: 16px;
+
+      li {
+        margin: 15px 2px 15px 0;
+
+        a {
+          font-size: 16px;
+        }
+      }
+    }
   }
 }
 
@@ -265,22 +348,46 @@ a {
   #wrapper {
     position: relative;
     left: -8%;
+    padding-left: 80px;
     width: 700px;
     margin: 0 auto 40px auto;
   }
   #header {
     height: 340px;
+
+    ul {
+      padding-top: 136px;
+    }
   }
   #jn-logo {
     right: 0;
+    z-index: 100;
   }
   #header-bg {
     @include pos(-63, -355, $align: 'right');
     @include bg-img(450, 413, 'bg-header', $basepath: $img-path);
     z-index: 10;
+    pointer-events: none;
   }
-  #footer {
-    margin-top: 60px;
+  .post {
+    h1 {
+      width: 560px;
+    }
+    .date {
+      margin-top: 10px;
+      margin-bottom: 40px;
+    }
+    .tags {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 125px;
+
+      li {
+        display: block;
+        margin: 0 0 4px 0;
+      }
+    }
   }
 }
 
@@ -304,4 +411,3 @@ h6:hover .header-link {
   visibility: visible;
 }
 
-@import 'pygments.scss';

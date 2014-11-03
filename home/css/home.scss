@@ -1,7 +1,6 @@
 @import '../../common/css/base.scss';
 @import 'common.scss';
 
-
 $bg-color:           #6e7275;
 $font-color:         #fff;
 $light-font-color:   #d4d6d6;
@@ -34,13 +33,13 @@ html {
 }
 
 body {
-  @include enable-selection(false);
-  text-transform: uppercase;
   margin: 20px;
   overflow-x: hidden;
-  cursor: default;
   background: $bg-color;
   color: $font-color;
+  text-transform: uppercase;
+  cursor: default;
+  @include enable-selection(false);
 }
 
 #jn-logo {
@@ -103,9 +102,9 @@ a {
 }
 
 .section-content {
-  @include transition(.8s, margin-left);
-  @include enable-selection(true);
   cursor: text;
+  @include enable-selection(true);
+  @include transition(.8s, margin-left);
 
   & h2:first-child {
     margin-top: 0;
@@ -148,7 +147,6 @@ a {
     top: auto;
     width: 400px;
   }
-
   .desktop .anchor {
     top: -#{$header-height};
   }
@@ -179,9 +177,9 @@ a {
 
   li {
     display: inline-block;
+    padding: 0 0 0 10px;
     font-size: 18px;
     font-weight: $normal;
-    padding: 0 0 0 10px;
     color: $accent-color;
 
     a {
@@ -199,18 +197,22 @@ a {
 
 @media #{$media-medium} {
   #header {
-    @include pos(0, 0, 1);
+    @include pos(0, 0, $z-index: 1);
     width: 100%;
     height: $header-height;
     background: $bg-color;
-    @include vertical-gradient(rgba($bg-color, 1) 94%, rgba($bg-color, 0) 100%);
+
+    @include vertical-gradient(
+      rgba($bg-color, 1) 94%,
+      rgba($bg-color, 0) 100%
+    );
   }
   #jn-logo {
-    @include pos(20, 348, 1);
+    @include pos(20, 348, $z-index: 1);
     @include transition(1s);
   }
   #mainmenu {
-    @include pos(38, 0, 100);
+    @include pos(38, 0, $z-index: 100);
     width: 440px;
     padding: 0 0 0 30px;
     text-align: left;
@@ -223,10 +225,9 @@ a {
       a {
         margin-right: 18px;
       }
-
-      &:not(.last):after {
-        margin-left: -5px;
-        margin-right: 8px;
+      &:not(:last-child):after {
+        margin-left: -6px;
+        margin-right: 7px;
         content: "/";
       }
     }
@@ -259,6 +260,7 @@ a {
   }
   .interests {
     @include enable-selection(true);
+
     li {
       display: inline-block;
       color: $light-font-color;
@@ -269,18 +271,22 @@ a {
     }
   }
   .info {
-    @include enable-selection(true);
     margin-top: 10px;
     font-weight: $xbold;
+    @include enable-selection(true);
   }
   .contact {
-    @include enable-selection(true);
     font-weight: $xbold;
+    @include enable-selection(true);
   }
 }
 
 @media #{$media-medium} {
   #about-section {
+    position: relative;
+    height: 900px;
+    padding-top: 170px;
+
     h1 {
       @media screen and (orientation:portrait) {
         margin-top: 80px;
@@ -289,12 +295,9 @@ a {
         margin-top: 15px;
       }
     }
-    position: relative;
-    height: 900px;
-    padding-top: 170px;
   }
   #about-bg {
-    @include pos(189, -77, 10);
+    @include pos(189, -77, $z-index: 10);
     @include bg-img(474, 444, 'bg-about', $basepath: $img-path);
     @include transition(1.2s, left);
   }
@@ -357,7 +360,7 @@ a {
     }
   }
   #music-bg {
-    @include pos(-69, -80, 10);
+    @include pos(-69, -80, $z-index: 10);
     @include bg-img(592, 564, 'bg-music', $basepath: $img-path);
     @include transition(.5s, left);
     pointer-events: none;
@@ -381,10 +384,6 @@ a {
       .formats {
         display: inline;
       }
-    }
-    .sidebar {
-      position: static;
-      margin-top: 42px;
     }
   }
   #music-bg {
@@ -476,11 +475,11 @@ a {
       @include opacity(0);
     }
     .sidebar {
-      text-align: left;
-      margin-left: 0;
       position: absolute;
       top: 440px;
       left: 260px;
+      margin-left: 0;
+      text-align: left;
 
       .gallery {
         font-size: 20px;
@@ -488,17 +487,17 @@ a {
     }
   }
   #photo-bg-leg1 {
-    @include pos(119, -79, 30);
+    @include pos(119, -79, $z-index: 30);
     @include bg-img(362, 233, 'bg-photo-leg1', $basepath:  $img-path);
     @include transition(.8s, left);
   }
   #photo-bg-leg2 {
-    @include pos(-169, -3, 20);
+    @include pos(-169, -3, $z-index: 20);
     @include bg-img(244, 294, 'bg-photo-leg2', $basepath:  $img-path);
     @include transition(.6s, left);
   }
   #photo-bg-skull {
-    @include pos(139, -79, 10);
+    @include pos(139, -79, $z-index: 10);
     @include bg-img(420, 509, 'bg-photo-skull', $basepath:  $img-path);
     @include transition(.9s, left);
   }
@@ -510,9 +509,9 @@ a {
       width: 440px;
     }
     .sidebar {
+      position: static;
       margin-left: 820px;
       margin-top: 10px;
-      position: static;
     }
     .photo1  { left: 380px; }
     .photo2  { left: 480px; }
@@ -525,7 +524,7 @@ a {
     .photo9  { left: 580px; }
     .photo10 { @include pos(300, 780); }
     .photo11 { left: 680px; }
-    .photo12 { top: 200px; left: 780px; }
+    .photo12 { @include pos(200, 780); }
 
     .photo-spacer1 {
       left: 380px;
@@ -551,7 +550,7 @@ a {
     height: 1400px;
   }
   #code-bg {
-    @include pos(-19, -99, 10);
+    @include pos(-19, -99, $z-index: 10);
     @include bg-img(513, 547, 'bg-code', $basepath:  $img-path);
     @include transition(.8s, left);
   }
@@ -575,8 +574,8 @@ a {
   border-top: 1px solid $font-color;
 
   p {
-    font-size: 14px;
     margin: 0;
+    font-size: 14px;
     text-align: right;
   }
 }
@@ -584,16 +583,16 @@ a {
 @media #{$media-medium} {
   #footer-section {
     position: relative;
-    margin-top: 0;
     height: 230px;
+    margin-top: 0;
+    border-top: none;
+    font-size: 18px;
     background: $footer-color;
     color: $font-color;
-    font-size: 18px;
-    border-top: none;
 
     a {
-      color: $font-color;
       font-weight: $xbold;
+      color: $font-color;
       @include transition(.2s, color);
 
       &:hover {
@@ -606,32 +605,30 @@ a {
       font-size: 16px;
     }
     .github {
-      position: absolute;
-      top: 180px;
-      right: 40px;
+      @include pos(180, 40, $align: right);
     }
   }
   #footer-bg-building {
-    @include pos(-249, 279, 50);
+    @include pos(-249, 279, $z-index: 50);
     @include bg-img(860, 405, 'bg-footer-building', $basepath:  $img-path);
     @include transition(1.1s, left);
   }
   #footer-bg-gate {
-    @include pos(-137, 89, 10);
+    @include pos(-137, 89, $z-index: 10);
     @include bg-img(173, 173, 'bg-footer-gate', $basepath:  $img-path);
     @include transition(.8s, left);
   }
   #footer-bg-sun {
-    @include pos(-69, 71, 1);
+    @include pos(-69, 71, $z-index: 1);
     @include bg-img(205, 205, 'bg-footer-sun', $basepath:  $img-path);
     @include transition(.8s, left);
   }
   #footer-bg {
     position: absolute;
-    margin-top: 0px;
-    z-index: 20;
     width: 100%;
     height: 180px;
+    margin-top: 0;
+    z-index: 20;
     background: $footer-color;
 //    background-image: linear-gradient($bg-color, #f06d06);
   }

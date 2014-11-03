@@ -74,7 +74,7 @@ fotorama:
 watch_photo_css:
 	sass $(SASS_WATCH_OPTS) --watch $(PHOTO_CSS_LOCATION)
 
-watch_photo_css:
+photo_css:
 	sass $(SASS_WATCH_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 symlink_photo_js:

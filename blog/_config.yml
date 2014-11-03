@@ -1,10 +1,11 @@
-name:         John Novak's blog
+name:         John Novak Blog
 description:  Personal blog of John Novak
-url:          http://johnnovak.net
+url:          http://johnnovak.net/
+
+timezone:     Australia/Brisbane
+encoding:     utf-8
 
 baseurl:      /blog
-
 permalink:    :year/:month/:day/:title/
-encoding:     UTF8-MAC
 
 pygments:     false
