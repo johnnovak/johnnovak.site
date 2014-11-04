@@ -12,10 +12,9 @@
   <title>{{ page.title }}</title>
 
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" />
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />
-  <link rel="stylesheet" type="text/css" href="/blog/css/blog.css" />
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}css/blog.css" />
 
-  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.url }}/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/feed.xml">
 </head>
 
 <body>
@@ -25,11 +24,11 @@
 
   <div id="header">
     <div id="header-bg"></div>
-    <a href="/"><img id="jn-logo" src="/blog/img/jn-logo.png" alt="John Novak" /></a>
+    <a href="/"><img id="jn-logo" src="{{ site.baseurl }}img/jn-logo.png" alt="John Novak" /></a>
     <ul>
-      <li><a href="{{ baseurl }}/about/">About</a></li>
-      <li><a href="{{ baseurl }}/archives/">Archives</a></li>
-      <li><a href="{{ baseurl }}/tags/">Tags</a></li>
-      <li><a href="{{ baseurl }}/feed.xml">Rss</a></li>
+      <li><a href="{{ site.baseurl }}about/">About</a></li>
+      <li><a href="{{ site.baseurl }}archives/">Archives</a></li>
+      <li><a href="{{ site.baseurl }}tags/">Tags</a></li>
+      <li><a href="{{ site.baseurl }}feed.xml">Rss</a></li>
     </ul>
   </div>

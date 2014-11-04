@@ -20,6 +20,10 @@ window.blockFotoramaData = true;
 /// GLOBAL MODULE START ////////////////////////////////////////////////////////
 var site = function() {
 
+// Set to 1 if the site is located in a subdirectory under the server root
+// (e.g. /photo/)
+var IS_IN_SUBDIR = 0
+
 
 // Load HTML fragment and fire a callback function when all images contained in
 // it are fully loaded.
@@ -127,13 +131,14 @@ function splitPathName(pathname) {
 }
 
 function pageNameFromPathName(pathname) {
+  var i = IS_IN_SUBDIR
   pathnameNoHash = pathname.replace(/#.*$/, '');
   var path = splitPathName(pathnameNoHash);
-  if (path.length == 2 && path[1] == 'about') {
+  if (path.length == i+1 && path[i+0] == 'about') {
     return 'about';
-  } else if (path.length == 1 || path.length == 2) {
+  } else if (path.length == i+0 || path.length == i+1) {
     return 'albums';
-  } else if (path.length == 3) {
+  } else if (path.length == i+2) {
     return 'photo';
   }
 }

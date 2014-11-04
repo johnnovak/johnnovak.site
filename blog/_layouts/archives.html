@@ -12,8 +12,9 @@ title: John Novak Blog - Archives
   {% assign curr_year = post_year %}
 {% endif %}
   <div class="entry">
-    <h2 class="title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+    <h2 class="title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
     <h3>{{ post.date | date:'%b %m' }}</h3>
   </div>
 {% endfor %}
 </div>
+

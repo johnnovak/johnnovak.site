@@ -13,7 +13,7 @@ $main-width: 780px;
 $medium-width-delta: 60px;
 $header-height: 200px;
 
-$img-path: '/home/img';
+$img-path: '/img';
 
 $footer-color: #555;
 
@@ -216,7 +216,7 @@ a {
     width: 440px;
     padding: 0 0 0 30px;
     text-align: left;
-    background: url(/home/img/menu-bg@2x.png) top right no-repeat;
+    background: url(/img/menu-bg@2x.png) top right no-repeat;
 
     li {
       font-size: 22px;

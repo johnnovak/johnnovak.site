@@ -262,15 +262,6 @@ def process_images(album, input_dir):
 
 
 def generate_albums(config, input_dir, output_dir, basepath):
-    try:
-        info("\nDeleting output directory '%s'" % output_dir)
-        shutil.rmtree(output_dir)
-    except OSError, e:
-        print e
-
-    info("Creating output directory '%s'" % output_dir)
-    os.mkdir(output_dir)
-
     env = Environment(loader=FileSystemLoader(joinpath(input_dir,
                                                        '_templates')))
 

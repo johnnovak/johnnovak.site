@@ -9,8 +9,8 @@
 
   <title>John Novak Photography</title>
 
-  <link rel="stylesheet" type="text/css" href="{{ basepath }}/css/fotorama.css">
-  <link rel="stylesheet" type="text/css" href="{{ basepath }}/css/photo.css" />
+  <link rel="stylesheet" type="text/css" href="{{ basepath }}css/fotorama.css">
+  <link rel="stylesheet" type="text/css" href="{{ basepath }}css/photo.css" />
 
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
@@ -18,9 +18,9 @@
       document.write('<script src="/js/lib/jquery-1.11.1.min.js"><\/script>');
     }
   </script>
-  <script src="{{ basepath }}/js/lib/fotorama.js"></script>
-  <script src="{{ basepath }}/js/lib/imagesloaded.pkgd.min.js"></script>
-  <script src="{{ basepath }}/js/photo.js"></script>
+  <script src="{{ basepath }}js/lib/fotorama.js"></script>
+  <script src="{{ basepath }}js/lib/imagesloaded.pkgd.min.js"></script>
+  <script src="{{ basepath }}js/photo.js"></script>
 </head> 
 
 <body class="{{ page }}">
@@ -28,7 +28,7 @@
   <script>document.body.className += ' js';</script>
 
   <div id="header">
-    <h1><a class="jn" href="http://www.johnnovak.net/">John Novak</a> <a class="photo" href="{{ basepath }}/">Photography</a></h1>
+    <h1><a class="jn" href="http://www.johnnovak.net/">John Novak</a> <a class="photo" href="{{ basepath }}">Photography</a></h1>
 
     <div class="menu">
       <ul class="categories">
@@ -36,7 +36,7 @@
         <li><a href="{{ category.href }}">{{ category.caption }}</a></li>
         {%- endfor %}
       </ul>
-      <p class="about"><a href="{{ basepath }}/about/">About</a></p>
+      <p class="about"><a href="{{ basepath }}about/">About</a></p>
     </div>
   </div>
 

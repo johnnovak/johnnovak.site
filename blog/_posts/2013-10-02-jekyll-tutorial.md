@@ -6,11 +6,11 @@ tags:   java optimisation compression huffmann
 
 In a previous post I wrote about moving from Wordpress to Jekyll where I was
 ultimately hosting this site in GitHub Pages. While that setup was great, and
-an easy way to get started, I wanted to have a little more freedom to play with
-plugins and additional/custom functionality. To that end I migrated the system
-into Octopress and reverted to hosting with the same server from which I was
-running the previous Wordpress install. I had waited to cancel the hosting
-service just in case I decided to do this.
+an easy way to get started, I wanted to have a little more freedom to play
+with plugins and additional/custom functionality. To that end I migrated the
+system into Octopress and reverted to hosting with the same server from which
+I was running the previous Wordpress install. I had waited to cancel the
+hosting service just in case I decided to do this.
 
 Here I'm going to show you how to make an interactive Archives page with
 categories in Jekyll without using plugins. Very simple and extensible through
@@ -24,12 +24,13 @@ by date. That is fairly easy in pure Jekyll: Just loop over every post and add
 title and date.
 
 Now here's the catch: I'm using [tags](#) to sort my posts into different
-categories and it would be nice if a user could select a specific tag and get a
-listing of all blogs with this tag. Fairly basic stuff -- for a dynamic
-blogging engine. Now, Jekyll supports tags out of the box, but has, at this
-time, no function to generate a page for each tag. So, everytime we introduce a
-new tag, we'd need to [create a archives page](#) for this tag to loop over the
-posts. Which, in my opinion, makes Jekyll's tags feature pretty useless.
+categories and it would be nice if a user could select a specific tag and get
+a listing of all blogs with this tag. Fairly basic stuff -- for a dynamic
+blogging engine. Now, [Jekyll][^jekyll] supports tags out of the box, but has,
+at this time, no function to generate a page for each tag. So, everytime we
+introduce a new tag, we'd need to [create a archives page](#) for this tag to
+loop over the posts. Which, in my opinion, makes Jekyll's tags feature pretty
+useless.
 
 Plugins would of course solve this problem. But remember my self-imposed
 constraint mentioned in Part 1? Pure vanilla [Jekyll](#) running on
@@ -39,13 +40,13 @@ constraint mentioned in Part 1? Pure vanilla [Jekyll](#) running on
 -----------------------
 
 So, if Jekyll can't generate tag pages out of the box, we'll elevate the
-problem to the client browser. If our Archives page already contains every post
-of the blog, we'll just have to hide the ones which do not match our tags. How?
-With the HTML 5 multi-tool: *JavaScript!*
+problem to the client browser. If our [Archives][^archive] page already
+contains every post of the blog, we'll just have to hide the ones which do not
+match our tags. How?  With the HTML 5 multi-tool: *JavaScript!*
 
 We are going to pass the selected category via Hashtag in the URL, for example
-`/archives/#!webdev`. JavaScript then extracts the tag and toggles the posts
-based on whether they match it or not.
+`/archives/#!webdev`. [JavaScript][js] then extracts the tag and toggles the
+posts based on whether they match it or not.
 
 Before we dive in, I want to note that you can see the results on my
 [Archives](#) page.
@@ -88,12 +89,11 @@ int findSmaller (Node *array[], int differentFrom){
 
 ### Step 2: JavaScript Voodoo
 
-Jep, I'm using jQuery here. But you should have no problem adapting it to
+Jep, I'm using jQuery here. But --- you should have no problem adapting it to
 standard JavaScript. The updateTags function extracts the tag from the hash,
-loops over `.post` elements, compares their data-tags-attribute against
-the hash and fades them depending on the result. We also listen for
-`onhashchange` to update the selection when a tag link on the same page
-is clicked.
+loops over `.post` elements, compares their data-tags-attribute against the
+hash and fades them depending on the result. We also listen for `onhashchange`
+to update the <<selection>> when a tag link on the same page is clicked.
 
 {% highlight javascript %}
 $(function() {
@@ -129,4 +129,11 @@ Imagine you want to divide your post listing into different years to achieve
 something like this. It's fairly easy with standard Liquid if you know how. We store the year of the
 previous post, extract the year of the current one, compare both and output a
 header if the two differ.
+
+References
+----------
+
+[^jekyll]:  http://jekyllrb.org/    "Jekyll static blog page generator"
+[^archive]: http://www.archive.org/ "The Internet Archive"
+[^js]:      http://crockford.com/   "Douglas Crockford homepage"
 

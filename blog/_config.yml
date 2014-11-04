@@ -5,7 +5,9 @@ url:          http://johnnovak.net/
 timezone:     Australia/Brisbane
 encoding:     utf-8
 
-baseurl:      /blog
 permalink:    :year/:month/:day/:title/
 
+markdown:     kramdown
 pygments:     false
+
+exclude:      [*.scss, *.css.map]

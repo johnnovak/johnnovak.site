@@ -10,6 +10,8 @@ $font-family: Helvetica, Arial, sans-serif;
 $icons_bg_w: 62;
 $icons_bg_h: 36;
 
+$img-path: '/img';
+
 @mixin titlecaps {
   margin: 0;
   padding: 0;
@@ -67,7 +69,7 @@ a {
   z-index: 100;
   overflow: auto;
 
-  @include bg-img(35, 35, 'spinner', $suffix: '.gif', $basepath: '/photo/img');
+  @include bg-img(35, 35, 'spinner', $suffix: '.gif', $basepath: $img-path);
 }
 
 #header {
@@ -173,7 +175,7 @@ a {
         $bg_w: $icons_bg_w,
         $bg_h: $icons_bg_h,
         $x: 0, $y: 18, $w: 10, $h: 18,
-        $basepath: '/photo/img'
+        $basepath: $img-path 
       );
       margin-right: 10px;
 
@@ -189,7 +191,7 @@ a {
         $bg_w: $icons_bg_w,
         $bg_h: $icons_bg_h,
         $x: 0, $y: 0, $w: 10, $h: 18,
-        $basepath: '/photo/img'
+        $basepath: $img-path
       );
       margin-left: 8px;
 
@@ -209,7 +211,7 @@ a {
         $bg_w: $icons_bg_w,
         $bg_h: $icons_bg_h,
         $x: 30, $y: 0, $w: 16, $h: 16,
-        $basepath: '/photo/img'
+        $basepath: '/img'
       );
       position: absolute;
       margin-top: 1px;
@@ -268,7 +270,7 @@ a {
       $bg_w: $icons_bg_w,
       $bg_h: $icons_bg_h,
       $x: 30, $y: 0, $w: 16, $h: 16,
-      $basepath: '/photo/img'
+      $basepath: $img-path
     );
   }
 }
