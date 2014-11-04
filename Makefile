@@ -11,20 +11,10 @@ PHOTO_CSS_LOCATION = photo/css:$(DEST_PHOTO_DIR)/css
 BLOG_CSS_LOCATION  = blog/css:$(DEST_BLOG_DIR)/css
 
 default: all
-all: common home photo blog
+all: home photo blog
 
 clean_dir = find $(1) \( ! -regex '.*/\..*' \) ! -path . ! -name CNAME \
 			| xargs rm -rf
-
-### HOME ######################################################################
-
-.PHONY: common clean_common
-
-common:
-	cp -r common/js $(DEST_HOME_DIR)
-
-clean_common:
-	rm -rf $(DEST_HOME_DIR)/js
 
 
 ### HOME ######################################################################
@@ -109,12 +99,12 @@ clean_blog:
 	$(call clean_dir,$(DEST_BLOG_DIR)/*)
 
 
-### MISC ######################################################################
+### CLEAN  ######################################################################
 
 .PHONY: clean clean_all
 
 clean:
 	rm -rf .sass_cache
 
-clean_all: clean_common clean_home clean_photo clean_blog
+clean_all: clean_home clean_photo clean_blog
 
