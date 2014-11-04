@@ -16,6 +16,9 @@ all: home photo blog
 clean_dir = find $(1) \( ! -regex '.*/\..*' \) ! -path . ! -name CNAME \
 			| xargs rm -rf
 
+html_tidy_dir = -(find $(1) -name "*.html" \
+				  | xargs tidy -q -i -wrap 1000 -m || true)
+
 
 ### HOME ######################################################################
 
@@ -85,6 +88,7 @@ blog: clean_blog
 	jekyll build -s blog -d $(TEMP_DIR)
 	mv $(TEMP_DIR)/* $(DEST_BLOG_DIR)
 	rm -rf $(TEMP_DIR)
+	$(call html_tidy_dir,$(DEST_BLOG_DIR))
 
 watch_blog:
 	jekyll --watch -s blog -d $(DEST_BLOG_DIR)
