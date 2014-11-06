@@ -1,4 +1,6 @@
-@import '../../common/css/mixins.scss';
+---
+---
+@import 'mixins.scss';
 
 $xthin:  200;
 $thin:   300;
@@ -8,11 +10,14 @@ $xbold:  700;
 
 $bg-color:           #fff;
 $font-color:         #555;
-$light-font-color:   #666;
+$caption-color:      #555;
+$code-font-color:    #444;
 $accent-color:       #4abeaa;
-$light-accent-color: mix($accent-color, $bg-color, 70);
-$link-color:         #b54155;
+$link-color:         invert($accent-color);
 $sel-color:          #dcfc86;
+
+$light-font-color:   #666;
+$light-accent-color: mix($accent-color, $bg-color, 70);
 
 $img-path: '/img';
 
@@ -115,37 +120,48 @@ a {
 .archives {
   margin-top: 15px;
 
-  .entry {
+  .archive-post {
     position: relative;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   h1 {
+    margin: 0 0 1.1em 0;
+    font-size: 32px;
+    font-weight: $bold;
+    line-height: 1;
+    color: $accent-color;
+  }
+  h2 {
     margin: 0 0 20px 0;
     font-size: 38px;
     font-weight: $thin;
     line-height: 1;
-    color: #444;
+    color: #777;
   }
-  h2 {
+  h3 {
     margin: 0 0 6px 0;
     padding: 0;
     font-weight: $normal;
-    font-size: 22px;
-    line-height: 1;
+    font-size: 20px;
+    line-height: 1.3;
 
     a {
-      color: #000;
+      color: $font-color;
     }
   }
-  h3 {
-    margin: 0;
+  h4 {
+    margin: 0 0 1em 0;
     padding: 0;
     font-weight: $normal;
-    font-size: 20px;
+    font-size: 19px;
     text-transform: uppercase;
     line-height: 1;
-    color: #777;
+    color: #999;
+  }
+  .tags {
+    li {
+    }
   }
 }
 
@@ -166,6 +182,16 @@ a {
     color: $accent-color;
     float: left;
   }
+  header h2 {
+    display: block;
+    width: 100%;
+    margin: 5px 440px 8px 0;
+    font-size: 24px;
+    font-weight: $thin;
+    line-height: 1.8;
+    text-transform: uppercase;
+    color: $accent-color;
+  }
   h3 {
     margin: 1em 0 0;
     font-size: 22px;
@@ -174,86 +200,86 @@ a {
   }
   p {
     clear: both;
-  }
-  p a {
-    color: $link-color;
-    font-weight: $bold;
 
-    &:hover {
-      text-decoration: underline;
+    a {
+      font-weight: $bold;
+      color: $link-color;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .caption {
     margin: -1.5em 0 2em 0;
     text-align: center;
     font-size: 16px;
-    color: #666;
+    color: $light-font-color;
   }
   ul {
     list-style: square;
   }
   code {
     font: 15px $monospace;
-    background: #eee;
-    color: #333;
+    background: #eaeaea;
+    color: $code-font-color;
     padding: 2px 4px;
-  }
-  .date {
-    display: block;
-    width: 100%;
-    margin: 0 440px 00px 0;
-    font-size: 24px;
-    font-weight: $thin;
-    line-height: 1.8;
-    text-transform: uppercase;
-    color: $accent-color;
-  }
-  .tags {
-    list-style: none;
-    margin: 10px 0 30px 0;
-    padding: 0;
-    color: $accent-color;
-
-    li {
-      display: inline-block;
-
-      a {
-        padding: 2px 8px;
-        font-size: 15px;
-        text-transform: uppercase;
-        background: $accent-color;
-        color: #fff;
-        border-radius: 3px;
-
-        &:hover {
-          text-decoration: none;
-          background: $light-accent-color;
-        }
-      }
-    }
-  }
-  hr {
-    margin-top: 40px;
-    width: 100px;
-    border: none;
-    border-top: 0px solid #aaa;
   }
   pre {
     margin: 2em 0;
-    padding: 13px;
+    padding: 15px 0 15px 1em;
     font: 14px $monospace;
     line-height: 1.0;
-    padding-left: 1em;
-    border: dotted #bbb;
-    border-width: 1px 0;
+    background: #eee;
 
     code {
       font: 14px $monospace;
       line-height: 1.2;
       background: none;
-      color: #666;
+      color: $code-font-color;
     }
     overflow-x: auto;
+  }
+}
+
+.tags {
+  list-style: none;
+  margin: 8px 0 30px 0;
+  padding: 0;
+  color: $accent-color;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    a {
+      padding: 2px 8px;
+      font-size: 15px;
+      text-transform: uppercase;
+      background: $accent-color;
+      color: #fff;
+      border-radius: 3px;
+
+      &:hover {
+        text-decoration: none;
+        background: $light-accent-color;
+      }
+    }
+  }
+}
+
+.footnotes {
+  margin-top: 80px;
+  border-top: 1px solid #bbb;
+  font-size: 16px;
+  color: $light-font-color;
+
+  ol {
+    padding: 0 0 0 30px;
   }
 }
 
@@ -304,38 +330,41 @@ a {
     }
   }
   .archives {
-    h1 {
+    h2 {
       margin: 0;
       float: left;
       font-size: 38px;
     }
-    h2 {
+    h3 {
       margin: 0 0 0 205px;
       line-height: 1.4;
     }
-    h3 {
+    h4 {
       position: absolute;
       top: 0;
-      margin: 2px 0 0 115px;;
-      line-height: 1.4;
+      margin: 0 0 0 115px;;
+      line-height: 1.5;
     }
   }
   .post {
     h1 {
       font-size: 40px;
     }
-    .date {
+    h2 {
       font-size: 28px;
     }
-    .tags {
-      font-size: 16px;
+    header h2 {
+      margin-bottom: 0;
+    }
+  }
+  .tags {
+    font-size: 16px;
 
-      li {
-        margin: 15px 2px 15px 0;
+    li {
+      margin: 15px 2px 15px 0;
 
-        a {
-          font-size: 16px;
-        }
+      a {
+        font-size: 16px;
       }
     }
   }
@@ -373,9 +402,12 @@ a {
     h1 {
       width: 560px;
     }
-    .date {
+    h2 {
       margin-top: 10px;
       margin-bottom: 40px;
+    }
+    header h2 {
+      margin-bottom: 30px;
     }
     .tags {
       position: absolute;
@@ -384,8 +416,22 @@ a {
       width: 125px;
 
       li {
-        display: block;
         margin: 0 0 4px 0;
+      }
+    }
+  }
+  .tags {
+    li {
+      display: block;
+      margin: 0 0 8px 0;
+
+      .tag-name {
+        display: inline-block;
+        width: 180px;
+      }
+
+      span {
+        margin-left: 10px;
       }
     }
   }

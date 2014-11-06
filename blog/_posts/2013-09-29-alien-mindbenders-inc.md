@@ -3,6 +3,7 @@ title: Alien Mindbenders Inc.
 layout: post
 ---
 
-h1. Panda
+Panda
+-----
 
 Check "this image":{{ site.baseurl }}/files/panda.jpg

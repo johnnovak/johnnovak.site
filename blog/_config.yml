@@ -1,6 +1,5 @@
 name:         John Novak Blog
 description:  Personal blog of John Novak
-url:          http://johnnovak.net/
 
 timezone:     Australia/Brisbane
 encoding:     utf-8
@@ -8,6 +7,14 @@ encoding:     utf-8
 permalink:    :year/:month/:day/:title/
 
 markdown:     kramdown
-pygments:     false
+highlighter:  null
 
-exclude:      [*.scss, *.css.map]
+sass:
+    sass_dir: _sass
+
+
+# User variables
+
+url:          http://blog.johnnovak.net
+rootdir:      ""
+

@@ -2,19 +2,24 @@
 layout: default
 ---
 
-<div class="post">
+<article class="post">
 
-<h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
-<p class="date">{{ page.date | date:"%Y %b %d" }}</p>
+  <header>
+    <h1><a href="{{ site.rootdir }}{{ page.url }}">{{ page.title }}</a></h1>
+    <h2><time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y %b %d" }}</time></h2>
+  </header>
 
-<ul class="tags">
-{% for tag in page.tags %}
-  <li><a href="#">{{ tag }}</a></li>
-{% endfor %}
-</ul>
+  <nav class="tags">
+    <ul>
+    {% for tag in page.tags %}
+      <li><a href="{{ site.rootdir }}/tag/{{ tag }}/">{{ tag }}</a></li>
+    {% endfor %}
+    </ul>
+  </nav>
 
-{{ content }}
+  {{ content }}
 
-<hr />
+  <!--  {% include comments.html %} -->
 
-{% include comments.html %}
+</article>
+

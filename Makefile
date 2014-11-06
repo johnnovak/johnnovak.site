@@ -10,6 +10,9 @@ HOME_CSS_LOCATION  = home/css:$(DEST_HOME_DIR)/css
 PHOTO_CSS_LOCATION = photo/css:$(DEST_PHOTO_DIR)/css
 BLOG_CSS_LOCATION  = blog/css:$(DEST_BLOG_DIR)/css
 
+TIDY = /usr/local/bin/tidy5
+TIDY_OPTS = -i -wrap 1000 -utf8
+
 default: all
 all: home photo blog
 
@@ -17,7 +20,7 @@ clean_dir = find $(1) \( ! -regex '.*/\..*' \) ! -path . ! -name CNAME \
 			| xargs rm -rf
 
 html_tidy_dir = -(find $(1) -name "*.html" \
-				  | xargs tidy -q -i -wrap 1000 -m || true)
+				  | xargs $(TIDY) $(TIDY_OPTS) -m 2>/dev/null || true)
 
 
 ### HOME ######################################################################
@@ -81,17 +84,22 @@ clean_photo:
 
 .PHONY: blog watch_blog watch_blog_css update_blog_css clean_blog
 
-blog: TEMP_DIR = $(DEST_BLOG_DIR)/tmp
-blog: clean_blog
-	sass $(SASS_BUILD_OPTS) --update blog/css
+blog:
+	make generate_blog
+	make tidy_blog
+
+generate_blog: TEMP_DIR = $(DEST_BLOG_DIR)/tmp
+generate_blog: clean_blog
 	mkdir -p $(TEMP_DIR)
-	jekyll build -s blog -d $(TEMP_DIR)
+	jekyll build -t -s blog -d $(TEMP_DIR)
 	mv $(TEMP_DIR)/* $(DEST_BLOG_DIR)
 	rm -rf $(TEMP_DIR)
-	$(call html_tidy_dir,$(DEST_BLOG_DIR))
 
-watch_blog:
-	jekyll --watch -s blog -d $(DEST_BLOG_DIR)
+tidy_blog:
+	$(call html_tidy_dir,$(DEST_BLOG_DIR)/*)
+
+serve_blog:
+	jekyll serve -s blog -d $(DEST_BLOG_DIR)
 
 watch_blog_css:
 	sass $(SASS_WATCH_OPTS) --watch $(BLOG_CSS_LOCATION)

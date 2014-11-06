@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<article class="archives">
+
+  <h1>All tags</h1>
+
+  <ul class="tags">
+    {% for tag in site.tags %} 
+    <li>
+      <span class="tag-name"><a href="{{ site.rootdir }}/tag/{{ tag[0] }}">{{ tag[0] }}</a></span> <span class="post-count">{{ tag[1].size }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+
+<article class="archives">

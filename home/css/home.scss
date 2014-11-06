@@ -369,6 +369,10 @@ a {
 
 @media #{$media-large} {
   #music-section {
+    .sidebar {
+      top: 88px;
+      left: 0;
+    }
     .oldstuff {
       @include pos(345, 159, 0);
       @include bg-img(35, 36, 'disk', $basepath: $img-path);

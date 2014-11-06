@@ -9,6 +9,8 @@ PHOTO:
 * small screen testing & fixes
 * keyboard navigation fix
 * fotorama custom navbar without hacking
+* navigating away from the page by using history.back breaks the history
+  when using history.forward to get back to the page
 
 
 HOME:
@@ -16,7 +18,13 @@ HOME:
 * use 2x logo image for high-res displays
 * layout adjustments for small screens
 * footer text
-* footer scrolling fixes
+* footer scroll fixes
+* make sure others sections are not visible on 1920x1080
 * footer sunset
 * footer sprite animation easter egg
 
+
+BLOG:
+
+* add blog schema tags
+* add modernizr

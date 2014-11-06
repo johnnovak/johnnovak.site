@@ -2,33 +2,40 @@
 <html>
 <head>
   <meta charset="utf-8" />
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
   <meta name="viewport" content="width=device-width; target-densityDpi=160; initial-scale=1; maximum-scale=1" />
   <meta name="description" content="Personal blog of John Novak" />
-
   <meta name="author" content="John Novak">
   <meta name="Generator" content="Jekyll (http://jekyllrb.com/)">
 
   <title>{{ page.title }}</title>
 
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" />
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}css/blog.css" />
+  <link rel="stylesheet" type="text/css" href="{{ site.rootdir }}/css/blog.css" />
 
-  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.baseurl }}/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }}" href="{{ site.rootdir }}/feed.xml">
 </head>
 
 <body>
-  <script src="/js/lib/respond.min.js"></script>
+  <script src="{{ site.rootdir }}/js/lib/respond.min.js"></script>
 
   <div id="wrapper">
 
-  <div id="header">
-    <div id="header-bg"></div>
-    <a href="/"><img id="jn-logo" src="{{ site.baseurl }}img/jn-logo.png" alt="John Novak" /></a>
-    <ul>
-      <li><a href="{{ site.baseurl }}about/">About</a></li>
-      <li><a href="{{ site.baseurl }}archives/">Archives</a></li>
-      <li><a href="{{ site.baseurl }}tags/">Tags</a></li>
-      <li><a href="{{ site.baseurl }}feed.xml">Rss</a></li>
-    </ul>
-  </div>
+    <header id="header">
+      <div id="header-bg"></div>
+      <a href="{{ site.url }}"><img id="jn-logo" src="{{ site.rootdir }}/img/jn-logo.png" alt="John Novak" /></a>
+
+      <nav>
+        <ul>
+          <li><a href="{{ site.rootdir }}/about/">About</a></li>
+          <li><a href="{{ site.rootdir }}/archives/">Archives</a></li>
+          <li><a href="{{ site.rootdir }}/tags/">Tags</a></li>
+          <li><a href="{{ site.rootdir }}/feed.xml">Rss</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main role="main">
+

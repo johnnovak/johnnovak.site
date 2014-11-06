@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<article class="archives">
+  <h1>Posts tagged with '{{ page.tag }}'</h1>
+
+  {% for post in site.posts %}{% for tag in post.tags %}{% if tag == page.tag %}
+  {% include post_list.html %}
+  {% endif %}{% endfor %}{% endfor %}
+
+</article>
+

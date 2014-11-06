@@ -1,0 +1,12 @@
+{% capture post_year %}{{ post.date | date:'%Y' }}{% endcapture %}
+
+{% if post_year != curr_year %}
+  <h2><time datetime="%Y">{{ post_year }}</time></h2>
+  {% assign curr_year = post_year %}
+{% endif %}
+
+  <article class="archive-post">
+    <h3 class="title"><a href="{{ site.rootdir }}{{ post.url }}">{{ post.title }}</a></h3>
+    <h4><time datetime="{{ post.date | date:"%m-%d" }}">{{ post.date | date:"%b %m" }}</time></h4>
+  </article>
+
