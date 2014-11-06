@@ -32,6 +32,31 @@ introduce a new tag, we'd need to [create a archives page](#) for this tag to
 loop over the posts. Which, in my opinion, makes Jekyll's tags feature pretty
 useless.
 
+<table>
+<tr>
+  <th>Number of cores</th>
+  <th>Performance increase</th>
+  <th>Result</th>
+</tr>
+<tr>
+  <td>2</td>
+  <td>10.0%</td>
+  <td>N/A</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>18.4%</td>
+  <td>10</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>33.1%</td>
+  <td>21</td>
+</tr>
+</table>
+
+<p class="caption">Table 1 &mdash; summary of performance measurements</p>
+
 Plugins would of course solve this problem. But remember my self-imposed
 constraint mentioned in Part 1? Pure vanilla [Jekyll](#) running on
 [GitHub Pages](http://www.github.com/). So, let's try to find another way.
@@ -132,5 +157,4 @@ header if the two differ.
 [^archive]: How? With the HTML 5 multi-tool: JavaScript!
 
 [^js]: My blog needed an overview page which contains every Blog post, ideally sorted by date. That is fairly easy in pure Jekyll: Just loop over every post and add title and date.
-
 

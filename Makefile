@@ -101,12 +101,6 @@ tidy_blog:
 serve_blog:
 	jekyll serve -s blog -d $(DEST_BLOG_DIR)
 
-watch_blog_css:
-	sass $(SASS_WATCH_OPTS) --watch $(BLOG_CSS_LOCATION)
-
-update_blog_css:
-	sass $(SASS_WATCH_OPTS) --update $(BLOG_CSS_LOCATION)
-
 clean_blog:
 	$(call clean_dir,$(DEST_BLOG_DIR)/*)
 

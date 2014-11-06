@@ -2,6 +2,7 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2013-09-29 21:38:05
+tags:   java compression
 ---
 
 You'll find this post in your `_posts` directory - edit this post and re-build
@@ -23,3 +24,4 @@ repo][jekyll-gh].
 
 [jekyll-gh]: https://github.com/mojombo/jekyll
 [jekyll]:    http://jekyllrb.com
+

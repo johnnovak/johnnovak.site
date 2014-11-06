@@ -2,15 +2,12 @@
 layout: default
 ---
 
-<ul class="posts">
-{% for post in site.posts limit: 5 %}
-  <div class="post_info">
-    <li>
-      <a href="{{ site.rootdir }}{{ post.url }}">{{ post.title }}</a>
-	    <span>{{ post.date | date:"%Y-%m-%d" }}</span>
-    </li>
-    </br> <em>{{ post.excerpt | strip_html | truncatewords: 100 }} </em>
-    </div>
-  {% endfor %}
-</ul> 
+<article class="post-list">
 
+  <h1>Recent posts</h1>
+
+  {% for post in site.posts limit: 5 %}
+  {% include post_item.html %}
+  {% endfor %}
+
+</article>
