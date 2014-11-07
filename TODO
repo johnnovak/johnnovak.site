@@ -1,16 +1,19 @@
 GENERAL:
 
 * IE testing
+* retire common/base.scss
 
 
 PHOTO:
 
+* center images vertically a bit better...
 * about page text
 * small screen testing & fixes
 * keyboard navigation fix
 * fotorama custom navbar without hacking
 * navigating away from the page by using history.back breaks the history
   when using history.forward to get back to the page
+* proper 2x thumbnails
 
 
 HOME:
@@ -26,5 +29,6 @@ HOME:
 
 BLOG:
 
+* use 2x logo image for high-res displays
 * add blog schema tags
-* add modernizr
+
