@@ -6,14 +6,18 @@ GENERAL:
 
 PHOTO:
 
-* center images vertically a bit better...
+* bottom of image is cropped a bit
 * about page text
-* small screen testing & fixes
-* keyboard navigation fix
-* fotorama custom navbar without hacking
 * navigating away from the page by using history.back breaks the history
   when using history.forward to get back to the page
-* proper 2x thumbnails
+* fullscreen icon doesn’t fade out when changing albums (should fade out with
+  the rest)
+* on first load, the fullscreen and left & right icons are visible (should
+  fade in when loaded)
+* small screen testing & fixes
+* keyboard navigation fix (works ok in fullscreen mode)
+* fullscreen icon hover
+* fotorama custom navbar without hacking
 
 
 HOME:
