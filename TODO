@@ -6,6 +6,7 @@ GENERAL:
 
 PHOTO:
 
+* media queries on iPhone are not working -- investigate
 * about page text
 * 2x navbar images
 * small screen testing & fixes
@@ -19,10 +20,8 @@ PHOTO:
 
 HOME:
 
-* linkedin / facebook link
-* use 2x logo image for high-res displays
-* layout adjustments for small screens
 * make sure others sections are not visible on 1920x1080
+* about bug: moves down when shrinking window
 * footer sunset scroll fixes
 * footer sprite animation easter egg
 * footer text
@@ -30,6 +29,5 @@ HOME:
 
 BLOG:
 
-* use 2x logo image for high-res displays
 * add blog schema tags
 
