@@ -216,6 +216,10 @@ a {
       position: absolute;
       margin-top: 1px;
       margin-left: 20px;
+
+      &:hover {
+        background-position: -46px 0px;
+      }
     }
   }
 }

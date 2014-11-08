@@ -7,19 +7,19 @@ GENERAL:
 PHOTO:
 
 * about page text
-* fullscreen icon doesn’t fade out when changing albums (should fade out with
-  the rest)
-* fullscreen icon hover
-
 * 2x navbar images
 * small screen testing & fixes
 * keyboard navigation fix (works ok in fullscreen mode)
 * fotorama custom navbar without hacking
 * Opera & iPhone: can't exit fullscreen mode
 
+* fullscreen icon doesn’t fade out when changing albums (should fade out
+  with) -- ??? IE ONLY ???
+
 
 HOME:
 
+* linkedin / facebook link
 * use 2x logo image for high-res displays
 * layout adjustments for small screens
 * make sure others sections are not visible on 1920x1080
