@@ -147,24 +147,18 @@ function pageFromPathName(pathname) {
   return pageMappings[pageNameFromPathName(pathname)];
 }
 
-var historyChanged = false;
-
 function pushState(url) {
   history.pushState(null, null, url);
-  historyChanged = true;
 }
 
 function replaceState(url) {
   history.replaceState(null, null, url);
-  historyChanged = true;
 }
 
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
-    if (historyChanged) {
       var pathname = location.pathname + location.hash
       switchPageByPathName(pathname, false);
-    }
   });
 }
 

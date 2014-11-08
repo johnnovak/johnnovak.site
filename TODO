@@ -6,9 +6,6 @@ GENERAL:
 
 PHOTO:
 
-* navigating away from the page by using history.back breaks the history
-  when using history.forward to get back to the page
-
 * about page text
 * fullscreen icon doesn’t fade out when changing albums (should fade out with
   the rest)
@@ -16,9 +13,11 @@ PHOTO:
 * on first load, the fullscreen and left & right icons are visible (should
   fade in when loaded)
 
+* 2x navbar images
 * small screen testing & fixes
 * keyboard navigation fix (works ok in fullscreen mode)
 * fotorama custom navbar without hacking
+* Opera & iPhone: can't exit fullscreen mode
 
 
 HOME:
