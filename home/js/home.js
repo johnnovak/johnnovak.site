@@ -25,6 +25,8 @@ $(document).ready(function() {
 /////////////////////////////////////////////////////////////////////////////
 
   function init() {
+    replace2xImages();
+
     displayPage();
 
     if (!isDesktop) {
@@ -50,6 +52,17 @@ $(document).ready(function() {
 
     installResizeHandler();
     installMainMenuHandlers();
+  }
+
+  function replace2xImages() {
+    var $images = $("img[data-2x]");
+
+    if (window.devicePixelRatio > 1.0) {
+      $.each($images, function() {
+        var $this = $(this);
+        $this.attr("src", $this.data("2x"));
+      });
+    }
   }
 
   function displayPage() {
