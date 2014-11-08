@@ -134,6 +134,7 @@ function pageNameFromPathName(pathname) {
   var i = IS_IN_SUBDIR
   pathnameNoHash = pathname.replace(/#.*$/, '');
   var path = splitPathName(pathnameNoHash);
+
   if (path.length == i+1 && path[i+0] == 'about') {
     return 'about';
   } else if (path.length == i+0 || path.length == i+1) {
@@ -215,9 +216,12 @@ var photo = function() {
                   + '<li id="fullscreen"></li>'
                   + '</ul>';
 
+    $('#nav').fadeTo(0, 0);
     $('#nav').append(navHtml);
     $('#imgcounter').disableSelection();
   }
+
+  var fadeInDuration = 400;
 
   function createFotorama() {
     var smallScreen = $(window).height() < 350;
@@ -229,7 +233,7 @@ var photo = function() {
       nav: 'none',
       captions: false,
       transition: 'crossfade',
-      transitionduration: 400,
+      transitionduration: fadeInDuration,
       allowfullscreen: 'native',
       arrows: false,
       // TODO works in fullscreen mode anyway WITHOUT specifying this
@@ -260,6 +264,7 @@ var photo = function() {
   }
 
   function installImageCounterAndCaptionHandlers() {
+
     function updateNav(e, fotorama) {
       var curr = fotoramaApi.activeIndex + 1;
       if (curr == 1) {
@@ -281,6 +286,7 @@ var photo = function() {
       }
       $('#imgcounter').text(curr + ' / ' + max);
       $('#caption').text(fotoramaApi.activeFrame.caption);
+      $('#nav').fadeTo(fadeInDuration, 1);
     };
 
     function pushCurrentPhoto(e, fotorama, replace) {

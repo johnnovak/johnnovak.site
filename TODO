@@ -10,8 +10,6 @@ PHOTO:
 * fullscreen icon doesn’t fade out when changing albums (should fade out with
   the rest)
 * fullscreen icon hover
-* on first load, the fullscreen and left & right icons are visible (should
-  fade in when loaded)
 
 * 2x navbar images
 * small screen testing & fixes
