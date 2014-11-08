@@ -35,14 +35,16 @@
 
 
 @mixin bg-img($width, $height, $imgname, $suffix: '.png',
-              $basepath: '/img') {
+              $basepath: '/img', $hires: true) {
 
   width: #{$width + 2}px;
   height: #{$height + 2}px;
   background: url(imgurl($basepath, $imgname, $suffix)) 1px 1px no-repeat;
   background-size: #{$width}px #{$height}px;
 
-  @include bg-img-hires(imgurl($basepath, $imgname, $suffix, true));
+  @if $hires {
+    @include bg-img-hires(imgurl($basepath, $imgname, $suffix, true));
+  }
 }
 
 
