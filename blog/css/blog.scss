@@ -263,18 +263,18 @@ td {
     font: 15px $monospace;
     background: #eaeaea;
     color: $code-font-color;
-    padding: 2px 4px;
+    padding: 2px 3px;
   }
   pre {
     margin: 2em 0;
-    padding: 15px 0 15px 1em;
+    padding: 15px;
     font: 14px $monospace;
     line-height: 1.0;
     background: #eee;
 
     code {
       font: 14px $monospace;
-      line-height: 1.2;
+      line-height: 1.4;
       background: none;
       color: $code-font-color;
     }
