@@ -1241,7 +1241,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
 
     // HACK
     if (!that.fullScreen) {
-      windowHeight -= 120;
+      windowHeight -= opts.bottomoffset;
     }
     // HACK
 

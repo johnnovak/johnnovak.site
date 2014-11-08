@@ -6,17 +6,18 @@ GENERAL:
 
 PHOTO:
 
-* bottom of image is cropped a bit
-* about page text
 * navigating away from the page by using history.back breaks the history
   when using history.forward to get back to the page
+
+* about page text
 * fullscreen icon doesn’t fade out when changing albums (should fade out with
   the rest)
+* fullscreen icon hover
 * on first load, the fullscreen and left & right icons are visible (should
   fade in when loaded)
+
 * small screen testing & fixes
 * keyboard navigation fix (works ok in fullscreen mode)
-* fullscreen icon hover
 * fotorama custom navbar without hacking
 
 
@@ -24,11 +25,10 @@ HOME:
 
 * use 2x logo image for high-res displays
 * layout adjustments for small screens
-* footer text
-* footer scroll fixes
 * make sure others sections are not visible on 1920x1080
-* footer sunset
+* footer sunset scroll fixes
 * footer sprite animation easter egg
+* footer text
 
 
 BLOG:

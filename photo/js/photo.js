@@ -235,19 +235,16 @@ var photo = function() {
       nav: 'none',
       captions: false,
       transition: 'crossfade',
-      transitionDuration: 400,
+      transitionduration: 400,
       allowfullscreen: 'native',
       arrows: false,
+      // TODO works in fullscreen mode anyway WITHOUT specifying this
 //      keyboard: true,
       hash: true,
 
       // NOTE: The following two global params work only with my custom hacked
       // fotorama.js
-      captionHeight: smallScreen ? 50 : 75,
-
-      // Value to be subtracted from the stage height calculations (e.g. when
-      // height: '100%' is used)
-      heightOffset: 0 //smallScreen ? 70 : 85
+      bottomoffset: smallScreen ? 35 : 140
     };
     if (hasHistoryApi) {
       opts.startIndex = location.hash.replace(/^#/, '');
