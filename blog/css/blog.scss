@@ -98,9 +98,9 @@ td {
   }
 
   ul {
-    padding-top: 80px;
-    text-align: right;
+    padding: 80px 0 0 0;
     list-style: none;
+    text-align: right;
     color: $accent-color;
 
     li {
@@ -120,9 +120,12 @@ td {
         }
       }
 
-      &:not(:last-child):after {
+      &:after {
         margin-right: -10px;
         content: "/";
+      }
+      &:last-child:after {
+        content: none;
       }
     }
   }

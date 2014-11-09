@@ -3,8 +3,17 @@
 
 @import 'common.scss';
 
+#header {
+  ul {
+    li.last:after {
+      content: none;
+    }
+  }
+}
+
 @media #{$media-large} {
   .lt-ie9 #header-bg {
     @include bg-img(450, 413, 'bg-header', $basepath: $img-path, $hires: false);
   }
 }
+
