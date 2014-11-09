@@ -14,19 +14,22 @@
 
   <title>www.johnnovak.net</title>
 
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700" />
 
   <!--[if lte IE 8]>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300" /> 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:600" />
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:700" />
   <![endif]-->
 
+  <!--[if lte IE 8]>
+  <link rel="stylesheet" type="text/css" href="/css/home-lte-ie8.css" />
+  <![endif]-->
+
   <link rel="stylesheet" type="text/css" href="/css/home.css" />
 
-  <!--[if !IE | gte IE 9]><!-->
+  <!--[if !IE | gte IE 6]><!-->
   <script>
     var isDesktop =    window.orientation === undefined
                     || window.devicePixelRatio === undefined
@@ -49,7 +52,7 @@
   <script src="/js/lib/respond.min.js"></script>
 
   <div id="wrapper">
-  <!--[if !IE | gte IE 9]><!-->
+  <!--[if !IE | gte IE 6]><!-->
   <script>
     if (isDesktop) {
       document.getElementById('wrapper').style.display = "none";
@@ -65,7 +68,7 @@
     <li><a id="menu-about" href="#">?</a></li>
     <li><a id="menu-music" href="#music">Music</a></li>
     <li><a id="menu-photo" href="#photo">Photo</a></li>
-    <li><a id="menu-code" href="#code">Code</a></li>
+    <li class="last"><a id="menu-code" href="#code">Code</a></li>
 <!--    <li><a id="menu-blog" href="http://blog.johnnovak.net/">Blog</a></li> -->
   </ul>
 
@@ -233,7 +236,7 @@
     </div>
   </div>
 
-  <!--[if !IE | gte IE 9]>-->
+  <!--[if !IE | gte IE 6]><!-->
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
   <script>
     if (!window.jQuery) {
@@ -248,7 +251,7 @@
       document.write('<script src="/js/home.js"></scr'+'ipt>');
     }
   </script>
-  <!--[endif]-->
+  <!--<![endif]-->
 
   </div>
 </body>

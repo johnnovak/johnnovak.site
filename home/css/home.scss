@@ -1,4 +1,3 @@
-@import '../../common/css/base.scss';
 @import 'common.scss';
 
 $bg-color:           #6e7275;
@@ -7,16 +6,17 @@ $light-font-color:   #d4d6d6;
 $accent-color:       #d8ff00;
 $light-accent-color: #fb0;
 $sel-color:          #bbb;
+$footer-color:       #555;
 
-$content-width: 380px;
-$main-width: 780px;
+$xthin:  200;
+$normal: 400;
+$bold:   600;
+$xbold:  700;
+
+$content-width:      380px;
+$main-width:         780px;
 $medium-width-delta: 60px;
-$header-height: 200px;
-
-$img-path: '/img';
-
-$footer-color: #555;
-
+$header-height:      200px;
 
 @include selection-color($sel-color, 'black');
 
@@ -34,12 +34,44 @@ html {
 
 body {
   margin: 15px;
+  padding: 0;
   overflow-x: hidden;
+
+  font-family: 'Source Sans Pro', Calibri, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+
   background: $bg-color;
   color: $font-color;
-  text-transform: uppercase;
-  cursor: default;
+
   @include enable-selection(false);
+  cursor: default;
+}
+
+img {
+  border: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $font-color;
+
+  &:hover {
+    color: $light-font-color;
+    text-decoration: underline;
+  }
 }
 
 #jn-logo {
@@ -66,21 +98,6 @@ h2 {
 
   .lower {
     text-transform: lowercase;
-  }
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: $font-color;
-
-  &:hover {
-    color: $light-font-color;
   }
 }
 
@@ -225,10 +242,13 @@ a {
       a {
         margin-right: 18px;
       }
-      &:not(:last-child):after {
+      &:after {
         margin-left: -6px;
         margin-right: 7px;
         content: "/";
+      }
+      &:last-child:after {
+        content: none;
       }
     }
   }
@@ -304,9 +324,6 @@ a {
     @include bg-img(474, 444, 'bg-about', $basepath: $img-path);
     @include transition(1.2s, left);
   }
-  .lt-ie9 #about-bg {
-    @include bg-img(474, 444, 'bg-about', $basepath: $img-path, $hires: false);
-  }
 }
 
 @media #{$media-large} {
@@ -380,9 +397,6 @@ a {
     @include transition(.5s, left);
     pointer-events: none;
   }
-  .lt-ie9 #music-bg {
-    @include bg-img(592, 564, 'bg-music', $basepath: $img-path, $hires: false);
-  }
 }
 
 @media #{$media-large} {
@@ -406,9 +420,6 @@ a {
       .formats {
         display: inline;
       }
-    }
-    .lt-ie9 .oldstuff {
-      @include bg-img(35, 36, 'disk', $basepath: $img-path, $hires: false);
     }
   }
   #music-bg {
@@ -526,17 +537,6 @@ a {
     @include bg-img(420, 509, 'bg-photo-skull', $basepath:  $img-path);
     @include transition(.9s, left);
   }
-  .lt-ie9 {
-    #photo-bg-leg1 {
-      @include bg-img(362, 233, 'bg-photo-leg1', $basepath:  $img-path, $hires: false);
-    }
-    #photo-bg-leg2 {
-      @include bg-img(244, 294, 'bg-photo-leg2', $basepath:  $img-path, $hires: false);
-    }
-    #photo-bg-skull {
-      @include bg-img(420, 509, 'bg-photo-skull', $basepath:  $img-path, $hires: false);
-    }
-  }
 }
 
 @media #{$media-large} {
@@ -589,9 +589,6 @@ a {
     @include pos(-19, -99, $z-index: 10);
     @include bg-img(513, 547, 'bg-code', $basepath:  $img-path);
     @include transition(.8s, left);
-  }
-  .lt-ie9 #code-bg {
-    @include bg-img(513, 547, 'bg-code', $basepath:  $img-path, $hires: false);
   }
 }
 
@@ -662,17 +659,6 @@ a {
     @include bg-img(205, 205, 'bg-footer-sun', $basepath:  $img-path);
     @include transition(.8s, left);
   }
-  .lt-ie9 {
-    #footer-bg-building {
-      @include bg-img(860, 405, 'bg-footer-building', $basepath:  $img-path, $hires: false);
-    }
-    #footer-bg-gate {
-      @include bg-img(173, 173, 'bg-footer-gate', $basepath:  $img-path, $hires: false);
-    }
-    #footer-bg-sun {
-      @include bg-img(205, 205, 'bg-footer-sun', $basepath:  $img-path, $hires: false);
-    }
-  }
   #footer-bg {
     position: absolute;
     width: 100%;
@@ -695,3 +681,4 @@ a {
     left: 172px;
   }
 }
+

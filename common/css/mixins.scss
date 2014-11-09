@@ -25,7 +25,6 @@
   // Use hires image when pixel ratio is greater than 1.0
   @media only screen and (-webkit-min-device-pixel-ratio: 1.01),
          only screen and (-o-min-device-pixel-ratio: 101/100),
-         // TODO check
          only screen and (min-moz-device-pixel-ratio: 1.01),
          only screen and (min-device-pixel-ratio: 1.01) {
 
