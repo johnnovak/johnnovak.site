@@ -1,5 +1,11 @@
 @import 'common.scss';
 
+.lte-ie8 {
+  body {
+    background: red;
+  }
+}
+
 @media #{$media-medium} {
   #mainmenu {
     .last:after {

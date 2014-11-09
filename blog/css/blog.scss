@@ -1,9 +1,8 @@
 ---
 ---
 
-@import 'mixins.scss';
+@import 'common.scss';
 
-$xthin:  200;
 $thin:   300;
 $normal: 400;
 $bold:   600;
@@ -20,12 +19,7 @@ $sel-color:          #dcfc86;
 $light-font-color:   #666;
 $light-accent-color: mix($accent-color, $bg-color, 70);
 
-$img-path: '/img';
-
 $monospace: Menlo, Monaco, "Courier New", monospace;
-
-$media-medium: 'only screen and (min-width: 500px)';
-$media-large:  'only screen and (min-width: 900px)';
 
 
 @include selection-color($sel-color, 'black');

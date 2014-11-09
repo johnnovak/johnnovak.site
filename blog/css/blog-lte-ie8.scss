@@ -1,0 +1,10 @@
+---
+---
+
+@import 'common.scss';
+
+@media #{$media-large} {
+  .lt-ie9 #header-bg {
+    @include bg-img(450, 413, 'bg-header', $basepath: $img-path, $hires: false);
+  }
+}
