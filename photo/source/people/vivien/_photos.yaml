@@ -1,25 +1,35 @@
-- filename: almost-madrid.jpg
-  title: Almost Madrid
-  location: Caloundra, Australia
-  date: 2011
+- filename: shapeshifter.jpg
+  title: Shapeshifter
+  location: Brisbane, Australia
+  date: 2014
+
+- filename: sorcerer.jpg
+  title: Sorcerer
+  location: Brisbane, Australia
+  date: 2014
 
 - filename: squared.jpg
   title: Squared
   location: Budapest, Hungary
   date: 2008
 
+- filename: vivien.jpg
+  title: Vivien
+  location: Budapest, Hungary
+  date: 2007
+
+- filename: amunet.jpg
+  title: Amunet
+  location: Prague, Czech Republic
+  date: 2009
+
 - filename: underwater-love.jpg
   title: Underwater Love
   location: Budapest, Hungary
   date: 2009
 
-- filename: amunet.jpg
-  title: Amunet
-  location: Praga, Czech Republic
-  date: 2009
-
-- filename: vivien.jpg
-  title: Vivien
-  location: Budapest, Hungary
-  date: 2007
+- filename: almost-madrid.jpg
+  title: Almost Madrid
+  location: Caloundra, Australia
+  date: 2011
 
