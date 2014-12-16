@@ -18,6 +18,11 @@
   location: Austria
   date: 2005
 
+- filename: priscilla-purple.jpg
+  title: Priscilla Purple
+  location: Brisbane, Australia
+  date: 2014
+
 - filename: petra-porcelain-1.jpg
   title: 'Petra Porcelain #1'
   location: Noosa Heads, Australia
@@ -42,4 +47,9 @@
   title: Laura Laser
   location: Sydney, Australia
   date: 2011
+
+- filename: brinah-bride.jpg
+  title: Brinah Bride
+  location: Brisbane, Australia
+  date: 2014
 
