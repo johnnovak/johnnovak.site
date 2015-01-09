@@ -99,7 +99,7 @@ tidy_blog:
 	$(call html_tidy_dir,$(DEST_BLOG_DIR)/*)
 
 serve_blog:
-	jekyll serve -s blog -d $(DEST_BLOG_DIR)
+	jekyll serve --drafts -s blog -d $(DEST_BLOG_DIR)
 
 clean_blog:
 	$(call clean_dir,$(DEST_BLOG_DIR)/*)
