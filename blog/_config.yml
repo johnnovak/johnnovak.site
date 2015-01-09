@@ -7,7 +7,7 @@ encoding:     utf-8
 permalink:    :year/:month/:day/:title/
 
 markdown:     kramdown
-highlighter:  null
+highlighter:  pygments
 
 sass:
     sass_dir: _sass

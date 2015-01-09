@@ -32,31 +32,6 @@ introduce a new tag, we'd need to [create a archives page](#) for this tag to
 loop over the posts. Which, in my opinion, makes Jekyll's tags feature pretty
 useless.
 
-<table>
-<tr>
-  <th>Number of cores</th>
-  <th>Performance increase</th>
-  <th>Result</th>
-</tr>
-<tr>
-  <td>2</td>
-  <td>10.0%</td>
-  <td>N/A</td>
-</tr>
-<tr>
-  <td>4</td>
-  <td>18.4%</td>
-  <td>10</td>
-</tr>
-<tr>
-  <td>8</td>
-  <td>33.1%</td>
-  <td>21</td>
-</tr>
-</table>
-
-<p class="caption">Table 1 &mdash; summary of performance measurements</p>
-
 Plugins would of course solve this problem. But remember my self-imposed
 constraint mentioned in Part 1? Pure vanilla [Jekyll](#) running on
 [GitHub Pages](http://www.github.com/). So, let's try to find another way.
@@ -81,33 +56,36 @@ Before we dive in, I want to note that you can see the results on my
 
 To make things easier, every post will store its tags in a data- attribute:
 
+{% highlight c %}
 
-    /* Finds and returns the small sub-tree in the forest */
+/* Finds and returns the small sub-tree in the forest */
 
-    int findSmaller (Node *array[], int differentFrom){
-        int smaller;
-        int i = 0;
+int findSmaller (Node *array[], int differentFrom){
+    int smaller;
+    int i = 0;
 
-        while (array[i]->value == -1) i++;
-        smaller = i;
+    while (array[i]->value == -1) i++;
+    smaller = i;
 
-        if (i == differentFrom) {
+    if (i == differentFrom) {
+        i++;
+        while (array[i] -> value == -1)
             i++;
-            while (array[i] -> value == -1)
-                i++;
-            smaller = i;
-        }
-
-        for (i = 1; i < 27; i++) {
-            if (array[i]->value == -1)
-                continue;
-            if (i == differentFrom)
-                continue;
-            if (array[i]->value<array[smaller]->value)
-                smaller = i;
-        }
-        return smaller;
+        smaller = i;
     }
+
+    for (i = 1; i < 27; i++) {
+        if (array[i]->value == -1)
+            continue;
+        if (i == differentFrom)
+            continue;
+        if (array[i]->value<array[smaller]->value)
+            smaller = i;
+    }
+    return smaller;
+}
+
+{% endhighlight %}
 
 
 ### Step 2: JavaScript Voodoo
@@ -118,30 +96,32 @@ loops over `.post` elements, compares their data-tags-attribute against the
 hash and fades them depending on the result. We also listen for `onhashchange`
 to update the <<selection>> when a tag link on the same page is clicked.
 
-    $(function() {
-    function updateTags() {
-        var hash = window.location.hash.substr(2);
+{% highlight js %}
 
-        $('.post').each(function(i, post) {
-            if ($(post).data('tags').indexOf(hash) == -1) {
-                $(post).animate({
-                    opacity: 0.5,
-                    'font-size': '0.8em',
-                }, 'fast');
-            } else {
-                $(post).animate({
-                    opacity: 1,
-                    'font-size': '1em',
-                }, 'fast');
-            }
-        });
-    }
+$(function() {
+function updateTags() {
+    var hash = window.location.hash.substr(2);
 
-    $(window).bind('hashchange', updateTags)
-      updateTags();
-    })
+    $('.post').each(function(i, post) {
+        if ($(post).data('tags').indexOf(hash) == -1) {
+            $(post).animate({
+                opacity: 0.5,
+                'font-size': '0.8em',
+            }, 'fast');
+        } else {
+            $(post).animate({
+                opacity: 1,
+                'font-size': '1em',
+            }, 'fast');
+        }
+    });
+}
 
-<p class="caption">Listing 1 &mdash; updateTags() function in JavaScript</p>
+$(window).bind('hashchange', updateTags)
+    updateTags();
+})
+
+{% endhighlight %}
 
 
 ### Bonus --- Group Posts by Year
