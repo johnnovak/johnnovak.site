@@ -1,0 +1,14 @@
+Requirements
+============
+
+* python (2.7)
+* jekyll (?)
+* sass (3.4+)
+
+Python libraries
+----------------
+
+* jinja2
+* yaml
+* Python Imaging Library (pil)
+
