@@ -1,0 +1,5 @@
+*~
+*.un~
+*.swp
+.sass_cache
+.sass-cache

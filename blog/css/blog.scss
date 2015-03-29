@@ -9,17 +9,17 @@ $bold:   600;
 $xbold:  700;
 
 $bg-color:           #fff;
-$font-color:         #555;
+$font-color:         #333;
 $caption-color:      #555;
-$code-font-color:    #444;
-$accent-color:       #4abeaa;
+$code-font-color:    #333;
+$accent-color:       darken(#4abeaa, 6);
 $link-color:         invert($accent-color);
 $sel-color:          #dcfc86;
 
 $light-font-color:   #666;
 $light-accent-color: mix($accent-color, $bg-color, 70);
 
-$monospace: Menlo, Monaco, "Courier New", monospace;
+$monospace: "Source Code Pro", Consolas, "Liberation Mono", Menlo, Monaco, "Courier New", monospace;
 
 
 @include selection-color($sel-color, 'black');
@@ -34,11 +34,11 @@ $monospace: Menlo, Monaco, "Courier New", monospace;
 
 body {
   margin: 0 20px;
-  line-height: 1.6;
   overflow-x: hidden;
   color: $font-color;
+  background-color: $bg-color;
   font-family: 'Source Sans Pro', Calibri, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -146,7 +146,7 @@ td {
 
   h1 {
     margin: 0 0 1.1em 0;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: $bold;
     line-height: 1;
     color: $accent-color;
@@ -162,7 +162,7 @@ td {
     margin: 0 0 4px 0;
     padding: 0;
     font-weight: $normal;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.3;
 
     a {
@@ -173,7 +173,7 @@ td {
     margin: 0 0 1em 0;
     padding: 0;
     font-weight: $normal;
-    font-size: 19px;
+    font-size: 20px;
     text-transform: uppercase;
     line-height: 1;
     color: #999;
@@ -203,7 +203,7 @@ td {
     color: $accent-color;
   }
   h2 {
-    margin: .3em 0 .4em;
+    margin: .5em 0 .4em;
     font-size: 26px;
     font-weight: $normal;
     color: $accent-color;
@@ -221,7 +221,7 @@ td {
       display: block;
       width: 100%;
       margin: 5px 440px 8px 0;
-      font-size: 24px;
+      font-size: 26px;
       font-weight: $thin;
       line-height: 1.8;
       text-transform: uppercase;
@@ -230,7 +230,7 @@ td {
   }
   h3 {
     margin: 1em 0 -.5em 0;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: $normal;
     color: $accent-color;
   }
@@ -239,7 +239,7 @@ td {
 
     a {
       font-weight: $bold;
-      color: $link-color;
+      color: $accent-color;
 
       &:hover {
         text-decoration: underline;
@@ -256,22 +256,27 @@ td {
   ul {
     list-style: square;
   }
-  code {
-    font: 15px $monospace;
-    background: #eaeaea;
-    color: $code-font-color;
-    padding: 2px 3px;
+  p {
+    code {
+      font: 19px $monospace;
+      font-weight: 600;
+      /*background: $light-accent-color;*/
+      /*background: #eee;*/
+      color: $link-color;
+      padding: 4px 5px 2px 5px;
+    }
   }
   pre {
-    margin: 2em 0;
-    padding: 15px;
-    font: 14px $monospace;
-    line-height: 1.0;
-    background: #eee;
+    margin: 3em 0;
+    padding: 0 0 0 15px;
+    font: 15px $monospace;
+    font-weight: 400;
+    background: #fff;
+    border-left: 2px solid #eee;
+    line-height: 21px;
 
     code {
-      font: 14px $monospace;
-      line-height: 1.4;
+      font: 15px $monospace;
       background: none;
       color: $code-font-color;
     }
@@ -299,7 +304,7 @@ td {
       text-transform: uppercase;
       background: $accent-color;
       color: #fff;
-      border-radius: 3px;
+//      border-radius: 3px;
 
       &:hover {
         text-decoration: none;
@@ -357,8 +362,8 @@ td {
       color: $accent-color;
 
       li {
-        margin-right: 16px;
-        font-size: 20px;
+        margin-right: 12px;
+        font-size: 24px;
 
         a {
           padding-right: 11px;
@@ -385,11 +390,11 @@ td {
   }
   .post {
     h2 {
-      font-size: 28px;
+      font-size: 34px;
     }
     header {
       h1 {
-        font-size: 40px;
+        font-size: 42px;
       }
       h2  {
         margin-bottom: 0;
@@ -402,7 +407,7 @@ td {
         margin: 15px 2px 15px 0;
 
         a {
-          font-size: 16px;
+          font-size: 17px;
         }
       }
     }
@@ -417,7 +422,7 @@ td {
     position: relative;
     left: -8%;
     padding-left: 80px;
-    width: 700px;
+    width: 720px;
     margin: 0 auto 40px auto;
   }
   #header {
@@ -483,4 +488,76 @@ h5:hover .header-link,
 h6:hover .header-link {
   visibility: visible;
 }
+
+/* Code highlighting */
+$purple:   #8959a8;
+$blue:     #4271ae;
+$lime:     #718c00;
+$red:      #c82829;
+$gray:     #8e908c;
+$darkgray: #4d4d4c;
+$cyan:     #3e999f;
+$orange:   #b76514;
+
+.hll { background-color: #ffffcc }
+.c { color: $gray } /* Comment */
+.err { color: $red } /* Error */
+.k { color: $purple } /* Keyword */
+.o { } /* Operator */
+.cm { color: $gray } /* Comment.Multiline */
+.cp { color: $gray } /* Comment.Preproc */
+.c1 { color: $gray } /* Comment.Single */
+.cs { color: $darkgray } /* Comment.Special */
+.gd { } /* Generic.Deleted */
+.ge { } /* Generic.Emph */
+.gr { color: $red } /* Generic.Error */
+.gh { } /* Generic.Heading */
+.gi { } /* Generic.Inserted */
+.go { } /* Generic.Output */
+.gp { } /* Generic.Prompt */
+.gs { } /* Generic.Strong */
+.gu { } /* Generic.Subheading */
+.gt { } /* Generic.Traceback */
+.kc { color: $purple } /* Keyword.Constant */
+.kd { color: $purple } /* Keyword.Declaration */
+.kn { color: $purple } /* Keyword.Namespace */
+.kp { color: $purple } /* Keyword.Pseudo */
+.kr { color: $purple } /* Keyword.Reserved */
+.kt { color: $cyan } /* Keyword.Type */
+.m { color: $lime } /* Literal.Number */
+.s { color: $lime } /* Literal.String */
+.na { } /* Name.Attribute */
+.nb { color: $cyan } /* Name.Builtin */
+.nc { } /* Name.Class */
+.no { } /* Name.Constant */
+.nd { } /* Name.Decorator */
+.ni { } /* Name.Entity */
+.ne { color: $red } /* Name.Exception */
+.nf { } /* Name.Function */
+.nl { } /* Name.Label */
+.nn { } /* Name.Namespace */
+.nt { } /* Name.Tag */
+.nv { } /* Name.Variable */
+.ow { color: $blue } /* Operator.Word */
+.w { } /* Text.Whitespace */
+.mf { color: $lime } /* Literal.Number.Float */
+.mh { color: $lime } /* Literal.Number.Hex */
+.mi { color: $lime } /* Literal.Number.Integer */
+.mo { color: $lime } /* Literal.Number.Oct */
+.sb { color: $lime } /* Literal.String.Backtick */
+.sc { color: $lime } /* Literal.String.Char */
+.sd { color: $lime } /* Literal.String.Doc */
+.s2 { color: $lime } /* Literal.String.Double */
+.se { color: $lime } /* Literal.String.Escape */
+.sh { color: $lime } /* Literal.String.Heredoc */
+.si { color: $lime } /* Literal.String.Interpol */
+.sx { color: $lime } /* Literal.String.Other */
+.sr { color: $lime } /* Literal.String.Regex */
+.s1 { color: $lime } /* Literal.String.Single */
+.ss { color: $lime } /* Literal.String.Symbol */
+.bp { color: $cyan } /* Name.Builtin.Pseudo */
+.vc { color: $cyan } /* Name.Variable.Class */
+.vg { color: $cyan } /* Name.Variable.Global */
+.vi { color: $cyan } /* Name.Variable.Instance */
+.il { color: $lime } /* Literal.Number.Integer.Long */
 
