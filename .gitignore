@@ -3,3 +3,4 @@
 *.swp
 .sass_cache
 .sass-cache
+.DS_Store
