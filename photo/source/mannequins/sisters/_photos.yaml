@@ -68,8 +68,13 @@
   location: Rotterdam, Holland
   date: 2008
 
-- filename: shadow.jpg
-  title: Shadow
+- filename: shadows.jpg
+  title: Shadows
   location: Sydney, Australia
   date: 2011
+
+- filename: xarax.jpg
+  title: Xarax
+  location: Singapore
+  date: 2012
 
