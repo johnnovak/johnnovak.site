@@ -1,3 +1,13 @@
+- filename: clouds.jpg
+  title: Clouds
+  location: Singapore
+  date: 2012
+
+- filename: xarax.jpg
+  title: Xarax
+  location: Singapore
+  date: 2012
+
 - filename: albino-twins.jpg
   title: Albino Twins
   location: Reading, UK
@@ -72,9 +82,4 @@
   title: Shadows
   location: Sydney, Australia
   date: 2011
-
-- filename: xarax.jpg
-  title: Xarax
-  location: Singapore
-  date: 2012
 
