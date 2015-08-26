@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Autoplay</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<!-- jQuery, -->
+	<script src="jquery/jquery-1.9.1.min.js"></script>
+
+	<!-- Fotorama -->
+	<link  href="../out/fotorama.css" rel="stylesheet">
+	<script src="../out/fotorama.js"></script>
+
+  <script type="text/javascript">
+    $(function () {
+      $('.fotorama').on('fotorama:startautoplay fotorama:stopautoplay', function (e) {
+        console.log(e.type);
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+<p>Autoplay:<p>
+<pre style="margin-top: -1em; margin-left: 1em;"><code>&lt;div class="fotorama"
+     <mark>data-autoplay="true"</mark>></code></pre>
+
+<p>The show stops on&nbsp;touch. Change this with <code>data-stop-autoplay-on-touch="false"</code>.</p>
+
+
+<!-- Fotorama -->
+<div class="fotorama"
+     data-width="100%"
+     data-height="100%"
+     data-margin="0"
+     data-fit="cover"
+     data-nav="none"
+     data-autoplay="1500"
+     data-arrows="true"
+     data-click="true"
+     data-swipe="true"
+     data-loop="false"
+     data-trackpad="false"
+     data-stopautoplayontouch="false">
+	<a href="i/okonechnikov/1-lo.jpg"></a>
+	<a href="i/okonechnikov/2-lo.jpg"></a>
+	<a href="i/okonechnikov/9-lo.jpg"></a>
+	<a href="i/okonechnikov/6-lo.jpg"></a>
+	<a href="i/okonechnikov/5-lo.jpg"></a>
+</div>
+
+<script>'use strict';
+var prev = Date.now();
+
+$('.fotorama').on('fotorama:show', function (e, fotorama) {
+    var now = Date.now() ;
+    console.log('fotorama:show:', now - prev);
+    prev = now;
+});
+
+</script>
+
+<!-- © -->
+<p>Photos <a href="http://okonet.ru/">by Andrey Okonetchnikov</a></p>
+</body>
+</html>

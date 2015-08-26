@@ -911,6 +911,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
   }
 
   function onTouchEnd () {
+    if (!touchedFLAG) return;
     if (!opts.stopautoplayontouch) {
       releaseAutoplay();
       changeAutoplay();
@@ -923,6 +924,7 @@ jQuery.Fotorama = function ($fotorama, opts) {
   }
 
   function releaseAutoplay () {
+    //console.log('releaseAutoplay');
     pausedAutoplayFLAG = !!($videoPlaying || stoppedAutoplayFLAG);
   }
 
@@ -1238,12 +1240,6 @@ jQuery.Fotorama = function ($fotorama, opts) {
         height = measures.height,
         ratio = measures.ratio,
         windowHeight = $WINDOW.height() - (o_nav ? $nav.height() : 0);
-
-    // HACK
-    if (!that.fullScreen) {
-      windowHeight -= opts.bottomoffset;
-    }
-    // HACK
 
     if (measureIsValid(width)) {
       $wrap

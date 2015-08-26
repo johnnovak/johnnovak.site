@@ -49,10 +49,6 @@ var $WINDOW = $(window),
       minheight: null,
       maxheight: null,
 
-      // HACK
-      bottomoffset: 0,
-      // HACK
- 
       ratio: null, // '16/9' || 500/333 || 1.5
 
       margin: MARGIN,
@@ -104,7 +100,8 @@ var $WINDOW = $(window),
 
       direction: 'ltr', // 'rtl'
 
-      shadows: true
+      shadows: true,
+      spinner: null
     },
 
     KEYBOARD_OPTIONS = {
