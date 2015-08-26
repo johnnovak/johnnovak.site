@@ -1241,6 +1241,12 @@ jQuery.Fotorama = function ($fotorama, opts) {
         ratio = measures.ratio,
         windowHeight = $WINDOW.height() - (o_nav ? $nav.height() : 0);
 
+    // HACK BEGIN
+    if (!that.fullScreen) {
+      windowHeight -= opts.bottomoffset;
+    }
+    // HACK END
+
     if (measureIsValid(width)) {
       $wrap
           .addClass(wrapOnlyActiveClass)

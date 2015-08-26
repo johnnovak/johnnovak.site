@@ -49,6 +49,10 @@ var $WINDOW = $(window),
       minheight: null,
       maxheight: null,
 
+      // HACK BEGIN
+      bottomoffset: 0,
+      // HACK END
+
       ratio: null, // '16/9' || 500/333 || 1.5
 
       margin: MARGIN,
