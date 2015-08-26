@@ -53,14 +53,15 @@ clean_home:
 
 photo: clean_photo
 	photo/generate-albums.py photo/source $(DEST_PHOTO_DIR)
-	mkdir -p $(PHOTO_CSS_LOCATION)
+	mkdir -p $(DEST_PHOTO_DIR)/css
 	mkdir -p $(DEST_PHOTO_DIR)/js/lib
 	cp -r photo/img $(DEST_PHOTO_DIR)
-	cp -r photo/js/lib $(DEST_PHOTO_DIR)/js/
+	cp photo/js/lib/*.js $(DEST_PHOTO_DIR)/js/lib
 	cp photo/js/*.js $(DEST_PHOTO_DIR)/js
 	cp photo/js/fotorama/out/fotorama.js $(DEST_PHOTO_DIR)/js/lib/
-	cp photo/js/fotorama/out/fotorama.css $(PHOTO_CSS_LOCATION)
-	touch $(PHOTO_CSS_LOCATION)/fotorama.png
+	cp photo/js/fotorama/out/fotorama.css $(DEST_PHOTO_DIR)/css
+	cp photo/css/*.css $(DEST_PHOTO_DIR)/css
+	touch $(DEST_PHOTO_DIR)/css/fotorama.png
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 fotorama:
