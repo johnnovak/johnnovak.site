@@ -17,7 +17,7 @@ $.fn.find2 = function(selector) {
 window.blockFotoramaData = true;
 
 
-/// GLOBAL MODULE START ////////////////////////////////////////////////////////
+/// GLOBAL MODULE START //////////////////////////////////////////////////////
 var site = function() {
 
 // Set to 1 if the site is located in a subdirectory under the server root
@@ -394,7 +394,8 @@ var albums = function() {
   }
 
   function fadeOutAlbumsDuration() {
-    return ($('.album').length - 1) * fadeOutAlbumsDelay + fadeOutAlbumDuration;
+    return ($('.album').length - 1)
+           * fadeOutAlbumsDelay + fadeOutAlbumDuration;
   }
 
   function categoryByHref(url) {
@@ -449,7 +450,7 @@ var albums = function() {
   }
 
   function init() {
-    categories = $('.categories li');
+    categories = $('.menu li');
     // refactor into globalInit
     if (hasHistoryApi) {
       installMainClickHandlers()
@@ -563,7 +564,7 @@ var pageMappings = {
 }
 
 // }}}
-/// GLOBAL MODULE EXPORTS //////////////////////////////////////////////////////
+/// GLOBAL MODULE EXPORTS ////////////////////////////////////////////////////
 
 return {
   currentPage: currentPage,
@@ -574,6 +575,6 @@ return {
 
 }();
 
-/// GLOBAL MODULE END //////////////////////////////////////////////////////////
+/// GLOBAL MODULE END ////////////////////////////////////////////////////////
 
 // vim:et ts=4 sts=4 foldmethod=marker
