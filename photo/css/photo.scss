@@ -90,21 +90,46 @@ a {
     }
   }
   .menu {
-    display: inline;
-    padding: 0;
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.5;
-    list-style: none;
+    ul {
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background: #d3d3d3;
+      padding: 15px 70px 15px 20px;
+      z-index: 100;
 
+      display: none;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      list-style: none;
+
+      li {
+        line-height: 2.0em;
+      }
+    }
+    .active {
+      display: block !important;
+    }
     li {
       margin-right: 10px;
+    }
+    .toggle-nav {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      @include transition(.15s, color);
+
+      &:hover {
+        color: $hover-color;
+        @include transition(.15s, color);
+      }
     }
   }
   .about {
     display: block;
-    margin: 10px 0;
-    font-size: 15px;
+    margin: 10px 0 0 0;
   }
 }
 
@@ -286,9 +311,6 @@ a {
     #header {
       height: 20px;
     }
-    .menu {
-      display: none;
-    }
   }
 }
 
@@ -305,9 +327,9 @@ a {
     h1 {
       font-size: 20px;
     }
-    .menu,
-    .about {
-      font-size: 16px;
+    .toggle-nav {
+      margin-top: -2px;
+      font-size: 19px;
     }
   }
 
@@ -335,30 +357,6 @@ a {
   #header {
     margin-bottom: 0;
     height: 20px;
-
-    .menu {
-      display: inline;
-      top: -9px;
-      line-height: 1;
-
-      li {
-        display: inline;
-        margin-left: 13px;
-        margin-right: 0;
-      }
-    }
-    .about {
-      display: inline;
-      font-size: 16px;
-      margin-left: 10px;
-      padding-left: 12px;
-      border-left: 1px solid $font-color;
-    }
-    .menu {
-      position: absolute;
-      top: 3px;
-      right: 0;
-    }
   }
 }
 
@@ -403,6 +401,38 @@ a {
       h2 {
         line-height: 1;
       }
+    }
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  #header {
+    .menu ul {
+      display: inline;
+      line-height: 1;
+      font-size: 16px;
+      background: none;
+      padding: 0;
+
+      li {
+        display: inline;
+        margin-left: 20px;
+        margin-right: 0;
+      }
+    }
+    .menu ul {
+      position: absolute;
+      top: 6px;
+      right: 0;
+    }
+    .toggle-nav {
+      display: none;
+    }
+    .about {
+      display: inline;
+      margin-left: 10px;
+      padding-left: 16px;
+      border-left: 1px solid $font-color;
     }
   }
 }

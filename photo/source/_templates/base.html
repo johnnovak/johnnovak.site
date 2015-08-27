@@ -17,7 +17,6 @@
 
   <link rel="stylesheet" type="text/css" href="{{ basepath }}css/fotorama.css">
   <link rel="stylesheet" type="text/css" href="{{ basepath }}css/photo.css" />
-  <link rel="stylesheet" type="text/css" href="{{ basepath }}css/slicknav.min.css" />
 
   <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script>
@@ -27,7 +26,6 @@
   </script>
   <script src="{{ basepath }}js/lib/fotorama.js"></script>
   <script src="{{ basepath }}js/lib/imagesloaded.pkgd.min.js"></script>
-  <script src="{{ basepath }}js/lib/jquery.slicknav.min.js"></script>
   <script src="{{ basepath }}js/photo.js"></script>
 </head> 
 
@@ -38,21 +36,41 @@
   <div id="header">
     <h1><a class="jn" href="http://www.johnnovak.net/">John Novak</a> <a class="photo" href="{{ basepath }}">Photography</a></h1>
 
-    <ul class="menu">
-      {%- for category in categories %}
-      <li><a href="{{ category.href }}">{{ category.caption }}</a></li>
-      {%- endfor %}
-      <li class="about"><a href="{{ basepath }}about/">About</a></li>
-    </ul>
+    <div class="menu">
+      <ul>
+        {%- for category in categories %}
+        <li><a href="{{ category.href }}">{{ category.caption }}</a></li>
+        {%- endfor %}
+        <li class="about"><a href="{{ basepath }}about/">About</a></li>
+      </ul>
+
+      <div class="toggle-nav">&#9776;</div>
+    </div>
   </div>
 
   <div id="content">{% block content %}{% endblock %}</div>
 
   <script>
     $(function() {
-//      $('#header .menu').slicknav({
-//        label: ''
-//      });
+      $('.toggle-nav').on('click', function(e) {
+        $('.menu ul').toggleClass('active');
+        e.stopPropagation();
+      });
+
+      // TODO fix 
+      $('.menu ul a').each(function(i, link) {
+        $(link).on('click', function(e) {
+          // only toggle if displayed
+          $('.menu ul').toggleClass('active');
+          e.stopPropagation();
+        });
+      });
+
+      // TODO do it nicer...
+      $('html').click(function() {
+        $('.menu ul').removeClass('active');
+      });
+
       (site.currentPage = site.{{ page }}).init();
     });
   </script>
