@@ -39,7 +39,7 @@
     <div class="menu">
       <ul>
         {%- for category in categories %}
-        <li><a href="{{ category.href }}">{{ category.caption }}</a></li>
+        <li class="category"><a href="{{ category.href }}">{{ category.caption }}</a></li>
         {%- endfor %}
         <li class="about"><a href="{{ basepath }}about/">About</a></li>
       </ul>
