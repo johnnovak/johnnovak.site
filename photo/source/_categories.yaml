@@ -7,6 +7,9 @@
 - name: people
   title: People
 
+- name: events
+  title: Events
+
 - name: bw
   title: Black & White
 
