@@ -8,9 +8,9 @@
 })(jQuery);
 
 
-// Improved version jQuery find that finds root elements as well
+// Improved version of 'jQuery find' that finds root elements as well
 $.fn.find2 = function(selector) {
-    return this.filter(selector).add(this.find(selector));
+  return this.filter(selector).add(this.find(selector));
 };
 
 // Prevent Fotorama from making dubious requests to mc.yandex.ru
@@ -25,12 +25,12 @@ var site = function() {
 var IS_IN_SUBDIR = 0
 
 
-// Load HTML fragment and fire a callback function when all images contained in
-// it are fully loaded.
+// Load HTML fragment and fire a callback function when all images contained
+// in it are fully loaded.
 //
 // url: URL of HTML fragment to load
 // onLoad: Function to call after all images in the fragment have been loaded.
-//         A single argument is passed to the function which holds the filtered
+//         A single argument is passed to the function that holds the filtered
 //         HTML fragment.
 // selector (optional): filter the HTML fragment by running it through a CSS
 //                      selector
@@ -68,6 +68,15 @@ function loadFragment(opts) {
   });
 }
 
+function pushState(url) {
+  console.log('pushState: ' + url);
+  history.pushState(null, null, url);
+}
+
+function replaceState(url) {
+  history.replaceState(null, null, url);
+}
+
 function switchPage(newPage, pathname) {
   var currPage = site.currentPage;
   currPage.destroy();
@@ -75,7 +84,7 @@ function switchPage(newPage, pathname) {
   site.currentPage = newPage;
 }
 
-function switchPageByPathName(pathname, doPushState) {
+function switchPageByPathName(pathname) {
   var newPage = pageFromPathName(pathname);
   var currPage = site.currentPage;
 
@@ -85,49 +94,11 @@ function switchPageByPathName(pathname, doPushState) {
     }
   } else {
     switchPage(newPage, pathname);
-    if (doPushState) {
-      pushState(pathname);
-    }
   }
 }
 
-function installMainClickHandlers() {
-  if (!mainClickHandlersInstalled) {
-    installMenuClickHandler();
-    installLogoClickHandler();
-    mainClickHandlerInstalled = true;
-  }
-}
-
-function installMenuClickHandler() {
-  $('#header .menu a').each(function(i, link) {
-    $(link).on('click', function(event) {
-      event.preventDefault();
-      switchPageByPathName(link.pathname, true);
-    });
-  });
-};
-
-function installLogoClickHandler() {
-  var link = $('#header h1 a.photo');
-  link.on('click', function(event) {
-      event.preventDefault();
-      var pathname = link[0].pathname
-      switchPageByPathName(pathname, true);
-      pushState(pathname);
-  });
-};
-
-function splitPathName(pathname) {
-  var p = pathname.split('/');
-  // Remove initial and trailing forward slashes, if present.
-  if (!p[0]) {
-    p.shift();
-  }
-  if (!p[p.length - 1]) {
-    p.pop();
-  }
-  return p;
+function pageFromPathName(pathname) {
+  return pageMappings[pageNameFromPathName(pathname)];
 }
 
 function pageNameFromPathName(pathname) {
@@ -144,27 +115,55 @@ function pageNameFromPathName(pathname) {
   }
 }
 
-function pageFromPathName(pathname) {
-  return pageMappings[pageNameFromPathName(pathname)];
+function splitPathName(pathname) {
+  var p = pathname.split('/');
+  // Remove initial and trailing forward slashes, if present.
+  if (!p[0]) {
+    p.shift();
+  }
+  if (!p[p.length - 1]) {
+    p.pop();
+  }
+  return p;
 }
 
-function pushState(url) {
-  history.pushState(null, null, url);
+function installNavigationClickHandlers() {
+  if (!navigationClickHandlersInstalled) {
+    installMenuClickHandler();
+    installLogoClickHandler();
+    navigationClickHandlersInstalled = true;
+  }
 }
 
-function replaceState(url) {
-  history.replaceState(null, null, url);
-}
+function installMenuClickHandler() {
+  $('#header .menu a').each(function(i, link) {
+    $(link).on('click', function(event) {
+      event.preventDefault();
+      switchPageByPathName(link.pathname);
+      pushState(link.pathname)
+    });
+  });
+};
+
+function installLogoClickHandler() {
+  var link = $('#header h1 a.photo');
+  link.on('click', function(event) {
+      event.preventDefault();
+      var pathname = link[0].pathname
+      switchPageByPathName(pathname);
+      pushState(pathname);
+  });
+};
 
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
       var pathname = location.pathname + location.hash
-      switchPageByPathName(pathname, false);
+      switchPageByPathName(pathname);
   });
 }
 
 var currentPage;
-var mainClickHandlersInstalled = false;
+var navigationClickHandlersInstalled = false;
 var hasHistoryApi = !!(window.history && history.pushState);
 
 if (hasHistoryApi) {
@@ -210,10 +209,10 @@ var photo = function() {
   function createNavigation() {
     var navHtml =   '<div id="caption"></div>'
                   + '<ul class="counter">'
-                  + '<li id="prev"><span>prev</span></li>'
-                  + '<li id="imgcounter"></li>'
-                  + '<li id="next"><span>next</span></li>'
-                  + '<li id="fullscreen"></li>'
+                  +   '<li id="prev"><span>prev</span></li>'
+                  +   '<li id="imgcounter"></li>'
+                  +   '<li id="next"><span>next</span></li>'
+                  +   '<li id="fullscreen"></li>'
                   + '</ul>';
 
     $('#nav').fadeTo(0, 0);
@@ -240,8 +239,7 @@ var photo = function() {
 //      keyboard: true,
       hash: true,
 
-      // NOTE: The following two global params work only with my custom hacked
-      // fotorama.js
+      // NOTE: This option works only with my custom hacked fotorama.js
       bottomoffset: smallScreen ? 35 : 140
     };
     if (hasHistoryApi) {
@@ -251,7 +249,7 @@ var photo = function() {
     fotoramaApi = fotorama.data('fotorama');
   }
 
-  function installNavButtonHandlers() {
+  function installPhotoNavButtonHandlers() {
     $('#prev').click(function() {
       fotoramaApi.show('<');
     });
@@ -263,7 +261,7 @@ var photo = function() {
     });
   }
 
-  function installImageCounterAndCaptionHandlers() {
+  function installPhotoCounterAndCaptionHandlers() {
 
     function updateNav(e, fotorama) {
       var curr = fotoramaApi.activeIndex + 1;
@@ -317,13 +315,13 @@ var photo = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installMainClickHandlers()
+      installNavigationClickHandlers()
     }
     fotoramaize();
     createNavigation();
     createFotorama();
-    installNavButtonHandlers();
-    installImageCounterAndCaptionHandlers();
+    installPhotoNavButtonHandlers();
+    installPhotoCounterAndCaptionHandlers();
   }
 
   function ajaxInit(url, delay) {
@@ -373,15 +371,33 @@ var photo = function() {
 var albums = function() {
   var loading = false;
 
-  function fadeInAlbums(initialDelay) {
-    var fadeInDelay = 120;
-    var fadeInDuration = 400;
-    initialDelay |= 0;
-
-    $('.album').each(function(i, album) {
-      $(album).delay(initialDelay + i * fadeInDelay)
-              .fadeTo(fadeInDuration, 1);
+  function installAlbumClickHandler() {
+    $('.thumbs .album').each(function(i, album) {
+      $('a', album).each(function(i, link) {
+        $(link).on('click', function(event) {
+          event.preventDefault();
+          switchPageByPathName(link.pathname);
+          pushState(link.pathname);
+        });
+      });
     });
+  }
+
+  function changeCategory(url) {
+    // Update selected
+    categories.removeClass('sel');
+    categoryByHref(url).addClass('sel');
+    fadeOutAlbums();
+    loadCategory(url);
+  }
+
+  function categoryByHref(url) {
+    var c = categories.find("[href='" + url + "']");
+    if (c.length) {
+      return c.parent();
+    } else {
+      return $(categories[0]);
+    }
   }
 
   var fadeOutAlbumsDelay = 40;
@@ -398,23 +414,6 @@ var albums = function() {
            * fadeOutAlbumsDelay + fadeOutAlbumDuration;
   }
 
-  function categoryByHref(url) {
-    var c = categories.find("[href='" + url + "']");
-    if (c.length) {
-      return c.parent();
-    } else {
-      return $(categories[0]);
-    }
-  }
-
-  function changeCategory(url) {
-    // Update selected
-    categories.removeClass('sel');
-    categoryByHref(url).addClass('sel');
-    fadeOutAlbums();
-    loadCategory(url);
-  }
-
   function loadCategory(url) {
     loadFragment({
       url: url,
@@ -428,33 +427,22 @@ var albums = function() {
     });
   }
 
-  function installCategoryClickHandler() {
-    categories.find('a').each(function(i, link) {
-      $(link).on('click', function(event) {
-        event.preventDefault();
-        changeCategory(link.pathname);
-        pushState(link.pathname);
-      });
-    });
-  }
+  function fadeInAlbums(initialDelay) {
+    var fadeInDelay = 120;
+    var fadeInDuration = 400;
+    initialDelay |= 0;
 
-  function installAlbumClickHandler() {
-    $('.thumbs .album').each(function(i, album) {
-      $('a', album).each(function(i, link) {
-        $(link).on('click', function(event) {
-          event.preventDefault();
-          switchPageByPathName(link.pathname, true);
-        });
-      });
+    $('.album').each(function(i, album) {
+      $(album).delay(initialDelay + i * fadeInDelay)
+              .fadeTo(fadeInDuration, 1);
     });
   }
 
   function init() {
-    categories = $('.menu li');
-    // refactor into globalInit
+    categories = $('.menu li.category');
+    // TODO refactor into globalInit
     if (hasHistoryApi) {
-      installMainClickHandlers()
-      installCategoryClickHandler();
+      installNavigationClickHandlers()
       installAlbumClickHandler();
     }
     fadeInAlbums(250);
@@ -491,7 +479,6 @@ var albums = function() {
     ajaxInit: ajaxInit,
     destroy: destroy,
     destroyDuration: destroyDuration,
-    changeCategory: changeCategory,
     updatePageHandler: updatePageHandler
   }
 }();
@@ -522,7 +509,7 @@ var about = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installMainClickHandlers()
+      installNavigationClickHandlers()
     }
     fadeIn();
   }
