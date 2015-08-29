@@ -49,9 +49,14 @@ clean_home:
 
 ### PHOTO #####################################################################
 
-.PHONY: photo fotorama watch_photo_css update_photo_css symlink_photo_js clean_photo
+.PHONY: photo generate_photo exif_cleanup build_fotorama symlink_photo_js \
+		watch_photo_css update_photo_css clean_photo
 
-photo: clean_photo
+photo:
+	make generate_photo
+	make exif_cleanup
+
+generate_photo: clean_photo
 	photo/generate-albums.py photo/source $(DEST_PHOTO_DIR)
 	mkdir -p $(DEST_PHOTO_DIR)/css
 	mkdir -p $(DEST_PHOTO_DIR)/js/lib
@@ -63,7 +68,15 @@ photo: clean_photo
 	touch $(DEST_PHOTO_DIR)/css/fotorama.png
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
-fotorama:
+exif_cleanup:
+	exiftool -d %Y -all= --exif:all -software= -serialnumber= \
+		-artist="John Novak" \
+		'-copyright<© $$CreateDate John Novak. All rights reserved.' \
+		-comment="http://photo.johnnovak.net/" \
+		--icc_profile:all \
+		-overwrite_original -R -ext jpg $(DEST_PHOTO_DIR)
+
+build_fotorama:
 	cd photo/js/fotorama; grunt build
 
 watch_photo_css:

@@ -4,6 +4,7 @@ Requirements
 * python (2.7)
 * jekyll (?)
 * sass (3.4+)
+* exiftool (8.6+)
 
 Python libraries
 ----------------
