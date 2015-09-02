@@ -126,12 +126,12 @@ function splitPathName(pathname) {
   return p;
 }
 
-function installNavigationClickHandlers() {
-  if (!navigationClickHandlersInstalled) {
-    initResponsiveMenu();
+function initNavigation() {
+  if (!isNavigationInitialized) {
+    installResponsiveMenu();
     installMenuClickHandler();
     installLogoClickHandler();
-    navigationClickHandlersInstalled = true;
+    isNavigationInitialized = true;
   }
 }
 
@@ -164,7 +164,7 @@ function installPopStateHandler() {
 }
 
 var currentPage;
-var navigationClickHandlersInstalled = false;
+var isNavigationInitialized = false;
 var hasHistoryApi = !!(window.history && history.pushState);
 
 if (hasHistoryApi) {
@@ -177,7 +177,7 @@ $(function() {
   $('#spinner').hide();
 });
 
-// {{{ PHOTO /////////////////////////////////////////////////////////////////
+// {{{ RESPONSIVE MENU ///////////////////////////////////////////////////////
 
 function showResponsiveMenu() {
   $('#overlay').show();
@@ -189,10 +189,10 @@ function hideResponsiveMenu() {
   $('.menu ul').removeClass('active');
 }
 
-function initResponsiveMenu() {
+function installResponsiveMenu() {
   $('.toggle-nav').on('click', function(e) {
     showResponsiveMenu();
-    e.stopPropagation();
+//    e.stopPropagation();
   });
 
   $('.menu ul a').each(function(i, link) {
@@ -348,7 +348,7 @@ var photo = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installNavigationClickHandlers()
+      initNavigation()
     }
     fotoramaize();
     createNavigation();
@@ -475,7 +475,7 @@ var albums = function() {
     categories = $('.menu li.category');
     // TODO refactor into globalInit
     if (hasHistoryApi) {
-      installNavigationClickHandlers()
+      initNavigation()
       installAlbumClickHandler();
     }
     fadeInAlbums(250);
@@ -542,7 +542,7 @@ var about = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installNavigationClickHandlers()
+      initNavigation()
     }
     fadeIn();
   }
