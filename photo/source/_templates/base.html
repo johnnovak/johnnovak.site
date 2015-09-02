@@ -51,28 +51,7 @@
   <div id="content">{% block content %}{% endblock %}</div>
 
   <script>
-    $(function() {
-      $('.toggle-nav').on('click', function(e) {
-        $('.menu ul').toggleClass('active');
-        e.stopPropagation();
-      });
-
-      // TODO fix 
-      $('.menu ul a').each(function(i, link) {
-        $(link).on('click', function(e) {
-          // only toggle if displayed
-          $('.menu ul').toggleClass('active');
-          e.stopPropagation();
-        });
-      });
-
-      // TODO do it nicer...
-      $('html').click(function() {
-        $('.menu ul').removeClass('active');
-      });
-
-      (site.currentPage = site.{{ page }}).init();
-    });
+    (site.currentPage = site.{{ page }}).init();
   </script>
 </body>
 </html>

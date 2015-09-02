@@ -69,7 +69,6 @@ function loadFragment(opts) {
 }
 
 function pushState(url) {
-  console.log('pushState: ' + url);
   history.pushState(null, null, url);
 }
 
@@ -129,6 +128,7 @@ function splitPathName(pathname) {
 
 function installNavigationClickHandlers() {
   if (!navigationClickHandlersInstalled) {
+    initResponsiveMenu();
     installMenuClickHandler();
     installLogoClickHandler();
     navigationClickHandlersInstalled = true;
@@ -158,6 +158,7 @@ function installLogoClickHandler() {
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
       var pathname = location.pathname + location.hash
+      hideResponsiveMenu();
       switchPageByPathName(pathname);
   });
 }
@@ -176,7 +177,39 @@ $(function() {
   $('#spinner').hide();
 });
 
+// {{{ PHOTO /////////////////////////////////////////////////////////////////
 
+function showResponsiveMenu() {
+  $('#overlay').show();
+  $('.menu ul').addClass('active');
+}
+
+function hideResponsiveMenu() {
+  $('#overlay').hide();
+  $('.menu ul').removeClass('active');
+}
+
+function initResponsiveMenu() {
+  $('.toggle-nav').on('click', function(e) {
+    showResponsiveMenu();
+    e.stopPropagation();
+  });
+
+  $('.menu ul a').each(function(i, link) {
+    $(link).on('click', function(e) {
+      hideResponsiveMenu();
+      e.stopPropagation();
+    });
+  });
+
+  $('body').append('<div id="overlay"></div>');
+
+  $('#overlay').on('click', function(e) {
+    hideResponsiveMenu();
+  });
+}
+
+// }}}
 // {{{ PHOTO /////////////////////////////////////////////////////////////////
 
 var photo = function() {
