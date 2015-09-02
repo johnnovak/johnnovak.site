@@ -1,3 +1,5 @@
+EXIFTOOL = exiftool-5.22
+
 DEST_HOME_DIR  = ../johnnovak.github.io
 DEST_PHOTO_DIR = ../photo
 DEST_BLOG_DIR  = ../blog
@@ -69,7 +71,7 @@ generate_photo: clean_photo
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 exif_cleanup:
-	exiftool -d %Y -all= --exif:all -software= -serialnumber= \
+	$(EXIFTOOL) -d %Y -all= --exif:all -software= -serialnumber= \
 		-artist="John Novak" \
 		'-copyright<© $$CreateDate John Novak. All rights reserved.' \
 		-comment="http://photo.johnnovak.net/" \
