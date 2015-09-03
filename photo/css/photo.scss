@@ -69,7 +69,7 @@ a {
   left: 50%;
   margin-left: -16px;
   margin-top: -17px;
-  z-index: 100;
+  z-index: 90;
   overflow: auto;
 
   @include bg-img(35, 35, 'spinner', $suffix: '.gif', $basepath: $img-path);
@@ -98,28 +98,19 @@ a {
   }
   .menu {
     ul {
-      position: absolute;
-      top: 25px;
-      right: 0;
-      background: #d3d3d3;
-      padding: 15px 70px 15px 20px;
-      z-index: 150;
-
-      display: none;
       margin: 0;
+      padding: 0;
       font-size: 16px;
-      line-height: 1.5;
       list-style: none;
 
       li {
-        line-height: 2.0em;
+        display: inline;
+        line-height: .5em;
       }
-    }
-    .active {
-      display: block !important;
     }
     li {
       margin-right: 10px;
+
     }
     .toggle-nav {
       position: absolute;
@@ -137,6 +128,26 @@ a {
   .about {
     display: block;
     margin: 10px 0 0 0;
+  }
+}
+// .js #header {
+.js {
+  .menu {
+    ul {
+      display: none;
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background: #eee;
+      padding: 15px 70px 15px 20px;
+      z-index: 150;
+      line-height: 1.5;
+
+      li {
+        display: block;
+        line-height: 2.0em;
+      }
+    }
   }
 }
 
@@ -334,7 +345,7 @@ a {
 //****************************************************************************
 
 @media only screen and (max-width: 750px) {
-  body.photo {
+  body.js.photo {
     #header {
       height: 20px;
     }
@@ -383,6 +394,8 @@ a {
 @media only screen and (min-width: 750px) {
   #header {
     margin-bottom: 0;
+  }
+  .js #header {
     height: 20px;
   }
 }
@@ -456,7 +469,6 @@ a {
       display: none;
     }
     .about {
-      display: inline;
       margin-left: 10px;
       padding-left: 16px;
       border-left: 1px solid $font-color;

@@ -180,19 +180,18 @@ $(function() {
 // {{{ RESPONSIVE MENU ///////////////////////////////////////////////////////
 
 function showResponsiveMenu() {
-  $('#overlay').show();
-  $('.menu ul').addClass('active');
+  $('#overlay, .menu ul').show();
 }
 
 function hideResponsiveMenu() {
-  $('#overlay').hide();
-  $('.menu ul').removeClass('active');
+  $('#overlay, .menu ul').hide();
 }
 
 function installResponsiveMenu() {
+  $('#header .menu').append('<div class="toggle-nav">&#9776;</div>');
+
   $('.toggle-nav').on('click', function(e) {
     showResponsiveMenu();
-//    e.stopPropagation();
   });
 
   $('.menu ul a').each(function(i, link) {
