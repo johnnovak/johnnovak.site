@@ -69,11 +69,21 @@ generate_photo: clean_photo
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 exif_cleanup:
-	exiftool -d %Y -all= --exif:all -software= -serialnumber= \
-		-artist="John Novak" \
-		'-copyright<© $$CreateDate John Novak. All rights reserved.' \
-		-comment="http://photo.johnnovak.net/" \
-		--icc_profile:all \
+	exiftool -m -d %Y -all= --exif:all --icc_profile:all \
+		-Software= \
+		-Serialnumber= \
+		-Artist="John Novak" \
+		-Creator="John Novak" \
+		-CreatorCity="Brisbane" \
+		-CreatorCountry="Australia" \
+		-CreatorWorkEmail="john@johnnovak.net" \
+		-CreatorWorkURL="http://photo.johnnovak.net/" \
+		-Comment="http://photo.johnnovak.net/" \
+		'-Copyright<Copyright © $$CreateDate John Novak. All rights reserved.' \
+		'-Rights<Copyright © $$CreateDate John Novak. All rights reserved.' \
+		-Marked=True \
+		-UsageTerms="All rights reserved." \
+		-Format="image/jpeg" \
 		-overwrite_original -R -ext jpg $(DEST_PHOTO_DIR)
 
 build_fotorama:
