@@ -1,3 +1,5 @@
+EXIFTOOL = exiftool-5.22
+
 DEST_HOME_DIR  = ../johnnovak.github.io
 DEST_PHOTO_DIR = ../photo
 DEST_BLOG_DIR  = ../blog

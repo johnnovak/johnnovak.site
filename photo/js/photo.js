@@ -69,7 +69,6 @@ function loadFragment(opts) {
 }
 
 function pushState(url) {
-  console.log('pushState: ' + url);
   history.pushState(null, null, url);
 }
 
@@ -127,11 +126,12 @@ function splitPathName(pathname) {
   return p;
 }
 
-function installNavigationClickHandlers() {
-  if (!navigationClickHandlersInstalled) {
+function initNavigation() {
+  if (!isNavigationInitialized) {
+    installResponsiveMenu();
     installMenuClickHandler();
     installLogoClickHandler();
-    navigationClickHandlersInstalled = true;
+    isNavigationInitialized = true;
   }
 }
 
@@ -158,12 +158,13 @@ function installLogoClickHandler() {
 function installPopStateHandler() {
   window.addEventListener('popstate', function(e) {
       var pathname = location.pathname + location.hash
+      hideResponsiveMenu();
       switchPageByPathName(pathname);
   });
 }
 
 var currentPage;
-var navigationClickHandlersInstalled = false;
+var isNavigationInitialized = false;
 var hasHistoryApi = !!(window.history && history.pushState);
 
 if (hasHistoryApi) {
@@ -176,7 +177,36 @@ $(function() {
   $('#spinner').hide();
 });
 
+// {{{ RESPONSIVE MENU ///////////////////////////////////////////////////////
 
+function showResponsiveMenu() {
+  $('#overlay, .menu ul').show();
+}
+
+function hideResponsiveMenu() {
+  $('#overlay, .menu ul').hide();
+}
+
+function installResponsiveMenu() {
+  $('.toggle-nav').on('click', function(e) {
+    showResponsiveMenu();
+  });
+
+  $('.menu ul a').each(function(i, link) {
+    $(link).on('click', function(e) {
+      hideResponsiveMenu();
+      e.stopPropagation();
+    });
+  });
+
+  $('body').append('<div id="overlay"></div>');
+
+  $('#overlay').on('click', function(e) {
+    hideResponsiveMenu();
+  });
+}
+
+// }}}
 // {{{ PHOTO /////////////////////////////////////////////////////////////////
 
 var photo = function() {
@@ -315,7 +345,7 @@ var photo = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installNavigationClickHandlers()
+      initNavigation()
     }
     fotoramaize();
     createNavigation();
@@ -442,7 +472,7 @@ var albums = function() {
     categories = $('.menu li.category');
     // TODO refactor into globalInit
     if (hasHistoryApi) {
-      installNavigationClickHandlers()
+      initNavigation()
       installAlbumClickHandler();
     }
     fadeInAlbums(250);
@@ -509,7 +539,7 @@ var about = function() {
 
   function init() {
     if (hasHistoryApi) {
-      installNavigationClickHandlers()
+      initNavigation()
     }
     fadeIn();
   }
