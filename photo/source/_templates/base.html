@@ -27,23 +27,26 @@
   <script src="{{ basepath }}js/lib/fotorama.js"></script>
   <script src="{{ basepath }}js/lib/imagesloaded.pkgd.min.js"></script>
   <script src="{{ basepath }}js/photo.js"></script>
-</head> 
+</head>
 
-<body class="{{ page }}">
+<body class="{{ page }} nojs">
   <script src="/js/lib/respond.min.js"></script>
-  <script>document.body.className += ' js';</script>
+  <script>
+    var c = document.body.className;
+    c = c.replace(' nojs', '');
+    c += ' js';
+    document.body.className = c;
+  </script>
 
   <div id="header">
     <h1><a class="jn" href="http://www.johnnovak.net/">John Novak</a> <a class="photo" href="{{ basepath }}">Photography</a></h1>
 
-    <div class="menu">
-      <ul>
-        {%- for category in categories %}
-        <li class="category"><a href="{{ category.href }}">{{ category.caption }}</a></li>
-        {%- endfor %}
-        <li class="about"><a href="{{ basepath }}about/">About</a></li>
-      </ul>
-    </div>
+    <ul class="menu">
+      {%- for category in categories %}
+      <li class="category"><a href="{{ category.href }}">{{ category.caption }}</a></li>
+      {%- endfor %}
+      <li class="about"><a href="{{ basepath }}about/">About</a></li>
+    </ul>
   </div>
 
   <div id="content">{% block content %}{% endblock %}</div>

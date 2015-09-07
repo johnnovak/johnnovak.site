@@ -96,57 +96,49 @@ a {
       font-weight: $normal !important;
     }
   }
-  .menu {
-    ul {
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      list-style: none;
+}
+.menu {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  list-style: none;
 
-      li {
-        display: inline;
-        line-height: .5em;
-      }
-    }
-    li {
-      margin-right: 10px;
+  li {
+    display: inline;
+    line-height: .5em;
 
+    &.about {
+      display: block;
+      margin: 10px 0 0 0;
     }
-    .toggle-nav {
-      position: absolute;
-      top: 0;
-      right: 0;
-      cursor: pointer;
-      @include transition(.15s, color);
-
-      &:hover {
-        color: $hover-color;
-        @include transition(.15s, color);
-      }
-    }
-  }
-  .about {
-    display: block;
-    margin: 10px 0 0 0;
   }
 }
-// .js #header {
+.toggle-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  @include transition(.15s, color);
+
+  &:hover {
+    color: $hover-color;
+    @include transition(.15s, color);
+  }
+}
 .js {
   .menu {
-    ul {
-      display: none;
-      position: absolute;
-      top: 25px;
-      right: 0;
-      background: #eee;
-      padding: 15px 70px 15px 20px;
-      z-index: 150;
-      line-height: 1.5;
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 0;
+    background: #eee;
+    padding: 15px 70px 15px 20px;
+    z-index: 150;
+    line-height: 1.5;
 
-      li {
-        display: block;
-        line-height: 2.0em;
-      }
+    li {
+      display: block;
+      line-height: 2.0em;
     }
   }
 }
@@ -157,6 +149,13 @@ a {
 
 #about {
   margin-top: 30px;
+
+  h2 {
+    @include titlecaps;
+    margin-bottom: 1.5em;
+    font-size: 16px;
+    font-weight: bold;
+  }
 
   img {
     width: 100%;
@@ -170,9 +169,22 @@ a {
       margin: 0 0 1em 0;
       padding: 0;
     }
+    .delete {
+      text-decoration: line-through;
+    }
     a {
-      font-weight: $bold;
-      cursor: pointer;
+      border-bottom: 1px solid #999;
+    }
+    .index {
+      position: relative;
+      top: -0.6em;
+      font-size: 12px;
+    }
+    .footnote {
+      margin-top: 2.5em;
+      padding: 0.6em 0 0 1.5em;
+      font-size: 14px;
+      border-top: 1px solid #aaa;
     }
   }
 }
@@ -231,7 +243,7 @@ a {
         $bg_w: $icons_bg_w,
         $bg_h: $icons_bg_h,
         $x: 0, $y: 20, $w: 10, $h: 18,
-        $basepath: $img-path 
+        $basepath: $img-path
       );
       margin-right: 10px;
 
@@ -356,11 +368,9 @@ a {
   html {
     margin: 0 30px;
   }
-
   body {
     margin: 20px auto 0 auto;
   }
-
   #header {
     h1 {
       font-size: 20px;
@@ -370,7 +380,6 @@ a {
       font-size: 19px;
     }
   }
-
   #nav {
     .counter {
       position: static;
@@ -405,12 +414,12 @@ a {
     margin-top: 60px;
 
     img {
-      width: 40%;
+      width: 30%;
       float: left;
     }
     .text {
-      width: 50%;
-      margin: 0 0 60px 50%;
+      width: 60%;
+      margin: 0 0 60px 40%;
 
       p {
         padding-right: 30px;
@@ -447,8 +456,11 @@ a {
 
 @media only screen and (min-width: 950px) {
   #header {
-    .menu ul {
-      display: inline;
+    .menu {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline !important;
       line-height: 1;
       font-size: 16px;
       background: none;
@@ -458,21 +470,20 @@ a {
         display: inline;
         margin-left: 20px;
         margin-right: 0;
+
+        &.about {
+          margin-left: 10px;
+          padding-left: 16px;
+          border-left: 1px solid $font-color;
+        }
       }
-    }
-    .menu ul {
-      position: absolute;
-      top: 0;
-      right: 0;
     }
     .toggle-nav {
       display: none;
     }
-    .about {
-      margin-left: 10px;
-      padding-left: 16px;
-      border-left: 1px solid $font-color;
-    }
+  }
+  .nojs #header .menu {
+    top: 6px;
   }
 }
 

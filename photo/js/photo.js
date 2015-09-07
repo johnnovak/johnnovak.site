@@ -180,21 +180,21 @@ $(function() {
 // {{{ RESPONSIVE MENU ///////////////////////////////////////////////////////
 
 function showResponsiveMenu() {
-  $('#overlay, .menu ul').show();
+  $('#overlay, .menu').show();
 }
 
 function hideResponsiveMenu() {
-  $('#overlay, .menu ul').hide();
+  $('#overlay, .menu').hide();
 }
 
 function installResponsiveMenu() {
-  $('#header .menu').append('<div class="toggle-nav">&#9776;</div>');
+  $('#header').append('<div class="toggle-nav">&#9776;</div>');
 
   $('.toggle-nav').on('click', function(e) {
     showResponsiveMenu();
   });
 
-  $('.menu ul a').each(function(i, link) {
+  $('.menu a').each(function(i, link) {
     $(link).on('click', function(e) {
       hideResponsiveMenu();
       e.stopPropagation();
