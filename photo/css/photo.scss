@@ -106,6 +106,7 @@ a {
   li {
     display: inline;
     line-height: .5em;
+    margin-right: 10px;
 
     &.about {
       display: block;
@@ -149,13 +150,6 @@ a {
 
 #about {
   margin-top: 30px;
-
-  h2 {
-    @include titlecaps;
-    margin-bottom: 1.5em;
-    font-size: 16px;
-    font-weight: bold;
-  }
 
   img {
     width: 100%;
@@ -419,6 +413,7 @@ a {
     }
     .text {
       width: 60%;
+      max-width: 600px;
       margin: 0 0 60px 40%;
 
       p {
