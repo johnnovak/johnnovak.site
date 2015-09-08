@@ -7,6 +7,7 @@ GENERAL:
 PHOTO:
 
 * about page text
+* &nbsp; in category names
 
 * Opera & iPhone: can't exit fullscreen mode
 * keyboard navigation fix (works ok in fullscreen mode)
