@@ -226,15 +226,17 @@ var photo = function() {
       var caption = $(anchor[i]).attr('name');
       var heading = $(h2[i]);
       var title = heading.text();
-
       var image = $(img[i]);
-      image.attr('id', caption);
-      image.attr('data-caption', title);
-      image.attr('style', null);
 
+      image.remove();
       link.remove();
       heading.remove();
       anchor.remove();
+
+      $('#fotorama').append('<a href="' + image.attr('src') + '"'
+          + ' id="' + caption + '" '
+          + ' data-caption="' + title + '" '
+          + '">');
     }
   }
 
@@ -362,7 +364,6 @@ var photo = function() {
       selector: '#content',
       minDelay: delay,
       onLoad: function(fragment) {
-        // TODO refactor into method
         $('#content').html(fragment);
         init();
       }
@@ -472,7 +473,6 @@ var albums = function() {
 
   function init() {
     categories = $('.menu li.category');
-    // TODO refactor into globalInit
     if (hasHistoryApi) {
       initNavigation()
       installAlbumClickHandler();
@@ -486,7 +486,6 @@ var albums = function() {
       selector: '#content',
       minDelay: delay,
       onLoad: function(fragment) {
-        // TODO refactor into method
         $('#content').html(fragment.children());
         init();
       }
@@ -552,7 +551,6 @@ var about = function() {
       selector: '#content',
       minDelay: delay,
       onLoad: function(fragment) {
-        // TODO refactor into method
         $('#content').html(fragment.children());
         init();
       }
