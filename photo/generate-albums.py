@@ -10,6 +10,7 @@ from collections import OrderedDict
 from jinja2 import Environment, FileSystemLoader
 from optparse import OptionParser
 from os.path import join as joinpath
+from PIL import Image
 
 
 VERBOSE = False
