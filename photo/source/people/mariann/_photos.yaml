@@ -18,13 +18,12 @@
   location: Budapest, Hungary
   date: 2015
 
-- filename: closeup.jpg
-  title: Closeup
-  location: Budapest, Hungary
-  date: 2015
-
 - filename: stairs.jpg
   title: Stairs
   location: Budapest, Hungary
   date: 2015
 
+- filename: closeup.jpg
+  title: Closeup
+  location: Budapest, Hungary
+  date: 2015
