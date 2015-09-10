@@ -3,8 +3,8 @@
   location: Budapest, Hungary
   date: 2015
 
-- filename: closeup.jpg
-  title: Closeup
+- filename: sunset.jpg
+  title: Sunset
   location: Budapest, Hungary
   date: 2015
 
@@ -18,8 +18,13 @@
   location: Budapest, Hungary
   date: 2015
 
-- filename: door.jpg
-  title: Door
+- filename: closeup.jpg
+  title: Closeup
+  location: Budapest, Hungary
+  date: 2015
+
+- filename: stairs.jpg
+  title: Stairs
   location: Budapest, Hungary
   date: 2015
 
