@@ -15,6 +15,8 @@ BLOG_CSS_LOCATION  = blog/css:$(DEST_BLOG_DIR)/css
 TIDY = /usr/local/bin/tidy5
 TIDY_OPTS = -i -wrap 1000 -utf8
 
+EXIFTOOL = exiftool
+
 default: all
 all: home photo blog
 
@@ -71,7 +73,7 @@ generate_photo: clean_photo
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 exif_cleanup:
-	exiftool -m -d %Y -all= --exif:all --icc_profile:all \
+	$(EXIFTOOL) -m -d %Y -all= --exif:all --icc_profile:all \
 		-Software= \
 		-Serialnumber= \
 		-Artist="John Novak" \
