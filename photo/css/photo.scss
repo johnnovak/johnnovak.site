@@ -75,6 +75,13 @@ a {
   @include bg-img(35, 35, 'spinner', $suffix: '.gif', $basepath: $img-path);
 }
 
+.no-javascript {
+  text-align: center;
+  font-size: 19px;
+  color: #aaa;
+  margin-top: 3em;
+}
+
 //****************************************************************************
 // HEADER
 //****************************************************************************

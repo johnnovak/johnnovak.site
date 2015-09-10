@@ -10,8 +10,6 @@ from collections import OrderedDict
 from jinja2 import Environment, FileSystemLoader
 from optparse import OptionParser
 from os.path import join as joinpath
-from pprint import pprint
-from PIL import Image
 
 
 VERBOSE = False
@@ -105,6 +103,7 @@ def get_image_path(path, album, image):
 
 def get_album_image_fname(path, album):
     return joinpath(get_album_path(path, album), ALBUM_IMAGE_FNAME)
+
 
 def format_date(date):
     return date.replace('-', '&ndash;')

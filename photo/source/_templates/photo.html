@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+    <noscript>
+      <div class="no-javascript">
+        Viewing the photo galleries requires JavaScript.
+      </div>
+    </noscript>
+
     <div id="fotorama" data-auto="false">
+
     {%- for photo in photos %}
-      <a class="anchor" name="{{ photo.id }}"></a>
-      <img src="{{ photo.href }}" alt="{{ photo.caption }}" style="max-width: {{ photo.width }}px">
-      <a href="#{{ photo.id }}"><h2>{{ photo.caption }}</h2></a>
+      <a id="{{ photo.id }}" href="{{ photo.href }}" alt="{{ photo.caption }}" data-caption="{{ photo.caption }}"></a>
     {% endfor -%}
     </div>
 

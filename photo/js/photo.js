@@ -215,31 +215,6 @@ var photo = function() {
   var fotorama;
   var fotoramaApi;
 
-  function fotoramaize() {
-    var a = $('#fotorama a').not('.anchor');
-    var img = $('#fotorama img');
-    var h2 = $('#fotorama h2');
-    var anchor = $('#fotorama a.anchor');
-
-    for (var i = 0; i < a.length; i++) {
-      var link = $(a[i]);
-      var caption = $(anchor[i]).attr('name');
-      var heading = $(h2[i]);
-      var title = heading.text();
-      var image = $(img[i]);
-
-      image.remove();
-      link.remove();
-      heading.remove();
-      anchor.remove();
-
-      $('#fotorama').append('<a href="' + image.attr('src') + '"'
-          + ' id="' + caption + '" '
-          + ' data-caption="' + title + '" '
-          + '">');
-    }
-  }
-
   function createNavigation() {
     var navHtml =   '<div id="caption"></div>'
                   + '<ul class="counter">'
@@ -351,7 +326,6 @@ var photo = function() {
     if (hasHistoryApi) {
       initNavigation()
     }
-    fotoramaize();
     createNavigation();
     createFotorama();
     installPhotoNavButtonHandlers();
