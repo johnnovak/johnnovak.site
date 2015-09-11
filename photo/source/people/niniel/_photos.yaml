@@ -13,6 +13,11 @@
   location: Budapest, Hungary
   date: 2008
 
+- filename: higher.jpg
+  title: Higher
+  location: Budapest, Hungary
+  date: 2007
+
 - filename: selfreflect.jpg
   title: Selfreflect
   location: Budapest, Hungary
@@ -23,13 +28,13 @@
   location: Budapest, Hungary
   date: 2007
 
-- filename: perpetual-gaze.jpg
-  title: Perpetual Gaze
+- filename: third-child-of-thalion.jpg
+  title: Third Child of Thalion
   location: Budapest, Hungary
   date: 2008
 
-- filename: she-dreams-in-ultraviolet.jpg
-  title: She Dreams in Ultraviolet
+- filename: dreams-in-ultraland.jpg
+  title: Dreams in Ultraland
   location: Budapest, Hungary
   date: 2007
 
@@ -38,8 +43,8 @@
   location: Budapest, Hungary
   date: 2007
 
-- filename: diary-of-dreams.jpg
-  title: Diary of Dreams
+- filename: she-and-her-darkness.jpg
+  title: She and Her Darkness
   location: Budapest, Hungary
   date: 2007
 
@@ -48,20 +53,15 @@
   location: Budapest, Hungary
   date: 2008
 
-- filename: third-child-of-thalion.jpg
-  title: Third Child of Thalion
+- filename: diary-of-dreams.jpg
+  title: Diary of Dreams
+  location: Budapest, Hungary
+  date: 2007
+
+- filename: perpetual-gaze.jpg
+  title: Perpetual Gaze
   location: Budapest, Hungary
   date: 2008
-
-- filename: she-and-her-darkness.jpg
-  title: She and Her Darkness
-  location: Budapest, Hungary
-  date: 2007
-
-- filename: higher.jpg
-  title: Higher
-  location: Budapest, Hungary
-  date: 2007
 
 - filename: escape-your-own-prison.jpg
   title: Escape Your Own Prison
