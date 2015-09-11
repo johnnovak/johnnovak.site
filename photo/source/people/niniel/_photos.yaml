@@ -3,18 +3,13 @@
   location: Budapest, Hungary
   date: 2008
 
+- filename: industrial-glamour.jpg
+  title: Industrial Glamour
+  location: Budapest, Hungary
+  date: 2007
+
 - filename: recoil.jpg
   title: Recoil
-  location: Budapest, Hungary
-  date: 2008
-
-- filename: perpetual-gaze.jpg
-  title: Perpetual Gaze
-  location: Budapest, Hungary
-  date: 2008
-
-- filename: key-of-life.jpg
-  title: Key of Life
   location: Budapest, Hungary
   date: 2008
 
@@ -23,28 +18,48 @@
   location: Budapest, Hungary
   date: 2008
 
-- filename: third-child-of-thalion.jpg
-  title: Third Child of Thalion
-  location: Budapest, Hungary
-  date: 2008
-
-- filename: niniel04.jpg
-  title: Niniel 04
-  location: Budapest, Hungary
-  date: 2007
-
-- filename: niniel01.jpg
-  title: Niniel 01
-  location: Budapest, Hungary
-  date: 2007
-
 - filename: nienor-niniel.jpg
   title: Niënor Níniel
   location: Budapest, Hungary
   date: 2007
 
-- filename: niniel03.jpg
-  title: Niniel 03
+- filename: perpetual-gaze.jpg
+  title: Perpetual Gaze
+  location: Budapest, Hungary
+  date: 2008
+
+- filename: she-dreams-in-ultraviolet.jpg
+  title: She Dreams in Ultraviolet
+  location: Budapest, Hungary
+  date: 2007
+
+- filename: no-job-too-dirty.jpg
+  title: No Job Too Dirty
+  location: Budapest, Hungary
+  date: 2007
+
+- filename: diary-of-dreams.jpg
+  title: Diary of Dreams
+  location: Budapest, Hungary
+  date: 2007
+
+- filename: key-of-life.jpg
+  title: Key of Life
+  location: Budapest, Hungary
+  date: 2008
+
+- filename: third-child-of-thalion.jpg
+  title: Third Child of Thalion
+  location: Budapest, Hungary
+  date: 2008
+
+- filename: she-and-her-darkness.jpg
+  title: She and Her Darkness
+  location: Budapest, Hungary
+  date: 2007
+
+- filename: higher.jpg
+  title: Higher
   location: Budapest, Hungary
   date: 2007
 
@@ -52,19 +67,3 @@
   title: Escape Your Own Prison
   location: Budapest, Hungary
   date: 2007
-
-- filename: niniel02.jpg
-  title: Niniel 02
-  location: Budapest, Hungary
-  date: 2007
-
-- filename: niniel06.jpg
-  title: Niniel 06
-  location: Budapest, Hungary
-  date: 2007
-
-- filename: niniel05.jpg
-  title: Niniel 05
-  location: Budapest, Hungary
-  date: 2007
-
