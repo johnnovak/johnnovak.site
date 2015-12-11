@@ -92,11 +92,12 @@ def get_photos_config_fname(path):
 
 
 def get_category_path(path, category):
-    return joinpath(path, category['name'], '')
+    return joinpath(path, category['name'])
 
 
 def get_album_path(path, album):
-    return joinpath(path, album['category'], album['url'], '')
+    return joinpath(path,
+                    album['category'], album['section'], album['name'])
 
 
 def get_image_path(path, album, image):
@@ -230,11 +231,11 @@ def load_album_configs_in_category(basepath, category_name):
         if 'section' in item:
             section_indices.append(idx)
             for album in item['albums']:
-                load_album_config_in_category(basepath, category_name, album)
                 album['section'] = item['section']
+                load_album_config_in_category(basepath, category_name, album)
         else:
-            load_album_config_in_category(basepath, category_name, item)
             item['section'] = ''
+            load_album_config_in_category(basepath, category_name, item)
 
     # Flatten sections within categories
     idx_adjust = 0
@@ -249,11 +250,9 @@ def load_album_configs_in_category(basepath, category_name):
 
 
 def load_album_config_in_category(basepath, category_name, album):
-    album_dir = album['name']
-    album_path = joinpath(basepath, category_name, album_dir)
-    album['images'] = load_images_config(album_path)
-    album['url'] = album_dir
     album['category'] = category_name
+    album_path = get_album_path(basepath, album)
+    album['images'] = load_images_config(album_path)
 
 
 def load_albums_config(basepath, category_name):
@@ -312,7 +311,7 @@ def generate_album_pages(env, config, output_dir, basepath):
     template = env.get_template('album.html')
 
     for category in get_categories(config):
-        dirname = joinpath(output_dir, category['name'])
+        dirname = get_category_path(output_dir, category)
         info("\nCreating category directory '%s'" % dirname)
         os.mkdir(dirname)
 
@@ -341,7 +340,7 @@ def generate_photo_pages(env, config, input_dir, output_dir, basepath):
         for album in get_albums(category):
             dirname = get_album_path(output_dir, album)
             info("\nCreating album directory '%s'" % dirname)
-            os.mkdir(dirname)
+            os.makedirs(dirname)
 
             html = template.render(
                 page='photo', basepath=basepath,
@@ -376,7 +375,7 @@ def assign_categories(config, basepath):
     c = []
     for category in get_categories(config):
         c.append({
-            'href': get_category_path(basepath, category),
+            'href': get_category_path(basepath, category) + '/',
             'caption': category['title'],
             'name': category['name']
         })
@@ -391,7 +390,7 @@ def assign_albums(category, basepath):
             caption += ', ' + format_date(str(album['date']))
 
         a.append({
-            'href': get_album_path(basepath, album),
+            'href': get_album_path(basepath, album) + '/',
             'img_href': get_album_image_fname(basepath, album),
             'caption': caption,
             'section': album['section']

@@ -109,7 +109,7 @@ function pageNameFromPathName(pathname) {
     return 'about';
   } else if (path.length == i+0 || path.length == i+1) {
     return 'albums';
-  } else if (path.length == i+2) {
+  } else if (path.length > i+1) {
     return 'photo';
   }
 }
