@@ -24,7 +24,7 @@ $img-path: '/img';
 
 @include flat-scrollbar(
   12px,
-  $bg-color:    #fff,
+  $bg-color:    $bg-color,
   $color:       #bbb,
   $hover-color: #ccc,
   $drag-color:  #ccc
@@ -89,7 +89,7 @@ a {
   position: relative;
   width: 100%;
   margin-bottom: 0;
-  background: #fff;
+  background: $bg-color;
 
   h1 {
     font-size: 17px;
