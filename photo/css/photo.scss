@@ -200,6 +200,13 @@ a {
   .thumbs {
     h2 {
       @include titlecaps;
+      font-size: 20px;
+      font-weight: normal;
+      text-align: center;
+      margin: 1.5em 0;
+    }
+    h3 {
+      @include titlecaps;
       margin-top: 2px;
     }
     img {

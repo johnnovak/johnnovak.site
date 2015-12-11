@@ -2,11 +2,19 @@
 {% block content %}
     <div id="albums">
       <div class="thumbs">
+      {% set section = '' %}
+      {% set even = 0 %}
       {%- for album in albums %}
-      <div class="album {% if loop.index is odd %}odd{% else %}even{% endif %}{% if loop.last %} last{% endif %}">
+      {% if section != album.section %}
+      {% set section = album.section %}
+      {% set even = 0 %}
+      <h2>{{ section }}</h2>
+      {% endif %}
+      <div class="album {% if even %}even{% else %}odd{% endif %}{% if loop.last %} last{% endif %}">
           <a href="{{ album.href }}"><img src="{{ album.img_href }}" alt="{{ album.caption }}" /></a>
-          <h2><a href="{{ album.href }}">{{ album.caption }}</a></h2>
+          <h3><a href="{{ album.href }}">{{ album.caption }}</a></h3>
         </div>
+      {% set even = (even + 1) % 2 %}
       {%- endfor %}
       </div>
     </div>

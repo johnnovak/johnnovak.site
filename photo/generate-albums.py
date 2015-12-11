@@ -11,6 +11,7 @@ from jinja2 import Environment, FileSystemLoader
 from optparse import OptionParser
 from os.path import join as joinpath
 from PIL import Image
+from pprint import pprint
 
 
 VERBOSE = False
@@ -223,15 +224,36 @@ def load_all_album_configs(path, categories):
 
 def load_album_configs_in_category(basepath, category_name):
     config = load_albums_config(basepath, category_name)
+    section_indices = []
 
-    for album in config:
-        album_dir = album['name']
-        album_path = joinpath(basepath, category_name, album_dir)
-        album['images'] = load_images_config(album_path)
-        album['url'] = album_dir
-        album['category'] = category_name
+    for idx, item in enumerate(config):
+        if 'section' in item:
+            section_indices.append(idx)
+            for album in item['albums']:
+                load_album_config_in_category(basepath, category_name, album)
+                album['section'] = item['section']
+        else:
+            load_album_config_in_category(basepath, category_name, item)
+            item['section'] = ''
+
+    # Flatten sections within categories
+    idx_adjust = 0
+    for idx in section_indices:
+        i = idx + idx_adjust
+        for album in config[i]['albums']:
+            config.append(album)
+        del config[i]
+        idx_adjust = idx_adjust - 1
 
     return config
+
+
+def load_album_config_in_category(basepath, category_name, album):
+    album_dir = album['name']
+    album_path = joinpath(basepath, category_name, album_dir)
+    album['images'] = load_images_config(album_path)
+    album['url'] = album_dir
+    album['category'] = category_name
 
 
 def load_albums_config(basepath, category_name):
@@ -365,13 +387,14 @@ def assign_albums(category, basepath):
     a = []
     for album in get_albums(category):
         caption = album['title']
-        if album['date']:
+        if 'date' in album and album['date']:
             caption += ', ' + format_date(str(album['date']))
 
         a.append({
             'href': get_album_path(basepath, album),
             'img_href': get_album_image_fname(basepath, album),
-            'caption': caption
+            'caption': caption,
+            'section': album['section']
         })
     return a
 
@@ -387,9 +410,9 @@ def assign_photos(album, input_dir):
         (width, height) = read_image_size(image_fname)
 
         caption = image['title']
-        if image['location']:
+        if 'location' in image and image['location']:
             caption += ' &mdash; ' + image['location']
-        if image['date']:
+        if 'date' in image and image['date']:
             caption += ', ' + str(image['date'])
 
         i.append({
@@ -484,4 +507,4 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         sys.exit(1)
 
-# vim:et ts=4 sts=4 foldmethod=marker
+# vim:et ts=4 sts=4 sw=4 foldmethod=marker
