@@ -1,3 +1,8 @@
+- filename: her-v2.jpg
+  title: Her v2
+  location: Lugano, Switzerland
+  date: 2015
+
 - filename: clouds.jpg
   title: Clouds
   location: Singapore
@@ -12,6 +17,11 @@
   title: Albino Twins
   location: Reading, UK
   date: 2008
+
+- filename: interplanetary-launch.jpg
+  title: Interplanetary Launch
+  location: Lugano, Switzerland
+  date: 2015
 
 - filename: bad-conscience.jpg
   title: Bad Conscience

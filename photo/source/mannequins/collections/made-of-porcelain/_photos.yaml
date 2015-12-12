@@ -3,20 +3,30 @@
   location: Singapore
   date: 2012
 
+- filename: android-anna.jpg
+  title: Android Anna
+  location: Lugano, Switzerland
+  date: 2015
+
+- filename: cryosleep.jpg
+  title: Cryosleep
+  location: Lugano, Switzerland
+  date: 2015
+
 - filename: miss-goldfarb.jpg
   title: Miss Goldfarb
   location: Vienna, Austria
   date: 2010
 
-- filename: cara-chrome.jpg
-  title: Cara Chrome
-  location: Singapore
-  date: 2012
-
 - filename: from-head-to-toe.jpg
   title: From Head to Toe
   location: Amsterdam, Holland
   date: 2008
+
+- filename: cara-chrome.jpg
+  title: Cara Chrome
+  location: Singapore
+  date: 2012
 
 - filename: hair.jpg
   title: Hair
@@ -37,4 +47,9 @@
   title: Brinah Bride
   location: Brisbane, Australia
   date: 2014
+
+- filename: revenge-of-the-catwoman.jpg
+  title: Revenge of the Catwoman
+  location: Lugano, Switzerland
+  date: 2015
 

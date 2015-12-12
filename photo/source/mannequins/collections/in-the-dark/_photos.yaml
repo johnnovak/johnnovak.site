@@ -8,10 +8,20 @@
   location: Singapore
   date: 2012
 
+- filename: rachel-radium.jpg
+  title: Rachel Radium
+  location: Ascona, Switzerland
+  date: 2015
+
 - filename: azure-bonds.jpg
   title: Azure Bonds
   location: Nagyvárad, Romania
   date: 2008
+
+- filename: vy-violet.jpg
+  title: Vy Violet
+  location: Ascona, Switzerland
+  date: 2015
 
 - filename: allurement.jpg
   title: Allurement
