@@ -1,28 +1,36 @@
-- name: in-the-dark
-  title: In the Dark
-  date: ''
+- section: collections
+  title: Collections
+  albums:
 
-- name: sisters
-  title: Sisters
-  date: ''
+  - name: in-the-dark
+    title: In the Dark
 
-- name: in-the-light
-  title: In the Light
-  date: ''
+  - name: sisters
+    title: Sisters
 
-- name: made-of-porcelain
-  title: Made of Porcelain
-  date: ''
+  - name: in-the-light
+    title: In the Light
 
-- name: couples
-  title: Couples
-  date: ''
+  - name: made-of-porcelain
+    title: Made of Porcelain
 
-- name: gentlemen
-  title: Gentlemen
-  date: ''
+  - name: couples
+    title: Couples
 
-- name: little-ones
-  title: Little Ones
-  date: ''
+  - name: gentlemen
+    title: Gentlemen
 
+  - name: little-ones
+    title: Little Ones
+
+- section: series
+  title: Series
+  albums:
+
+  - name: the-apophyllite-sorority
+    title: The Apophyllite Sorority
+    date: 2015
+
+  - name: petra-porcelain
+    title: Petra Porcelain
+    date: 2011
