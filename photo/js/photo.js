@@ -411,7 +411,7 @@ var albums = function() {
   var fadeOutAlbumDuration = 20;
 
   function fadeOutAlbums() {
-    $('.album').each(function(i, album) {
+    $('.thumbs').children().each(function(i, album) {
       $(album).delay(i * fadeOutAlbumsDelay).fadeTo(fadeOutAlbumDuration, 0);
     });
   }
@@ -439,7 +439,7 @@ var albums = function() {
     var fadeInDuration = 400;
     initialDelay |= 0;
 
-    $('.album').each(function(i, album) {
+    $('.thumbs').children().each(function(i, album) {
       $(album).delay(initialDelay + i * fadeInDelay)
               .fadeTo(fadeInDuration, 1);
     });
