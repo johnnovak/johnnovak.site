@@ -199,23 +199,22 @@ td {
   h1 {
     margin: 15px 0 1.1em 0;
     font-size: 42px;
-    font-weight: $normal;
+    font-weight: $bold;
     line-height: 1;
-    a {
-      color: $font-color;
-    }
+    color: $accent-color;
   }
   h2 {
     margin: 1em 0 .8em;
-    font-size: 20px !important;
+    font-size: 22px !important;
     font-weight: $xbold;
     float: left;
+    color: $accent-color;
   }
   header {
     h1 {
-      margin: 0 0 5px 0;
+      margin: 0;
       font-size: 28px;
-      font-weight: $thin;
+      font-weight: $xbold;
       line-height: 1;
       text-transform: uppercase;
     }
@@ -227,7 +226,7 @@ td {
       font-weight: $normal;
       line-height: 1.8;
       text-transform: uppercase;
-      //color: $accent-color;
+      color: $accent-color;
     }
   }
   h3 {
@@ -288,7 +287,7 @@ td {
   list-style: none;
   margin: 8px 0 30px 0;
   padding: 0;
-  color: $light-accent-color;
+  color: $accent-color;
 
   ul {
     margin: 0;
@@ -317,9 +316,9 @@ td {
 
 .footnotes {
   margin-top: 50px;
-  border-top: 1px solid #999;
+  border-top: 1px solid #aaa;
   font-size: 15px;
-  color: $font-color;
+  line-height: 21px;
 
   ol {
     padding: 0 0 0 30px;
@@ -475,8 +474,8 @@ td {
       }
     }
     pre {
-      padding-left: 20px;
-//      border-left: 4px solid #eee;
+      padding-left: 30px;
+      border-left: 4px solid #eee;
     }
   }
 }
