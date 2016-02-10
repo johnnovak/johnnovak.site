@@ -109,7 +109,7 @@ clean_photo:
 
 ### BLOG ######################################################################
 
-.PHONY: blog watch_blog watch_blog_css update_blog_css clean_blog
+.PHONY: blog generate_blog tidyblog serve_blog clean_blog
 
 blog:
 	make generate_blog

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Huffman Encoding in Python &mdash; Optimisation Series Part IV"
-tags:   java optimisation compression huffmann
+tags:   and_now_some_very_long_tags java optimisation compression huffmann
 ---
 
 In a previous post I wrote about moving from Wordpress to Jekyll where I was
