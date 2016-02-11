@@ -11,9 +11,9 @@ Requirements
 These additional Python libraries are required for the generation of the photo
 albums (`photo` make target):
 
-* **jinja2**
-* **yaml**
-* **Python Imaging Library (pil)**
+* jinja2
+* yaml
+* Python Imaging Library (pil)
 
 
 Usage
