@@ -27,6 +27,9 @@ make photo
 make blog
 ```
 
+The output directories are hardcoded, see the `Makefile` for details
+(`DEST_*_DIR`).
+
 Advanced usage (see `Makefile` for the full list of targets):
 
 ```
