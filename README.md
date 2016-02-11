@@ -2,11 +2,11 @@ Requirements
 ------------
 
 * **GNU make**
-* **jekyll** (3.1+) [blog]
-* **python** (2.7+) [blog, photo]
-* **sass** (3.4+) [blog, photo] — installed automatically by Jekyll
-* **exiftool** (8.6+) [photo]
-* **tidy** (5+) [blog]
+* **jekyll** (3.1+) — *blog*
+* **python** (2.7+) — *blog, photo*
+* **sass** (3.4+) — *blog, photo*
+* **exiftool** (8.6+) — *photo*
+* **tidy** (5+) — *blog*
 
 These additional Python libraries are required for the generation of the photo
 albums (`photo` make target):
@@ -43,8 +43,8 @@ blog notes
 ----------
 
 Installing **jekyll** and **pygments.rb** for syntax higlighting support (the
-**pygments** Python library has to be installed as well). Installing **jekyll** will install
-**sass** as a dependency.
+**pygments** Python library has to be installed as well). Installing
+**jekyll** will automatically install **sass** as a dependency.
 
 ```
 sudo gem install jekyll
