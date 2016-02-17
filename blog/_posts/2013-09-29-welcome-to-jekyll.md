@@ -11,7 +11,7 @@ understanding this part of the CG pipeline is of crucial importance and will
 save you a lot of time later.
 
 Introduction to Geometry
------------------------
+------------------------
 
 **Points**, **vectors**, **matrices** and **normals** are to computer graphics what the
 alphabet is to literature; hence most CG books start with a chapter on linear
@@ -40,7 +40,7 @@ up now.
 
 {% endhighlight %}
 
-We began the [Foundation of 3D Rendering](#) section with a couple
+We began the [Foundation of 3D Rendering][1] section with a couple
 of lessons that do not require any prior knowledge of linear algebra for
 a reason. While this is a fairly unconventional way of teaching CG programming
 techniques, we
@@ -78,6 +78,37 @@ common in CG (and that the same mathematical techniques from linear algebra
 can be used to manipulate them). If you do not yet understand the distinction
 between points and vectors, do not worry. We will cover that extensively in
 this chapter.
+
+* * *
+
+
+{::options parse_block_html="true" /}
+
+<div class="references">
+
+References
+----------
+
+### Memory management
+
+* Tach, Dave (2015-03-12). ["Before Firewatch was a 3D world, it was
+a painting"][1]. *Polygon*. Retrieved 2015-12-24.
+
+* Ng, Jane (2014-10-22). ["Jane Ng Q&A Part 2"](#). *Campo Santo*. Retrieved
+2015-03-12.
+
+* Tach, Dave (2015-03-12). ["Before Firewatch was a 3D world, it was
+a painting"][1]. *Polygon*. Retrieved 2015-12-24.
+
+### Rendering
+
+* Ng, Jane (2014-10-22). ["Jane Ng Q&A Part 2"](#). *Campo Santo*. Retrieved
+2015-03-12.
+
+</div>
+
+[1]: http://test.com
+
 
 
 [^jekyll]: Plugins would of course solve this problem---but remember my self-imposed constraint mentioned in Part 1? Pure vanilla Jekyll running on GitHub Pages. So, let's try to find another way.

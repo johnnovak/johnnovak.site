@@ -86,6 +86,11 @@ td {
   padding: 1px 8px;
 }
 
+hr {
+	border: 1px solid #fff;
+  margin-bottom: 2em;
+}
+
 #header {
   height: 150px;
   @include enable-selection(false);
@@ -204,10 +209,15 @@ td {
     color: $accent-color;
   }
   h2 {
-    margin: 1em 0 .8em;
+    margin: 1.2em 0 .8em;
     font-size: 22px !important;
     font-weight: $xbold;
-    float: left;
+    color: $accent-color;
+  }
+  h3 {
+    margin: 2em 0 0 0 !important;
+    font-size: 18px;
+    font-weight: $bold;
     color: $accent-color;
   }
   header {
@@ -218,7 +228,7 @@ td {
       line-height: 1;
       text-transform: uppercase;
     }
-    h2 {
+    p {
       display: block;
       width: 100%;
       margin: 0px 440px 8px 0;
@@ -228,12 +238,6 @@ td {
       text-transform: uppercase;
       color: $accent-color;
     }
-  }
-  h3 {
-    margin: 2em 0 0 0 !important;
-    font-size: 18px;
-    font-weight: $bold;
-    color: $accent-color;
   }
   p {
     clear: both;
@@ -280,6 +284,23 @@ td {
       color: $code-font-color;
     }
     overflow-x: auto;
+  }
+  .references {
+    h2 {
+      font-size: 18px;
+      margin: 0;
+      color: $font-color;
+    }
+    h3 {
+      margin: 1.5em 0 0 0 !important;
+      font-size: 16px;
+      font-weight: bold;
+      color: $font-color;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
   }
 }
 
@@ -397,7 +418,7 @@ td {
       h1 {
         font-size: 34px;
       }
-      h2  {
+      p  {
         margin-bottom: 0;
       }
     }
@@ -456,7 +477,7 @@ td {
       h1 {
         width: 550px;
       }
-      h2  {
+      p  {
         margin-bottom: 30px;
       }
     }
