@@ -1,0 +1,576 @@
+---
+---
+
+@import 'common.scss';
+
+$thin:   300;
+$normal: 400;
+$bold:   600;
+$xbold:  700;
+
+$bg-color:           #fff;
+$font-color:         #333;
+$caption-color:      #555;
+$code-font-color:    #333;
+$accent-color:       darken(#4abeaa, 9);
+$link-color:         invert($accent-color);
+$sel-color:          #dcfc86;
+
+$light-font-color:   #666;
+$light-accent-color: mix($accent-color, $bg-color, 70);
+
+$monospace: "Inconsolata", serif;
+
+
+@include selection-color($sel-color, 'black');
+
+@include flat-scrollbar(
+  12px,
+  $bg-color:    #fff,
+  $color:       #bbb,
+  $hover-color: #ccc,
+  $drag-color:  #ccc
+);
+
+body {
+  margin: 0 20px;
+  overflow-x: hidden;
+  color: $font-color;
+  background-color: $bg-color;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+#wrapper {
+  margin-bottom: 30px;
+}
+
+img {
+  border: none;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+table {
+  margin: 2em auto;
+  border-collapse: collapse;
+  font-size: 16px;
+  width: 60%;
+  text-align: right;
+}
+th, td {
+  border: 1px solid #888;
+}
+th {
+  font-weight: $normal;
+  background: #888;
+  color: #fff;
+  line-height: 1.2;
+  padding: 3px 8px;
+}
+td {
+  padding: 1px 8px;
+}
+
+#header {
+  height: 150px;
+  @include enable-selection(false);
+
+  h1 {
+    @include pos(70, 58, $align: 'right');
+    font-size: 30px;
+    font-weight: $normal;
+    text-transform: uppercase;
+  }
+
+  ul {
+    padding: 80px 0 0 0;
+    list-style: none;
+    text-align: right;
+    color: $accent-color;
+
+    li {
+      display: inline;
+      margin: 0 15px 0 0;
+      padding: 0;
+      font-size: 19px;
+      font-weight: $normal;
+      text-transform: uppercase;
+
+      a {
+        padding-right: 10px;
+
+        &:hover {
+          text-decoration: none;
+          color: $light-accent-color;
+        }
+      }
+
+      &:after {
+        margin-right: -10px;
+        content: "/";
+      }
+      &:last-child:after {
+        content: none;
+      }
+    }
+  }
+}
+
+#jn-logo {
+  @include pos(10, 25, $align: 'right');
+  width: 300px;
+}
+
+.post-list {
+  margin: 15px 0 60px 0;
+
+  .post-item {
+    position: relative;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    margin: 0 0 1.1em 0;
+    font-size: 28px;
+    font-weight: $xbold;
+    line-height: 1;
+    color: $accent-color;
+    text-transform: uppercase;
+  }
+  h2 {
+    margin: 40px 0 20px 0;
+    font-size: 32px;
+    font-weight: $thin;
+    line-height: 1;
+    color: #777;
+  }
+  h3 {
+    margin: 0 0 4px 0;
+    padding: 0;
+    font-weight: $normal;
+    font-size: 18px;
+    line-height: 1.3;
+
+    a {
+      color: $font-color;
+    }
+  }
+  h4 {
+    margin: 0 0 1em 0;
+    padding: 0;
+    font-weight: $normal;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 1;
+    color: #999;
+  }
+  .tags {
+    li {
+      display: block;
+      margin: 0 0 6px 0;
+
+      .tag-name {
+        display: inline-block;
+        width: 180px;
+      }
+    }
+  }
+}
+
+.post {
+  position: relative;
+  margin-bottom: 40px;
+
+  h1 {
+    margin: 15px 0 1.1em 0;
+    font-size: 42px;
+    font-weight: $normal;
+    line-height: 1;
+    a {
+      color: $font-color;
+    }
+  }
+  h2 {
+    margin: 1em 0 .8em;
+    font-size: 20px !important;
+    font-weight: $xbold;
+    float: left;
+  }
+  header {
+    h1 {
+      margin: 0 0 5px 0;
+      font-size: 28px;
+      font-weight: $thin;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    h2 {
+      display: block;
+      width: 100%;
+      margin: 0px 440px 8px 0;
+      font-size: 22px;
+      font-weight: $normal;
+      line-height: 1.8;
+      text-transform: uppercase;
+      //color: $accent-color;
+    }
+  }
+  h3 {
+    margin: 2em 0 0 0 !important;
+    font-size: 18px;
+    font-weight: $bold;
+    color: $accent-color;
+  }
+  p {
+    clear: both;
+
+    a {
+      font-weight: $xbold;
+      color: $accent-color;
+      //background: mix($accent-color, $bg-color, 10);
+      //padding: 0 4px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .caption {
+    display: block;
+    margin: -1.5em 0 2em 0;
+    text-align: center;
+    font-size: 16px;
+    color: $light-font-color;
+  }
+  ul {
+    list-style: square;
+  }
+  p {
+    code {
+      font: 19px $monospace;
+      font-weight: 600;
+      color: $link-color;
+      padding: 4px 5px 2px 5px;
+    }
+  }
+  pre {
+    margin: 3em 0;
+    padding: 0;
+    font: 14px $monospace;
+    font-weight: 400;
+    line-height: 22px;
+
+    code {
+      font: 14px $monospace;
+      background: none;
+      color: $code-font-color;
+    }
+    overflow-x: auto;
+  }
+}
+
+.tags {
+  list-style: none;
+  margin: 8px 0 30px 0;
+  padding: 0;
+  color: $light-accent-color;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+
+    a {
+      padding: 2px 10px 3px 10px;
+      font-size: 14px;
+      text-transform: uppercase;
+      background: $accent-color;
+      color: #fff;
+      border-radius: 3px;
+      font-weight: $bold;
+
+      &:hover {
+        text-decoration: none;
+        background: $light-accent-color;
+      }
+    }
+  }
+}
+
+.footnotes {
+  margin-top: 50px;
+  border-top: 1px solid #999;
+  font-size: 15px;
+  line-height: 21px;
+  color: $font-color;
+
+  ol {
+    padding: 0 0 0 30px;
+  }
+}
+
+#disqus_thread {
+  margin-top: 160px;
+}
+#no-disqus {
+  margin-top: 50px;
+  padding: 15px 0 ;
+  border-top: 1px dashed $font-color;
+  border-bottom: 1px dashed $font-color;
+  text-align: center;
+}
+
+@media #{$media-medium} {
+  body {
+    margin: 0 25px;
+  }
+  #jn-logo {
+    top: 20px;
+    width: 400px;
+    height: 124px;
+  }
+  #header {
+    height: 220px;
+
+    h1 {
+      top: 100px;
+      right: 68px;
+      font-size: 40px;
+    }
+
+    ul {
+      padding-top: 123px;
+      padding-right: 57px;
+      text-align: right;
+      list-style: none;
+      color: $accent-color;
+
+      li {
+        margin-right: 12px;
+        font-size: 20px;
+
+        a {
+          padding-right: 11px;
+        }
+      }
+    }
+  }
+  .post-list {
+    h2 {
+      margin: 0;
+      float: left;
+      clear: left;
+      font-size: 38px;
+    }
+    h3 {
+      margin: 0 0 0 205px;
+      line-height: 1.4;
+    }
+    h4 {
+      position: absolute;
+      top: 0;
+      margin: 0 0 0 115px;;
+      line-height: 1.5;
+    }
+  }
+  .post {
+    h2 {
+      font-size: 34px;
+    }
+    header {
+      h1 {
+        font-size: 34px;
+      }
+      h2  {
+        margin-bottom: 0;
+      }
+    }
+    pre {
+      font-size: 16px;
+      code {
+        font-size: 16px;
+      }
+    }
+    .tags {
+      font-size: 15px;
+
+      li {
+        margin: 15px 4px 15px 0;
+
+        a {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media #{$media-large} {
+  body {
+    margin: 0;
+  }
+  #wrapper {
+    position: relative;
+    left: -8%;
+    padding-left: 80px;
+    width: 680px;
+    margin: 0 auto 40px auto;
+  }
+  #header {
+    height: 330px;
+
+    ul {
+      padding-top: 140px;
+    }
+  }
+  #jn-logo {
+    right: 0;
+    z-index: 100;
+  }
+  #header-bg {
+    @include pos(-53, -355, $align: 'right');
+    @include bg-img(450, 413, 'bg-header', $basepath: $img-path);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .post {
+    margin-bottom: 60px;
+
+    header {
+      h1 {
+        width: 550px;
+      }
+      h2  {
+        margin-bottom: 30px;
+      }
+    }
+    h3 {
+      margin-top: 1.2em;
+    }
+    .tags {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 125px;
+
+      li {
+        margin: 0 0 5px 0;
+      }
+    }
+    pre {
+      padding-left: 20px;
+//      border-left: 4px solid #eee;
+    }
+  }
+}
+
+.header-link {
+  margin-left: 10px;
+  font-weight: $xbold;
+  font-size: 16px;
+  text-decoration: none;
+  color: #aaa;
+  visibility: hidden;
+}
+.header-link:hover {
+  text-decoration: underline;
+}
+
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  visibility: visible;
+}
+
+/* Code highlighting */
+$purple:   #8959a8;
+$blue:     #4271ae;
+$lime:     #718c00;
+$red:      #c82829;
+$gray:     #8e908c;
+$darkgray: #4d4d4c;
+$cyan:     #3e999f;
+$orange:   #b76514;
+
+.hll { background-color: #ffffcc }
+.c { color: $gray } /* Comment */
+.err { color: $red } /* Error */
+.k { color: $purple } /* Keyword */
+.o { } /* Operator */
+.cm { color: $gray } /* Comment.Multiline */
+.cp { color: $gray } /* Comment.Preproc */
+.c1 { color: $gray } /* Comment.Single */
+.cs { color: $darkgray } /* Comment.Special */
+.gd { } /* Generic.Deleted */
+.ge { } /* Generic.Emph */
+.gr { color: $red } /* Generic.Error */
+.gh { } /* Generic.Heading */
+.gi { } /* Generic.Inserted */
+.go { } /* Generic.Output */
+.gp { } /* Generic.Prompt */
+.gs { } /* Generic.Strong */
+.gu { } /* Generic.Subheading */
+.gt { } /* Generic.Traceback */
+.kc { color: $purple } /* Keyword.Constant */
+.kd { color: $purple } /* Keyword.Declaration */
+.kn { color: $purple } /* Keyword.Namespace */
+.kp { color: $purple } /* Keyword.Pseudo */
+.kr { color: $purple } /* Keyword.Reserved */
+.kt { color: $cyan } /* Keyword.Type */
+.m { color: $lime } /* Literal.Number */
+.s { color: $lime } /* Literal.String */
+.na { } /* Name.Attribute */
+.nb { color: $cyan } /* Name.Builtin */
+.nc { } /* Name.Class */
+.no { } /* Name.Constant */
+.nd { } /* Name.Decorator */
+.ni { } /* Name.Entity */
+.ne { color: $red } /* Name.Exception */
+.nf { } /* Name.Function */
+.nl { } /* Name.Label */
+.nn { } /* Name.Namespace */
+.nt { } /* Name.Tag */
+.nv { } /* Name.Variable */
+.ow { color: $blue } /* Operator.Word */
+.w { } /* Text.Whitespace */
+.mf { color: $lime } /* Literal.Number.Float */
+.mh { color: $lime } /* Literal.Number.Hex */
+.mi { color: $lime } /* Literal.Number.Integer */
+.mo { color: $lime } /* Literal.Number.Oct */
+.sb { color: $lime } /* Literal.String.Backtick */
+.sc { color: $lime } /* Literal.String.Char */
+.sd { color: $lime } /* Literal.String.Doc */
+.s2 { color: $lime } /* Literal.String.Double */
+.se { color: $lime } /* Literal.String.Escape */
+.sh { color: $lime } /* Literal.String.Heredoc */
+.si { color: $lime } /* Literal.String.Interpol */
+.sx { color: $lime } /* Literal.String.Other */
+.sr { color: $lime } /* Literal.String.Regex */
+.s1 { color: $lime } /* Literal.String.Single */
+.ss { color: $lime } /* Literal.String.Symbol */
+.bp { color: $cyan } /* Name.Builtin.Pseudo */
+.vc { color: $cyan } /* Name.Variable.Class */
+.vg { color: $cyan } /* Name.Variable.Global */
+.vi { color: $cyan } /* Name.Variable.Instance */
+.il { color: $lime } /* Literal.Number.Integer.Long */
+
