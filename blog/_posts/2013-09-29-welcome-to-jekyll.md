@@ -79,8 +79,6 @@ can be used to manipulate them). If you do not yet understand the distinction
 between points and vectors, do not worry. We will cover that extensively in
 this chapter.
 
-* * *
-
 
 {::options parse_block_html="true" /}
 
@@ -88,8 +86,6 @@ this chapter.
 
 References
 ----------
-
-### Memory management
 
 * Tach, Dave (2015-03-12). ["Before Firewatch was a 3D world, it was
 a painting"][1]. *Polygon*. Retrieved 2015-12-24.
@@ -99,8 +95,6 @@ a painting"][1]. *Polygon*. Retrieved 2015-12-24.
 
 * Tach, Dave (2015-03-12). ["Before Firewatch was a 3D world, it was
 a painting"][1]. *Polygon*. Retrieved 2015-12-24.
-
-### Rendering
 
 * Ng, Jane (2014-10-22). ["Jane Ng Q&A Part 2"](#). *Campo Santo*. Retrieved
 2015-03-12.

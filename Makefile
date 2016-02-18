@@ -1,5 +1,3 @@
-EXIFTOOL = exiftool-5.22
-
 DEST_HOME_DIR  = ../johnnovak.github.io
 DEST_PHOTO_DIR = ../photo
 DEST_BLOG_DIR  = ../blog
@@ -14,8 +12,6 @@ BLOG_CSS_LOCATION  = blog/css:$(DEST_BLOG_DIR)/css
 
 TIDY = /usr/local/bin/tidy5
 TIDY_OPTS = -i -wrap 1000 -utf8
-
-EXIFTOOL = exiftool
 
 default: all
 all: home photo blog
@@ -61,19 +57,18 @@ photo:
 	make exif_cleanup
 
 generate_photo: clean_photo
+	mkdir -p $(DEST_PHOTO_DIR)
 	photo/generate-albums.py photo/source $(DEST_PHOTO_DIR)
 	mkdir -p $(DEST_PHOTO_DIR)/css
 	mkdir -p $(DEST_PHOTO_DIR)/js/lib
 	cp -r photo/img $(DEST_PHOTO_DIR)
 	cp photo/js/lib/*.js $(DEST_PHOTO_DIR)/js/lib
 	cp photo/js/*.js $(DEST_PHOTO_DIR)/js
-	cp photo/js/fotorama/out/fotorama.js $(DEST_PHOTO_DIR)/js/lib/
-	cp photo/js/fotorama/out/fotorama.css $(DEST_PHOTO_DIR)/css
 	touch $(DEST_PHOTO_DIR)/css/fotorama.png
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
 exif_cleanup:
-	$(EXIFTOOL) -m -d %Y -all= --exif:all --icc_profile:all \
+	exiftool -m -d %Y -all= --exif:all --icc_profile:all \
 		-Software= \
 		-Serialnumber= \
 		-Artist="John Novak" \
@@ -91,7 +86,9 @@ exif_cleanup:
 		-overwrite_original -R -ext jpg $(DEST_PHOTO_DIR)
 
 build_fotorama:
-	cd photo/js/fotorama; grunt build
+	cd photo/js/fotorama; grunt
+	cp photo/js/fotorama/out/fotorama.js $(DEST_PHOTO_DIR)/js/lib/
+	cp photo/js/fotorama/out/fotorama.css $(DEST_PHOTO_DIR)/css
 
 watch_photo_css:
 	sass $(SASS_WATCH_OPTS) --watch $(PHOTO_CSS_LOCATION)

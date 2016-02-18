@@ -60,4 +60,24 @@ photo notes
 
 The photo gallery uses a custom hacked version of **Fotorama**.
 
+Building the Fotorama library requires `npm` and `grunt`. Install `npm` first
+with your OS specific package manager then issue the following command:
+
+```
+sudo npm install -g grunt-cli
+```
+
+Then in `$ROOT/photo/js/fotorama` issue the following:
+
+```
+npm install
+grunt
+```
+
+From now on you can rebuild Fotorama by issue this command in `$ROOT`:
+
+```
+make build_fotorama
+```
+
 TODO add instructions on updating to the latest Fotorama version

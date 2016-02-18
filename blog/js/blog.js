@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  console.log('adf');
   replace2xImages();
   createSectionAnchors();
 });
@@ -9,7 +10,7 @@ function createSectionAnchors() {
     var $el, link, id;
     $el = $(el);
     id = $el.attr('id');
-    link = '#link';
+    link = '¶';
     if (id) {
       return $el.append($('<a />')
                 .addClass('header-link')
