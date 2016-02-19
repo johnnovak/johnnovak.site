@@ -1,7 +1,7 @@
 ---
 ---
 
-// {{{ GLOBALS ---------------------------------------------------------------
+// [[[ GLOBALS ---------------------------------------------------------------
 @import 'common.scss';
 
 $thin:   300;
@@ -32,8 +32,8 @@ $monospace: "Inconsolata", serif;
   $drag-color:  #ccc
 );
 
-// }}}
-// {{{ SMALL (DEFAULT) -------------------------------------------------------
+// ]]]
+// [[[ SMALL (DEFAULT) -------------------------------------------------------
 
 body {
   margin: 0 20px;
@@ -68,6 +68,24 @@ a {
   }
 }
 
+.header-link {
+  position: relative;
+  top: -1px;
+  margin-left: 8px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #aaa;
+  visibility: hidden;
+}
+
+h2:hover .header-link,
+h3:hover .header-link,
+h4:hover .header-link,
+h5:hover .header-link,
+h6:hover .header-link {
+  visibility: visible;
+}
+
 table {
   margin: 2em auto;
   border-collapse: collapse;
@@ -89,16 +107,15 @@ td {
   padding: 1px 8px;
 }
 
+#jn-logo {
+  @include pos(10, 25, $align: 'right');
+  width: 272px;
+}
+
 #header {
   height: 130px;
   @include enable-selection(false);
 
-  h1 {
-    @include pos(70, 58, $align: 'right');
-    font-size: 30px;
-    font-weight: $normal;
-    text-transform: uppercase;
-  }
   ul {
     padding: 82px 11px 0 0;
     list-style: none;
@@ -117,9 +134,17 @@ td {
   }
 }
 
-#jn-logo {
-  @include pos(10, 25, $align: 'right');
-  width: 272px;
+article {
+  header {
+    h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: $xbold;
+      line-height: 1;
+      text-transform: uppercase;
+      color: $accent-color;
+    }
+  }
 }
 
 .post-list {
@@ -177,19 +202,6 @@ td {
   }
 }
 
-article {
-  header {
-    h1 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: $xbold;
-      line-height: 1;
-      text-transform: uppercase;
-      color: $accent-color;
-    }
-  }
-}
-
 .post {
   position: relative;
   margin-bottom: 0px;
@@ -197,22 +209,20 @@ article {
   h2 {
     display: table;
     margin: 1.2em 0 .8em;
+    font-size: 20px;
     font-weight: $xbold;
     color: $accent-color;
   }
   h3 {
-    margin: 2em 0 0 0 !important;
+    margin: 2em 0 0 0;
     font-size: 18px;
     font-weight: $bold;
     color: $accent-color;
   }
   header {
-    p {
-      display: block;
-      width: 100%;
-      margin: 0 0 8px 0;
-      font-size: 22px;
-      font-weight: $normal;
+    .date {
+      margin: 0;
+      font-size: 20px;
       line-height: 1.8;
       text-transform: uppercase;
       color: $accent-color;
@@ -248,7 +258,7 @@ article {
     padding: 0;
   }
   pre {
-    margin: 0;
+    margin: 1.3em 0;
     padding: 0;
     font: 14px $monospace;
     line-height: 18px;
@@ -261,9 +271,10 @@ article {
     }
     overflow-x: auto;
   }
+
   .references {
-    margin-top: 70px;
-    font-size: 15px;
+    margin-top: 40px;
+    font-size: 14px;
 
     h2 {
       font-size: 18px;
@@ -271,7 +282,7 @@ article {
       color: $font-color;
     }
     h3 {
-      margin: 1.5em 0 0 0 !important;
+      margin: 1.5em 0 0 0;
       font-size: 16px;
       font-weight: bold;
       color: $font-color;
@@ -285,7 +296,7 @@ article {
 
 .tags {
   list-style: none;
-  margin: 8px 0 30px 0;
+  margin: 6px 0 30px 0;
   padding: 0;
   color: $accent-color;
 
@@ -297,10 +308,11 @@ article {
   li {
     display: inline-block;
     line-height: 28px;
+    margin-right: 2px;
 
     a {
-      padding: 2px 10px 3px 10px;
-      font-size: 14px;
+      padding: 1px 10px 2px 10px;
+      font-size: 13px;
       text-transform: uppercase;
       color: #fff;
       background: $accent-color;
@@ -315,9 +327,9 @@ article {
 }
 
 .footnotes {
-  margin-top: 70px;
+  margin-top: 40px;
   border-top: 1px solid #aaa;
-  font-size: 15px;
+  font-size: 14px;
 
   ol {
     padding: 0 0 0 30px;
@@ -325,7 +337,7 @@ article {
 }
 
 .comments {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 #no-disqus {
   margin-top: 50px;
@@ -335,42 +347,37 @@ article {
   text-align: center;
 }
 
-// }}}
-// {{{ MEDIUM ----------------------------------------------------------------
+// ]]]
+// [[[ MEDIUM ----------------------------------------------------------------
 
 @media #{$media-medium} {
+
   body {
     margin: 0 25px;
     font-size: 15px;
     line-height: 22px;
   }
+
   #jn-logo {
     top: 20px;
-    width: 350px;
+    width: 355px;
   }
-  #header {
-    height: 200px;
 
-    h1 {
-      top: 100px;
-      right: 68px;
-      font-size: 40px;
-    }
+  #header {
+    height: 180px;
 
     ul {
       padding-top: 112px;
       padding-right: 39px;
-      text-align: right;
-      list-style: none;
-      color: $accent-color;
 
       li {
         margin-right: 12px;
+        padding-left: 3px;
         font-size: 18px;
         font-weight: $normal;
 
         a {
-          padding-right: 11px;
+          padding-right: 10px;
         }
 
         &:after {
@@ -383,6 +390,15 @@ article {
       }
     }
   }
+
+  article {
+    header {
+      h1 {
+        font-size: 34px;
+      }
+    }
+  }
+
   .post-list {
     h2 {
       margin: 0;
@@ -401,41 +417,59 @@ article {
       line-height: 1.5;
     }
   }
+
   .post {
-    h2 {
-      font-size: 34px;
-    }
     header {
-      h1 {
-        font-size: 34px;
-      }
-      p  {
+      .date {
+        font-size: 22px;
         margin-bottom: 0;
       }
     }
+    h2 {
+      font-size: 22px;
+    }
     pre {
+      margin: 1.6em 0;
       font-size: 15px;
       line-height: 20px;
       code {
         font-size: 15px;
       }
     }
-    .tags {
+
+    .references {
+      margin-top: 50px;
       font-size: 15px;
+      line-height: 20px;
+    }
+
+    .tags {
+      font-size: 14px;
 
       li {
-        margin: 15px 4px 15px 0;
+        margin: 2px 3px 15px 0;
 
         a {
-          font-size: 15px;
+          padding: 1px 10px 2px 10px;
+          font-size: 14px;
         }
       }
     }
   }
+
+  .footnotes {
+    margin-top: 50px;
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .comments {
+    margin-top: 60px;
+  }
 }
 
-// }}}
-// {{{ LARGE -----------------------------------------------------------------
+// ]]]
+// [[[ LARGE -----------------------------------------------------------------
 
 @media #{$media-large} {
   body {
@@ -443,6 +477,7 @@ article {
     font-size: 16px;
     line-height: 24px;
   }
+
   #wrapper {
     position: relative;
     left: -8%;
@@ -450,24 +485,33 @@ article {
     width: 680px;
     margin: 0 auto 40px auto;
   }
-  #header {
-    height: 330px;
 
-    ul {
-      padding-top: 140px;
-    }
-  }
   #jn-logo {
     right: 0;
     z-index: 100;
     width: 400px;
   }
+
+  #header {
+    height: 330px;
+
+    ul {
+      padding-top: 140px;
+      padding-right: 54px;
+
+      li {
+        font-size: 20px;
+      }
+    }
+  }
+
   #header-bg {
     @include pos(-53, -355, $align: 'right');
     @include bg-img(450, 413, 'bg-header', $basepath: $img-path);
     z-index: 0;
     pointer-events: none;
   }
+
   .post {
     margin-bottom: 60px;
 
@@ -475,13 +519,37 @@ article {
       h1 {
         width: 550px;
       }
-      p  {
-        margin-bottom: 30px;
+      .date  {
+        margin-bottom: 60px;
       }
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 1.5em;
     }
     h3 {
       margin-top: 1.2em;
     }
+    pre {
+      margin: 1.8em 0;
+      padding-left: 20px;
+      border-left: 4px solid #eee;
+      font-size: 16px;
+
+      code {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+
+    .references {
+      font-size: 15px;
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+
     .tags {
       position: absolute;
       top: 0;
@@ -489,36 +557,21 @@ article {
       width: 125px;
 
       li {
-        margin: 0 0 5px 0;
+        margin: 0 0 2px 0;
+        a {
+          padding: 2px 10px 3px 10px;
+          font-size: 15px;
+        }
       }
     }
-    pre {
-      padding-left: 20px;
-      border-left: 4px solid #eee;
-    }
+  }
+  .comments {
+    margin-top: 80px;
   }
 }
 
-.header-link {
-  position: relative;
-  top: -1px;
-  margin-left: 8px;
-  font-size: 18px;
-  text-decoration: none;
-  color: #aaa;
-  visibility: hidden;
-}
-
-h2:hover .header-link,
-h3:hover .header-link,
-h4:hover .header-link,
-h5:hover .header-link,
-h6:hover .header-link {
-  visibility: visible;
-}
-
-// }}}
-// {{{ CODE HIGHLIGHTING  ----------------------------------------------------
+// ]]]
+// [[[ CODE HIGHLIGHTING  ----------------------------------------------------
 
 $purple:   #8959a8;
 $blue:     #4271ae;
@@ -591,6 +644,6 @@ $orange:   #b76514;
 .vi { color: $cyan } /* Name.Variable.Instance */
 .il { color: $lime } /* Literal.Number.Integer.Long */
 
-// }}}
+// ]]]
 
-// vim:et ts=4 sts=4 foldmethod=marker
+// vim:et ts=4 sts=4 foldmethod=marker foldmarker=[[[,]]]
