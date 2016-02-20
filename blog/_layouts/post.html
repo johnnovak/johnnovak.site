@@ -3,23 +3,23 @@ layout: default
 ---
 
 <article class="post">
-
   <header>
     <h1><a href="{{ site.rootdir }}{{ page.url }}">{{ page.title }}</a></h1>
     <p class="date"><time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y %b %d" }}</time></p>
   </header>
 
-  <nav class="tags">
-    <ul>
-    {% for tag in page.tags %}
-      <li><a href="{{ site.rootdir }}/tag/{{ tag }}/">{{ tag }}</a></li>
-    {% endfor %}
-    </ul>
-  </nav>
+  {% if page.tags %}
+    <nav class="tags">
+      <ul>
+      {% for tag in page.tags %}
+        <li><a href="{{ site.rootdir }}/tag/{{ tag }}/">{{ tag }}</a></li>
+      {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
 
   {{ content }}
 
   {% include comments.html %}
-
 </article>
 

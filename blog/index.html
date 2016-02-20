@@ -3,8 +3,9 @@ layout: default
 ---
 
 <article class="post-list">
-
+  <header>
   <h1>Recent posts</h1>
+  </header>
 
   {% for post in site.posts limit: 5 %}
   {% include post_item.html %}

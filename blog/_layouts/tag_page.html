@@ -3,11 +3,12 @@ layout: default
 ---
 
 <article class="post-list">
-  <h1>Posts tagged with '{{ page.tag }}'</h1>
+  <header>
+    <h1>Posts tagged with '{{ page.tag }}'</h1>
+  </header>
 
   {% for post in site.posts %}{% for tag in post.tags %}{% if tag == page.tag %}
   {% include post_list.html %}
   {% endif %}{% endfor %}{% endfor %}
-
 </article>
 
