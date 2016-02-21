@@ -1,6 +1,7 @@
 DEST_HOME_DIR  = ../johnnovak.github.io
 DEST_PHOTO_DIR = ../photo
 DEST_BLOG_DIR  = ../blog
+BLOG_SERVE_DIR  = /tmp/blog
 
 SASS_OPTS = --cache-location=.sass_cache --sourcemap=none
 SASS_BUILD_OPTS = $(SASS_OPTS) --force --style=compressed
@@ -123,7 +124,7 @@ tidy_blog:
 	$(call html_tidy_dir,$(DEST_BLOG_DIR)/*)
 
 serve_blog:
-	jekyll serve --drafts -s blog -d $(DEST_BLOG_DIR)
+	jekyll serve --drafts -s blog -d $(BLOG_SERVE_DIR)
 
 clean_blog:
 	$(call clean_dir,$(DEST_BLOG_DIR)/*)

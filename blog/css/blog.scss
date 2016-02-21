@@ -113,7 +113,7 @@ td {
 }
 
 #header {
-  height: 130px;
+  height: 123px;
   @include enable-selection(false);
 
   ul {
@@ -138,7 +138,7 @@ article {
   header {
     h1 {
       margin: 0;
-      font-size: 26px;
+      font-size: 23px;
       font-weight: $xbold;
       line-height: 1;
       text-transform: uppercase;
@@ -156,7 +156,7 @@ article {
   }
 
   h2 {
-    margin: 1.5em 0 0.8em 0;
+    margin: 1em 0 0.8em 0;
     font-size: 20px;
     font-weight: $thin;
     line-height: 1;
@@ -173,7 +173,7 @@ article {
       color: $font-color;
 
       &:hover {
-        color: $light-font-color;
+        color: #888;
       }
     }
   }
@@ -188,7 +188,7 @@ article {
   }
 
   .tags {
-    margin-top: 32px;
+    margin-top: 15px;
 
     li {
       .tag-name {
@@ -215,13 +215,13 @@ article {
   h2 {
     display: table;
     margin: 1.2em 0 .8em;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: $xbold;
     color: $accent-color;
   }
   h3 {
     margin: 2em 0 0 0;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: $bold;
     color: $accent-color;
   }
@@ -299,7 +299,7 @@ article {
 
 .tags {
   list-style: none;
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
   padding: 0;
   color: $accent-color;
 
@@ -309,7 +309,7 @@ article {
   }
 
   li {
-    line-height: 28px;
+    line-height: 26px;
     margin: 0 2px 0 0;
 
     .tag-name {
@@ -318,7 +318,6 @@ article {
 
     a {
       padding: 1px 10px 2px 10px;
-      border-radius: 3px;
       font-size: 13px;
       font-weight: $bold;
       text-transform: uppercase;
@@ -335,7 +334,7 @@ article {
 
 .about {
   header {
-    margin-bottom: 35px;
+    margin-bottom: 15px;
   }
   h2 {
     margin-top: 1.8em;
@@ -343,6 +342,9 @@ article {
   .info {
     padding: 10px 20px;
     background: #eee;
+  }
+  .astronaut {
+    display: none;
   }
 }
 
@@ -357,7 +359,7 @@ article {
 }
 
 .comments {
-  margin-top: 50px;
+  margin-top: 40px;
 }
 #no-disqus {
   margin-top: 50px;
@@ -383,7 +385,7 @@ article {
   }
 
   #header {
-    height: 180px;
+    height: 170px;
 
     ul {
       padding-top: 112px;
@@ -413,7 +415,7 @@ article {
   article {
     header {
       h1 {
-        font-size: 34px;
+        font-size: 30px;
       }
     }
   }
@@ -426,17 +428,17 @@ article {
       margin: 0;
       float: left;
       clear: left;
-      font-size: 36px;
+      font-size: 33px;
     }
     h3 {
-      margin: 0 0 0 205px;
+      margin: 0 0 0 175px;
       font-size: 16px;
       line-height: 1.5;
     }
     h4 {
       position: absolute;
       top: 0;
-      margin: 0 0 0 115px;;
+      margin: 0 0 0 100px;
       font-size: 16px;
       line-height: 1.5;
     }
@@ -488,9 +490,15 @@ article {
       margin: 0 3px 2px 0;
 
       a {
-        padding: 1px 10px 2px 10px;
+        padding: 1px 10px 1px 10px;
         font-size: 14px;
       }
+    }
+  }
+
+  .about {
+    h1 {
+      margin-bottom: 30px;
     }
   }
 
@@ -501,7 +509,7 @@ article {
   }
 
   .comments {
-    margin-top: 60px;
+    margin-top: 50px;
   }
 }
 
@@ -549,23 +557,28 @@ article {
     pointer-events: none;
   }
 
+  article {
+    header {
+      h1 {
+        font-size: 34px;
+      }
+    }
+  }
+
   .post-list {
     h1 {
       margin-bottom: 1.5em;
     }
     h2 {
-      margin: 0;
-      float: left;
-      clear: left;
       font-size: 36px;
     }
     h3 {
+      margin-left: 195px;
       font-size: 18px;
-      line-height: 1.5;
     }
     h4 {
+      margin-left: 110px;
       font-size: 18px;
-      line-height: 1.5;
     }
 
     .tags {
@@ -587,7 +600,7 @@ article {
         width: 550px;
       }
       .date  {
-        margin-bottom: 60px;
+        margin: 4px 0 60px 0;
       }
     }
 
@@ -626,7 +639,7 @@ article {
       margin: 0;
 
       li {
-        margin-bottom: 2px;
+        margin-bottom: 3px;
       }
     }
   }
@@ -648,6 +661,10 @@ article {
     }
     h2 {
       margin-top: 2.2em;
+    }
+    .astronaut {
+      margin-top: 10em;
+      display: block;
     }
   }
 

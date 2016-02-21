@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  The Beginning - Some ridiculously long title to test the layout in different IE versions
-tags: introduction raytracing coding nim demoscene
+title:  The Beginning
+tags:
 ---
 
 Just what the world needs, yet another technical blog!
@@ -35,7 +35,7 @@ focus and also make me more diligent in researching my topics.  After all, the
 goal is to write about things that are new to me, so trying to keep the amount
 of misinformation I'm unwillingly (but inevitably) going spread to a minimum
 is probably a good idea, as I'm sure the experts will be far too eager to
-chime in and correct me... :)
+chime in and correct me... &#x1f60e;
 
 Having said that, don't hesitate to point out any of my factual mistakes in
 the comments. In fact, I'd be glad if you did and I encourage you to do so
