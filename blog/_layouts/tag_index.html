@@ -13,8 +13,7 @@ layout: default
       <span class="tag-name">
         <a href="{{ site.rootdir }}/tag/{{ tag[0] }}">{{ tag[0] }}</a>
       </span>
-      <span class="post-count">{{ tag[1].size }}</span>
-    </li>
+      <span class="post-count">{{ tag[1].size }} post{% if tag[1].size > 1%}s{% endif %}</span> </li>
     {% endfor %}
   </ul>
 

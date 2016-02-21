@@ -1,8 +1,7 @@
 ---
 layout: post
-title:  "The Beginning"
-date:   2016-02-20
-tags:
+title:  The Beginning - Some ridiculously long title to test the layout in different IE versions
+tags: introduction raytracing coding nim demoscene
 ---
 
 Just what the world needs, yet another technical blog!
