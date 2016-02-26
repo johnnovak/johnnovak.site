@@ -26,6 +26,39 @@ programming language.
 
 
 
+https://news.ycombinator.com/item?id=6635303
+
+
+LighTable supports
+Clojure, ClojureScript, Javascript, Python, HTML, and CSS
+
+https://www.youtube.com/watch?v=52SVAMM3V78
+
+
+Interactive programming - Clojure and OpenGL
+https://vimeo.com/14709925
+
+
+https://howistart.org/posts/nim/1
+
+
+https://en.wikipedia.org/wiki/Self-modifying_code
+
+
+We just switched from Rust to Nim for a very large proprietary project
+https://news.ycombinator.com/item?id=9050114
+
+
+Remote Agent
+http://ti.arc.nasa.gov/tech/asr/planning-and-scheduling/remote-agent/
+
+Lisping at JPL
+http://www.flownet.com/gat/jpl-lisp.html
+
+
+
+
+
 
 ## References
 
@@ -33,7 +66,6 @@ programming language.
 
 [1] Pedriana, Paul (2007-04-27). [EASTL -- Electronic Arts Standard Template Library
  (Electronic Arts)](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2271.html).
-
 
 [2] [Custom allocators used in game development](https://gamedev.stackexchange.com/questions/25782/custom-allocators-used-in-game-development).
 
