@@ -4,28 +4,56 @@ title:  C++ is not dead, it just smells funny
 tags:
 ---
 
-I thought that would be a quite strong title for a first post (well, sans the
-obligatory introductory one).
+
+## Visual debugging
+
+Let me tell you a concrete story that happened during the development of my
+tree visualisation tool [twyg](http://www.johnnovak.net/twyg). I was
+prototyping an algorithm that was supposed to flow text into
+arbitrary convex polygons in [NodeBox
+1](https://www.nodebox.net/code/index.php/Home). If you don't happen to know NodeBox, it is
+a remarkable visualisation tool quite similar to
+[Processing](http://processing.org/) that lets you create 2D images in an
+interactive fashion in Python. The basic principle is very simple: you have
+a window vertically split in half, on the right is a code editor and on the
+left your canvas. In the editor you can write regular Python code
+mixed with Nodebox specific drawing commands, which
+are essentially a bunch of Python functions defined in a module that's
+imported by default. Whenever you press **Cmd+R**, the embedded Python
+interpreter executes the code and updates the image on the canvas. This in
+itself is a pretty efficient setup so far that allow you to work very quickly.
+Just enter some code, hit **Cmd+R** and bamm!---you immeditately see the
+results of your code changes.[^cssworkflow]
+
+But wait, it gets much better! You can also "throttle" any numeric value in
+your code---just command-click it, start dragging the mouse around and watch
+the image on the canvas being updated *in realtime* while you're adjusting the
+number in the code window! This deceptively simple little feature proved to be
+invaluable during testing the text flowing code. Just grab the `fontsize`,
+`lineheight` or whatever other parameter you might have and observe how the
+algorithm reacts to the adjustments with instant visual feedback. This is an
+extremely powerful technique that helped me squash a number of bugs that would
+have been very difficult to anticipate or even discover by chance if I was
+using a statically compiled language that enforces a rigid edit-compile-test
+way of doing things. It also enabled me to test the code on the "time-axis" as
+well, to see how the layout changes when a parameters is being gradually
+incremented or decremented (or effectively randomized by wildly jerking the
+mouse around---now *that* is what I'd call a proper stress test!).
+
+Solving this problem in Java/C/C++ (or, as a matter of fact, in any other
+compiled language) would have taken much longer with more hidden bugs
+uncovered. The immediacy and grasping the workings of algorithm on an intuitive
+level would not have been possible.
 
 
-Disclaimer: C++ will get some serious (and in my opinion, well deserved)
-bashing here. So if you *really* love C++ and get easily upset by people
-expressing negative emotions towards your favourite programming language,
-better stop reading now. On the other hand, if you are a discontent C++ user
-wondering if there are any better alternatives out there, you might get some
-useful info out of this article (I hope so!). Just to make this crystal clear (because
-I know this is a sensitive topic for many): when I'm stating that C++ is
-a horrible language, I *do not* think that *people* who like (or have to use)
-C++ are idiots, nor that *software* written in C++ is crap---not even that
-Bjarne Stroustrup is stupid! All my criticism is geared towards C++, the
-programming language. 
+
+
+
+
 
 
 {::options parse_block_html="true" /}
 <div class="references">
-
-
-
 
 ## References
 
@@ -116,4 +144,23 @@ Wikipedia (n.d.). [List of game engines](https://en.wikipedia.org/wiki/List_of_g
 [The Next Mainstream Programming Languages: A Game Developer's Perspective](http://www.cs.princeton.edu/~dpw/popl/06/Tim-POPL.ppt)
 
 <div>
+
+
+I thought that would be a quite strong title for a first post (well, sans the
+obligatory introductory one).
+
+
+Disclaimer: C++ will get some serious (and in my opinion, well deserved)
+bashing here. So if you *really* love C++ and get easily upset by people
+expressing negative emotions towards your favourite programming language,
+better stop reading now. On the other hand, if you are a discontent C++ user
+wondering if there are any better alternatives out there, you might get some
+useful info out of this article (I hope so!). Just to make this crystal clear (because
+I know this is a sensitive topic for many): when I'm stating that C++ is
+a horrible language, I *do not* think that *people* who like (or have to use)
+C++ are idiots, nor that *software* written in C++ is crap---not even that
+Bjarne Stroustrup is stupid! All my criticism is geared towards C++, the
+programming language. 
+
+[^cssworkflow]: This actually a more streamlined version of the classic, time-honored webdesigner workflow, where you're editing the CSS file in your text editor and then Ctrl-Tab + Ctrl-R in quick succession the see the updated results in the browser.
 
