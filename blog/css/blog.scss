@@ -57,6 +57,7 @@ html {
 
 img {
   border: none;
+  width: 100%;
 }
 
 a {
@@ -105,6 +106,29 @@ th {
 }
 td {
   padding: 1px 8px;
+}
+
+dt {
+  font-weight: $xbold;
+  margin-bottom: 0.5em;
+}
+dd {
+  margin-bottom: 1em;
+}
+
+blockquote {
+  margin: 1.9em 0;
+  padding-left: 30px;
+  font-style: italic;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  footer {
+    text-align: right;
+    margin-right: 3em;
+  }
 }
 
 #jn-logo {
@@ -222,7 +246,7 @@ article {
   h3 {
     margin: 2em 0 0 0;
     font-size: 16px;
-    font-weight: $bold;
+    font-weight: $xbold;
     color: $accent-color;
   }
   p {
@@ -241,15 +265,17 @@ article {
   ul {
     list-style: square;
   }
+  li {
+    margin: 1em 0;
+  }
   figure {
     margin: 2em 0;
     padding: 0;
   }
-  .caption {
+  figcaption {
     display: block;
-    margin: -1.5em 0 2em 0;
-    text-align: center;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 20px;
     color: $light-font-color;
   }
   pre {
@@ -609,7 +635,8 @@ article {
       margin-top: 1.5em;
     }
     h3 {
-      margin-top: 1.2em;
+      font-size: 19px;
+      margin-top: 1.8em;
     }
     pre {
       margin: 1.8em 0;

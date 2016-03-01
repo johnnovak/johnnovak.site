@@ -4,6 +4,116 @@ title:  C++ is not dead, it just smells funny
 tags:
 ---
 
+## My GOAL
+
+It turns out there are far too many interesting looking languages than I would
+have time to evaluate. I need to come up with some criteria to do the initial
+culling. So what should my ideal programming language be like?
+
+Fun to use
+: This cannot be emphasized enough. All the remaining points are worthless if
+the language is not genuinely fun to use.
+
+Minimal, elegant syntax
+: Too much syntax puts me off. I want the syntax to stay invisible. The more
+it looks like pseudo-code, the better! Python comes very close to that, and
+yes, I am a fan of significant whitespace. Lispy syntax is good too. I can't
+tolerate funny looking "sigils"---if the code reminds me of bad ASCII art or
+raises even the slightest suspicion that it could pass as a syntactically
+valid Perl script, I'm not interested.
+
+Clean core language
+: Languages that bend over backwards to please everybody usually end up being
+a colossal mess. A good language should make up its mind and have firm
+opinions on how things should be accomplished. While it's fine to provide
+multiple mechanisms to do similar things (to a point), when you have every
+programming paradigm ever invented by man (or woman) crammed into in a single
+language, I think we have a problem.
+
+High productivity
+: The language should have all sorts of high-level building blocks that allow
+to experiment with new ideas quickly. A REPL would be good, or at least very
+fast compilation times. I'm not the biggest fan of static type systems, so the
+more dynamic, the better (although sparingly used type hints are ok). Ideally,
+there woudl be a mechanism to muck around with the code while it's running for
+rapid iterations.
+
+High performance
+: Even if the high-level language facilities are not the quickest, there
+should be a way to drop down into low-level mode to do fast numeric stuff
+without having to use C via some FFI. There should be some mechanism to handle
+concurrency and scale up to all CPU cores without setting your hair on fire.
+Bullshit like [GIL](https://en.wikipedia.org/wiki/Global_interpreter_lock) is
+not tolerated. Built-in support for SIMD is a big plus.
+
+Self-contained native executable support
+: a
+
+Optional garbage collector
+: s
+
+Metaprogramming
+: s
+
+Open-source & cross-platform
+: w
+
+
+### The Contenders
+
+After much 
+
+*[About two weeks and a few hundred blog posts/articles later...]*
+
+The final list of interesting looking languages was:
+
+> D, Rust, Go, Nim, OOC, cmacro, Vala, Julia, OCaml, Racket, Gambit
+  Scheme, CHICKEN Scheme, BONES, PicoLisp, Shen, Clojure, ClojureScript,
+  Haxe, Lua, LuaJIT, Terra, Idris, Elixir, Erlang, Io, Ioke, None
+
+...of which my finalists were **Nim**, **LuaJIT**, **Terra**, **Clojure** and **Racket**.
+
+Below is a quick overview of my rationale for picking these exact
+lanuages.
+
+#### Nim
+
+The syntax is very clean, very much Python and Pascal inspired with a healthy
+dose of Scala thrown in. 
+
+Direct "competitors" were D, Rust and Go, all statically typed system
+programming style languages that can produce standalone native executables.
+Some short notes about my impressions:
+
+* Go fell out pretty quickly, there's no way to disable the GC and mess around
+with the memory directly and the folks at Google seem to want to shoehorn it into
+the scripting language box.
+* D seemed pretty uninteresting too; it basically aims to be a "corrected"
+version of C/C++ but the core language already looks
+quite bloated, the garbage collector supposedly sucks and frankly, looking at
+some examples just left me completely cold.  Quite obviously, they're aiming
+to be a C++ replacement so they're trying to make the switch for C++ people as
+seamless as possible. In short, nope.
+* Rust seemed to be better, but still a tad overcomplicated and the syntax was
+just too verbose for my tastes.  Also, there's no GC and their idea of memory
+management just freaks me out (some reference-counting variant).
+Still, superficially Rust seemed to be the best contender of the bunch, but
+I'm really unsure about the memory management.
+
+
+#### LuaJIT / Terra
+
+
+
+#### Clojure / ClojureScript
+
+
+
+#### Scheme
+
+Racket
+
+
 
 ## Visual debugging
 
@@ -55,13 +165,45 @@ level would not have been possible.
 {::options parse_block_html="true" /}
 <div class="references">
 
+https://news.ycombinator.com/item?id=6635303
+
+
+LighTable supports
+Clojure, ClojureScript, Javascript, Python, HTML, and CSS
+
+https://www.youtube.com/watch?v=52SVAMM3V78
+
+
+Interactive programming - Clojure and OpenGL
+https://vimeo.com/14709925
+
+
+https://howistart.org/posts/nim/1
+
+
+https://en.wikipedia.org/wiki/Self-modifying_code
+
+
+We just switched from Rust to Nim for a very large proprietary project
+https://news.ycombinator.com/item?id=9050114
+
+
+Remote Agent
+http://ti.arc.nasa.gov/tech/asr/planning-and-scheduling/remote-agent/
+
+Lisping at JPL
+http://www.flownet.com/gat/jpl-lisp.html
+
+
+
+
+
 ## References
 
 ### Memory management
 
 [1] Pedriana, Paul (2007-04-27). [EASTL -- Electronic Arts Standard Template Library
  (Electronic Arts)](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2271.html).
-
 
 [2] [Custom allocators used in game development](https://gamedev.stackexchange.com/questions/25782/custom-allocators-used-in-game-development).
 

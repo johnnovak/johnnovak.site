@@ -4,6 +4,7 @@ title:  Language Candidates
 tags:
 ---
 
+http://lispyscript.com/tryit/
 
 http://www.idris-lang.org/
 
