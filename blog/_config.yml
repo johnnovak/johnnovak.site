@@ -12,7 +12,6 @@ highlighter:  pygments
 sass:
     sass_dir: _sass
 
-
 # User variables
 
 url:          http://blog.johnnovak.net

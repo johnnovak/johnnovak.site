@@ -30,10 +30,10 @@ the world of programming outside your particular niche.
 
 And that's the main motivation for starting this blog---to keep myself up to
 date on new technologies that interest me and document my tinkerings. The idea
-is that using the blog format to report on my experiments will help me
-focus and also make me more diligent in researching my topics.  After all, the
-goal is to write about things that are new to me, so trying to keep the amount
-of misinformation I'm unwillingly (but inevitably) going spread to a minimum
+is that using the blog format to report on my experiments will help me focus
+and also make me more diligent in researching my topics.  After all, the goal
+is to write about things that are new to me, so trying to keep the amount of
+misinformation I'm unwillingly (but inevitably) going to spread to a minimum
 is probably a good idea, as I'm sure the experts will be far too eager to
 chime in and correct me... :)
 

@@ -15,9 +15,13 @@ $caption-color:      #555;
 $code-font-color:    #333;
 $accent-color:       darken(#4abeaa, 9);
 $link-color:         invert($accent-color);
-$sel-color:          #dcfc86;
+$sel-color:          adjust-hue(
+                       saturate(
+                         mix($accent-color, $bg-color, 20),
+                         30),
+                       -40%);
 
-$light-font-color:   #666;
+$light-font-color:   #777;
 $light-accent-color: mix($accent-color, $bg-color, 70);
 
 $monospace: "Inconsolata", serif;
@@ -117,9 +121,10 @@ dd {
 }
 
 blockquote {
-  margin: 1.9em 0;
-  padding-left: 30px;
+  margin: 1.5em 0;
+  padding-left: 20px;
   font-style: italic;
+  color: $light-font-color;
 
   p {
     margin: 0;
@@ -129,6 +134,12 @@ blockquote {
     text-align: right;
     margin-right: 3em;
   }
+}
+
+hr {
+  margin-top: 40px;
+  border: 1px solid #aaa;
+  border-width: 1px 0 0 0;
 }
 
 #jn-logo {
@@ -226,6 +237,11 @@ article {
   position: relative;
   margin-bottom: 0px;
 
+  .intro {
+    color: $light-font-color;
+    font-style: italic;
+  }
+
   header {
     .date {
       margin: 0;
@@ -244,10 +260,13 @@ article {
     color: $accent-color;
   }
   h3 {
-    margin: 2em 0 0 0;
+    margin: 1.5em 0 0 0;
     font-size: 16px;
     font-weight: $xbold;
     color: $accent-color;
+  }
+  h4 {
+    font-size: 16px;
   }
   p {
     clear: both;
@@ -264,19 +283,36 @@ article {
   }
   ul {
     list-style: square;
+    margin: 0;
+    padding-left: 2em;
+
+    li {
+      margin: 1em 0;
+    }
   }
-  li {
-    margin: 1em 0;
+  .compact {
+    color: #888;
+    li {
+      margin: 0;
+    }
+    li p {
+      color: $font-color;
+      margin: 0;
+    }
   }
   figure {
-    margin: 2em 0;
+    margin: 1.2em 0;
     padding: 0;
   }
   figcaption {
     display: block;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 16px;
     color: $light-font-color;
+
+    a {
+      font-weight: $bold;
+    }
   }
   pre {
     margin: 1.3em 0;
@@ -301,8 +337,8 @@ article {
     }
   }
 
-  .references {
-    margin-top: 40px;
+  .links {
+    margin-top: 20px;
     font-size: 14px;
 
     h2 {
@@ -311,14 +347,10 @@ article {
       color: $font-color;
     }
     h3 {
-      margin: 1.5em 0 0 0;
+      margin: 1.2em 0 0.6em 0;
       font-size: 16px;
       font-weight: $bold;
       color: $font-color;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
     }
   }
 }
@@ -405,6 +437,11 @@ article {
     line-height: 22px;
   }
 
+  blockquote {
+    margin: 2em 0;
+    padding-left: 30px;
+  }
+
   #jn-logo {
     top: 20px;
     width: 355px;
@@ -489,6 +526,21 @@ article {
     h2 {
       font-size: 22px;
     }
+    h3 {
+      font-size: 18px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+    figure {
+      margin: 2em 0;
+      padding: 0;
+    }
+    figcaption {
+      margin-top: 0.5em;
+      font-size: 14px;
+      line-height: 20px;
+    }
     pre {
       margin: 1.6em 0;
       font-size: 15px;
@@ -507,6 +559,17 @@ article {
     .tags {
       li {
         margin-bottom: 1px;
+      }
+    }
+
+    .links {
+      font-size: 15px;
+
+      h2 {
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 17px;
       }
     }
   }
@@ -591,6 +654,10 @@ article {
     }
   }
 
+  hr {
+    margin-top: 50px;
+  }
+
   .post-list {
     h1 {
       margin-bottom: 1.5em;
@@ -667,6 +734,18 @@ article {
 
       li {
         margin-bottom: 3px;
+      }
+    }
+
+    .links {
+      margin-top: 25px;
+      font-size: 16px;
+
+      h2 {
+        font-size: 22px;
+      }
+      h3 {
+        font-size: 18px;
       }
     }
   }
