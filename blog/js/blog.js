@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('adf');
   replace2xImages();
   createSectionAnchors();
 });
