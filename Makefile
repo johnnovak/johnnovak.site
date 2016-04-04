@@ -56,11 +56,12 @@ clean_home:
 		watch_photo_css update_photo_css clean_photo
 
 photo:
+	mkdir -p $(DEST_PHOTO_DIR)
 	make generate_photo
 	make exif_cleanup
+	cp photo/*.html $(DEST_PHOTO_DIR)
 
 generate_photo: clean_photo
-	mkdir -p $(DEST_PHOTO_DIR)
 	photo/generate-albums.py photo/source $(DEST_PHOTO_DIR)
 	mkdir -p $(DEST_PHOTO_DIR)/css
 	mkdir -p $(DEST_PHOTO_DIR)/js/lib

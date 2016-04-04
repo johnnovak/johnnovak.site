@@ -1,3 +1,5 @@
+@import '../../common/css/mixins.scss';
+
 html {
   margin: 40px 30px 40px 30px;
 }
@@ -12,11 +14,16 @@ body {
   line-height: 1.3;
 }
 header {
+  @include enable-selection(false);
   margin: 0 auto 80px auto;
   color: #e84;
   text-align: right;
   text-transform: uppercase;
 
+  a {
+    color: #e84;
+    letter-spacing: -1px;
+  }
   .presents {
     position: absolute;
     top: -20px;
@@ -24,13 +31,18 @@ header {
     margin: 0;
     line-height: 1;
     color: #e84;
+    letter-spacing: -1px;
   }
   .v {
     margin: 1px 12px 0 0;
-    font-weight: 400;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: none;
   }
 }
 h1 {
+  @include enable-selection(false);
+  color: #e84;
   margin: 0;
   font-size: 100px;
   line-height: 72px;
@@ -42,6 +54,7 @@ h1 {
   }
   .o {
     font-size: 80px;
+    margin: 0 -8px 0 -10px;
     font-weight: 200;
     letter-spacing: -11px;
   }
@@ -67,6 +80,7 @@ section {
   margin-bottom: 6em;
 }
 h2 {
+  @include enable-selection(false);
   position: absolute;
   right: 44px;
   z-index: -1;
