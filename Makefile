@@ -30,7 +30,9 @@ html_tidy_dir = -(find $(1) -name "*.html" \
 
 home: clean_home
 	mkdir -p $(DEST_HOME_DIR)/css
+	mkdir -p $(DEST_HOME_DIR)/best
 	cp home/*.html $(DEST_HOME_DIR)
+	cp home/best/*.html $(DEST_HOME_DIR)/best
 	cp -r home/img home/js $(DEST_HOME_DIR)
 	sass $(SASS_BUILD_OPTS) --update $(HOME_CSS_LOCATION)
 
