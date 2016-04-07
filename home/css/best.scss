@@ -1,115 +1,280 @@
 @import '../../common/css/mixins.scss';
 
 html {
-  margin: 40px 30px 40px 30px;
+  margin: 20px 20px;
 }
+
 body {
   position: relative;
-  margin: 0 auto 0 auto;
-  width: 800px;
+  margin: 0 auto;
   background: #fff;
-  color: #000;
+  color: #888;
   font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.3;
 }
+
 header {
   @include enable-selection(false);
-  margin: 0 auto 80px auto;
+  margin: 0 auto 40px;
   color: #e84;
-  text-align: right;
+  text-align: center;
   text-transform: uppercase;
 
   a {
     color: #e84;
     letter-spacing: -1px;
+
+    &:hover {
+      color: #f95;
+    }
   }
   .presents {
-    position: absolute;
-    top: -20px;
-    right: 200px;
-    margin: 0;
+    margin: 0.5em 0;
     line-height: 1;
     color: #e84;
-    letter-spacing: -1px;
+    a {
+      margin-right: 5px;
+    }
   }
   .v {
-    margin: 1px 12px 0 0;
+    margin: 0.3em 0;
     font-weight: 600;
     font-size: 15px;
     text-transform: none;
   }
+  .intro {
+    em {
+      margin-top: 13px;
+      display: block;
+    }
+  }
 }
+
+a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #666;
+
+  &:hover {
+    color: #999;
+  }
+}
+em {
+  font-style: normal;
+  font-weight: 600;
+}
+
 h1 {
   @include enable-selection(false);
   color: #e84;
-  margin: 0;
-  font-size: 100px;
-  line-height: 72px;
+  margin: 0 20px 0 0;
+  font-size: 40px;
+  line-height: 42px;
   text-transform: uppercase;
 
   .b {
+    font-size: 50px;
     font-weight: 600;
-    letter-spacing: -12px;
+    letter-spacing: -4px;
   }
   .o {
-    font-size: 80px;
-    margin: 0 -8px 0 -10px;
+    font-size: 40px;
     font-weight: 200;
-    letter-spacing: -11px;
+    letter-spacing: -4px;
   }
   .t {
-    margin: 0 18px 0 0px;
-    font-size: 80px;
+    font-size: 40px;
     font-weight: 200;
-    letter-spacing: -11px;
+    letter-spacing: -1px;
   }
   .i {
-    font-size: 130px;
+    font-size: 74px;
     font-weight: 900;
-    letter-spacing: -13px;
+    letter-spacing: -8px;
   }
   .tm {
     position: absolute;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 400;
   }
 }
+
 section {
-  width: 666px;
-  margin-bottom: 6em;
+  margin: 0 0 3em 0;
 }
+
 h2 {
   @include enable-selection(false);
-  position: absolute;
-  right: 44px;
-  z-index: -1;
-  margin: 0;
-  color: #ea0;
-  font-size: 120px;
+  margin: 0 33px 0 0;
+  color: #e84;
+//  font-size: 35px;
+  font-size: 32px;
+  line-height: 0.9em;
   font-weight: 600;
-  line-height: 0.7;
   text-transform: uppercase;
-  letter-spacing: -8px;
-  opacity: .2;
 }
-a {
-  color: #b40;
-  font-size: 20px;
-  font-weight: 600;
-  text-decoration: none;
 
-  &:hover {
-    color: #e60;
-  }
-}
 dt {
   margin-bottom: 0.4em;
+  font-size: 18px;
+
+  a {
+    color: #b40;
+
+    &:hover {
+      color: #e60;
+    }
+  }
 }
 dl {
   margin-bottom: 2em;
 }
 dd {
   color: #888;
-  margin: 0 0 1.5em 0;
+  margin: 0 0 1.0em;
+}
+
+footer {
+  margin-top: 4em;
+  text-align: center;
+}
+
+@media only screen and (min-width: 480px) {
+  header {
+    margin: 0 auto 50px;
+
+    .v {
+      margin: 0.6em 0;
+    }
+  }
+
+  h1 {
+    font-size: 60px;
+    line-height: 49px;
+
+    .b {
+      font-size: 70px;
+      letter-spacing: -5px;
+    }
+    .o {
+      font-size: 50px;
+    }
+    .t {
+      font-size: 50px;
+    }
+    .i {
+      font-size: 90px;
+      letter-spacing: -9px;
+    }
+  }
+
+  h2 {
+    font-size: 35px;
+  }
+}
+
+@media only screen and (min-width: 570px) {
+  html {
+    margin: 40px 30px;
+  }
+  body {
+    font-size: 18px;
+  }
+
+  header {
+    margin-bottom: 90px;
+    text-align: right;
+
+    .presents {
+      position: absolute;
+      top: -20px;
+      right: 222px;
+      margin: 0;
+      letter-spacing: -1px;
+    }
+    .v {
+      margin: 1px 30px 0 0;
+    }
+    .intro {
+      margin-right: 30px;
+    }
+  }
+
+  h1 {
+    font-size: 100px;
+    line-height: 72px;
+
+    .b {
+      font-size: 100px;
+      letter-spacing: -12px;
+    }
+    .o {
+      font-size: 80px;
+      margin: 0 -8px 0 -10px;
+      letter-spacing: -11px;
+    }
+    .t {
+      margin: 0 18px 0 0px;
+      font-size: 80px;
+      letter-spacing: -11px;
+    }
+    .i {
+      font-size: 130px;
+      letter-spacing: -13px;
+    }
+    .tm {
+      font-size: 30px;
+    }
+  }
+
+  dt {
+    font-size: 20px;
+  }
+  dd {
+    margin-bottom: 1.5em;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  header {
+    .intro {
+      margin: 1em 30px 0 auto;
+      width: 510px;
+    }
+  }
+  section {
+    margin-right: 30px;
+  }
+  h2 {
+    font-size: 40px;
+  }
+}
+
+@media only screen and (min-width: 726px) {
+  section {
+    margin-bottom: 6em;
+    width: 640px;
+  }
+  h2 {
+    position: absolute;
+    right: 0px;
+    z-index: -1;
+    font-size: 120px;
+    line-height: 0.3;
+    letter-spacing: -8px;
+    opacity: .2;
+  }
+}
+
+@media only screen and (min-width: 860px) {
+  body {
+    width: 800px;
+  }
+  section {
+    width: 666px;
+    margin-bottom: 6em;
+  }
+  h2 {
+  }
 }
