@@ -143,7 +143,7 @@ restricted subset of the language and stay away from its so-called "high-level
 abstractions"---the existence of which should normally be *the* main reason
 for choosing it over C in the first place.
 
-{% include image.html name="hydra_by_ruth_tay.jpg" caption="Contrary to popular belief, C++ was well-known and feared among the ancient Greeks. The hellish abomination was commonly depicted as a fiendish, many-headed water serpent rising from the dark depths of the sea, each head representing a different programming paradigm totally incompatible with the rest of the language. The actual number of fully functional heads varies greatly and depends on the target platform, the version of the C++ standard being depicted, the compiler vendor, the exact shade of the compiler vendor's CEO's wife's niece's toe polish, and the favourite food of the chief compiler implementor's pet baby wombat. (Illustration by <a href=\"http://ruthtaylor.nl\">Ruth Taylor</a>)" %} 
+{% include image.html name="hydra_by_ruth_tay.jpg" width="100%" caption="Contrary to popular belief, C++ was well-known and feared among the ancient Greeks. The hellish abomination was commonly depicted as a fiendish, many-headed water serpent rising from the dark depths of the sea, each head representing a different programming paradigm totally incompatible with the rest of the language. The actual number of fully functional heads varies greatly and depends on the target platform, the version of the C++ standard being depicted, the compiler vendor, the exact shade of the compiler vendor's CEO's wife's niece's toe polish, and the favourite food of the chief compiler implementor's pet baby wombat. (Illustration by <a href=\"http://ruthtaylor.nl\">Ruth Taylor</a>)" %} 
 
 So what happens with C++ on a successful project? The wretched standard
 library flies [right out of the
@@ -231,7 +231,7 @@ overview](http://all-things-andy-gavin.com/2011/03/12/making-crash-bandicoot-goo
 on it which is definitely worth reading (for more interesting reading
 material, check out the reading suggestions at the end of this article).
 
-{% include image.html name="goal.jpg" caption="After the Sony acquisition, Naughty Dog was forced to abandon Lisp in favour of C++.<br />Question: What will become of Lisp code after Sony has bought your company? Answer: A block comment. (From the video <a href=\"https://www.youtube.com/watch?v=LHvUjmlWRAI\">The Making of Jak & Daxter</a>)" %}
+{% include image.html name="goal.jpg" width="100%" caption="After the Sony acquisition, Naughty Dog was forced to abandon Lisp in favour of C++.<br />Question: What will become of Lisp code after Sony has bought your company? Answer: A block comment. (From the video <a href=\"https://www.youtube.com/watch?v=LHvUjmlWRAI\">The Making of Jak & Daxter</a>)" %}
 
 It is also important to note that  GOAL was not just simply a language but
 a whole interactive system that allowed rapid prototyping of ideas and

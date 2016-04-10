@@ -61,7 +61,7 @@ html {
 
 img {
   border: none;
-  width: 100%;
+  margin: 0 auto;
 }
 
 a {
@@ -303,12 +303,15 @@ article {
   figure {
     margin: 1.2em 0;
     padding: 0;
+    text-align: center;
   }
   figcaption {
     display: block;
     font-size: 12px;
     line-height: 16px;
     color: $light-font-color;
+    margin: 0 auto;
+    text-align: left;
 
     a {
       font-weight: $bold;
@@ -854,5 +857,16 @@ $orange:   #b76514;
 .il { color: $lime } /* Literal.Number.Integer.Long */
 
 // ]]]
+// [[[ JQ MATH ----------------------------------------------------
+//mtable.ma-legend-align > mtr > mtd:first-child,
+////fmath span.ma-legend-align > table > tbody > tr > td:first-child
+//					{ text-align: right; padding-right: 0 !important }
+mtable.ma-legend-align > mtr > mtd:first-child + mtd,
+fmath span.ma-legend-align > table > tbody > tr > td:first-child + td
+					{ text-align: left; padding-left: 25px !important }
+
+// ]]]
+
 
 // vim:et ts=4 sts=4 foldmethod=marker foldmarker=[[[,]]]
+
