@@ -77,7 +77,7 @@ We are going to use a [right-handed Cartesian coordinate system
 ](https://en.wikipedia.org/wiki/Cartesian_coordinate_system#In_three_dimensions)
 to represents objects in our 3D world, where the *y-axis* points up, the *x-axis* to the right and the *z-axis* forward. In right-handed coordinate systems, positive rotation is [counterclockwise](https://www.evl.uic.edu/ralph/508S98/coordinates.html) about the axis of rotation.
 
-{% include image.html name="coordinate-system.svg" caption="The left-handed coordinate system used in our renderer. The circular arrow indicates the direction of positive rotation." width="70%" %}
+{% include image.html name="coordinate-system.svg" caption="Figure 1 &mdash; The left-handed coordinate system used in our renderer. The circular arrow indicates the direction of positive rotation." width="70%" captionAlign="center" %}
 
 The choice of coordinate system handedness is nothing more than a convention: DirectX,
 Unity, Maya and Pixar's RenderMan use left-handed coordinate systems, while OpenGL,
@@ -149,6 +149,8 @@ Rotations around a given axis:
 
 Let $(\P_x, \P_y)$ be the **pixel coordinates** of a pixel of the final image in the framebuffer, $w$ and $h$ the width and the height of the framebuffer in pixels and \$r = w / h\$ the image aspect ratio.
 
+{% include image.html name="mappings.svg" caption="Figure 2 &mdash; The relations between the raster, NDC and screen spaces." captionAlign="center" width="100%" %}
+
 We have to shoot the ray through the middle of the pixels, thus the $(\R_x, \R_y)$ **raster coordinates** of a given pixel are as follows:
 
 \$\$\cl\"ma-join-align\"{\table
@@ -170,7 +172,7 @@ And finally the $(S_x, S_y)$ **screen coordinates**:
 \S_y ,= -(2 \N_y - 1)
 }\$\$
 
-Let $&alpha;$ be the **field of view (FOV)** of the camera. From figure
+Let $&alpha;$ be the **vertical field of view (FOV)** of the camera. From figure
 X it can be seen that by default the field of view is 90&deg; (because $\tan
 90&deg; / 2 = \tan 45&deg; = 1 = \BC $), and the length of BC is actually the
 $f$ **field of view factor (zoom factor)** of the camera.
