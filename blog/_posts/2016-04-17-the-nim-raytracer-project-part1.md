@@ -180,9 +180,9 @@ $f$ **field of view factor (zoom factor)** of the camera.
 \$\$\tan &alpha; / 2 = \BC / \AB = \BC / 1\$\$
 \$\$\BC = \tan &alpha; / 2 = f$\$
 
-To obtain the desired field of view, the size of the screen rectangle has to
-be scaled by the field of view factor (this is akin to "zooming" with a camera
-lens). Thus we yield the **camera coordinates**:
+To obtain the desired field of view, the image surface  has to be scaled by
+the field of view factor (this is akin to "zooming" with a camera lens). Thus
+we yield the **camera coordinates**:
 
 \$\$\cl\"ma-join-align\"{\table
 \C_x ,= (2 \N_x - r) f;
