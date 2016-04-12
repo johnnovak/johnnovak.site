@@ -145,7 +145,7 @@ Rotations around a given axis:
      0,       0, 0, 1;
 ]\$\$
 
-## Calculating the primary rays
+## Calculating primary rays
 
 Let $(\P_x, \P_y)$ be the **pixel coordinates** of a pixel of the final image in the framebuffer, $w$ and $h$ the width and the height of the framebuffer in pixels and \$r = w / h\$ the image aspect ratio.
 
@@ -208,3 +208,63 @@ As the last step, we have to multiply the resulting direction vector with the
 camera transform matrix:
 
 \$\$ d↖{∧}' = \bo C d↖{∧}\$\$
+
+
+## Ray-sphere intersection
+
+The implicit equation of a **sphere** with center point $\C\$ and radius $r$:
+
+\$\$(x-\C_x)^2 + (y-\C_y)^2 + (z-\C_z)^2 = r^2\$\$
+
+The parametric equation of a **half-open line segment** (the ray, in our case), where $\O$ is the starting point, $d↖{∧}$ the direction vector and $\P$ a point on the segment for any $t≧0$:
+
+\$\$\P = \O + d↖{∧}t\$\$
+
+Written component-wise:
+
+\$\$\P_x = \O_x + d_xt \$\$
+\$\$\P_y = \O_y + d_yt \$\$
+\$\$\P_z = \O_z + d_zt \$\$
+
+To get the ray-sphere intersection points, we'll need to substitute $\P_x$, $\P_y$ and $\P_z$ into the equation of the sphere:
+
+\$\$(\O_x + d_xt - \C_x)^2 + (\O_y + d_yt-\C_y)^2 + (\O_z + d_zt-\C_z)^2 = r^2\$\$
+
+The first parenthesised expression can be expanded like this:
+
+\$\$\cl\"ma-join-align\"{\table
+(\O_x + d_xt - \C_x)^2 ,= \O_x^2 + \O_x d_xt - \O_x\C_x + d_xt\O_x + d_x^2t^2 - d_xt\C_x - \C_x\O_x - \C_x\d_xt + \C_x^2;
+ ,= \O_x^2 + 2\O_x d_xt - 2\O_x\C_x + d_x^2t^2 - 2\C_xd_xt + \C_x^2;
+ ,= d_x^2t^2 + (2\O_x d_x - 2\C_xd_x)t + (\O_x^2 - 2\O_x\C_x + \C_x^2);
+ ,= d_x^2t^2 + (2d_x(\O_x- C_x))t + (\O_x - \C_x)^2;
+}\$\$
+
+The remaining two expressions can be expanded in a similar way, so the final equation
+will have the form of a quadratic equation \$ at^2 + bt + c = 0\$, where:
+
+\$\$\cl\"ma-join-align\"{\table
+a ,= d_x^2 + d_y^2 + d_z^2;
+b ,= 2d_x(\O_x + \O_y + \O_z - C_x - C_y - C_z);
+c ,= (\O_x - \C_x)^2 + (\O_y - \C_y)^2 + (\O_z - \C_z)^2;
+}\$\$
+
+This can be solved for $t$ by applying the following formula that takes care
+of the [loss of
+significance](https://en.wikipedia.org/wiki/Loss_of_significance#A_better_algorithm)
+floating-point problem:
+
+\$\$t_1 = {-b-\sgn(b)√{b^2-4ac}} / {4a}\;\;\;,\;\;\;t_2 = c/{a t_1}\$\$
+
+\$\$ \$\$
+\$\$ \$\$
+\$\$ \$\$
+\$\$ \$\$
+
+
+
+
+
+
+https://tavianator.com/fast-branchless-raybounding-box-intersections-part-2-nans/
+
+http://www.siggraph.org/education/materials/HyperGraph/raytrace/rtinter3.htm
