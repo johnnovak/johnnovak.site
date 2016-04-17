@@ -1,9 +1,9 @@
 {% capture imagePath %}{{ page.date | date: "%Y-%m-%d" }}/{{ include.name }}{% endcapture %}
 {% if include.caption %}
   <figure>
-    <img src="/files/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} style="width: {{ include.width }}" {% endif %}/>
+    <img src="/files/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} style="width: {{ include.width }}" {% endif %}>
       <figcaption style="{% if include.width %} width: {{ include.width }};{% endif %}{% if include.captionAlign %} text-align: {{ include.captionAlign }};{% endif %}">{{ include.caption }}</figcaption>
     </figure>
 {% else %}
-  <img src="/files/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}/>
+  <img src="/files/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}>
 {% endif %}

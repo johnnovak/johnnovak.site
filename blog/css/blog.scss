@@ -122,9 +122,10 @@ dd {
 
 blockquote {
   margin: 1.5em 0;
+  margin-left: 10px;
   padding-left: 20px;
-  font-style: italic;
   color: $light-font-color;
+  border-left: 3px solid #ccc;
 
   p {
     margin: 0;
@@ -441,8 +442,8 @@ article {
   }
 
   blockquote {
-    margin: 2em 0;
-    padding-left: 30px;
+    margin-top: 2em;
+    padding-left: 20px;
   }
 
   #jn-logo {
@@ -631,6 +632,17 @@ article {
 
   #header {
     height: 330px;
+
+    .tagline {
+      text-align: right;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #666;
+      position: absolute;
+      line-height: 17px;
+      top: 170px;
+      right: 107px;
+    }
 
     ul {
       padding-top: 140px;
