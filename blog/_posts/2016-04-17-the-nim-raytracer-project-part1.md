@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  The Nim Ray Tracer Project &mdash; Part 1
+title:  "The Nim Ray Tracer Project &ndash; Part 1"
 tags: 2016-04-17
 ---
 
@@ -30,16 +30,17 @@ else but pure maths! [^amiga]
 
 I have always thought of ray tracing as some kind of black magic---something
 utterly fascinating and very scary at the same time because of the complex
-maths involved (which turns out, is not quite true). This belief was also
-strengthened by my modest excursions into OpenGL programming years later,
-which uses a different method called rasterization to generate 3D images.
-Historically, there have been two main approaches to rendering 3D scenes,
-rasterization and ray tracing. While rasterization is by several orders of
-magnitude more efficient at producing 3D animations at smooth frame rates in
-real-time, ray tracing can produce vastly more photorealistic images. Visual
-effects that happen in real life such as non-planar reflections, soft shadows,
-refractions and caustics are quite simple to calculate with ray tracing
-(albeit at a huge computational cost), but it requires quite a bit of
+maths involved (which, as it turns out, is not quite true). This belief was
+also strengthened by my modest excursions into OpenGL programming years later,
+which uses a different method called
+[rasterization](https://en.wikipedia.org/wiki/Rasterisation) to generate 3D
+images.  Historically, there have been two main approaches to rendering 3D
+scenes, rasterization and ray tracing. While rasterization is by several
+orders of magnitude more efficient at producing 3D animations at smooth frame
+rates in real-time, ray tracing can produce vastly more photorealistic images.
+Visual effects that happen in real life, such as non-planar reflections, soft
+shadows, refractions and caustics are quite simple to calculate with ray
+tracing (albeit at a huge computational cost), but it requires quite a bit of
 complicated trickery even just to fake them with rasterization. At the risk of
 grossly oversimplifying matters, rasterization is very efficient at projecting
 three-dimensional triangles onto a two-dimensional surface (the screen) and
@@ -48,37 +49,37 @@ to obtain reasonable frame rates during real-time animation, certain
 simplifications and optimisations are made. Photorealistic rendering that
 accurately portrays how a given scene would look in real life is not
 necessarily of primary importance as long as the end result looks pleasing
-(which is a reasonable assumption for lots of applications such as
+(which is a reasonable assumption for many applications such as
 visualisation and games, where absolute fidelity to reality is not
-a requirement). It's the 3D artists job to arrange those coloured triangles so
-that the end result will look good. Most graphics-accelerator cards today
-implement some sort of a rasterization pipeline in hardware. 
+a requirement). It's the 3D artists' job to arrange those coloured triangles so
+that the resulting image looks good. Most graphics-accelerator cards today
+implement some sort of rasterization pipeline in hardware.
 
-Ray tracing algorithms, on the other hand, is pretty much a no-holds-barred
-approach to generating realistic images on a computer by simulating the path
-of photons emitted by light sources as they bounces from surface to surface
-among the objects making up the 3D scene, finally landing on the retina or the
-photo-sensitive image surface of a camera.  Photorealism is of primary
-importance here, which is achieved by calculating the image pixel by pixel
-using algorithms that mimic the laws of physics as closely as practically
-possible (certain simplifications must be made, of course, otherwise we would
-end up writing a Universe Simulator).
+[Ray tracing](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)), on the
+other hand, is a pretty much a no-holds-barred approach to generate
+realistic images on a computer by simulating the path of photons emitted by
+light sources as they bounce from surface to surface among the objects making
+up the 3D scene, finally landing on the image surface of a virtual camera.
+Photorealism is of primary importance here, which is achieved by calculating
+the image pixel by pixel using algorithms that mimic the laws of physics as
+closely as practically possible (certain simplifications must be made, of
+course, otherwise we would end up writing a Universe Simulator).
 
-Is ray tracing superior to rasterization then? In some way, we can say it is.
-As far as photorealistic rendering is concerned, ray tracing is hard to beat,
-however this comes at a very steep computational cost. But if we asked whether
-it was possible to create pleasing images using rasterization alone, the
-answer would be a yes again. Just because rasterization is not as much rooted
-in physical reality as ray tracing, it would be foolish to think that it's not
-capable of producing stellar results that can look very convincingly real
-(just look at any modern game released post 2010!). Indeed, there's nothing
-preventing skilful artists from arranging the triangles making up a scene in
-a way that can convey very realistic end results, similarly how a master
-painter can create astonishingly realistic works of art by nothing more than
-applying differently coloured specks of paint onto a canvas with a mere
-paintbrush.
+This begs the question, is ray tracing superior to rasterization then? In some
+way, we can say it is.  As far as photorealistic rendering is concerned, ray
+tracing is hard to beat, however this comes at a very steep computational
+cost. But if we asked whether it was possible to create pleasing images using
+rasterization alone, the answer would be a yes again. Just because
+rasterization is not as much rooted in physical reality as ray tracing, it
+would be foolish to think that it's not capable of producing stellar results
+that can look very convincingly real (just look at any modern game released
+post 2010!). Indeed, there's nothing preventing skilful artists from arranging
+the triangles making up a scene in such a way that can convey very realistic
+final results, similarly to how a master painter can create astonishingly
+realistic works of art by nothing more than applying differently coloured
+specks of paint onto a canvas with a mere paintbrush.
 
-{% include image.html name="caravaggio.jpg" caption="Surely, <a href=\"https://en.wikipedia.org/wiki/Caravaggio\">Caravaggio</a> did not know about the <a href=\"https://en.wikipedia.org/wiki/Fresnel_equations\">Fresnel equations</a> or the <a href=\"https://en.wikipedia.org/wiki/Metropolis_light_transport\">Metropolis light transport</a> when he painted <a href=\"https://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)\">The Calling of Saint Matthew</a> in 1600. Yet no one would say his paintings are not photorealistic enough just because he did not use ray tracing! Interestingly enough, there have been some <a href=\"http://www.webexhibits.org/hockneyoptics/post/grundy7.html\">speculations</a> that he might have used the <a href=\"https://en.wikipedia.org/wiki/Camera_obscura\">camera obscura</a> to aid him in attaining his photorealistic results, the workings of which have strong connections to the basic idea of ray tracing. Here we go!" width="80%" %} 
+{% include image.html name="caravaggio.jpg" caption="Surely, <a href=\"https://en.wikipedia.org/wiki/Caravaggio\">Caravaggio</a> did not know about the <a href=\"https://en.wikipedia.org/wiki/Fresnel_equations\">Fresnel equations</a> or the <a href=\"https://en.wikipedia.org/wiki/Metropolis_light_transport\">Metropolis light transport</a> when he painted <a href=\"https://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)\">The Calling of Saint Matthew</a> in 1600. Yet no one would say his paintings are not photorealistic enough just because he did not use ray tracing! Interestingly enough, there have been some <a href=\"http://www.webexhibits.org/hockneyoptics/post/grundy7.html\">speculations</a> that he might have used the <a href=\"https://en.wikipedia.org/wiki/Camera_obscura\">camera obscura</a> to aid him in attaining his photorealistic results, the workings of which have strong connections to the basic idea of ray tracing. Here we go!" width="80%" %}
 
 As CPUs and GPUs are getting more powerful, previously purely
 rasterization-based game engines have been increasingly incorporating ray
@@ -110,7 +111,7 @@ documentation](http://docs.cryengine.com/display/SDKDOC1/Home):
   different lighting conditions.
 
 To sum up, I personally tend to think of rasterization as a more
-artist-centric and ray tracing a rather scientific approach of image
+artist-centric and ray tracing a more scientific approach of image
 generation. Ultimately, both are just tools of solving the problem of mapping
 a 3D scene onto a 2D image surface, but there's a certain undeniable beauty
 and elegance to ray tracing algorithms in how they generate complex optical
@@ -121,240 +122,74 @@ reality.
 
 Just to bring the point home that rasterization is not inferior to ray tracing
 but only different, and to support my argument that it is a more artist-based
-approach to rendering, let me present two examples from the opposite ends of
-the spectrum of what rasterization is capable of. As we'll see, it would have
-been difficult or impractical (or both) to achieve the same results with pure
-ray tracing techniques alone in both of these examples.
+approach to rendering, let me present two examples from the two opposite ends
+of the spectrum of what rasterization is capable of. As we'll see, it would
+have been difficult or impractical (or both) to achieve the same results with
+pure ray tracing techniques alone in both of these examples.
 
 The magical realist adventure game (whatever that means) [Kentucky Road
 Zero](http://kentuckyroutezero.com/) by the aptly titled developer [Cardboard
 Computer](http://cardboardcomputer.com/) uses clever rasterization tricks to
-render it's highly stylised low-polygon world. While the abstract visuals very
-often bear similitude to simple 2D paper cut-outs, some sudden camera angle
-switches hint that there is actually more going on here under the hood, and
+render its highly stylised low-polygon world. While the abstract visuals bear
+similitude to simple 2D paper cut-outs in most scenes, some sudden camera
+angle switches hint at it that there's more going on under the hood, and
 indeed, this is in fact the 3D engine [Unity](https://unity3d.com/) in action,
 as evidenced by this [featured article](http://cardboardcomputer.com/).
 
 
-{% include image.html name="krz.jpg" caption="The opening scene of <a href=\"http://kentuckyroutezero.com/\">Kentucky Road Zero</a>, Act I by <a href=\"http://cardboardcomputer.com/\">Cardboard Computer</a>. If David Lynch ever ventured into making a computer game, then this would be it. The unique visual style of the game proves that an unconventional, abstract approach to rendering instead of taking the well-beaten \"standard\" photorealistic path can yield much more interesting results." width="100%" %} 
+{% include image.html name="krz.jpg" caption="The opening scene of <a href=\"http://kentuckyroutezero.com/\">Kentucky Road Zero</a>, Act I by <a href=\"http://cardboardcomputer.com/\">Cardboard Computer</a>. If David Lynch ever ventured into making a computer game, then this would be it. The unique visual style of the game proves that an unconventional, abstract approach to rendering instead of taking the well-beaten \"standard\" photorealistic path can yield much more interesting results." width="100%" %}
 
 [The Astronauts](http://www.theastronauts.com/)' first-person mystery game
 [The Vanishing of Ethan Carter](http://ethancartergame.com/), on the other
 hand, employs a breathtakingly beautiful painterly approach to create its
 immersive in-game atmosphere. As it can be clearly seen on the screenshot, the
 results are stunningly realistic, but in a dreamy and artistic kind of way
-which is not dissimilar at all to the Caravaggio painting above. The
+which is not dissimilar at all to the Caravaggio painting presented above. The
 developers used a technique called
 [photogrammetery](http://www.theastronauts.com/2014/03/visual-revolution-vanishing-ethan-carter/)
 to effectively sample reality in the form of textures and 3D meshes from
 thousands of photographs, but from there on it's all traditional rasterization
-using the [Unreal Engine](https://www.unrealengine.com/). I suspect it would
-have been quite difficult to achieve the same level of painterly feel by
-employing a strict ray tracing approach alone (even if that was possible at
-fluid frame rates on current hardware).  While ray tracing would have
-certainly yielded a more faithful replica of reality, by its very virtue of
-physical accuracy it could not have granted the artist as much freedom to
-create a specific mood by allowing him to freely manipulate the shades and
-colours making up the scene.  Atmosphere and emotions beat pure physics in
-this example again.
+using the [Unreal Engine](https://www.unrealengine.com/).
 
-{% include image.html name="ethan-carter.jpg" caption="One of the most beautiful games of recent years, <a href=\"http://ethancartergame.com/\">The Vanishing of Ethan Carter</a> pulls in the player into its highly realistic yet painterly world right from the first second of gameplay. No trace of physical based rendering here either (pun intended), yet the results speak for themselves. Although photogrammetry is a form of sampling reality, the rendering is purely rasterization based." width="100%" %} 
+{% include image.html name="ethan-carter.jpg" caption="One of the most beautiful games of recent years, <a href=\"http://ethancartergame.com/\">The Vanishing of Ethan Carter</a> pulls the player in into its highly realistic yet painterly world right from the first second of gameplay. No trace (pun intended) of physical based rendering is to be found here, yet the results speak for themselves." width="100%" %}
 
-[^amiga]: To put things into perspective, my experimentations with ray tracing on the Amiga happened around 1992. There was virtually no Internet back then, I haven't even heard the word until several years later. I read it in a *paper* computer magazine (yes, those things *did* actually exist, can you believe it?) that the CGI effects in the 1991 film [Terminator 2: Judgement Day](https://en.wikipedia.org/wiki/Terminator_2:_Judgment_Day) were rendered on a room full of ultra high-end (and ultra-expensive) [Silicon Graphics IRIS](http://www.obsolyte.com/sgi_iris/) [workstations](http://www.sgistuff.net/funstuff/hollywood/), but even with that kind of computing power it took several *months* to render a few minutes' worth of scenes. Now, seeing *any kind of* semi-photorealistic ray traced image come out of my modest [Amiga 500](https://en.wikipedia.org/wiki/Amiga_500) personal computer sporting a 7.14 Mhz [Motorola 68000 CPU](https://en.wikipedia.org/wiki/Motorola_68000) seemed nothing short of a small miracle to me then! Oh, and I had no such luxuries as a *hard disk drive* either---the whole program and the scene to be rendered had to fit into the machine's whopping 1 MB of RAM (extended from the factory default 512 KB) and the final image was then slowly written to a blank [880 KB floppy disk](https://en.wikipedia.org/wiki/Floppy_disk_variants#Commodore_Amiga) over the course of 7-8 hours!
+I suspect it would have been quite difficult to achieve the same level of
+painterly feel by employing a strict ray tracing approach alone (even if that
+was possible at fluid frame rates on current hardware).  While ray tracing
+would have certainly yielded a more faithful portrayal of reality, by its very
+virtue of physical accuracy it could not have granted the artist as much
+freedom to create a specific mood by allowing him to freely manipulate the
+shades and colours making up those almost otherwordly beautiful scenes.
+Atmosphere and emotions beat pure physics in this example again.
 
-## Writing a Ray Tracer --- The Basics
+## Why Nim?
 
+You know the old saying, mastering a programming language just by reading
+about it is like trying to learn how to ride the bicycle from a book.  I get
+quickly bored by solving toy textbook exercises; implementing quicksort in yet
+another language is not quite my idea of having a good time, really.  What
+works for me best is writing a new application from scratch that does some
+cool stuff that I'm excited about and learn the new language along the way. So
+that's what we're gonna do here, write a full-featured ray tracer from the
+ground up in pure Nim!
 
-### Coordinate system
+Oh, and why Nim? Serious people&trade; use C++ for high-performance graphics
+stuff, don't they? Well, this is going to be a ray tracer, so speed matters *a
+lot*, indeed---but so does the fun factor and my sanity too, as I'm not paid
+to suffer here, this being a hobby project and all (on a related note, don't
+be a masochist, [just say no to
+C++!](/2016/03/03/the-quest-for-a-programming-language-that-doesnt-suck-part1/)).
+Nim claims to be "Efficient like C, expressive like Python and flexible like
+Lisp" which sounds pretty good in my book. In fact, C, Python and Lisp are
+probably my three all-time favourite languages, so this actually sounds more
+like a dream come true! So what we're gonna do here is take this little guy
+for a wild ride and see how it lives up to its lofty goals in the real world!
 
-We are going to use a [right-handed Cartesian coordinate system
-](https://en.wikipedia.org/wiki/Cartesian_coordinate_system#In_three_dimensions)
-to represents objects in our 3D world, where the *y-axis* points up, the *x-axis* to the right and the *z-axis* forward. In right-handed coordinate systems, positive rotation is [counter-clockwise](https://www.evl.uic.edu/ralph/508S98/coordinates.html) about the axis of rotation.
+## In the next episode...
 
-{% include image.html name="coordinate-system.svg" caption="Figure 1 &mdash; The left-handed coordinate system used in our renderer. The circular arrow indicates the direction of positive rotation." width="70%" captionAlign="center" %}
-
-The choice of coordinate system handedness is nothing more than a convention: DirectX,
-Unity, Maya and Pixar's RenderMan use left-handed coordinate systems, while OpenGL,
-[pbrt](http://www.pbrt.org/) and most other 3D modelling software are
-right-handed. For our purposes, compatibility with OpenGL and pbrt are the most
-important. Also, right-handed coordinate systems are the norm in mathematics,
-which will also make our life a bit easier.
-
-### Notation
-
-\$\$\cl\"ma-legend-align\"{\table
-s, \text\"scalar\";
-\P, \text\"point\";
-(\P_x, \P_y, \P_z), \text\"point (by coordinates)\";
-\AB, \text\"segment\";
-v↖{→}, \text\"vector\";
-⟨\P_x, \P_y, \P_z⟩, \text\"vector (by coordinates)\";
-v↖{∧}, \text\"unit vector\";
-{‖v‖}, \text\"magnitude of vector (length)\";
-a·b, \text\"dot product\";
-a×b, \text\"cross product\";
-\bo M, \text\"matrix\";
-}\$\$
-
-Column notation is used for vectors:
-
-\$\$ v↖{→}=[\table x; y; z; 1; ] \$\$
-
-### Transform matrices
-
-Translation and scaling:
-
-\$\$\bo T=[\table
-1, 0, 0, t_x;
-0, 1, 0, t_y;
-0, 0, 1, t_z;
-0, 0, 0, 1;
-]
-\;\;\;\;\;\;\bo S=[\table
-s_x,   0,   0, 0;
-  0, s_y,   0, 0;
-  0,   0, s_z, 0;
-  0,   0,   0, 1;
-]\$\$
-
-Rotation around a given axis:
-
-\$\$\bo R_x=[\table
-1,      0,       0, 0;
-0, \cos θ, -\sin θ, 0;
-0, \sin θ,  \cos θ, 0;
-0,      0,       0, 1;
-]
-\;\;\;\;\;\;\bo R_y=[\table
- \cos θ, 0, \sin θ, 0;
-      0, 1,      0, 0;
--\sin θ, 0, \cos θ, 0;
-      0, 0,      0, 1;
-]\$\$
-
-\$\$\bo R_z=[\table
-\cos θ, -\sin θ, 0, 0;
-\sin θ,  \cos θ, 0, 0;
-     0,       0, 1, 0;
-     0,       0, 0, 1;
-]\$\$
-
-### Calculating primary rays
-
-Let $(\P_x, \P_y)$ be the **pixel coordinates** of a pixel of the final image, $w$ and $h$ the width and the height of the image in pixels and \$r = w / h\$ the image aspect ratio.
-
-{% include image.html name="mappings.svg" caption="Figure 2 &mdash; The relationships between the raster, NDC and screen spaces." captionAlign="center" width="100%" %}
-
-We have to shoot the rays through the middle of the pixels, thus the $(\R_x, \R_y)$ **raster coordinates** of a given pixel are as follows:
-
-\$\$\cl\"ma-join-align\"{\table
-\R_x ,= \P_x + 0.5;
-\R_y ,= \P_y + 0.5;
-}\$\$
-
-From this follows the formula for calculating the $(N_x, N_y)$ **normalised device coordinates (NDC)**:
-
-\$\$\cl\"ma-join-align\"{\table
-\N_x ,= \R_x / w r;
-\N_y ,= \R_y / h;
-}\$\$
-
-And finally the $(S_x, S_y)$ **screen coordinates**:
-
-\$\$\cl\"ma-join-align\"{\table
-\S_x ,= 2 \N_x - r;
-\S_y ,= -(2 \N_y - 1)
-}\$\$
-
-Let $&alpha;$ be the **vertical field of view (FOV)** of the camera. From figure
-TODO it can be seen that by default the field of view is 90&deg; (because $\tan
-90&deg; / 2 = \tan 45&deg; = 1 = \BC $), and the length of BC is actually the
-$f$ **field of view factor** of the camera.
-
-\$\$\tan &alpha; / 2 = \BC / \AB = \BC / 1\$\$
-\$\$\BC = \tan &alpha; / 2 = f$\$
-
-To obtain the desired field of view, the image surface  has to be scaled by
-the field of view factor (this is akin to zooming with a traditional camera
-lens). Thus we yield the **camera coordinates**:
-
-\$\$\cl\"ma-join-align\"{\table
-\C_x ,= (2 \N_x - r) f;
-\C_y ,= -(2 \N_y - 1) f;
-}\$$
-
-After substitutions, the final transform from pixel coordinates to camera
-coordinates looks like this:
-
-\$\$\cl\"ma-join-align\"{\table
-\C_x ,= ({2 (\P_x + 0.5) r} / w - r) f;
-\C_y ,= (1 - {2 (\P_y + 0.5)} / h) f;
-}\$$
-
-So for each pixel $(\P_x, \P_y)$ in the image we can now calculate the
-corresponding camera coordinates $(\C_x, \C_y)$ we'll need to shoot the
-primary ray through. Since the camera (the eye) is at the origin, the
-direction vector $d↖{∧}$ of the ray corresponding to pixel $(\P_x, \P_y)$ is
-simply the vector $⟨\C_x, \C_y⟩$ normalised:
-
-\$\$ d↖{∧} = ⟨\C_x, \C_y⟩ / {‖⟨\C_x, \C_y⟩‖}\$\$
-
-As the last step, we'll have to multiply the resulting direction vector with the
-camera transform matrix:
-
-\$\$ d↖{∧}' = \bo C d↖{∧}\$\$
+We will examine the mathematical foundations of writing a simple ray tracer.
+Time to brush up those high-school trigonometry skills! Stay tuned!
 
 
-### Ray-sphere intersection
+[^amiga]: To put things into perspective, my experimentations with ray tracing on the Amiga took place in around 1992. There was virtually no Internet back then, I haven't even heard the word until several years later. I read it in a *paper computer magazine* (yes, those things *did* actually exist, can you believe it?) that the CGI effects in the 1991 film [Terminator 2: Judgement Day](https://en.wikipedia.org/wiki/Terminator_2:_Judgment_Day) were rendered on a room full of ultra high-end (and ultra-expensive) [Silicon Graphics IRIS](http://www.obsolyte.com/sgi_iris/) [workstations](http://www.sgistuff.net/funstuff/hollywood/), but even with that kind of computing power it took several *months* to render a few minutes' worth of scenes. Now, seeing *any kind of* semi-photorealistic ray traced image come out of my modest [Amiga 500](https://en.wikipedia.org/wiki/Amiga_500) personal computer setup sporting a blazingly fast 7.14 Mhz [Motorola 68000 CPU](https://en.wikipedia.org/wiki/Motorola_68000) seemed nothing short of a small miracle to me then! (Actually, that chip is as old as *yours truly*, I've just checked...) Oh, and I had no such luxuries as a *hard disk drive* either---the whole program and the scene to be rendered had to fit into the machine's whopping 1 MB of RAM (extended from the factory default of 512 KB) and the final image was then slowly written to a blank [880 KB floppy disk](https://en.wikipedia.org/wiki/Floppy_disk_variants#Commodore_Amiga) over the course of 7-8 hours! Kids these days with their GPU-accelerated Monte Carlo path tracers...
 
-The implicit equation of a **sphere** with centre point $\C\$ and radius $r$:
-
-\$\$(x-\C_x)^2 + (y-\C_y)^2 + (z-\C_z)^2 = r^2\$\$
-
-The parametric equation of a **half-open line segment** (the ray, in our case), where $\O$ is the starting point, $d↖{∧}$ the direction vector and $\P$ a point on the segment for any $t≧0$:
-
-\$\$\P = \O + d↖{∧}t\$\$
-
-Written component-wise:
-
-\$\$\P_x = \O_x + d_xt \$\$
-\$\$\P_y = \O_y + d_yt \$\$
-\$\$\P_z = \O_z + d_zt \$\$
-
-To get the ray-sphere intersection points, we'll need to substitute $\P_x$, $\P_y$ and $\P_z$ into the equation of the sphere:
-
-\$\$(\O_x + d_xt - \C_x)^2 + (\O_y + d_yt-\C_y)^2 + (\O_z + d_zt-\C_z)^2 = r^2\$\$
-
-The first parenthesised expression can be expanded like this:
-
-\$\$\cl\"ma-join-align\"{\table
-(\O_x + d_xt - \C_x)^2 ,= \O_x^2 + \O_x d_xt - \O_x\C_x + d_xt\O_x + d_x^2t^2 - d_xt\C_x - \C_x\O_x - \C_x\d_xt + \C_x^2;
- ,= \O_x^2 + 2\O_x d_xt - 2\O_x\C_x + d_x^2t^2 - 2\C_xd_xt + \C_x^2;
- ,= d_x^2t^2 + (2\O_x d_x - 2\C_xd_x)t + (\O_x^2 - 2\O_x\C_x + \C_x^2);
- ,= d_x^2t^2 + (2d_x(\O_x- C_x))t + (\O_x - \C_x)^2;
-}\$\$
-
-The remaining two expressions can be expanded in a similar way, so the final equation
-will have the form of a quadratic equation \$ at^2 + bt + c = 0\$, where:
-
-\$\$\cl\"ma-join-align\"{\table
-a ,= d_x^2 + d_y^2 + d_z^2;
-b ,= 2 (d_x(\O_x - C_x) + d_y(\O_y - C_y) + d_z(\O_z - C_z));
-c ,= (\O_x - \C_x)^2 + (\O_y - \C_y)^2 + (\O_z - \C_z)^2;
-}\$\$
-
-First the discriminant \$\Δ\$ needs to be calculated. If \$\Δ &lt; 0\$, the ray does not intersect the sphere; if \$\Δ = 0\$, the ray touches the sphere (two intersection point); and if \$\Δ &gt; 0\$, it intersects the sphere in two points. The equation can be solved for $t$ by applying the following formula that takes care
-of the [loss of
-significance](https://en.wikipedia.org/wiki/Loss_of_significance#A_better_algorithm)
-floating-point problem:
-
-\$\$\Δ = b^2-4ac\$\$
-
-\$\$t_1 = {-b-\sgn(b)√\Δ} / {4a}\;\;\;,\;\;\;t_2 = c/{a t_1}\$\$
-
-### In the next episode...
-
-...we'll actually get to inspect the Nim code that rendered this singular
-masterpiece of 80's CGI art below. Well, you gotta start somewhere, right?
-
-{% include image.html name="render.jpg" caption="This might look like total crap, but it's 16x MSAA antialiased, yo, and it's the output of my first ray tracer!" captionAlign="center" width="80%" %} 
