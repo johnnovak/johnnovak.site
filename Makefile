@@ -68,6 +68,7 @@ generate_photo: clean_photo
 	cp -r photo/img $(DEST_PHOTO_DIR)
 	cp photo/js/lib/*.js $(DEST_PHOTO_DIR)/js/lib
 	cp photo/js/*.js $(DEST_PHOTO_DIR)/js
+	cp photo/css/*.css $(DEST_PHOTO_DIR)/css
 	touch $(DEST_PHOTO_DIR)/css/fotorama.png
 	sass $(SASS_BUILD_OPTS) --update $(PHOTO_CSS_LOCATION)
 
