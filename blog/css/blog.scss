@@ -168,6 +168,9 @@ hr {
       text-transform: uppercase;
     }
   }
+  .tagline {
+    display: none;
+  }
 }
 
 article {
@@ -241,6 +244,10 @@ article {
   .intro {
     color: $light-font-color;
     font-style: italic;
+
+    em {
+      font-weight: $xbold;
+    }
   }
 
   header {
@@ -634,6 +641,7 @@ article {
     height: 330px;
 
     .tagline {
+      display: block;
       text-align: right;
       text-transform: uppercase;
       font-size: 14px;
@@ -742,13 +750,14 @@ article {
 
     .tags {
       position: absolute;
-      top: 0;
+      top: 2px;
       right: 0;
       width: 125px;
       margin: 0;
 
       li {
-        margin-bottom: 3px;
+        line-height: 32px;
+        margin: 0;
       }
     }
 

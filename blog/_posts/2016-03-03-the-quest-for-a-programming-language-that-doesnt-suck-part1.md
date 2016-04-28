@@ -1,13 +1,12 @@
 ---
 layout: post
 title:  The Quest for a Programming Language That Doesn't Suck &ndash; Part 1
-tags:
-date: 2016-03-03
+tags: languages Lisp
 ---
 
 <div class="intro">
-<p>[Listening to: <b>Aglaia – Three Organic Experiences</b>. Track #3, <b>Seven
-Ancient Glaciers</b> is a definite stand-out!]</p>
+<p>[Listening to: <em>Aglaia – Three Organic Experiences</em>. Track #3, <em>Seven
+Ancient Glaciers</em> is a definite stand-out!]</p>
 
 <p>Welcome, stranger! This series is a journal that attempts to document my
 trials and tribulations as I embark on the impossible journey of finding the
@@ -21,7 +20,7 @@ the hero calms down and finally sets some GOALs. A rare Greek mythological
 creature also makes an appearance midway.</p>
 </div>
 
-## Performance vs Productivity
+## Performance vs productivity
 
 A good programmer is a good programmer in any language. Yet the choice of
 language has significant effects on both developer productivity and the
