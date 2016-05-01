@@ -4,12 +4,10 @@ title:  "The Nim Ray Tracer Project &ndash; Part 1"
 tags: [graphics, ray tracing, Nim]
 ---
 
-<div class="intro">
-<p>[Listening to the albums <em>Reverberant Skies</em> and
-<em>White Maps</em> from <em>Aglaia</em> in an infinite loop... A beautifully
-hypnotic experience! The track <em>In the First Spinning Place</em> from
-<em>White Maps</em> is my absolute favourite.]</p>
-</div>
+{: .intro}
+[Listening to the albums **Reverberant Skies** and **White Maps** from
+**Aglaia** in an infinite loop... A beautifully hypnotic experience! The track
+**In the First Spinning Place** from **White Maps** is my absolute favourite.]
 
 ## Why a ray tracer?
 

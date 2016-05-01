@@ -276,12 +276,12 @@ article {
   h4 {
     font-size: 16px;
   }
+  a {
+    font-weight: $xbold;
+  }
   p {
     clear: both;
 
-    a {
-      font-weight: $xbold;
-    }
     code {
       font: 15px $monospace;
       font-weight: $bold;
@@ -354,7 +354,7 @@ article {
 
     h2 {
       font-size: 18px;
-      margin: 0;
+      margin: 1.2em 0 0.6em 0;
       color: $font-color;
     }
     h3 {

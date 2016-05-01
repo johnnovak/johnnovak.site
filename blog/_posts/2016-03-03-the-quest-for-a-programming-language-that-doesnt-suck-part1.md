@@ -4,21 +4,22 @@ title:  The Quest for a Programming Language That Doesn't Suck &ndash; Part 1
 tags: languages Lisp
 ---
 
-<div class="intro">
-<p>[Listening to: <em>Aglaia – Three Organic Experiences</em>. Track #3, <em>Seven
-Ancient Glaciers</em> is a definite stand-out!]</p>
+{: .intro}
+[Listening to: <em>Aglaia – Three Organic Experiences</em>. Track #3, <em>Seven
+Ancient Glaciers</em> is a definite stand-out!]
 
-<p>Welcome, stranger! This series is a journal that attempts to document my
+{: .intro}
+Welcome, stranger! This series is a journal that attempts to document my
 trials and tribulations as I embark on the impossible journey of finding the
 perfect programming language that I can use with great joy on my hobby
-projects. An epic quest of unfathomable difficulty, indeed!</p>
+projects. An epic quest of unfathomable difficulty, indeed!
 
-<p>In this episode: after a somewhat lacklustre introductory meandering on the
+{: .intro}
+In this episode: after a somewhat lacklustre introductory meandering on the
 merits of the multi-language approach in software development, things get
 heated up quite a bit with some good old-fashioned C++ bashing, after which
 the hero calms down and finally sets some GOALs. A rare Greek mythological
-creature also makes an appearance midway.</p>
-</div>
+creature also makes an appearance midway.
 
 ## Performance vs productivity
 
@@ -254,33 +255,24 @@ silently waiting to be discovered? We'll find that out in the next part!
 
 {: .compact}
 * [Making Crash Bandicoot – GOOL – part 9](http://all-things-andy-gavin.com/2011/03/12/making-crash-bandicoot-gool-part-9/)
-
 * [The Legacy of GOAL](http://art-of-optimization.blogspot.ca/2014/06/the-legacy-of-goal.html)
-
 * [Goal Test](http://all-things-andy-gavin.com/goal-test/)
-
 * [Lispings ala John McCarthy](http://all-things-andy-gavin.com/2011/10/25/lispings-ala-john-mccarthy/)
-
 * [Raising the Paradigm of Video Gaming – Again…Thanks to Lisp and Allegro CL](http://franz.com/success/customer_apps/animation_graphics/naughtydog.lhtml)
-
 * [Postmortem: Naughty Dog's Jak and Daxter: the Precursor Legacy](http://www.gamasutra.com/view/feature/131394/postmortem_naughty_dogs_jak_and_.php)
 
 ### The Bad
 
 {: .compact}
 * [Surviving C++](http://c0de517e.blogspot.com/2011/02/surviving-c.html) (the comments are just as educational as the article)
-
 * [Where is my C++ replacement?](http://c0de517e.blogspot.com/2014/06/where-is-my-c-replacement.html) (ditto)
-
 * [C++ FQA Lite — Defective C++](http://yosefk.com/c++fqa/)
 
 ### The Ugly
 
 {: .compact}
 * [C++ in Coders at Work](https://gigamonkeys.wordpress.com/2009/10/16/coders-c-plus-plus/)
-
 * [Linus Torvalds on C++](http://harmful.cat-v.org/software/c++/linus)
-
 * [C++ is Good for the Economy, It Creates Jobs!](http://harmful.cat-v.org/software/c++/)
 
 </section>
