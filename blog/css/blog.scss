@@ -23,6 +23,7 @@ $sel-color:          adjust-hue(
 
 $light-font-color:   #777;
 $light-accent-color: mix($accent-color, $bg-color, 70);
+$ultra-light-accent-color: mix($accent-color, $bg-color, 23);
 
 $monospace: "Inconsolata", serif;
 
@@ -134,6 +135,20 @@ blockquote {
   footer {
     text-align: right;
     margin-right: 3em;
+  }
+}
+.note {
+  background: $ultra-light-accent-color;
+  padding: 0.6em 1em;
+
+  &:before {
+    content: 'Note ';
+    display: block;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+    font-weight: $xbold;
+    font-size: 1.1em;
+    color: $accent-color;
   }
 }
 

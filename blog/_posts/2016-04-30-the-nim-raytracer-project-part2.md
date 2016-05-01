@@ -69,7 +69,7 @@ norm in mathematics, which will also make life a bit easier.
 ### Notation
 
 As I mentioned, the aim is to use a consistent mathematical notation throughout
-the whole series, so let's define the that first!
+the whole series, so let's define that first!
 
 \$\$\cl\"ma-legend-align\"{\table
 f, \text\"scalar\";
@@ -88,6 +88,11 @@ a↖{→}×b↖{→}, \text\"cross product\";
 Column notation is used for vectors:
 
 \$\$ v↖{→}=[\table x; y; z; w; ] \$\$
+
+{: .note}
+If the formulas look like crap in your browser, that means it
+sadly doesn't support MathML. Solution? Use a better browser, like
+[Firefox](https://www.mozilla.org/en-US/firefox/new/).
 
 ### Transform matrices
 
@@ -138,7 +143,7 @@ s_x,   0,   0, 0;
 
 Let $(P_x, P_y)$ be the **pixel coordinates** of a pixel of the final image,
 $w$ and $h$ the width and the height of the image in pixels and \$r = w / h\$
-the image aspect ratio $P&x$.
+the image aspect ratio.
 
 {% include image.html name="mappings.svg" caption="Figure 2 &mdash; The relationships between the raster, NDC and screen spaces." captionAlign="center" width="100%" %}
 
