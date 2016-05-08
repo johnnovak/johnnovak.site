@@ -128,7 +128,7 @@ tidy_blog:
 	$(call html_tidy_dir,$(DEST_BLOG_DIR)/*)
 
 serve_blog:
-	jekyll serve --drafts -s blog -d $(BLOG_SERVE_DIR)
+	jekyll serve --future --drafts -s blog -d $(BLOG_SERVE_DIR)
 
 clean_blog:
 	$(call clean_dir,$(DEST_BLOG_DIR)/*)
