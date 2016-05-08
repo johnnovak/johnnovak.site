@@ -5,7 +5,10 @@ tags: [graphics, ray tracing, Nim]
 ---
 
 {: .intro}
-[I have to tell that even after 34 years, **Brian Eno**'s ambient music is still so much better than 99.9999% of all recent electronic releases. Listening to **Ambient 4: On Land** from 1982; track #2 **The Lost Day** has a wonderfully creepy atmosphere...]
+[I have to tell that even after 34 years, *Brian Eno*'s ambient
+music is still so much better than 99.9999% of all recent electronic releases.
+Listening to *Ambient 4: On Land* from 1982; track #2 *The Lost Day* has
+a wonderfully creepy atmosphere...]
 
 ## The Basics
 

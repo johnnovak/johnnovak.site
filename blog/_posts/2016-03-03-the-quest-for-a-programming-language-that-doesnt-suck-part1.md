@@ -5,8 +5,8 @@ tags: languages Lisp
 ---
 
 {: .intro}
-[Listening to: <em>Aglaia – Three Organic Experiences</em>. Track #3, <em>Seven
-Ancient Glaciers</em> is a definite stand-out!]
+[Listening to: *Aglaia – Three Organic Experiences*. Track #3, *Seven
+Ancient Glaciers* is a definite stand-out!]
 
 {: .intro}
 Welcome, stranger! This series is a journal that attempts to document my

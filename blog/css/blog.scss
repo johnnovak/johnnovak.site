@@ -47,7 +47,7 @@ body {
   background-color: $bg-color;
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 21px;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
 }
@@ -308,13 +308,13 @@ article {
     list-style: square;
     margin: 0;
     padding-left: 2em;
+    color: #888;
 
     li {
       margin: 1em 0;
     }
   }
   .compact {
-    color: #888;
     li {
       margin: 0;
     }
@@ -326,12 +326,15 @@ article {
   figure {
     margin: 1.2em 0;
     padding: 0;
-    text-align: center;
+
+    &.image {
+      text-align: center;
+    }
   }
   figcaption {
     display: block;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 18px;
     color: $light-font-color;
     margin: 0 auto;
     text-align: left;
@@ -435,7 +438,8 @@ article {
 .footnotes {
   margin-top: 40px;
   border-top: 1px solid #aaa;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 18px;
 
   ol {
     padding: 0 0 0 30px;
@@ -460,7 +464,7 @@ article {
   body {
     margin: 0 25px;
     font-size: 15px;
-    line-height: 22px;
+    line-height: 23px;
   }
 
   blockquote {
@@ -564,7 +568,7 @@ article {
     }
     figcaption {
       margin-top: 0.5em;
-      font-size: 14px;
+      font-size: 13px;
       line-height: 20px;
     }
     pre {
@@ -619,8 +623,8 @@ article {
 
   .footnotes {
     margin-top: 50px;
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 14px;
+    line-height: 21px;
   }
 
   .comments {
@@ -635,14 +639,14 @@ article {
   body {
     margin: 0;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 25px;
   }
 
   #wrapper {
     position: relative;
-    left: -8%;
-    padding-left: 80px;
-    width: 680px;
+    left: -6%;
+    padding-left: 75px;
+    width: 660px;
     margin: 0 auto 40px auto;
   }
 
@@ -660,7 +664,7 @@ article {
       text-align: right;
       text-transform: uppercase;
       font-size: 14px;
-      color: #666;
+      color: #777;
       position: absolute;
       line-height: 17px;
       top: 170px;
@@ -728,13 +732,16 @@ article {
 
     header {
       h1 {
-        width: 550px;
+        width: 530px;
       }
       .date  {
         margin: 4px 0 60px 0;
       }
     }
 
+    p {
+      margin: 20px 0;
+    }
     h2 {
       font-size: 24px;
       margin-top: 1.5em;
@@ -743,10 +750,13 @@ article {
       font-size: 19px;
       margin-top: 1.8em;
     }
+    figcaption {
+      font-size: 14px;
+      line-height: 21px;
+    }
     pre {
       margin: 1.8em 0;
       padding-left: 20px;
-      border-left: 4px solid #eee;
       font-size: 16px;
 
       code {
@@ -771,7 +781,7 @@ article {
       margin: 0;
 
       li {
-        line-height: 31px;
+        line-height: 30px;
         margin: 0;
       }
     }
@@ -813,6 +823,11 @@ article {
     }
   }
 
+  .footnotes {
+    font-size: 15px;
+    line-height: 22px;
+  }
+
   .comments {
     margin-top: 80px;
   }
@@ -832,16 +847,16 @@ $orange:   #b76514;
 
 .hll { background-color: #ffffcc }
 .c { color: $gray } /* Comment */
-.err { color: $red } /* Error */
-.k { color: $purple } /* Keyword */
+//.err { color: $red } /* Error */
+.k { color: #333; font-weight: $bold; } /* Keyword */
 .o { } /* Operator */
-.cm { color: $gray } /* Comment.Multiline */
-.cp { color: $gray } /* Comment.Preproc */
-.c1 { color: $gray } /* Comment.Single */
-.cs { color: $darkgray } /* Comment.Special */
+//.cm { color: $gray } /* Comment.Multiline */
+//.cp { color: $gray } /* Comment.Preproc */
+//.c1 { color: $gray } /* Comment.Single */
+//.cs { color: $darkgray } /* Comment.Special */
 .gd { } /* Generic.Deleted */
 .ge { } /* Generic.Emph */
-.gr { color: $red } /* Generic.Error */
+//.gr { color: $red } /* Generic.Error */
 .gh { } /* Generic.Heading */
 .gi { } /* Generic.Inserted */
 .go { } /* Generic.Output */
@@ -849,14 +864,15 @@ $orange:   #b76514;
 .gs { } /* Generic.Strong */
 .gu { } /* Generic.Subheading */
 .gt { } /* Generic.Traceback */
-.kc { color: $purple } /* Keyword.Constant */
-.kd { color: $purple } /* Keyword.Declaration */
-.kn { color: $purple } /* Keyword.Namespace */
-.kp { color: $purple } /* Keyword.Pseudo */
-.kr { color: $purple } /* Keyword.Reserved */
-.kt { color: $cyan } /* Keyword.Type */
-.m { color: $lime } /* Literal.Number */
-.s { color: $lime } /* Literal.String */
+.kc { color: #333; font-weight: $bold; } /* Keyword.Constant */
+.kd { color: #333; font-weight: $bold; } /* Keyword.Declaration */
+.kn { color: #333; font-weight: $bold; } /* Keyword.Namespace */
+.kp { color: #333; font-weight: $bold; } /* Keyword.Pseudo */
+.kr { color: #333; font-weight: $bold; } /* Keyword.Reserved */
+.kt { color: #333; font-weight: $bold; } /* Keyword.Type */
+//.m  { color: $lime } /* Literal.Number */
+.s  { color: #26a } /* Literal.String */
+//.s  { color: $lime } /* Literal.String */
 .na { } /* Name.Attribute */
 .nb { color: $cyan } /* Name.Builtin */
 .nc { } /* Name.Class */
@@ -864,33 +880,33 @@ $orange:   #b76514;
 .nd { } /* Name.Decorator */
 .ni { } /* Name.Entity */
 .ne { color: $red } /* Name.Exception */
-.nf { } /* Name.Function */
+.nf { color: $accent-color; font-weight: $bold; } /* Name.Function */
 .nl { } /* Name.Label */
 .nn { } /* Name.Namespace */
 .nt { } /* Name.Tag */
 .nv { } /* Name.Variable */
 .ow { color: $blue } /* Operator.Word */
 .w { } /* Text.Whitespace */
-.mf { color: $lime } /* Literal.Number.Float */
-.mh { color: $lime } /* Literal.Number.Hex */
-.mi { color: $lime } /* Literal.Number.Integer */
-.mo { color: $lime } /* Literal.Number.Oct */
-.sb { color: $lime } /* Literal.String.Backtick */
-.sc { color: $lime } /* Literal.String.Char */
-.sd { color: $lime } /* Literal.String.Doc */
-.s2 { color: $lime } /* Literal.String.Double */
-.se { color: $lime } /* Literal.String.Escape */
-.sh { color: $lime } /* Literal.String.Heredoc */
-.si { color: $lime } /* Literal.String.Interpol */
-.sx { color: $lime } /* Literal.String.Other */
-.sr { color: $lime } /* Literal.String.Regex */
-.s1 { color: $lime } /* Literal.String.Single */
-.ss { color: $lime } /* Literal.String.Symbol */
-.bp { color: $cyan } /* Name.Builtin.Pseudo */
-.vc { color: $cyan } /* Name.Variable.Class */
-.vg { color: $cyan } /* Name.Variable.Global */
-.vi { color: $cyan } /* Name.Variable.Instance */
-.il { color: $lime } /* Literal.Number.Integer.Long */
+//.mf { color: $lime } /* Literal.Number.Float */
+//.mh { color: $lime } /* Literal.Number.Hex */
+//.mi { color: $lime } /* Literal.Number.Integer */
+//.mo { color: $lime } /* Literal.Number.Oct */
+//.sb { color: $lime } /* Literal.String.Backtick */
+//.sc { color: $lime } /* Literal.String.Char */
+//.sd { color: $lime } /* Literal.String.Doc */
+//.s2 { color: $lime } /* Literal.String.Double */
+//.se { color: $lime } /* Literal.String.Escape */
+//.sh { color: $lime } /* Literal.String.Heredoc */
+//.si { color: $lime } /* Literal.String.Interpol */
+//.sx { color: $lime } /* Literal.String.Other */
+//.sr { color: $lime } /* Literal.String.Regex */
+//.s1 { color: $lime } /* Literal.String.Single */
+//.ss { color: $lime } /* Literal.String.Symbol */
+//.bp { color: $cyan } /* Name.Builtin.Pseudo */
+//.vc { color: $cyan } /* Name.Variable.Class */
+//.vg { color: $cyan } /* Name.Variable.Global */
+//.vi { color: $cyan } /* Name.Variable.Instance */
+//.il { color: $lime } /* Literal.Number.Integer.Long */
 
 // ]]]
 // [[[ JQ MATH ----------------------------------------------------
