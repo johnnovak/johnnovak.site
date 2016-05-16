@@ -93,24 +93,53 @@ h6:hover .header-link {
 }
 
 table {
-  margin: 2em auto;
+  margin: 3em auto;
   border-collapse: collapse;
-  font-size: 16px;
-  width: 60%;
-  text-align: right;
+  font-size: 14px;
+  line-height: 20px;
 }
-th, td {
-  border: 1px solid #888;
+tr {
+  &.sep td {
+    border-top: 2px solid #ccc !important;
+  }
+}
+tr:not(:first-child) {
+  vertical-align: top;
+
+  th, td {
+    border-top: 1px solid #ccc;
+  }
 }
 th {
-  font-weight: $normal;
-  background: #888;
-  color: #fff;
-  line-height: 1.2;
-  padding: 3px 8px;
+  font-weight: $xbold;
+  color: #666;
+  text-align: left;
+  background: #f2f2f2;
+  padding: 8px 12px 6px 0;
 }
 td {
-  padding: 1px 8px;
+  &.h {
+    font-weight: $xbold;
+    color: #666;
+  }
+  padding: 6px 10px 6px 0;
+}
+
+table.properties {
+  margin: 1em 0;
+  width: 42%;
+
+  td {
+    padding: 3px 0;
+
+    &:nth-child(1) {
+      font-weight: $bold;
+      color: #666;
+    }
+    &:nth-child(2) {
+      text-align: right;
+    }
+  }
 }
 
 dt {
@@ -311,6 +340,7 @@ article {
     color: #888;
 
     li {
+      color: $font-color;
       margin: 1em 0;
     }
   }
@@ -776,11 +806,12 @@ article {
     .tags {
       position: absolute;
       top: 2px;
-      right: 0;
+      right: -20px;
       width: 125px;
       margin: 0;
 
       li {
+        display: block;
         line-height: 30px;
         margin: 0;
       }
