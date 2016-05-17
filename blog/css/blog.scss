@@ -166,18 +166,31 @@ blockquote {
     margin-right: 3em;
   }
 }
-.note {
-  background: $ultra-light-accent-color;
+.warning, .note {
   padding: 0.6em 1em;
 
   &:before {
-    content: 'Note ';
     display: block;
     margin-bottom: 0.5em;
     text-transform: uppercase;
     font-weight: $xbold;
     font-size: 1.1em;
     color: $accent-color;
+  }
+}
+.note {
+  background: $ultra-light-accent-color;
+
+  &:before {
+    content: 'Note ';
+  }
+}
+.warning {
+  background: #fae2e2;
+
+  &:before {
+    content: 'Warning ';
+    color: #944;
   }
 }
 
@@ -327,10 +340,10 @@ article {
     clear: both;
 
     code {
-      font: 15px $monospace;
+      font: 16px $monospace;
+      padding: 0px 2px;
       font-weight: $bold;
-      color: $link-color;
-      padding: 4px 5px 2px 5px;
+      color: #555;
     }
   }
   ul {

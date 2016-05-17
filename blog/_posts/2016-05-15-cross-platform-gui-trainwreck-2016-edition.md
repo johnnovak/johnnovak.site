@@ -41,7 +41,7 @@ anywhere (and don't go near the JVM). Excellent! The universe is smiling at
 you. Infinity co creates karmic balance. Freedom unfolds into intrinsic
 actions. Your consciousness manifests through quantum reality. [^bullshit]
 
-[^bullshit]: The last three new age wisdoms courtesy of http://www.wisdomofchopra.com/ new-age bullshit generator
+[^bullshit]: The last three new age wisdoms courtesy of the [Wisdom of Chopra](http://wisdomofchopra.com/) bullshit generator.
 
 Except for one litle thing. You must not under any circumstance try to open
 a window, attempt to change the color of a single pixel in it, or---god
@@ -144,40 +144,66 @@ when necessary in response to some user events. The forum thread is very
 enlightening TODO, so please read the linked materials in the suggested
 reading section if you're interested.)
 
-Ok, so my idea was to build a simple IMGUI user interface myself using the
-NanoVG vector graphics library. NanoVG uses OpenGL as its rendering backend,
-so the plan was to use it in conjunction with GLFW to shield me from any
-platform specific drawing and window handling stuff. That part actually worked
-out quite nicely; after a few days of hacking I had a window showing a bitmap
-image that's constantly updated from the internal render framebuffer and some
-GUI elements laid on top of it with transparency and whatnot.
+### Enter (then quickly exit) NanoVG
 
-### Enter NanoVG
+Ok, so my idea was to build a simple IMGUI user interface myself using the
+[NanoVG](https://github.com/memononen/nanovg) 2D vector graphics library.
+NanoVG uses OpenGL as its rendering backend, so the plan was to use it in
+conjunction with GLFW to shield me from any platform specific drawing and
+window handling stuff. That part actually worked out quite nicely; after a few
+days of hacking I had a window showing a bitmap image that's constantly
+updated from the internal render framebuffer and some GUI elements laid on top
+of it with transparency and whatnot.
 
 So far so good, cross-platform custom GUI proof-of-concept, tick, but
 I suddenly found myself facing two new problems:
 
   * The constant redrawing of the whole UI on every frame was burning up about
-10-15% CPU on my 8 logical core Core i7 4790 4.0 GHz. That means 1 core out of
-the total 8 was running at almost 100% all the time!
+10-15% CPU on my Intel Core i7 4790 4.0 GHz (8 logical cores). That means
+1 core out of the total 8 was running at almost 100% all the time!
 
-  * The quality of the NanoVG text rendering made me really depressed.
+  * The text rendering quality of NanoVG made me really depressed.
 
 The first problem is easy to fix. The abysmal performance has nothing to do
-with NanoVG or OpenGL, it's just because of the constant 60fps redraws.  The
+with NanoVG or OpenGL, it's just because of the constant 60fps redrawing. The
 solution was to redraw only when needed: as a quick hack I introduced a global
-boolean doRedraw and set it to true only when an input event was received or
+boolean `doRedraw` and set it to true only when an input event was received or
 the internal application state has changed (e.g. the framebuffer has been
-updated).
+updated). Then the drawing would only happen when `doRedraw` is set to true.
+Surely this can be done in a nicer way, but the concept is the same.
 
-### Exit NanoVG
+The second issue with the text rendering is a harder nut to crack. NanoVG uses
+the tiny
+[stb_truetype](https://github.com/nothings/stb/blob/master/stb_truetype.h)
+single-header C font rasterizer to create the font atlases used for text
+output. This is all well, but the quality of sbt_truetype at small font sizes
+is not that great at all (not great enough the annoy the hell out of me). Now,
+NanoVG seems to have optional support FreeType, but even if that works, it
+only has quite rudimentary support for handling text layouts (which is quite
+buggy, by the way). I really have zero inclination to neither start hacking
+the C code, nor come up with my own font layout engine... I know there's stuff
+like Pango and HarfBuzz, but I really don't want to [do a Donald E.
+Knuth](https://signalvnoise.com/posts/3183-the-art-of-computer-typography)
+here and spend too much time on a problem that has already been solved on the
+OS graphics library level. I just want to call `drawText()` and be done with
+it!
 
-TODO
+My subjective mental state at this point could be visualised pretty much spot
+on as follows:
 
-
-{% include image.html name="fail.jpg" caption="blah" width="80%" %}
+{% include image.html name="fail.jpg" caption="FAIL" captionAlign="center" width="80%" %}
 
 ## State of the art
+
+Ok, after putting the problem aside for a few days in order to calm down,
+I realised that the best way to go about this is to take a few quality
+cross-platform applications that I know well and analyse how they solved the
+custom GUI problem.
+
+I have included a mini-breakdown for each app on the sizes of their various
+components (e.g. main executable, libraries, additional resources etc.), in an
+attempt to get a feel for what is considered acceptable in 2016. I have used
+the 64-bit Windows versions except where noted otherwise.
 
 ### REAPER
 
@@ -186,7 +212,7 @@ Version|5.12
 Main executable|11 MiB
 Resources|23 MiB
 Plugins|30 MiB
-Total installation|68 MiB
+Total install size|68 MiB
 
 [REAPER](http://www.reaper.fm/) is a highly advanced cross-platform digital
 audio production workstation (DAW) for Windows and Mac OS X originally
@@ -218,7 +244,7 @@ Executable| 26 MiB
 DLL files|1.3 MiB
 Resources|19 MiB
 Library (presets, samples)|131 MiB
-Total installation|195 MiB
+Total install size|195 MiB
 
 [Renoise](https://www.renoise.com/) is probably the best cross-platform modern
 tracker in existence today. It runs on Windows, OS X and Linux and it has
@@ -241,8 +267,8 @@ wrappers to maintain a single codebase for all three platforms.
 {: .properties}
 Version|7.1.1
 Main executable|57 MiB
-DLL files|2.3 Mib
-Total installation|60 MiB
+DLL files|2.3 MiB
+Total install size|60 MiB
 
 [Tracktion](https://www.tracktion.com/) is another cross-platform DAW
 targeting the Windows, Mac OS X and Linux platforms. The single-window GUI is
@@ -304,48 +330,135 @@ DLL files|29 MiB
 Python|53 MiB
 Data|49 MiB
 Scripts|34 MB
-Total installation|305 MiB
+Total install size|305 MiB
 
 {% include image.html name="blender.jpg" caption="Blender's OpenGL-based interface is quite sleek and modern looking. Notice the semi-transparent widgets on top of the 3D views." width="100%" %}
 
 ### Cinema 4D
 
 I cannot provide any detailed info on Cinema 4D because I'm not using it
-personally and I couldn't bring myself to download the 3 GB demo just to check
-the filesizes...
+personally (and I couldn't bring myself to download the 3 GB demo installer
+just to check the filesizes...) It's still worthwhile to include it in this
+discussion because a) the UI looks good, b) most other commercial 3D packages
+follow a very similar approach.
 
-But we can still deduce a lot from the screenshot below.  First, note the
-image dimensions: 2880-by-1714. The display resolution of a 15" 2015 Retina
-MacBook Pro is 2880-by-1800, so this is a screenshot of the Mac version. Also
-note that at 1:1 magnification the text and the large icons are very crisp
-looking, but the rest of the UI, including the render view, is made up of
-double-sized (2x2) pixels. This suggests that they're using native text
-rendering, taking advantage of high-resolution displays whenever possible, but
-the rest of the UI probably consists of simple bitmaps only.  Having a look at
-some random Windows screenshots further validates this assumption; on those
-images the text looks very much like a standard 9px Tahoma rendered with
-ClearType.
+We can deduce a lot from the screenshot included below. First, note the image
+dimensions: 2880-by-1714. The display resolution of a 15" 2015 Retina MacBook
+Pro is 2880-by-1800, so this is a screenshot of the Mac version. Also note
+that at 1:1 magnification the text and the large icons are very crisp looking,
+but the rest of the UI, including the render view, is made up of double-sized
+(2x2) pixels. This suggests that they're using native text rendering, taking
+advantage of high-resolution displays whenever possible, but the rest of the
+UI probably consists of simple bitmaps only.  Having a look at some random
+Windows screenshots further validates this assumption; on those images the
+text looks very much like a standard 9px Tahoma rendered with ClearType.
 
 It looks like similarly to REAPER, Cinema 4D uses native graphics and text
-rendering to draw its UI.
+rendering to draw its UI, probably via some custom wrapper libraries.
 
-{% include image.html name="cinema4d.png" caption="" width="100%" %}
+{% include image.html name="cinema4d.png" caption="Cinema 4D on a Retina display MacBook Pro. Note that the fonts and the big icons are drawn at actual pixel resolution, while the rest of the UI is rendered at 2x2. " width="100%" %}
 
 ### NodeBox3
 
-[NodeBox3](https://www.nodebox.net/node/) is
+{: .properties}
+Version|3.0.44
+Main executable (JAR)|22 MiB
+Libraries (ffmpeg)|12 MiB
+Java runtime|172 MiB
+Python interpreter|4.4 MiB
+Examples|8.3 MiB
+Total install size|220 MiB
 
-NodeBox3
-3.0.44
+[NodeBox3](https://www.nodebox.net/node/) is a quite interesting node-based
+generative graphics tool that runs on Windows, Mac OS X and Linux. Contrary to
+all previously discussed applications, NodeBox is not a native executable
+written in C++ but a Java program. The UI is probably built with the help of
+Swing (that's the standard Java GUI library) plus a custom look and feel
+(that how they call a skin in Swing-land).
 
-214 MB
-NodeBox 40 MB
-nodebox.jar 23 MB
-175 MB Java JRE
+Relying on the cross-platform Java runtime is certainly very convenient from
+the developers' perspective, but is not without some serious drawbacks. First
+of all, the whole Java runtime environment has to be bundled with the
+application (at least on Windows and OS X), which accounts to a whopping 172
+MiB in this concrete example (that's 78% of the total install size!).
+Interface redraws are much more sluggish compared to native applications like
+REAPER and Renoise, startup times are generally slow and Java applications
+overall tend to be memory hogs. All these things are mostly non-issues for
+long-running server-side applications (the most natural habitat of Java
+bytecode), but they make the platform a less than ideal choice for
+high-performance desktop applications.
+
+In conclusion, while Java is certainly not the  most terrible choice for
+a cross-platform GUI application, it's far from being the greatest either. For
+some less demanding software (such as NodeBox) it may be an OK solution, but
+I'm really averse to the idea of DAW written in Java, where every little bit
+of performance counts...
+
+{% include image.html name="nodebox.png" caption="NodeBox3 has a pleasant looking GUI built using Swing (most likely) that looks almost identical on all supported platforms." width="100%" %}
+
+### Light Table
+
+{: .properties}
+Version|0.8.1
+Main executable|51 MiB
+Electronf framework|42 MiB
+Resources|33 MiB
+Total install size|129 MiB
+
+> [Light Table](http://lighttable.com/) is a next generation code editor that
+connects you to your creation with instant feedback.
+
+I borrowed this sentence from the project's [GitHub
+page](https://github.com/LightTable/LightTable) because I find it a very cool
+and succint description of this novel IDE. Light Table is available for
+Windows, Mac OS X and (can you guess?) Linux; it achieves cross-platform
+compatibility by leveraging the [Electron](http://electron.atom.io/)
+framework. In basic terms, Electron consists of a Chromium browser and
+Node.js, so developers can use HTML, CSS and JavaScript to build their
+cross-platform desktop applications. Light Table is actually written in
+ClojureScript, which compiles to JavaScript. This makes perfect sense as the
+IDE was originally intended to be an programming environment for Clojure only.
 
 
-{% include image.html name="nodebox.png" caption="" width="100%" %}
+{: .warning}
+I feel obliged to point it out though that the Electron framework
+can be terribly misused in the wrong hands. The
+[Monu](https://github.com/maxogden/monu) OS X only process monitoring menu bar
+application weighs no less than 189 MiB on disk... Yes, you read that right:
+a heavyweight cross-platform framework featuring a built-in *complete browser
+engine* was used to create a menu bar widget for a *single platform*!  No disrespect
+to the program's author, I'm sure he had the best intentions and he's a nice
+person and all (even if he was clearly misguided in the practical execution
+of his ideas), but who would seriously entertain even just the *thought* that
+a 189 MiB menu bar application was going to be an okay thing to do, really?
 
+### Executive summary
+
+By analysing the commonalities of the above examples, we can see a few
+patterns emerge. Cross-platform graphics is accomplished by using one of the
+following approaches:
+
+{: .compact}
+* Make use of the graphics and text libraries provided by the host OS **(1)**
+* Use a software renderer for all graphics **(2)**
+* Use OpenGL for all graphics **(3)**
+* Use a cross-platform environment (e.g. Electron or Java) to abstract
+  all platform-specific stuff away **(4)**
+
+Here's some notes about the pros and cons of each:
+
+* Only **(2)** guarantees to yield 100% identical results across all platforms on
+  the pixel level. **(1)** is probably the least cross-platform pixel-identical
+  approach (especially text rendering can look very different on different
+  platforms), but this is rarely a problem for most applications. In fact,
+  platform-native text rendering can be seen instead as a feature (think of
+  Retina displays) and while there might some differences in how different
+  platform render anti-aliased vector graphics, the differences are negligible
+  for most use-cases.
+
+
+
+https://libcinder.org/
 
 ## And the winner is...
 
@@ -432,22 +545,24 @@ https://www.dreamler.com/blog/font-rendering/
 
 ## Conclusion
 
-{% include image.html name="fuck-everything.jpg" caption="The above gentleman
-wearing this fine faux-leather jacket already knows the secret: Qt is not
+{% include image.html name="fuck-everything.jpg" caption="The above fine
+faux-leather jacket wearing gentleman already knows the secret: Qt is not
 the answer to everything." width="100%" %}
 
 Aww, I really wanted to avoid this, but I simply must acknowlege the fact that
-to produce a custom cross-platform UI of acceptable quality in 2016, there's
+to produce a custom cross-platform GUI of acceptable quality in 2016, there's
 really no substitute to developing your own platform-agnostic UI and graphics
 wrappers. There are some existing solutions in C++, but hacking C++ in my
 spare time is very far from my idea of fun. If there would be *really* no
 other option, I guess I'd just stop coding altogether and find a more relaxing
-hobby. Like dirt car racing, or disarming bombs or something.
+hobby. Like dirt car racing, wrestling with alligators, or disarming bombs or
+something.
 
 But luckily, I have Nim.
 
 Oh well, I only wanted to display a few buttons and maybe push some pixels,
-but fuck everything, let's get serious and write a whole cross-platform GUI
-library in Nim!
+but fuck all that, let's  write a whole cross-platform GUI library in Nim!
+Time to get serious!
 
 
+http://innovation.tss-yonder.com/2012/05/14/the-future-native-cross-platform-ui-technology-that-may-not-be/
