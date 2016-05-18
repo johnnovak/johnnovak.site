@@ -60,7 +60,7 @@ systems, positive rotation is
 [counter-clockwise](https://www.evl.uic.edu/ralph/508S98/coordinates.html)
 about the axis of rotation.
 
-{% include image.html name="coordinate-system.svg" caption="Figure 1 &mdash; The right-handed coordinate system used in our renderer. The circular arrow indicates the direction of positive rotation." width="100%" captionAlign="center" captionWidth="70%" %}
+{% include image.html name="coordinate-system.svg" caption="Figure 1 &mdash; The right-handed coordinate system used in our renderer. The circular arrow indicates the direction of positive rotation." captionAlign="center" captionWidth="70%" %}
 
 The choice of coordinate system handedness is nothing more than a convention:
 DirectX, Unity, Maya and Pixar's RenderMan use left-handed coordinate systems,

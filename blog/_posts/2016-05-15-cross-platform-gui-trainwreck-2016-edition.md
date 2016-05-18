@@ -421,22 +421,22 @@ IDE was originally intended to be an programming environment for Clojure only.
 
 
 {: .warning}
-I feel obliged to point it out though that the Electron framework
-can be terribly misused in the wrong hands. The
-[Monu](https://github.com/maxogden/monu) OS X only process monitoring menu bar
-application weighs no less than 189 MiB on disk... Yes, you read that right:
-a heavyweight cross-platform framework featuring a built-in *complete browser
-engine* was used to create a menu bar widget for a *single platform*!  No disrespect
-to the program's author, I'm sure he had the best intentions and he's a nice
-person and all (even if he was clearly misguided in the practical execution
-of his ideas), but who would seriously entertain even just the *thought* that
-a 189 MiB menu bar application was going to be an okay thing to do, really?
+I feel obliged to point it out that the Electron framework can be terribly
+misused in the wrong hands. The [Monu](https://github.com/maxogden/monu) OS
+X only process monitoring menu bar application weighs no less than 189 MiB on
+disk... Yes, you read that right: a heavyweight cross-platform framework
+featuring a *complete built-in browser engine* was used to create a *menu bar
+widget* for a *single platform*!  No disrespect to the program's author, I'm
+sure he had the best intentions and he's a nice person and all (even if he is
+clearly somewhat misguided in the practical execution of his ideas), but who
+would seriously entertain even just the *thought* that a 189 MiB menu bar
+app was going to be an okay thing to do, really?
 
 ### Executive summary
 
-By analysing the commonalities of the above examples, we can see a few
-patterns emerge. Cross-platform graphics is accomplished by using one of the
-following approaches:
+By analysing the commonalities of the apps showcased above, we can see a few
+interesting patterns emerging in how they solved the cross-platform graphics
+problem. Basically, they all followed one of the following approaches:
 
 {: .compact}
 * Make use of the graphics and text libraries provided by the host OS **(1)**
@@ -445,16 +445,47 @@ following approaches:
 * Use a cross-platform environment (e.g. Electron or Java) to abstract
   all platform-specific stuff away **(4)**
 
-Here's some notes about the pros and cons of each:
+Here's some remarks about the pros and cons of each method:
 
-* Only **(2)** guarantees to yield 100% identical results across all platforms on
-  the pixel level. **(1)** is probably the least cross-platform pixel-identical
-  approach (especially text rendering can look very different on different
-  platforms), but this is rarely a problem for most applications. In fact,
-  platform-native text rendering can be seen instead as a feature (think of
-  Retina displays) and while there might some differences in how different
-  platform render anti-aliased vector graphics, the differences are negligible
-  for most use-cases.
+* **(1)** is
+probably the least pixel-identical approach (especially text rendering can
+look wildly different on different platforms), but this is rarely a problem in
+practice for most applications.  In fact, platform-native text rendering can
+be seen as a feature rather than a drawback---think of Retina displays, or how
+hardcore Windows users prefer ClearType over the unhinted OS X style text
+rendering, and vice versa.  While there might be some minor differences in the
+way different platforms render anti-aliased vector graphics natively, those
+differences are generally negligible for most use-cases (and for most users
+not suffering from a chronic case of OCD). Another important point to note is
+that OS native graphics usually takes advantage of the GPU on most major
+platforms,
+
+* Only **(2)** guarantees to yield 100% identical results across all platforms
+down to the pixel level, but it's a lot of work and potentially it will be
+slower than the often GPU acceleratod native graphics API (unless you're
+a graphics guru and know exactly what you're doing). Overall, I think it's
+a wasted effort, unless you have some very specific requirements why you must
+do all the rendering manually yourself. But yes, in the past people had to
+come up with their own rasterizers if they were not happy with the aliased
+graphics provided by the Windows GDI and such.
+
+* OpenGL **(3)** initially seems to be a very good fit for cross-platform
+graphics duties; after all, it's hard to get hold of hardware nowadays (even
+second-hand) that does *not* have OpenGL support. But drivers could be an
+issue, there's some rumours about it that Intel GPU drivers are pretty
+horrible in that regard.  The other thing that can throw the spanner in the
+works is font rendering.  There are lots of different approaches to it, and
+some might be perfectly fine for a particular application, but generally it's
+a major pain in the ass. Just have a look at [this
+post](http://innovation.tss-yonder.com/2012/05/14/the-future-native-cross-platform-ui-technology-that-may-not-be/)
+if you don't believe me, what kind of hoops these poor people had to jump
+through just to display some animated text. Oh, and you'd also need to come up
+with your own tesselator engine that can construct Bezier curves out of little
+triangles and so on. So compared to the native approach, it's a lots of work,
+probably on par with the software rasterizer method. Again, the native
+graphics are probably already doing this for you for free if a GPU is present
+and fall back to software rendering otherwise. But for games and such, you
+really don't have any other choice.
 
 
 
@@ -565,4 +596,4 @@ but fuck all that, let's  write a whole cross-platform GUI library in Nim!
 Time to get serious!
 
 
-http://innovation.tss-yonder.com/2012/05/14/the-future-native-cross-platform-ui-technology-that-may-not-be/
+
