@@ -1,14 +1,14 @@
 {% capture imagePath %}{{ page.date | date: "%Y-%m-%d" }}/{{ include.name }}{% endcapture %}
-{% if include.caption %}
-  <figure class="image">
-    <img src="/files/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} style="width: {{ include.width }}" {% endif %}>
-      {% if include.captionWidth %}
-        {% assign captionWidth = include.captionWidth %}
-      {% else %}
-        {% assign captionWidth = include.width %}
-      {% endif %}
-      <figcaption style="{% if include.width %} width: {{ captionWidth }};{% endif %}{% if include.captionAlign %} text-align: {{ include.captionAlign }};{% endif %}">{{ include.caption }}</figcaption>
-    </figure>
-{% else %}
-  <img src="/files/{{ imagePath }}" {% if include.alt %} alt="{{ include.alt }}" {% endif %} {% if include.width %} width="{{ include.width }}" {% endif %}>
-{% endif %}
+<figure class="image">
+  <a href="/files/{{ imagePath }}">
+    <img src="/files/{{ imagePath }}" alt="{{ include.alt }}" style="width: {{ include.width | default: '100%' }}">
+  </a>
+  {% if include.caption %}
+    {% if include.captionWidth %}
+      {% assign captionWidth = include.captionWidth %}
+    {% else %}
+      {% assign captionWidth = include.width %}
+    {% endif %}
+    <figcaption style="{% if include.width %} width: {{ captionWidth }};{% endif %}{% if include.captionAlign %} text-align: {{ include.captionAlign }};{% endif %}">{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>

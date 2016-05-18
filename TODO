@@ -2,6 +2,7 @@ GENERAL:
 
 * IE testing
 * retire common/base.scss
+* create single JS & CSS files as part of the build process
 
 
 PHOTO:
@@ -20,9 +21,10 @@ HOME:
 
 * make sure others sections are not visible on 1920x1080
 * about bug: moves down when shrinking window
+* typewrite appears blurry on firefox/win
 * footer sunset scroll fixes
 
-* footer sprite animation easter egg
+* footer sprite animation easter egg (IK+)
 * footer text
 
 
