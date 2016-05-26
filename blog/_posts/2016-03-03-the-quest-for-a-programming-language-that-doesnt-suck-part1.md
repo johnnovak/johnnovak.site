@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  The Quest for a Programming Language That Doesn't Suck &ndash; Part 1
-tags: languages Lisp
+tags: languages Lisp rant
 ---
 
 {: .intro}
