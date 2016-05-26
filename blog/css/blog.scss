@@ -93,10 +93,10 @@ h6:hover .header-link {
 }
 
 table {
-  margin: 3em auto;
+  margin: 2em auto;
   border-collapse: collapse;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 13px;
+  line-height: 1.45em;
 }
 tr {
   &.sep td {
@@ -115,19 +115,19 @@ th {
   color: #666;
   text-align: left;
   background: #f2f2f2;
-  padding: 8px 12px 6px 0;
+  padding: 8px 0.0em 6px 0;
 }
 td {
   &.h {
     font-weight: $xbold;
     color: #666;
   }
-  padding: 6px 10px 6px 0;
+  padding: 6px 0.0em 6px 0;
 }
 
 table.properties {
   margin: 1em 0;
-  width: 42%;
+  width: 80%;
 
   td {
     padding: 3px 0;
@@ -510,6 +510,13 @@ article {
     line-height: 23px;
   }
 
+  table {
+    font-size: 13px;
+  }
+  table.properties {
+    width: 56%;
+  }
+
   blockquote {
     margin-top: 2em;
     padding-left: 20px;
@@ -683,6 +690,13 @@ article {
     margin: 0;
     font-size: 16px;
     line-height: 25px;
+  }
+
+  table {
+    font-size: 14px;
+  }
+  table.properties {
+    width: 42%;
   }
 
   #wrapper {

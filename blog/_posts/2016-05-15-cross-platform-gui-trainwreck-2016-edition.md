@@ -422,7 +422,7 @@ of performance counts.
 {: .properties}
 Version|0.8.1
 Main executable|51 MiB
-Electronf framework|42 MiB
+Electron framework|42 MiB
 Resources|33 MiB
 Total install size|129 MiB
 
@@ -580,7 +580,7 @@ minus means it slightly sucks, et cetera---you get the picture.
 So let's see (Java and web technologies are missing on purpose, for I really
 don't think they are good fits for serious desktop apps):
 
-<table style="width: 95%">
+<table>
   <tr>
     <th style="width: 19%"></th>
     <th style="width: 27%">Software renderer</th>
