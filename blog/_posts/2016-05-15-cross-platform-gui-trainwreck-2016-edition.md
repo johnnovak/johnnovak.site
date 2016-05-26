@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Cross-platform GUI Toolkit Trainwreck, 2016 Edition"
-tags: [coding, gui, imgui]
+tags: [coding, gui, imgui, rant]
 published: false
 ---
 
@@ -10,6 +10,10 @@ Ok, I'm not too sure in what direction this post will go, an informative
 article, a rant, or both. Probably a bit of both, with an emphasis on the rant
 part, given my current not-quite-positive emotional involvement with the
 topic. Gentlemen (and gentlewomen), please fasten your seatbelts!
+
+{: .intro}
+(UPDATE: It turned out to be a quite informative mega-post in the end, just
+dont give up reading after the first section...)
 
 ## Buttons and pixels
 
@@ -139,12 +143,13 @@ similar fashion to myself. What I described above is one particular IMGUI
 implementation that is very well suited to applications that redraw the screen
 at a constant rate using accelerated graphics (read, games). But the actual
 definition of an IMGUI is much simpler: the UI is just a function of the
-current application state, the application should not be responsible for . There's nothing preventing you from only redrawing
-when necessary in response to some user events. The forum thread is very
-enlightening TODO, so please read the linked materials in the suggested
-reading section if you're interested.)
+current application state, the application should not be responsible for
+. There's nothing preventing you from only redrawing when necessary in
+response to some user events. The forum thread is very enlightening TODO, so
+please read the linked materials in the suggested reading section if you're
+interested.)
 
-### Enter (then quickly exit) NanoVG
+### Enter NanoVG
 
 Ok, so my idea was to build a simple IMGUI user interface myself using the
 [NanoVG](https://github.com/memononen/nanovg) 2D vector graphics library.
@@ -158,11 +163,13 @@ of it with transparency and whatnot.
 So far so good, cross-platform custom GUI proof-of-concept, tick, but
 I suddenly found myself facing two new problems:
 
-  * The constant redrawing of the whole UI on every frame was burning up about
+* The constant redrawing of the whole UI on every frame was burning up about
 10-15% CPU on my Intel Core i7 4790 4.0 GHz (8 logical cores). That means
 1 core out of the total 8 was running at almost 100% all the time!
 
-  * The text rendering quality of NanoVG made me really depressed.
+* The text rendering quality of NanoVG made me really depressed.
+
+### Exit NanoVG
 
 The first problem is easy to fix. The abysmal performance has nothing to do
 with NanoVG or OpenGL, it's just because of the constant 60fps redrawing. The
@@ -256,7 +263,7 @@ simple blitting. They also must have developed some custom drawing routines
 for anti-aliased cross-platform graphics of the dynamic UI elements (e.g. the
 waveform and envelope displays)
 
-Renoise is closed source, so unfortunately we cannot inspect how they did all
+Renoise is closed source, so unfortunately I could not inspect how they did all
 this, but very likely they had to come up with their own UI and graphics
 wrappers to maintain a single codebase for all three platforms.
 
@@ -391,8 +398,8 @@ high-performance desktop applications.
 In conclusion, while Java is certainly not the  most terrible choice for
 a cross-platform GUI application, it's far from being the greatest either. For
 some less demanding software (such as NodeBox) it may be an OK solution, but
-I'm really averse to the idea of DAW written in Java, where every little bit
-of performance counts...
+I'm really averse to the idea of a DAW written in Java, where every little bit
+of performance counts.
 
 {% include image.html name="nodebox.png" caption="NodeBox3 has a pleasant looking GUI built using Swing (most likely) that looks almost identical on all supported platforms." width="100%" %}
 
@@ -408,35 +415,68 @@ Total install size|129 MiB
 > [Light Table](http://lighttable.com/) is a next generation code editor that
 connects you to your creation with instant feedback.
 
-I borrowed this sentence from the project's [GitHub
-page](https://github.com/LightTable/LightTable) because I find it a very cool
-and succint description of this novel IDE. Light Table is available for
-Windows, Mac OS X and (can you guess?) Linux; it achieves cross-platform
-compatibility by leveraging the [Electron](http://electron.atom.io/)
-framework. In basic terms, Electron consists of a Chromium browser and
-Node.js, so developers can use HTML, CSS and JavaScript to build their
-cross-platform desktop applications. Light Table is actually written in
-ClojureScript, which compiles to JavaScript. This makes perfect sense as the
-IDE was originally intended to be an programming environment for Clojure only.
+That quote was taken from the project's [GitHub
+page](https://github.com/LightTable/LightTable) and I think it sums up this
+novel IDE prety well. Light Table is available for Windows, Mac OS X and (can
+you guess?) Linux; it achieves cross-platform compatibility by leveraging the
+[Electron](http://electron.atom.io/) framework. In basic terms, Electron
+consists of a Chromium browser and Node.js, so developers can use HTML, CSS
+and JavaScript to build their cross-platform desktop applications. Light Table
+is actually written in ClojureScript, which compiles to JavaScript. This makes
+perfect sense as the IDE was originally intended to be a programming
+environment for Clojure only.
 
+I don't have any personal experience using Light Table, and while I think the
+application itself is a great idea, I cannot say much positive about the
+underlying framework. Light Table seems to have been plagued by [serious
+performance issues](https://github.com/LightTable/LightTable/issues/1088),
+these issues were the main reason why they migrated from their previous
+framework, node-webkit (now [NW.js](http://nwjs.io/)), to Electron at the end
+of 2015 (see
+[here](https://m.reddit.com/r/javascript/comments/3meazr/is_electron_atom_a_good_way_to_create_offline_js/)).
+That's a very severe drawback of such Web-technologies-on-the-desktop style of
+frameworks, they just abstract too much away from the OS provided
+functionalities, introducing quite serious performance penalties in the
+process. And when things don't quite work as expected, you can't do much about
+it, maybe just switch the framework as a last attempt. (Of course, this
+problem can happen with OS native libraries as well, but in practice is much
+less of a problem, as OS API's are generally more robust and performant by
+several orders of magnitude, and there's much more options for workarounds on
+the OS level).
+
+Now as I think about it, the only reasons for the existence of such frameworks
+is the allure of quick time to market, the possibility for a program to be
+really wasteful with resources on contemporary hardware and still remain more
+or less functional, and the vast armies of newskool web developers who grew up
+on JavaScript and the DOM. But the tradeoffs involved are quite severe:
+performance, memory consumption, installation sizes and OS integration will
+suffer and long-term maintenance will be a nightmare. In some specific
+circumstances I can see it work, though (non-demanding applications aimed at
+a not too picky (and hopefully non-technical) audience). But if you
+care about your users and cannot afford to be grossly inefficient, just stay
+away from web technologies on the desktop. You don't want to build a castle on
+sand.
 
 {: .warning}
-I feel obliged to point it out that the Electron framework can be terribly
-misused in the wrong hands. The [Monu](https://github.com/maxogden/monu) OS
-X only process monitoring menu bar application weighs no less than 189 MiB on
-disk... Yes, you read that right: a heavyweight cross-platform framework
-featuring a *complete built-in browser engine* was used to create a *menu bar
-widget* for a *single platform*!  No disrespect to the program's author, I'm
-sure he had the best intentions and he's a nice person and all (even if he is
-clearly somewhat misguided in the practical execution of his ideas), but who
-would seriously entertain even just the *thought* that a 189 MiB menu bar
-app was going to be an okay thing to do, really?
+I think of it as my duty to point out that the Electron framework carries
+a terrible potential for misuse when fallen into the wrong hands. The
+[Monu](https://github.com/maxogden/monu) OS X only process monitoring menu bar
+application built using Electron weighs no less than 189 MiB on disk... Yes,
+you read that right: a heavyweight cross-platform framework featuring
+a *complete built-in browser engine* was used to create a *menu bar widget*
+for a *single platform*!  No disrespect to the program's author, I'm sure he
+had the best intentions and he's a nice person and all (even if he is clearly
+somewhat misguided in the practical execution of his ideas), but who would
+seriously entertain even just the *thought* that a 189 MiB menu bar app was
+going to be an okay thing to do, really?
 
-### Executive summary
+## Executive summary
 
-By analysing the commonalities of the apps showcased above, we can see a few
-interesting patterns emerging in how they solved the cross-platform graphics
-problem. Basically, they all followed one of the following approaches:
+By analysing the commonalities of the apps showcased above, one can see a few
+interesting patterns emerging. For event and window handling, they all must
+have used the host OS in some way, so nothing too much exciting going on
+there. Regarding the cross-platform graphics problem, each one of them
+implemented some kind of variation on one of the following basic approaches:
 
 {: .compact}
 * Make use of the graphics and text libraries provided by the host OS **(1)**
@@ -445,58 +485,86 @@ problem. Basically, they all followed one of the following approaches:
 * Use a cross-platform environment (e.g. Electron or Java) to abstract
   all platform-specific stuff away **(4)**
 
-Here's some remarks about the pros and cons of each method:
+Here's my expert analysis on the pros and cons of each method:
 
-* **(1)** is
-probably the least pixel-identical approach (especially text rendering can
-look wildly different on different platforms), but this is rarely a problem in
-practice for most applications.  In fact, platform-native text rendering can
-be seen as a feature rather than a drawback---think of Retina displays, or how
-hardcore Windows users prefer ClearType over the unhinted OS X style text
-rendering, and vice versa.  While there might be some minor differences in the
-way different platforms render anti-aliased vector graphics natively, those
-differences are generally negligible for most use-cases (and for most users
-not suffering from a chronic case of OCD). Another important point to note is
-that OS native graphics usually takes advantage of the GPU on most major
-platforms,
+* **(1)** is probably the least pixel-identical approach across platforms
+(especially text rendering can look wildly different on different operating
+systems), but this is rarely a problem in practice for most applications.  In
+fact, platform-native text rendering can be seen as a feature rather than
+a drawback---think of Retina displays, or how hardcore Windows users prefer
+ClearType over the unhinted OS X style text rendering, and vice versa.  While
+there might be some minor differences in the way different platforms render
+anti-aliased vector graphics natively, those differences are generally
+negligible for most use-cases (and for most users not suffering from some
+chronically acute case of OCD).  Another important point to note is that OS
+native graphics usually takes advantage of the GPU on most major platforms,
 
 * Only **(2)** guarantees to yield 100% identical results across all platforms
 down to the pixel level, but it's a lot of work and potentially it will be
-slower than the often GPU acceleratod native graphics API (unless you're
+slower than the often GPU accelerated native graphics API (unless you're
 a graphics guru and know exactly what you're doing). Overall, I think it's
-a wasted effort, unless you have some very specific requirements why you must
-do all the rendering manually yourself. But yes, in the past people had to
-come up with their own rasterizers if they were not happy with the aliased
-graphics provided by the Windows GDI and such.
+a wasted effort, unless you have a requirement to render the graphics in
+a specific pixel-exact way. But yes, in the past people had to come up with
+their own rasterizers if they were not happy with the aliased graphics
+provided by the Windows GDI and such.
 
 * OpenGL **(3)** initially seems to be a very good fit for cross-platform
 graphics duties; after all, it's hard to get hold of hardware nowadays (even
-second-hand) that does *not* have OpenGL support. But drivers could be an
-issue, there's some rumours about it that Intel GPU drivers are pretty
-horrible in that regard.  The other thing that can throw the spanner in the
-works is font rendering.  There are lots of different approaches to it, and
-some might be perfectly fine for a particular application, but generally it's
+second-hand!) that does *not* have support for OpenGL. But drivers can be an
+issue, there's some rumours, for example, that Intel OpenGL drivers are pretty
+shit in that regard.  The other thing that can throw the spanner in the works
+is font rendering.  There are lots of different approaches to it, and some
+might be perfectly fine for a particular application, but generally it's
 a major pain in the ass. Just have a look at [this
 post](http://innovation.tss-yonder.com/2012/05/14/the-future-native-cross-platform-ui-technology-that-may-not-be/)
 if you don't believe me, what kind of hoops these poor people had to jump
 through just to display some animated text. Oh, and you'd also need to come up
-with your own tesselator engine that can construct Bezier curves out of little
-triangles and so on. So compared to the native approach, it's a lots of work,
-probably on par with the software rasterizer method. Again, the native
-graphics are probably already doing this for you for free if a GPU is present
-and fall back to software rendering otherwise. But for games and such, you
-really don't have any other choice.
+with your own tesselator engine that can construct Bézier curves out of little
+triangles and so on. Compared to the native approach, this is a lot of work,
+more or less on par with the software rasterizer method. Again, the native
+graphics are probably already doing this (and lots more) for you for free if
+a GPU is present, and fall back to software rendering otherwise. But for games
+and such, you really don't have any other choice.
+
+* Option **(4)** is okay (but not great) for simpler, less demanding stuff.
+But when performance is a concern, this is definitely not the way to go. The
+total install size also suffers (to be very polite about this). Overall, apart
+from making life easier for certain types of developers (primarily the ones
+who enjoy Java/Swing and the JavaScript-for-all-the-things folks), this
+approach has a lot of drawbacks. I also don't think that shoehorning web
+development technologies---which aren't really any better than traditional
+approaches, just suck in a different way---into desktop applications is a very
+bright idea either. For serious work, avoid.
 
 
+## So what the hell to do?
 
-https://libcinder.org/
+...apart from writing semi-useless blog posts about this whole fiasco, that
+is. Looks like that an easy to use, well-performing and non-bloated library to
+help with cross-platform graphics in the age of Mars rovers, Go world-champion
+beating AI constructs and genetically modified carrots that will kill you in
+your sleep is just too much ask for. 
 
-## And the winner is...
+The computer says no.
 
-Looks like in the age of Mars rovers, and gene modified carrots that will kill
-you in your sleep this is just too much ask for.
+JUCE is probably the one that comes closest, but it's C++, semi-bloated and
+not free for commercial purposes. There's WDL too, but that's still C++ and
+rather messy.  Also, hacking C++ in my spare time is very far from my idea of
+fun. If there would be *really* no other option, I guess I'd just stop coding
+altogether and find a more relaxing hobby. Like dirt car racing, wrestling
+with alligators, or disarming bombs or something.
 
-https://www.dreamler.com/blog/font-rendering/
+Other than JUCE (and maybe WDL), you'd have to roll your own. And that's
+exactly what many people have been doing, apparently, and that's what I'm
+gonna do too.
+
+To help decide how to accomplish this lofty goal, the below table summarises
+my findings on the various approaches outlined previously in a very scientific
+manner: one plus means a given feature is somewhat enjoyable to implement, one
+minus means it slightly sucks, et cetera---you get the picture.
+
+So let's see (Java and web technologies are missing on purpose, for I really
+don't think they are good fits for serious desktop apps):
 
 <table style="width: 95%">
   <tr>
@@ -508,7 +576,7 @@ https://www.dreamler.com/blog/font-rendering/
   <tr>
     <td class="h">Windowing</td>
     <td>
-      wrapper OS window API<br>
+      native OS API<br>
       <span style="color: red; font-size: 120%; font-weight: 900">-</span>
     </td>
     <td>
@@ -516,14 +584,14 @@ https://www.dreamler.com/blog/font-rendering/
       <span style="color: red; font-size: 120%; font-weight: 900">-</span>
     </td>
     <td>
-      GLFW<br>
+      GLFW (or similar)<br>
       <span style="color: green; font-size: 120%; font-weight: 900">+</span>
     </td>
   </tr>
   <tr>
     <td class="h">Input handling</td>
     <td>
-      custom code OS input handling<br>
+      native input handling<br>
       <span style="color: red; font-size: 120%; font-weight: 900">-</span>
     </td>
     <td>
@@ -531,7 +599,7 @@ https://www.dreamler.com/blog/font-rendering/
       <span style="color: red; font-size: 120%; font-weight: 900">-</span>
     </td>
     <td>
-      GLFW<br>
+      GLFW (or similar)<br>
       <span style="color: green; font-size: 120%; font-weight: 900">+</span>
     </td>
   </tr>
@@ -546,7 +614,7 @@ https://www.dreamler.com/blog/font-rendering/
       <span style="color: green; font-size: 120%; font-weight: 900">+</span>
     </td>
     <td>
-      custom rasterizer (tesselator, shader etc.)<br>
+      custom tesselator<br>
       <span style="color: red; font-size: 120%; font-weight: 900">- - -</span>
     </td>
   </tr>
@@ -573,27 +641,29 @@ https://www.dreamler.com/blog/font-rendering/
   </tr>
 </table>
 
+The final verdict: the native wrapper method is the lucky winner (read: it
+sucks just a little bit compared to the major suckage inflicted by the other
+two approaches).
 
-## Conclusion
 
-{% include image.html name="fuck-everything.jpg" caption="The above fine
-faux-leather jacket wearing gentleman already knows the secret: Qt is not
-the answer to everything." width="100%" %}
+**So native wrapper it is then!**
 
-Aww, I really wanted to avoid this, but I simply must acknowlege the fact that
-to produce a custom cross-platform GUI of acceptable quality in 2016, there's
-really no substitute to developing your own platform-agnostic UI and graphics
-wrappers. There are some existing solutions in C++, but hacking C++ in my
-spare time is very far from my idea of fun. If there would be *really* no
-other option, I guess I'd just stop coding altogether and find a more relaxing
-hobby. Like dirt car racing, wrestling with alligators, or disarming bombs or
-something.
+Phew.
 
-But luckily, I have Nim.
+## Final words
+
+Well, I really wanted to avoid this, but I simply must acknowlege the fact
+that to produce a good quality custom cross-platform GUI in 2016, there's
+really no substitute to rolling up your sleeves and developing your own
+platform-agnostic UI and graphics libraries.
 
 Oh well, I only wanted to display a few buttons and maybe push some pixels,
 but fuck all that, let's  write a whole cross-platform GUI library in Nim!
 Time to get serious!
+
+{% include image.html name="fuck-everything.jpg" caption="The above fine
+faux-leather jacket wearing gentleman already knows the secret: Qt is not
+the answer to everything." width="100%" %}
 
 
 
