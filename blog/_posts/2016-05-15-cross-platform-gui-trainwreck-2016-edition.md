@@ -22,94 +22,106 @@ example OS X, and then succesfully compiling and running it on another, say
 Windows, with zero or minimal modifications required, is no longer an
 utopistic dream. In fact, users of dynamic, interpreted or scripting languages
 (however you like to call them today) have been enjoying the luxuries of easy
-cross-platform development for many decades now so they won't even raise an
+cross-platform development for many decades now; they won't even raise an
 eyebrow on such trivial matters. But even the lowly C and C++ plebs are able
-to perform this feat with relative ease nowadays---at least if they sticked to
-their respective language standards religiously and turned their compiler
+to perform this feat with relative ease nowadays---at least, if they sticked
+to their respective language standards religiously and turned their compiler
 warnings up to nuclear-strength...
 
-Being able to use a single codebase for multi-platform applications is an
-important thing. After all, who wants to maintain two or three (or more)
-mostly similar but not quite applications? I sure don't. And then there's the
-convenience and flexibility factor too: you can happily develop on your Debian
-VM on your desktop PC at home, then maybe fix some bugs on your MacBook while
-sitting on the train, with the confidence that your program will work
-flawlessly on Windows too. Not having to deal with platform differences and
-idiosyncracies takes off a huge burden of a developer's shoulders that is not
-to be underestimated.
+Being able to use a single codebase for multi-platform applications is of
+crucial importance. After all, who wants to maintain two or three (or more)
+codebases that are mostly similar, but *not quite*? I sure don't. And then
+there's the convenience and flexibility factor too: you can happily develop on
+your Linux VM on your desktop PC at home, then maybe fix some bugs on your
+MacBook while sitting on the train, with the confidence that your program will
+work flawlessly on Windows too. Not having to deal with platform differences
+and idiosyncracies takes a huge burden off of developers' shoulders that is
+not to be underestimated.
 
-Some compiled languages like Nim give you such cross-platform guarantees by
-design. This is all good, this is all well, this is precisely how things
-should be. The world is such a wonderful place, after all. Write once, run
-anywhere (and don't go near the JVM). Excellent! The universe is smiling at
-you. Infinity co creates karmic balance. Freedom unfolds into intrinsic
-actions. Your consciousness manifests through quantum reality. [^bullshit]
+Some compiled languages, like [Nim](http://nim-lang.org/), give you such
+cross-platform guarantees by design. This is all good, this is all well, this
+is precisely how things should be. The world is such a wonderful place, after
+all. Write once, run anywhere (and don't go near the JVM). Excellent! The
+universe is smiling at you. Infinity co creates karmic balance. Freedom
+unfolds into intrinsic actions. Your consciousness manifests through quantum
+reality. [^bullshit]
 
 [^bullshit]: The last three new age wisdoms courtesy of the [Wisdom of Chopra](http://wisdomofchopra.com/) bullshit generator.
 
 Except for one litle thing. You must not under any circumstance try to open
-a window, attempt to change the color of a single pixel in it, or---god
-forbid!---fantasise about using native (or any kind of, for the matter) GUI
-controls in a cross-platform (and non-hair loss inducing) manner! If you
-disregarded my sage advice and foolishly ventured to accomplish any of the
-above tasks, the bliss would be over in an instant and you'd find yourself
-rudely transported back to the early days of computing where making anything
-just simply work at all on different OSes would take inordinate amounts of
-time and effort.
+a window (on the computer, I mean), attempt to change the colour of a single
+pixel in it, or---god forbid!---fantasise about using native (or any kind of,
+for the matter) GUI controls in a cross-platform (and non-hair loss inducing)
+manner! If you disregarded my sage advice and foolishly ventured to accomplish
+any of the above tasks, the bliss would be over in an instant and you'd find
+yourself rudely transported back to the early days of computing where making
+anything just simply work *at all* on different OSes would take inordinate
+amounts of time and effort!
 
 
 ## Solution to a problem
 
 I'm not just talking in the abstract here, I am merely describing my trials
-and tribulations when attempting to extend my ray tracer I'm developing in Nim
-with a very minimalistic GUI. My ambitions were fairly modest: I only wanted
-to open a window and then split it into a canvas and a control area.  Onto the
+and tribulations when attempting to extend my [ray
+tracer](https://github.com/johnnovak/nim-raytracer) I'm developing in Nim with
+a very minimalistic GUI. My ambitions were fairly modest: I only wanted to
+open a window and then split it into a canvas and a control area.  Onto the
 canvas I would just blit some pixel data periodically and the control area
 would contain some buttons and some static text (maybe a progress bar too if
-I felt particularly bold and adventurous). I wanted this to work on Windows,
-Linux and OS X without having to write any platform specific code. And that's
-it!
+I felt particularly bold and adventurous!). I wanted this fine piece of
+software craftsmanship to work on Windows, Linux and OS X, without having to
+write any platform specific code. And that's it!
 
 So next step, let's investigate what cross-platform libraries are available
-for Nim.  I was looking for something really minimal and I would have
-perfectly been happy with native controls, so the Nim bindings to the IUP GUI
-library--a cross-platform toolkit in C for creating GUI applications in
-Lua--looked very promising... until I found out that it does not support OS
-X at all. Oh well.
+for Nim!
 
-The next obvious candidate was the GTK2 bindings for Nim. I am not a fan of
-GTK on Windows at all and especially not on OS X (despite the fact that
-I really love Inkscape on Windows, but let's just write that off as an
-anomaly).  Anyway, why not give it shot, it doesn't cost any money after all.
-Well, after having spent about half an hour foraging for the GTK2 Windows
-binaries on the Internet (because the official GTK+ Project website is of not
-much help at all in that regard, apart from some kinda vague instructions on
-where to try to find them), the poor directory containing my ~300K executable
-got suddenly about 20 megabytes bigger in the form of the cheerful company of
-10+ DLL files. The thing surely worked just fine (to the extent that GTK2 is
-capable of doing so), but this is a very bad start already as I wanted
-something small that can be statically linked. Adding a 20 MB fat to my cute
-little 300K renderer is an idea that I find quite obscene to be honest (as in
-obscenely obese), so in short, no thanks. Executive summary: GTK2 + non-Linux
-platform = avoid.
+### IUP
 
-Some people might want to point out now that I'm way too picky, this is merely
-a solution to a problem, it works, so I should just suck it up and live with
-the over 60-fold increase of my total binary size. Well this is a solution to
-a problem too:
+I was looking for something really minimal and I would have
+perfectly been happy with native controls, so the [Nim
+bindings](https://github.com/nim-lang/gtk2) to the [IUP
+GUI](http://webserver2.tecgraf.puc-rio.br/iup/) library (a cross-platform
+toolkit in C for creating GUI applications in Lua) looked very promising...
+until I found out that it does not support OS X at all. Oh well.
+
+### GTK2
+
+The next obvious candidate was the [GTK2 bindings for
+Nim](https://github.com/nim-lang/gtk2). I am not a fan of GTK on Windows at
+all, and especially not on OS X (despite the fact that I really love
+[Inkscape](https://inkscape.org/) on Windows, but let's just write that off as
+an anomaly).  Anyway, why not give it shot, it doesn't cost any money after
+all.  Well, after having spent about half an hour foraging on the Internet for
+the GTK2 Windows binaries (because the official [GTK+ Project
+website](http://www.gtk.org/) is of not much help at all in that regard, apart
+from some [kinda vague instructions](http://www.gtk.org/download/windows.php)
+on where to try to locate them), the poor directory containing my ~300K
+executable got suddenly about **20 megabytes bigger (!)** in the form of the
+cheerful company of 10+ DLL files. The thing surely worked just fine (to the
+extent that GTK2 is capable of doing so), but this is a very bad start already
+as I wanted something small that can be statically linked. Adding 20 MB fat
+to my cute little 300K renderer is an idea that I find quite obscene to be
+honest (as in "obscenely obese"), so in short, no thanks.
+
+Executive summary: GTK2 + non-Linux platform = AVOID
+
+Some people might feel the urge to point out now that I'm way too picky, this
+is merely a solution to a problem, it works, so I should just suck it up and
+live with the **over 60-fold increase of my total binary size!** Well, this is
+a solution to a problem too:
 
 {% include image.html name="headphones.jpg" caption="Warning: putting up with lots external dependency crap just to make things work somehow is a straight road to this to happen to you!" width="72%" %}
 
-And with that move I had practically exhausted all the readily available GUI
+And with that move, I had practically exhausted all the readily available GUI
 options for Nim. (Note that this is not a rant against Nim at all;
 I absolutely love that language, (in fact, it's my favourite language at the
-moment), and it's not Nim's fault that most--if not all--cross platform GUI
+moment); it's not Nim's fault that most---if not *all*---cross platform GUI
 toolkits suck in one way or another (having been written in C++ is one major
 source of such suckage)). [^lisp]
 
-[^lisp]: Note the nested parenthesis---a true telltale sign of my latent LISP tendencies!
+[^lisp]: Note the nested parentheses---a true telltale sign of my latent LISP tendencies!
 
-At this point the needle of my stress-o-meter was already hovering in the
+At this point, the needle of my stress-o-meter was already hovering in the
 orange zone. Luckily enough, I then found something interesting...
 
 
@@ -118,36 +130,38 @@ orange zone. Luckily enough, I then found something interesting...
 I haven not heard about immediate mode graphical UIs (IMGUI) before, so in my
 initial excitement I tought this could be the answer to all my woes. For
 anyone not familiar with the concept, the general idea is that with an IMGUI
-the UI does not live in memory and manage it's own state as it is the case
+the UI does not live in memory and manage it's own state, as it is the case
 with traditional retained mode GUIs (RMGUI), but it gets "recreated" and
 redrawn on the fly on every frame at 60 FPS (or whatever your framerate is).
 From an implementation perspective, an IMGUI essentially boils down to one
 function per widget type, where that single function performs all duties
 related to the correct functioning of that particular widget (event handling,
 drawing, reporting the current state, etc.) The construction of an IMGUI based
-UI thus becomes a series of simple procedure call which makes it an attractive
+UI thus becomes a series of simple function calls which makes it an attractive
 option from a simplicity and iteration speed standpoint. Also, because the
 whole interface gets fully redrawn on every frame, there's no messing with
-dirty regions at all, just redraw the whole thing intoto a buffer, overlay it
-on the top of the current frame and the job's done. Easy!
+dirty regions at all---just redraw the whole thing into an off-screen buffer,
+overlay it on the top of the current frame and the job's done. Easy!
 
-It turns out while such an approach makes a lot of sense for a game that needs
-to redraw the whole screen at a constant framerate anyway, it's not that great
-choice for a traditional desktop applications where such frequent redraws
-would be too wasteful.
+It turns out that while such an approach makes a lot of sense for a game that
+needs to redraw the whole screen at a constant framerate anyway, it's not that
+great choice for a traditional desktop applications where such frequent
+redraws would be too wasteful.
 
 (At least, that was my simplistic understanding of the whole IMGUI concept,
-which is not quite true, but I'll just leave it here because by judging some
-threads on the topic most people seem to misinterpret the concept in a very
-similar fashion to myself. What I described above is one particular IMGUI
-implementation that is very well suited to applications that redraw the screen
-at a constant rate using accelerated graphics (read, games). But the actual
-definition of an IMGUI is much simpler: the UI is just a function of the
-current application state, the application should not be responsible for
-. There's nothing preventing you from only redrawing when necessary in
-response to some user events. The forum thread is very enlightening TODO, so
-please read the linked materials in the suggested reading section if you're
-interested.)
+which is not quite true, but I'll just leave the above description here
+unaltered, as by judging by some of the threads on the topic, most people seem
+to misinterpret the concept of IMGUI in a very similar way like I did when
+I was just getting acquainted with it. So if you fully agree with the above
+two paragraphs, you're wrong! :) What I described above is *one particular*
+IMGUI implementation that is very well suited to applications that need to
+redraw the screen at a constant frame rate anyway, generally using accelerated
+graphics (read, games). But the actual definition of IMGUI is much simpler:
+the UI is just a function of the current application state, the application
+should not be responsible for explicitly managing the UI state; keeping it in
+sync with the state of the app itself. The said forum thread is very enlightening
+TODO, so please read the linked materials in the suggested reading section if
+you're interested.)
 
 ### Enter NanoVG
 
