@@ -1,8 +1,23 @@
-{% capture imagePath %}{{ page.date | date: "%Y-%m-%d" }}/{{ include.name }}{% endcapture %}
+{% capture imagePath %}/files/{{ page.date | date: "%Y-%m-%d" }}/{{ include.name }}{% endcapture %}
+{% if include.nameSmall %}
+  {% capture smallImagePath %}/files/{{ page.date | date: "%Y-%m-%d" }}/{{ include.nameSmall }}{% endcapture %}
+{% endif %}
+
+{% if include.alt %}
+  {% capture alt %}{{ include.alt }}{% endcapture %}
+{% else %}
+  {% capture alt %}{{ include.caption }}{% endcapture %}
+{% endif %}
+
 <figure class="image">
-  <a href="/files/{{ imagePath }}">
-    <img src="/files/{{ imagePath }}" alt="{{ include.alt }}" style="width: {{ include.width | default: '100%' }}">
-  </a>
+  {% if include.nameSmall %}
+    <a href="{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
+      <img src="{{ smallImagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
+    </a>
+  {% else %}
+      <img src="{{ imagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
+  {% endif %}
+
   {% if include.caption %}
     {% if include.captionWidth %}
       {% assign captionWidth = include.captionWidth %}

@@ -110,7 +110,7 @@ is merely a solution to a problem, it works, so I should just suck it up and
 live with the **over 60-fold increase of my total binary size!** Well, this is
 a solution to a problem too:
 
-{% include image.html name="headphones.jpg" caption="Warning: putting up with lots external dependency crap just to make things work somehow is a straight road to this to happen to you!" width="72%" %}
+{% include image.html name="headphones.jpg" caption="Warning: putting up with lots external dependency crap just to make things work somehow is a straight road to this to happen to you!" width="70%" alt="Solution to a problem..." %}
 
 And with that move, I had practically exhausted all the readily available GUI
 options for Nim. (Note that this is not a rant against Nim at all;
@@ -212,7 +212,7 @@ it!
 My subjective mental state at this point could be visualised pretty much spot
 on as follows:
 
-{% include image.html name="fail.jpg" caption="FAIL" captionAlign="center" width="80%" %}
+{% include image.html name="fail.jpg" caption="FAIL" captionAlign="center" width="auto" alt="FAIL" %}
 
 ## State of the art
 
@@ -255,7 +255,7 @@ It is evident that REAPER's strategy in terms of the UI is to use as much OS
 provided functionality as possible and resort to custom code only when
 necessary.
 
-{% include image.html name="reaper.png" caption="This is REAPER 5 in fullscreen mode. Note the standard Windows menu bar on top. By the way, that nice looking skin (well, I think it's nice) was designed by yours truly (unreleased to the public yet)." width="100%" %}
+{% include image.html name="reaper.png" nameSmall="reaper-small.jpg" caption="This is REAPER 5 in fullscreen mode. Note the standard Windows menu bar on top. By the way, that nice looking skin (well, I think it's nice) was designed by yours truly (unreleased to the public yet)." width="100%" alt="REAPER 5 screenshot showing the Funktional skin" %}
 
 ### Renoise
 
@@ -281,7 +281,7 @@ Renoise is closed source, so unfortunately I could not inspect how they did all
 this, but very likely they had to come up with their own UI and graphics
 wrappers to maintain a single codebase for all three platforms.
 
-{% include image.html name="renoise.png" caption="Renoise 3 in fullscreen. Everything is custom drawn, such as the menu bar and the preferences dialog in the middle of the screen. Again, that theme was done by me, hope you like it." width="100%" %}
+{% include image.html name="renoise.png" nameSmall="renoise-small.jpg" caption="Renoise 3 in fullscreen. Everything is custom drawn, such as the menu bar and the preferences dialog in the middle of the screen. Again, that theme was done by me, hope you like it." width="100%" alt="Renoise 3 screenshot" %}
 
 ### Tracktion
 
@@ -312,9 +312,9 @@ The JUCE library is available for free for open-source projects, but
 a commercial license will make the wallets of enterprising developers exactly
 $999 lighter.
 
-{% include image.html name="tracktion7.jpg" caption="Tracktion 7 in it's fully anti-aliased single-window glory. Previous versions might have looked somewhat less sleek, but the UI was designed to be highly scaleable right from the very first release." width="100%" %}
+{% include image.html name="tracktion7.jpg" nameSmall="tracktion7-small.jpg" caption="Tracktion 7 in it's fully anti-aliased single-window glory. Previous versions might have looked somewhat less sleek, but the UI was designed to be highly scaleable right from the very first release." width="100%" alt="Tracktion 7 screenshot, big screen" %}
 
-{% include image.html name="tracktion7-small.jpg" caption="Still Tracktion 7, but now on a smaller screen. Contrast this screenshot with the one above: all common UI elements are still there but their sizes are vastly different. Tracktion has the most adaptable dynamic interface of all applications presented in this article, thanks to JUCE's extensive anti-aliased vector graphics support. " width="100%" %}
+{% include image.html name="tracktion7-lowres.jpg" nameSmall="tracktion7-lowres-small.jpg" caption="Still Tracktion 7, but now on a smaller screen. Contrast this screenshot with the one above: all common UI elements are still there but their sizes are vastly different. Tracktion has the most adaptable dynamic interface of all applications presented in this article, thanks to JUCE's extensive anti-aliased vector graphics support. " width="100%" alt="Tracktion 7 screenshot, small screen" %}
 
 ### Blender
 
@@ -353,7 +353,7 @@ Data|49 MiB
 Scripts|34 MB
 Total install size|305 MiB
 
-{% include image.html name="blender.jpg" caption="Blender's OpenGL-based interface is quite sleek and modern looking. Notice the semi-transparent widgets on top of the 3D views." width="100%" %}
+{% include image.html name="blender.jpg" nameSmall="blender-small.jpg" caption="Blender's OpenGL-based interface is quite sleek and modern looking. Notice the semi-transparent widgets on top of the 3D views." width="100%" alt="Blender screenshot" %}
 
 ### Cinema 4D
 
@@ -377,7 +377,7 @@ text looks very much like a standard 9px Tahoma rendered with ClearType.
 It looks like similarly to REAPER, Cinema 4D uses native graphics and text
 rendering to draw its UI, probably via some custom wrapper libraries.
 
-{% include image.html name="cinema4d.png" caption="Cinema 4D on a Retina display MacBook Pro. Note that the fonts and the big icons are drawn at actual pixel resolution, while the rest of the UI is rendered at 2x2. " width="100%" %}
+{% include image.html name="cinema4d.png" nameSmall="cinema4d-small.jpg" caption="Cinema 4D on a Retina display MacBook Pro. Note that the fonts and the big icons are drawn at actual pixel resolution, while the rest of the UI is rendered at 2x2. " width="100%" alt="Cinema 4D screenshot" %}
 
 ### NodeBox3
 
@@ -415,7 +415,7 @@ some less demanding software (such as NodeBox) it may be an OK solution, but
 I'm really averse to the idea of a DAW written in Java, where every little bit
 of performance counts.
 
-{% include image.html name="nodebox.png" caption="NodeBox3 has a pleasant looking GUI built using Swing (most likely) that looks almost identical on all supported platforms." width="100%" %}
+{% include image.html name="nodebox.png" nameSmall="nodebox-small.jpg" caption="NodeBox3 has a pleasant looking GUI built using Swing (most likely) that looks almost identical on all supported platforms." width="100%" alt="Nodebox screenshot" %}
 
 ### Light Table
 
@@ -677,7 +677,7 @@ Time to get serious!
 
 {% include image.html name="fuck-everything.jpg" caption="The above fine
 faux-leather jacket wearing gentleman already knows the secret: Qt is not
-the answer to everything." width="100%" %}
+the answer to everything." width="100%" alt="Fuck everything" %}
 
 
 

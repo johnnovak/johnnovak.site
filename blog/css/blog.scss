@@ -97,6 +97,7 @@ table {
   border-collapse: collapse;
   font-size: 13px;
   line-height: 1.45em;
+  width: 100%;
 }
 tr {
   &.sep td {
@@ -115,14 +116,14 @@ th {
   color: #666;
   text-align: left;
   background: #f2f2f2;
-  padding: 8px 0.0em 6px 0;
+  padding: 8px 0.9em 6px 0;
 }
 td {
   &.h {
     font-weight: $xbold;
     color: #666;
   }
-  padding: 6px 0.0em 6px 0;
+  padding: 6px 0.9em 6px 0;
 }
 
 table.properties {

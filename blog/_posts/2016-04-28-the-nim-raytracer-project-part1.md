@@ -87,7 +87,7 @@ final results---similarly to how a master painter can create astonishingly
 realistic works of art by nothing more than applying differently coloured
 specks of paint onto a canvas with a mere paintbrush.
 
-{% include image.html name="caravaggio.jpg" caption="Surely, <a href=\"https://en.wikipedia.org/wiki/Caravaggio\">Caravaggio</a> did not know about the <a href=\"https://en.wikipedia.org/wiki/Fresnel_equations\">Fresnel equations</a> or the <a href=\"https://en.wikipedia.org/wiki/Metropolis_light_transport\">Metropolis light transport</a> when he painted <a href=\"https://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)\">The Calling of Saint Matthew</a> in 1600. Yet no one would say his paintings are not realistic enough just because he did not know about the physics of light! Interestingly enough, there have been some <a href=\"http://www.webexhibits.org/hockneyoptics/post/grundy7.html\">speculations</a> that he might have used the <a href=\"https://en.wikipedia.org/wiki/Camera_obscura\">camera obscura</a> to aid him in attaining his photorealistic results, the workings of which have strong connections to the basic idea of ray tracing. Here we go!" width="80%" %}
+{% include image.html name="caravaggio.jpg" nameSmall="caravaggio.jpg" caption="Surely, <a href=\"https://en.wikipedia.org/wiki/Caravaggio\">Caravaggio</a> did not know about the <a href=\"https://en.wikipedia.org/wiki/Fresnel_equations\">Fresnel equations</a> or the <a href=\"https://en.wikipedia.org/wiki/Metropolis_light_transport\">Metropolis light transport</a> when he painted <a href=\"https://en.wikipedia.org/wiki/The_Calling_of_St_Matthew_(Caravaggio)\">The Calling of Saint Matthew</a> in 1600. Yet no one would say his paintings are not realistic enough just because he did not know about the physics of light! Interestingly enough, there have been some <a href=\"http://www.webexhibits.org/hockneyoptics/post/grundy7.html\">speculations</a> that he might have used the <a href=\"https://en.wikipedia.org/wiki/Camera_obscura\">camera obscura</a> to aid him in attaining his photorealistic results, the workings of which have strong connections to the basic idea of ray tracing. Here we go!" width="80%" %}
 
 As CPUs and GPUs grew more powerful, previously purely
 rasterization-based game engines have been increasingly incorporating ray
@@ -150,8 +150,7 @@ indeed, this is in fact the 3D engine [Unity](https://unity3d.com/) in action,
 as evidenced by this [featured
 article](https://unity3d.com/showcase/case-stories/cardboardcomputer-kentuckyroutezero).
 
-
-{% include image.html name="krz.jpg" caption="The opening scene of <a href=\"http://kentuckyroutezero.com/\">Kentucky Road Zero</a>, Act I by <a href=\"http://cardboardcomputer.com/\">Cardboard Computer</a>. If David Lynch ever ventured into making a computer game, then this would be it. The unique visual style of the game proves that an unconventional, abstract approach to rendering instead of taking the well-beaten \"standard\" photorealistic path can yield much more interesting results." width="100%" %}
+{% include image.html name="krz.jpg" nameSmall="krz.jpg" alt="Kentucky Road Zero, Act I in-game screenshot" caption="The opening scene of <a href=\"http://kentuckyroutezero.com/\">Kentucky Road Zero</a>, Act I by <a href=\"http://cardboardcomputer.com/\">Cardboard Computer</a>. If David Lynch ever ventured into making a computer game, then this would be it. The unique visual style of the game proves that an unconventional, abstract approach to rendering instead of taking the well-beaten \"standard\" photorealistic path can yield much more interesting results." width="100%" %}
 
 [The Astronauts](http://www.theastronauts.com/)' first-person mystery game
 [The Vanishing of Ethan Carter](http://ethancartergame.com/), on the other
@@ -165,7 +164,7 @@ to effectively sample reality in the form of textures and 3D meshes from
 thousands of photographs, but from there on it's all traditional rasterization
 using the [Unreal Engine](https://www.unrealengine.com/).
 
-{% include image.html name="ethan-carter.jpg" caption="One of the most beautiful games of recent years, <a href=\"http://ethancartergame.com/\">The Vanishing of Ethan Carter</a> pulls the player in into its highly realistic yet painterly world right from the first second of gameplay. No trace (pun intended) of physical based rendering is to be found here, yet the results speak for themselves." width="100%" %}
+{% include image.html name="ethan-carter.jpg" nameSmall="ethan-carter.jpg" alt="The Vanishing of Ethan Carter in-game screenshot" caption="One of the most beautiful games of recent years, <a href=\"http://ethancartergame.com/\">The Vanishing of Ethan Carter</a> pulls the player in into its highly realistic yet painterly world right from the first second of gameplay. No trace (pun intended) of physical based rendering is to be found here, yet the results speak for themselves." width="100%" %}
 
 I suspect it would have been quite difficult to achieve the same level of
 painterly feel by employing a strict ray tracing approach, even if that was

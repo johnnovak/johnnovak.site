@@ -1,7 +1,6 @@
 $(document).ready(function() {
   replace2xImages();
   createSectionAnchors();
-//  initFluidBox();
   initPhotoSwipe();
 });
 
@@ -32,44 +31,37 @@ function replace2xImages() {
   }
 }
 
-//function initFluidBox() {
-//  $(function () {
-//    $('figure.image a').fluidbox();
-//  })
-//}
-
 function initPhotoSwipe() {
-  createPhotoSwipeDOM();
+  injectPhotoSwipeDOM();
 
-	var pswpElement = document.querySelectorAll('.pswp')[0];
+	var pswpElement = $('.pswp')[0];
 
-	// build items array
-	var items = [
-			{
-					src: 'https://placekitten.com/600/400',
-					w: 600,
-					h: 400
-			},
-			{
-					src: 'https://placekitten.com/1200/900',
-					w: 1200,
-					h: 900
-			}
-	];
+  var imageLinks = $('figure.image a')
+  imageLinks.each(function(index, item) {
+    var link = $(item);
+    var smallImg = $(item).find('img');
+    var items = [{
+      src: link.attr('href'),
+      msrc: smallImg.attr('href'),
+      w: link.attr('data-width'),
+      h: link.attr('data-height')
+//      title: smallImg.attr('alt')
+    }];
+    var options = {
+      galleryUID: index+1,
+      shareEl: false
+    };
 
-	// define options (if needed)
-	var options = {
-			// optionName: 'option value'
-			// for example:
-			index: 0 // start at first slide
-	};
+    link.click(function(event) {
+      event.preventDefault();
+      var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+      gallery.init();
+    });
+  })
 
-	// Initializes and opens PhotoSwipe
-	var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-//	gallery.init();
 }
 
-function createPhotoSwipeDOM() {
+function injectPhotoSwipeDOM() {
   $('body').append(
     '<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">' +
 
