@@ -2,7 +2,6 @@
 layout: post
 title:  "Cross-platform GUI Toolkit Trainwreck, 2016 Edition"
 tags: [coding, gui, imgui, rant]
-published: false
 ---
 
 {: .intro}
