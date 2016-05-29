@@ -482,8 +482,9 @@ care about your users and cannot afford to be grossly inefficient, just stay
 away from web technologies on the desktop. You don't want to build a castle on
 sand.
 
-{: .warning} I think of it as my duty to point out that the Electron framework
-carries a terrible potential for misuse when fallen into the wrong hands. The
+{: .warning}
+I think of it as my duty to point out that the Electron framework carries
+a terrible potential for misuse when fallen into the wrong hands. The
 [Monu](https://github.com/maxogden/monu) OS X only process monitoring menu bar
 application built using Electron weighs **no less than 189 MiB on disk!** Yes,
 you read that right: a heavyweight cross-platform framework featuring
@@ -662,7 +663,7 @@ don't think they would be good fits for serious desktop apps):
   <tr class="sep">
     <td class="h">Total</td>
     <td><span style="color: red; font-size: 120%; font-weight: 900">- - - - - - -</span></td>
-    <td><span style="color: red; font-size: 120%; font-weight: 900">-</span></td>
+    <td><span style="color: #666; font-weight: 900">0</span></td>
     <td><span style="color: red; font-size: 120%; font-weight: 900">- - -</span></td>
   </tr>
 </table>
