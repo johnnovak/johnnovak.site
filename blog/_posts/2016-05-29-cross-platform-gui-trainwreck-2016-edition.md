@@ -158,9 +158,7 @@ redraw the screen at a constant frame rate anyway, generally using accelerated
 graphics (read, games). But the actual definition of IMGUI is much simpler:
 the UI is just a function of the current application state, the application
 should not be responsible for explicitly managing the UI state; keeping it in
-sync with the state of the app itself. The said forum thread is very enlightening
-TODO, so please read the linked materials in the suggested reading section if
-you're interested.)
+sync with the state of the app itself.)
 
 ### Enter NanoVG
 
