@@ -194,6 +194,10 @@ blockquote {
     color: #944;
   }
 }
+.important {
+  padding: 0.6em 1em;
+  background: $ultra-light-accent-color;
+}
 
 hr {
   margin-top: 40px;
