@@ -11,7 +11,7 @@
 
 <figure class="image">
   {% if include.nameSmall %}
-    <a href="{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
+    <a class="largeimg" href="{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
       <img src="{{ smallImagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
     </a>
   {% else %}

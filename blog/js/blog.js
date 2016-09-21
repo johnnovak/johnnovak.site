@@ -36,7 +36,7 @@ function initPhotoSwipe() {
 
 	var pswpElement = $('.pswp')[0];
 
-  var imageLinks = $('figure.image a')
+  var imageLinks = $('figure.image a.largeimg')
   imageLinks.each(function(index, item) {
     var link = $(item);
     var smallImg = $(item).find('img');
