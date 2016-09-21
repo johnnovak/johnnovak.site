@@ -2,7 +2,7 @@
 layout: post
 title:  "What every coder should know about gamma"
 tags: [graphics, gamma, linear&nbsp;workflow]
-date: 2016-07-20
+date: 2016-09-21
 published: false
 ---
 
@@ -10,7 +10,7 @@ published: false
 
 If you have ever written, or are planning to write, *any kind of code* that
 deals with image processing, you should complete the below quiz. If you have answered
-one or more questions with a "yes", there's a high chance that your code is
+one or more questions with a yes, there's a high chance that your code is
 doing the wrong thing and will produce incorrect results. This might not be
 immediately obvious to you because these issues can be subtle and they're
 easier to spot in some problem domains than in others.
@@ -23,6 +23,7 @@ So here's the quiz:
 * Gamma is only relevant for graphics professionals working in the print
   industry where accurate colour reproduction is of great
   importance---for general image processing, it's safe to ignore it.
+* I'm a game developer, I don't need to know about gamma.
 * The graphics libraries of my operating system handle gamma correctly.[^osgamma]
 * The popular graphics library *&lt;insert name here&gt;* I'm using handles gamma correctly.
 * Pixels with RGB values of (128, 128, 128) emit about half as much light as
@@ -33,8 +34,8 @@ So here's the quiz:
 
 [^osgamma]: Only if your operating system is Mac OS X 10.6 or higher.
 
-Don't feel bad if you have answered most with a "yes"! I would have given
-a "yes" to most of these questions a week ago myself too.  Somehow, the topic
+Don't feel bad if you have answered most with a yes! I would have given
+a yes to most of these questions a week ago myself too.  Somehow, the topic
 of gamma is just under most computer users' radar (including programmers
 writing commercial graphics software!), to the extent that most graphics
 libraries, image viewers, photo editors and drawing software of today still
@@ -110,7 +111,7 @@ intensity of any two neighbouring bars is constant:
 
 \$\$\Δ_{\linear} = I_n-I_{n-1}\$\$
 
-On the second image, the **ratio** of the nominal light intensity of
+On the second image, however, the **ratio** of the nominal light intensity of
 any two neighbouring bars is constant:
 
 \$\$\Δ_{\ratio} = I_n / I_{n-1}\$\$
@@ -148,13 +149,13 @@ something like this (let's just ignore dither for now to keep things simple):
 {% include image.html name="linear-ramp32-perceptual.png" caption="Figure 4 &mdash; Ideal smooth greyscale ramp represented with 32 physically-linear greyscale values" captionAlign="center" width="100%" %}
 
 Well, the transitions are rather abrupt, especially on the left side, because
-we only had 32 grey values to work with, but if we squint a little, it's
-easy to convince ourselves that this is a more or less "accurate"
-representation of the smooth gradient, as far as our limited bit-depth allows
-it. But note how the steps are much larger on the left side than on the
-right---this is because we are using a greyscale that is *linear* in terms of
-*emitted light intensity*, but as we have mentioned before, our eyes don't
-perceive light intensity in a linear way!
+we only had 32 grey values to work with. If we squint a little, it's easy to
+convince ourselves that this is a more or less "accurate" representation of
+the smooth gradient, as far as our limited bit-depth allows it. But note how
+the steps are much larger on the left side than on the right---this is because
+we are using a greyscale that is *linear* in terms of *emitted light
+intensity*, but as we have mentioned before, our eyes don't perceive light
+intensity in a linear way!
 
 This observation has some interesting implications. The error between the
 original and the 5-bit encoded version is uneven across the image; it's much
@@ -166,7 +167,7 @@ this error evenly distributed across the whole range, so both dark and light
 shades would be represented with the same precision. If we encoded our
 original image with such a greyscale that is *perceptually linear*, but
 consequently *non-linear* in terms of emitted light intensity, and that
-non-linearity would match that of our human eyes, we'd get the exact same
+non-linearity would match that of the human vision, we'd get the exact same
 greyscale image we have already seen in Figure 2:
 
 {% include image.html name="gamma-ramp32.png" alt="" caption="Figure 5 &mdash; Ideal smooth greyscale represented with 32 perceptually-linear greyscale values" width="100%" %}
@@ -180,11 +181,11 @@ linear* values is called **gamma correction**.
 ### Efficient image encoding
 
 Why is the all the above important? Colour data in so-called "true colour" or
-"24-bit" bitmap images is represented with three 8-bit integers per pixel.
-With 8 bits, 256 distinct intensity levels can be represented, and if the
-spacing of these levels were physically linear, we would be losing a lot of
-precision on dark shades while being unnecessarily precise on light shades
-(relatively speaking), as shown above.
+"24-bit" bitmap images is stored as three 8-bit integers per pixel.  With
+8 bits, 256 distinct intensity levels can be represented, and if the spacing
+of these levels were physically linear, we would be losing a lot of precision
+on dark shades while being unnecessarily precise on light shades (relatively
+speaking), as shown above.
 
 Clearly, this is not ideal. One solution would be to simply keep using the
 physically linear scale and increase the bit depth per channel to 16 (or
@@ -572,7 +573,7 @@ May all your lights be linear! :)
 * [Eric Brasseur -- Gamma error in picture scaling](http://www.4p8.com/eric.brasseur/gamma.html)
 * [Wikipedia -- Gamma correction](https://en.wikipedia.org/wiki/Gamma_correction)
 * [Wikipedia -- sRGB](https://en.wikipedia.org/wiki/SRGB)
-* [Wikipedig -- RGB color model](https://en.wikipedia.org/wiki/RGB_color_model)
+* [Wikipedia -- RGB color model](https://en.wikipedia.org/wiki/RGB_color_model)
 
 
 ### Linear lighting & workflow (LWF)
