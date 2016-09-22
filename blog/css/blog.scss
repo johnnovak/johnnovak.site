@@ -446,7 +446,7 @@ article {
 
   li {
     line-height: 26px;
-    margin: 0 2px 0 0;
+    margin: 0 2px 0 0 !important;
 
     .tag-name {
       display: inline-block;
@@ -459,6 +459,7 @@ article {
       text-transform: uppercase;
       color: #fff;
       background: $accent-color;
+      white-space: nowrap;
 
       &:hover {
         background: $light-accent-color;
