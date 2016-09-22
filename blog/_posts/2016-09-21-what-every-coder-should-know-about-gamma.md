@@ -60,7 +60,7 @@ implications of not doing it properly are, nor show image examples of
 incorrect gamma handling.
 
 I came across the need for correct gamma handling during writing my [ray
-tracer](/tag/ray tracing/) and I had to admit that my understanding of the
+tracer](/tag/ray%20tracing/) and I had to admit that my understanding of the
 topic was rather superficial and incomplete. So I had spent a few days reading
 up on it online, but it turned out that many articles about gamma are not much
 help either, as many of them are too abstract and confusing, some contain too
