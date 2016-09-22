@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What every coder should know about gamma"
-tags: [graphics, gamma, linear&nbsp;workflow]
+tags: [graphics, gamma, linear workflow]
 date: 2016-09-21
 ---
 
@@ -31,7 +31,7 @@ So here's the quiz:
   GIF etc.) into a buffer using some random library and run image processing
   algorithms on the raw data directly.
 
-[^osgamma]: Only if your operating system is Mac OS X 10.6 or higher.
+[^osgamma]: Only if your operating system is Mac OS X 10.6 or higher or Linux.
 
 Don't feel bad if you have answered most with a yes! I would have given
 a yes to most of these questions a week ago myself too.  Somehow, the topic
@@ -96,13 +96,13 @@ Now consider the following image:
 
 {% include image.html name="gamma-ramp32.png" alt="Figure 2 &mdash; Evenly-spaced greyscale bars in terms of perceptual light intensity" caption="Figure 2 &mdash; Evenly-spaced greyscale bars in terms of perceptual light intensity (<a href=\"https://github.com/johnnovak/johnnovak.site/blob/master/blog/files/2016-09-21/src/gammaramp.nim\">Nim source code</a>)" captionAlign="center" width="100%" %}
 
-On which image does the gradiation appear more even? It's the second one! But
+On which image does the gradation appear more even? It's the second one! But
 why is that so? We have just established that in the first image the bars are
 evenly (*linearly*) spaced in terms of emitted light intensity between the
 darkest black and brightest white your monitor is capable of reproducing. But
-why don't we see that as a nice even gradiation from black to white then? And
+why don't we see that as a nice even gradation from black to white then? And
 what is being displayed on the second image that we *perceive* as a linear
-gradiation?
+gradation?
 
 The answer lies in the response of the human eye to light intensity, which is
 *non-linear*. One the first image, the **difference** between the nominal light
@@ -110,19 +110,15 @@ intensity of any two neighbouring bars is constant:
 
 \$\$\Δ_{\linear} = I_n-I_{n-1}\$\$
 
-On the second image, however, the **ratio** of the nominal light intensity of
-any two neighbouring bars is constant:
-
-\$\$\Δ_{\ratio} = I_n / I_{n-1}\$\$
+On the second image, however, this difference is not constant but changes from
+bar to bar; it follows a power law relationship, to be exact. All human
+sensory perception follows a similar [power law
+relationship](https://en.wikipedia.org/wiki/Stevens'_power_law) in terms of
+the magnitude of stimulus and its perceived intensity.
 
 {: .important}
 Because of this, we say that there is a **power law relationship** between
-**nominal physical light intensity** and **perceptual brightness**. We can
-also say that humans perceive brightness in a **logarithmic** way.
-
-All human sensory perception follows a similar [power law
-relationship](https://en.wikipedia.org/wiki/Stevens'_power_law) in terms of
-the magnitude of stimulus and its perceived intensity.
+**nominal physical light intensity** and **perceptual brightness**.
 
 
 ### Physical vs perceptual linearity
@@ -366,7 +362,7 @@ wall; the colours would mix as in the linear-space case).
 
 Almost everybody does this the wrong way: CSS gradients and transitions are
 wrong (see [this
-thread](https://lists.w3.org/Archives/Public/www-style/2012Jan/0607.htmlo) for
+thread](https://lists.w3.org/Archives/Public/www-style/2012Jan/0607.html) for
 details), Photoshop is wrong (as of version CS6) and there's not even an option
 to fix it.
 
@@ -482,14 +478,14 @@ so many ways to screw this up, but these are the two most common ways:
   image to sRGB and then "tweaking" various material and lighting parameters
   to compensate.
 * Failing to convert sRGB texture images to linear space (or set the sRGB flag
-  when hardware acceleation is used).
+  when hardware acceleration is used).
 
 These two basic errors are then usually combined in various interesting ways,
 but the end result would invariably fail to resemble a realistic looking scene
 (e.g. quadratic light falloff will not appear quadratic anymore, highlights
 will be overblown and will exhibit some weird hue and saturation shifts etc.)
 
-To demonstrate the first mistake using my own [ray racer](/tags/ray%20tracing), the left image below
+To demonstrate the first mistake using my own [ray tracer](/tags/ray%20tracing), the left image below
 shows a very simple but otherwise quite natural looking image in terms of
 physical lighting accuracy. This rendering took place in linear space and then
 the contents of the framebuffer were converted to sRGB before writing it to
@@ -551,7 +547,7 @@ gamma-correct.
 
 And if you're a developer working on graphics software, please make sure
 you're doing the correct thing. Be gamma-correct and always explicitly state
-your assumptions about the input and output colour spaces in the sofware's
+your assumptions about the input and output colour spaces in the software's
 documentation.
 
 May all your lights be linear! :)
