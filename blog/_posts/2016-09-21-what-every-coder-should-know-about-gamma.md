@@ -405,7 +405,7 @@ while on the right image there's a noticeable overall greenish cast. Again,
 this might be an effect you like, but it's not how accurate alpha
 compositing should work.
 
-{% include image.html nameSmall="blending.jpg" name="blending.jpg" caption="Figure 10 &mdash; Effects of gamma-incorrectness when compositing photographic images. The two original images from the top row are laid on top of each other in the bottom row, with the blueish image on top having 60% opacity. The left image is the gamma-correct one. Tested with Photoshop CS6. (Click on the image to enlarge it to see the details better.)" %}
+{% include image.html nameSmall="blending.jpg" name="blending.jpg" alt="Figure 10 &mdash; Effects of gamma-incorrectness when compositing photographic images (by yours truly). The two original images from the top row are laid on top of each other in the bottom row, with the blueish image on top having 60% opacity. The left image is the gamma-correct one. Tested with Photoshop CS6. (Click on the image to enlarge it to see the details better.)" caption="Figure 10 &mdash; Effects of gamma-incorrectness when compositing photographic images (by <a href=\"http://photo.johnnovak.net/\">yours truly</a>). The two original images from the top row are laid on top of each other in the bottom row, with the blueish image on top having 60% opacity. The left image is the gamma-correct one. Tested with Photoshop CS6. (Click on the image to enlarge it to see the details better.)" %}
 
 ### Image resizing
 
