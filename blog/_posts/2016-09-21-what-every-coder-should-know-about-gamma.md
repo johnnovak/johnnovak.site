@@ -587,9 +587,10 @@ May all your lights be linear! :)
 ### Bonus stuff
 
 {: .compact}
-* [Lav R. Varshney, John Z. Sun -- Why do we perceive logarithmically?](http://www.rle.mit.edu/stir/documents/VarshneyS_Significance2013.pdf)
+* [Lav R. Varshney, John Z. Sun -- Why do we perceive logarithmically? [PDF]](http://www.rle.mit.edu/stir/documents/VarshneyS_Significance2013.pdf)
 * [Wikipedia -- Stevens' power law](https://en.wikipedia.org/wiki/Stevens'_power_law)
 * [Krita Manual -- Color management](https://userbase.kde.org/Krita/Manual/ColorManagement)
-* [The Adobe Photoshop Lightroom Book -- The Lightroom RGB space](http://ptgmedia.pearsoncmg.com/imprint_downloads/peachpit/peachpit/lightroom4/pdf_files/LightroomRGB_Space.pdf)
+* [The Adobe Photoshop Lightroom Book -- The Lightroom RGB space [PDF]](http://ptgmedia.pearsoncmg.com/imprint_downloads/peachpit/peachpit/lightroom4/pdf_files/LightroomRGB_Space.pdf)
 * [OpenEXR](http://www.openexr.com/)
+* [Cinematic Color: Motion-Picture Color Management](http://cinematiccolor.com/)
 </section>
