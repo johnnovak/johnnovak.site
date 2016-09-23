@@ -457,13 +457,14 @@ article](http://www.4p8.com/eric.brasseur/gamma.html) on the matter.
 
 I guess it's no surprise at this point that antialiasing is no exception when
 it comes to gamma-correctness. Antialiasing in γ=2.2 space results in overly
-dark "smoothing pixels" (right image); the text appears too heavy, almost as if
-it was bold. Running the algorithm in linear space produces much better
+dark "smoothing pixels" (right image); the text appears too heavy, almost as
+if it was bold. Running the algorithm in linear space produces much better
 results (left image), although in this case the font looks a bit too thin.
 Interestingly, Photoshop antialiases text using γ=1.42 by default, and this
-indeed seems to yield the best looking results (middle image). I don't know
-the explanation for this, but the take-away point is that antialiasing in sRGB
-space is almost never what you want.
+indeed seems to yield the best looking results (middle image). The reason for
+this is that most fonts were designed for gamma-incorrect font rasterizers,
+hence if you use linear space (correctly), then the fonts will look thinner as
+they should.
 
 {% include image.html name="antialias.png" caption="Figure 13 &mdash; Effects of gamma-incorrectness on text antialiasing. The left image was rendered with the option 'Blend Text Colors Using Gamma' set to 1.0, the middle one with 1.45, and the right one with 2.2." width="623px" %}
 
