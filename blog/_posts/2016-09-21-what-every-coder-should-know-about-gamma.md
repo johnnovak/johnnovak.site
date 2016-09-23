@@ -234,7 +234,7 @@ aforementioned power law function:
 \$\$\V_{\linear} = \V_{\encoded} ^ \{\γ}\$\$
 
 The **standard gamma (γ)** value to use in computer display systems is
-**2.2**. The main greason for this is because a gamma of 2.2 approximately
+**2.2**. The main reason for this is because a gamma of 2.2 approximately
 matches the power law sensitivity of human vision. The exact value that should
 be used varies from person to person and also depends on the lighting
 conditions and other factors, but a standard value had to be chosen and 2.2
@@ -400,7 +400,7 @@ brightness shifts.
 
 The appearance of false colours is also noticeable when blending two photos
 together. On the gamma-correct image on the left, the skin tones and the reds
-and yellows are preserved but faded into the blueish image in a natural way,
+and yellows are preserved but faded into the bluish image in a natural way,
 while on the right image there's a noticeable overall greenish cast. Again,
 this might be an effect you like, but it's not how accurate alpha
 compositing should work.
@@ -455,14 +455,14 @@ article](http://www.4p8.com/eric.brasseur/gamma.html) on the matter.
 
 ### Antialiasing
 
-I guess it's no surprise at this point that antialiasing it no exception when
+I guess it's no surprise at this point that antialiasing is no exception when
 it comes to gamma-correctness. Antialiasing in γ=2.2 space results in overly
 dark "smoothing pixels" (right image); the text appears too heavy, almost as if
 it was bold. Running the algorithm in linear space produces much better
 results (left image), although in this case the font looks a bit too thin.
 Interestingly, Photoshop antialiases text using γ=1.42 by default, and this
 indeed seems to yield the best looking results (middle image). I don't know
-the explanation for this, but the take-away point is that antialaising in sRGB
+the explanation for this, but the take-away point is that antialiasing in sRGB
 space is almost never what you want.
 
 {% include image.html name="antialias.png" caption="Figure 13 &mdash; Effects of gamma-incorrectness on text antialiasing. The left image was rendered with the option 'Blend Text Colors Using Gamma' set to 1.0, the middle one with 1.45, and the right one with 2.2." width="623px" %}
@@ -510,7 +510,7 @@ conditions. It's a lot of wasted energy to work like that.
 {% include image.html nameSmall="badgamma.png" name="badgamma.png" alt="TODO" caption="Figure 14 &mdash; Effects of gamma-incorrect rendering on diffuse spheres. The gamma-incorrect image on the right shows an unsuccesful attempt at matching the look of the gamma-correct one on the left by tweaking the light intensities alone." width="100%" captionAlign="center" captionWidth="95%" %}
 
 It's also important to point out that incorrect gamma handling in 3D rendering
-is one of the main culprits behing the "fake plasticky CGI look" in some
+is one of the main culprits behind the "fake plasticky CGI look" in some
 (mostly older) games. As illustrated on the image below, rendering realistic
 looking human skin is almost impossible with a gamma-incorrect workflow; the
 highlights will just never look right. This gave birth to questionable
