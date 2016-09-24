@@ -268,7 +268,7 @@ gamma of 2.2, but it has a short linear segment in the very dark range to
 avoid a slope of infinity at zero (this is more convenient in numeric
 calculations). The formulas to convert from linear to sRGB and back can be
 found
-[here](https://en.wikipedia.org/wiki/SRGB#Specification_of_the_transformationhere).
+[here](https://en.wikipedia.org/wiki/SRGB#Specification_of_the_transformation).
 
 You don't actually need to understand all these finer details; the important
 thing to know is that in 99% of the cases you'll want to use sRGB instead of
@@ -486,11 +486,11 @@ but the end result would invariably fail to resemble a realistic looking scene
 (e.g. quadratic light falloff will not appear quadratic anymore, highlights
 will be overblown and will exhibit some weird hue and saturation shifts etc.)
 
-To demonstrate the first mistake using my own [ray tracer](/tags/ray%20tracing), the left image below
-shows a very simple but otherwise quite natural looking image in terms of
-physical lighting accuracy. This rendering took place in linear space and then
-the contents of the framebuffer were converted to sRGB before writing it to
-disk.
+To demonstrate the first mistake using my own [ray
+tracer](/tag/ray%20tracing), the left image below shows a very simple but
+otherwise quite natural looking image in terms of physical lighting accuracy.
+This rendering took place in linear space and then the contents of the
+framebuffer were converted to sRGB before writing it to disk.
 
 On the right image, however, this last conversion step was omitted and I tried
 to tweak the light intensities in an attempt to match the overall brightness
