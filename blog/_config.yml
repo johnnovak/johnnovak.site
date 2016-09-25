@@ -12,6 +12,9 @@ highlighter:  pygments
 sass:
     sass_dir: _sass
 
+gems:
+    - jekyll-redirect-from
+
 # User variables
 
 url:          http://blog.johnnovak.net

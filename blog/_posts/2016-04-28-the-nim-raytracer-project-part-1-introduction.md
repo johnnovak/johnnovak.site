@@ -1,7 +1,9 @@
 ---
 layout: post
-title:  "The Nim Ray Tracer Project &ndash; Part 1"
+title:  "The Nim Ray Tracer Project &ndash; Part 1: Introduction"
 tags: [graphics, ray tracing, Nim]
+redirect_from:
+  - /2016/04/28/the-nim-raytracer-project-part1/
 ---
 
 {: .intro}
