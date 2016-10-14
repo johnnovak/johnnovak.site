@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Nim Ray Tracer Project &ndash; Part 3: Lighting & Box Normals"
+title:  "The Nim Ray Tracer Project &ndash; Part 3: Lighting & Vector Maths"
 tags: [graphics, ray tracing, Nim]
 date: 2016-10-23
 published: false
@@ -47,70 +47,73 @@ a fill light, also known as The Poor Man's Global Illumination(TM)).
 
 **Point lights** are idealised versions of light sources that are relatively
 small in size and emit light in all directions, therefore they only have
-a position but no light direction. From this follows that point lights cast
+position but no direction. From this follows that point lights cast
 radial shadows. In contrast to directional lights, point lights do have
-falloff (light attenuation), which follow the well-known [inverse- square
+falloff (light attenuation), which follows the well-known [inverse-square
 law](https://en.wikipedia.org/wiki/Inverse-square_law). Good examples of point
-lights would be light bulbs, LEDs or the flame of a candle.  Of course, in
+lights are light bulbs, LEDs or the flame of a candle.  Of course, in
 real life these light sources do have an actual measurable area, but we're not
 simulating that (yet). Note how drastically different the exact same scene
 looks like when illuminated by a single point light.
 
 {% include image.html nameSmall="pointlight.png" name="pointlight.png" caption="Figure 1 &mdash; The main light is a strong backlight that matches the colour of the &quot;sky&quot;. There's a very faint front light too, otherwise the faces of the spheres would appear black." captionAlign="center" %}
 
-GAMMA
-
-global illum
-
-Again, all this stuff (and much more) in explained in detail in the [shading
+Again, all this shading stuff in explained in detail in the
+[shading
 lesson](http://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading)
 at [Scratchapixel](http://www.scratchapixel.com/), so refer to that excellent
 article series if you're interested in the technical details.
 
+It is very important to note at this point that lighting is always calculated
+in **linear space** in a physically-based renderer. That's how light behaves
+in the real world; to calculate the effects of multiple light sources on
+a given surface point, we just need to calculate their contribution one light
+at a time and then simply sum the results. What this means is that the data in
+our internal float framebuffer represents linear light intensities that we
+need to apply sRGB conversion to (a fancy way of doing gamma-encoding) if we
+want to write it to a typical 8-bit per channel bitmap image file. If you are
+unsure about what all this means, I highly recommend to check out [my post on
+gamma](/2016/09/21/what-every-coder-should-know-about-gamma/) that should
+hopefully clear things up.
+
+What we've implemented so far is pretty much a basic classic raytracer, or
+a path tracer, to be more exact. Primary rays are shot from the aperture of an
+idealised pinhole camera (a point) through the middle of the pixels on the
+image plane into the scene. If a ray intersects an object, we shoot
+a secondary shadow ray from the point of intersection (hit point) towards the
+light source (which are idealised too, as explained above). If the path of the
+shadow ray is not obstructed by any other objects as it travels toward the
+light source, we calculate the light intensity for that particular pixel with
+the diffuse shader, otherwise we just set it to black (because the point is in
+shadow). Due to the additive nature of light, handling multiple light sources
+is very straightforward: just repeat this whole process for all lights then
+sum the results.
+
+The astute reader may observe that there's lots of simplification going on
+here. For a start, real world cameras and light sources are not just simple
+idealised points in 3D space, and objects are not just illuminated by the
+light sources alone (**direct illumination**), but also by lights bounced off
+of other objects in the scene (**indirect illumination**). Because of all
+this, with our current model of reality we can only render hard edged shadows
+and no indirect lighting in our virtual world. Additionally, partly because of
+the lack of indirect lighting, these shadows would appear completely black.
+This can be mostly mitigated by some fill light tricks that go back to the old
+days of ray tracing when global illumination methods weren't computationally
+practical yet. For example, if there's a green coloured wall to the left of an
+object, then put some faint green coloured lights on the wall to approximate
+the indirect illumination reflected by the wall. This is far from perfect; on
+the example image below I used two directional lights and a single point light
+as an attempt to produce a somewhat even lighting in the shadow areas, but
+there are still some black areas on the far cubes.
+
 {% include image.html nameSmall="boxes2.png" name="boxes2.png" caption="Figure 1 &mdash; The main light is a strong backlight that matches the colour of the &quot;sky&quot;. There's a very faint front light too, otherwise the faces of the spheres would appear black." captionAlign="center" %}
 
-
-### Calculating box normals
-
-
-{% include image.html name="box-normals.svg" alt="Figure 1 &mdash; The right-handed coordinate system used in our renderer." caption="Figure 1 &mdash; The right-handed coordinate system used in our renderer. The circular arrow indicates the direction of positive rotation." captionAlign="center" captionWidth="70%" %}
-
-
-blah
-
-{% include image.html nameSmall="boxes-bad.png" name="boxes-bad.png" caption="Figure 1 &mdash; The main light is a strong backlight that matches the colour of the &quot;sky&quot;. There's a very faint front light too, otherwise the faces of the spheres would appear black." captionAlign="center" %}
-
-{% include image.html nameSmall="boxes3.png" name="boxes3.png" caption="Figure 1 &mdash; The main light is a strong backlight that matches the colour of the &quot;sky&quot;. There's a very faint front light too, otherwise the faces of the spheres would appear black." captionAlign="center" %}
-
-{% highlight nimrod %}
-type
-  AABB* = ref object
-    vmin, vmax: Vec4[float]
-
-  Box* = ref object of Geometry
-    aabb*: AABB
-{% endhighlight %}
-
-whoarg
-
-
-{% highlight nimrod %}
-method normal*(b: Box, hit: Vec4[float]): Vec4[float] =
-  let
-    c = (b.aabb.vmin + b.aabb.vmax) * 0.5
-    p = vec(hit - c)
-    dx = abs(b.aabb.vmin.x - b.aabb.vmax.x) * 0.5
-    dy = abs(b.aabb.vmin.y - b.aabb.vmax.y) * 0.5
-    dz = abs(b.aabb.vmin.z - b.aabb.vmax.z) * 0.5
-    bias = 1.0000001
-
-  result = vec(float((p.x / dx * bias).int),
-               float((p.y / dy * bias).int),
-               float((p.z / dz * bias).int)).normalize
-{% endhighlight %}
-
-{% include image.html nameSmall="boxes.png" name="boxes.png" caption="Figure 1 &mdash; The main light is a strong backlight that matches the colour of the &quot;sky&quot;. There's a very faint front light too, otherwise the faces of the spheres would appear black." captionAlign="center" %}
-
+It's easy to see how the number of lights can easily skyrocket using this
+approach, and in fact 3D artist have been known to use as many as 40-60 lights
+or more per scene to achieve realistic looking lighting without global
+illumination. As for the hard shadows, there's no workaround for that at our
+disposal at the moment---soft shadows will have to wait until we are ready to
+tackle area lights.
 
 ## Vector maths (addendum)
 

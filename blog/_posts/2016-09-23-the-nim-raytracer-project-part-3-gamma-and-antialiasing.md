@@ -1,51 +1,10 @@
 ---
 layout: post
-title:  "The Nim Ray Tracer Project &ndash; Part 3: Gamma & Antialiasing"
+title:  "The Nim Ray Tracer Project &ndash; Part 5: Antialiasing"
 tags: [graphics, ray tracing, Nim]
 date: 2016-09-23
 published: false
 ---
-
-## Some implementation details
-
-
-http://stackoverflow.com/questions/7574125/multiplying-a-matrix-and-a-vector-in-glm-opengl
-
-GLM mimics GLSL, matrices column-major
-column-major matrix should be left-multiplied with a vector
-
-http://stackoverflow.com/questions/24593939/matrix-multiplication-with-vector-in-glsl
- 
-
-{% highlight nimrod %}
-template point*[T](x, y, z: T): Vec4[T] = vec4(x, y, z, 0.0)
-template vec*[T](x, y, z: T): Vec4[T] = vec4(x, y, z, 1.0)
-{% endhighlight %}
-
-
-## Gamma
-
-{% include image.html name="no-gamma.png" caption="Figure 1 &mdash; X" captionAlign="center" width="600px" %}
-
-{% include image.html name="gamma.png" caption="Figure 1 &mdash; X" captionAlign="center" width="600px" %}
-
-## Sampling
-
-{% include image.html name="grid2x2-aa.png" caption="Figure 1 &mdash; X" captionAlign="center" width="600px" %}
-
-{% include image.html name="no-aa.png" caption="Figure 1 &mdash; X" captionAlign="center" width="634px" %}
-
-### Grid sampling
-
-{% include image.html name="grid-aa.png" caption="Figure 1 &mdash; X" captionAlign="center" width="634px" %}
-
-### Jittered sampling
-
-{% include image.html name="jitter-aa.png" caption="Figure 1 &mdash; X" captionAlign="center" width="634px" %}
-
-### Multi-jittered sampling
-
-{% include image.html name="multi-aa.png" caption="Figure 1 &mdash; X" captionAlign="center" width="634px" %}
 
 ### Conclusion
 
@@ -77,10 +36,6 @@ workload
 {% include image.html name="aa-comparison.png" caption="Figure 1 &mdash; X" captionAlign="center" width="660px" %}
 
 ## Multithreading
-
-
-{% include image.html name="8cores.png" caption="Figure 1 &mdash; Developer showing signs of uncontrollable euphoria over working multithreaded ray-tracer implementation." captionAlign="center" width="548px" %}
-
 
 Intel Core i7-4790K @ 4.00 GHz  on Windows 7 Ultimate 64-bit
 
