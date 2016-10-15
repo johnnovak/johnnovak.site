@@ -2,12 +2,14 @@
 layout: post
 title:  "The Nim Ray Tracer Project &ndash; Part 3: Lighting & Vector Maths"
 tags: [graphics, ray tracing, Nim]
-date: 2016-10-23
-published: false
+date: 2016-10-16
 ---
 
+{: .intro}
+[Listening *Esoterica* from *Dan Pound*. Very reminiscent of the Steve Roach type of tribal/electronic ambient, which is always a good thing in my book. Parts 1, 2, 6 & 7 are my personal highlights.]
+
 Ok, so last time I ended my post with the cliffhanger that I'm going to show
-some actual Nim code in the next episode (which is this). Well, I'll never
+some actual Nim code in the next episode, which is this. Well, I'll never
 make foolish promises like that again, I swear! Now I need to come up with
 some good excuses why we're gonna do something slightly different instead...
 
@@ -16,7 +18,7 @@ line here, it would be just a colossal waste of time for everyone involved and
 the codebase is in constant flux anyway. Anyone who's interested can take
 a look at the code in the [GitHub
 repository](https://github.com/johnnovak/nim-raytracer). What we'll do instead
-from here on is to discuss some of my more interesting observations about ray
+from here on is discuss some of my more interesting observations about ray
 tracing on a higher level and maybe present the occasional original trick or
 idea I managed to come up with.
 
@@ -30,9 +32,9 @@ still might come in handy sometimes for debugging.
 
 A more useful shading method is the so called **diffuse** or [Lambertian
 shading](https://en.wikipedia.org/wiki/Lambertian_reflectance) that simulates
-how diffusely reflecting matte surfaces behave in real life. Realistic
+how diffusely reflecting, or matte surfaces behave in real life. Realistic
 shaders require light sources though, so the next thing to implement is some
-sort of lights. We're doing a ray tracing kindergarten here, so the first
+sort of lighting. We're doing ray tracing kindergarten here, so the first
 light types to implement will be idealised **directional** and **point
 lights**.
 
@@ -42,46 +44,47 @@ importantly, no falloff.  Light sources of this kind are therefore ideal for
 simulating the sun or other celestial light emitting objects that are "very
 far away". Shadows cast by directional lights are always parallel. This is how
 the example scene from the previous post looks like when illuminated by two
-directional lights.
+directional lights:
 
-{% include image.html nameSmall="spheres.png" name="spheres.png" caption="Figure 1 &mdash; Implicit diffuse spheres, pixels on screen, 1200 x 800, John Novak (1979&ndash;?).<br />Two distant lights have been used: a slightly warm coloured key light from the right and an even warmer but much fainter fill light from the left (also known as The Poor Man's Indirect Lighting&trade;). The purpose of the fill light is to soften the shadows, just as in photography." captionAlign="center" %}
+{% include image.html nameSmall="spheres-distantlights.png" name="spheres-distantlights.png" caption="Figure 1 &mdash; Implicit diffuse spheres, pixels on screen, 1200 x 800, John Novak (1979&ndash;?).<br>Two distant lights have been used: a slightly warm coloured key light from the right and an even warmer but much fainter fill light from the left. The purpose of the fill light is to soften the shadows, just as in photography (also known as The Poor Man's Indirect Lighting&trade;)." %}
 
 **Point lights** are idealised versions of light sources that are relatively
 small in size and emit light in all directions, therefore they only have
-position but no direction. From this follows that point lights cast
-radial shadows. In contrast with directional lights, point lights do exhibit
-falloff (light attenuation), which follows the well-known [inverse-square
+position but no direction. From this follows that point lights cast radial
+shadows. In contrast with directional lights, point lights do exhibit falloff
+(light attenuation), which follows the well-known [inverse-square
 law](https://en.wikipedia.org/wiki/Inverse-square_law). Good examples of point
-lights are light bulbs, LEDs or the flame of a candle.  Of course, in
-real life these light sources do have an actual measurable area, but we're not
+lights are light bulbs, LEDs or the candlelight.  Of course, in real life
+these light sources do have an actual measurable area, but we're not
 simulating that (yet). Note how drastically different the exact same scene
-looks like when illuminated by a single point light.
+looks like when illuminated by a single point light:
 
-{% include image.html nameSmall="pointlight.png" name="pointlight.png" caption="Figure 2 &mdash; The exact same scene as seen in Figure 1, but now illuminated by a single point light positioned roughly above the cyan coloured sphere. The light falloff is clearly visible; further away objects appear darker and the infinite ground plane fades to black in the distance. Because there are no other light sources present, shadowed areas are completely black. Also note that the shadow are radial, not parallel like in Figure 1." captionAlign="center" %}
+{% include image.html nameSmall="spheres-pointlight.png" name="spheres-pointlight.png" caption="Figure 2 &mdash; The exact same scene from Figure 1 illuminated by a single point light positioned roughly above the cyan coloured sphere. The light falloff is clearly visible; further away objects appear darker and the infinite ground plane fades to black in the distance. Because there are no other light sources present, shadowed areas are completely black. Also note that the shadow are radial, not parallel like in Figure 1." %}
 
-Again, all this shading stuff in explained in detail in the
+Again, all this shading stuff in explained in great detail in the
 [shading
 lesson](http://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading)
 at [Scratchapixel](http://www.scratchapixel.com/), so refer to that excellent
 article series if you're interested in the technical details.
 
 {: .note }
-It is very important to note at this point that lighting is always calculated
-in **linear space** in a physically-based renderer. That's how light behaves
-in the real world; to calculate the effects of multiple light sources on
-a given surface point, we just need to calculate their contribution one light
-at a time and then simply sum the results. What this means is that the data in
+It is very important to note that lighting must always be calculated in
+**linear space** in a physically-based renderer.  That's how light behaves in
+the real world; to calculate the effects of multiple light sources on a given
+surface point, we just need to calculate their contribution one light at
+a time and then simply sum the results. What this means is that the data in
 our internal float framebuffer represents linear light intensities that we
 need to apply sRGB conversion to (a fancy way of doing gamma-encoding) if we
 want to write it to a typical 8-bit per channel bitmap image file. If you are
-unsure about what all this means, I highly recommend to check out [my post on
+unsure about what all this means, I highly recommend checking out [my post on
 gamma](/2016/09/21/what-every-coder-should-know-about-gamma/) that should
 hopefully clear things up.
 
 ## Direct vs indirect illumination
 
-What we've implemented so far is pretty much a basic classic raytracer, or
-a path tracer, to be more exact.
+What we've implemented so far is pretty much a basic classic ray tracer, or
+a path tracer, to be more exact, which works like this from a high-level
+perspective:
 
 1. Primary rays are shot from the aperture of an idealised pinhole camera (a
    point) through the middle of the pixels on the image plane into the scene.
@@ -91,11 +94,12 @@ a path tracer, to be more exact.
    idealised too, as explained above).
 
 3. If the path of the shadow ray is not obstructed by any other objects as it
-   travels toward the light source, we calculate the light intensity for that
-   particular pixel with some shading algorithm, otherwise we just set it to
-   black (because the point is in shadow). Due to the additive nature of
-   light, handling multiple light sources is very straightforward; just repeat
-   steps 2 & 3 for all lights and then sum the results.
+   travels toward the light source, we calculate the light intensity reflected
+   towards the view direction at the hit point with some shading algorithm,
+   otherwise we just set it to black (because the point is in shadow). Due to
+   the additive nature of light, handling multiple light sources is very
+   straightforward; just repeat steps 2 & 3 for all lights and then sum the
+   results.
 
 The astute reader may have observed that there's lots of simplification going
 on here. For a start, real world cameras and light sources are not just simple
@@ -103,18 +107,21 @@ idealised points in 3D space, and objects are not just illuminated by the
 light sources alone (**direct illumination**), but also by light bounced off
 of other objects in the scene (**indirect illumination**). With our current
 model of reality, we can only render hard edged shadows and no indirect
-lighting. Additionally, partly because of the lack of indirect lighting, these
-shadows would appear completely black.  This can be more or less mitigated by
-some fill light tricks that harken back to the old days of ray tracing when
-global illumination methods weren't computationally practical yet. For
-example, if there's a green coloured wall to the left of an object, then put
-some lights on the wall that emit a faint green light to the right to
-approximate the indirect illumination reflected by the wall. This is far from
-perfect; on the example image below I used two directional lights and a single
-point light as an attempt to produce a somewhat even lighting in the shadow
-areas, but as we can see this hasn't completely eliminated the black shadows.
+lighting. Additionally, partly because of the lack of indirect illumination in
+our renderer, these shadows would appear completely black.  This can be more
+or less mitigated by some fill light tricks that harken back to the old days
+of ray tracing when global illumination methods weren't computationally
+practical yet. For example, if there's a green coloured wall to the left of an
+object, then put some lights on the wall that emit a faint green light to the
+right to approximate the indirect light rays reflected by the wall. This is
+far from perfect for many reasons; on the example image below I used two
+directional lights and a single point light as an attempt to produce
+a somewhat even lighting in the shadow areas, but, as it can be seen, this
+hasn't completely eliminated the black shadows.
 
-{% include image.html nameSmall="boxes2.png" name="boxes2.png" caption="Figure 3 &mdash; Gray objects illuminated by two distant lights and one point light. All lights have an orangeish cast to them, hence the yellowish appearance of the final image. Note how just three idealised lights are not enough to evenly illuminate more complex geometries if only direct illumination is used." captionAlign="center" %}
+{% include image.html nameSmall="complex-scene-3lights.png" name="complex-scene-3lights.png" caption="Figure 3 &mdash; Gray objects illuminated by two distant lights and one point light. Two lights have an orangeish cast to them, hence the yellowish appearance of the final image. Note how just three idealised lights are not enough to evenly illuminate more complex geometries if only direct illumination is used." %}
+
+{% include image.html nameSmall="complex-scene-layers.png" name="complex-scene-layers.png" caption="Figure 4 &mdash; The contribution of each individual light to the final image (click to enlarge). From left to right: the main distant light, a secondary distant light used as a fill light, and a point light to give the image a more interesting look. Note that a single idealised light is not enough to evenly illuminate the scene and multiple lights are needed to lighten the black shadows." %}
 
 It's easy to see how the number of lights can easily skyrocket using this
 approach, and in fact 3D artist have been known to use as many as 40-60 lights
@@ -131,9 +138,8 @@ vector maths stuff we discussed previously. I'm using the
 is a port of [GLM](http://glm.g-truc.net/0.9.8/index.html) (Open**GL**
 **M**athematics), which is a maths library based on the
 [GLSL](https://www.opengl.org/documentation/glsl/) standard. A quick look into
-the nim-glm sources reveals that the library uses
-[row-major](https://en.wikipedia.org/wiki/Row-major_order) storage order
-internally:
+the nim-glm sources reveals that the library uses [row-major
+order](https://en.wikipedia.org/wiki/Row-major_order) storage internally:
 
 {% highlight nimrod %}
 var def = "type Vec$1*[T] = distinct array[$1, T]" % [$i]
@@ -192,7 +198,7 @@ let m: Mat4x4[float] = mat4(1.0).translate(vec(-30.0, 0.0, 0.0))
 let vt = m * v
 {% endhighlight %}
 
-The function `vec` and the constant `Y_AXIS` are just some convience stuff.
+The function `vec` and the constant `Y_AXIS` are just some convenience stuff.
 We're using [homogeneous
 coordinates](https://en.wikipedia.org/wiki/Homogeneous_coordinates#Use_in_computer_graphics)
 , so a `Vec4[float]` can denote both points and vectors.  Points must have
@@ -215,12 +221,8 @@ template point*[T](v: Vec4[T]): Vec4[T] = vec4(v.xyz, 1.0)
 
 Storing the *w* component is convenient because we don't need to constantly
 add it to the vector when transforming it by a 4x4 matrix. Some people would
-introduce distcint point and vector types, but I don't think that's worth the
-trouble; it would just complicate the code too much for dubious benefits. It's
-a bit unclear to me at this point whether storing vectors as 3 floats instead
-of 4 would actually save anything, as I guess they'd need to be aligned to
-even addresses anyway. But we'll get to that part at the later optimisation
-stages. Let's just get something on the screen first!
+introduce distinct point and vector types, but I don't think that's worth the
+trouble; it would just complicate the code too much for dubious benefits.
 
 Finally, the following checks can be useful when debugging with asserts (these
 could probably be improved by using an epsilon for the equality checks):
@@ -240,6 +242,7 @@ Well, looks like in the end we *did* inspect some Nim code, after all! :)
 ## Further reading
 
 {: .compact}
+* [Scratchapixel -- Introduction to Shading](http://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-shading)
 * [The ryg blog -- Row major vs. column major, row vectors vs. column vectors](https://fgiesen.wordpress.com/2012/02/12/row-major-vs-column-major-row-vectors-vs-column-vectors/)
 * [Wikipedia -- Row-major order](https://en.wikipedia.org/wiki/Row-major_order)
 
