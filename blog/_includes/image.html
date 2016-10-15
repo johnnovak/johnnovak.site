@@ -10,17 +10,18 @@
 {% endif %}
 
 {% capture extension %}{{ imagePath | split: '.' | last }}{% endcapture %}
+{% capture imgWidthStyle %}style="width: {{ include.width | default: '100%' }}"{% endcapture %}
 
 <figure class="image">
   {% if extension == 'svg' %}
-    <object data="{{ imagePath }}" type="image/svg+xml" style="width: {{ include.width | default: '100%' }}"></object>
+  <object data="{{ imagePath }}" type="image/svg+xml" {{ imgWidthStyle> }}</object>
   {% else %}
     {% if include.nameSmall %}
       <a class="largeimg" href="{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
-        <img src="{{ smallImagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
+        <img src="{{ smallImagePath }}" alt="{{ alt }}" {{ imgWidthStyle> }}>
       </a>
     {% else %}
-      <img src="{{ imagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
+      <img src="{{ imagePath }}" alt="{{ alt }}" {{ imgWidthStyle> }}>
     {% endif %}
   {% endif %}
 

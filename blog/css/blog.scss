@@ -354,16 +354,19 @@ article {
       color: #555;
     }
   }
-  ul {
-    list-style: square;
+  ul, ol {
     margin: 0;
-    padding-left: 2em;
+    padding-left: 2.2em;
     color: #888;
 
     li {
       color: $font-color;
       margin: 1em 0;
+      padding-left: 0.5em;
     }
+  }
+  ul {
+    list-style: square;
   }
   .compact {
     li {
