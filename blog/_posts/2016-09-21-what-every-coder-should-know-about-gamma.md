@@ -464,7 +464,7 @@ Interestingly, Photoshop antialiases text using γ=1.42 by default, and this
 indeed seems to yield the best looking results (middle image). The reason for
 this is that most fonts have been designed for gamma-incorrect font
 rasterizers, hence if you use linear space (correctly), then the fonts will
-look thinner as they should.
+look thinner than they should.
 
 {% include image.html name="antialias.png" caption="Figure 13 &mdash; Effects of gamma-incorrectness on text antialiasing. The left image was rendered with the option 'Blend Text Colors Using Gamma' set to 1.0, the middle one with 1.45, and the right one with 2.2." width="623px" %}
 
