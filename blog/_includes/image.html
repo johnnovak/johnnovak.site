@@ -9,13 +9,19 @@
   {% capture alt %}{{ include.caption }}{% endcapture %}
 {% endif %}
 
+{% capture extension %}{{ imagePath | split: '.' | last }}{% endcapture %}
+
 <figure class="image">
-  {% if include.nameSmall %}
-    <a class="largeimg" href="{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
-      <img src="{{ smallImagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
-    </a>
+  {% if extension == 'svg' %}
+    <object data="{{ imagePath }}" type="image/svg+xml" style="width: {{ include.width | default: '100%' }}"></object>
   {% else %}
+    {% if include.nameSmall %}
+      <a class="largeimg" href="{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
+        <img src="{{ smallImagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
+      </a>
+    {% else %}
       <img src="{{ imagePath }}" alt="{{ alt }}" style="width: {{ include.width | default: '100%' }}">
+    {% endif %}
   {% endif %}
 
   {% if include.caption %}
