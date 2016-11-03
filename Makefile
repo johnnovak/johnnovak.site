@@ -11,9 +11,6 @@ HOME_CSS_LOCATION  = home/css:$(DEST_HOME_DIR)/css
 PHOTO_CSS_LOCATION = photo/css:$(DEST_PHOTO_DIR)/css
 BLOG_CSS_LOCATION  = blog/css:$(DEST_BLOG_DIR)/css
 
-TIDY = /usr/local/bin/tidy5
-TIDY_OPTS = -i -wrap 1000 -utf8
-
 default: all
 all: home photo blog
 
@@ -21,7 +18,7 @@ clean_dir = find $(1) \( ! -regex '.*/\..*' \) ! -path . ! -name CNAME \
 			| xargs rm -rf
 
 html_tidy_dir = -(find $(1) -name "*.html" \
-				  | xargs $(TIDY) $(TIDY_OPTS) -m 2>/dev/null || true)
+				  | xargs tidy -i -wrap 1000 -utf8 -m 2>/dev/null || true)
 
 
 ### HOME ######################################################################
