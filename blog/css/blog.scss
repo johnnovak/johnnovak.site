@@ -104,11 +104,13 @@ tr {
     border-top: 2px solid #ccc !important;
   }
 }
-tr:not(:first-child) {
-  vertical-align: top;
+table:not(.no-border) {
+  tr:not(:first-child) {
+    vertical-align: top;
 
-  th, td {
-    border-top: 1px solid #ccc;
+    th, td {
+      border-top: 1px solid #ccc;
+    }
   }
 }
 th {
@@ -206,6 +208,24 @@ hr {
   margin-top: 40px;
   border: 1px solid #aaa;
   border-width: 1px 0 0 0;
+}
+
+kbd {
+  display: inline-block;
+  margin: 0 1px;
+  padding: 1px 6px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: $bold;
+  line-height: 1.4;
+  color: #444;
+  -moz-border-radius: 4px;
+  -moz-box-shadow: 0 1px 0 rgba(0,0,0, 0.4);
+  -webkit-border-radius: 4px;
+  -webkit-box-shadow: 0 1px 0 rgba(0,0,0, 0.4);
+  border: 1px solid rgba(0,0,0, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0,0,0, 0.4);
 }
 
 #jn-logo {

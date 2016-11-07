@@ -212,8 +212,8 @@ OS graphics library level in a perfectly satisfactory way. I just want to call
 
 Alright, so OpenGL---and thus NanoVG---is not the way to go because of this
 whole text rendering fiasco...  At this point, the progress of my adventures
-in the wonderful realm of cross-platform graphical user interfaces could have
-been be visualised pretty much spot on as follows:
+in the wonderful realm of cross-platform graphical user interfaces could be
+visualised pretty much spot on as follows:
 
 {% include image.html name="fail.jpg" caption="FAIL" captionAlign="center" width="auto" alt="FAIL" %}
 
