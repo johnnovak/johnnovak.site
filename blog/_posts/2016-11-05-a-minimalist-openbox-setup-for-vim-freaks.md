@@ -99,34 +99,31 @@ excellent [Vim Tmux
 Navigator](https://github.com/christoomey/vim-tmux-navigator). We'll just use
 the default settings, which is Ctrl+hjkl to move between windows.
 
-A side effect of this setup is that we won't be able to Ctrl+L to clear the
-terminal anymore. There's an easy workaround for that, we'll remap Ctrl+L to
-Prefix + Ctrl+L in the tmux config:
+A side effect of this setup is that we won't be able to <kbd>Ctrl</kbd>+<kbd>L</kbd> to clear the
+terminal anymore. There's an easy workaround for that, we'll remap <kbd>Ctrl</kbd>+<kbd>L</kbd> to
+<kbd>&lt;Prefix&gt;</kbd>+<kbd>Ctrl</kbd>+<kbd>L</kbd> in the tmux config:
 
-```
-bind C-l send-keys "C-l"
-```
+    bind C-l send-keys "C-l"
 
 <table class="no-border">
   <tr>
-    <td class="shortcut"><kbd>Ctrl</kbd>+<kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd></td>
+    <td class="shortcut"><kbd>Ctrl</kbd>+<kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd></td>
     <td>Move between Vim splits & tmux panels</td>
   </tr>
   <tr>
-    <td class="shortcut"><kbd>R Alt</kbd>+<kbd>j</kbd><kbd>k</kbd><kbd>l</kbd><kbd>;</kbd></td>
+    <td class="shortcut"><kbd>R Alt</kbd>+<kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd></td>
     <td>Switch to desktop 1 to 4</td>
   </tr>
   <tr>
-    <td class="shortcut"><kbd>L Alt</kbd>+<kbd>R Alt</kbd>+<kbd>j</kbd><kbd>k</kbd><kbd>l</kbd><kbd>;</kbd></td>
+    <td class="shortcut"><kbd>L Alt</kbd>+<kbd>R Alt</kbd>+<kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd></td>
     <td>Send window to desktop 1 to 4</td>
   </tr>
   <tr>
-    <td class="shortcut"><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>;</kbd></td>
+    <td class="shortcut"><kbd>Win</kbd>+<kbd>Shift</kbd>+<kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>;</kbd></td>
     <td>Half-screen tile window</td>
   </tr>
 </table>
 
-```
 ADD:
 xmodmap ~/.Xmodmap &
 
@@ -135,13 +132,7 @@ xmodmap ~/.Xmodmap &
     left ctrl 66
     right alt 108
 
-&lt;desktop&gt;  = j k l ;
-
-&lt;movement&gt; = h j k l
-```
-
 openbox/rc.xml
-
 http://openbox.org/wiki/Help:Bindings#Key_bindings
 
 CHANGE:
@@ -170,53 +161,88 @@ ADD:
 
 ### Clipboard support
 
-Getting the Linux shared system clipboard to work correctly across different
-apps (especially command line ones) can undoubtedly be a hair loss inducing
-experience. One of the sources
-of confusion is that we are usually dealing with two clipboards, not just one
-like on Windows or OS X. There's the normal clipboard we use with
-<kbd>Ctrl</kbd>+<kbd>x</kbd><kbd>c</kbd><kbd>v</kbd> in GTK apps (officially
+Getting the shared system clipboard (X11 selections) to work consistently
+across different GUI and command line apps on Linux can undoubtedly be a hair
+loss-inducing experience. One of the sources of confusion is that we are
+usually dealing with two clipboards in X11, not just one like on Windows or OS
+X. First, there's the normal clipboard most well-behaved GUI apps use for
+the <kbd>Ctrl</kbd>+<kbd>X</kbd><kbd>C</kbd><kbd>V</kbd> operations (officially
 referred to as the **clipboard selection**), and then there's the
-select-with-mouse-and-paste-with-middle-mouse-click variant (the **primary
-selection**).
+select-with-mouse-and-paste-with-middle-click variant (the **primary
+selection**). (There's a third one called **secondary selection** too, but
+no one ever uses that for anything, as far as I'm aware. One less thing to
+worry about!)
 
-Both of these methods work fine among GTK apps that use the system clipboards
-exclusively. The problem starts when we want console apps like tmux and vim
-that have their own internal buffers to interoperate with the system
-clipboards 
+Most GUI apps handle the clipboard and primary selections just as expected
+(the GTK apps included with Crunchbang certainly do). The problems start when
+we want certain console apps---like tmux and vim---that have their own
+internal buffers, to interoperate with X11 selections, so we can copy/paste
+text from them into GUI apps, and vice versa. This is also needed for
+clipboard interoperability with the guest OS; with bidirectional clipboard
+support enabled in VirtualBox, the Windows clipboard operations will use the
+X11 clipboard selection just like Linux GUI apps do (but note that the primary
+selection is not supported, so no middle-click copy/paste between the host
+and the guest).
 
-Teaching vim how to do this is the easier, so we'll start with that.
+My general idea is to use the
+<kbd>Ctrl</kbd>+<kbd>X</kbd><kbd>C</kbd><kbd>V</kbd> shortcuts in tmux and vim
+to interact with the clipboard selection, while retaining the ability to use
+their internal buffers with their native clipboard commands. Let's see how can
+we achieve that!
 
-```
-let g:use_system_clipboard = 1
+#### Vim
 
-vnoremap <C-x> "+x
-vnoremap <C-c> "+y
-noremap  <C-v> "+gP
-inoremap <C-v> <C-r>+
+Teaching vim how to do this is quite simple, we'll define the following
+mappings in our `.vimrc`:
 
-" remap block mode from Ctrl-v to Ctrl-q
-noremap <C-q> <C-v>
-```
+    vnoremap <C-x> "+x
+    vnoremap <C-c> "+y
+    noremap  <C-v> "+gP
+    inoremap <C-v> <C-r>+
+
+However, we now have just overridden the default <kbd>Ctrl</kbd>+<kbd>V</kbd>
+block selection shortcut. Let's remap it to <kbd>Ctrl</kbd>+<kbd>Q</kbd>
+instead (which is the behaviour of gVim on Windows, by the way ):
+
+    noremap <C-q> <C-v>
+
+This is almost good, but sadly it turns out that <kbd>Ctrl</kbd>+<kbd>Q</kbd> and
+<kbd>Ctrl</kbd>+<kbd>S</kbd> are reserved for an ancient terminal feature
+called [flow control](https://en.wikipedia.org/wiki/Software_flow_control). We
+definitely don't need that, so let's reclaim them and put them to a better
+use:
+
+    # reclaim Ctrl-S
+    stty stop undef
+
+    # reclaim Ctrl-Q
+    stty start undef
+
+Middle-click pasting from GUI apps into Vim works perfectly fine both in command
+and insert mode, so we're done.
+
+#### tmux
+
+The situation gets quite a bit trickier in the case of tmux.
 
 The clipboard manager Clipit included with Crunchbang has a command line interface to
 interact with the system clipboard, however I never could get it to work (and
 neither could others, according to the old Cruncbang forums).
 
-Ctrl
+    bind -t vi-copy "C-v" copy-pipe "xclip -selection clipboard"
 
-**vim**
+a
 
-<table class="no-border">
-  <tr>
-    <td class="shortcut"><kbd>Ctrl</kbd>+<kbd>x</kbd></td>
-    <td>Cut to system clipboard</td>
-  </tr>
-  <tr>
-    <td class="shortcut"><kbd>Ctrl</kbd>+<kbd>v</kbd></td>
-    <td>Paste from system clipboard</td>
-  </tr>
-</table>
+    bind -n C-v if-shell "\$is_vim" "send-keys C-v" "run-shell \
+        \"tmux set-buffer \\\"\$(xclip -o -selection clipboard)\\\"; \
+        tmux paste-buffer\""
+
+
+{: .no-math}
+    is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+        | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+
+Obvious what it's doing, isn't it? I thought so.
 
 ### Mouse support
 
@@ -280,9 +306,7 @@ the change will only take effect on the next login.
 It is also recommended to set `x-terminal-emulator` to zsh because the
 built-in OpenBox menus use it:
 
-```
-% sudo update-alternatives --config x-terminal-emulator
-```
+    % sudo update-alternatives --config x-terminal-emulator
 
 ### Install VirtualBox Guest Additions
 
@@ -292,9 +316,7 @@ the screen updates snappier and it will fix the default jerky mouse pointer
 behaviour, which is quite horrible. But before we could proceed, the kernel
 headers must be installed first:
 
-```
-% sudo apt-get install linux-headers-$(uname -r)
-```
+    % sudo apt-get install linux-headers-$(uname -r)
 
 After this, select *Insert Guest Additions CD image...* in the *Devices* menu
 in VirtualBox. You might need to create a virtual optical drive first in the
@@ -304,10 +326,8 @@ when the VM is shut down, otherwise the *Add optical drive* button on the
 
 Now we can install the additions:
 
-```
-% cd /media/cdrom
-% sudo sh ./VBoxLinuxAdditions.run
-```
+    % cd /media/cdrom
+    % sudo sh ./VBoxLinuxAdditions.run
 
 Don't forget to set *Shared Clipboard* and *Drag'n'Drop* to *Bidirectional*
 under *General / Advanced* in the VM settings. Enter fullscreen mode (Right
@@ -332,11 +352,9 @@ setup. It turned out that the startup script tried to enable OpenGL vsync by
 default and that was causing the issues, so we'll just disable that by
 commenting lines 18-20 out in `/usr/bin/cbpp-compositor`:
 
-```
-#if glxinfo | egrep -iq 'direct rendering: yes'; then
-#    EXECXCOMP+=' --vsync opengl'
-#fi
-```
+    #if glxinfo | egrep -iq 'direct rendering: yes'; then
+    #    EXECXCOMP+=' --vsync opengl'
+    #fi
 
 Restart Compton by selecting *Settings / Compositor / Restart Compositing* in
 the OpenBox right-click menu and take a moment to marvel at the tasteful drop
@@ -344,13 +362,11 @@ shadows around your window edges!
 
 ### Disable the screensaver
 
-```
-openbox/autostart
-    COMMENT OUT:
-    xscreensaver -no-splash &
+    openbox/autostart
+        COMMENT OUT:
+        xscreensaver -no-splash &
 
-sudo apt-get remove xscreensaver
-```
+    sudo apt-get remove xscreensaver
 
 
 ### Enable autologin
@@ -358,11 +374,9 @@ sudo apt-get remove xscreensaver
 If you're the sole user of this VM, you'll probably want to enable autologin.
 Edit `/etc/slim.conf` and change the following three parameters:
 
-```
-login_cmd       exec /bin/bash -login /etc/X11/Xsession %session
-auto_login      yes
-default_user    YOUR_USERNAME
-```
+    login_cmd       exec /bin/bash -login /etc/X11/Xsession %session
+    auto_login      yes
+    default_user    YOUR_USERNAME
 
 ### Installing Powerline fonts
 
@@ -371,14 +385,12 @@ Some people maintain that one can live a full and prosperous life without
 is utter bollocks. Those in the know will surely follow my wise advice and
 issue the following sequence of commands:
 
-```
-% cd /tmp
-% wget https://github.com/powerline/fonts/archive/2015-12-04.zip
-% unzip 2015-12-04.zip
-% mkdir ~/.fonts/
-% cp Literation\ Mono\ Powerline.ttf Liberation\ Mono\ Powerline.ttf ~/.fonts/
-% fc-cache -vf ~/.fonts/
-```
+    % cd /tmp
+    % wget https://github.com/powerline/fonts/archive/2015-12-04.zip
+    % unzip 2015-12-04.zip
+    % mkdir ~/.fonts/
+    % cp Literation\ Mono\ Powerline.ttf Liberation\ Mono\ Powerline.ttf ~/.fonts/
+    % fc-cache -vf ~/.fonts/
 
 ### Setting the *right* wallpaper
 
