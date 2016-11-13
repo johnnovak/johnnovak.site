@@ -100,6 +100,7 @@ table {
   width: 100%;
 }
 tr {
+  vertical-align: top;
   &.sep td {
     border-top: 2px solid #ccc !important;
   }
@@ -150,7 +151,7 @@ dt {
   margin-bottom: 0.5em;
 }
 dd {
-  margin-bottom: 1em;
+  margin: 0 0 1em 2em;
 }
 
 blockquote {
@@ -213,16 +214,12 @@ hr {
 kbd {
   display: inline-block;
   margin: 0 1px;
-  padding: 1px 6px;
-  font-family: 'Open Sans', Arial, sans-serif;
+  padding: 0px 5px;
+  font-family: $monospace;
   font-size: 12px;
-  font-weight: $bold;
-  line-height: 1.4;
+  font-weight: $normal;
+  line-height: 1.3;
   color: #444;
-  -moz-border-radius: 4px;
-  -moz-box-shadow: 0 1px 0 rgba(0,0,0, 0.4);
-  -webkit-border-radius: 4px;
-  -webkit-box-shadow: 0 1px 0 rgba(0,0,0, 0.4);
   border: 1px solid rgba(0,0,0, 0.4);
   border-radius: 4px;
   box-shadow: 0 1px 0 rgba(0,0,0, 0.4);
@@ -419,7 +416,7 @@ article {
   }
   pre {
     margin: 0;
-    padding: 0.5em 0;
+    padding: 0.5em 0 0.5em 14px;
     background: #eee;
     font: 14px $monospace;
     line-height: 18px;
@@ -463,7 +460,6 @@ article {
   list-style: none;
   margin: 0 0 20px 0;
   padding: 0;
-  color: $accent-color;
 
   ul {
     margin: 0;
@@ -473,6 +469,7 @@ article {
   li {
     line-height: 26px;
     margin: 0 2px 0 0 !important;
+    padding: 0 !important;
 
     .tag-name {
       display: inline-block;
@@ -550,9 +547,18 @@ article {
     width: 56%;
   }
 
+  dd {
+    margin-left: 2.5em;
+  }
+
   blockquote {
     margin-top: 2em;
     padding-left: 20px;
+  }
+
+  kbd {
+    font-size: 13px;
+    line-height: 1.4;
   }
 
   #jn-logo {
@@ -656,6 +662,7 @@ article {
     }
     pre {
       margin: 1.6em 0;
+      padding-left: 16px;
       font-size: 15px;
       line-height: 20px;
       code {
@@ -732,12 +739,21 @@ article {
     width: 42%;
   }
 
+  dd {
+    margin-left: 3em;
+  }
+
   #wrapper {
     position: relative;
     left: -6%;
     padding-left: 75px;
     width: 660px;
     margin: 0 auto 40px auto;
+  }
+
+  kbd {
+    padding: 0px 6px;
+    font-size: 14px;
   }
 
   #jn-logo {
