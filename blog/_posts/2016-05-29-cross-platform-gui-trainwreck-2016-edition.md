@@ -11,8 +11,13 @@ part, given my current not-quite-positive emotional involvement with the
 topic. Gentlemen (and gentlewomen), please fasten your seatbelts!
 
 {: .intro}
-(UPDATE: It turned out to be a quite informative mega-post in the end, just
+(UPDATE #1: It turned out to be a quite informative mega-post in the end, just
 don't give up reading after the first section...)
+
+{: .intro}
+(UPDATE #2: There's some very interesting alternative UI framework
+recommendations in the comments that I haven't discussed
+in the article, so you might want to check those out as well...)
 
 ## Buttons and pixels
 
@@ -239,8 +244,9 @@ Plugins|30 MiB
 Total install size|68 MiB
 
 [REAPER](http://www.reaper.fm/) is a highly advanced cross-platform digital
-audio production workstation (DAW) for Windows and Mac OS X developed by the
-same guy who wrote the original WinAmp. REAPER is written in C++ and it uses
+audio production workstation (DAW) for Windows and Mac OS X originally
+developed by [Justin Frankel](https://en.wikipedia.org/wiki/Justin_Frankel),
+the guy who wrote the original WinAmp. REAPER is written in C++ and it uses
 the open-source [WDL](http://www.cockos.com/wdl/) library (from the same
 developer) for cross-platform graphics, audio and UI tasks.
 
@@ -257,6 +263,24 @@ bar and all dialog windows (e.g. file dialogs, preferences) are OS-native too.
 It is evident that REAPER's strategy in terms of the UI is to use as much OS
 provided functionality as possible and resort to custom code only when
 necessary.
+
+**Update 2017-03-17:** Justin, the man himself has enlightened me in the
+comments below that the situation is a bit more complicated than what
+I thought (quoted verbatim):
+
+> It's worth noting that REAPER actually uses SWELL (which is a part of WDL)
+> for cross-platform compatibility... SWELL allows you to write minimal win32
+> code and target Cocoa or GDK... you can do all native controls, GDI
+> rendering, software bitmap rendering, or any combination of the above...
+
+Neat, looks like I wasn't too far off the mark. Then he adds:
+
+>  It takes a special sort of soul to willingly program UIs using a minimal
+>  subset of win32, so I wouldn't go recommending it... but for those people
+>  writing win32 applications, SWELL might be handy.
+
+I certainly don't disagree with that! (so, in short, no thanks...)
+
 
 {% include image.html name="reaper.png" nameSmall="reaper-small.jpg" caption="This is REAPER 5 in fullscreen mode, featuring the <a href=\"http://stash.reaper.fm/theme/1792/Funktion%201.0\">Funktion 1.0</a> skin (designed by <em>yours truly</em>). Note the standard Windows menu bar on top." width="100%" alt="REAPER 5 screenshot showing the Funktion 1.0 skin" %}
 
