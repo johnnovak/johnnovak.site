@@ -98,6 +98,12 @@ table {
   font-size: 13px;
   line-height: 1.45em;
   width: 100%;
+
+  &.nopadleft {
+    td, th {
+      padding-left: 0;
+    }
+  }
 }
 tr {
   vertical-align: top;
@@ -115,18 +121,18 @@ table:not(.no-border) {
   }
 }
 th {
+  padding: 8px 0.9em 6px 0.9em;
   font-weight: $xbold;
-  color: #666;
   text-align: left;
+  color: #666;
   background: #f2f2f2;
-  padding: 8px 0.9em 6px 0;
 }
 td {
   &.h {
     font-weight: $xbold;
     color: #666;
   }
-  padding: 6px 0.9em 6px 0;
+  padding: 6px 0.9em 6px 0.9em;
 }
 
 table.properties {

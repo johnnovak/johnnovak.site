@@ -598,7 +598,7 @@ cetera---you get the picture.
 So let's see (Java and web technologies are disqualified on purpose for
 I really think they have no place on the desktop):
 
-<table>
+<table class="nopadleft">
   <tr>
     <th style="width: 19%"></th>
     <th style="width: 27%">Software renderer</th>
