@@ -107,10 +107,11 @@ Clang 7.3.0 and Nim 0.16.1 (built from the develop branch).
 The "gold standard" for our daring enterprise will be the performance of the
 single-threaded [orthodox
 C++](https://gist.github.com/bkaradzic/2e39896bc7d8c34e042b) implementation.
-You can check out the source code [here](). As we can see in the results
-below, our testing method gives us a roughly 5% hit rate. The exact hit rate
-does not actually matter as long as it's not too close to zero and if
-it hovers around the same value in all tests.
+You can check out the source code
+[here](https://github.com/johnnovak/raytriangle-test/blob/master/cpp/perftest.cpp).
+As we can see in the results below, our testing method gives us a roughly 5%
+hit rate. The exact hit rate does not actually matter as long as it's not too
+close to zero and if it hovers around the same value in all tests.
 
     Total intersection tests:  100,000,000
       Hits:                      4,994,583 ( 4.99%)
@@ -124,6 +125,28 @@ too bad for a straightforward C implementation! It turns out that Nim can
 easily match that, but you have to know exactly what you're doing to get
 there, as I'll show below.
 
+#### Memory layout
+
+One very important thing to note is how the triangle data is laid out in
+memory. For every ray we're mowing through all the triangles in a linear
+fashion, checking for intersections, so we must store the triangles
+contiguously in a big chunk of memory to best utilise the CPU data caches:
+
+{% highlight cpp %}
+struct Vec3
+{
+  float x;
+  float y;
+  float z;
+};
+
+Vec3 *allocTriangles(int numTriangles)
+{
+  return (Vec3 *) malloc(sizeof(Vec3) * numTriangles * 3);
+}
+{% endhighlight %}
+
+
 #### Inspecting the assembly output
 
 Before progressing any further, let's take a quick look at a typical number
@@ -132,15 +155,15 @@ source into the final executable:
 
     clang -std=c++11 -lm -O3 -o perftest perftest.cpp
 
-The command to emit the corresponding assembly output:
+And the command to emit the corresponding assembly output:
 
     clang -S -std=c++11 -O3 -o perftest.s perftest.cpp
 
 Now we can do a full text search in the resulting `.s` file for the function
 we want to inspect (`rayTriangleIntersect` in our case). As I said, we don't
 really need to understand assembly on a deep level for our purposes; it's
-enough to know that a healthy-looking function should resemble something like
-this:
+enough to know that a healthy-looking number crunching function should
+resemble something like this:
 
 {% highlight asm %}
     .globl  __Z20rayTriangleIntersectP3RayP4Vec3S2_S2_
@@ -189,21 +212,21 @@ LBB5_9:
 {% endhighlight %}
 
 The init and cleanup stuff we're not really interested about, but the fact
-that they are there is actually a good sign that the compiler did not optimise
-away the whole function. The function body for numerical calculations
-involving floating point numbers will be
-basically lots of mucking around with the SSE registers (XMM1 to XMM15)
+that they are there is actually a good sign; this means that the compiler has
+not optimised away the whole function. The function body for numerical
+calculations involving floating point numbers will be basically lots of
+mucking around with the SSE registers[^sse] (XMM1 to XMM15). For those who
+have never seen assembly listings before, `movaps` moves values between
+registers, `mulss` multiplies two registers, `addss` adds them and so on. Even
+for a relatively short function like ours, the function body will go on for
+pages.  This is good, this is what we wanted---it looks like we have the real
+function here, not just a constant folded version of it.
 
-`movaps` moves values between registers, `mulss` multiplies two registers,
-`addss` adds them and so on.
-
-
-[^sse]
-You'll usually soo lots of mucking around in the
-SSE registers (XMM1 to XMM15). 
+For those wanting to delve further into the dark art of assembly programming,
+make sure to check out the two excellent articles in the further reading
+section.
 
 [^sse]: The [SSE2](https://en.wikipedia.org/wiki/SSE2) instruction set was introduced in 2001 with the [Pentium 4](https://en.wikipedia.org/wiki/Pentium_4), so virtually every x86 family processor supports it today.  Note that this is 64-bit code, which you can easily spot because registers XMM8 through XMM15 are only available for 64-bit.
-
 
 
 ### 1. Nim --- using GLM
@@ -211,8 +234,10 @@ SSE registers (XMM1 to XMM15).
 I started out with [nim-glm](https://github.com/stavenko/nim-glm) in my ray
 tracer, which is more or less a port of the
 [GLM](https://github.com/g-truc/glm)  OpenGL mathematics library. The
-[original version]() of the code used nim-glm's `Vec3[float32]` type and its
-associated methods for vector operations.
+[original
+version](https://github.com/johnnovak/raytriangle-test/blob/master/nim/perftest1.nim)
+of the code used nim-glm's `Vec3[float32]` type and its associated methods for
+vector operations.
 
 To my greatest shock, the performance of my initial Nim code was quite
 abysmal:
@@ -230,16 +255,28 @@ culprit: the vector component getter and setter methods were not inlined by
 the compiler. After a few strategically placed [inline
 pragmas](https://github.com/stavenko/nim-glm/commit/aebc0ee68f6d3ed5ccc4fcc89dd81716af708c6e)
 the situation got much better, but at this point I decided to give up on
-nim-glm and write my own vector routines. The thing is, nim-glm is a fine
-*general purpose* vector maths library, but when it's time to get into serious
-performance optimisation mode, you want complete control over the codebase,
-and using an external component that heavily uses macros is just asking for
-pain.
+nim-glm altogether and write my own vector routines. The thing is, nim-glm is
+a fine *general purpose* vector maths library, but when it's time to get into
+serious performance optimisggation mode, you want complete control over the
+codebase, and using an external component that heavily uses macros is just
+asking for pain.
 
 
 ### 2. Nim --- custom vector class (object refs)
 
-TODO
+Okay, so using [my own vector maths
+code](https://github.com/johnnovak/raytriangle-test/blob/master/nim/perftest2.nim#L3-L32)
+resulted in some improvement, but not by much:
+
+    Total intersection tests:  100,000,000
+      Hits:                      5,718,606 ( 5.72%)
+      Misses:                   94,281,394 (94.28%)
+
+    Total time:                      11.41 seconds
+    Millions of tests per second:     8.76
+
+What went wrong here? It turns out that for some reason I used object
+references instead of plain objects for my `Vec3` and `Ray` types:
 
 {% highlight nimrod %}
 type Vec3 = ref object
@@ -249,15 +286,9 @@ type Ray = ref object
   dir, orig: Vec3
 {% endhighlight %}
 
-TODO
-
-    Total intersection tests:  100,000,000
-      Hits:                      5,718,606 ( 5.72%)
-      Misses:                   94,281,394 (94.28%)
-
-    Total time:                      11.41 seconds
-    Millions of tests per second:     8.76
-
+Inspecting the corresponding C code in the `nimcache` directory makes the
+problem blatantly obvious (I cleaned up the generated symbol names a bit for
+clarity):
 
 {% highlight c %}
 struct Vec3ObjectType {
@@ -279,35 +310,17 @@ struct SeqVec3Type {
 SeqVec3Type* vertices;
 {% endhighlight %}
 
+So instead of having a contiguous block of triangle data, we ended up with
+a contiguous block of *pointers* to each of the points making up the
+triangles. This has disastrous performance implications: all the points are
+randomly scattered around in memory so we'll get abysmal cache utilisation as
+we can see it from the results.
+
 ### 3. Nim --- custom vector class (objects)
 
-TODO
-
-{% highlight cpp %}
-struct Vec3
-{
-  float x;
-  float y;
-  float z;
-};
-
-struct Ray
-{
-  Vec3 orig;
-  Vec3 dir;
-};
-{% endhighlight %}
-
-one big contiguous memory block
-
-{% highlight cpp %}
-Vec3 *allocTriangles(int numTriangles)
-{
-  return (Vec3 *) malloc(sizeof(Vec3) * numTriangles * 3);
-}
-{% endhighlight %}
-
-TODO
+Fortunately, [the
+fix](https://github.com/johnnovak/raytriangle-test/blob/master/nim/perftest3.nim#L3-L7)
+is very simple; we only need to remove the `ref` keywords:
 
 {% highlight nimrod %}
 type Vec3* = object
@@ -317,7 +330,8 @@ type Ray* = object
   dir*, orig*: Vec3
 {% endhighlight %}
 
-TODO
+This will make the resulting type definitions be in line with our original C++
+code:
 
 {% highlight c %}
 struct RayObjectType {
@@ -331,7 +345,7 @@ struct SeqVec3Type {
 };
 {% endhighlight %}
 
-TODO
+And the moment of truth:
 
     Total intersection tests:  100,000,000
       Hits:                      5,206,370 ( 5.21%)
@@ -340,11 +354,16 @@ TODO
     Total time:                       1.96 seconds
     Millions of tests per second:    50.93
 
-Awww yeah!
+Awww yeah! This is basically the same performance we had with the C++ version.
+Comparing the assembly outputs of the Nim and C++ versions (exercise to the
+reader) reveals that they are basically the same, which is no great suprise as
+ultimately we're using the same compiler to generate the binaries.
 
 ### 4. Nim --- vector module
 
-TODO
+Alright, so time to extract the vector maths stuff into its [own
+module](https://github.com/johnnovak/raytriangle-test/blob/master/nim/vector.nim).
+Pretty trivial task, right? Let's run the tests again:
 
     Total intersection tests:  100,000,000
       Hits:                      5,237,698 ( 5.24%)
@@ -355,14 +374,30 @@ TODO
 
 Shit, what went wrong here?
 
+To understand this, we'll need to understand first how the Nim compiler works.
+First Nim generates a single C file for every module in the project, then from
+that point everything gets compiled and linked as if it were a regular
+C codebase (which technically it is): C files get compiled into objects files
+which then get linked together into the final binary. Most compilers do not
+support link time optimisations, at least not by default, and even of they do,
+Nim doesn't make use of such features yet (by the way, this is the reason why
+inlined functions should be placed in the header files in C++). So if we want
+to inline functions across module boundaries, we need to explicitly tell the
+Nim compiler about so it can "manually" inline them into the resulting
+C files.
+
 ### 5. Nim --- vector module (with inlines)
+
+Fixing this is very easy; we'll just need to [decorate every
+method](https://github.com/johnnovak/raytriangle-test/blob/master/nim/vectorfast.nim)
+in our module with `{.inline.}` pragmas. For example:
 
 {% highlight nimrod %}
 proc `-`*(a, b: Vec3): Vec3 {.inline.} =
   result = vec3(a.x - b.x, a.y - b.y, a.z - b.z)
 {% endhighlight %}
 
-TODO
+And we're done, the performance of version 3 has been restored:
 
     Total intersection tests:  100,000,000
       Hits:                      4,640,926 ( 4.64%)
@@ -374,61 +409,77 @@ TODO
 
 ## Round 2 --- Nim vs Java, JavaScript & Python
 
-TODO
+At this point I got really curious about how some other languages I use
+regularly would stack up against our current benchmarks kings (look, there's
+even a crown in the [Nim logo](https://nim-lang.org/), surely that can't be
+just a coincidence!). I didn't try to do any nasty tricks to increase
+performance in any of these tests (e.g. using simple arrays of primitives
+instead of objects in Java); I just did a straightforward idiomatic port in
+each case (you can check out the code [in the
+repo](https://github.com/johnnovak/raytriangle-test)). Here's the final
+results:
 
-<table style="width: 60%">
+<table style="width: 80%">
   <tr>
     <th>Language</th>
     <th style="text-align: center">Mtests/s</th>
     <th style="text-align: center">Rel. performance</th>
+    <th style="text-align: center">Total time (s)</th>
   </tr>
-  <tr>
+  <tr style="font-weight: bold">
     <td>C++</td>
     <td style="text-align: center">51.9</td>
     <td style="text-align: center">1.00x</td>
+    <td style="text-align: center">1.93</td>
   </tr>
-  <tr>
+  <tr style="font-weight: bold">
     <td>Nim</td>
     <td style="text-align: center">51.1</td>
     <td style="text-align: center">0.98x</td>
+    <td style="text-align: center">1.96</td>
   </tr>
   <tr>
     <td>Java</td>
     <td style="text-align: center">31.3</td>
     <td style="text-align: center">0.60x</td>
+    <td style="text-align: center">3.20</td>
   </tr>
   <tr>
     <td>JavaScript</td>
     <td style="text-align: center">29.2</td>
     <td style="text-align: center">0.56x</td>
+    <td style="text-align: center">3.43</td>
   </tr>
   <tr>
     <td>PyPy</td>
-    <td style="text-align: center">10.7</td>
-    <td style="text-align: center">0.21x</td>
+    <td style="text-align: center">10.5</td>
+    <td style="text-align: center">0.20x</td>
+    <td style="text-align: center">9.51</td>
   </tr>
   <tr>
     <td>CPython2</td>
-    <td style="text-align: center">0.21</td>
+    <td style="text-align: center">0.20</td>
     <td style="text-align: center">0.004x</td>
+    <td style="text-align: center">508.68</td>
   </tr>
   <tr>
     <td>CPython3</td>
     <td style="text-align: center">0.15</td>
     <td style="text-align: center">0.003x</td>
+    <td style="text-align: center">673.66</td>
   </tr>
 </table>
 
-The following language versions were used:
+The following compiler/runtime versions were used for the tests:
 
 <table style="width: 50%">
   <tr>
-    <th style="width: 50%">Language</th>
-    <th style="width: 50%">Version</th>
+    <th style="width: 40%">Language</th>
+    <th style="width: 60%">Version</th>
   </tr>
   <tr>
-    <td>Clang</td>
-    <td>7.3.0</td>
+    <td>C++</td>
+    <td>Apple LLVM 7.3.0</td>
   </tr>
   <tr>
     <td>Nim</td>
@@ -436,7 +487,7 @@ The following language versions were used:
   </tr>
   <tr>
     <td>Java</td>
-    <td>1.8.0_112-b16</td>
+    <td>Oracle JVM 1.8.0_112-b16</td>
   </tr>
   <tr>
     <td>NodeJS</td>
@@ -455,6 +506,16 @@ The following language versions were used:
     <td>2.7.13</td>
   </tr>
 </table>
+
+I'm quite disappointed with the Java results, only 60% of the performance of
+C++/Nim. JavaScript, on the other hand, did surprise me a lot; it's basically
+on par with the performance of Java---I expected much less numerical
+performance from JavaScript. Taking into consideration that JavaScript has
+only doubles while in Java I was able able to switch to floats for a slight
+performance bump makes this result even more impressive.
+
+The Python results are, however, quite depressing.
+
 
 
 ### Java
