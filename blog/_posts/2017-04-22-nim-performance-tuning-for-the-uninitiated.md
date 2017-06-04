@@ -4,6 +4,11 @@ title:  "Nim performance tuning for the uninitiated"
 tags: [coding, Nim, C++, performance]
 ---
 
+{: .intro}
+UPDATE 2017-06-04: Corrected some slight misinformation regarding
+link time optimisations and the {.inline.} pragma, some stylistic
+improvements, added more references.
+
 ## Overview
 
 This post documents the trials and tribulations I encountered during my foray
@@ -391,17 +396,20 @@ To figure this out, we'll need to understand how the Nim compiler works.
 First Nim generates a single C file for every module in the project, then from
 that point everything gets compiled and linked as if it were a regular
 C codebase (which technically it is): C files get compiled into objects files
-which then get linked together into the final binary. Many compilers do not
-support link time optimisations, at least not by default, and even if they do,
-Nim doesn't make use of such features yet (by the way, this is the reason why
-inlined functions should be placed inside header files in C++). So if we want
-to inline functions across module boundaries, we need to explicitly tell the
-Nim compiler about so it can "manually" inline them into the generated
-C files.
+which then get linked together into the final binary. Inlining functions
+across objects files at link time is generally not performed by default by
+most compilers, and although gcc and clang can be instructed to do link time
+optimisations (LTO) by specifying the `-flto` flag, Nim doesn't use this flag
+by default. Therefore, if we want to inline functions across module boundaries
+in a robust way---even when LTO is turned off---we need to explicitly tell the
+Nim compiler about it with the `{.inline.}` pragma. This pragma will force the
+inlining of the functions decorated with it into all generated C files where
+the functions are referenced on the Nim compiler (preprocessor) level.
 
 ### 5. Nim --- vector module (with inlines)
 
-Fixing this is very easy; we'll just need to [decorate every
+Fixing this is very easy; as explained above, we'll just need to [decorate
+every
 method](https://github.com/johnnovak/raytriangle-test/blob/master/nim/vectorfast.nim)
 in our module with `{.inline.}` pragmas. For example:
 
@@ -503,12 +511,12 @@ I was quite disappointed with the Java results at only 60% of the performance
 of C++/Nim. JavaScript, on the other hand, did surprise me a lot; it's
 basically on par with the performance of Java. I expected much less numerical
 performance from JavaScript! Taking into consideration that JavaScript has
-only doubles while in Java I was able able to switch to floats for a slight
+only doubles while in Java I was able to switch to floats for a slight
 performance bump makes this result even more impressive. Another surprise was
 that running the tests as standalone programs with NodeJS or in a browser
-(Chrome and Firefox was tested) yielded basically the same results. (Of course,
-all this doesn't make JavaScript suddenly a good language, but it's good to
-know that at least it's not horribly slow!)
+(Chrome and Firefox was tested) yielded basically the same results. (Of
+course, all this doesn't make JavaScript suddenly a good language, but it's
+good to know that at least it's not horribly slow!)
 
 The CPython figures are, however, rather pathetic. I like Python a lot, it's
 one of my favourite languages, but it's clearly in no way suited to numerical
@@ -711,22 +719,24 @@ figures would look like this:
 
 This is actually more in-line with real-life experience; a well-optimised C++
 renderer can easily outperform a similarly well-optimised Java implementation
-by a factor of 2 to 3, and JavaScript and Python basically don't have
+by a factor of 2 to 3, and JavaScript and Python basically don't even have
 a chance. As I said, this is not a Python bashing contest, I really like the
 language and use it all the time for writing scripts and small tools, but one
 needs to have a solid understanding of the limitations of one's tools and
 sometime do a reality check... I always find it amusing when people attempt to
 "defend" their favourite inefficient high-level languages by saying that
 algorithmic optimisations are the most important. Well, of course, no sane
-person would ague with that! But if you took the same optimal algorithm and
+person would agrue with that! But if you took the same optimal algorithm and
 implemented it in a language that offered greater low-level control over the
-hardware (well, or had multi-threading and SIMD support *at all*!), the
-performance gain factor could easily be in the 3 to 1000 range!
+hardware (well, or had multi-threading and SIMD support *at all!*), it is not
+unrealistic at all for the performance gain factor to be in the 2 to 1000
+range!
 
 As for myself, I will happily continue using Nim, safe in the knowledge that
 I won't hit an insurmountable brick wall in the future, because whatever is
-possible in C, there's a way to do it in Nim too, and with careful coding the
-performance of both languages can be virtually identical.
+possible in C in terms of performance, there's a way to replicate that in Nim
+too, and with careful coding the runtime efficiency of both languages can be
+virtually identical.
 
 
 [^nim]: Not that I would consider Nim a low-level language, quite on the contrary! It's as enjoyable and fast to code in Nim as in Python, but with the added benefit of type safety which is not a hassle thanks to Nim's excellent type inference. I think of Nim as a high-level language with the *possibility* of going low-level when necessary, which is exactly what I want from a general purpose programming language.
@@ -738,6 +748,10 @@ performance of both languages can be virtually identical.
 * [Gwynne Raskind --- Disassembling the Assembly, Part 1](https://www.mikeash.com/pyblog/friday-qa-2011-12-16-disassembling-the-assembly-part-1.html)
 
 * [Gwynne Raskind --- Disassembling the Assembly, Part 2](https://www.mikeash.com/pyblog/friday-qa-2011-12-23-disassembling-the-assembly-part-2.html)
+
+* [Andreas on Coding --- Optimizable Code](https://deplinenoise.wordpress.com/2013/12/28/optimizable-code/)
+
+* [Richard Fabian --- Data-Oriented Design](http://www.dataorienteddesign.com/dodmain/dodmain.html)
 
 * [Compiler Explorer](https://godbolt.org/)
 
