@@ -726,11 +726,10 @@ needs to have a solid understanding of the limitations of one's tools and
 sometime do a reality check... I always find it amusing when people attempt to
 "defend" their favourite inefficient high-level languages by saying that
 algorithmic optimisations are the most important. Well, of course, no sane
-person would agrue with that! But if you took the same optimal algorithm and
+person would argue with that! But if you took the same optimal algorithm and
 implemented it in a language that offered greater low-level control over the
-hardware (well, or had multi-threading and SIMD support *at all!*), it is not
-unrealistic at all for the performance gain factor to be in the 2 to 1000
-range!
+hardware (well, or had multi-threading and SIMD support *at all*), it is not
+unrealistic for the performance gain factor to be in the 2 to 1000 range!
 
 As for myself, I will happily continue using Nim, safe in the knowledge that
 I won't hit an insurmountable brick wall in the future, because whatever is
