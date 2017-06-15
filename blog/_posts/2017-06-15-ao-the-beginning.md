@@ -47,18 +47,56 @@ From henceforth, Ao shall resist the Forces of Darkness!
 
 Ok, so now that we got that out of the way, here's some words about my plan
 and my experience with the book so far. The general idea is to read the book
-from start to end and (re)implement everything in Nim as I go.
+from start to end and (re)implement everything in Nim as I go. I am not going
+to follow it to the letter though; sometime I might use a different
+convention, approach or algorithm either for performance reasons or simply due
+to personal preference.
 
 ## Notes on the book
 
+
+### Coordinate system
+
+PBRT uses a left-handed coordinate system, which is the default coordinate
+system of DirectX, POV-Ray, RenderMan and Unity, among many others.
+Right-handed coordinate systems, on the other hand, are the standard in
+mathemathics, physics and engineering. OpenGL also uses a righ-handed
+coordinate system by default (although that's been the source of a perpetual
+debate for quite a while now, as evidenced
+[here](https://stackoverflow.com/questions/5168163/is-the-opengl-coordinate-system-right-handed-or-left-handed),
+for instance). In practical terms, most graphics environments allow to switch
+their default handedness (OpenGL and DirectX certainly do), but as in the
+world of science right-handed is the standard, I am just going to stick with
+that, even though that means I'll occasionally have to work a bit harder to
+correctly implement the algorithms presented in the book. Well, if nothing
+else, this will require me to have a really solid understanding of what I'm
+doing...
+
 ### Vectors, Normals, Points
 
+The book introduces separate vector, normal and point templates, which contain
+an awful lot of duplication, and in my opinion just complicate things for
+little gain. Overall, I don't think the better type safety is worth the added
+code complexity and the potential performance penalty (because you'd need
+to convert data back and forth between the different types a lot). Many
+systems just don't bother with making these distinctions (GLSL and OpenEXR
+spring to mind) and just define a single universal vector type instead to keep
+things simple. Then it's up to the actual code to interpret the data in the
+right context. That's what I'm doing here too; all vectors, normals and points
+are represented by one universal vector type:
+
 {% highlight nimrod %}
-type Vec2*[T] = object
-  x*, y*: T
+type
+  Vec2*[T] = object
+    x*, y*: T
+
+  Vec3*[T] = object
+    x*, y*, z*: T
 
   Vec2f* = Vec2[FloatT]
   Vec2i* = Vec2[int]
+  Vec3f* = Vec3[FloatT]
+  Vec3i* = Vec3[int]
 {% endhighlight %}
 
 ### Matrix operations
