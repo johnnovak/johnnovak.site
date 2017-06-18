@@ -454,7 +454,11 @@ characteristics that is a joy to use, you should definitely check it out, and
   it yet, it deserves a place on your bookshelf! It's a steal for the asking
   price.
 
+{: .noline }
+- - -
 
+{::options parse_block_html="true" /}
+<section class="links">
 
 ## Further links of interest
 

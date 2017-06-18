@@ -741,6 +741,11 @@ virtually identical.
 
 [^nim]: Not that I would consider Nim a low-level language, quite on the contrary! It's as enjoyable and fast to code in Nim as in Python, but with the added benefit of type safety which is not a hassle thanks to Nim's excellent type inference. I think of Nim as a high-level language with the *possibility* of going low-level when necessary, which is exactly what I want from a general purpose programming language.
 
+{: .noline }
+- - -
+
+{::options parse_block_html="true" /}
+<section class="links">
 
 ## Further links of interest
 
