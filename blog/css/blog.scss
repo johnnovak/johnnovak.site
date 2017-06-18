@@ -422,7 +422,7 @@ article {
   }
   pre {
     margin: 0;
-    padding: 0.5em 0 0.5em 14px;
+    padding: 0.6em 0 0.6em 14px;
     background: #f5f5f5;
     font: 14px $monospace;
     line-height: 18px;
@@ -671,10 +671,11 @@ article {
       line-height: 20px;
     }
     pre {
-      margin: 1.6em 0;
-      padding-left: 16px;
+      margin: 0;
+      padding-left: 12px;
       font-size: 15px;
       line-height: 20px;
+
       code {
         font-size: 15px;
       }
@@ -870,13 +871,12 @@ article {
       line-height: 21px;
     }
     pre {
-      margin: 1.8em 0;
-      padding-left: 20px;
+      margin: 0;
+      padding-left: 15px;
       font-size: 15px;
 
       code {
         font-size: 15px;
-        line-height: 18px;
       }
     }
 

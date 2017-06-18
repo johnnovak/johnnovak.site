@@ -2,6 +2,7 @@
 layout: post
 title:  "Nim performance tuning for the uninitiated"
 tags: [coding, Nim, C++, performance]
+date: 2017-04-22
 ---
 
 {: .intro}
