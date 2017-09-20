@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Nim Ray Tracer Project &ndash; Part 5: Antialiasing"
-tags: [graphics, ray tracing, Nim]
+tags: [graphics, ray tracing, nim]
 date: 2016-09-23
 published: false
 ---

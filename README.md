@@ -45,13 +45,15 @@ make serve_blog
 blog notes
 ----------
 
-Installing **jekyll** and **pygments.rb** for syntax higlighting support (the
-**pygments** Python library has to be installed as well). Installing
-**jekyll** will automatically install **sass** as a dependency.
+Installing **jekyll**, **pygments.rb** for syntax higlighting support (the
+**pygments** Python library has to be installed as well) and **rmagick** for
+the `image_dimensions.rb` plugin. Installing **jekyll** will automatically
+install **sass** as a dependency.
 
 ```
 sudo gem install jekyll
 sudo gem install pygments.rb
+sudo gem install rmagick
 ```
 
 
