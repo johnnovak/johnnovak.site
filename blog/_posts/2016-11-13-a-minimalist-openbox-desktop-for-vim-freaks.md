@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "A minimalist Openbox desktop for Vim freaks"
-tags: [Linux, Openbox, Crunchbang++, Vim]
+tags: [linux, openbox, crunchbang++, vim]
 date: 2016-11-13
 ---
 

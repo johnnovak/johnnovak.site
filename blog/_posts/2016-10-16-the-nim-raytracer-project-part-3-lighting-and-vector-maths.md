@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The Nim Ray Tracer Project &ndash; Part 3: Lighting & Vector Maths"
-tags: [graphics, ray tracing, Nim]
+tags: [graphics, ray tracing, nim]
 date: 2016-10-15
 ---
 

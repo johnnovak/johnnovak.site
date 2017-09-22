@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Implementing a Worker pool in Nim &mdash; Part 1"
-tags: [workerpool, Nim]
+tags: [workerpool, nim]
 published: false
 ---
 
