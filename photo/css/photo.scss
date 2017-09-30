@@ -157,9 +157,16 @@ a {
 #about {
   margin-top: 30px;
 
+  h1 {
+    font-size: 18px;
+    font-weight: $xbold;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
   img {
     width: 100%;
-    margin: 0 20px 20px 0;
+    margin: 20px 20px 20px 0;
   }
 
   .text {
@@ -185,6 +192,13 @@ a {
       padding: 0.6em 0 0 1.5em;
       font-size: 14px;
       border-top: 1px solid #aaa;
+    }
+  }
+
+  .gear {
+    ul {
+      list-style: none;
+      padding: 0;
     }
   }
 }
@@ -423,10 +437,12 @@ a {
     margin-top: 60px;
 
     img {
+      margin-top: 58px;
       width: 30%;
-      float: left;
+      max-width: 400px;
     }
     .text {
+      position: absolute;
       width: 60%;
       max-width: 600px;
       margin: 0 0 60px 40%;
@@ -434,6 +450,16 @@ a {
       p {
         padding-right: 30px;
         margin-bottom: 1.2em;
+      }
+      .footnote {
+        margin-top: 4em;
+      }
+    }
+    .gear {
+      margin-top: 0;
+      width: 35%;
+      li {
+        line-height: 1.5;
       }
     }
   }
@@ -548,8 +574,7 @@ a {
     }
   }
   #about {
-    img,
-    .text {
+    img, .text, .gear {
       @include opacity(0);
     }
   }

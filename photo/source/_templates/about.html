@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
     <div id="about">
-      <img src="{{ basepath }}img/self.jpg" alt="John Novak" />
       <div class="text">
+        <h1>About me</h1>
         <p>Arguably, you can't really write about yourself without sounding
         like a narcissist. So here we go, I'll try to keep this short and
         be relatively modest about it.</p>
 
-        <p>I'm a 36 year old photographer living in Brisbane, Australia with
-        15+ years of experience in various genres of photography<span
-          class="index">1</span>.  I equally enjoy all aspects of the
-        photographic process, such as scouting out locations, interacting with
-        models, <span class="delete">obsessing over lens sharpness at
-          f1.8</span> the technical aspects of photography and post-processing
+        <p>I'm a 38-year-old guy living in Brisbane, Australia, with several
+        decades of experience in various genres of photography<span
+        class="index">1</span>. I equally enjoy all aspects of the
+        photographic process, such as scouting out locations, interacting
+        with models, <span class="delete">obsessing over lens sharpness at
+        f1.8</span> the technical aspects of photography and post-processing
         images.  Editing and colour grading digital images is at least as much
         fun for me as the actual shooting, but I always take great care not to
-        hurt those innocent little pixels too much and keep the results
-        natural looking.</p>
+        hurt those innocent little pixels too much and keep the results natural
+        looking.</p>
 
         <p>I love shooting on location using just available light.  Generally
         speaking, my method is rather intuitive; I prefer to just go with the
@@ -41,7 +41,36 @@
           href="/people/">model shots</a> I have completed
         just recently that feature some <em>actual</em> humans...
           </li>
-      </ol>
+        </ol>
+      </div>
+
+      <img src="{{ basepath }}img/self.jpg" alt="John Novak" />
+
+      <div class="gear">
+        <h1>Gear</h1>
+        <ul class="bodies">
+          <li>Canon EOS 6D</li>
+          <li>Canon EOS 10D</li>
+        </ul>
+        <ul class="lenses">
+          <li>Canon EF 35mm f/2</li>
+          <li>Canon EF 85mm f/1.8 USM</li>
+          <li>Canon EF 17-40mm f/4L USM</li>
+          <li>Canon EF 28-135mm f/3.5-5.6 IS USM</li>
+        </ul>
+        <ul class="filters">
+          <li>Soligor DHG Circular P.L.D 77mm</li>
+        </ul>
+        <ul class="accessories">
+          <li>Manfrotto 055PROB Tripod</li>
+          <li>Hama Traveller Tripod</li>
+          <li>Panosaurus 2.0 Panoramic Tripod Head</li>
+          <li>Hama Remote Control Release Ca-2</li>
+        </ul>
+        <ul class="software">
+          <li>Adobe Lightroom</li>
+          <li>Adobe Photoshop</li>
+        </ul>
       </div>
     </div>
 {% endblock %}

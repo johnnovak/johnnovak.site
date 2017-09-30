@@ -511,15 +511,22 @@ var about = function() {
     return $('#about .text');
   }
 
+  function aboutGear() {
+    return $('#about .gear');
+  }
+
   function fadeIn() {
     aboutImg().delay(200).fadeTo(400, 1);
     aboutText().delay(400).fadeTo(600, 1);
+    aboutGear().delay(600).fadeTo(800, 1);
   }
 
   var imgFadeOutDelay = 0;
   var imgFadeOutDuration = 150;
   var textFadeOutDelay = 60;
   var textFadeOutDuration = 250;
+  var gearFadeOutDelay = 120;
+  var gearFadeOutDuration = 250;
 
   function fadeOut() {
     aboutImg().stop(true)
@@ -527,11 +534,15 @@ var about = function() {
 
     aboutText().stop(true)
                .delay(textFadeOutDelay).fadeTo(textFadeOutDuration, 0);
+
+    aboutGear().stop(true)
+               .delay(gearFadeOutDelay).fadeTo(gearFadeOutDuration, 0);
   }
 
   function fadeOutDuration() {
     return Math.max(imgFadeOutDelay + imgFadeOutDuration,
-                    textFadeOutDelay + textFadeOutDuration);
+                    textFadeOutDelay + textFadeOutDuration,
+                    gearFadeOutDelay + gearFadeOutDuration);
   }
 
   function init() {
