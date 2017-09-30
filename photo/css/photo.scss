@@ -158,7 +158,7 @@ a {
   margin-top: 30px;
 
   h1 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: $xbold;
     text-transform: uppercase;
     margin-bottom: 12px;
@@ -196,9 +196,11 @@ a {
   }
 
   .gear {
+    margin-bottom: 3em;
+
     ul {
-      list-style: none;
       padding: 0;
+      list-style: none;
     }
   }
 }
@@ -409,6 +411,11 @@ a {
       font-size: 15px;
     }
   }
+  #about {
+    h1 {
+      font-size: 17px;
+    }
+  }
   #caption {
     font-size: 15px;
     line-height: 0.8;
@@ -424,6 +431,9 @@ a {
 }
 
 @media only screen and (min-width: 750px) {
+  #about {
+    margin-top: 40px;
+  }
   #header {
     margin-bottom: 0;
   }
@@ -436,10 +446,8 @@ a {
   #about {
     margin-top: 60px;
 
-    img {
-      margin-top: 58px;
-      width: 30%;
-      max-width: 400px;
+    h1 {
+      font-size: 18px;
     }
     .text {
       position: absolute;
@@ -454,6 +462,11 @@ a {
       .footnote {
         margin-top: 4em;
       }
+    }
+    img {
+      margin-top: 58px;
+      width: 34%;
+      max-width: 330px;
     }
     .gear {
       margin-top: 0;
@@ -491,6 +504,14 @@ a {
 }
 
 @media only screen and (min-width: 950px) {
+  #about {
+    img {
+      width: 30%;
+    }
+    img, .gear {
+      padding-left: 50px;
+    }
+  }
   #header {
     .menu {
       position: absolute;
@@ -533,6 +554,11 @@ a {
   }
 }
 @media only screen and (min-width: 1100px) {
+  #about {
+    img, .gear {
+      padding-left: 60px;
+    }
+  }
   #header {
     .menu {
       font-size: 18px;
@@ -550,7 +576,19 @@ a {
     font-size: 16px;
   }
 }
+@media only screen and (min-width: 1280px) {
+  #about {
+    img, .gear {
+      padding-left: 100px;
+    }
+  }
+}
 @media only screen and (min-width: 1400px) {
+  #about {
+    img, .gear {
+      padding-left: 140px;
+    }
+  }
   #albums {
     .thumbs {
       h2 {
