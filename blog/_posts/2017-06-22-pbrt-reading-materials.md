@@ -3,6 +3,7 @@ layout: post
 title:  "pbrt Reading Materials"
 tags: [graphics, ray tracing, pbrt, maths]
 date: 2017-06-18
+published: false
 ---
 
 ## Chapter 3 -- Shapes

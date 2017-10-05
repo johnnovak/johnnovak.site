@@ -25,11 +25,13 @@ $(document).ready(function() {
 /////////////////////////////////////////////////////////////////////////////
 
   function init() {
-    replace2xImages();
+    if (getDevicePixelRatio() > 1) {
+      replace2xImages();
+    }
 
     displayPage();
 
-    if (!isDesktop) {
+    if (!g_isDesktop) {
       return;
     } else {
       $('html').addClass('desktop');
@@ -46,23 +48,22 @@ $(document).ready(function() {
       installParallax();
     }
 
-    if (getDevicePixelRatio() > 1) {
-      replaceImages();
-    }
-
     installResizeHandler();
     installMainMenuHandlers();
+  }
+
+  function getDevicePixelRatio() {
+    var r = window.devicePixelRatio;
+    return r === undefined ? 1 : r;
   }
 
   function replace2xImages() {
     var $images = $("img[data-2x]");
 
-    if (window.devicePixelRatio > 1.0) {
-      $.each($images, function() {
-        var $this = $(this);
-        $this.attr("src", $this.data("2x"));
-      });
-    }
+    $.each($images, function() {
+      var $this = $(this);
+      $this.attr("src", $this.data("2x"));
+    });
   }
 
   function displayPage() {
@@ -86,11 +87,6 @@ $(document).ready(function() {
 
   function isMobileView() {
     return $('#mainmenu').css('position') != 'fixed';
-  }
-
-  function getDevicePixelRatio() {
-    var r = window.devicePixelRatio;
-    return r === undefined ? 1 : r;
   }
 
   function getCurrentSection() {

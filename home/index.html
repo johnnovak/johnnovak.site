@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 
-<!--[if lt IE 7]> <html class="no-js ie ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie ie7 lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie ie8 lt-ie10 lt-ie9" lang="en"> <![endif]-->
-<!--[if IE 9]>    <html class="no-js ie ie9 lt-ie10" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -17,20 +13,10 @@
 
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700" />
 
-  <!--[if lte IE 8]>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:600" />
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:700" />
-
-    <link rel="stylesheet" type="text/css" href="/css/home-lte-ie8.css" />
-  <![endif]-->
-
   <link rel="stylesheet" type="text/css" href="/css/home.css" />
 
-  <!--[if !IE | gte IE 6]><!-->
   <script>
-    var isDesktop =    window.orientation === undefined
+    var g_isDesktop =  window.orientation === undefined
                     || window.devicePixelRatio === undefined
                     || window.screenX !== 0
                     || document.documentElement.clientWidth !== screen.width;
@@ -38,26 +24,23 @@
     var ua = navigator.userAgent;
     var isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
     if (isMobileWebkit) {
-      isDesktop = false;
+      g_isDesktop = false;
     }
-    if (isDesktop) {
+    if (g_isDesktop) {
       document.write('<link rel="stylesheet" type="text/css" href="/css/home-js.css" />');
     }
   </script>
-  <!--<![endif]-->
 </head>
 
 <body>
 <script src="/js/lib/respond.min.js"></script>
 
 <div id="wrapper">
-  <!--[if !IE | gte IE 6]><!-->
   <script>
-    if (isDesktop) {
+    if (g_isDesktop) {
       document.getElementById('wrapper').style.display = "none";
     }
   </script>
-  <!--<![endif]-->
 
   <div id="header">
     <a href="http://www.johnnovak.net/"><img id="jn-logo" src="/img/jn-logo.png" alt="John Novak" data-2x="/img/jn-logo@2x.png" /></a>
@@ -243,22 +226,20 @@
     </div>
   </div>
 
-  <!--[if !IE | gte IE 6]><!-->
-  <script src="http://code.jquery.com/jquery-1.12.3.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
   <script>
     if (!window.jQuery) {
-      document.write('<script src="/js/lib/jquery-1.12.3.min.js"><\/script>');
+      document.write('<script src="/js/lib/jquery-1.12.4.min.js"><\/script>');
     }
   </script>
   <script src="/js/lib/jquery.stellar.js"></script>
   <script src="/js/lib/jquery.mousewheel.min.js"></script>
 
   <script>
-    if (isDesktop) {
+    if (g_isDesktop) {
       document.write('<script src="/js/home.js"></scr'+'ipt>');
     }
   </script>
-  <!--<![endif]-->
 
 </div>
 </body>
