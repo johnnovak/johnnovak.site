@@ -33,9 +33,9 @@ form---it's the perfect Openbox based system for a minimalist. Instead of
 reinventing everything, we will just make a few strategic tweaks here and
 there to make it more Vim friendly.
 
-Why VM? Because I also do [music](http://music.johnnovak.net/), [graphics
-design](http://www.johnnovak.net/) and
-[photography](http://photo.johnnovak.net/), and most creative apps on Linux
+Why VM? Because I also do [music](https://music.johnnovak.net/), [graphics
+design](https://www.johnnovak.net/) and
+[photography](https://photo.johnnovak.net/), and most creative apps on Linux
 just suck[^linuxsucks], plus I don't like dual booting. The performance hit is
 negligible nowadays anyway on these new 4 or 8 core Intel i7 CPUs.  But most
 of the instructions will be applicable to non-VM installs as well as I will

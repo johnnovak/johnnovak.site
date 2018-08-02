@@ -14,7 +14,7 @@ $font-color:         #333;
 $caption-color:      #555;
 $code-font-color:    #444;
 $accent-color:       darken(#4abeaa, 9);
-$inv-accent-color:       invert($accent-color);
+$inv-accent-color:   invert($accent-color);
 $sel-color:          adjust-hue(
                        saturate(
                          mix($accent-color, $bg-color, 20),

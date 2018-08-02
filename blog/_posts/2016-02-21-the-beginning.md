@@ -47,5 +47,5 @@ Alright, enough of rambling about myself already, see you in the next post!
 
 [in]: https://www.linkedin.com/in/johnnovak1979
 [scene]: https://en.wikipedia.org/wiki/Demoscene
-[music]: http://www.johnnovak.net/#music
-[photo]: http://photo.johnnovak.net/
+[music]: https://www.johnnovak.net/#music
+[photo]: https://photo.johnnovak.net/
