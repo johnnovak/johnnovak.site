@@ -13,7 +13,7 @@ title: "John Novak's Blog &ndash; Tags"
     {% for tag in sorted_tags %} 
     <li>
       <span class="tag-name">
-        <a href="{{ site.rootdir }}/tag/{{ tag[0] }}">{{ tag[0] }}</a>
+        <a href="{{ site.url }}/tag/{{ tag[0] }}">{{ tag[0] }}</a>
       </span>
       <span class="post-count">{{ tag[1].size }} post{% if tag[1].size > 1%}s{% endif %}</span> </li>
     {% endfor %}

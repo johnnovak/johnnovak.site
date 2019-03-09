@@ -15,11 +15,11 @@ a wonderfully creepy atmosphere...]
 ## The Basics
 
 Hello again! In the [initial
-post](2016/04/28/the-nim-raytracer-project-part1/) of this series I talked
-about ray tracing in general and my reasons for writing my own ray tracing
-renderer in the most awesome [Nim](http://nim-lang.org/) language. Before
-writing any code though, in this part we'll examine the basic maths required
-for such a renderer.
+post](/2016/04/28/the-nim-raytracer-project-part-1-introduction/) of this
+series I talked about ray tracing in general and my reasons for writing my own
+ray tracing renderer in the most awesome [Nim](http://nim-lang.org/) language.
+Before writing any code though, in this part we'll examine the basic maths
+required for such a renderer.
 
 Most of this stuff is a distilled version of the information contained in the
 excellent [Scratchapixel 2.0 -- Learn Computer Graphics Programming from

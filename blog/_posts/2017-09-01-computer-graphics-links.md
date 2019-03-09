@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ao Resists the Forces of Darkness (pbrt meets Nim)"
-tags: [Ao, graphics, ray tracing, pbrt, Nim]
+tags: [ao, graphics, ray tracing, pbrt, Nim]
 date: 2017-06-18
 published: false
 ---

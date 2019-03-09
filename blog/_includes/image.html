@@ -17,11 +17,11 @@
   <object data="{{ imagePath }}" type="image/svg+xml" {{ imgWidthStyle> }}></object>
   {% else %}
     {% if include.nameSmall %}
-      <a class="largeimg" href="{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
-        <img src="{{ smallImagePath }}" alt="{{ alt }}" {{ imgWidthStyle> }}>
+      <a class="largeimg" href="{{ site.url }}{{ imagePath }}" data-width="{{ imagePath | width }}" data-height="{{ imagePath | height }}" >
+        <img src="{{ site.url }}{{ smallImagePath }}" alt="{{ alt }}" {{ imgWidthStyle> }}>
       </a>
     {% else %}
-      <img src="{{ imagePath }}" alt="{{ alt }}" {{ imgWidthStyle> }}>
+      <img src="{{ site.url }}{{ imagePath }}" alt="{{ alt }}" {{ imgWidthStyle> }}>
     {% endif %}
   {% endif %}
 
