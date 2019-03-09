@@ -237,7 +237,7 @@ Let's start up the daemon again and enter the console:
     deluged
     deluge-console
 
-We'll make a configuration change to allow remote connetions to the Deluge
+We'll make a configuration change to allow remote connections to the Deluge
 daemon and then we'll exit the console:
 
     config -s allow_remote True
