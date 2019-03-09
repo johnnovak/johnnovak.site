@@ -5,6 +5,12 @@ tags: [ao, graphics, ray tracing, pbrt, nim]
 date: 2017-06-18
 ---
 
+
+{% include toc.html %}
+
+
+## Overview
+
 I started reading the awesome [Physically Based Rendering: From Theory to
 Implementation](http://www.pbrt.org/) book a few weeks ago, which made me
 realise that it's probably for the best if I rewrote [my ray tracer](/tag/ray%20tracing) from the

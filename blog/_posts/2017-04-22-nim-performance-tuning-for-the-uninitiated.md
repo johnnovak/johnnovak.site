@@ -10,6 +10,8 @@ UPDATE 2017-06-04: Corrected some slight misinformation regarding
 link time optimisations and the {.inline.} pragma, some stylistic
 improvements, added more references.
 
+{% include toc.html %}
+
 ## Overview
 
 This post documents the trials and tribulations I encountered during my foray

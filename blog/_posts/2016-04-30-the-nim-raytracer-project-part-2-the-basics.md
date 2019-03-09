@@ -12,6 +12,10 @@ music is still so much better than 99.9999% of all recent electronic releases.
 Listening to *Ambient 4: On Land* from 1982; track #2 *The Lost Day* has
 a wonderfully creepy atmosphere...]
 
+
+{% include toc.html %}
+
+
 ## The Basics
 
 Hello again! In the [initial

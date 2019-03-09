@@ -19,6 +19,10 @@ don't give up reading after the first section...)
 recommendations in the comments that I haven't discussed
 in the article, so you might want to check those out as well...)
 
+
+{% include toc.html %}
+
+
 ## Buttons and pixels
 
 In 2016, developing a program in entirety on one particular platform, for

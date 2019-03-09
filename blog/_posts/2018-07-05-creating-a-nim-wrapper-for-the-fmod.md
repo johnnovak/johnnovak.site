@@ -5,6 +5,12 @@ tags: [coding, nim, c, audio]
 date: 2018-07-07
 ---
 
+
+{% include toc.html %}
+
+
+## Overview
+
 One of the many attractive things about Nim is its ability to interface with
 C libraries relatively easily, be they either statically linked or dynamically
 loaded. As all Nim source code is ultimately transformed to C code during

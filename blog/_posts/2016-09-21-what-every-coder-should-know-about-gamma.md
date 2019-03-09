@@ -5,6 +5,10 @@ tags: [graphics, gamma, linear workflow]
 date: 2016-09-21
 ---
 
+
+{% include toc.html %}
+
+
 ## A short quiz
 
 If you have ever written, or are planning to write, *any kind of code* that
