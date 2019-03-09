@@ -12,6 +12,10 @@ muscles twitches? Is breaking out the arrow keys with a screwdriver among the
 first few things you do on a new computer (after swapping Caps Lock with
 Left Ctrl, of course)? Then welcome, you're among friends here.
 
+
+{% include toc.html %}
+
+
 ## Overview
 
 Now that we're done with the formalities and  have dissuaded normal computer
