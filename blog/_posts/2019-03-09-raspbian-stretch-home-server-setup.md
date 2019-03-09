@@ -32,7 +32,7 @@ These instructions are meant for a home server setup on a home network that's
 not reachable from the outside internet. In my case, the network the server is
 on is behind a second router, so I'm not concerned with security issues too
 much. **Don't blame me if you use these instructions to set up a public FTP or
-something and then get hacked!**
+something and then you get hacked!**
 
 
 {% include toc.html %}
