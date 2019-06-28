@@ -222,6 +222,12 @@ hr {
   }
 }
 
+.bottom-separator {
+  border: 1px solid #aaa;
+  border-width: 0 0 1px;
+  padding-bottom: 1em;
+}
+
 kbd {
   display: inline-block;
   margin: 0 1px;

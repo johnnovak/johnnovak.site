@@ -5,6 +5,11 @@ tags: [linux, raspberry pi, raspbian]
 date: 2019-03-09
 ---
 
+{: .intro .bottom-separator}
+UPDATE 2019-07-08: Added instructions on enabling exFAT support, made the
+fstab mounting command more robust, and added the [Fixing boot problems due to
+bad fstab file](#fixing-boot-problems-due-to-bad-fstab-file) section.
+
 {: .intro}
 Okay, so the Micro SD card in my trusty Raspberry Pi 2 <strike>torrent
 box</strike> home server finally bit the dust after three years of steady
@@ -33,7 +38,6 @@ not reachable from the outside internet. In my case, the network the server is
 on is behind a second router, so I'm not concerned with security issues too
 much. **Don't blame me if you use these instructions to set up a public FTP or
 something and then you get hacked!**
-
 
 {% include toc.html %}
 
@@ -90,7 +94,7 @@ Alternative instructions about the whole setup can be found
 [here](https://www.realvnc.com/en/connect/docs/raspberry-pi.html).
 
 
-## Mounting an NTFS formatted external USB HDD
+## Mounting an NTFS or exFAT formatted external USB HDD
 
 When connecting the external USB drive, Raspbian will automatically mount it.
 Unfortunately, the default NTFS driver that comes with the OS can only mount
@@ -99,6 +103,18 @@ full read-write access (but we'll unmount the partition first):
 
     sudo umount /media/pi/<PARTITION_NAME>
     sudo apt-get install ntfs-3g
+
+Similarly, FAT is supported out-of-the-box, but you'll need to install
+**exfat-fuse** to be able to mount exFAT partitions:
+
+    sudo apt-get install exfat-fuse exfat-utils
+
+{: .note}
+If you're trying to format the disk to exFAT on Windows 7+, you'll quickly
+realise that you cannot select exFAT in the standard disk formatter GUI but
+only FAT and NTFS. The trick is to use `format` command in the console (e.g.
+`format d: /fs:exfat`).
+
 
 Let's check the list of available partitions; the disk we're looking for will
 be most likely `/dev/sda`:
@@ -117,10 +133,25 @@ Copy some files to `/media/USBHDD1` to test that the write access works.
 If everything went fine, we can mount the partition permanently by adding the
 following line to `/etc/fstab`:
 
-    /dev/sda1       /media/USBHDD1  auto    noatime           0       0
+    /dev/sda1   /media/USBHDD1   auto   defaults,noatime,nofail,x-systemd.device-timeout=10   0   0
 
 Reboot with `sudo reboot` to confirm that the partition gets mounted
 automatically.
+
+Note that we're exercising some precaution here:
+
+  * `nofail` means that the boot process
+  will continue regardless whether the volume can be mounted or not. Without
+  this we would end up in emergency mode if the volume could not be mounted
+  for any reason, in which case refer to the [Fixing boot problems due to bad
+  fstab file](#fixing-boot-problems-due-to-bad-fstab-file) section for
+  instructions on how to get out of this rather unfortunate situation. With
+  `nofail` in place, the OS will at least boot normally so we can SSH/VNC into
+  the box to rectify the situation more easily.
+
+  * `x-systemd.device-timeout` sets the wait timeout in seconds for the mount
+  command; you might want to set this a bit higher for drives that take a while
+  to spin up.
 
 
 ## Setting up an FTP server
@@ -286,7 +317,6 @@ The default password is `deluge`. You'll be asked to change the password on
 the first login, so it's a good idea to just do that.
 
 
-
 ### Setting up Deluge daemon and WebUI to start automatically on boot
 
 Edit `/etc/rc.local` and add the following two lines before the `exit 0`
@@ -297,6 +327,71 @@ command:
 
 Reboot and test that you can still connect using both the thin client and the
 WebUI.
+
+
+## Fixing boot problems due to bad fstab file
+
+If there's an error in the `fstab` file and one of the partitions cannot be
+mounted, Raspbian will go into emergency mode at startup. This means you won't
+be able to access it externally via the network as loading the OS has been
+essentially aborted. So if you're suspecting this is the case, the only way to
+remedy the situation is to hook up the Pi to a monitor and a keyboard and
+follow the instructions below.
+
+### Confirming the issue
+
+The first step is to confirm the issue. Make sure you see something like this
+on the screen when attempting to boot up the device:
+
+```
+You are in emergency mode. [lots of text, omitted...]
+
+Cannot open access to console, the root account is locked.
+See sulogin(8) man page for more details.
+
+Press Enter to continue.
+```
+
+Pressing Enter would just reset the Pi and start the boot process again, so
+we'll need to do something else to get out of the reboot loop.
+
+
+### Editing cmdline.txt
+
+Switch off the Pi and take out the SD card; we'll need to use another computer
+to append the following at the end of `cmdline.txt` on the boot partition of
+the SD card:
+
+```
+init=/bin/sh
+```
+
+This can be a bit problematic as I didn't have much luck with trying to get
+Windows to recognise the boot partition, so I had to use a Mac in the end
+(another Linux box would work too, of course). After this edit, you should be
+able to boot into a minimal shell environment.
+
+
+### Remounting the root partition in read-write mode
+
+The next problem is that we need to remount the root partition in read-write
+mode, so we can fix the `fstab` file:
+
+```
+mount -o remount,rw /
+```
+
+
+### Fixing fstab
+
+Now we're on easy street, just edit `/etc/fstab` with `vi` or `nano` and
+comment out the problematic line. We'll also need to undo the changes we did
+to `cmdline.txt` on the second computer after this.
+
+If you got it all right, you should be able to boot the Pi normally again.
+Then you can just *carefully* follow the [Mounting an NTFS or exFAT formatted
+external USB HDD](#mounting-an-ntfs-or-exfat-formatted-external-usb-hdd)
+section again to correct the problematic mount command.
 
 
 ## In closing
