@@ -5,10 +5,14 @@ tags: [linux, raspberry pi, raspbian]
 date: 2019-03-09
 ---
 
+{: .intro}
+UPDATE 2019-10-19: Added some warnings about the default exFAT cluster sizes.
+
 {: .intro .bottom-separator}
 UPDATE 2019-07-08: Added instructions on enabling exFAT support, made the
 fstab mounting command more robust, and added the [Fixing boot problems due to
 bad fstab file](#fixing-boot-problems-due-to-bad-fstab-file) section.
+
 
 {: .intro}
 Okay, so the Micro SD card in my trusty Raspberry Pi 2 <strike>torrent
@@ -112,8 +116,11 @@ Similarly, FAT is supported out-of-the-box, but you'll need to install
 {: .note}
 If you're trying to format the disk to exFAT on Windows 7+, you'll quickly
 realise that you cannot select exFAT in the standard disk formatter GUI but
-only FAT and NTFS. The trick is to use `format` command in the console (e.g.
-`format d: /fs:exfat`).
+only FAT and NTFS. The trick is to use the `format` command in the console
+(e.g.  `format d: /fs:exfat`). You also might want to look into setting the
+cluster size manually (e.g. to 4Kib) as the defaults tend to be quite large
+(256KiB clusters for an 1TiB drive, for example, as summarised
+[here](https://en.wikipedia.org/wiki/ExFAT#Technical_specialities)).
 
 
 Let's check the list of available partitions; the disk we're looking for will
