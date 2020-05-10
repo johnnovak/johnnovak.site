@@ -3,8 +3,8 @@ DEST_PHOTO_DIR = ../photo
 DEST_BLOG_DIR  = ../blog
 BLOG_SERVE_DIR  = /tmp/blog
 
-SASS_OPTS = --cache-location=.sass_cache --sourcemap=none
-SASS_BUILD_OPTS = $(SASS_OPTS) --force --style=compressed
+SASS_OPTS = --no-source-map
+SASS_BUILD_OPTS = $(SASS_OPTS) --style=compressed
 SASS_WATCH_OPTS = $(SASS_OPTS)
 
 HOME_CSS_LOCATION  = home/css:$(DEST_HOME_DIR)/css
