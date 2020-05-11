@@ -27,7 +27,7 @@ $ultra-light-accent-color: mix($accent-color, $bg-color, 23);
 
 $monospace: "Inconsolata", serif;
 
-@include selection-color($sel-color, 'black');
+@include selection-color($sel-color, black);
 
 @include flat-scrollbar(
   12px,
@@ -230,7 +230,7 @@ hr {
 
 kbd {
   display: inline-block;
-  margin: 0 1px;
+  margin: 0px 1px;
   padding: 0px 5px;
   font-family: $monospace;
   font-size: 12px;
@@ -239,11 +239,16 @@ kbd {
   color: #444;
   border: 1px solid rgba(0,0,0, 0.4);
   border-radius: 4px;
-  box-shadow: 0 1px 0 rgba(0,0,0, 0.4);
+  box-shadow: 0 1px 0 rgba(0,0,0, 0.25);
+//  background-image: linear-gradient(white 30%, #f8f8f8);
+}
+table.shortcuts kbd {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 #jn-logo {
-  @include pos(10, 25, $align: 'right');
+  @include pos(10, 25, $align: right);
   width: 272px;
 }
 
@@ -823,8 +828,8 @@ article {
   }
 
   #header-bg {
-    @include pos(-53, -355, $align: 'right');
-    @include bg-img(450, 413, 'bg-header', $basepath: $img-path);
+    @include pos(-53, -355, $align: right);
+    @include bg-img(450, 413, bg-header, $basepath: $img-path);
     z-index: 0;
     pointer-events: none;
   }

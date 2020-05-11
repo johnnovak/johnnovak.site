@@ -2,11 +2,11 @@ Requirements
 ------------
 
 * **GNU make**
-* **jekyll** (3.1+) — *blog*
-* **python** (2.7+) — *blog, photo*
-* **sass** (3.4+) — *blog, photo*
+* **jekyll** (4.0.1+) — *blog*
+* **python** (2.7.16+) — *blog, photo*
+* **sass** (1.26.5+) — *blog, photo*
 * **exiftool** (8.6+) — *photo*
-* **tidy** (5+) — *blog*
+* **tidy** (5.6.0+) — *blog*
 
 These additional Python libraries are required for the generation of the photo
 albums (`photo` make target):
@@ -45,14 +45,13 @@ make serve_blog
 blog notes
 ----------
 
-Installing **jekyll**, **pygments.rb** for syntax higlighting support (the
-**pygments** Python library has to be installed as well) and **rmagick** for
-the `image_dimensions.rb` plugin. Installing **jekyll** will automatically
-install **sass** as a dependency.
+Installing **jekyll**  and **rmagick** for the `image_dimensions.rb` plugin.
 
 ```
+sudo apt-get install ruby-dev
 sudo gem install jekyll
-sudo gem install pygments.rb
+
+sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
 sudo gem install rmagick
 ```
 
@@ -66,6 +65,7 @@ Building the Fotorama library requires `npm` and `grunt`. Install `npm` first
 with your OS specific package manager then issue the following command:
 
 ```
+sudo apt-get install npm
 sudo npm install -g grunt-cli
 ```
 
@@ -83,3 +83,4 @@ make build_fotorama
 ```
 
 TODO add instructions on updating to the latest Fotorama version
+
