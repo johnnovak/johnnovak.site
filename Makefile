@@ -112,7 +112,7 @@ clean_photo:
 
 blog:
 	make generate_blog
-	make tidy_blog
+#	make tidy_blog
 
 generate_blog: TEMP_DIR = $(DEST_BLOG_DIR)/tmp
 generate_blog: clean_blog
