@@ -12,9 +12,12 @@ muscles twitches? Is breaking out the arrow keys with a screwdriver among the
 first few things you do on a new computer (after swapping Caps Lock with
 Left Ctrl, of course)? Then welcome, you're among friends here.
 
-{: .intro .bottom-separator}
-UPDATE 2020-05-11: Updated for instructions for Crunchbang++ 10 (based on
+{: .intro}
+UPDATE 2020-05-11: Updated instructions for Crunchbang++ 10 (based on
 Debian 10).
+
+{: .intro .bottom-separator}
+UPDATE 2020-12-20: Tips on avoiding fullscreen/SVGA related problems on reboot.
 
 
 {% include toc.html %}
@@ -491,11 +494,17 @@ We'll need the following ingredients:
 * Internet connection (Crunchbang is based on Debian netinstall)
 
 We'll need to create a new VM with *Debian (64-bit)* selected as the guest
-operating system type.  I'm on an Intel i7 4790k 4.0 GHz with 16 gigs of RAM,
-so I just allocated 4 CPU cores and 4 gigs to the new VM and created a 40 GB
+operating system type.  I'm on an Intel i7 4790k 4.0 GHz with 32 gigs of RAM,
+so I just allocated 4 CPU cores and 4 gigs to the new VM, and created a 40 GB
 dynamic storage on an SSD partition (recommended). Pretty standard stuff, but
 make sure that *Enable PAE/NX System* is checked under *System / Processor
 / Extended Features*, otherwise the installer will fail.
+
+It is important to select *VBoxSVGA* instead of the recommended *VMSVGA* under
+*Display/ Graphics Controller*. Failing to do so will result in all sorts of
+problems after installing the guest additions and rebooting once or twice
+(e.g. black screen after reboot, defaulting to 640x480 and getting flooded
+with error notifications, etc.)
 
 From this point it's easy sailing---just insert the ISO and proceed with the
 install. I recommend using the text mode installer because the GUI one hung at

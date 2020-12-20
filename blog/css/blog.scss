@@ -532,6 +532,12 @@ article {
   .astronaut {
     display: none;
   }
+  .wtfpl-logo {
+    display: block;
+    width: 120px;
+    margin-right: 10px;
+    float: left;
+  }
 }
 
 .footnotes {
@@ -752,6 +758,9 @@ article {
   .about {
     h1 {
       margin-bottom: 30px;
+    }
+    .wtfpl-logo {
+      width: 160px;
     }
   }
 
@@ -982,6 +991,9 @@ article {
     .astronaut {
       display: block;
       margin-top: 10em;
+    }
+    .wtfpl-logo {
+      width: 200px;
     }
   }
 
