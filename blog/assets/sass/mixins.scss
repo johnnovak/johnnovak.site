@@ -1,0 +1,152 @@
+@mixin pos($top, $horiz, $z-index: 0, $pos: absolute, $align: 'left') {
+  position: $pos;
+  top: #{$top}px;
+  @if $align == 'left' {
+    left: #{$horiz}px;
+  } @else {
+    right: #{$horiz}px;
+  }
+  z-index: $z-index;
+}
+
+
+@function imgurl($basepath, $imgname, $suffix, $x2: false) {
+  $_base: #{$basepath}/#{$imgname};
+
+  @if $x2 {
+    @return '#{$_base}@2x#{$suffix}';
+  } @else {
+    @return '#{$_base}#{$suffix}';
+  }
+}
+
+
+@mixin bg-img-hires($imgurl) {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+
+    background-image: url($imgurl);
+  }
+}
+
+
+@mixin bg-img($width, $height, $imgname, $suffix: '.png',
+              $basepath: '/img', $hires: true) {
+
+  width: #{$width + 2}px;
+  height: #{$height + 2}px;
+  background: url(imgurl($basepath, $imgname, $suffix)) 1px 1px no-repeat;
+  background-size: #{$width}px #{$height}px;
+
+  @if $hires {
+    @include bg-img-hires(imgurl($basepath, $imgname, $suffix, true));
+  }
+}
+
+
+@mixin transition($duration, $property: '') {
+  @if $property != '' {
+    -webkit-transition: $property $duration;
+    transition: $property $duration;
+  } @else {
+    -webkit-transition: $duration;
+    transition: $duration;
+  }
+}
+
+
+@mixin vertical-gradient($colors...) {
+  background: -webkit-linear-gradient(top, $colors);
+  background: -moz-linear-gradient(top, $colors);
+  background: -ms-linear-gradient(top, $colors);
+  background: -o-linear-gradient(top, $colors);
+  background: linear-gradient(to bottom, $colors);
+}
+
+
+@mixin opacity($value) {
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$value * 100})";
+}
+
+
+@mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h,  $suffix: '.png',
+            $basepath: '/img') {
+
+  width: #{$w}px;
+  height: #{$h}px;
+  background-image: url(imgurl($basepath, $imgname, $suffix));
+  background-size: #{$bg_w}px #{$bg_h}px;
+  background-repeat: no-repeat;
+  background-position: #{-$x}px #{-$y}px;
+
+  @include bg-img-hires(imgurl($basepath, $imgname, $suffix, true));
+
+  span {
+    display: none;
+  }
+}
+
+
+@mixin selection-color($bgcolor, $color) {
+  ::selection {
+    background: $bgcolor;
+    color: $color;
+    text-shadow: none;
+  }
+  ::-moz-selection {
+    background: $bgcolor;
+    color: $color;
+    text-shadow: none;
+  }
+  ::-webkit-selection {
+    background: $bgcolor;
+    color: $color;
+    text-shadow: none;
+  }
+}
+
+
+@mixin flat-scrollbar($size, $bg-color, $color, $hover-color, $drag-color) {
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: $bg-color;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $color;
+
+    &:hover {
+      background: $hover-color;
+    }
+    &:active {
+      background: $drag-color;
+    }
+  }
+}
+
+
+@mixin enable-selection($enable) {
+  @if $enable {
+    -webkit-touch-callout: default;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+
+  } @else {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+

@@ -1,0 +1,14 @@
+<article class="list">
+  <header>
+    <h1>{{ .Title }}</h1>
+  </header>
+
+  {{ range .Pages.GroupByDate "2006" }}
+    {{ $year := .Key }}
+    <h2><time datetime="{{ $year }}">{{ $year }}</time></h2>
+
+    {{ range .Pages.ByDate.Reverse }}
+      {{ .Render "li" }}
+    {{ end }}
+  {{ end }}
+</article>

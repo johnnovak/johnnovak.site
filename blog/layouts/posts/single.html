@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<article class="post">
+  <header>
+    <h1><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></h1>
+    <p class="date"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006 Jan 2" }}</time></p>
+  </header>
+
+  <nav class="tags">
+    <ul>
+    {{ range (.GetTerms "tags") }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+    {{ end }}
+    </ul>
+  </nav>
+
+  {{ .Content }}
+
+  {{ partial "comments.html" . }}
+</article>
+
+{{ end }}

@@ -1,0 +1,11 @@
+{{ define "main" }}
+
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ partial "postlist" (dict
+      "Pages" (first 10 $posts.ByDate.Reverse)
+      "Title" "Recent posts"
+   )
+}}
+
+{{ end }}
+

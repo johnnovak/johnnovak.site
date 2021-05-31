@@ -1,0 +1,21 @@
+baseURL = "http://blog.johnnovak.net/"
+languageCode = "en-us"
+title = "Recent posts"
+
+[taxonomies]
+  tag = "tags"
+
+[permalinks]
+  posts = "/:year/:month/:day/:title/"
+
+[params]
+  dateFormat = "2006 Jan 2"
+
+[markup]
+  [markup.goldmark.parser.attribute]
+    block = true
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+

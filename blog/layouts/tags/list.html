@@ -1,0 +1,22 @@
+{{ define "main" }}
+
+<article class="list">
+  <header>
+    <h1>Tags</h1>
+  </header>
+
+  <ul class="tags">
+    {{ range .Site.Taxonomies.tags }}
+      <li>
+        <span class="tag-name">
+          <a href="{{ .Page.RelPermalink }}">{{ .Page.Title | markdownify }}</a>
+        </span>
+
+        <span class="post-count">{{ .Count }} post{{ if gt .Count 1 }}s{{ end }}</span>
+      </li>
+    {{ end }}
+  </ul>
+</article>
+
+{{ end }}
+

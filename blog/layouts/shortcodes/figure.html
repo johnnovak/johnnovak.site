@@ -1,0 +1,26 @@
+{{ $caption := .Inner }}
+{{ $alt := (.Get "alt") | default $caption | markdownify }}
+
+{{ $img      := $.Page.Resources.GetMatch (.Get "name") }}
+{{ $imgSmall := $.Page.Resources.GetMatch (.Get "nameSmall") }}
+
+{{ $imgWidth := (.Get "width") | default "100%" }}
+{{ $imgWidthStyle := printf "style='width: %v'" $imgWidth | safeHTMLAttr }}
+{{ $captionWidth := (.Get "captionWidth") | default $imgWidth }}
+
+<figure class="image">
+  {{ if path.Ext (.Get "name") | eq ".svg" }}
+  <object data="{{ .Get "name" }}" type="image/svg+xml" {{ $imgWidthStyle }}></object>
+  {{ else }}
+    {{ if isset .Params "nameSmall" }}
+      <a class="largeimg" href="{{ $img.RelPermalink }}" data-width="{{ $img.Width }}" data-height="{{ $img.Height }}" >
+        <img src="{{ $imgSmall.RelPermalink }}" alt="{{ $alt }}" {{ $imgWidthStyle | }}>
+      </a>
+    {{ else }}
+      <img src="{{ $img.RelPermalink }}" alt="{{ $alt }}" {{ $imgWidthStyle }}>
+    {{ end }}
+  {{ end }}
+
+  <figcaption style="width: {{ $captionWidth }};{{ with .Get "captionAlign" }} text-align: {{.}};{{ end }}">{{ .Inner | markdownify }}</figcaption>
+</figure>
+
