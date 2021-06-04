@@ -408,6 +408,40 @@ article {
   }
   ul {
     list-style: square;
+    ul {
+      list-style: disc;
+      ul {
+        list-style: circle;
+      }
+    }
+  }
+
+  ul.property-tree {
+    list-style: none;
+    padding-left: 0;
+
+    > li {
+      padding-bottom: 1.5em;
+      padding-left: 0;
+
+      p {
+        padding-bottom: 0.5em;
+        font-weight: bold;
+      }
+
+      > ul {
+        padding-left: 3em;
+        list-style: square;
+
+        > li {
+          font-weight: bold;
+
+          > ul {
+            font-weight: normal;
+          }
+        }
+      }
+    }
   }
   .compact {
     li {

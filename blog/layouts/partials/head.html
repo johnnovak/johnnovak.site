@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 
   {{ $style := resources.Get "sass/blog.scss" | resources.ToCSS (dict "outputStyle" "compressed") | fingerprint }}
-  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  <link rel="stylesheet" href="{{ $style.Permalink }}" type="text/css">
 
   <link rel="stylesheet" href="/css/jqmath-0.4.3.css" type="text/css">
   <link rel="stylesheet" href="/css/photoswipe.css" type="text/css">

@@ -1,7 +1,6 @@
 DEST_HOME_DIR  = ../johnnovak.github.io
 DEST_PHOTO_DIR = ../photo
-DEST_BLOG_DIR  = ../blog
-BLOG_SERVE_DIR  = /tmp/blog
+DEST_BLOG_DIR  = ../../blog
 
 SASS_OPTS = --no-source-map
 SASS_BUILD_OPTS = $(SASS_OPTS) --style=compressed
@@ -9,7 +8,6 @@ SASS_WATCH_OPTS = $(SASS_OPTS)
 
 HOME_CSS_LOCATION  = home/css:$(DEST_HOME_DIR)/css
 PHOTO_CSS_LOCATION = photo/css:$(DEST_PHOTO_DIR)/css
-BLOG_CSS_LOCATION  = blog/css:$(DEST_BLOG_DIR)/css
 
 default: all
 all: home photo blog
@@ -102,24 +100,16 @@ clean_photo:
 
 ### BLOG ######################################################################
 
-.PHONY: blog generate_blog tidyblog serve_blog clean_blog
+.PHONY: blog generate_blog serve_blog clean_blog
 
 blog:
 	make generate_blog
-#	make tidy_blog
 
-generate_blog: TEMP_DIR = $(DEST_BLOG_DIR)/tmp
 generate_blog: clean_blog
-	mkdir -p $(TEMP_DIR)
-	jekyll build -t -s blog -d $(TEMP_DIR)
-	mv $(TEMP_DIR)/* $(DEST_BLOG_DIR)
-	rm -rf $(TEMP_DIR)
-
-tidy_blog:
-	$(call html_tidy_dir,$(DEST_BLOG_DIR)/*)
+	hugo --minify -s blog -d $(DEST_BLOG_DIR)
 
 serve_blog:
-	jekyll serve --future --drafts --unpublished -s blog -d $(BLOG_SERVE_DIR)
+	hugo server --buildFuture --buildDrafts -s blog
 
 clean_blog:
 	$(call clean_dir,$(DEST_BLOG_DIR)/*)

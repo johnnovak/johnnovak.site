@@ -16,7 +16,10 @@
 
   {{ .Content }}
 
-  {{ partial "comments.html" . }}
+  <section class="comments">
+    <h2>Comments</h2>
+    {{ template "_internal/disqus.html" . }}
+  </section>
 </article>
 
 {{ end }}

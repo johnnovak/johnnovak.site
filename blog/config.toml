@@ -1,6 +1,8 @@
-baseURL = "http://blog.johnnovak.net/"
+baseURL = "https://blog.johnnovak.net/"
 languageCode = "en-us"
 title = "Recent posts"
+
+disqusShortname = "johnnovak"
 
 [taxonomies]
   tag = "tags"
