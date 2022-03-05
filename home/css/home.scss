@@ -28,17 +28,12 @@ $header-height:      200px;
   $drag-color:  #aaa
 );
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   margin: 15px;
   padding: 0;
-  overflow-x: hidden;
 
   font-family: 'Source Sans Pro', Calibri, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.5;
   text-transform: uppercase;
   -moz-osx-font-smoothing: grayscale;
@@ -78,7 +73,7 @@ a {
   position: absolute;
   top: 10px;
   right: 20px;
-  width: 280px;
+  width: 340px;
 }
 
 h1 {
@@ -87,7 +82,6 @@ h1 {
   font-weight: $xthin;
   line-height: 1;
   color: $accent-color;
-  @include transition(.6s);
 }
 
 h2 {
@@ -104,16 +98,13 @@ h2 {
 .sidebar {
   margin-top: 20px;
   font-weight: $xbold;
-  @include transition(.4s);
 
   a {
     color: $accent-color;
-    @include transition(.2s, color);
 
     &:hover {
       text-decoration: none;
       color: $light-accent-color;
-      @include transition(.2s, color);
     }
   }
 }
@@ -121,7 +112,6 @@ h2 {
 .section-content {
   cursor: text;
   @include enable-selection(true);
-  @include transition(.8s, margin-left);
 
   & h2:first-child {
     margin-top: 0;
@@ -152,19 +142,13 @@ h2 {
     display: block;
     position: relative;
     visibility: hidden;
-
-    @media screen and (orientation:portrait) {
-      top: -170px;
-    }
-    @media screen and (orientation:landscape) {
-      top: -100px;
-    }
+    top: -100px;
   }
   #jn-logo {
     top: auto;
     width: 400px;
   }
-  .desktop .anchor {
+  .anchor {
     top: -#{$header-height};
   }
 }
@@ -188,25 +172,23 @@ h2 {
 //****************************************************************************
 
 #mainmenu {
-  padding: 75px 15px 0 0;
+  padding: 105px 15px 0 0;
   text-align: right;
   list-style: none;
 
   li {
     display: inline-block;
     padding: 0 0 0 10px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: $normal;
     color: $accent-color;
 
     a {
       color: $accent-color;
-      @include transition(1.2s, color);
 
       &:hover {
         text-decoration: none;
         color: $light-accent-color;
-        @include transition(.4s, color);
       }
     }
   }
@@ -215,6 +197,7 @@ h2 {
 @media #{$media-medium} {
   #header {
     @include pos(0, 0, $z-index: 1);
+    position: fixed;
     width: 100%;
     height: $header-height;
     background: $bg-color;
@@ -226,14 +209,14 @@ h2 {
   }
   #jn-logo {
     @include pos(20, 348, $z-index: 1);
-    @include transition(1s);
   }
   #mainmenu {
     @include pos(38, 0, $z-index: 100);
+    position: fixed;
     width: 440px;
     padding: 0 0 0 30px;
     text-align: left;
-    background: url(/img/menu-bg@2x.png) top right no-repeat;
+    background: url(../img/menu-bg@2x.png) top right no-repeat;
 
     li {
       font-size: 22px;
@@ -250,12 +233,6 @@ h2 {
       &:last-child:after {
         content: none;
       }
-    }
-  }
-  .desktop {
-    #header,
-    #mainmenu {
-      position: fixed !important;
     }
   }
 }
@@ -311,18 +288,12 @@ h2 {
       margin: 18px 0 0 0;
     }
     h1 {
-      @media screen and (orientation:portrait) {
-        margin-top: 80px;
-      }
-      @media screen and (orientation:landscape) {
-        margin-top: 15px;
-      }
+      margin-top: 15px;
     }
   }
   #about-bg {
     @include pos(189, -77, $z-index: 10);
     @include bg-img(474, 444, 'bg-about', $basepath: $img-path);
-    @include transition(1.2s, left);
   }
 }
 
@@ -394,7 +365,6 @@ h2 {
   #music-bg {
     @include pos(-69, -80, $z-index: 10);
     @include bg-img(592, 564, 'bg-music', $basepath: $img-path);
-    @include transition(.5s, left);
     pointer-events: none;
   }
 }
@@ -408,7 +378,6 @@ h2 {
     .oldstuff {
       @include pos(345, 159, 0);
       @include bg-img(35, 36, 'disk', $basepath: $img-path);
-      @include transition(.4s);
       width: auto;
       height: auto;
       padding-left: 50px;
@@ -494,11 +463,9 @@ h2 {
     .photo-spacer2 {
       width: $photo-thumb-size;
       height: $photo-thumb-size;
-      @include transition(1s);
 
       &:hover {
         @include opacity(.7);
-        @include transition(0);
       }
     }
     .photo-spacer1 {
@@ -525,17 +492,14 @@ h2 {
   #photo-bg-leg1 {
     @include pos(119, -79, $z-index: 30);
     @include bg-img(362, 233, 'bg-photo-leg1', $basepath:  $img-path);
-    @include transition(.8s, left);
   }
   #photo-bg-leg2 {
     @include pos(-169, -3, $z-index: 20);
     @include bg-img(244, 294, 'bg-photo-leg2', $basepath:  $img-path);
-    @include transition(.6s, left);
   }
   #photo-bg-skull {
     @include pos(139, -79, $z-index: 10);
     @include bg-img(420, 509, 'bg-photo-skull', $basepath:  $img-path);
-    @include transition(.9s, left);
   }
 }
 
@@ -588,7 +552,6 @@ h2 {
   #code-bg {
     @include pos(-19, -99, $z-index: 10);
     @include bg-img(513, 547, 'bg-code', $basepath:  $img-path);
-    @include transition(.8s, left);
   }
 }
 
@@ -629,12 +592,10 @@ h2 {
     a {
       font-weight: $xbold;
       color: $font-color;
-      @include transition(.2s, color);
 
       &:hover {
         text-decoration: none;
         color: $light-accent-color;
-        @include transition(.2s, color);
       }
     }
     p {
@@ -647,17 +608,14 @@ h2 {
   #footer-bg-building {
     @include pos(-249, 279, $z-index: 50);
     @include bg-img(860, 405, 'bg-footer-building', $basepath:  $img-path);
-    @include transition(1.1s, left);
   }
   #footer-bg-gate {
     @include pos(-137, 89, $z-index: 10);
     @include bg-img(173, 173, 'bg-footer-gate', $basepath:  $img-path);
-    @include transition(.8s, left);
   }
   #footer-bg-sun {
     @include pos(-69, 71, $z-index: 1);
     @include bg-img(205, 205, 'bg-footer-sun', $basepath:  $img-path);
-    @include transition(.8s, left);
   }
   #footer-bg {
     position: absolute;

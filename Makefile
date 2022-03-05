@@ -28,18 +28,14 @@ html_tidy_dir = -(find $(1) -name "*.html" \
 home: clean_home
 	mkdir -p $(DEST_HOME_DIR)/css
 	cp home/*.html $(DEST_HOME_DIR)
-	cp -r home/img home/js $(DEST_HOME_DIR)
+	cp -r home/img $(DEST_HOME_DIR)
 	sass $(SASS_BUILD_OPTS) --update $(HOME_CSS_LOCATION)
 
 watch_home_css:
-	sass $(SASS_WATCH_OPTS) --watch $(HOME_CSS_LOCATION)
+	sass $(SASS_WATCH_OPTS) --watch -poll $(HOME_CSS_LOCATION)
 
 update_home_css:
 	sass $(SASS_WATCH_OPTS) --update $(HOME_CSS_LOCATION)
-
-symlink_home_js:
-	rm $(DEST_HOME_DIR)/js/home.js
-	ln -s $(PWD)/home/js/home.js $(DEST_HOME_DIR)/js/home.js
 
 clean_home:
 	$(call clean_dir,$(DEST_HOME_DIR)/*)
@@ -91,7 +87,7 @@ build_fotorama:
 	cp photo/js/fotorama/out/fotorama.css $(DEST_PHOTO_DIR)/css
 
 watch_photo_css:
-	sass $(SASS_WATCH_OPTS) --watch $(PHOTO_CSS_LOCATION)
+	sass $(SASS_WATCH_OPTS) --watch -poll $(PHOTO_CSS_LOCATION)
 
 update_photo_css:
 	sass $(SASS_WATCH_OPTS) --update $(PHOTO_CSS_LOCATION)
