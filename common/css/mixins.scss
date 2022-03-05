@@ -36,7 +36,7 @@
 
 
 @mixin bg-img($width, $height, $imgname, $suffix: '.png',
-              $basepath: '/img', $hires: true) {
+              $basepath: '../img', $hires: true) {
 
   width: #{$width + 2}px;
   height: #{$height + 2}px;
@@ -76,7 +76,7 @@
 
 
 @mixin icon($imgname, $bg_w, $bg_h, $x, $y, $w, $h,  $suffix: '.png',
-            $basepath: '/img') {
+            $basepath: '../img') {
 
   width: #{$w}px;
   height: #{$h}px;

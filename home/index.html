@@ -13,37 +13,15 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" type="text/css" href="/css/home.css" />
-
-  <script>
-    var g_isDesktop =  window.orientation === undefined
-                    || window.devicePixelRatio === undefined
-                    || window.screenX !== 0
-                    || document.documentElement.clientWidth !== screen.width;
-
-    var ua = navigator.userAgent;
-    var isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
-    if (isMobileWebkit) {
-      g_isDesktop = false;
-    }
-    if (g_isDesktop) {
-      document.write('<link rel="stylesheet" type="text/css" href="/css/home-js.css" />');
-    }
-  </script>
+  <link rel="stylesheet" type="text/css" href="css/home.css" />
 </head>
 
 <body>
-<script src="/js/lib/respond.min.js"></script>
 
 <div id="wrapper">
-  <script>
-    if (g_isDesktop) {
-      document.getElementById('wrapper').style.display = "none";
-    }
-  </script>
 
   <div id="header">
-    <a href="https://www.johnnovak.net/"><img id="jn-logo" src="/img/jn-logo.png" alt="John Novak" data-2x="/img/jn-logo@2x.png" /></a>
+    <a href="https://www.johnnovak.net/"><img id="jn-logo" src="img/jn-logo.png" alt="John Novak" data-2x="img/jn-logo@2x.png" /></a>
   </div>
 
   <ul id="mainmenu">
@@ -66,7 +44,7 @@
     <div class="section-content">
       <ul class="info">
         <li>Male, 41</li>
-        <li>Software Engineer / Digital Artist</li>
+        <li>Software Engineer / Artist</li>
         <li>Brisbane, Australia</li>
       </ul>
 
@@ -113,6 +91,7 @@
     <div class="section-content">
       <h2>Albums</h2>
       <ul>
+        <li><a href="https://music.johnnovak.net/album/towards-unknown-sunsets">Towards Unknown Sunsets</a></li>
         <li><a href="https://music.johnnovak.net/album/the-moon-is-a-strange-god">The Moon is A Strange God</a></li>
         <li><a href="https://music.johnnovak.net/album/laments-of-a-chess-automaton">Laments of a Chess Automaton</a></li>
         <li><a href="https://music.johnnovak.net/album/what-lies-are-made-of">What Lies Are Made Of</a></li>
@@ -171,17 +150,17 @@
     <h1>Photo</h1>
 
     <div class="photos">
-      <a href="https://photo.johnnovak.net/mannequins/collections/in-the-light/#the-miraculous-miss-anderson"><img class="photo1" src="/img/photo01.jpg" alt="The Miraculous Miss Anderson &mdash; Sydney, Australia, 2011" /></a>
-      <a href="https://photo.johnnovak.net/mannequins/collections/sisters/#blue-velvet"><img class="photo2" src="/img/photo02.jpg" alt="Blue Velvet &mdash; Brisbane, Australia, 2011" /></a>
-      <a href="https://photo.johnnovak.net/urban/hungary/#freezing-point"><img class="photo3" src="/img/photo03.jpg" alt="Freezing Point &mdash; Budapest, Hungary, 2007" /></a>
-      <a href="https://photo.johnnovak.net/urban/singapore/#paperback-dawn"><img class="photo4" src="/img/photo04.jpg" alt="Paperback Dawn &mdash; Singapore, 2012" /></a>
-      <a href="https://photo.johnnovak.net/urban/australia/#acrylic-sundown"><img class="photo5" src="/img/photo05.jpg" alt="Acrylic Sundown &mdash; Brisbane, Australia, 2011" /></a>
-      <a href="https://photo.johnnovak.net/mannequins/series/petra-porcelain/#petra-porcelain-3"><img class="photo6" src="/img/photo06.jpg" alt="Petra Porcelain #3 &mdash; Noosa Heads, Australia, 2011" /></a>
-      <a href="https://photo.johnnovak.net/mannequins/collections/in-the-dark/#flora-five"><img class="photo7" src="/img/photo07.jpg" alt="Flora Five &mdash; Sydney, Australia, 2011" /></a>
-      <a href="https://photo.johnnovak.net/mannequins/collections/in-the-light/#bo-bride"><img class="photo8" src="/img/photo08.jpg" alt="Bo Bride &mdash; Brisbane, Australia, 2011" /></a>
-      <a href="https://photo.johnnovak.net/people/niniel/#nienor-niniel"><img class="photo9" src="/img/photo09.jpg" alt="Nienor Niniel &mdash; Budapest, Hungary, 2007" /></a> <a href="https://photo.johnnovak.net/mannequins/collections/sisters/#albino-twins"><img class="photo10" src="/img/photo10.jpg" alt="Albino Twins &mdash; Reading, UK, 2008" /></a>
-      <a href="https://photo.johnnovak.net/bw/romania/#angels"><img class="photo11" src="/img/photo11.jpg" alt="Angels &mdash; Nagyvárad, Romania, 2004" /></a>
-      <a href="https://photo.johnnovak.net/bw/hungary/#before-storm"><img class="photo12" src="/img/photo12.jpg" alt="Before Storm &mdash; Lake Velencei, Hungary, 2005" /></a>
+      <a href="https://photo.johnnovak.net/mannequins/collections/in-the-light/#the-miraculous-miss-anderson"><img class="photo1" src="img/photo01.jpg" alt="The Miraculous Miss Anderson &mdash; Sydney, Australia, 2011" /></a>
+      <a href="https://photo.johnnovak.net/mannequins/collections/sisters/#blue-velvet"><img class="photo2" src="img/photo02.jpg" alt="Blue Velvet &mdash; Brisbane, Australia, 2011" /></a>
+      <a href="https://photo.johnnovak.net/urban/hungary/#freezing-point"><img class="photo3" src="img/photo03.jpg" alt="Freezing Point &mdash; Budapest, Hungary, 2007" /></a>
+      <a href="https://photo.johnnovak.net/urban/singapore/#paperback-dawn"><img class="photo4" src="img/photo04.jpg" alt="Paperback Dawn &mdash; Singapore, 2012" /></a>
+      <a href="https://photo.johnnovak.net/urban/australia/#acrylic-sundown"><img class="photo5" src="img/photo05.jpg" alt="Acrylic Sundown &mdash; Brisbane, Australia, 2011" /></a>
+      <a href="https://photo.johnnovak.net/mannequins/series/petra-porcelain/#petra-porcelain-3"><img class="photo6" src="img/photo06.jpg" alt="Petra Porcelain #3 &mdash; Noosa Heads, Australia, 2011" /></a>
+      <a href="https://photo.johnnovak.net/mannequins/collections/in-the-dark/#flora-five"><img class="photo7" src="img/photo07.jpg" alt="Flora Five &mdash; Sydney, Australia, 2011" /></a>
+      <a href="https://photo.johnnovak.net/mannequins/collections/in-the-light/#bo-bride"><img class="photo8" src="img/photo08.jpg" alt="Bo Bride &mdash; Brisbane, Australia, 2011" /></a>
+      <a href="https://photo.johnnovak.net/people/niniel/#nienor-niniel"><img class="photo9" src="img/photo09.jpg" alt="Nienor Niniel &mdash; Budapest, Hungary, 2007" /></a> <a href="https://photo.johnnovak.net/mannequins/collections/sisters/#albino-twins"><img class="photo10" src="img/photo10.jpg" alt="Albino Twins &mdash; Reading, UK, 2008" /></a>
+      <a href="https://photo.johnnovak.net/bw/romania/#angels"><img class="photo11" src="img/photo11.jpg" alt="Angels &mdash; Nagyvárad, Romania, 2004" /></a>
+      <a href="https://photo.johnnovak.net/bw/hungary/#before-storm"><img class="photo12" src="img/photo12.jpg" alt="Before Storm &mdash; Lake Velencei, Hungary, 2005" /></a>
     </div>
 
     <div class="photo-spacer1"></div>
@@ -234,21 +213,6 @@
       <p class="github">Hosted on <a href="http://github.com/">GitHub Pages</a>&nbsp;</p>
     </div>
   </div>
-
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-  <script>
-    if (!window.jQuery) {
-      document.write('<script src="/js/lib/jquery-1.12.4.min.js"><\/script>');
-    }
-  </script>
-  <script src="/js/lib/jquery.stellar.js"></script>
-  <script src="/js/lib/jquery.mousewheel.min.js"></script>
-
-  <script>
-    if (g_isDesktop) {
-      document.write('<script src="/js/home.js"></scr'+'ipt>');
-    }
-  </script>
 
 </div>
 </body>
