@@ -1,7 +1,7 @@
 ---
 title: "Achieving period-correct graphics in personal computer emulators ---
 Part 1: the Amiga"
-date:  2022-04-20
+date:  2022-04-15
 tags:  []
 ---
 
@@ -134,20 +134,20 @@ we'll be looking at emulating this particular display in
   about 16,000 USD in the 90s, and the smaller models were not exactly cheap
   either, often costing well over a grand. Now how many home users exactly
   could have afforded these babies back in the day? Zero? I guarantee you that
-  no Amiga enthusiast used a Sony PVM/BVM *ever* before the year 2000. It's
-  just that companies started throwing them away or selling them for $5 apiece
-  and the retro crowd quickly snatched them up, creating a small hype in the
-  process — now they command absolutely ridiculous prices on eBay again. In
-  any case, as using one of these is not the authentic experience (they're a
-  bit too sharp, have aperture masks instead of slots masks, and the scanlines
-  are a bit too prominent because of the increased vertical resolution of
-  800--1000 lines), we're not concerned with them here. Another fun fact: as
-  Commodore monitors had excellent image quality and colour reproduction for
-  the time (for SD broadcast standards, that is), often they found their way
-  into professional studios and were sitting next to the Sonys. You could buy
-  several of them for the price of a single Sony; there's not much arguing
-  with it that they had pretty much the best quality/affordability ratio
-  throughout the 80s.
+  no Amiga enthusiast had owned a Sony PVM/BVM *ever* before the year 2000.
+  It's just that companies started throwing them away or selling them for $5
+  apiece and the retro crowd quickly snatched them up, creating a small hype
+  in the process — now they command absolutely ridiculous prices on eBay
+  again. In any case, as using one of these is not the authentic experience
+  (they're a bit too sharp, have aperture masks instead of slots masks, and
+  the scanlines are a bit too prominent because of the increased vertical
+  resolution of 800--1000 lines), we're not concerned with them here. Another
+  fun fact: as Commodore monitors had excellent image quality and colour
+  reproduction for the time (for SD broadcast standards, that is), often they
+  found their way into professional studios and were sitting next to the
+  Sonys. You could buy several of them for the price of a single Sony; there's
+  not much arguing with it that they had pretty much the best
+  quality/affordability ratio throughout the 80s.
 
 
 
@@ -173,7 +173,7 @@ characteristics of PC monitors are not even worth emulating.)
 
 
 {{< figure name="img/vga-crt/vga.jpg" nameSmall="img/vga-crt/vga.jpg"
-    alt="Photo of real CRT monitor displaying 320x200 VGA graphics" width="90%" >}}
+    alt="Wing Commander, 320x200 VGA" width="90%" >}}
 
   Real photo of a CRT monitor running Wing Commander at 320&times;200
   VGA resolution. Virtually all non-broken VGA monitors produced an image this
@@ -183,7 +183,7 @@ characteristics of PC monitors are not even worth emulating.)
 
 
 {{< figure name="img/vga-crt/vga-closeup.jpg" nameSmall="img/vga-crt/vga-closeup.jpg"
-    alt="Photo of real CRT monitor displaying 320x200 VGA graphics" width="90%" >}}
+    alt="Wing Commander, 320x200 VGA, close-up" width="90%" >}}
 
   Blown up view of the same 320&times;200 VGA screen --- notice that the image
   is double-scanned; in reality, all VGA adapters actually output
@@ -216,19 +216,24 @@ nowadays...)
 The below photos of Commodore monitors displaying 320&times;200 low-res in NTSC
 illustrate single-scanning very well (enlarge them to inspect the details).
 
-{{< figure name="img/amiga-crt/monkey-island-ntsc.jpg" nameSmall="img/amiga-crt/monkey-island-ntsc.jpg" captionAlign="center" alt="" width="90%" >}}
+{{< figure name="img/amiga-crt/monkey-island-ntsc.jpg" nameSmall="img/amiga-crt/monkey-island-ntsc.jpg" captionAlign="center" alt="Monkey Island, NTSC" width="90%" >}}
 
-  The Secret of Monkey Island, 320&times;200 NTSC ([source](https://www.reddit.com/r/crtgaming/comments/jdlr4h/monkey_island_on_a_1084s_in_60hz/))
+  [The Secret of Monkey Island](https://hol.abime.net/1859), 320&times;200 NTSC ([source](https://www.reddit.com/r/crtgaming/comments/jdlr4h/monkey_island_on_a_1084s_in_60hz/))
 
 {{< /figure >}}
 
-{{< figure name="img/amiga-crt/winterscene-ntsc.jpg" nameSmall="img/amiga-crt/winterscene-ntsc.jpg" captionAlign="center" alt="" width="90%" >}}
+{{< figure name="img/amiga-crt/winterscene-ntsc.jpg" nameSmall="img/amiga-crt/winterscene-ntsc.jpg" captionAlign="center" alt="Winter Scene, NTSC" width="90%" >}}
 
   Winter scene, 320&times;200 NTSC, 16-colour palette ([source](https://www.amigalove.com/viewtopic.php?f=5&t=2069&p=13621&hilit=winter#p13621))
 
 {{< /figure >}}
 
-TODO pinball dreams
+{{< figure name="img/amiga-crt/pinball-dreams-ntsc.jpg" nameSmall="img/amiga-crt/pinball-dreams-ntsc.jpg" captionAlign="center" alt="Pinball Dreams, NTSC" width="90%" >}}
+
+  [Pinball Dreams](https://hol.abime.net/1054), 320&times;200 NTSC
+  ([source](https://www.amigalove.com/viewtopic.php?f=8&t=1566&hilit=pinball+dreams&start=10))
+
+{{< /figure >}}
 
 
 And this is a video recording of an NTSC Commodore monitor in action from
@@ -245,7 +250,7 @@ At 320&times;256 PAL resolutions the pixels are more densely packed together
 vertically, and although the scanline effect is weaker, it still subtly
 contributes to the overall "textured" quality of the image:
 
-{{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal.jpg" captionAlign="center" alt="" width="90%" >}}
+{{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal.jpg" captionAlign="center" alt="Shadow of the Beast, PAL" width="90%" >}}
 
   Shadow of the Beast, 320&times;256 PAL, [too many colours to count](https://codetapper.com/amiga/sprite-tricks/shadow-of-the-beast/) 
 
@@ -339,17 +344,17 @@ you the whole story, but I'm actually quite surprised to see the emulated
 results to be this close to the real thing!
 
 {{< figure name="img/eob-shader-comparison.jpg" nameSmall="img/eob-shader-comparison.jpg"
-    alt="" width="100%" >}}
+    alt="Eye of the Beholder, real CRT vs shader comparison" width="100%" >}}
 
   Comparison of real C= 1084S monitor photos to the CRT emulation presented
   in this article and to raw bilinear sharp upscaling.
 
 {{< /figure >}}
 
-{{< figure name="img/eob1.jpg" nameSmall="img/eob1.jpg" alt="" width="90%" >}}
+{{< figure name="img/eob1.jpg" nameSmall="img/eob1.jpg"
+    alt="Eye of the Beholder" width="90%" >}}
   
-  Eye of the Beholder with CRT emulation in WinUAE (in correct NTSC aspect
-  ratio, as the developers intended)
+  [Eye of the Beholder](https://hol.abime.net/2903) with CRT emulation in WinUAE (in correct NTSC aspect ratio, as the developers intended)
 
 {{< /figure >}}
 
@@ -438,24 +443,26 @@ rectangle and measure its diagonal with a ruler; it will be the 13" which
 equals the diagonal viewable area of the 1084S).
 
 Now, WinUAE is the greatest Amiga emulator ever and I absolutely love it, but
-the display settings require pilot training. Things are hunky-dory until all
-you care about is stretching the image to fill the whole screen (just use
-**Fullscreen (TV)** or **Fullscreen (Max)** scaling method in the **Filter**
-section and set **Aspect Ratio Correction** to **Automatic**), but once you
-want to set up exact scaling ratios and image dimensions, the UI is really not
-on your side anymore, to put it politely. Long story short, after countless
-hours of tinkering I stumbled upon the *One True Way&trade;* of getting
-predictable results in the exact way I wanted, so that's what I will describe
-below.
+I'll be the first to admit that the display settings require pilot training.
+Things are hunky-dory until all you care about is stretching the image to fill
+the whole screen (just use the **Fullscreen (TV)** or **Fullscreen (Max)**
+scaling method in the **Filter** section and set **Aspect Ratio Correction**
+to **Automatic**), but once you want to set up *exact* scaling ratios and
+image dimensions, the UI is really not on your side anymore, to put it
+politely. Long story short, after countless hours of tinkering, I stumbled
+upon the *One True Way&trade;* of getting predictable results in the exact way
+I wanted, so that's what I'll describe next.
 
 This is what your **Display** settings should look like. These are the
 settings for PAL; of course, you could use NTSC as well, and you might want to
 use windowed mode or a different vsync method. But the rest must be set
 *exactly* as shown, and all the **Brightness**, **Contrast**, **Gamma**, etc.
-settings must be at zero. Ticking the two centering checkboxes surely seems
-enticing, but I recommend against it as it will lead to all sorts of problems
-(we can always adjust the image position manually in the **Filter** settings
-if we have to).
+settings must be at zero (they're not related to what we're doing now, of
+course, but they could royally screw up things when we'll get to the shader
+and colour profile setup later). Ticking the two centering checkboxes surely
+seems enticing, but I recommend against it as it will lead to all sorts of
+problems (we can always adjust the image position manually in the **Filter**
+settings if we have to).
 
 {{< figure name="img/winuae-display.png" nameSmall="img/winuae-display.png"
     captionAlign="center" alt="WinUAE Display settings" >}}
@@ -471,41 +478,51 @@ numerical input boxes are read-only, so we must use the slider widgets to set
 the values which is rather inexact and cumbersome. The only way for making
 fine adjustments is with the cursor keys while the slider is in focus.
 
-With our settings so far we're getting &times;2 scaling with both sliders at
-0, so anything else will be on top of that. After some trial and error I
-managed to reverse-engineer the magic formula: **(ScaleRatio -- 2) &times;
-1000**. So if we want &times;3 scaling, we'll need to set **(3 -- 2) &times;
-1000 = 1000** on both sliders.
+With our settings so far we're getting **&times;2 integer scaling** with both
+sliders at 0 --- that's a nice clean starting point. After some trial and
+error, I managed to reverse-engineer the magic formula for applying further
+scaling on top of that:
+
+**(ScaleRatio -- 2) &times; 1000**
+{class="center"}
+
+So if we want &times;3 scaling, we'll need to set both scaling factors to **(3
+-- 2) &times; 1000 = 1000**.
 
 {{< figure name="img/winuae-filter.png" nameSmall="img/winuae-filter.png"
-    captionAlign="center" alt="WinUAE Filter settings" >}}
+    captionAlign="center" alt="WinUAE Filter settings (bilinear-sharp scaling)" >}}
 
-  WinUAE Filter settings
+  WinUAE Filter settings (&times;3 bilinear-sharp scaling)
 
 {{< /figure >}}
 
-Like I said, &times;3.0 will give us the authentic 1084s image size on a
-typical 24" LCD monitor running at 1920&times;1080 resolution. But sometimes
-we can deviate from that with good results --- for example, Pinball Dreams can
-be enjoyable at &times;3.5 if you lean back a bit, and I like to play Rick
-Dangerous at &times;3.2 or &times;3.5 because the game doesn't use the whole
-screen. Some games benefit from a slightly larger image, some don't; you'll
-need to experiment and use your judgement. In any case, keep in mind that
-&times;3.0 scaling will give you the "canonical" image size that people were
-looking at sitting in front of their monitors back in the day, so that should
-always be your starting point.
+Like I said, &times;3 scaling will give us the authentic 1084s image size on a
+typical 24" 1920&times;1080 LCD monitor. The rest of the article assumes this
+display type, so keep that in mind. [This handy
+calculator](https://docs.google.com/spreadsheets/d/1iH8YOhiGvKJ7kZogvKv_aDxkX4688T_VXRFAA2exmJs/edit?usp=sharing)
+will help you if you want to adopt my settings to other display size and
+resolution combinations. 
 
-{{< figure name="img/ra-einstein.jpg" nameSmall="img/ra-einstein.jpg" alt="" width="90%" >}}
+Sometimes we can deviate from &times;3 scaling with good results. For example,
+Pinball Dreams can be enjoyable at &times;3.5 if you lean back a bit, and I
+like to play Rick Dangerous at &times;3.5 or even &times;4 because the game
+doesn't use the whole screen. Some games benefit from a slightly larger image,
+some don't; you'll need to experiment and use your judgement. In any case,
+keep in mind that &times;3 scaling will give you the "canonical" image size
+that people were looking at sitting in front of their monitors back in the
+day, so that should always be your starting point.
+
+{{< figure name="img/ra-einstein.jpg" nameSmall="img/ra-einstein.jpg" alt="Einstein by Ra" width="90%" >}}
   
-  Properly anti-aliased graphics look fabulous at &times;3.5 scaling too. Who
-  needs more than 32 colours?! (Artwork by
-  [Ra/Sanity](https://demozoo.org/sceners/304/) from the Amiga 500 demo
-  [Arte](https://demozoo.org/productions/5784/))
+  Properly anti-aliased graphics look fabulous at &times;3.5 scaling too ---
+  no hints of VGA-style chunkiness anywhere. Who needs more than 32 colours?!
+  (Artwork by [Ra/Sanity](https://demozoo.org/sceners/304/) from the Amiga 500
+  demo [Arte](https://demozoo.org/productions/5784/))
 
 {{< /figure >}}
 
 The following table lists some useful scaling values along with the resulting
-image dimension in pixels and their equivalent CRT sizes when viewed on a
+image dimensions in pixels, and their equivalent CRT sizes when viewed on a
 typical 24" / 1080p LCD:
 
 <table>
@@ -516,7 +533,7 @@ typical 24" / 1080p LCD:
     <th width="15%">Vert.<br>size</th>
     <th width="12%">Width<br>(px)</th>
     <th width="15%">Height<br>(px)</th>
-    <th width="29%">Equivalent CRT size<br>(on 24" LCD)</th>
+    <th width="29%">Equivalent CRT size<br>(on 24"/1080p LCD)</th>
   </tr>
   <tr>
     <td>&times;3.0</td>
@@ -524,7 +541,7 @@ typical 24" / 1080p LCD:
     <td>1000</td>
     <td>920</td>
     <td>768</td>
-    <td>14" (13" viewable)</td>
+    <td>14" (13.0" viewable)</td>
   </tr>
   <tr>
     <td>&times;3.2</td>
@@ -553,23 +570,26 @@ typical 24" / 1080p LCD:
 </table>
 
 I recommend saving these settings as presets so you can conveniently switch
-between them (loading them won't restart the emulated machine). They're not
-saved into the standard configuration directory, they're probably just stored
-in the registry, so I can't share them with you easily. (Don't worry about the
-NTSC presets just yet, we'll get to them in the next section.)
+between them (loading a filter preset won't restart the emulated machine). The
+quick'n'easy way is to download [my preset
+pack](files/WinUAE-C1084S-emulation.zip), load the full WinUAE configs (I've
+included one for every scaler setting) and just save the filter settings for
+each. Don't worry about the NTSC presets just yet, we'll get to them in the
+next section.
 
 ![Filter resize presets](img/winuae-filter-resize-presets.png)
 
-As shown on the **Filter** screenshot above, if you only want the scaling but
-don't care about the CRT shader (in which case you're quite wrong, of course,
-but whatever 😎), you'll need to use the **Point-Prescale** shader in **slot
-0** with both horizontal and vertical oversample factors set to **4x**.
+As shown on the **Filter** screenshot above, if you only want period-correct
+scaling but don't care about the CRT shader (in which case you're missing out
+a lot, of course, but whatever 😎), you'll need to use the **Point-Prescale**
+shader in **slot 0** with both horizontal and vertical oversample factors set
+to **4x**.
 
 ![Point prescale settings](img/winuae-filter-point-prescale.png)
 
 This will give you sharp-bilinear like rescaling in low-res modes, but in
-hi-res (640-pixel-wide modes) the results leave a lot to be desired. To fix
-that, you'll really need to use the CRT shader.
+hi-res (640-pixel-wide modes) the results will leave a lot to be desired. To
+properly fix that, you'll really need to use the CRT shader.
 
 
 ## Aspect ratio
@@ -584,9 +604,9 @@ that, you'll really need to use the CRT shader.
 [death](https://forums.scummvm.org/viewtopic.php?t=14460)
 [a](https://www.reddit.com/r/videogamescience/comments/77c0rp/video_game_history_is_being_distorted_and_how_to/)
 [thousand](https://www.neogaf.com/threads/ms-dos-games-and-aspect-ratio.1108226/)
-[times](https://www.youtube.com/watch?v=YvckyWxHAIw)... but far too many
-people still get it routinely wrong. Why's that so, I really don't know as the
-whole concept is not that difficult. Here's my stab at explaining it 
+[times](https://www.youtube.com/watch?v=YvckyWxHAIw), but far too many people
+still get it routinely wrong. Why's that so, it's a bit of a mystery as the
+whole concept is not that difficult to grasp. Here's my stab at explaining it
 unambiguously with as few words as possible (but not less!)
 
 ### PAL vs NTSC
@@ -606,16 +626,16 @@ unambiguously with as few words as possible (but not less!)
   shown on the photo in [this
   article](http://coppershade.org/articles/More!/Topics/Correct_Amiga_Aspect_Ratio/)).[^pal-aspect]
 
-[^true-pal-aspect-ratio]: Yes, I'm aware that the pixels are not completely square
-  in PAL when the Amiga is hooked up to a TV, and the ["real PAL pixel aspect
-  ratio"](https://eab.abime.net/showthread.php?t=50015) is not quite 1:1, but
-  a tiny bit off vertically. The thing is, people adjusted their screen sizes
-  with the stretch controls on their monitors to taste anyway (hopefully to
-  the correct 1:1 ratio!), so this is largely irrelevant. Plus it's much
-  better to emulate square pixels for practical reasons.
+[^true-pal-aspect-ratio]: Yes, I'm aware that the pixels are not completely
+  square in PAL when the Amiga is hooked up to a TV, and the ["real PAL pixel
+  aspect ratio"](https://eab.abime.net/showthread.php?t=50015) is not quite
+  1:1, but a tiny bit off. The thing is, people adjusted their screens with
+  the stretch controls on their monitors to taste anyway (hopefully to the
+  correct 1:1 ratio!), so this is largely irrelevant. Plus it's much better to
+  emulate square pixels for practical reasons.
 
 [^pal-aspect]: It's easy to derive this from the ratios: 4:3 display aspect
-  ratio can be rewritten as 16:12, and the [store aspect
+  ratio can be rewritten as 16:12, and the [storage aspect
   ratio](https://en.wikipedia.org/wiki/Aspect_ratio_(image)#Distinctions) of
   320:256 = 5:4 as 15:12. Because the vertical ratios are identical, the image
   fills the screen vertically. However, the display is 16 units wide while the
@@ -627,11 +647,12 @@ unambiguously with as few words as possible (but not less!)
   are 20% taller than wide** (1:1.2 pixel aspect ratio[^true-ntsc-aspect-ratio]). This is commonly
   referred to as "NTSC-stretch" in the popular vernacular.[^ntsc-aspect]
 
-[^true-ntsc-aspect-ratio]: Same story for as for PAL; the "theoretically
-  correct" vertical stretch ratio is not quite 1.2, but close enough.
+[^true-ntsc-aspect-ratio]: Same story as for PAL: the "theoretically correct"
+  vertical stretch ratio is not quite 1.2, but close enough that it does not
+  matter.
 
-[^ntsc-aspect]: Divide the 320&times;200 NTSC pixel-grid size by ten and we
-  get a 32:20 [storage aspect
+[^ntsc-aspect]: Divide the 320&times;200 NTSC pixel-grid size by ten to get
+  the 32:20 [storage aspect
   ratio](https://en.wikipedia.org/wiki/Aspect_ratio_(image)#Distinctions).
   Multiply the 4:3 display aspect ratio by 8 to arrive at the same width
   factor; that will give us a 32:24 display aspect ratio. The horizontal
@@ -641,8 +662,8 @@ unambiguously with as few words as possible (but not less!)
   factor that must be applied to 320x200 VGA games so they display correctly
   on square pixel aspect ratio LCD monitors. (Of course, the deeper and true
   explanation lies in the workings of the NTSC broadcast standard and would
-  require some  knowledge of analog electronics as well; however, for our
-  purposes here this purely aspect ratio based derivation is sufficient.)
+  require some  knowledge of analog electronics; however, for our purposes
+  here this purely aspect ratio based derivation is sufficient.)
 
 
 The same rationale applies to every other standard [Amiga screen
@@ -661,24 +682,25 @@ Now, the complication comes from the fact that most NTSC games designed by
 Americans, originally intended for the US market, were also made available in
 PAL countries. As early Amigas with the [OCS
 chipset](https://en.wikipedia.org/wiki/Original_Chip_Set) were not PAL/NTSC
-switchable in software like later models that had the ["fat" ECS Agnus
-](https://theamigamuseum.com/the-hardware/the-ocs-chipset/agnus/) or the even
-later [AGA](https://theamigamuseum.com/the-hardware/the-aga-chipset/)
-machines, these PAL conversions had to use PAL screen modes, which means the
-original NTSC graphics only occupied the upper 320&times;200 area of a
-320&times;256 PAL screen and the bottom 56 lines were left blank (assuming
-low-res). As a result, the art appeared squashed vertically compared to the
-NTSC originals on PAL machines (some people call this the "PAL-squash").
+switchable in software (like later models that had the ["fat" ECS
+Agnus](https://theamigamuseum.com/the-hardware/the-ocs-chipset/agnus/), or the
+even later [AGA](https://theamigamuseum.com/the-hardware/the-aga-chipset/)
+machines that had its successor,
+[Alice](https://bigbookofamigahardware.com/bboah/product.aspx?id=1480)), these
+PAL conversions had to use PAL screen modes, which meant the original NTSC
+graphics occupied the upper 320&times;200 area of a 320&times;256 PAL screen,
+leaving the bottom 56 lines blank (assuming low-res). As a result, the art
+appeared squashed vertically compared to the NTSC originals (some people call
+this the "PAL-squash").
 
 Now what you must understand is that *these games were made in America, by
 Americans, on NTSC monitors* that stretched the 320&times;200 image to fill
-the whole 4:3 screen. It's entirely possible that none of the artists who
-worked on these games saw a PAL screen in their entire lives! Therefore
-(whether like it or not) *everybody on PAL systems experienced these games
-incorrectly with the wrong aspect ratio back in the day* ("PAL-squashed"), not
-as the original artists intended! (Including me, because I grew up in Europe
---- I'm not an American preaching to everybody that "Europeans got it all
-wrong" or something... I'm just simply stating historical facts.)
+the whole 4:3 screen. Therefore (whether like it or not) *everybody on PAL
+systems experienced these games incorrectly with the wrong aspect ratio back
+in the day* ("PAL-squashed"), **not** as the original artists intended! (Including
+me, because I grew up in Europe --- I'm not an American preaching to everybody
+that "Europeans got it all wrong" or something... I'm just simply stating
+historical facts.)
 
 Let this sink in a bit.
 
@@ -688,30 +710,30 @@ drawing the art twice for both systems would have been prohibitively
 expensive, so no wonder no company had ever done that.
 
 Now, some people from PAL countries might concur that they only ever
-experienced these games with squashed art and potentially running 17% slower;
-that's how they remember them, and that's what they want to emulate for
-nostalgic reasons. It's hard to argue with that logic; if those are your
-memories, then that's the end of it. But keep in mind the "PAL-squash" only
-happened because of practical considerations (mostly budgetary limitations);
-it wasn't a deliberate artistic or creative intention, but an unfortunate
-necessity. The question then really is this: do you want to emulate these
-games how you remember them, or how their creators intended them to be
-experienced? And wouldn't it be nice after all these years to finally enjoy
-them in their most authentic, undistorted form?
+experienced these games with squashed art (and potentially running 17% slower
+because of the 60 vs 50 Hz difference); that's how they remember them, and
+that's what they want to emulate for nostalgic reasons. It's hard to argue
+with that logic, indeed --- if those are your memories, then that's the end of
+it. But keep in mind the "PAL-squash" only happened because of practical
+considerations (mostly budgetary limitations); it wasn't a deliberate artistic
+or creative intention, but an unfortunate necessity. Then real question is
+this: do you want to emulate these games as you remember them, or how their
+creators intended them to be experienced? And wouldn't it be nice, after all
+these years, to finally enjoy them in their most authentic, undistorted form?
 
 
 ### It's not just about the video
 
 Many of these PAL conversions were less than perfect and did not account for
 the ~17% slowdown that happens when a game synced to the 60 Hz NTSC vertical
-refresh rate is run on 50 Hz PAL. Quite often the music playback was synced to
-the screen refresh rate as well, which makes the slowdown fairly easy to spot
-(if the game also has a DOS port, one of the surest ways to ascertain the
-correct music playback speed is to listen to the DOS version).
+refresh rate is running in 50 Hz PAL mode. Quite often the music playback was
+synced to the screen refresh rate as well, which makes the slowdown fairly
+easy to spot (if the game also has a DOS port, one of the surest ways to
+ascertain the correct music playback speed is to listen to the DOS version).
 
 Check out this video for a demonstration of the PAL vs NTSC differences on the
 classic game Secret of Monkey Island. (By the way, it's worth watching the
-entire video from the beginning, it's very informative and enlightening, but
+whole thing from the beginning, it's very informative and enlightening --- but
 at the very least just watch this little snippet.)
 
 <div class="video-wrapper">
@@ -719,8 +741,8 @@ at the very least just watch this little snippet.)
 </div>
 
 To cite a few examples of my own, the music plays noticeably slower in the
-following games when run in PAL mode (tested with the WHDLoad versions). In
-NTSC mode, the music speed perfectly matches that of the DOS versions.
+following American made games in PAL mode, while in NTSC mode the music speed
+perfectly matches that of the DOS versions.
 
 - Eye of the Beholder I-II
 - Indiana Jones and the Last Crusade
@@ -729,8 +751,8 @@ NTSC mode, the music speed perfectly matches that of the DOS versions.
 - Space Quest 3 *(probably all Sierra games are affected)*
 {class="compact"}
 
-These are better ports that seem to handle both PAL and NTSC correctly; there
-is no difference in gameplay or music playback speed in the following titles:
+In some better coded games that handle both PAL and NTSC correctly, there is
+no difference in gameplay or music playback speed:
 
 - Curse of the Azure Bonds
 - Loom
@@ -747,15 +769,16 @@ Amiga catalogue). Without doubt, that's the preferable option; the graphics
 will appear undistorted, exactly as the creators intended, and the game will
 run at the correct speed, including music playback. (Theoretically, the only
 time you can run into problems is when you use a PAL crack of an NTSC game
-that somehow broke NTSC compatibility.)
+that somehow breaks NTSC compatibility.)
 
 
 ### Running games in NTSC
 
 Sadly enough, as Amiga software preservation efforts seem to be almost
-exclusively focused on PAL releases for whatever reasons, disk images of NTSC
-originals are extremely hard to come by. But simply forcing NTSC mode on the
-PAL versions widely available online should do the trick in most cases.
+exclusively concentrated on PAL releases for whatever reasons, disk images of
+NTSC originals are extremely hard to come by. But simply forcing NTSC mode
+with the PAL versions widely available online should do the trick in most
+cases.
 
 These are the two best ways to do that when using emulation:
 
@@ -763,24 +786,25 @@ These are the two best ways to do that when using emulation:
   adding the `NTSC` tooltype to its launch icon. This will work fine on a
   typical emulated PAL Amiga 1200 setup; the game will open an NTSC screen and
   WinUAE will automatically apply the correct vertical aspect scaling ratio
-  *on top* of our manually set &times;3.0-4.0 scaling. That's good news
-  because we can keep using our scaling presets set up for PAL resolutions.
-  This method requires the NTSC monitor driver to be installed --- just drag
-  the NTSC icon from the `Monitors` directory on the **Storage** Workbench
-  installer disk to ``Devs/Monitors`` on your system drive, reboot, and Bob's
-  your uncle!
+  *on top* of our manually set &times;3.0-4.0 PAL scaling. That's good news
+  because we don't need to keep switching between the PAL and NTSC scaling
+  presets when playing different games. This method requires the NTSC monitor
+  driver to be installed --- just drag the NTSC icon from the `Monitors`
+  directory on the **Storage** Workbench installer disk to ``Devs/Monitors``
+  on your system drive, reboot, and Bob's your uncle!
 
-- If you plan on playing games on an OCS Amiga 500 with Kickstart 1.2/1.3,
-  you'll need to emulate an actual NTSC chipset. It's very simple: just tick
-  **NTSC** in the **Chipset** configuration section. Now, if you turn on
-  automatic aspect ratio management in WinUAE (in the **Filter** section
-  select **Fullscreen (TV)** or **Fullscreen (Max)** scaling and set **Aspect
-  Ratio Correction** to **Automatic**), WinUAE will apply the correct aspect
-  ratio correction right from the boot screen. But this only works if you're
-  happy with the image being automatically stretched to fill the whole
-  display. If we want to keep using our exact scaling methods, the automatic
-  aspect ratio correction won't work, so we'll need to apply the NTSC-stretch
-  ourselves in our scaler setup as shown below:
+- If you plan on playing games on an OCS Amiga 500 with Kickstart 1.2/1.3 (a
+    most pretigious choice 🧐), you'll need to emulate an actual NTSC chipset.
+    It's very simple: just tick **NTSC** in the **Chipset** configuration
+    section. Now, if you turn on automatic aspect ratio management in WinUAE
+    (in the **Filter** section select **Fullscreen (TV)** or **Fullscreen
+    (Max)** scaling and set **Aspect Ratio Correction** to **Automatic**),
+    WinUAE will apply the correct aspect ratio correction right from the boot
+    screen. But like I explained previously, this only works if you're happy
+    with the image being automatically stretched to fill the whole screen. If
+    we want to keep using our exact scaling methods, the automatic aspect
+    ratio correction won't work, so we'll need to incorporate the NTSC-stretch
+    ourselves into our scaling factors as shown below:
 
 <table>
   <caption>NTSC image scaling ratios</caption>
@@ -790,7 +814,7 @@ These are the two best ways to do that when using emulation:
     <th width="15%">Vert.<br>size</th>
     <th width="12%">Width<br>(px)</th>
     <th width="15%">Height<br>(px)</th>
-    <th width="29%">Equivalent CRT size<br>(on 24" LCD)</th>
+    <th width="29%">Equivalent CRT size<br>(on 24"/1080p LCD)</th>
   </tr>
   <tr>
     <td>&times;3.0</td>
@@ -798,7 +822,7 @@ These are the two best ways to do that when using emulation:
     <td>1600</td>
     <td>920</td>
     <td>720</td>
-    <td>14" (13" viewable)</td>
+    <td>14" (13.0" viewable)</td>
   </tr>
   <tr>
     <td>&times;3.2</td>
@@ -826,18 +850,18 @@ These are the two best ways to do that when using emulation:
   </tr>
 </table>
 
-Like mentioned before, I recommend creating presets for these settings so you
-can easily switch between them at will:
+I recommend creating presets for the NTSC settings as well so you can easily
+switch between them at will:
 
 ![Filter resize presets](img/winuae-filter-resize-presets.png)
 
 
 {{< note >}}
 
-If you have vsync enabled, your screen refresh rate *must* be 50 Hz for PAL
+If you have vsync enabled, your screen refresh rate *must be* 50 Hz for PAL
 and 60 Hz for NTSC, respectively, otherwise you'll be experiencing all sorts
 of weird speed issues (e.g. music playing much slower or faster than it
-should). With vsync off this it not an issue, so that's a good quick way to
+should). With vsync off this it not a problem, so that's a good quick way to
 examine how a WHDLoad game behaves in PAL vs NTSC without having to change the
 screen refresh rate and restart the emulator.
 
@@ -851,11 +875,11 @@ situation with European made games is a bit more complicated. The complete
 algorithm for determining whether a particular title should be played in PAL or
 NTSC is as follows:
 
-* **Games originally developed by American studios --- always use NTSC**
+* **For games originally developed by American studios --- always use NTSC**
 
-   It does not matter if the Amiga port or the PAL version was done by a
+   It does not matter if the Amiga port or the PAL version was made by a
    European developer; in virtually all cases they just reused the original
-   NTSC graphics and quite often didn't even attempt to address the 17%
+   NTSC graphics, and quite often didn't even attempt to address the 17%
    slowdown issue.
 
    *Some well-known American studios: Activision, Accolade, Electronic Arts,
@@ -864,29 +888,35 @@ NTSC is as follows:
    Sir-Tech, Infocom, Access Software, Electric Dreams, Spectrum Holobyte,
    Epyx, D.S.I., U.S. Gold, Broderbund, Capcom, SEGA*
 
-* **Games originally developed by European studios (mostly UK)**:
+* **For games originally developed by European studios (mostly UK)**:
 
     *  If the game uses **320&times;256** or some other PAL screen mode and the
        graphics fills the whole screen --- **always use PAL**
 
     *  If the graphics only takes up a **320&times;200** or smaller area of
-       the screen, it does not automatically mean that it needs the
+       the screen, that does not automatically mean that it needs the
        NTSC-stretch applied to look correct; it might very well have been
-       drawn with square pixels in mind.
+       drawn with square pixels in mind still.
        [Perihelion](https://hol.abime.net/1029) is a good example of this: the
        graphics is 320&times;200, but it absolutely needs square pixels
        (probably they just wanted to play it safe for an eventual future US
-       release).
+       release). Exact same deal with [Populous 1](https://hol.abime.net/1102)
+       &amp; [2](https://hol.abime.net/1108),
+       [Powermonger](https://hol.abime.net/1125), and
+       [Midwinter](https://hol.abime.net/2469/screenshot) --- can't really
+       fault them; they just wanted to be able to sell their games in the US
+       as well, and stretched graphics is infinitely better than no NTSC
+       release at all.
 
        Another interesting case is [Elvira 1](https://hol.abime.net/2836): the
        graphics actually look good in either PAL or NTSC. Most likely they
        anticipated the game to be released both in Europe and the US, plus
        they released the DOS and Amiga versions simultaneously, so apparently
        they tried to draw the art in a way that looks good in both aspect
-       ratios (with quite good results, I have to say). In case of Elvira, I
-       think it's really a toss-up. Anyway, you see the pattern here: you'll
-       need to research the game a bit and, in some cases, use your aesthetic
-       judgement.
+       ratios (with quite good results, I must add). So in case of the Elvira
+       games, I think it's really a toss-up. Anyway, you see the pattern here:
+       you'll need to research the game a bit and, in some cases you'll just
+       need to use your aesthetic judgement.
 
    *A few important European studios: Bitmap Brothers, Psygnosis, Bullfrog,
    Horror Soft / Adventure Soft, Magnetic Scrolls, Delphine, Coktel Vision,
@@ -897,12 +927,12 @@ NTSC is as follows:
 {{< note >}}
 
 Although looking at circles and squares to determine the intended aspect ratio
-helps in many cases, it's not a 100% fool-proof method. It's certainly a good
-method for most racing games and flight simulators where the circular dials
+helps in many cases, it's not a 100% fool-proof method. It certainly works for
+most racing games and flight simulators where the circular gauges should
 usually appear as perfect circles when the correct aspect ratio is being used,
 but in general it's better to look at some common objects and make sure they
-look correct, neither too tall nor too squashed (human faces and full human
-figures are the best candidates for this).
+appear correctly, neither too tall nor too squashed (human faces and full
+human figures are the best candidates for this).
 
 {{< /note >}}
 
@@ -940,35 +970,34 @@ Beast, Apidya, Agony, all Magnetic Scrolls adventures, etc.)
 
   Start scene of [Scapeghost](https://hol.abime.net/1841) by [Magnetic
   Scrolls](https://en.wikipedia.org/wiki/Magnetic_Scrolls). Upper half of the
-  screen displaying the graphics is 320&times;256 low-res, while the bottom
-  half with the text is 640&times;256 hi-res. As you can see,
+  screen is 320&times;256 low-res, while the bottom
+  half displaying the text is 640&times;256 hi-res. As you can see,
   **CRT-A2080-HiRes-SmartRes-Interlace** handles situations like this
-  splendidly!
+  splendidly! I love you, **CRT-A2080-HiRes-SmartRes-Interlace**! ❤️
 
 {{< /figure >}}
 
 
 I have tweaked the shader settings a little bit, you can download my
-customised versions from here. They're called **CRT-A2080-PAL-\*** and
+customised versions [from here](files/WinUAE-C1084S-emulation.zip). They're called **CRT-A2080-PAL-\*** and
 **CRT-A2080-NTSC-\*** and have several variants --- I had to create copies
-because WinUAE doesn't support shader presets yet, plus I made the name a
+because WinUAE doesn't support shader presets yet, plus I made the names a
 little shorter. The NTSC variants push scanline strength to the max without
-much noticeable aliasing for the scaling factor indicated in the name, so for
-example for &times;3.5 scaling you can safely use **CRT-A2080-NTSC-x3.5** or
-the **x3.2** or **x3.0** variants for less strong scanlines. I created these
-because NTSC users seem to have a fondness for scanlines and want them to be
-displayed prominently. But you can just stick with the PAL preset if you
-prefer to keep them subtle (that's what I do most of the time). The special
-**PAL-sharp** preset is designed for text adventures to maximise text
-readability.
+much noticeable moire/aliasing for the scaling factor indicated in the name,
+so for example for &times;3.5 scaling you can safely use
+**CRT-A2080-NTSC-x3.5**, or the **x3.2** or **x3.0** variants for less strong
+scanlines. I created these because NTSC users seem to have a fondness for
+scanlines and want them to be displayed prominently. But you can just stick
+with the PAL preset if you prefer to keep them subtle (that's what I do most
+of the time). The special **PAL-sharp** preset is designed for text adventures
+to maximise text readability.
 
-By the way, in case you're wondering, "the Commodore A2080 was essentially a
+(By the way, in case you're wondering, "the Commodore A2080 was essentially a
 high persistence phosphor model of the 1084 to reduce flicker in NTSC modes",
 according to the [Big Book of Amiga
-Hardware](https://bigbookofamigahardware.com/bboah/product.aspx?id=864).
+Hardware](https://bigbookofamigahardware.com/bboah/product.aspx?id=864).)
 
-Okay, so this is how to set it up:
-
+Okay, so this is how to set this up:
 
 In the **Miscellaneous** section, select **Direct3D 11** for the **Graphics
 API** (and leave it at hardware accelerated, of course). Put the tweaked
@@ -976,21 +1005,22 @@ version of these shaders into ``plugins\filtershaders\direct3d`` in your
 WinUAE installation directory and restart WinUAE. Then in the **Filter**
 section select **CRT-A2080-PAL** in slot 0, and set 2x horizontal and 4x
 vertical oversampling. If your have a slower GPU and you're getting dropouts,
-you might want to reduce this a little, but don't go below 2x vertical
-oversampling (this is important to make the scanlines nice even and
-aliasing-free). Oversampling takes a big hit on performance, e.g. with 2x
-horizontal and 4x vertical oversampling your GPU would need to render
-2&times;4=8 times as many frames per second!
+you might want to reduce this a little, but don't go below 3x vertical
+oversampling (this is essential to make the scanlines nice even and
+alias-free; 1x horizontal and 3x vertical is the recommended minimum).
+Oversampling takes a big hit on performance, e.g. with 2x horizontal and 4x
+vertical oversampling your GPU would need to render 2&times;4=8 times as many
+frames per second!
 
-{{< figure name="img/winuae-filter-shaders.png" nameSmall="img/winuae-filter-shaders.png" alt="" width="auto" >}}
+{{< figure name="img/winuae-filter-shaders.png" nameSmall="img/winuae-filter-shaders.png" alt="WinUAE filter presets" width="auto" >}}
 
 {{< /figure >}}
 
 
-Detail view of the NTSC x3.0 variant in action on a scene from Defender of the
-Crown:
+Detail view of the NTSC x3.0 variant in action on a scene from [Defender of the
+Crown](https://hol.abime.net/305):
 
-{{< figure name="img/doc.jpg" nameSmall="img/doc.jpg" captionAlign="center" alt="">}}
+{{< figure name="img/doc.jpg" nameSmall="img/doc.jpg" captionAlign="center" alt="Defender of the Crown shader comparison">}}
   
   Left: sharp-bilinear scaling (NTSC aspect ratio corrected)<br>
   Right: **CRT-A2080-NTSC-x3.0** shader
@@ -1000,12 +1030,12 @@ Crown:
 
 ## CRT colour profile
 
-The next thing that makes a huge difference in replicating an authentic CRT
-experience is emulating the colour profile of the C= 1084S monitor. Most
+The next thing that will make a huge difference in replicating an authentic
+CRT experience is emulating the colour profile of the C= 1084S monitor. Most
 modern displays are calibrated for [sRGB](https://en.wikipedia.org/wiki/SRGB)
 out-of-the-box that uses [D65](https://en.wikipedia.org/wiki/Illuminant_D65)
-(6500K) whitepoint. This is noticeably cooler (bluer) looking than the
-more warmish/yellowish look of a typical CRT from the 80s, which was closer to
+(6500K) whitepoint. This is noticeably cooler (bluer) looking than the more
+warmish/yellowish look of a typical CRT from the 80s, which was closer to
 5000K (CRT manufacturers more or less just did whatever they felt like back
 then; the sRGB standard came into existence in 1996 precisely to remedy this
 Wild West type of situation).
@@ -1013,8 +1043,8 @@ Wild West type of situation).
 Guest's [WinUAE shader pack](https://github.com/guestrr/WinUAE-Shaders)
 contains a CRT colour profile filter in ReShade format
 ([ReshadeShaders/WinUaeColor.fx](https://github.com/guestrr/WinUAE-Shaders/blob/master/ReshadeShaders/WinUaeColor.fx)),
-and one of the included profiles is exactly what we need (information about
-the different profiles can be found
+and one of the included profiles is exactly what the doctor ordered
+(information about the different profiles can be found
 [here](https://github.com/guestrr/Libretro-Retroarch-SLANG/blob/main/crt-guest-dr-venom2/shaders/guest/README#L242-L360=)):
 
 > **[Profile 4]** Manually calibrated and compared to real Philips based CRT
@@ -1033,49 +1063,51 @@ WinUAE folder to use this, just follow Guest's instructions from the
 one thing that he doesn't mention is that the shaders depend on the common
 **ReShade.fxh** and **ReShadeUI.fxh** files that are not included, so just get
 them from [here](https://github.com/crosire/reshade-shaders/tree/slim/Shaders)
-(all these files are included in my pack, by the way).
+(all these files are included in [my preset pack](files/WinUAE-C1084S-emulation.zip), by the way).
+
+TODO reshade windowed
 
 Once you've set up everything correctly, just enable **WinUaeColor.fx** and
 set it up like shown below. **Color Profile 4** is the Philips, most people
 should leave **Color Space** at 0 (sRGB), but if you're the lucky owner of a
-wide-gamut display then you definitely should set it so it matches your
-displays colour profile (the emulation would be more accurate that way,
-according to the instructions).
+wide-gamut display then you definitely should set it to match your display's
+colour profile (the emulation would be more accurate that way, according to
+the instructions).
 
 **Colour Temperature** should stay at zero, and I know it's very tempting, but
 don't ever touch **Color Saturation** because it's completely broken. The
-default saturation is just fine, but if want to have a saturation control, I
-recommend prod80's [Color Space
+default saturation is just fine, but if you really want to have a saturation
+control, I recommend prod80's [Color Space
 Curves](https://github.com/prod80/prod80-ReShade-Repository/blob/master/Shaders/PD80_03_Color_Space_Curves.fx)
 ReShade filter in `L*a*b` mode, placed *before* the **WinUaeColor** shader.
 
 The **Color Contrast** adjustment, on the other hand, works quite well; you
-can either leave it at zero, but lately I prefer to bump it up a little to
-around 0.5. Some games look quite nice with the contrast cranked up almost to
-the max, some look completely fine at zero --- just like on real 
-hardware.
+can either leave it at zero, or bump it up to about 0.5 like I have recently.
+Some games look quite nice with the contrast cranked up almost to the max,
+some look completely fine at near zero --- just like on real hardware.
 
-{{< figure name="img/winuaecolor.png" nameSmall="img/winuaecolor.png" alt="" width="auto" >}}
+{{< figure name="img/winuaecolor.png" nameSmall="img/winuaecolor.png" alt="WinUaeColor shader settings" width="auto" >}}
+
 {{< /figure >}}
 
 
 As expected, the right half of the below example image with the Philips colour
-profile applied looks much more warm and cosy. This is how I remember my
+profile applied looks much more warm and cosy. Now we're cooking on gas! --- this is how I remember my
 Philips and Commodore monitors, the raw sRGB version looks too harsh and
 clinical in comparison.
 
-{{< figure name="img/centurion-colour-profile.jpg" nameSmall="img/centurion-colour-profile.jpg" captionAlign="center" alt="" width="90%" >}}
+{{< figure name="img/centurion-colour-profile.jpg" nameSmall="img/centurion-colour-profile.jpg" captionAlign="center" alt="Centurion colour profile comparison" width="90%" >}}
 
-  Left: scene from Centurion by Jim Sachs, sRGB colours<br>
+  Left: scene from [Centurion: Defender of Rome](https://hol.abime.net/2965) by Jim Sachs, sRGB colours<br>
   Right: same image with Philips colour profile applied
 
 {{< /figure >}}
 
 
-The difference is even more apparent on greys, like on this Directory Opus
+The difference is even more striking on greys, like on this Directory Opus
 screenshot:
 
-{{< figure name="img/diropus-colour-profile.jpg" nameSmall="img/diropus-colour-profile.jpg" captionAlign="center" alt="" width="90%" >}}
+{{< figure name="img/diropus-colour-profile.jpg" nameSmall="img/diropus-colour-profile.jpg" captionAlign="center" alt="Directory Opus colour profile comparison" width="90%" >}}
 
   Left: Directory Opus, sRGB colours<br />
   Right: same image with Philips colour profile applied
@@ -1091,11 +1123,11 @@ Now, this step is subtle but important: the emulation of the phosphor pattern
 and the shadow mask that gives the image a subtle, almost canvas-like texture.
 Different monitors use different types of [shadow
 masks](https://en.wikipedia.org/wiki/Shadow_mask); the 1084S and most early
-computer monitors have the slot-mask or in-line type which was also very
+computer monitors have the slot-mask or in-line type which was also
 commonly used in TV CRTs in the 80s.
 
 
-{{< figure name="img/pixel-array.jpg" nameSmall="img/pixel-array.jpg" captionAlign="center" alt="" width="90%" >}}
+{{< figure name="img/pixel-array.jpg" nameSmall="img/pixel-array.jpg" captionAlign="center" alt="Shadow mask types" width="90%" >}}
 
   Left: slotted-triplet shadow mask (also known as slot mask, or [in-line shadow
 mask](https://en.wikipedia.org/wiki/Shadow_mask#/media/File:CRT_pixel_array.jpg))<br>
@@ -1108,37 +1140,49 @@ mask](https://en.wikipedia.org/wiki/Shadow_mask#/media/File:CRT_pixel_array.jpg)
 The staggered slot mask pattern combined with the relatively low dot pitch
 (0.42 mm) results in quite visible zig-zag patterns across the scanlines. The
 effect is especially noticeable in NTSC as you can see in many of
-[AmigaLove](https://amigalove.com/)'s YouTube videos.
+[AmigaLove](https://www.youtube.com/c/AmigaLove/videos)'s YouTube videos.
 
 
-{{< figure name="img/slot-mask-1.jpg" nameSmall="img/slot-mask-1.jpg" captionAlign="center" alt="" width="90%" >}}
+{{< figure name="img/slot-mask-1.jpg" nameSmall="img/slot-mask-1.jpg" captionAlign="center" alt="Close-up view of the effects of the slot mask - Workbench 1.3" width="90%" >}}
 
-  Close-up view of the effects of the slot mask --- Workbench ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+  Close-up view of the effects of the slot mask --- Workbench 1.3 ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+
+{{< /figure >}}
+
+
+{{< figure name="img/slot-mask-2.jpg" nameSmall="img/slot-mask-2.jpg" captionAlign="center" alt="Close-up view of the effects of the slot mask - Pools of Darkness" width="90%" >}}
+
+  Close-up view of the effects of the slot mask --- [Pools of Darkness](https://hol.abime.net/1100) ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+
+{{< /figure >}}
+
+The shadow mask is just as visible in PAL screen modes, and because the
+scanlines are much closer, the zig-zag pattern almost turns into a fine
+checkerboard-like texture.
+
+{{< figure name="img/amiga-crt/shadow-of-the-beast-2.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-2.jpg" captionAlign="center" alt="Shadow of the Beast game over screen" width="90%" >}}
+
+  Shadow of the Beast game over screen (PAL)
 
 {{< /figure >}}
 
 
-{{< figure name="img/slot-mask-2.jpg" nameSmall="img/slot-mask-2.jpg" captionAlign="center" alt="" width="90%" >}}
-
-  Close-up view of the effects of the slot mask --- Pools of Darkness ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
-
-{{< /figure >}}
-
-Like I said in the beginning, these settings are really tailored for 1080p. At
-4k or higher you'll most likely need to make significant adjustments to it.
 [This article](https://filthypants.blogspot.com/2020/02/crt-shader-masks.html)
 gives a good succinct explanation on how these pixel-masks are implemented.
+Like I said in the beginning, my settings are really tailored for 1080p. At
+4k or higher resolutions you'll almost certainly need to make significant
+adjustments to them. 
 
 Again, this is not something that jumps at you as it's rather subtle, but it's
 missing if it's not there. The lack of it is especially noticeable on large
 solidly coloured areas; on a real CRT these were never *really* solid, there
-was always something "going on" even in these boring surfaces --- a faint,
+was always something "going on" even in these boring surfaces; a faint,
 almost subliminal canvas-like texture. Here are the settings I'm using in the
 **WinUaeMaskGlow** ReShade filter (whether you put it before or after the
-colour filter is of not much practical difference):
+colour filter is of not much practical importance):
 
 
-{{< figure name="img/winuaemaskglow.png" nameSmall="img/winuaemaskglow.png" alt="" width="auto" >}}
+{{< figure name="img/winuaemaskglow.png" nameSmall="img/winuaemaskglow.png" alt="WinUaeMaskGlow shader settings" width="auto" >}}
 {{< /figure >}}
 
 
@@ -1150,7 +1194,8 @@ set it up, live with it for a while, and then turn it off --- chances are
 you'll really miss it!
 
 {{< figure name="img/amiga-dealer-slot-mask.jpg"
-nameSmall="img/amiga-dealer-slot-mask.jpg" captionAlign="center" alt="" >}}
+    nameSmall="img/amiga-dealer-slot-mask.jpg" captionAlign="center"
+    alt="Phosphor and shadow mask emulation comparison" >}}
 
   Left: no phosphor and shadow mask emulation<br>
   Right: phosphor and shadow mask emulation applied<br>
@@ -1159,7 +1204,6 @@ nameSmall="img/amiga-dealer-slot-mask.jpg" captionAlign="center" alt="" >}}
 
 
 ## Bloom and glow
-
 Okay, this is really the icing on the cake, a subtle but important final touch
 to make the emulation even more authentic. CRT displays always exhibit a
 certain degree of halation, which is quite an interesting effect. As the
@@ -1174,31 +1218,47 @@ below.
 
 The "bloom" effect is maybe not named entirely correctly, but it's basically
 the effect of brighter pixels appearing a little larger and bleeding into
-their neighbouring pixels a bit more. Sort of a pixel-level, small scale glow
+their neighbours a bit more. Sort of a pixel-level, small scale glow
 effect that incidentally is also useful to make up for the brightness loss
 caused by the shadow mask.
 
 Luckily for us, the mask and glow shader emulates both phenomena quite
 convincingly. The trick is not to overdo it (you shouldn't really notice the
-effect unless you're looking for it), so I'm keeping both at a rather low
-strength setting. What I said about the phosphor and shadow mask emulation is
-stands for these as well: turning them on might not seem overly impressive
+effect unless you're looking for it), so I'm keeping both at rather low
+strength settings. What I said about the phosphor and shadow mask emulation
+holds true for these as well: turning them on might not seem overly impressive
 first (if you're impressed, you've added *waaaaaay* too much glow!), but when
-you turn them *off* later, you'll really miss the effects.
+you turn them *off* later, you'll really miss the effect.
 
 
 {{< figure name="img/eob-intro-glow.jpg" nameSmall="img/eob-intro-glow.jpg"
-    captionAlign="center" alt="" width="90%" >}}
+    captionAlign="center" alt="Eye of the Beholder, bloom and glow comparison" width="90%" >}}
 
-  Left: Eye of the Beholder intro, glow &amp; bloom emulation off<br>
-  Right: Same image with subtle glow &amp; bloom emulation
-
+  Left: Eye of the Beholder intro, no bloom &amp; glow emulation<br>
+  Right: Same image with subtle bloom &amp; glow emulation
 
 {{< /figure >}}
+
+
+## In closing
+
+Phew, that was one long article, indeed! Hopefully you've enjoyed my ramblings
+and have actually learned something useful. I wish you a nice emulated Amiga
+experience, and stay tuned for the next episode where we'll be looking at
+DOS/early-Windows era EGA and VGA graphics!
+
+---
 
 <section class="links">
 
 ## Links, files & further reading
+
+### Files
+
+* [Commodore 1084S emulation shader pack for WinUAE](files/WinUAE-C1084S-emulation.zip)
+
+### Misc
+* [Emulated display resolution calculator](https://docs.google.com/spreadsheets/d/1iH8YOhiGvKJ7kZogvKv_aDxkX4688T_VXRFAA2exmJs/edit?usp=sharing)
 
 ### Guest's shaders
 
