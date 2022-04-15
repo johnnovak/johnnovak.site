@@ -1066,8 +1066,6 @@ them from [here](https://github.com/crosire/reshade-shaders/tree/slim/Shaders)
 (all these files are included in [my preset
 pack](files/WinUAE-Commodore-1084S-ShaderPack.zip), by the way).
 
-TODO reshade windowed
-
 Once you've set up everything correctly, just enable **WinUaeColor.fx** and
 set it up like shown below. **Color Profile 4** is the Philips, most people
 should leave **Color Space** at 0 (sRGB), but if you're the lucky owner of a
