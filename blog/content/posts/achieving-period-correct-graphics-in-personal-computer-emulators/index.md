@@ -572,7 +572,7 @@ typical 24" / 1080p LCD:
 I recommend saving these settings as presets so you can conveniently switch
 between them (loading a filter preset won't restart the emulated machine). The
 quick'n'easy way is to download [my preset
-pack](files/WinUAE-C1084S-emulation.zip), load the full WinUAE configs (I've
+pack](files/WinUAE-Commodore-1084S-ShaderPack.zip), load the full WinUAE configs (I've
 included one for every scaler setting) and just save the filter settings for
 each. Don't worry about the NTSC presets just yet, we'll get to them in the
 next section.
@@ -979,18 +979,18 @@ Beast, Apidya, Agony, all Magnetic Scrolls adventures, etc.)
 
 
 I have tweaked the shader settings a little bit, you can download my
-customised versions [from here](files/WinUAE-C1084S-emulation.zip). They're called **CRT-A2080-PAL-\*** and
-**CRT-A2080-NTSC-\*** and have several variants --- I had to create copies
-because WinUAE doesn't support shader presets yet, plus I made the names a
-little shorter. The NTSC variants push scanline strength to the max without
-much noticeable moire/aliasing for the scaling factor indicated in the name,
-so for example for &times;3.5 scaling you can safely use
-**CRT-A2080-NTSC-x3.5**, or the **x3.2** or **x3.0** variants for less strong
-scanlines. I created these because NTSC users seem to have a fondness for
-scanlines and want them to be displayed prominently. But you can just stick
-with the PAL preset if you prefer to keep them subtle (that's what I do most
-of the time). The special **PAL-sharp** preset is designed for text adventures
-to maximise text readability.
+customised versions [from here](files/WinUAE-Commodore-1084S-ShaderPack.zip).
+They're called **CRT-A2080-PAL-\*** and **CRT-A2080-NTSC-\*** and have several
+variants --- I had to create copies because WinUAE doesn't support shader
+presets yet, plus I made the names a little shorter. The NTSC variants push
+scanline strength to the max without much noticeable moire/aliasing for the
+scaling factor indicated in the name, so for example for &times;3.5 scaling
+you can safely use **CRT-A2080-NTSC-x3.5**, or the **x3.2** or **x3.0**
+variants for less strong scanlines. I created these because NTSC users seem to
+have a fondness for scanlines and want them to be displayed prominently. But
+you can just stick with the PAL preset if you prefer to keep them subtle
+(that's what I do most of the time). The special **PAL-sharp** preset is
+designed for text adventures to maximise text readability.
 
 (By the way, in case you're wondering, "the Commodore A2080 was essentially a
 high persistence phosphor model of the 1084 to reduce flicker in NTSC modes",
@@ -1063,7 +1063,8 @@ WinUAE folder to use this, just follow Guest's instructions from the
 one thing that he doesn't mention is that the shaders depend on the common
 **ReShade.fxh** and **ReShadeUI.fxh** files that are not included, so just get
 them from [here](https://github.com/crosire/reshade-shaders/tree/slim/Shaders)
-(all these files are included in [my preset pack](files/WinUAE-C1084S-emulation.zip), by the way).
+(all these files are included in [my preset
+pack](files/WinUAE-Commodore-1084S-ShaderPack.zip), by the way).
 
 TODO reshade windowed
 
@@ -1255,7 +1256,7 @@ DOS/early-Windows era EGA and VGA graphics!
 
 ### Files
 
-* [Commodore 1084S emulation shader pack for WinUAE](files/WinUAE-C1084S-emulation.zip)
+* [Commodore 1084S emulation shader pack for WinUAE](files/WinUAE-Commodore-1084S-ShaderPack.zip)
 
 ### Misc
 * [Emulated display resolution calculator](https://docs.google.com/spreadsheets/d/1iH8YOhiGvKJ7kZogvKv_aDxkX4688T_VXRFAA2exmJs/edit?usp=sharing)
