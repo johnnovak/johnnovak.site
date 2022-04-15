@@ -1,6 +1,6 @@
 ---
 title: "Achieving period-correct graphics in personal computer emulators ---
-Part 1: the Amiga"
+Part 1: The Amiga"
 date:  2022-04-15
 tags:  []
 ---
