@@ -25,10 +25,10 @@ computers (no, it's not mine, unfortunately):
 {{< figure name="img/dream-setup.jpg" nameSmall="img/dream-setup.jpg"
     alt="Dream retro-computing setup" width="100%" >}}
 
-  Left: a Commodore 64 paired with a small 13" colour TV, middle: an Amiga 500
+  Left: a Commodore 64 paired with a small 13" colour TV. Middle: an Amiga 500
   hooked up to the venerable C= 1084 monitor (it's not period-correct if the
-  front panel door is *not* broken off!), right: an IBM PC compatible with a nice
-  15" Trinitron display. This dude from Norway ([UncleAwesome](https://www.youtube.com/channel/UC_Exbgz-zDrEEEaGZmbfA9Q)) certainly knows how to have a good time!
+  front panel door is *not* broken off!). Right: an IBM PC compatible with a nice
+  15" Trinitron display. This Norwegian dude ([UncleAwesome](https://www.youtube.com/channel/UC_Exbgz-zDrEEEaGZmbfA9Q)) certainly knows how to have a good time!
   ([source](https://www.amigalove.com/viewtopic.php?f=11&t=1593&p=10458&hilit=winter#p10458))
 
 {{< /figure >}}
@@ -61,10 +61,11 @@ all I care, and it's not that some friendly agents from the Bureau of
 Historically Accurate Retro-Computing will show up at your doorstep either if
 you're not following this guide to the letter... However, if you're after
 experiencing these systems just like people did back in the day (to the extent
-current emulation technology allows) --- whether as a die-hard fan of these
-iconic machines, or as a newcomer who is interested in learning about the
+current emulation technology allows it) --- whether as a die-hard fan of these
+iconic machines, or as a newcomer who is interested in learning more about the
 glory-days of home computing --- I would like to think you're in the right
-place and I do hope you'll find this series a worthwhile and interesting read.
+place. In any case, I do hope you'll find this series a worthwhile and
+interesting read.
 
 Finally, while I've been trying to do my best at presenting technically and
 historically accurate information in my writings, the more I researched the
@@ -74,8 +75,8 @@ much misinformation circulating about emulating these systems on the Internet
 already, if you've spotted any mistakes, factual or otherwise, I'd appreciate
 if you'd let me know in the comments so I can make the necessary corrections.
 
-But enough of this lengthy introduction already, let's get to the best
-personal computer of all human history --- the mighty Amiga!
+But enough of this lengthy introduction, let's get to the best personal
+computer of all human history --- the mighty Commodore Amiga!
 
 </section>
 
@@ -86,7 +87,7 @@ to early 90s, pretty much everybody who could afford it used their beloved
 machine with the iconic [Commodore
 1084S](https://dfarq.homeip.net/commodore-1084-monitor/) monitor or a [Philips
 CM 8833](https://www.msx.org/wiki/Philips_CM_8833) (most 1084 models were
-manufactured by Philips and they used the same picture tube; they're
+manufactured by Philips and thus used the same picture tube; they're
 essentially identical monitors). Sure, there were other Commodore models, the
 1084 itself had dozens of variations over the years and so had the Philips,
 but they all shared the same [basic
@@ -109,13 +110,13 @@ we'll be looking at emulating this particular display in
 [WinUAE](https://www.winuae.net/), the premier Amiga emulator.
 
 
-{{< figure name="img/amiga-dealer.jpg" nameSmall="img/amiga-dealer.jpg"
-    alt="Amiga Dealer by Jim Sachs" width="90%" >}}
+{{< figure name="img/sachs-amiga-demo.jpg" nameSmall="img/sachs-amiga-demo.jpg"
+    alt="Amiga Demo by Jim Sachs" width="90%" >}}
 
-  Image from the "Amiga Dealer" demo by the legendary [Jim
-  Sachs](https://amiga.lychesis.net/artist/JimSachs.html).<br> CRT emulation with
-  correct NTSC aspect ratio, as displayed by WinUAE.<br>
-  (Click on the image for an enlarged version to appreciate the details)
+  "Amiga Demo" by the legendary [Jim
+  Sachs](https://amiga.lychesis.net/artist/JimSachs.html) displayed in WinUAE
+  with C= 1084S CRT emulation in correct NTSC aspect ratio.<br> (Click on the
+  image for an enlarged version to appreciate the details)
 
 {{< /figure >}}
 
@@ -126,7 +127,7 @@ we'll be looking at emulating this particular display in
   effective image dimensions ended up being about the same (remember, TVs in
   the 80s were *much* smaller than today). The [Sony PVM and
   BVM](http://arekuse.net/blog/tech-guides/bvm-pvm/) line of monitors seem to
-  be very much in vogue lately in retrogaming circles, especially in the US
+  be very much in vogue lately in retro-gaming circles, especially in the US
   because of the almost total lack of small NTSC TVs with SCART inputs over
   there. I'm sure they're nice, but remember, the P and B stand for
   "Professional" and "Broadcast", respectively. A 20" BVM set you back by
@@ -150,22 +151,25 @@ we'll be looking at emulating this particular display in
 
 
 
-## Single vs double-scan
+### Single vs double-scan
 
-A significant people really dislike the idea of using any kind of CRT
-emulation shader and prefer the look of sharp pixels. Well, I used to be one
-of them, and if we're talking about emulating 320&times;200 to 640&times;480
-(S)VGA games, I would still 100% agree --- even the cheapest VGA monitors used
-to be tack sharp, and they exhibited none of the various effects typically
-associated with CRT shaders (halation, bloom, visible scanlines, etc.)
+A significant number of people really dislike the idea of using any kind of
+CRT emulation shader and prefer the look of sharp pixels. Well, I used to be
+one of them so I know, and if we're talking about emulating 320&times;200 to
+640&times;480 (S)VGA games, I would still 100% agree --- even the cheapest VGA
+monitors used to be tack sharp, and they exhibited none of the various effects
+typically associated with CRT shaders (prominent scanlines, halation, bloom,
+etc.)
 
-Moreover, 320x200 VGA was double-scanned (you can clearly see that on the
-blown up image below) so you could not notice scanlines even on 15" or 17"
-displays from a normal viewing distance, neither the effects of the shadow
-mask because of the very fine, typically 0.25-0.28 mm dot pitch. In any case,
-even 4k display wouldn't be able to convincingly emulate these extremely
-subtle CRT effects, so unless you have a 8k monitor, it's best to stick to
-sharp bilinear or integer scaling for DOS and early Windows games.
+Moreover, 320&times;200 VGA was double-scanned at a line frequency of 31 kHz
+(you can clearly see that on the blown up image below) so you could not notice
+scanlines even on 15" or 17" displays from a normal viewing distance, neither
+the effects of the shadow mask because of the very fine, typically 0.25-0.28
+mm dot pitch. In any case, even 4k display wouldn't be able to convincingly
+emulate the extremely subtle CRT effects of VGA monitors, so unless you have a
+8k monitor, it's best to stick to sharp bilinear or integer scaling for DOS
+and early Windows games. (And I would go even as far as saying that these
+characteristics of PC monitors are not even worth emulating.)
 
 
 {{< figure name="img/vga-crt/vga.jpg" nameSmall="img/vga-crt/vga.jpg"
@@ -173,7 +177,7 @@ sharp bilinear or integer scaling for DOS and early Windows games.
 
   Real photo of a CRT monitor running Wing Commander at 320&times;200
   VGA resolution. Virtually all non-broken VGA monitors produced an image this
-  sharp and artifact free.
+  sharp and artefact free.
 
 {{< /figure >}}
 
@@ -183,32 +187,34 @@ sharp bilinear or integer scaling for DOS and early Windows games.
 
   Blown up view of the same 320&times;200 VGA screen --- notice that the image
   is double-scanned; in reality, all VGA adapters actually output
-  320&times;400 with every line doubled!
+  320&times;400, so every line was doubled!
 
 {{< /figure >}}
 
 
 The situation on the Amiga, however, is entirely different. As mentioned,
-Commodore monitors are essentially small TVs, subject to SD TV standards. PAL
+Commodore monitors were essentially small TVs, subject to SD TV standards. PAL
 (NTSC) programmes display 50 (60) half-frames
 ([fields](https://en.wikipedia.org/wiki/Field_(video))) per second,
 interlaced, at 576 (480) lines of vertical resolution. What this means is that
 the display alternates between even and odd fields at 50 (60) Hz, and every
 field only contains 288 (240) lines, stretched to fill the screen (there is
-literally a 1-line vertical offset between them; this is the cause of the
-infamous "interlace flicker"). Interlace is not that great with mostly static
-computer generated images having sharp contours, so for low-res they used the
-same trick as the consoles of the era: they simply just sent the display
-either all-even or all-odd frames, rather than alternating between even and
-odd. The result is a completely static 50 (60) FPS image --- but the scanlines
-now only have half the "density" vertically, so to speak, which is the main
-contributing factor for the famous "scanline" look. Scanlines are much more
-noticeable on NTSC than PAL because of the ~17% vertical resolution reduction
-(which incidentally also explains why scanline-fetishism seems to be more
-rampant in American retro-gaming circles nowadays...)
+literally a 1-line vertical offset between the two alternating fields; this is
+the cause of the infamous "interlace flicker"). Interlace is not that great
+with mostly static computer generated images having sharp contours, so for
+low-res they used the same trick as most consoles of the era: they simply just
+sent the display either all-even or all-odd fields, rather than alternating
+between even and odd. The result is a completely static 50 (60) FPS image ---
+but the scanlines now only have half the "density" vertically, so to speak,
+which is the main contributing factor for the famous "scanline" look.
+Scanlines are much more noticeable on NTSC because of its ~17% reduced
+vertical resolution compared to PAL, which causes the lines making up the
+image to be placed further apart (incidentally, this explains why
+scanline-fetishism seems to be more rampant in American retro-gaming circles
+nowadays...)
 
 The below photos of Commodore monitors displaying 320&times;200 low-res in NTSC
-illustrate single-scanning very well (enlarge them and inspect the details).
+illustrate single-scanning very well (enlarge them to inspect the details).
 
 {{< figure name="img/amiga-crt/monkey-island-ntsc.jpg" nameSmall="img/amiga-crt/monkey-island-ntsc.jpg" captionAlign="center" alt="" width="90%" >}}
 
@@ -222,6 +228,9 @@ illustrate single-scanning very well (enlarge them and inspect the details).
 
 {{< /figure >}}
 
+TODO pinball dreams
+
+
 And this is a video recording of an NTSC Commodore monitor in action from
 [AmigaLove](amigalove.com/) (you should watch it in fullscreen at 1080p to
 appreciate the details).
@@ -233,8 +242,8 @@ appreciate the details).
 
 
 At 320&times;256 PAL resolutions the pixels are more densely packed together
-vertically; although the scanline effect is less strong, it still subtly
-contributes to the overall quality of the image:
+vertically, and although the scanline effect is weaker, it still subtly
+contributes to the overall "textured" quality of the image:
 
 {{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal.jpg" captionAlign="center" alt="" width="90%" >}}
 
@@ -243,12 +252,21 @@ contributes to the overall quality of the image:
 {{< /figure >}}
 
 
-## Why bother?
+Essentially, all online flamewars about scanlines vs sharp pixels comes down
+to which particular systems the people participating in the debate owned. Guys
+whose first computer was a PC and grew up with VGA games can rightfully claim
+that they never saw scanlines on their monitors, and the pixels appeared as
+sharp, chunky little rectangles, while the Amiga and console folk were
+definitely not hallucinating either when they keep talking about scanlines and
+the beneficial smoothing effects of CRTs on low-res graphics.
+
+
+### Why bother?
 
 People are paying big money for powerful graphics cards these days to enjoy
-their 3D games with smooth antialised graphics --- back in the 80s we got that
+their 3D games with smooth antialiased graphics --- back in the 80s we got that
 smoothing for free in the monitor hardware! Of course, the graphics still had
-to be skillfully made, but if it was properly antialised by the artist, the
+to be skilfully made, but if it was properly antialiased by the artist, the
 results just looked glorious on a typical Commodore monitor.
 
 Below is an Amiga artwork with a CRT shader applied to it that simulates the
@@ -263,38 +281,37 @@ SVGA quality to it.
 {{< figure name="img/made-scarecrow.jpg" nameSmall="img/made-scarecrow.jpg"
     alt="Scarecrow by Made" width="90%" >}}
 
-  **Scarecrow by Made** (320&times;256 / 64-colour Amiga AGA pixel art)
+  [Scarecrow](https://demozoo.org/graphics/67551/) by [Made](https://demozoo.org/sceners/131/) (320&times;256 / 64-colour Amiga AGA pixel art)
 
   The image was &times;3 upscaled with a CRT shader. Notice on the 200% view
   how the shader melts away all the blockiness, increases the perceived
   resolution, and adds subtle texture to the image. None of that is present in
-  the straight &times;3 integer upscaled version. That's analog versus digital for
-  you (emulated analog, that is, but still).
+  the straight &times;3 integer upscaled version. That's analog versus digital
+  for you, in a nutshell (emulated analog, but still).
 
 {{< /figure >}}
 
 The gradients and the curves are super smooth, you can't see any jagged edges
 and chunky pixels like you would on an objectively higher-quality VGA monitor
-displaying the *exact same* image (with the wrong aspect ratio, but that's
-another discussion). But measurable improvements in technical specifications
-don't necessarily always translate into better outcomes, especially when human
-perception and something as subjective as art is involved. For me personally,
-pixel art viewed on Commodore monitors from the 80s is pure magic, and that
-magic largely got lost during transitioning to the technologically superior
-S(VGA) monitors in the 90s (well, and let's not even talk about LCDs). From
-1985 to about 1995, a generation of Amiga artists and enthusiast were fixating
-their gazes upon the flickering analog magic that was the Commodore 1084S, and
-that's something that I think is well worth understanding and preserving. And
-it's just heaps of fun! Using WinUAE with an emulated 1084S puts me in a good
-mood every time; although it's not perfect, it gets me a little closer to the
+displaying the *exact same* image. But measurable improvements in technical
+specifications don't necessarily always translate into better outcomes,
+especially when human perception and something as subjective as art is
+involved. For me personally, pixel art viewed on Commodore monitors from the
+80s is pure magic, and that magic largely got lost during transitioning to the
+technologically superior PC VGA monitors in the 90s. From 1985 to about 1995,
+a generation of Amiga artists and enthusiast had been fixating their gazes
+upon the flickering analog magic that was the Commodore 1084S, and that's
+something I think is well worth understanding and preserving. And it's
+just heaps of fun! Using WinUAE with an emulated 1084S puts me in a good mood
+every time; although it's not perfect, it gets me a little closer to the
 experience of sitting in front of a real Amiga. And how long until all
 Commodore monitors finally die and end up in the junkyard? Clearly, emulation
 is the only practical way going forward.
 
 Having said all that, it's not all roses with analog CRTs. People fondly
 remember the visually pleasing aspects of this display technology, but nobody
-misses flicker, vignetting, and the geometric distortions of these non-flat
-displays, just to name the worst offenders. Naturally, we will not be
+misses flicker, vignetting, geometric distortions of the non-flat
+picture tubes, just to name the worst offenders. Naturally, we will not be
 emulating any of these undesirable elements.
 
 What we will be emulating, though, is the following:
@@ -303,11 +320,46 @@ What we will be emulating, though, is the following:
 - electron beam illuminating the phosphors on the screen (versus sharp
   rectangular pixels)
 - scanlines (subtly different between PAL and NTSC)
+- colour reproduction of the Philips CRT
 - phosphor and shadow mask patterns
 - bloom and glow
-- colour reproduction of the Philips CRT
 {class="compact"}
 
+We won't be looking at emulating any temporal artefacts this time (e.g. motion
+blur, afterglow, etc.) as WinUAE has no support for such effects currently.
+
+Here is a fun example on how the shaders hold up to a real 1084S monitor. The
+photos were taken from the [Eye of the Beholder
+review](https://www.amigalove.com/games.php?game_id=13) published on
+[AmigaLove](https://www.amigalove.com/). I highly recommend perusing this site
+as it's one of the best online sources of good quality photos of Commodore
+monitors, and of course the articles themselves are very well-written and
+informative too. Needless to say, close-up photos of CRTs don't nearly tell
+you the whole story, but I'm actually quite surprised to see the emulated
+results to be this close to the real thing!
+
+{{< figure name="img/eob-shader-comparison.jpg" nameSmall="img/eob-shader-comparison.jpg"
+    alt="" width="100%" >}}
+
+  Comparison of real C= 1084S monitor photos to the CRT emulation presented
+  in this article and to raw bilinear sharp upscaling.
+
+{{< /figure >}}
+
+{{< figure name="img/eob1.jpg" nameSmall="img/eob1.jpg" alt="" width="90%" >}}
+  
+  Eye of the Beholder with CRT emulation in WinUAE (in correct NTSC aspect
+  ratio, as the developers intended)
+
+{{< /figure >}}
+
+
+That's fine for low-res, but what about hi-res content? There's nothing more
+annoying than quitting a game and having to switch the shader off because
+it only supports low-res and makes the Workbench screen unreadable. If you're
+like me, that would take you right out of your retro-computing bliss
+in a jiffy! Fortunately, I have good news for you: Guest's shader supports
+_all_ standard OCS resolutions and looks *glorious* in hi-res too!
 
 {{< figure name="img/wb13.jpg" nameSmall="img/wb13.jpg"
     alt="Workbench 1.3" width="90%" >}}
@@ -319,14 +371,56 @@ What we will be emulating, though, is the following:
 {{< /figure >}}
 
 
-TODO
-[Eye of the Beholder review](https://www.amigalove.com/games.php?game_id=13)
-on [AmigaLove](https://www.amigalove.com/)
+## A few quick words about human psychology
 
-{{< figure name="img/eob-shader-comparison.jpg" nameSmall="img/eob-shader-comparison.jpg"
-    alt="" width="100%" >}}
+Just before we begin, it's worthwhile to point it out that your perception can
+play tricks on you, so at the very least it's good to be aware of a few basic
+psychological facts about human perception.
 
-{{< /figure >}}
+Firstly, we've been conditioned into thinking that *more*, *bigger*, *louder*,
+*faster*, etc. always equals *better*. Some of this might be evolutionary,
+some just a product of the times we live in, and maybe it's even true most of
+the time, but not *always*. It's very easy to outright dismiss an experience
+because it seems "inferior" according to some preconditioned criteria, but if
+you keep an open mind and try to live with it for a while, you might start to
+appreciate some of its not so obvious qualities (e.g. a "less sharp" image
+could make gradients and dither appear smoother, gently melt away all the
+jagged edges, and just subjectively it might seem more "cosy" --- not unlike
+the certain magic of technologically inferior (strictly speaking) old analog
+recordings versus the 100% perfect new digital releases).
+
+Secondly, the "order of doing things" matters. Going from sharp to less sharp,
+highly saturated to less colourful, louder to quieter, etc., always feels like
+"losing something". But look away from your monitor for 10--20 seconds, then
+look again at the "less sharp" image --- wow, now it seems quite normal!
+Switch back to the 100% sharp version --- hmm, that's weird; now that seems
+too clinical in comparison, and I'm not even so sure anymore that it's
+"better"!
+
+Like I said, I don't want to suggest you what to experience exactly (I
+couldn't really do that, could I?); it's just good to be aware of these
+mechanisms, otherwise they can be quite perplexing and could cause you to keep
+chasing your tail, running around in circles, if you have no idea whatsoever
+what's going on, psychologically speaking.
+
+## Credits
+
+The shaders presented in the article are the works of Guest, who originally
+published them in the [English Amiga Board](https://eab.abime.net/) forums
+(you can read the original discussion
+[here](https://eab.abime.net/showthread.php?t=61776)). Since then he has made
+his WinUAE shader pack available on
+[GitHub](https://github.com/guestrr/WinUAE-Shaders). Apart from the emulation
+of the Commodore A2080 monitor which I'm going use in this article,
+the pack also contains a number of other interesting things, such as an
+arcade CRT shader and a recreation of the Sony Trinitron displays.
+
+Guest's current bleeding-edge shader related work can be followed in the
+[this LibRetro forum thread](https://forums.libretro.com/t/new-crt-shader-from-guest-crt-guest-advanced-updates/25444).
+Although only available for RetroArch/LibRetro at the moment, it's surely
+worth checking out, and we can only hope his work will be eventually ported to
+WinUAE in the future once it has support added for more advanced shading
+techniques.
 
 
 ## Image dimensions
@@ -400,6 +494,15 @@ need to experiment and use your judgement. In any case, keep in mind that
 &times;3.0 scaling will give you the "canonical" image size that people were
 looking at sitting in front of their monitors back in the day, so that should
 always be your starting point.
+
+{{< figure name="img/ra-einstein.jpg" nameSmall="img/ra-einstein.jpg" alt="" width="90%" >}}
+  
+  Properly anti-aliased graphics look fabulous at &times;3.5 scaling too. Who
+  needs more than 32 colours?! (Artwork by
+  [Ra/Sanity](https://demozoo.org/sceners/304/) from the Amiga 500 demo
+  [Arte](https://demozoo.org/productions/5784/))
+
+{{< /figure >}}
 
 The following table lists some useful scaling values along with the resulting
 image dimension in pixels and their equivalent CRT sizes when viewed on a
@@ -565,7 +668,7 @@ machines, these PAL conversions had to use PAL screen modes, which means the
 original NTSC graphics only occupied the upper 320&times;200 area of a
 320&times;256 PAL screen and the bottom 56 lines were left blank (assuming
 low-res). As a result, the art appeared squashed vertically compared to the
-NTSC orignals on PAL machines (some people call this the "PAL-squash").
+NTSC originals on PAL machines (some people call this the "PAL-squash").
 
 Now what you must understand is that *these games were made in America, by
 Americans, on NTSC monitors* that stretched the 320&times;200 image to fill
@@ -750,7 +853,7 @@ NTSC is as follows:
 
 * **Games originally developed by American studios --- always use NTSC**
 
-   It does not matter if the Amiga port or the PAL version was done by an
+   It does not matter if the Amiga port or the PAL version was done by a
    European developer; in virtually all cases they just reused the original
    NTSC graphics and quite often didn't even attempt to address the 17%
    slowdown issue.
@@ -853,7 +956,7 @@ little shorter. The NTSC variants push scanline strength to the max without
 much noticeable aliasing for the scaling factor indicated in the name, so for
 example for &times;3.5 scaling you can safely use **CRT-A2080-NTSC-x3.5** or
 the **x3.2** or **x3.0** variants for less strong scanlines. I created these
-because NTSC users seem to have a fondness for scalines and want them to be
+because NTSC users seem to have a fondness for scanlines and want them to be
 displayed prominently. But you can just stick with the PAL preset if you
 prefer to keep them subtle (that's what I do most of the time). The special
 **PAL-sharp** preset is designed for text adventures to maximise text
@@ -901,7 +1004,7 @@ The next thing that makes a huge difference in replicating an authentic CRT
 experience is emulating the colour profile of the C= 1084S monitor. Most
 modern displays are calibrated for [sRGB](https://en.wikipedia.org/wiki/SRGB)
 out-of-the-box that uses [D65](https://en.wikipedia.org/wiki/Illuminant_D65)
-(6500K) whitepoint. Now, this is noticeably cooler (bluer) looking than the
+(6500K) whitepoint. This is noticeably cooler (bluer) looking than the
 more warmish/yellowish look of a typical CRT from the 80s, which was closer to
 5000K (CRT manufacturers more or less just did whatever they felt like back
 then; the sRGB standard came into existence in 1996 precisely to remedy this
@@ -909,15 +1012,15 @@ Wild West type of situation).
 
 Guest's [WinUAE shader pack](https://github.com/guestrr/WinUAE-Shaders)
 contains a CRT colour profile filter in ReShade format
-([ReshadeShaders/WinUaeColor.fx](https://github.com/guestrr/WinUAE-Shaders/blob/master/ReshadeShaders/WinUaeColor.fx));
-one the supported profiles is exactly what we need (information about the
-different profiles can be found
+([ReshadeShaders/WinUaeColor.fx](https://github.com/guestrr/WinUAE-Shaders/blob/master/ReshadeShaders/WinUaeColor.fx)),
+and one of the included profiles is exactly what we need (information about
+the different profiles can be found
 [here](https://github.com/guestrr/Libretro-Retroarch-SLANG/blob/main/crt-guest-dr-venom2/shaders/guest/README#L242-L360=)):
 
-> Manually calibrated and compared to real Philips based CRT monitors, running
-> side by side with the shader on a 10-bit DCI-P3 gamut panel. This calibrated
-> CRT profile covers amongst others Philips CM8533, Philips VS-0080, and
-> Commodore 1084. 
+> **[Profile 4]** Manually calibrated and compared to real Philips based CRT
+> monitors, running side by side with the shader on a 10-bit DCI-P3 gamut
+> panel. This calibrated CRT profile covers amongst others Philips CM8533,
+> Philips VS-0080, and Commodore 1084. 
 >
 > Note the whitepoint is significantly different from D65. It's closer to
 > 6100K, but clearly not on the blackbody curve.
@@ -932,21 +1035,34 @@ one thing that he doesn't mention is that the shaders depend on the common
 them from [here](https://github.com/crosire/reshade-shaders/tree/slim/Shaders)
 (all these files are included in my pack, by the way).
 
-(Note that there is a WinUAE filter called **Color-Profiles** as well; do not use that, it doesn't work correctly!)
-
 Once you've set up everything correctly, just enable **WinUaeColor.fx** and
-set it up like shown below. **Color Profile 4** is the Philips, and you'll
-definitely want to set **Color Space** to something different if you're the lucky owner of a wide-gamut display (the emulation would be more accurate that way, according to the instructions).
+set it up like shown below. **Color Profile 4** is the Philips, most people
+should leave **Color Space** at 0 (sRGB), but if you're the lucky owner of a
+wide-gamut display then you definitely should set it so it matches your
+displays colour profile (the emulation would be more accurate that way,
+according to the instructions).
 
-{{< figure name="img/winuaecolor.png" nameSmall="img/winuaecolor.png" alt=""  >}}
+**Colour Temperature** should stay at zero, and I know it's very tempting, but
+don't ever touch **Color Saturation** because it's completely broken. The
+default saturation is just fine, but if want to have a saturation control, I
+recommend prod80's [Color Space
+Curves](https://github.com/prod80/prod80-ReShade-Repository/blob/master/Shaders/PD80_03_Color_Space_Curves.fx)
+ReShade filter in `L*a*b` mode, placed *before* the **WinUaeColor** shader.
+
+The **Color Contrast** adjustment, on the other hand, works quite well; you
+can either leave it at zero, but lately I prefer to bump it up a little to
+around 0.5. Some games look quite nice with the contrast cranked up almost to
+the max, some look completely fine at zero --- just like on real 
+hardware.
+
+{{< figure name="img/winuaecolor.png" nameSmall="img/winuaecolor.png" alt="" width="auto" >}}
 {{< /figure >}}
 
 
-Just look at the image with the Philips colour profile applied on the right;
-it looks much more warm and cozy in comparison -- I definitely can't live
-without this colour profile anymore! This is how I remember my Philips and
-Commodore monitors, the raw sRGB version looks too harsh and clinical in
-comparison.
+As expected, the right half of the below example image with the Philips colour
+profile applied looks much more warm and cosy. This is how I remember my
+Philips and Commodore monitors, the raw sRGB version looks too harsh and
+clinical in comparison.
 
 {{< figure name="img/centurion-colour-profile.jpg" nameSmall="img/centurion-colour-profile.jpg" captionAlign="center" alt="" width="90%" >}}
 
@@ -956,7 +1072,7 @@ comparison.
 {{< /figure >}}
 
 
-The difference is even easier to spot on greys on this Directory Opus
+The difference is even more apparent on greys, like on this Directory Opus
 screenshot:
 
 {{< figure name="img/diropus-colour-profile.jpg" nameSmall="img/diropus-colour-profile.jpg" captionAlign="center" alt="" width="90%" >}}
@@ -971,36 +1087,70 @@ screenshot:
 
 ## Phosphor and shadow mask
 
-Now, this step is subtle but important.
-
-
-
+Now, this step is subtle but important: the emulation of the phosphor pattern
+and the shadow mask that gives the image a subtle, almost canvas-like texture.
+Different monitors use different types of [shadow
+masks](https://en.wikipedia.org/wiki/Shadow_mask); the 1084S and most early
+computer monitors have the slot-mask or in-line type which was also very
+commonly used in TV CRTs in the 80s.
 
 
 {{< figure name="img/pixel-array.jpg" nameSmall="img/pixel-array.jpg" captionAlign="center" alt="" width="90%" >}}
 
-  Slotted-triplet shadow mask (also known as slot mask, or [in-line shadow
-mask](https://en.wikipedia.org/wiki/Shadow_mask#/media/File:CRT_pixel_array.jpg)) ([source])(https://en.wikipedia.org/wiki/Shadow_mask)
+  Left: slotted-triplet shadow mask (also known as slot mask, or [in-line shadow
+mask](https://en.wikipedia.org/wiki/Shadow_mask#/media/File:CRT_pixel_array.jpg))<br>
+  Right:  triad-style dot mask typically used in PC monitors<br>
+ ([source](https://en.wikipedia.org/wiki/Shadow_mask))
 
 {{< /figure >}}
 
 
+The staggered slot mask pattern combined with the relatively low dot pitch
+(0.42 mm) results in quite visible zig-zag patterns across the scanlines. The
+effect is especially noticeable in NTSC as you can see in many of
+[AmigaLove](https://amigalove.com/)'s YouTube videos.
+
+
 {{< figure name="img/slot-mask-1.jpg" nameSmall="img/slot-mask-1.jpg" captionAlign="center" alt="" width="90%" >}}
 
-  Close-up view of slot mask effects on the Workbench ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+  Close-up view of the effects of the slot mask --- Workbench ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
 
 {{< /figure >}}
 
 
 {{< figure name="img/slot-mask-2.jpg" nameSmall="img/slot-mask-2.jpg" captionAlign="center" alt="" width="90%" >}}
 
-  Close-up view of slot mask effects in Pools of Darkness ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+  Close-up view of the effects of the slot mask --- Pools of Darkness ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
 
 {{< /figure >}}
 
+Like I said in the beginning, these settings are really tailored for 1080p. At
+4k or higher you'll most likely need to make significant adjustments to it.
+[This article](https://filthypants.blogspot.com/2020/02/crt-shader-masks.html)
+gives a good succinct explanation on how these pixel-masks are implemented.
+
+Again, this is not something that jumps at you as it's rather subtle, but it's
+missing if it's not there. The lack of it is especially noticeable on large
+solidly coloured areas; on a real CRT these were never *really* solid, there
+was always something "going on" even in these boring surfaces --- a faint,
+almost subliminal canvas-like texture. Here are the settings I'm using in the
+**WinUaeMaskGlow** ReShade filter (whether you put it before or after the
+colour filter is of not much practical difference):
 
 
-{{< figure name="img/amiga-dealer-slot-mask.jpg" nameSmall="img/amiga-dealer-slot-mask.jpg" captionAlign="center" alt="" >}}
+{{< figure name="img/winuaemaskglow.png" nameSmall="img/winuaemaskglow.png" alt="" width="auto" >}}
+{{< /figure >}}
+
+
+And this is a before/after comparison on a blow-up NTSC image. Doesn't seem
+like a big deal; it's one of those strange things that doesn't seem to add
+much when you turn it on, only when you *remove* it once you've become
+accustomed to it. It might even seem a bit pointless first, but trust me, just
+set it up, live with it for a while, and then turn it off --- chances are
+you'll really miss it!
+
+{{< figure name="img/amiga-dealer-slot-mask.jpg"
+nameSmall="img/amiga-dealer-slot-mask.jpg" captionAlign="center" alt="" >}}
 
   Left: no phosphor and shadow mask emulation<br>
   Right: phosphor and shadow mask emulation applied<br>
@@ -1008,11 +1158,33 @@ mask](https://en.wikipedia.org/wiki/Shadow_mask#/media/File:CRT_pixel_array.jpg)
 {{< /figure >}}
 
 
-https://filthypants.blogspot.com/2020/02/crt-shader-masks.html
+## Bloom and glow
 
+Okay, this is really the icing on the cake, a subtle but important final touch
+to make the emulation even more authentic. CRT displays always exhibit a
+certain degree of halation, which is quite an interesting effect. As the
+electron beams illuminate the phosphors and they emit light in turn, the light
+rays entering the front glass close to normal angles pass mostly undeterred,
+but below a certain angle of incidence the light is reflected back to the
+picture tube's surface where it undergoes further reflections. The end result
+is a characteristic concentric glow ("halo") around brightly lit areas, which
+also results in a localised loss of contrast. The effect is most noticeable
+when bright text is displayed on a black background, as shown on the example
+below.
 
+The "bloom" effect is maybe not named entirely correctly, but it's basically
+the effect of brighter pixels appearing a little larger and bleeding into
+their neighbouring pixels a bit more. Sort of a pixel-level, small scale glow
+effect that incidentally is also useful to make up for the brightness loss
+caused by the shadow mask.
 
-## Glow and bloom
+Luckily for us, the mask and glow shader emulates both phenomena quite
+convincingly. The trick is not to overdo it (you shouldn't really notice the
+effect unless you're looking for it), so I'm keeping both at a rather low
+strength setting. What I said about the phosphor and shadow mask emulation is
+stands for these as well: turning them on might not seem overly impressive
+first (if you're impressed, you've added *waaaaaay* too much glow!), but when
+you turn them *off* later, you'll really miss the effects.
 
 
 {{< figure name="img/eob-intro-glow.jpg" nameSmall="img/eob-intro-glow.jpg"
@@ -1021,6 +1193,17 @@ https://filthypants.blogspot.com/2020/02/crt-shader-masks.html
   Left: Eye of the Beholder intro, glow &amp; bloom emulation off<br>
   Right: Same image with subtle glow &amp; bloom emulation
 
+
 {{< /figure >}}
 
+<section class="links">
 
+## Links, files & further reading
+
+### Guest's shaders
+
+* [Latest version of the WinUAE shader pack](https://github.com/guestrr/WinUAE-Shaders)
+* [Original releases and discussion](https://eab.abime.net/showthread.php?t=61776)
+* [Guest's new bleeding-edge CRT shaders](https://forums.libretro.com/t/new-crt-shader-from-guest-crt-guest-advanced-updates/25444)
+
+</section>
