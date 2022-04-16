@@ -1012,9 +1012,7 @@ Oversampling takes a big hit on performance, e.g. with 2x horizontal and 4x
 vertical oversampling your GPU would need to render 2&times;4=8 times as many
 frames per second!
 
-{{< figure name="img/winuae-filter-shaders.png" nameSmall="img/winuae-filter-shaders.png" alt="WinUAE filter presets" width="auto" >}}
-
-{{< /figure >}}
+<img src="img/winuae-filter-shaders.png" alt="WinUAE filter presets" width="auto">
 
 
 Detail view of the NTSC x3.0 variant in action on a scene from [Defender of the
@@ -1085,9 +1083,7 @@ can either leave it at zero, or bump it up to about 0.5 like I have recently.
 Some games look quite nice with the contrast cranked up almost to the max,
 some look completely fine at near zero --- just like on real hardware.
 
-{{< figure name="img/winuaecolor.png" nameSmall="img/winuaecolor.png" alt="WinUaeColor shader settings" width="auto" >}}
-
-{{< /figure >}}
+<img src="img/winuaecolor.png" alt="WinUaeColor shader settings" width="auto">
 
 
 As expected, the right half of the below example image with the Philips colour
@@ -1180,9 +1176,7 @@ almost subliminal canvas-like texture. Here are the settings I'm using in the
 **WinUaeMaskGlow** ReShade filter (whether you put it before or after the
 colour filter is of not much practical importance):
 
-
-{{< figure name="img/winuaemaskglow.png" nameSmall="img/winuaemaskglow.png" alt="WinUaeMaskGlow shader settings" width="auto" >}}
-{{< /figure >}}
+<img src="img/winuaemaskglow.png" alt="WinUaeMaskGlow shader settings" width="auto">
 
 
 And this is a before/after comparison on a blow-up NTSC image. Doesn't seem

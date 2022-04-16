@@ -13,7 +13,7 @@
   <object data="{{ .Get "name" }}" type="image/svg+xml" {{ $imgWidthStyle }}></object>
   {{ else }}
     {{ if isset .Params "nameSmall" }}
-      <a class="largeimg" href="{{ $img.RelPermalink }}" data-width="{{ $img.Width }}" data-height="{{ $img.Height }}" >
+      <a class="largeimg" href="{{ $img.RelPermalink }}" data-pswp-width="{{ $img.Width }}" data-pswp-height="{{ $img.Height }}" >
         <img src="{{ $imgSmall.RelPermalink }}" alt="{{ $alt }}" {{ $imgWidthStyle | }}>
       </a>
     {{ else }}
