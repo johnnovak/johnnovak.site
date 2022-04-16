@@ -1249,7 +1249,7 @@ DOS/early-Windows era EGA and VGA graphics!
 ### Files
 
 * [Commodore 1084S emulation shader pack for WinUAE](files/WinUAE-Commodore-1084S-ShaderPack.zip)
-* [Test Pictures](files/test-pics.zip)
+* [Test pictures in IFF format](files/test-pics.zip)
 
 ### Misc
 * [Emulated display resolution calculator](https://docs.google.com/spreadsheets/d/1iH8YOhiGvKJ7kZogvKv_aDxkX4688T_VXRFAA2exmJs/edit?usp=sharing)
