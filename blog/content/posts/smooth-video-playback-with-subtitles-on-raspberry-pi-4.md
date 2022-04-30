@@ -1,7 +1,7 @@
 ---
 title: "Smooth video playback with subtitles on Raspberry PI 4"
 date:  2021-05-31
-tags:  []
+tags:  [linux, raspberry pi, libreelec, kodi]
 ---
 
 A few weeks ago I decided it was time to replace my ageing 2007 Macbook Pro I
