@@ -22,7 +22,7 @@ below dream retro-setup showcases the perfect pairings for the aforementioned
 computers (no, it's not mine, unfortunately):
 
 
-{{< figure name="img/dream-setup.jpg" nameSmall="img/dream-setup.jpg"
+{{< figure name="img/dream-setup.jpg" nameSmall="img/dream-setup-small.jpg"
     alt="Dream retro-computing setup" width="100%" >}}
 
   Left: a Commodore 64 paired with a small 13" colour TV. Middle: an Amiga 500
@@ -110,7 +110,7 @@ we'll be looking at emulating this particular display in
 [WinUAE](https://www.winuae.net/), the premier Amiga emulator.
 
 
-{{< figure name="img/sachs-amiga-demo.jpg" nameSmall="img/sachs-amiga-demo.jpg"
+{{< figure name="img/sachs-amiga-demo.jpg" nameSmall="img/sachs-amiga-demo-small.jpg"
     alt="Amiga Demo by Jim Sachs" width="90%" >}}
 
   "Amiga Demo" by the legendary [Jim
@@ -216,19 +216,19 @@ nowadays...)
 The below photos of Commodore monitors displaying 320&times;200 low-res in NTSC
 illustrate single-scanning very well (enlarge them to inspect the details).
 
-{{< figure name="img/amiga-crt/monkey-island-ntsc.jpg" nameSmall="img/amiga-crt/monkey-island-ntsc.jpg" captionAlign="center" alt="Monkey Island, NTSC" width="90%" >}}
+{{< figure name="img/amiga-crt/monkey-island-ntsc.jpg" nameSmall="img/amiga-crt/monkey-island-ntsc-small.jpg" captionAlign="center" alt="Monkey Island, NTSC" width="90%" >}}
 
   [The Secret of Monkey Island](https://hol.abime.net/1859), 320&times;200 NTSC ([source](https://www.reddit.com/r/crtgaming/comments/jdlr4h/monkey_island_on_a_1084s_in_60hz/))
 
 {{< /figure >}}
 
-{{< figure name="img/amiga-crt/winterscene-ntsc.jpg" nameSmall="img/amiga-crt/winterscene-ntsc.jpg" captionAlign="center" alt="Winter Scene, NTSC" width="90%" >}}
+{{< figure name="img/amiga-crt/winterscene-ntsc.jpg" nameSmall="img/amiga-crt/winterscene-ntsc-small.jpg" captionAlign="center" alt="Winter Scene, NTSC" width="90%" >}}
 
   Winter scene, 320&times;200 NTSC, 16-colour palette ([source](https://www.amigalove.com/viewtopic.php?f=5&t=2069&p=13621&hilit=winter#p13621))
 
 {{< /figure >}}
 
-{{< figure name="img/amiga-crt/pinball-dreams-ntsc.jpg" nameSmall="img/amiga-crt/pinball-dreams-ntsc.jpg" captionAlign="center" alt="Pinball Dreams, NTSC" width="90%" >}}
+{{< figure name="img/amiga-crt/pinball-dreams-ntsc.jpg" nameSmall="img/amiga-crt/pinball-dreams-ntsc-small.jpg" captionAlign="center" alt="Pinball Dreams, NTSC" width="90%" >}}
 
   [Pinball Dreams](https://hol.abime.net/1054), 320&times;200 NTSC
   ([source](https://www.amigalove.com/viewtopic.php?f=8&t=1566&hilit=pinball+dreams&start=10))
@@ -250,7 +250,7 @@ At 320&times;256 PAL resolutions the pixels are more densely packed together
 vertically, and although the scanline effect is weaker, it still subtly
 contributes to the overall "textured" quality of the image:
 
-{{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal.jpg" captionAlign="center" alt="Shadow of the Beast, PAL" width="90%" >}}
+{{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal-small.jpg" captionAlign="center" alt="Shadow of the Beast, PAL" width="90%" >}}
 
   Shadow of the Beast, 320&times;256 PAL, [too many colours to count](https://codetapper.com/amiga/sprite-tricks/shadow-of-the-beast/) 
 
@@ -283,7 +283,7 @@ even smaller; it fits within a 274&times;216 rectangle). Subjectively, it
 certainly looks higher resolution than that; there's an almost 640&times;480
 SVGA quality to it.
 
-{{< figure name="img/made-scarecrow.jpg" nameSmall="img/made-scarecrow.jpg"
+{{< figure name="img/made-scarecrow.jpg" nameSmall="img/made-scarecrow-small.jpg"
     alt="Scarecrow by Made" width="90%" >}}
 
   [Scarecrow](https://demozoo.org/graphics/67551/) by [Made](https://demozoo.org/sceners/131/) (320&times;256 / 64-colour Amiga AGA pixel art)
@@ -343,7 +343,7 @@ informative too. Needless to say, close-up photos of CRTs don't nearly tell
 you the whole story, but I'm actually quite surprised to see the emulated
 results to be this close to the real thing!
 
-{{< figure name="img/eob-shader-comparison.jpg" nameSmall="img/eob-shader-comparison.jpg"
+{{< figure name="img/eob-shader-comparison.jpg" nameSmall="img/eob-shader-comparison-small.jpg"
     alt="Eye of the Beholder, real CRT vs shader comparison" width="100%" >}}
 
   Comparison of real C= 1084S monitor photos to the CRT emulation presented
@@ -351,7 +351,7 @@ results to be this close to the real thing!
 
 {{< /figure >}}
 
-{{< figure name="img/eob1.jpg" nameSmall="img/eob1.jpg"
+{{< figure name="img/eob1.jpg" nameSmall="img/eob1-small.jpg"
     alt="Eye of the Beholder" width="90%" >}}
   
   [Eye of the Beholder](https://hol.abime.net/2903) with CRT emulation in WinUAE (in correct NTSC aspect ratio, as the developers intended)
@@ -366,7 +366,7 @@ like me, that would take you right out of your retro-computing bliss
 in a jiffy! Fortunately, I have good news for you: Guest's shader supports
 _all_ standard OCS resolutions and looks *glorious* in hi-res too!
 
-{{< figure name="img/wb13.jpg" nameSmall="img/wb13.jpg"
+{{< figure name="img/wb13.jpg" nameSmall="img/wb13-small.jpg"
     alt="Workbench 1.3" width="90%" >}}
 
   Workbench 1.3 in all its overscanned glory. Old school! If this doesn't get
@@ -512,7 +512,7 @@ keep in mind that &times;3 scaling will give you the "canonical" image size
 that people were looking at sitting in front of their monitors back in the
 day, so that should always be your starting point.
 
-{{< figure name="img/ra-einstein.jpg" nameSmall="img/ra-einstein.jpg" alt="Einstein by Ra" width="90%" >}}
+{{< figure name="img/ra-einstein.jpg" nameSmall="img/ra-einstein-small.jpg" alt="Einstein by Ra" width="90%" >}}
   
   Properly anti-aliased graphics look fabulous at &times;3.5 scaling too ---
   no hints of VGA-style chunkiness anywhere. Who needs more than 32 colours?!
@@ -965,7 +965,7 @@ including low-res/hi-res split-screen games (e.g Lemmings, Shadow of the
 Beast, Apidya, Agony, all Magnetic Scrolls adventures, etc.)
 
 
-{{< figure name="img/scapeghost.jpg" nameSmall="img/scapeghost.jpg"
+{{< figure name="img/scapeghost.jpg" nameSmall="img/scapeghost-small.jpg"
     alt="Scapeghost" width="90%" >}}
 
   Start scene of [Scapeghost](https://hol.abime.net/1841) by [Magnetic
@@ -1155,7 +1155,7 @@ The shadow mask is just as visible in PAL screen modes, and because the
 scanlines are much closer, the zig-zag pattern almost turns into a fine
 checkerboard-like texture.
 
-{{< figure name="img/amiga-crt/shadow-of-the-beast-2.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-2.jpg" captionAlign="center" alt="Shadow of the Beast game over screen" width="90%" >}}
+{{< figure name="img/amiga-crt/shadow-of-the-beast-pal-2.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal-2-small.jpg" captionAlign="center" alt="Shadow of the Beast game over screen" width="90%" >}}
 
   Shadow of the Beast game over screen (PAL)
 
@@ -1187,7 +1187,7 @@ set it up, live with it for a while, and then turn it off --- chances are
 you'll really miss it!
 
 {{< figure name="img/amiga-dealer-slot-mask.jpg"
-    nameSmall="img/amiga-dealer-slot-mask.jpg" captionAlign="center"
+    nameSmall="img/amiga-dealer-slot-mask-small.jpg" captionAlign="center"
     alt="Phosphor and shadow mask emulation comparison" >}}
 
   Left: no phosphor and shadow mask emulation<br>
