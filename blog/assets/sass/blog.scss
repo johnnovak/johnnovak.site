@@ -539,11 +539,12 @@ article {
   ul {
     margin: 0;
     padding: 0;
+    display: flex;
   }
 
   li {
     line-height: 26px;
-    margin: 0 0 3px 0 !important;
+    margin: 0 5px 3px 0 !important;
     padding: 0 !important;
 
     .tag-name {
@@ -1029,6 +1030,9 @@ article {
       width: 125px;
       margin: 0;
 
+      ul {
+        display: block;
+      }
       li {
         display: block;
         line-height: 31px;
