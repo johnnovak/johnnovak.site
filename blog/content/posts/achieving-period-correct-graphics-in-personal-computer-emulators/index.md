@@ -794,7 +794,7 @@ These are the two best ways to do that when using emulation:
   on your system drive, reboot, and Bob's your uncle!
 
 - If you plan on playing games on an OCS Amiga 500 with Kickstart 1.2/1.3 (a
-    most pretigious choice 🧐), you'll need to emulate an actual NTSC chipset.
+    most prestigious choice 🧐), you'll need to emulate an actual NTSC chipset.
     It's very simple: just tick **NTSC** in the **Chipset** configuration
     section. Now, if you turn on automatic aspect ratio management in WinUAE
     (in the **Filter** section select **Fullscreen (TV)** or **Fullscreen
