@@ -4,6 +4,10 @@ date:  2021-05-31
 tags:  [linux, raspberry pi, libreelec, kodi]
 ---
 
+{{< toc >}}
+
+## Introduction
+
 A few weeks ago I decided it was time to replace my ageing 2007 Macbook Pro I
 had been using for watching movies on my big living room TV with something
 newer.  Something that can play H.264 videos without the fan going into

@@ -20,4 +20,8 @@ disqusShortname = "johnnovak"
     unsafe = true
   [markup.highlight]
     noClasses = false
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
 
