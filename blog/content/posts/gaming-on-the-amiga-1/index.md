@@ -370,34 +370,8 @@ this point:
 {class="compact"}
 
 
-## WinUAE configurations
 
-So, from all the above we conclude that to be able to play all Amiga games
-worth playing, we'll need three base configurations:
-
-Amiga 500 with hard-drive
-: This setup will take care of the vast majority of your gaming needs:
-    - All OCS games that have official HD installers
-    - Many OCS games that do not have HD installers, but can be installed
-      onto the hard drive manually quite easily
-    - OCS games that can be only run from floppies
-    {class="compact"}
-
-Amiga 1200 with hard-drive
-: - For the handful of AGA games, which all HD-installable
-  - The equally small pool of OCS games where you're better off with WHDLoad
-  {class="compact"}
-
-Amiga CD32
-: - For the odd CD32 game
-
-
-
-
-
-
-
-## On WHDLoad
+## The Case Against WHDLoad
 
 First, let me quote what Wikipedia's has to say about [WHDLoad](https://en.wikipedia.org/wiki/WHDLoad) because it's
 rather well written:
@@ -422,37 +396,80 @@ people sold their old Amiga 500 and put the money towards buying an Amiga
 
 So far so good, what's not to like? Quite a few things, actually. In order to
 work its magic, every supported game needs a so-called WHDLoad "slave" written
-for it that can perform a number of interesting things:
+for it that can perform a number of interesting (and complex) things:
 
-- **Patch the game code** so it runs correctly (or rather, with minimal issues) on
-  the AGA chipset and faster processors (68020 at 14MHz is the minimum for an
-  A1200). Due to the way the game was coded, this is not always possible to do
-  100% perfectly, resulting in sync and timing issues in a number of
-  WHDLoad conversions.
+- **Patch the game code** so it runs correctly (or rather, with minimal
+  issues) on the AGA chipset with fast memory present and on faster
+  processors (68020 at 14MHz is the minimum for an A1200). This definitely
+  sounds like a good thing, but it's not always possible to do 100% perfectly
+  for all games, resulting in sync and timing issues. Also, if not all of
+  these incompatibilities have been patched up, that can result in bugs or
+  crashes. But that's just the nature of the beast; you need to put your trust
+  in the author of the WHDLoad slave if you're going down this route. You're
+  not just dealing with the original game code anymore, but an additional layer on
+  top of that.
 
-- **Remove copy protection** from games that used nefarious disk-based 
+- **Emulate the environment** the game expects, for example, an older
+    Kickstart version or some specific memory layout. Many older,
+    OS-unfriendly games expect a fixed memory layout (e.g. a stock A500 with
+    the extra 512K slow RAM), and would crash on any other setup. So the slave
+    needs to emulate the old Kickstart in software, and do various magical
+    things to fool the game into believing it runs from a floppy on a say
+    stock Amiga 500 with Kickstart 1.2. All these machinations require extra
+    memory; in fact, only a few WHDLoad games can run on a stock A1200 with 2
+    MB chip RAM. At least 8 MB fast RAM is recommended, but preferably more.
+    This is not a big deal when using an emulator, but... I just don't like
+    it. It's too much complexity, there's so much room for things to go wrong
+    compared to a simple Amiga 500 setup the game was coded for (but I admit,
+    all this machinery is very quite cool from a purely technical point of
+    view).
+
+- **Allow hiscores and savegames to be stored on the hard drive**. Again, a
+    cool feature on paper, but many of these games could only store such
+    things on floppies, often bypassing the OS completely. So the game needs
+    to be patched to write this data into some kind of temporary buffer in
+    memory, then when the buffer fills up, AmigaOS needs to be swapped back
+    into the memory space now occupied by the game to be able to write the
+    buffer to disk (it's not possible to access the HD without the OS, and
+    many older floppy games start by killing the OS). Then the game code needs
+    to be swapped back, and this goes back and forth for a while. Usually this
+    results in a black screen, and it can slow things down quite a bit (it's
+    referred to as "OS swapping"). Some slaves only perform the writes when
+    exiting the game, as an attempt to minimise the number of OS swaps, but if
+    you forget to properly quit the game, or worse, the game crashes on you,
+    all your *saved* (!) progress from your session is lost... I think this is
+    the #1 issue that gets every WHDLoad newbie, and I certainly did lose my
+    progress more than once by forgetting to exit the game. Although I'm not
+    100% certain about the technical explanation, such slowdowns can also
+    affect games that perform lots of reads during the game, often slowing
+    down these loading times 2-5-fold! Sometimes the WHDLoad version runs
+    *slower* than the floppy version, which is plain unacceptable...
+
+- **Remove copy protection** from games that used nefarious disk-based
   protection schemes and/or custom non-DOS disk formats. Although the majority
   of WHDLoad conversions require original uncracked floppy images, removing
   such protections is a necessity and effectively requires cracking the game.
-  This comes with all the drawbacks associated with cracking; a bad crack can
-  simply render your game unplayable. This is certainly annoying in action
-  games and platformers that take a few hours tops to finish (and therefore
-  are easy to test by the crackers), but with adventure games and especially
-  RPGs that can take anywhere between 20 and 100 hours to complete, a bad crack can
-  be catastrophic. Some devious developers had literally woven the protection
+  Sure, not having to consult code wheels and manuals every time you start the
+  game sounds like a good thing, but this comes with all the drawbacks
+  associated with cracking; a bad crack can simply render your game
+  unplayable. This is certainly annoying in action games and platformers that
+  take a few hours tops to finish (and therefore are easy to test by the
+  crackers), but with adventure games and especially RPGs that can take
+  anywhere between 20 and 100 hours to complete, a bad crack can be
+  catastrophic. Some devious developers had literally woven the protection
   into the fabric of the game's code; it wasn't just a simple
   question/response style manual or code wheel check at the beginning, but the
-  protection was *embedded* into the game, so to speak. Moreover,
-  there was no indication whatsoever of failing these subtle
-  checks, the game did not outright stop or crash but let you keep going for hours
-  on end while gradually crippling the experience until it got
-  into an unwinnable state, possibly even corrupting or "infecting" your save
-  files. Needless to say, very few crackers had spent 50-100 hours to
-  complete such games over and over to test their cracks. Here's a few notable
-  examples:
+  protection was *embedded* into the game, so to speak. Moreover, there was no
+  indication whatsoever of failing these subtle checks, the game did not
+  outright stop or crash but let you keep playing for hours on end while
+  gradually crippling the experience until it got into an unwinnable state,
+  possibly even corrupting or "infecting" your save files. Needless to say,
+  very few crackers had spent 20-100 hours to complete such games over and
+  over to test their cracks (just think of a complex branching RPG and how
+  much effort it would be to properly test that). Here's a few notable examples:
 
 [Fate: Gates of Dawn](https://en.wikipedia.org/wiki/Fate:_Gates_of_Dawn), one
-of the longest and best RPGs Amiga-exclusive RPG:
+of the longest and best RPGs Amiga-exclusive RPGs:
 
 > It is notable that from these copies of the game only the copy protection
 > but not the password protection was removed. Password requests are not made
@@ -464,7 +481,7 @@ of the longest and best RPGs Amiga-exclusive RPG:
 
 
 The [ingenious](https://tcrf.net/Dungeon_Master_(Amiga)) [protection](https://dmweb.free.fr/?q=node/210) [scheme](https://www.youtube.com/watch?v=VheNpiSZxf0&t=489s) of [Dungeon Master](https://hol.abime.net/441) had received a lot of respect
-from crackers back in the day; I took them a year to fully crack the game. The
+from crackers back in the day; I took them a year to fully reverse engineer it. The
 protection definitely had served its purpose in this particular case!
 
 > Additional anti-piracy checks exist in the code, including further fuzzy bit
@@ -488,31 +505,40 @@ This commenter is probably [reminiscing](https://hackaday.com/2019/06/25/copy-pr
 Not an Amiga game, but an [interesting case](https://news.ycombinator.com/item?id=8809505) nonetheless:
 
 > Another copy-protection classic was Spyro: Year of the Dragon:
-> http://www.gamasutra.com/view/feature/131439/keeping_the_pir...
+> https://www.gamedeveloper.com/business/keeping-the-pirates-at-bay
 >
 > This used a multi-layered copy protection scheme. The first layers would
 > show a dialog and quit. Later layers got progressively more vicious:
 >
 > 1. They'd remove 1 out of 10 gems needed to complete a certain level.
->
 > 2. They'd randomly corrupt data.
->
 > 3. They'd change the UI language at runtime.
 >
 > Read the post-mortem I linked above; it's really fun. The basic idea was to
 > require crackers to play the entire game very carefully, looking for subtle
 > side effects that broke game play.
->
-> Ultimately, the protection was a success: It took almost 2 months to crack
-> the game, resulting in a full Christmas season's worth of sales IIRC.
 
 
 Okay, so you get the picture. I'm not saying all cracks are bad, but quite a
-few were back in the day, I clearly remember that. I just don't have time for
-this bullshit anymore, so nowadays I prefer to play uncracked originals if at
-all possible, and I recommend you do the same.
+few were back in the day, I clearly remember that. If you were unlucky and got
+your hands on a bad crack of a long adventure game or RPG, you just had to put
+it aside until you managed to find a better cracked version. I just don't have
+time for this bullshit anymore, so nowadays I prefer to play uncracked
+originals if at all possible, and I recommend you do the same.
 
-Some concrete examples that I've personally encountered with WHDLoad games:
+Now here are some concrete problems that I've personally encountered with
+WHDLoad games. Note that I wasn't looking particularly hard to find faulty
+slaves, I just installed a bunch of my favourite games and about half of the
+time I ran into some weirdness or suboptimal behaviour. It's surely annoying
+for me who knows how these games should play, but it can certainly put someone off for good from 
+Amiga gaming completely who is new to the Amiga and their first experience
+with these games is via WHDLoad. *That* is precisely my problem with WHDLoad being
+recommended everywhere as the magic ultimate solution --- it's cool, it's
+clever, it might even work well with some particular games, but it's most
+certainly *not* the best solution for many many games, so you should at the
+very least exercise caution.
+
+Alright, so here we go:
 
 - [Ishar III AGA](): Opening the map takes 4
     seconds, and closing it around 13 seconds in the WHDLoad version. This
@@ -557,8 +583,39 @@ Some concrete examples that I've personally encountered with WHDLoad games:
 
 - [It Came From the Desert](): Speed and music syncing problems (the music gets cut off before the intro could properly end).
 
-Note that I wasn't looking particularly hard to find these issues. It's just
-that I tried a bunch of WHDLoad games, and 
+Like you would expect, all these games work perfectly fine and without any
+issues when run from the hard drive or floppies on an Amiga 500 (you need an
+A1200 for Ishar III AGA, of course).
+
+
+
+## WinUAE configurations
+
+So, from all the above we conclude that to be able to play all Amiga games
+worth playing, we'll need three base configurations:
+
+Amiga 500 with hard-drive
+: This setup will take care of the vast majority of your gaming needs:
+    - All OCS games that have official HD installers:
+      - Most games made by North American studios (e.g. LucasArts, SSI, Sierra, Interplay, Infocom, MicroProse, Cinemaware, Dynamix, SSI, Westwood,  New World Computing, Maxis, etc.)
+      - Most adventures and RPGs, and many strategy games made by European studios (e.g. Bullfrog, Coktel Vision, reLine, HorrorSoft / Adventure Soft, Delphine, Magnetic Scrolls, Level 9, Thalion, Revolution, Silmarils, etc.)
+    - Many OCS games that do not have HD installers, but can be installed
+      onto the hard drive manually quite easily (e.g. MicroMagic games)
+    - OCS games that can be only run from floppies
+    {class="compact"}
+
+Amiga 1200 with hard-drive
+: - For the handful of AGA games, which all HD-installable (as per above)
+  - The even smaller pool of games where you're better off with WHDLoad:
+    - [Fate: Gates of Dawn](https://hol.abime.net/509) (patched English version with
+        restored nudity from the German original, confirmed to be completable)
+    - [Eye of the Beholder AGA I](https://hol.abime.net/6039), [II](https://hol.abime.net/6040) (fan-made port of the DOS VGA original with Amiga sound that only exists as a WHDLoad game; very well done and completable)
+    - [Where Time Stood Still](https://hol.abime.net/6052) (fan-made port of the Atari ST game)
+  {class="compact"}
+
+Amiga CD32
+: - For the odd CD32 game
+
 
 
 
@@ -569,8 +626,6 @@ that I tried a bunch of WHDLoad games, and
 ## References & further reading
 
 * [Amiga Beginner's Series](https://www.amigaretro.com/index.php/page,1.html)
-
-[Amiga models](https://www.amigaretro.com/index.php/page,5.html)
 
 * [Jimmy Maher -- The Future Was Here: The Commodore Amiga](https://mitpress.mit.edu/9780262535694/the-future-was-here/)
 
