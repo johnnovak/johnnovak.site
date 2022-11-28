@@ -180,6 +180,11 @@ blockquote {
     margin: 0;
     padding: 0;
   }
+  ul, ol {
+    li {
+      color: $light-font-color !important;
+    }
+  }
   footer {
     text-align: right;
     margin-right: 3em;
