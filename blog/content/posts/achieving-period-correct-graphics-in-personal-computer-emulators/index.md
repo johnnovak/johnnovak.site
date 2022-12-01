@@ -940,21 +940,49 @@ NTSC is as follows:
        America as well, and stretched graphics is infinitely better than no
        NTSC release at all.
 
-       Another interesting case is [Elvira 1](https://hol.abime.net/2836): the
-       graphics actually look good in both PAL or NTSC. Most likely they
-       anticipated the game to be released both in Europe and North America,
-       plus they released the DOS and Amiga versions simultaneously, so
-       apparently they tried to draw the art in a way that looks good in both
-       aspect ratios (with quite good results, I must add). So in case of the
-       Elvira games, I think it's really a toss-up. Anyway, you see the
-       pattern here: you'll need to research the game a bit, and sometimes
-       you'll just need to use your aesthetic judgement.
+       As for some interesting counterexamples, [Captain
+       Blood](https://hol.abime.net/2924) and the [Ishar RPG
+       series](https://hol.abime.net/hol_search.php?find=ishar) were both made
+       by French studios, but their graphics look correct with NTSC-stretch
+       (1:1.2 pixel aspect ratio). For the Ishar games, this was most likely
+       because of the DOS versions, but in the case of Captain Blood,
+       producing the graphics with NTSC-stretch in mind is a bit more
+       perplexing as it was released on many different platforms (e.g. the ZX
+       Spectrum and the C64) --- maybe they wanted to optimise the game for
+       the North American market.
 
    *A few important European studios: Bitmap Brothers, Psygnosis, Bullfrog,
    Horror Soft / Adventure Soft, Magnetic Scrolls, Delphine, Coktel Vision,
    Revolution, Ubisoft, Infogrames, DMA Design, Core Design, Level 9, Team 17,
    Sensible Software, Firebird, Digital Illusions, Silmarils, Thalion,
    Thalamus, Ocean*
+
+{{< figure name="img/perihelion.jpg" nameSmall="img/perihelion-small.jpg" captionAlign="center"
+    alt="Perihelion: The Prophecy (PAL, 3&times; scaling)" >}}
+
+  [Perihelion: The Prophecy](https://hol.abime.net/1029) (PAL, 3&times; scaling)<br>
+  The game only uses a 320&times;200 screen area, but assumes square pixels.
+
+{{< /figure >}}
+
+
+{{< figure name="img/ishar3aga.jpg" nameSmall="img/ishar3aga-small.jpg" captionAlign="center"
+    alt="Ishar 3: The Seven Gates Of Infinity (PAL game with NTSC-stretch applied, 3&times; scaling)" >}}
+
+  [Ishar 3: The Seven Gates Of Infinity](https://hol.abime.net/2669) (PAL game with NTSC-stretch applied, 3&times; scaling)<br>
+  European made PAL game that assumes NTSC-stretch (1:1.2 pixel aspect ratio)
+
+{{< /figure >}}
+
+
+{{< figure name="img/captain-blood.jpg" nameSmall="img/captain-blood-small.jpg" captionAlign="center"
+    alt="Captain Blood (PAL game with NTSC-stretch applied, 3&times; scaling)" >}}
+
+  [Captain Blood](https://hol.abime.net/2924) (PAL game with NTSC-stretch applied, 3&times; scaling)<br>
+  European made PAL game that assumes NTSC-stretch (1:1.2 pixel aspect ratio)
+
+{{< /figure >}}
+
 
 {{< note >}}
 
@@ -1164,7 +1192,7 @@ screenshot:
 
 {{< figure name="img/diropus-colour-profile.jpg" nameSmall="img/diropus-colour-profile.jpg" captionAlign="center" alt="Directory Opus colour profile comparison" width="90%" >}}
 
-  Left: Directory Opus, sRGB colours<br />
+  Left: Directory Opus, sRGB colours<br>
   Right: same image with the Philips colour profile
 
 {{< /figure >}}
