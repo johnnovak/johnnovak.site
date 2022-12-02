@@ -253,7 +253,7 @@ illustrate single-scanning very well (enlarge them to inspect the details).
 
 
 And this is a video recording of an NTSC Commodore monitor in action from
-[AmigaLove](amigalove.com/) (you should watch it in fullscreen at 1080p to
+[AmigaLove](https://www.amigalove.com/) (you should watch it in fullscreen at 1080p to
 appreciate the details).
 
 <div class="video-wrapper">

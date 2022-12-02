@@ -27,7 +27,7 @@ C and assembly coding in my high-spirited teenager years, that was more than
 prevent me from running into some quite embarrassing mistakes as things are
 vastly different today, as we'll shortly see...
 
-Some of you might know that I'm writing a [ray tracer](/tag/ray-tracing/)
+Some of you might know that I'm writing a [ray tracer](/tags/ray-tracing/)
 (veeeeeery slowly), so it's no surprise that I'm quite a bit obsessed with raw
 numerical performance. Don't bother with what people tell you about Moore's
 Law, falling GFLOP prices, programmer productivity and the "evils" of
