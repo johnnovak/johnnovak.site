@@ -1,5 +1,6 @@
 ---
 title: "The Nim Ray Tracer Project --- Part 4: Calculating box normals"
+url:   2016/10/22/the-nim-ray-tracer-project-part-4-calculating-box-normals
 date:  2016-10-22
 tags:  [graphics, ray tracing, nim]
 ---

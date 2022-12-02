@@ -1,10 +1,9 @@
 ---
-title: "Achieving period-correct graphics in personal computer emulators ---
-Part 1: The Amiga"
+title: "Achieving period-correct graphics in personal computer emulators --- Part 1: The Amiga"
+url:   2022/04/15/achieving-period-correct-graphics-in-personal-computer-emulators-part-1-the-amiga
 date:  2022-04-15
 tags:  [graphics, amiga, gaming, shader]
 ---
-
 
 <section class="intro">
 
@@ -25,7 +24,7 @@ sharpness & vividness, and subtler glow and halation. Enjoy! 😎 </section>
 In this article series we're going to be looking at emulating the **Commodore
 Amiga**, **Commodore 64**, and MS-DOS/early Windows era **IBM PC compatibles**
 with period-correct graphics (and maybe a few other classic machines, who
-knows?). What do I mean by "period-correctness"? It's quite simple --- the
+knows?). What do I mean by "period-correctness"? It's quite simple---the
 emulated graphics should look as close as possible to the output of CRT
 displays used with these computers back in the 80s and 90s. Now, there's quite
 a bit of variance about the most typically used CRT technology per platform,
@@ -63,7 +62,7 @@ produced
 in [ProTracker](https://en.wikipedia.org/wiki/ProTracker) and [FastTracker
 II](https://en.wikipedia.org/wiki/FastTracker_2), so maybe I'm a bit more
 attuned to the accurate emulation of the audiovisual idiosyncrasies of these
-classic machines than the average user (or maybe not --- many people who "just
+classic machines than the average user (or maybe not---many people who "just
 play games" can be very sensitive to these aspects as well). I've also done a
 fair bit of VGA programming in assembly on my first 486 PC, so I'm not a
 complete stranger to the low-level details of graphics programming either.
@@ -74,9 +73,9 @@ all I care, and it's not that some friendly agents from the _Bureau of
 Historically Accurate Retro-Computing_&trade; will show up at your doorstep
 either if you're not following this guide to the letter... However, if you're
 after experiencing these systems just like people did back in the day (to the
-extent current emulation and display technology allows it) --- whether as a
+extent current emulation and display technology allows it)---whether as a
 die-hard fan of these iconic machines, or as a newcomer who is interested in
-learning more about the glory-days of home computing --- I would like to think
+learning more about the glory-days of home computing---I would like to think
 you're in the right place. In any case, I do hope you'll find this series a
 worthwhile and interesting read.
 
@@ -90,7 +89,7 @@ appreciate if you'd let me know in the comments so I can make the necessary
 corrections.
 
 But enough of this lengthy introduction, let's get to one of the best personal
-computers of all human history[^c64-amiga] --- the mighty Commodore Amiga!
+computers of all human history[^c64-amiga]---the mighty Commodore Amiga!
 
 [^c64-amiga]: For me, it's a tie between the classic OCS/ECS Amigas and the
   venerable Commodore 64 that just turned 40!
@@ -202,7 +201,7 @@ scaling for DOS and early Windows games.
 {{< figure name="img/vga-crt/vga-closeup.jpg" nameSmall="img/vga-crt/vga-closeup.jpg"
     alt="Wing Commander, 320x200 VGA, close-up" width="90%" >}}
 
-  Blown up view of the same 320&times;200 VGA screen --- notice that the image
+  Blown up view of the same 320&times;200 VGA screen---notice that the image
   is double-scanned at 31 kHz; in reality, all VGA adapters actually output
   320&times;400, so every scaline was literally doubled!
 
@@ -286,7 +285,7 @@ the beneficial smoothing effects of CRTs on low-res graphics.
 ### Why bother?
 
 People are paying big money for powerful graphics cards these days to enjoy
-their 3D games with smooth antialiased graphics --- back in the 80s we got that
+their 3D games with smooth antialiased graphics---back in the 80s we got that
 smoothing for free in the monitor hardware! Of course, the graphics still had
 to be skilfully made, but if it was properly antialiased by the artist, the
 results just looked glorious on a typical Commodore monitor.
@@ -368,7 +367,7 @@ surprised to see the emulated results to be this close to the real thing!
   Comparison of real C= 1084S monitor photos to the CRT emulation presented in
   this article, and to raw sharp bilinear upscaling. The image on the right
   illustates how most people typically experience the game in WinUAE (without a
-  CRT shader and with in wrong PAL aspect ratio --- that squashed Beholder
+  CRT shader and with in wrong PAL aspect ratio---that squashed Beholder
   certainly doesn't look too healthy!)
 
 {{< /figure >}}
@@ -414,7 +413,7 @@ because it seems "inferior" according to some preconditioned criteria, but if
 you keep an open mind and try to live with it for a while, you might start to
 appreciate some of its not so obvious qualities (e.g. a "less sharp" image
 could make gradients and dither appear smoother, gently melt away all the
-jagged edges, and subjectively might seem more "cosy" --- not unlike the
+jagged edges, and subjectively might seem more "cosy"---not unlike the
 certain magic of technologically inferior (strictly speaking, when looking at
 specs and measurements only) old analog recordings versus surgically perfect
 digital audio reproduction).
@@ -422,8 +421,8 @@ digital audio reproduction).
 Secondly, the order of experiencing things matters. Going from sharp to less
 sharp, highly saturated to less colourful, louder to quieter, etc., always
 feels like "losing something". But look away from your monitor for 10--20
-seconds, then look again at the "less sharp" image --- wow, now it seems quite
-normal! Switch back to the 100% sharp version --- hmm, that's weird, now that
+seconds, then look again at the "less sharp" image---wow, now it seems quite
+normal! Switch back to the 100% sharp version---hmm, that's weird, now that
 seems too clinical in comparison, and I'm not even so sure anymore if that is
 "better"!
 
@@ -459,7 +458,7 @@ As explained above, the physical dimensions of an Amiga monitor were
 effectively standardised, at least between about 1985--1995. This is important
 because if you play games featuring low-res artwork (320&times;256 PAL or
 320&times;200 NTSC) designed for 14" CRT screens _fullscreen_ on a 24" or larger
-monitor, they will look like crap --- everything will look too big and
+monitor, they will look like crap---everything will look too big and
 overly blocky. The best way to experience those old games as their creators
 intended is to match the physical dimensions of the emulated computer's image
 to that of a 14" monitor. Eerily enough, with 3&times; integer scaling you
@@ -506,7 +505,7 @@ Better yet, just edit the config files directly to set up the correct values,
 or download my shader pack which contains all the configs you'll need.
 
 With our settings so far, we're getting **2&times; integer scaling** with both
-sliders at 0 --- that's a nice clean starting point. After some trial and
+sliders at 0---that's a nice clean starting point. After some trial and
 error, I managed to reverse-engineer the magic formula for applying further
 scaling on top of that:
 
@@ -526,7 +525,7 @@ So if we want 3&times; scaling, we'll need to set both scaling factors to **(3
 Like I said, 3&times; scaling will give us the authentic 1084s image size on a
 typical 24" 1920&times;1080 LCD monitor. The rest of the article assumes this
 display type, so keep that in mind (you'll need to adjust a few things for 4k
-screens --- this is an exercise for the reader). [This handy
+screens---this is an exercise for the reader). [This handy
 calculator](https://docs.google.com/spreadsheets/d/1iH8YOhiGvKJ7kZogvKv_aDxkX4688T_VXRFAA2exmJs/edit?usp=sharing)
 will help you if you want to adopt my settings to other display size and
 resolution combinations.
@@ -535,7 +534,7 @@ Sometimes we can deviate from 3&times; scaling with good results. For example,
 Pinball Dreams is quite enjoyable at 3.5&times; when leaning back a bit, and I
 like to play Rick Dangerous at 3.5&times; or even 4&times; because the game
 doesn't use the whole screen. Some games benefit from a slightly larger image,
-some don't --- you'll need to experiment and use your judgement. In any case,
+some don't---you'll need to experiment and use your judgement. In any case,
 keep in mind that 3&times; scaling will give you the "canonical" image size
 that people were looking at sitting in front of their monitors back in the
 day, so that should always be your starting point.
@@ -724,7 +723,7 @@ on NTSC monitors* that stretched the 320&times;200 image to fill the whole 4:3
 screen. Therefore (whether like it or not) *everybody on PAL systems
 experienced these games incorrectly with the wrong aspect ratio back in the
 day* ("PAL-squashed"), **not** as the original artists intended! (Including
-me, because I grew up in Europe --- I'm not an American preaching to everybody
+me, because I grew up in Europe---I'm not an American preaching to everybody
 that "Europeans got it all wrong" or something... I'm just simply stating
 historical facts.)
 
@@ -739,7 +738,7 @@ Now, some people from PAL countries might concur that they only ever
 experienced these games with squashed art (and potentially running 17% slower
 because of the 60 vs 50 Hz difference); that's how they remember them, and
 that's what they want to emulate for nostalgic reasons. It's hard to argue
-with that logic, indeed --- if those are your memories, then that's the end of
+with that logic, indeed---if those are your memories, then that's the end of
 it. But keep in mind the "PAL-squash" only happened because of practical
 considerations (mainly due to budgetary limitations); it wasn't a deliberate
 artistic or creative intention, but an unfortunate necessity. Then the real
@@ -758,12 +757,12 @@ synced to the screen refresh, which makes the slowdown fairly
 easy to spot (if the game also has a DOS port, one of the surest ways to
 ascertain the correct music playback speed is to listen to the DOS version.
 But be careful: just because the music plays at the correct speed,
-it doesn't mean it's OK to run the game in PAL --- the aspect ratio of the
+it doesn't mean it's OK to run the game in PAL---the aspect ratio of the
 graphics is still wrong!)
 
 Check out this video for a demonstration of the PAL vs NTSC differences on the
 classic game Secret of Monkey Island. (By the way, it's worth watching the
-whole thing from the beginning, it's very informative and enlightening --- but
+whole thing from the beginning, it's very informative and enlightening---but
 at the very least just watch this little snippet.)
 
 <div class="video-wrapper">
@@ -819,7 +818,7 @@ These are the two best ways to do that when using emulation:
   *on top* of our manually set 3.0-4.0&times; PAL scaling. That's good news
   because we don't need to keep switching between the PAL and NTSC scaling
   presets when playing different games. This method requires the NTSC monitor
-  driver to be installed --- just drag the NTSC icon from the `Monitors`
+  driver to be installed---just drag the NTSC icon from the `Monitors`
   directory on the **Storage** Workbench installer disk to ``Devs/Monitors``
   on your system drive, reboot, and Bob's your uncle!
 
@@ -906,7 +905,7 @@ situation with European made games is a bit more complicated. The complete
 algorithm for determining whether a particular title should be played in PAL or
 NTSC is as follows:
 
-* **For games originally developed by North American studios --- always use NTSC**
+* **For games originally developed by North American studios---always use NTSC**
 
    It does not matter if the Amiga port or the PAL version was made by a
    European developer; in virtually all cases they just reused the original
@@ -922,7 +921,7 @@ NTSC is as follows:
 * **For games originally developed by European studios (mostly UK)**:
 
     *  If the game uses **320&times;256** or some other PAL screen mode, and the
-       graphics fills the whole screen --- **always use PAL**
+       graphics fills the whole screen---**always use PAL**
 
     *  If the graphics only takes up a **320&times;200** or smaller area of
        the screen, leaving a black bar at the bottom (or at the top and the
@@ -935,7 +934,7 @@ NTSC is as follows:
        future North American release). Exact same deal with [Populous
        1](https://hol.abime.net/1102) &amp; [2](https://hol.abime.net/1108),
        [Powermonger](https://hol.abime.net/1125), and
-       [Midwinter](https://hol.abime.net/2469/screenshot) --- can't really
+       [Midwinter](https://hol.abime.net/2469/screenshot)---can't really
        fault them; they just wanted to be able to sell their games in North
        America as well, and stretched graphics is infinitely better than no
        NTSC release at all.
@@ -1154,7 +1153,7 @@ displays, though.
 
 Similarly, I like to increase the **Color Contrast** to about 0.400 as well as
 my default setting. Some games look quite nice with the contrast cranked up
-almost to the max, while some look completely fine at near zero --- just like
+almost to the max, while some look completely fine at near zero---just like
 on real hardware.
 
 The almost homeopathic **Color Brightness** boost of 1.023 helps regain some of
@@ -1169,7 +1168,7 @@ should leave **Color Space** at 0 (sRGB), but if you're the lucky owner of a
 wide-gamut display, then you should definitely set it to match your display's
 colour profile (the emulation would be more accurate that way, according to
 the instructions). Leave all the other controls at their default neutral
-settings --- as I explained, we're using this second instance only for
+settings---as I explained, we're using this second instance only for
 emulating the monitor's colour profile.
 
 <img src="img/winuaecolorprofile.png" alt="WinUaeColorProfile filter settings" width="auto">
@@ -1228,14 +1227,14 @@ effect is especially noticeable in NTSC as you can see in many of
 
 {{< figure name="img/slot-mask-1.jpg" nameSmall="img/slot-mask-1.jpg" captionAlign="center" alt="Close-up view of the effects of the slot mask - Workbench 1.3" width="90%" >}}
 
-  Close-up view of the effects of the slot mask --- Workbench 1.3 ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+  Close-up view of the effects of the slot mask---Workbench 1.3 ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
 
 {{< /figure >}}
 
 
 {{< figure name="img/slot-mask-2.jpg" nameSmall="img/slot-mask-2.jpg" captionAlign="center" alt="Close-up view of the effects of the slot mask - Pools of Darkness" width="90%" >}}
 
-  Close-up view of the effects of the slot mask --- [Pools of Darkness](https://hol.abime.net/1100) ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+  Close-up view of the effects of the slot mask---[Pools of Darkness](https://hol.abime.net/1100) ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
 
 {{< /figure >}}
 
@@ -1277,7 +1276,7 @@ like a big deal; it's one of those strange things that doesn't seem to add
 much when you turn it on, but you'll notice its absence when you *remove* it
 after you've become accustomed to it. It might even seem a bit pointless
 first, but trust me, just set it up, live with it for a while, and _then_ turn
-it off --- chances are you'll really miss it!
+it off---chances are you'll really miss it!
 
 {{< figure name="img/slot-mask.jpg" nameSmall="img/slot-mask-small.jpg" captionAlign="center"
     alt="Phosphor and shadow mask emulation comparison" >}}

@@ -1,5 +1,6 @@
 ---
 title: "Nim Apocrypha, Vol. I"
+url:   2020/12/21/nim-apocrypha-vol-i
 date:  2020-12-21
 tags:  [coding, nim]
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Cross-platform GUI Toolkit Trainwreck --- 2016 Edition"
+url:   2016/05/29/cross-platform-gui-toolkit-trainwreck-2016-edition
 date:  2016-05-29
 tags:  [coding, gui, imgui, rant]
 ---

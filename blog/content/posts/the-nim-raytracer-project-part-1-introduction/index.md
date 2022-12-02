@@ -1,5 +1,6 @@
 ---
 title: "The Nim Ray Tracer Project --- Part 1: Introduction"
+url:   2016/04/28/the-nim-ray-tracer-project-part-1-introduction
 date:  2016-04-28
 tags:  [graphics, ray tracing, nim]
 ---
@@ -234,7 +235,7 @@ high-performance graphics stuff, don't they? Well, this is going to be a ray
 tracer, so speed matters *a lot*, indeed---but so does the fun factor and my
 sanity too, as I'm not paid to suffer here, this being a hobby project and all
 (on a related note, don't be a masochist, [just say No to
-C++!](/2016/03/03/the-quest-for-a-programming-language-that-doesnt-suck---part-1/)).
+C++!](/2016/03/03/the-quest-for-a-programming-language-that-doesnt-suck-part-1/)).
 Nim claims to be "Efficient like C, expressive like Python and flexible like
 Lisp" which sounds pretty good in my book. In fact, C, Python and Lisp are
 probably my three all-time favourite languages, so this actually sounds more

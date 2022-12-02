@@ -1,5 +1,6 @@
 ---
 title: "The Nim Ray Tracer Project --- Part 2: The Basics"
+url:   2016/04/30/the-nim-ray-tracer-project-part-2-the-basics
 date:  2016-04-30
 tags:  [graphics, ray tracing, nim]
 ---
@@ -20,7 +21,7 @@ a wonderfully creepy atmosphere...]
 ## The Basics
 
 Hello again! In the [initial
-post](/2016/04/28/the-nim-ray-tracer-project---part-1-introduction/) of this
+post](/2016/04/28/the-nim-ray-tracer-project-part-1-introduction/) of this
 series I talked about ray tracing in general and my reasons for writing my own
 ray tracing renderer in the most awesome [Nim](https://nim-lang.org/)
 language. Before writing any code though, in this part we'll examine the basic

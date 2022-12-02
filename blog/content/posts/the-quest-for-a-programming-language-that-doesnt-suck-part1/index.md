@@ -1,5 +1,6 @@
 ---
 title: "The quest for a programming language that doesn't suck --- Part 1"
+url:   2016/03/03/the-quest-for-a-programming-language-that-doesnt-suck-part-1
 date:  2016-03-03
 tags:  [languages, lisp, rant]
 ---

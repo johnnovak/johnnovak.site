@@ -1,5 +1,6 @@
 ---
 title: "The Nim Ray Tracer Project --- Part 3: Lighting & Vector Maths"
+url:   2016/10/15/the-nim-ray-tracer-project-part-3-lighting-vector-maths
 date:  2016-10-15
 tags:  [graphics, ray tracing, nim]
 ---
