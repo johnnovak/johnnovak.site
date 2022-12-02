@@ -2,6 +2,7 @@
 title: "Gaming on the Amiga --- Part 1: Amiga 500 is all you need (mostly)"
 date:  2022-11-25
 tags:  [amiga, gaming]
+draft: true
 ---
 
 {{< toc >}}

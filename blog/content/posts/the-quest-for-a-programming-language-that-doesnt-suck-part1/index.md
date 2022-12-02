@@ -99,7 +99,7 @@ it has almost become the de-facto scripting language of choice for C/C++
 especially since the advent of [LuaJIT](https://luajit.org/). Due to its very
 small memory footprint and high runtime efficiency, it has gained
 a [widespread
-adoption](https://en.wikipedia.org/wiki/Category:Lua-scripted_video_games) in
+adoption](https://en.wikipedia.org/wiki/Category:Lua_(programming_language)-scripted_video_games) in
 the C++ dominated gaming industry over the last two decades, and it has
 found its way into a wide variety of applications and [embedded
 systems](https://www.eluaproject.net/) as well, such as high-performance [web
@@ -203,7 +203,7 @@ record straight, I am criticising the *language*, not its *users*.)
 
 Ok, back on track after this slight C++ bashing detour. The thing is, as long
 as C++ is still [alive](https://pypl.github.io/PYPL.html) and
-[well](https://www.tiobe.com/index.php/tiobe_index), I think it rightfully
+[well](https://www.tiobe.com/tiobe-index/), I think it rightfully
 deserves all the bashing it can get. And if you really love it,
 congratulations, you're one happy programmer, a content user of one of the
 most popular languages in existence on this planet today! That's awesome,

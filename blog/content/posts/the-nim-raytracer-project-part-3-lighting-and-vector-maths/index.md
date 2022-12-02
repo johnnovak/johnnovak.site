@@ -183,7 +183,7 @@ vector maths stuff we discussed previously. I'm using the
 [nim-glm](https://github.com/stavenko/nim-glm) library in my ray tracer, which
 is a port of [GLM](https://glm.g-truc.net/0.9.8/index.html) (Open**GL**
 **M**athematics), which is a maths library based on the
-[GLSL](https://www.opengl.org/documentation/glsl/) standard. A quick look into
+[GLSL](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL)) standard. A quick look into
 the nim-glm sources reveals that the library uses [row-major
 order](https://en.wikipedia.org/wiki/Row-major_order) storage internally:
 
@@ -212,7 +212,7 @@ to transform a vector $v↖{→}$ by a matrix $\bo M$:
 
 <p>Be aware that vector-by-matrix multiplication is also defined in GLSL but
 means something completely different (see section 5.11 of the
-<a href="https://www.khronos.org/registry/gles/specs/2.0/GLSL_ES_Specification_1.0.17.pdf">GLSL specification</a>):</p>
+<a href="https://www.khronos.org/files/opengles_shading_language.pdf">GLSL specification</a>):</p>
 
 <pre>
 vec3 v, u;

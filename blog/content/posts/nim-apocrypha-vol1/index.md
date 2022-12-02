@@ -409,7 +409,7 @@ One of Nim's Achilles' heels is the relative inflexibility of the module
 system when dealing with circular type dependencies. In a project of
 sufficient complexity, where you break up your code into multiple submodules,
 you'll hit this issue sooner or later almost invariably. [Long story
-short](https://blog.johnnovak.net/2017/06/18/ao-the-beginning/#circular-type-dependencies),
+short](/2017/06/18/ao-resists-the-forces-of-darkness-pbrt-meets-nim/#circular-type-dependencies),
 the best workaround is to create a `common` module early on that
 contains all such circular type definitions. Then you can just include this
 common module in all other submodules.

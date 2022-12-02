@@ -224,7 +224,7 @@ that, but this is all we need to know for our purposes.
 
 One more thing, I like to switch <kbd>Caps Lock</kbd> with <kbd>L Ctrl</kbd>
 on all my computers, but we won't need to do that here because I'm using
-[SharpKeys](https://sharpkeys.codeplex.com/) on Windows for that purpose, and 
+[SharpKeys](https://www.randyrants.com/category/sharpkeys/) on Windows for that purpose, and 
 luckily the settings carry over to the guest VM.
 
 #### Openbox
@@ -611,7 +611,7 @@ The best way to make use of it is to set it up as a fallback font in
 
 No desktop Linux setup is ever complete without a wallpaper, but, of course,
 the chosen wallpaper must be the *correct* one. Look no further than
-[this](/img/lotus.png)! 
+[this](img/lotus.png)! 
 
 ... aaaand congratulations, you're done. Enjoy your brand new vimified
 desktop! :)

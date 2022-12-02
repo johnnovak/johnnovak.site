@@ -186,7 +186,7 @@ article](https://unity3d.com/showcase/case-stories/cardboardcomputer-kentuckyrou
 {{< /figure >}}
 
 [The Astronauts](https://www.theastronauts.com/)' first-person mystery game
-[The Vanishing of Ethan Carter](http://ethancartergame.com/), on the other
+[The Vanishing of Ethan Carter](https://en.wikipedia.org/wiki/The_Vanishing_of_Ethan_Carter), on the other
 hand, employs a breathtakingly beautiful painterly approach to create its
 immersive in-game atmosphere. As it can be clearly seen on the screenshot, the
 results are stunningly realistic, but in a dreamy and artistic kind of way
@@ -201,10 +201,10 @@ using the [Unreal Engine](https://www.unrealengine.com/).
     alt="The Vanishing of Ethan Carter in-game screenshot" >}}
 
   One of the most beautiful games of recent years, [The Vanishing of Ethan
-  Carter](https://ethancartergame.com/) pulls the player in into its highly
-  realistic yet painterly world right from the first second of gameplay. No
-  trace (pun intended) of physical based rendering is to be found here, yet
-  the results speak for themselves.
+  Carter](https://en.wikipedia.org/wiki/The_Vanishing_of_Ethan_Carter) pulls
+  the player in into its highly realistic yet painterly world right from the
+  first second of gameplay. No trace (pun intended) of physical based
+  rendering is to be found here, yet the results speak for themselves.
 
 {{< /figure >}}
 
@@ -234,7 +234,7 @@ high-performance graphics stuff, don't they? Well, this is going to be a ray
 tracer, so speed matters *a lot*, indeed---but so does the fun factor and my
 sanity too, as I'm not paid to suffer here, this being a hobby project and all
 (on a related note, don't be a masochist, [just say No to
-C++!](/2016/03/03/the-quest-for-a-programming-language-that-doesnt-suck-part1/)).
+C++!](/2016/03/03/the-quest-for-a-programming-language-that-doesnt-suck---part-1/)).
 Nim claims to be "Efficient like C, expressive like Python and flexible like
 Lisp" which sounds pretty good in my book. In fact, C, Python and Lisp are
 probably my three all-time favourite languages, so this actually sounds more
@@ -255,7 +255,7 @@ a *paper computer magazine* (yes, those things *did* actually exist, can you
 believe it?) that the CGI effects in the 1991 film
 [Terminator 2: Judgement Day](https://en.wikipedia.org/wiki/Terminator_2:_Judgment_Day)
 were rendered on a room full of ultra high-end (and ultra-expensive)
-[Silicon Graphics IRIS](https://www.obsolyte.com/sgi_iris/)
+[Silicon Graphics IRIS](http://www.sgistuff.net/hardware/systems/iris3000.html)
 [workstations](http://www.sgistuff.net/funstuff/hollywood/), but even with
 that kind of computing power it took *several months* to render a few
 minutes' worth of scenes. Now, seeing *any kind of* semi-photorealistic ray
