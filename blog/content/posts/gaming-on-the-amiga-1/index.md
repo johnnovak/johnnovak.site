@@ -609,11 +609,10 @@ for it that can perform a number of interesting (and complex) things:
     view).
 
 - **Allow high-scores and save games to be stored on the hard drive**. Again,
-- a
-    cool feature on paper, but many of these games could only store such data
-    on floppies, often bypassing the OS completely. So the game needs to be
-    patched to write this data into some temporary buffer in memory, then when
-    the buffer fills up, AmigaOS needs to be swapped back into the memory
+    a cool feature on paper, but many of these games could only store such
+    data on floppies, often bypassing the OS completely. So the game needs to
+    be patched to write this data into some temporary buffer in memory, then
+    when the buffer fills up, AmigaOS needs to be swapped back into the memory
     space now occupied by the game to be able to write the buffer to disk
     (it's not possible to access the hard drive without the OS, and many older
     floppy games start by killing the OS right away). Then the game code needs
@@ -628,8 +627,8 @@ for it that can perform a number of interesting (and complex) things:
     than once by forgetting to quit the game via the quit key. Although I'm
     not 100% certain about the technical explanation, such slowdowns can also
     affect games that perform lots of reads during the game, often slowing
-    them down 2 to 5-fold! Sometimes the WHDLoad version runs *slower* than the
-    floppy version (!), which I find plain unacceptable.
+    them down 2 to 5-fold! Sometimes the WHDLoad version runs *slower* than
+    the floppy version (!), which I find plain unacceptable.
 
 - **Remove copy protection** from games that use nefarious disk-based
     protection schemes and/or custom non-DOS disk formats. Although the
