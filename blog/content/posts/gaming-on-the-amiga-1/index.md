@@ -802,7 +802,6 @@ Amiga 500 with hard-drive
       onto the hard drive manually quite easily (e.g. MicroMagic games)
     - OCS games that can only be run from floppies (and there are a few tricks to
       speed up loading times, too, as we'll see)
-    {class="compact"}
 
 Amiga 1200 with hard-drive
 : - For the handful of AGA games, which all are HD-installable (as per above)
@@ -811,7 +810,6 @@ Amiga 1200 with hard-drive
         restored nudity from the German original; confirmed to be completable)
     - [Eye of the Beholder AGA I](https://hol.abime.net/6039), [II](https://hol.abime.net/6040) (fan-made port of the DOS VGA original with superior Amiga sound; these only exist as WHDLoad games, they're very well done and completable)
     - [Where Time Stood Still](https://hol.abime.net/6052) (fan-made port of the Atari ST game)
-  {class="compact"}
 
 Amiga CD32
 : - For the odd CD32 game
