@@ -60,6 +60,15 @@ img {
   max-width: 100%;
 }
 
+.image-grid {
+  display: flex;
+  gap: 20px;
+}
+.post .image-grid figure {
+  flex-basis: 50%;
+  margin: 1em 0;
+}
+
 a {
   color: $accent-color;
   text-decoration: none;
@@ -190,8 +199,8 @@ blockquote {
     margin-right: 3em;
   }
 }
-.warning, .note {
-  padding: 0.6em 1em;
+.warning, .note, .important {
+  padding: 0.9em 1.3em;
 
   &:before {
     display: block;
@@ -221,7 +230,6 @@ blockquote {
   }
 }
 .important {
-  padding: 0.6em 1em;
   background: $ultra-light-accent-color;
 }
 
@@ -380,13 +388,13 @@ article {
 
   h2 {
     display: table;
-    margin: 1.5em 0 .8em;
+    margin: 2em 0 1em;
     font-size: 21px;
     font-weight: $xbold;
     color: $accent-color;
   }
   h3 {
-    margin: 1.5em 0 0 0;
+    margin: 2em 0 1em;
     font-size: 18px;
     font-weight: $xbold;
     color: $accent-color;
@@ -887,7 +895,6 @@ article {
   dd {
     margin-left: 2.5em;
   }
-
   #wrapper {
     position: relative;
     left: -6%;
@@ -999,11 +1006,9 @@ article {
     }
     h2 {
       font-size: 27px;
-      margin-top: 1.5em;
     }
     h3 {
       font-size: 21px;
-      margin-top: 1.8em;
     }
     figcaption {
       font-size: 16px;
