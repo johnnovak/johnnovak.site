@@ -792,7 +792,7 @@ A1200 for Ishar III AGA, of course).
 So, from all the above we can conclude that to be able to play all Amiga games
 worth playing, we'll need three base configurations:
 
-Amiga 500 with hard-drive
+Amiga 500 with hard drive
 : This setup will take care of the vast majority of your gaming needs:
     - All OCS games that have official HD installers:
       - Most games made by North American studios (e.g. LucasArts, SSI, Sierra, Interplay, Infocom, MicroProse, Cinemaware, Dynamix, SSI, Westwood,  New World Computing, Maxis, etc.)
@@ -802,7 +802,7 @@ Amiga 500 with hard-drive
     - OCS games that can only be run from floppies (and there are a few tricks to
       speed up loading times, too, as we'll see)
 
-Amiga 1200 with hard-drive
+Amiga 1200 with hard drive
 : - For the handful of AGA games, which all are HD-installable (as per above)
   - The even smaller pool of games where you're better off with WHDLoad:
     - [Fate: Gates of Dawn](https://hol.abime.net/509) (patched English version with
