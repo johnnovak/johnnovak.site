@@ -775,10 +775,15 @@ perfectly matches that of the DOS versions:
 
 - Eye of the Beholder I-II
 - Indiana Jones and the Last Crusade
-- Pool of Radiance
+- Pool of Radiance[^por]
 - King's Quest 2
 - Space Quest 3 *(probably all Sierra games are affected)*
 {class="compact"}
+
+[^por]: Pool of Radiance is an interesting case. The Amiga port was made by a
+  European studio, Ubi Soft in France, but clearly it was intended for the
+  NTSC market as the graphics needs the NTSC stretch to look correct and the
+  music plays too slowly in PAL mode.
 
 In some better coded games that handle both PAL and NTSC correctly, there is
 no difference in gameplay or music playback speed (but the aspect ratio is
