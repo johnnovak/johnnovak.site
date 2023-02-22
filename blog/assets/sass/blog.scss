@@ -145,6 +145,14 @@ th {
   color: #666;
   background: #f2f2f2;
 }
+
+table.audio td {
+  width: 50%;
+  vertical-align: middle;
+}
+table.audio th {
+  display: none;
+}
 td {
   &.h {
     font-weight: $xbold;
