@@ -2,7 +2,6 @@
 title: "Grand MS-DOS gaming General MIDI showdown"
 date:  2023-03-05
 tags:  [audio, gaming, midi, ms-dos]
-draf:  true
 ---
 
 {{< toc >}}
@@ -28,8 +27,8 @@ You can read all sorts of opinions and claims on this subject over the great
 - The Yamaha S-YXG50 is a 100% identical recreation of the Yamaha DB50XG
 
 And the list goes on... But instead of relying on second-hand information,
-anecdotes, and vague personal opinions, I'll present you with high-quality
-lossless recordings of no less than **46 classic DOS game soundtracks**, each
+anecdotes, and vague personal opinions, I'll present you with **high-quality
+lossless recordings** of no less than **46 classic DOS game soundtracks**, each
 recorded on **7 different MIDI modules!** That's 322 recordings in total, yikes!
 
 Of course, then I'll share my own anecdotal and vague personal opinions on the
@@ -51,6 +50,14 @@ the world's first synthesiser with General MIDI support, and it quickly
 established itself as the de facto standard for high-quality General MIDI
 audio in DOS gaming---a status that remained largely unchanged until the end
 of the DOS era.
+
+{{< figure name="img/midi-modules.jpg" nameSmall="img/midi-modules.jpg" alt="Roland Sound Canvas SC-55 and Yamaha MU80 General MIDI modules" width="480" captionAlign="center" >}}
+
+  Roland Sound Canvas SC-55 (top) and Yamaha MU80 (bottom) General MIDI modules.<br>
+  (I've cable-tied up the whole thing already, and I won't take it apart just
+  to make separate photographs of the two units...)
+
+{{< /figure >}}
 
 Apart from supporting the [General
 MIDI](https://en.wikipedia.org/wiki/General_MIDI) standard (GM, in short), the
@@ -86,7 +93,7 @@ v1.21 ROM, which is considered to be the overall best version for DOS gaming.
 
 Roland's [Sound Canvas VA](https://www.roland.com/au/products/rc_sound_canvas_va/) software
 synthesiser VSTi plugin was first released in 2015. It provides a software
-recreation of the last members of the [Sound
+recreation of one of the last members of the [Sound
 Canvas](https://en.wikipedia.org/wiki/Roland_Sound_Canvas) family, the Roland
 SC-8820 module from 1999 (a cut-down version of the SC-8850). It does not
 emulate the SC-55 directly, but it can be switched into SC-55, SC-88, and
@@ -122,16 +129,16 @@ are the original release dates of the different models:
 
 ### Yamaha MU80
 
-The [Yamaha MU-series](https://en.wikipedia.org/wiki/Yamaha_MU-series) MIDI
+The [Yamaha MU-series](https://en.wikipedia.org/wiki/Yamaha_MU-series) of MIDI
 modules were Yamaha's answer to Roland's Sound Canvas line. The [Yamaha
 MU80](https://www.soundonsound.com/reviews/yamaha-mu80) was introduced in 1994
 as a competitor to the Roland SC-88, the successor of the SC-55.
 
 Apart from basic GM support, the MU80 also has an excellent GS compatibility
-mode that sounds eerily close to the real Sound Canvas on most source
+mode that sounds eerily close to the original Sound Canvas on most source
 materials. Additionally, the MU series also supports Yamaha's vastly superior
 [XG standard](https://en.wikipedia.org/wiki/Yamaha_XG) (E**X**tended
-**G**eneral MIDI) which is sadly criminally underutilised in games. Because of
+**G**eneral MIDI) which was sadly criminally underutilised in games. Because of
 this, we'll only investigate the GS compatibility mode in this article.
 
 While the SC-55 was squarely aimed at the computer hobbyist market, the MU80
@@ -194,6 +201,12 @@ are sent exactly the same MIDI data during the audio recording process.
 As I'm intending to record lots of game music in the coming years, I think
 it's best to document my recording process here once and for all.
 
+{{< figure name="img/recording-setup.jpg" nameSmall="img/recording-setup.jpg" alt="Retro gaming man-cave" width="480" captionAlign="center" >}}
+
+  Retro gaming man cave. The desktop machine on the left is my Pentium MMX 200 based real "DOS box"; the tower on the right is an Athlon 64 rig I use for Windows 98 gaming. Paired with CRTs, of course, because old computers without CRTs are like non-alcoholic beer---rather pointless 😎🍺
+
+{{< /figure >}}
+
 
 ### Capturing MIDI data
 
@@ -235,7 +248,7 @@ it's best to document my recording process here once and for all.
 - **Leisure Suit Larry 6** --- Edited out the sound effects from the intro music
   because I found them too distracting.
 
-- **Realms of Arkania** --- I used PX for the intro music because
+- **Realms of Arkania** --- I used PX to capture the intro music because
   the game insists on automatically exiting the intro well before the end of
   the tune.
 
@@ -246,7 +259,7 @@ it's best to document my recording process here once and for all.
   partially cut off. Perhaps this wasn't a problem on all MIDI modules,
   especially later ones such as the SC-55 mkII, but they're definitely causing
   issues on my first revision SC-55 and MU80 hardware modules. Softsynths are
-  unaffected by this.
+  completely unaffected by this.
 
 
 ### Recording the audio
@@ -254,11 +267,10 @@ it's best to document my recording process here once and for all.
 - Sequence the songs on a timeline, and record all of them in one go.
 
 - For the hardware recordings, the MIDI data was fed to the MIDI modules via a
-  Midisport 2x2 USB box, and the audio was recorded at 48kHz / 24-bit
-  through the internal DAC of a Yamaha MG10XU analog mixer (it can also act
-  as a USB audio interface). This is a "prosumer" level, neutral-sounding
-  mixer with a flat frequency response and very little self-noise (well
-  below -96dBFS).
+  Midisport 2x2 USB box, and the audio was recorded at 24-bit / 48kHz through
+  the internal DAC of a Yamaha MG10XU analog mixer (it can also act as a USB
+  audio interface). This is a "prosumer" level, neutral-sounding mixer with a
+  flat frequency response and very little self-noise (well below -96dBFS).
 
 - The output knob of the Roland SC-55 was set to 12'o clock; this was the best
   balance between having a good signal level and not driving the module into
@@ -308,12 +320,17 @@ originals (4.3 GB) or the MP3 conversions (1.1 GB).
 
 The MIDI files and the REAPER project file I used for the recording process
 are also available, plus another REAPER project with all the FLAC versions
-imported onto separate tracks (one track per MIDI module). I recommend using
-that project for A/B listening comparisons; all recordings are time-aligned
-and volume-matched, so you can easily switch between the different renderings
-while the audio is running using REAPER's [exclusive
-solo](https://www.youtube.com/watch?v=hFMsGZHoQdo) functionality
-(<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+*Left Click* on the Solo (`S`) button).
+imported onto separate tracks (one track per MIDI module). 
+
+I recommend using that project for A/B listening comparisons
+(`general-midi-comparison-flac.rpp`). To use it, download the FLAC files and
+put them into the `Renders` subdirectory inside the REAPER project directory.
+REAPER will take its time when loading the project for the first time to
+generate the waveform "peaks" files for the FLACs, so please be patient. All
+recordings are time-aligned and volume-matched, so you can easily switch
+between the them during playback to perform A/B comparisons using REAPER’s
+exclusive solo functionality (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+*Left Click* on
+the Solo (`S`) button).
 
 
 ## Quick impressions
@@ -570,7 +587,7 @@ Some specific observations:
   comparing the rock/metal-oriented Doom, Duke Nukem 3D, and Shadow Warrior
   soundtracks. It's not that significant, though, and by no means sounds
   worse, only different. There are other differences too; for example, the
-  string samples are not quite the same either (I find the subjectively
+  string samples are not quite the same either (I find them subjectively
   inferior compared to the real deal), which is apparent when they are playing
   in isolation (e.g., the start of the Daggerfall combat music).
 
@@ -649,7 +666,7 @@ had to cater for the least common denominator, which was the original SC-55.
 But whatever the reasons, I rarely found any use for the SC-88 and later modes
 on the SCVA. So while the ability to emulate all these different modules seems
 good on paper, in reality, you'll be using the SC-55 compatibility mode almost
-exclusively in DOS games.
+exclusively with DOS games.
 
 
 ### Roland SC-55 vs Yamaha MU80
@@ -664,8 +681,8 @@ sounds really good on most materials. The resulting sound signature is deeper,
 more "hi-fi", and less strident than the mid-heavy, bass-shy SC-55. While the
 Roland often sounds very much like computer music (which no doubt has its
 charms, I must admit), the MU80 is a big step closer to "CD-quality"
-soundtracks (however, I realise some might find the "computer music" quality
-of the SC-55 preferable, either due to nostalgic or aesthetic reasons). Also,
+soundtracks. However, I realise some might find the "computer music" quality
+of the SC-55 preferable, either due to nostalgic or aesthetic reasons. Also,
 the drums are much more prominent on the Yamaha, making electronic and
 rock/metal-oriented tracks sound a lot more exciting.
 
@@ -679,10 +696,10 @@ that is just more impactful, vibrant, and exciting than the SC-55 original.
 
 In rare cases, these changes can make some pieces composed on the SC-55 fall
 apart a little bit, but the results are never "unlistenably bad". Jazzy tracks
-featuring soft drumming are the most problematic; the Yamaha can make the
+featuring soft drumming are the most problematic; the Yamaha can make jazz
 drumming sound a bit too heavy-handed at times, and I'm not overly fond of the
-sax samples of the Yamaha either. These changes are not ideal, but again, not
-disastrous either.
+sax samples of the MU80 either. These differences are not ideal, but again,
+not disastrous either.
 
 In my view, the improvements the MU80 brings to the table on many soundtracks
 are hard to ignore and outweigh these relatively minor and rare issues.
@@ -730,30 +747,30 @@ exciter too to add back a little bit of that nice high-end shimmer.
 ## In closing
 
 So, the Yamaha MU80 got the gold medal! Congratulations, Yamaha! This is good
-news because you can just get the ~~free~~"liberated" S-YXG50 VSTi plugin and
-enjoy a very faithful MU80 emulation for all your DOS gaming needs.
+news because you can get the ~~free~~"liberated" S-YXG50 VSTi plugin and enjoy
+a faithful MU80 emulation for all your DOS gaming needs.
 
-The SCVA surely sounds nice too and it's pretty close to the real SC-55, but I
-imagine Roland's subscription-based payment model where you only "rent" the
-plugin could be quite offputting to many people. They also seem to offer a
+The SCVA surely sounds nice too, and it's pretty close to the real SC-55, but
+I imagine Roland's subscription-based payment model, where you only "rent" the
+plugin, could be quite offputting to many people. They also seem to offer a
 "Lifetime Key" option (as in the lifetime of Roland, the company, not you, the
 customer, if that wouldn't be entirely clear 😎) where you pay a fixed price
 upfront and only need to activate the plugin once online... or whenever you
 buy a new machine... or install a new OS... or... you get the drift. As you
-can tell, I'm not enthusiastic about DRM. It's still a nice plugin for sure,
-and I wouldn't mind paying Roland a *one-time* fee for the privilege of using
-a *DRM-less* version---but this is what we've got now, and you gotta do what
-you gotta do...
+can tell, I'm not enthusiastic about DRM. It's still an excellent softsynth
+for sure, and I wouldn't mind paying Roland a *one-time* fee for the privilege
+of using a *DRM-less* version---but this is what we've got now, and you gotta
+do what you gotta do...
 
-About the analog sweetening effects of the hardware boxes, both of them offer
-analog audio inputs, so I think I'll experiment with routing some test signals
-through them in the hope to find out more about what they're doing to the
-output (based on the assumption that the audio in and the synthesised output
-share the same signal path).
+About the analog sweetening effects of the hardware boxes, both of them
+feature analog audio inputs, so I think I'll experiment with routing some test
+signals through them in the hope of finding out more about what they're doing
+to the sound (based on the assumption that the audio in and the synthesised
+output share the same signal path).
 
-I hope you found this article and the audio recordings useful! Stay tuned, as
-I might put some GS-compatible SoundFonts to the test as well in a future
-post using the same MIDI files.
+I hope you found this article and the audio recordings interesting and useful!
+Stay tuned, as I might put some GS-compatible SoundFonts to the test in a
+future post using the same MIDI files.
 
 ---
 
