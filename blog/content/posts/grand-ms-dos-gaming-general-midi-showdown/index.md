@@ -433,9 +433,9 @@ balance issues (e.g., the double-bass sounds too forward).
 
 #### Shadow Warrior (1997) <span class="yamaha">Yamaha MU80</span>
 
-The Yamaha sounds a lot better on this modern prog-metal-styled material. The
-SC-55 is quite tinny in comparison and you can barely hear the drums. Strange
-because it was composed for the SC-55. It sounds even worse on the SC-88.
+The Yamaha sounds a lot better on this modern prog-metal-styled material
+originally composed on the SC-88. I actually prefer the SC-55 rendition, but
+it sounds quite tinny compared to the MU80 and you can barely hear the drums.
 The superiority of the hardware MU80 versus the S-YXG50 is quite evident on a
 full-frequency range material like this (the hardware has more sparkle, more
 low-end grunt, better stereo image, and a better sense of space).
@@ -705,6 +705,30 @@ In my view, the improvements the MU80 brings to the table on many soundtracks
 are hard to ignore and outweigh these relatively minor and rare issues.
 **Overall, if I had to pick a single MIDI module for all my DOS gaming, it would
 be the hardware Yamaha MU80, hands down.**
+
+There is another important consideration: using "too high quality" samples
+(yes, there *is* such a thing!) to play back General MIDI game music from the
+90s in the hope of "improving it" can make it sound a lot worse. It's a
+peculiar thing; using *too realistic* instruments on such music can easily get
+us into this weird "uncanny valley" territory---the result often sounds like
+"fake real music" as opposed to "good computer music", if that makes sense. I
+am not personally a fan of those "enhanced remasters" of old game soundtracks
+using modern sythesisers (there are lots of them available for ScummVM games),
+multi-hundred-megabyte SoundFonts, and while I do own the excellent [Serdaco
+DreamBlaster S2](https://www.serdashop.com/waveblaster) waveblaster
+daughterboard, sometimes I really think it *sounds too polished* for 90s MIDI
+music. My favourite waveblaster module from Serdaco is actually the
+[QWave](https://www.serdashop.com/QWave) that features a modest 512K sample
+set, but [what a sample set](https://www.youtube.com/watch?v=uU_F4nd2db4)
+[that is](https://www.youtube.com/watch?v=txrB-REBSu8)!
+
+Size alone is not a good indicator of the quality of a sample set. What
+matters a lot more is the artistry that went into crafting those samples and
+the instruments that make use of them. And rest assured, the MU-series sample
+set weighing only 4MB doesn't lack anything in that regard. While it improves
+on the SC-55 samples, it still stays true to them and doesn't diverge too far
+from the source. I see it as an "improved SC-55-compatible sample set" as
+opposed to a "high-quality remaster"---but again, that's my opinion.
 
 
 ### Yamaha MU80 vs Yamaha S-YXG50
