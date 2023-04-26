@@ -15,9 +15,6 @@ all: home photo blog
 clean_dir = find $(1) \( ! -regex '.*/\..*' \) ! -path . ! -name CNAME \
 			| xargs rm -rf
 
-html_tidy_dir = -(find $(1) -name "*.html" \
-				  | xargs tidy -i -wrap 1000 -utf8 -m 2>/dev/null || true)
-
 
 ### HOME ######################################################################
 
