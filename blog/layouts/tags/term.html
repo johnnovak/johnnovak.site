@@ -1,0 +1,6 @@
+{{ define "main" }}
+
+{{ $title := printf "Posts tagged with '%s'" .Title }}
+{{ partial "postlist" (dict "Pages" .RegularPages "Title" $title) }}
+
+{{ end }}

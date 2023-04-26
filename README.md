@@ -2,11 +2,10 @@ Requirements
 ------------
 
 * **GNU make**
-* **jekyll** (4.0.1+) — *blog*
+* **hugo** (0.111.3+) — *blog*
 * **python** (2.7.16+) — *blog, photo*
 * **sass** (1.26.5+) — *blog, photo*
 * **exiftool** (8.6+) — *photo*
-* **tidy** (5.6.0+) — *blog*
 
 These additional Python libraries are required for the generation of the photo
 albums (`photo` make target):
@@ -39,20 +38,6 @@ make watch_photo_css
 make symlink_photo_js
 make serve_blog
 
-```
-
-
-blog notes
-----------
-
-Installing **jekyll**  and **rmagick** for the `image_dimensions.rb` plugin.
-
-```
-sudo apt-get install ruby-dev
-sudo gem install jekyll
-
-sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
-sudo gem install rmagick
 ```
 
 

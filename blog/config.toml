@@ -1,0 +1,27 @@
+baseURL = "https://blog.johnnovak.net/"
+languageCode = "en-us"
+title = "Recent posts"
+
+disqusShortname = "johnnovak"
+
+[taxonomies]
+  tag = "tags"
+
+[permalinks]
+  posts = "/:year/:month/:day/:title/"
+
+[params]
+  dateFormat = "2006 Jan 2"
+
+[markup]
+  [markup.goldmark.parser.attribute]
+    block = true
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+

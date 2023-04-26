@@ -1,0 +1,31 @@
+ <!DOCTYPE html>
+<html>
+  {{ partial "head.html" . }}
+
+  <body>
+    <div id="wrapper">
+
+      {{ partial "header.html" . }}
+
+      <div role="main">
+        {{ block "main" . }}{{ end }}
+      </div>
+
+      {{ partial "footer.html" . }}
+    </div>
+  </body>
+
+  <script type="module">
+    import PhotoSwipeLightbox from '/js/lib/photoswipe-lightbox.esm.min.js';
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: 'body',
+      children: 'figure > a',
+      showHideAnimationType: 'none',
+      pswpModule: () => import('/js/lib/photoswipe.esm.min.js')
+    });
+
+    lightbox.init();
+  </script>
+
+</html>
