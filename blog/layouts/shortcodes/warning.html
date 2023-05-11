@@ -1,3 +1,6 @@
-<p class="warning">
-{{ .Inner | markdownify }}
-</p>
+<div class="admonition warning">
+  <div class="title">{{ (.Get "title") | default "Warning" }}</div>
+  <div class="body">
+    {{ .Inner | markdownify }}
+  </div>
+</div>

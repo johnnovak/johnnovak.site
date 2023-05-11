@@ -229,7 +229,6 @@ scaling for DOS and early Windows games.
 
 {{< /figure >}}
 
-
 {{< figure name="img/vga-crt/vga-closeup.jpg" nameSmall="img/vga-crt/vga-closeup.jpg"
     alt="Wing Commander, 320x200 VGA, close-up" width="90%" >}}
 
@@ -912,7 +911,8 @@ In fact, their net contribution is negative in this regard, as most of the
 screenshots on their websites are in the wrong aspect ratio (99.99% of them
 being 1:1 pixel aspect ratio raw captures from emulators, even for games where
 that's obviously incorrect, e.g. the vast majority of 320&times;200 DOS
-games).<br><br>
+games).
+
 To my knowledge, the maintainers of both websites have been called out about
 this issue repeatedly, but they don't seem to care and are generally
 uninterested in trying to improve the situation (to be somewhat fair to the
@@ -920,7 +920,8 @@ uninterested in trying to improve the situation (to be somewhat fair to the
 and, as I explained, most people on PAL Amigas experienced NTSC games with the
 wrong aspect ratio back in the day). The same goes for 90% of gaming related
 blogs and YouTube videos---they get the aspect ratio more often wrong than
-correct.<br><br>
+correct.
+
 So take everything you see online with a pinch of salt; we know all too well
 how easy it is for misinformation to spread on the Internet. And you know the
 saying about billions of flies not being wrong...

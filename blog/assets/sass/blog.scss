@@ -207,10 +207,17 @@ blockquote {
     margin-right: 3em;
   }
 }
-.warning, .note, .important {
-  padding: 0.9em 1.3em;
 
-  &:before {
+.admonition {
+  padding: 1.2em 1.3em 1.5em;
+
+  .body {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .title {
     display: block;
     margin-bottom: 0.5em;
     text-transform: uppercase;
@@ -218,27 +225,23 @@ blockquote {
     font-size: 1.1em;
     color: $accent-color;
   }
-}
-.note {
-  background: $ultra-light-accent-color;
 
-  &:before {
-    content: 'Note ';
+  &.note {
+    background: $ultra-light-accent-color;
   }
-}
-.warning {
-  background: #fae2e2;
+  &.warning {
+    background: #fae2e2;
 
-  &:before {
-    content: 'Warning ';
-    color: #944;
+    .title {
+      color: #944;
+    }
+    pre {
+      background: #fbf2f2 !important;
+    }
   }
-  pre {
-    background: #fbf2f2 !important;
+  &.important {
+    background: $ultra-light-accent-color;
   }
-}
-.important {
-  background: $ultra-light-accent-color;
 }
 
 hr {

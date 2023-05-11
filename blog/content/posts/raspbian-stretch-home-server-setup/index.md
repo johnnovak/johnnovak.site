@@ -312,8 +312,7 @@ client, start it up and perform the following steps:
 3. Set the download locations in **Preferences / Downloads** to the directories
    we created:
 
-      {{< figure name="img/deluge-downloads-config.png" alt="Deluge thin client downloads configuration" >}}
-
+      {{< figure name="img/deluge-downloads-config.png" alt="Deluge thin client downloads configuration" />}}
 
 ### Configuring the WebUI
 
