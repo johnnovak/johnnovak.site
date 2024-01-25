@@ -169,9 +169,9 @@ redraws would be wasteful.
 (At least, that was my simplistic understanding of the whole IMGUI concept,
 which is not quite true, but I'll just leave the above description here
 unaltered, as by judging by some of the threads on the topic, most people seem
-to misinterpret the concept of IMGUI in a very similar way like I did when
-I was just getting acquainted with it. So if you fully agree with the above
-two paragraphs, you're wrong! :) What I described above is *one particular
+to misinterpret the concept of IMGUI in a very similar way like I did when I
+was just getting acquainted with it. So if you fully agree with the above two
+paragraphs, you're wrong! :smile: What I described above is *one particular
 way* to implement an IMGUI that is very well suited to applications that need
 to redraw the screen at a constant frame rate anyway, generally using
 accelerated graphics (read, games). But the actual definition of IMGUI is much

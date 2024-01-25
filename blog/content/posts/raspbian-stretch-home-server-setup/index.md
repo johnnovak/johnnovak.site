@@ -38,7 +38,7 @@ this will save you lots of headaches later on.
 
 Also, a word of wisdom to my brothers and sisters: my broken 8 GB SanDisk card
 came with a 10-year warranty so I got a new 16 GB one for free! Always keep those
-receipts, guys! :)
+receipts, guys! :smile:
 
 {{< warning >}}
   These instructions are meant for a home server setup on a home network
@@ -117,13 +117,15 @@ Similarly, FAT is supported out-of-the-box, but you'll need to install
     sudo apt-get install exfat-fuse exfat-utils
 
 {{< note >}}
+
   If you're trying to format the disk to exFAT on Windows 7+, you'll quickly
   realise that you cannot select exFAT in the standard disk formatter GUI but
   only FAT and NTFS. The trick is to use the `format` command in the console
-  (e.g.  `format d: /fs:exfat`). You also might want to look into setting the
+  (e.g.  `format d: /fs:exfat`).You also might want to look into setting the
   cluster size manually (e.g. to 4Kib) as the defaults tend to be quite large
   (256KiB clusters for an 1TiB drive, for example, as summarised
   [here](https://en.wikipedia.org/wiki/ExFAT#Technical_specialities)).
+
 {{< /note >}}
 
 
@@ -205,18 +207,16 @@ with the Deluge package that comes with Stretch. The reason is that it pulls
 down **libtorrent 1.1.1.0** as a dependency instead of the previously used
 **1.0.11**:
 
-<pre>
-  As many I moved to Stretch from a Debian Jessie with Deluged 1.3.15 and
-  libtorrent 1.0.11 installed, RPI3 is the hardware. I found a couple of
-  issues and report them here if useful for any of you.
+    As many I moved to Stretch from a Debian Jessie with Deluged 1.3.15 and
+    libtorrent 1.0.11 installed, RPI3 is the hardware. I found a couple of
+    issues and report them here if useful for any of you.
 
-  Issue:
-  -Deluged CPU usage really higher than before
-  -Multi-tiers tracker torrents report "connection time out". A few are
-  working but the large majority stay in this state. This is identified for
-  trackers giving multiple tier 0 tracker addresses, e.g. IPTxxxxx
-  - Error in log
-</pre>
+    Issue:
+    -Deluged CPU usage really higher than before
+    -Multi-tiers tracker torrents report "connection time out". A few are
+    working but the large majority stay in this state. This is identified for
+    trackers giving multiple tier 0 tracker addresses, e.g. IPTxxxxx
+    - Error in log
 
 Although I'm on a different hardware ([Raspberry
 2 B](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/)), this

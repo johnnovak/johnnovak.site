@@ -630,86 +630,92 @@ for it that can perform a number of interesting (and complex) things:
     them down 2 to 5-fold! Sometimes the WHDLoad version runs *slower* than
     the floppy version (!), which I find plain unacceptable.
 
-- **Remove copy protection** from games that use nefarious disk-based
-    protection schemes and/or custom non-DOS disk formats. Although the
-    majority of WHDLoad conversions require original uncracked floppy images,
-    removing such protections is a necessity and effectively requires the
-    slave author to crack the game. Sure, not having to consult code wheels
-    and manuals sounds like an improvement, but this comes with all the
-    drawbacks associated with cracking---a bad crack can simply render the
-    game unplayable. This is certainly annoying in action games and
-    platformers that take a few hours tops to finish (and therefore are easy
-    to test by the crackers), but in the case of adventure games, and
-    especially RPGs that can take anywhere between 20 and 100 hours to
-    complete, a bad crack can be catastrophic. Some devious developers had
-    literally woven the protection into the fabric of the game's code; it
-    wasn't just a simple question/response style manual or code wheel check at
-    the beginning, but the protection was *embedded* into the game, so to
-    speak. Moreover, there was no indication whatsoever of failing these
-    subtle checks, the game did not outright stop or crash but let you keep
-    playing for hours on end while gradually crippling the experience until it
-    got into an unwinnable state, possibly even corrupting or "infecting" your
-    save files. Needless to say, very few crackers had spent 20-100 hours
-    completing such games over and over to test their cracks (just think of a
-    complex branching RPG and how much effort it would be to test
-    that properly). Here's a few notable examples:
+## On cracked games 
 
-[Fate: Gates of Dawn](https://en.wikipedia.org/wiki/Fate:_Gates_of_Dawn), one
+WHDLoad conversions need to remove copy protection from games that use
+nefarious disk-based protection schemes or custom non-AmigaDOS disk formats.
+Although the majority of WHDLoad conversions require original uncracked floppy
+images, removing such protections is a necessity and effectively requires the
+slave author to crack the game. Sure, not having to consult code wheels and
+manuals sounds like an improvement, but this comes with all the drawbacks
+associated with cracks---a bad crack can simply render the game imcompletable
+or degrade the experience in subtle ways.
+
+This is certainly annoying in action games and platformers that take a few
+hours tops to finish (and therefore are easy to test by the crackers), but in
+the case of adventure games, and especially RPGs that can take anywhere
+between 20 and 100 hours to complete, a bad crack can be catastrophic. Some
+devious developers had literally woven the protection into the fabric of the
+game's code; it wasn't just a simple question/response style manual or code
+wheel check at the beginning, but the protection was *embedded* into the game,
+so to speak. Moreover, in many cases there was no indication whatsoever of
+failing these subtle checks; the game did not outright stop or crash but let
+you keep playing for hours on end while gradually crippling the experience
+until it got into an unwinnable state, possibly even corrupting or "infecting"
+your save files.
+
+Needless to say, very few crackers had spent 20-100 hours completing such
+games over and over to test their cracks. Just think of a complex branching
+RPG and how much effort it would be to test that properly, especially without
+having intimate knowledge of the game's intricate systems in case of complex
+games. Here are a few notable examples:
+
+- [Fate: Gates of Dawn](https://en.wikipedia.org/wiki/Fate:_Gates_of_Dawn), one
 of the longest and best Amiga-exclusive RPGs:
 
-> It is notable that from these copies of the game only the copy protection
-> but not the password protection was removed. Password requests are not made
-> at the start of the game but at intervals in the game repeated after some
-> time. Just ignoring these requests or a wrong answer leads not to an abrupt
-> end to the game, but gameplay deteriorating until it becomes unplayable.
-> Therefore, a copy of the manual is still required for the right code.
+  > It is notable that from these copies of the game only the copy protection
+  > but not the password protection was removed. Password requests are not made
+  > at the start of the game but at intervals in the game repeated after some
+  > time. Just ignoring these requests or a wrong answer leads not to an abrupt
+  > end to the game, but gameplay deteriorating until it becomes unplayable.
+  > Therefore, a copy of the manual is still required for the right code.
 
 
 
-The [ingenious](https://tcrf.net/Dungeon_Master_(Amiga))
-[protection](https://dmweb.free.fr/?q=node/210)
-[scheme](https://www.youtube.com/watch?v=VheNpiSZxf0&t=489s) of [Dungeon
-Master](https://hol.abime.net/441) had received a lot of respect from crackers
-back in the day; it took them a year to fully reverse engineer it. The
-protection definitely served its purpose in this particular case!
+- The [ingenious](https://tcrf.net/Dungeon_Master_(Amiga))
+  [protection](https://dmweb.free.fr/?q=node/210)
+  [scheme](https://www.youtube.com/watch?v=VheNpiSZxf0&t=489s) of [Dungeon
+  Master](https://hol.abime.net/441) had received a lot of respect from crackers
+  back in the day; it took them a year to fully reverse engineer it. The
+  protection definitely served its purpose in this particular case!
 
-> Additional anti-piracy checks exist in the code, including further fuzzy bit
-> sector reading, checksums, code hidden as images in GRAPHICS.DAT, and other
-> fun tricks intended to slow down and frustrate crackers. These respond with
-> a delay-action effect [...] It is still possible to complete the game if you
-> save progress frequently. These checks only hinder progress rather than
-> making the game impossible.
-
-
-This commenter is probably [reminiscing](https://hackaday.com/2019/06/25/copy-protection-in-the-80s-showcased-by-classic-game-dungeon-master/#comment-6309734) about the copy protection of [Dragonflight](https://hol.abime.net/412):
-
-> There was an Amiga RPG, I think by Thalion that made the game crash when the
-> anti piracy was triggered. However some time later there appeared a full
-> screen stylized pirate skull over whatever game you had running then. This
-> was kind of scary because we thought it was some virus until we realized it
-> was the RPG game that keept the skull in RAM even after a reset until you
-> turned off your Amiga.
+  > Additional anti-piracy checks exist in the code, including further fuzzy bit
+  > sector reading, checksums, code hidden as images in GRAPHICS.DAT, and other
+  > fun tricks intended to slow down and frustrate crackers. These respond with
+  > a delay-action effect [...] It is still possible to complete the game if you
+  > save progress frequently. These checks only hinder progress rather than
+  > making the game impossible.
 
 
-Not an Amiga game, but an [interesting case](https://news.ycombinator.com/item?id=8809505) nonetheless:
+- This commenter is probably [reminiscing](https://hackaday.com/2019/06/25/copy-protection-in-the-80s-showcased-by-classic-game-dungeon-master/#comment-6309734) about the copy protection of [Dragonflight](https://hol.abime.net/412):
 
-> Another copy-protection classic was Spyro: Year of the Dragon:
-> https://www.gamedeveloper.com/business/keeping-the-pirates-at-bay
->
-> This used a multi-layered copy protection scheme. The first layers would
-> show a dialog and quit. Later layers got progressively more vicious:
->
-> 1. They'd remove 1 out of 10 gems needed to complete a certain level.
-> 2. They'd randomly corrupt data.
-> 3. They'd change the UI language at runtime.
->
-> Read the post-mortem I linked above; it's really fun. The basic idea was to
-> require crackers to play the entire game very carefully, looking for subtle
-> side effects that broke game play.
+  > There was an Amiga RPG, I think by Thalion that made the game crash when the
+  > anti piracy was triggered. However some time later there appeared a full
+  > screen stylized pirate skull over whatever game you had running then. This
+  > was kind of scary because we thought it was some virus until we realized it
+  > was the RPG game that keept the skull in RAM even after a reset until you
+  > turned off your Amiga.
+
+
+- Not an Amiga game, but an [interesting case](https://news.ycombinator.com/item?id=8809505) nonetheless:
+
+  > Another copy-protection classic was Spyro: Year of the Dragon:
+  > https://www.gamedeveloper.com/business/keeping-the-pirates-at-bay
+  >
+  > This used a multi-layered copy protection scheme. The first layers would
+  > show a dialog and quit. Later layers got progressively more vicious:
+  >
+  > 1. They'd remove 1 out of 10 gems needed to complete a certain level.
+  > 2. They'd randomly corrupt data.
+  > 3. They'd change the UI language at runtime.
+  >
+  > Read the post-mortem I linked above; it's really fun. The basic idea was to
+  > require crackers to play the entire game very carefully, looking for subtle
+  > side effects that broke game play.
 
 
 Okay, so you get the picture. I'm not saying all cracks are bad, but quite a
-few were back in the day; I clearly remember that. If you were unlucky and got
+few were back in the day, I clearly remember that. If you were unlucky and got
 your hands on a bad crack of a long adventure game or RPG, you just had to put
 it aside until you managed to find a working crack. The thing is, it doesn't
 really matter if 50% of cracks are bad or only 1%---you have no way of knowing
@@ -719,45 +725,59 @@ or just resort to playing uncracked originals. Personally, I very much
 recommend the latter unless there's no other choice but to play a cracked
 version.
 
+
+## Examples of problematic WHDLoad conversions
+
 Here are some concrete problems I've encountered with WHDLoad games. Note that
-I wasn't looking particularly hard to find faulty slaves; I just installed a
-bunch of my favourite games and about half of the time I had run into some
+I wasn't looking particularly hard to find faulty conversion; I just installed
+a bunch of my favourite games and about half of the time I had run into some
 weirdness or suboptimal behaviour. That's surely annoying for me who knows how
 these games should play, but it can certainly put someone off for good from
 Amiga gaming entirely who is new to it and doesn't know any better. That is
 one of my biggest problems with WHDLoad being recommended everywhere as the
 ultimate magic solution---it's cool, it's clever, it might even work well with
 some particular games, but it's most certainly *not* the best solution for
-many games, it's *not* the authentic experience, and it simply puts many
-classic Amiga games in a bad light.
+many games, it's *not* the authentic experience, it's *not* the
+preservationist approach, and it simply puts many classic Amiga games in a bad
+light. I put WHDLoad conversions at the level of fan-patches---some can be
+super cool (think of Eye of the Beholder I & II AGA!), but the guys have tampered with the originals with varying
+results.
 
-Alright, so here we go:
+Alright, so here we go. As you would expect, all these games work perfectly
+fine and without any issues when run from the hard drive or floppies on an
+Amiga 500 (you need an A1200 for Ishar III AGA, of course).
 
-- [Ishar III AGA](): Opening the map takes 4
-    seconds, and closing it around *13 seconds (!)* in the WHDLoad version.
-    This makes the map completely unusable! Bumping up the CPU speed to a 50
-    MHz 020 reduces the wait times by about 40%, but it's still slow. Whereas
-    when playing the game from floppies or using the included HD installer,
-    opening the map is almost instantaneous, and closing it takes less then 2
-    seconds with the stock 14 MHz 020 CPU, which is perfectly usable. Because
-    the game contains an HD installer on the first disk, it's a bit perplexing
-    why a WHDLoad version even exists in the first place... (well, I know the
-    answer: because of the "trainers"---which is another thing I recommend
-    against).
 
-- [Pool of Radiance](): Saving the game into a new slot takes *more than a
-    minute (!)*, during which the screen is mostly black (OS swap, a common
-    theme with many WHDLoad games). Of course, saving goes swiftly if you play
-    the game from the hard drive on an Amiga 500 (HD installer is on the first
-    disk).
+Ishar III AGA
 
-- [Lemmings](): The game freezes randomly after about 10-30 minutes of playing
-    (most likely due to an incomplete crack). To my knowledge, the
-    issue hasn't been rectified as of 2022, which is a shame for such a
-    classic title.
+: Opening the map takes 4 seconds, and closing it around *13 seconds (!)* in
+  the WHDLoad version. This makes the map completely unusable! Bumping up the
+  CPU speed to a 50 MHz 020 reduces the wait times by about 40%, but it's
+  still slow. Whereas when playing the game from floppies or using the
+  included HD installer, opening the map is almost instantaneous, and closing
+  it takes less then 2 seconds with the stock 14 MHz 020 CPU, which is
+  perfectly usable. Because the game contains an HD installer on the first
+  disk, it's a bit perplexing why a WHDLoad version even exists in the first
+  place... (well, I know the answer: because of the "trainers"---which is
+  another thing I recommend against).
 
-- [King's Bounty](): Severe slowdowns, probably due OS swapping. Timings when
-    playing the game on a stock Amiga 500 with the manual HD install method:
+Pool of Radiance
+
+: Saving the game into a new slot takes *more than a minute (!)*, during which
+  the screen is mostly black (OS swap, a common theme with many WHDLoad
+  games). Of course, saving goes swiftly if you play the game from the hard
+  drive on an Amiga 500 (HD installer is on the first disk).
+
+Lemmings
+
+: The game freezes randomly after about 10-30 minutes of playing (most likely
+  due to an incomplete crack). To my knowledge, the issue hasn't been
+  rectified as of 2022, which is a shame for such a classic title.
+
+King's Bounty
+
+: Severe slowdowns, probably due OS swapping. Timings when
+  playing the game on a stock Amiga 500 with the manual HD install method:
 
     - creating a new character -- 47s
     - opening the Puzzle Map -- 5s
@@ -776,15 +796,25 @@ Alright, so here we go:
     every single time. And these are not the only ones; there's a lot more (e.g.
     when saving the game)---I just didn't bother measuring them all...
 
-- [Warhead](): Saving the game takes a long time, and the screen keeps flashing
-  (OS swap).
+Warhead
 
-- [It Came From the Desert](): Speed and music syncing problems (the music gets cut off before the intro can properly end).
+: Saving the game takes a very long time, and the screen keeps flashing (OS
+swap).
 
-As you would expect, all these games work perfectly fine and without any
-issues when run from the hard drive or floppies on an Amiga 500 (you need an
-A1200 for Ishar III AGA, of course).
+It Came From the Desert
 
+: Speed and music syncing problems (the music gets cut off before the intro
+would properly end).
+
+Deja Vu: A Nightmare Comes True!!
+Deja Vu II: Lost in Las Vegas!!
+Shadowgate
+
+: The mouse pointer is super sensitive compared to the original. This makes
+this mouse-driven game difficult to play. The author of the WHDLoad slave
+mentions in the README that he intentionally made the mouse pointer move
+faster... but why? Maybe the game worked "better" with this change on his
+machine, but definitely not on mine!
 
 
 ## Amiga configurations to play all games
@@ -830,6 +860,5 @@ perhaps a woman) of culture! 😎
 * [Ars Technica --- History of the Amiga](https://arstechnica.com/series/history-of-the-amiga/)
 
 * [Jimmy Maher --- The Future Was Here: The Commodore Amiga](https://mitpress.mit.edu/9780262535694/the-future-was-here/)
-
 
 </section>

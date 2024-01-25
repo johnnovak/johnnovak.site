@@ -279,7 +279,7 @@ template isVec*[T]  (v: Vec4[T]): bool = v.w == 0.0
 template isPoint*[T](v: Vec4[T]): bool = v.w == 1.0
 {{< /highlight >}}
 
-Well, looks like in the end we *did* inspect some Nim code, after all! :)
+Well, looks like in the end we *did* inspect some Nim code, after all! :smile:
 
 - - -
 

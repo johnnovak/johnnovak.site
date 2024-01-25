@@ -35,7 +35,7 @@ and also make me more diligent in researching my topics.  After all, the goal
 is to write about things that are new to me, so trying to keep the amount of
 misinformation I'm unwillingly (but inevitably) going to spread to a minimum
 is probably a good idea, as I'm sure the experts will be far too eager to
-chime in and correct me... :)
+chime in and correct me... :sweat_smile:
 
 Having said that, don't hesitate to point out any of my factual mistakes in
 the comments. In fact, I'd be glad if you did and I encourage you to do so

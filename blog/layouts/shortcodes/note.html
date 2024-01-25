@@ -1,6 +1,6 @@
 <div class="admonition note">
   <div class="title">{{ (.Get "title") | default "Note" }}</div>
   <div class="body">
-    {{ .Inner | markdownify }}
+	{{ partial "markdownify-block" .Inner }}
   </div>
 </div>

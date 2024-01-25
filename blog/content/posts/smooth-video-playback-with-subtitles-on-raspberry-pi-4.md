@@ -218,10 +218,10 @@ In my case, I set it to `1` (RGB limited).
 
 I noticed that changing the output range format in the Kodi system settings
 makes the *Player* menu and a few other menus disappear (!) from the
-*Settings* screen. Well, the good thing is that rebooting Kodi brings is back
-:) I have no idea why this is happening, I guess it must be a bug.  In any
-case, if your *Player* menu has mysteriously disappeared, a system reboot
-might just be the ticket...
+*Settings* screen. Well, the good thing is that rebooting Kodi brings it back
+:sweat_smile: I have no idea why this is happening, I guess it must be a bug.
+In any case, if your *Player* menu has mysteriously disappeared, a system
+reboot might just be the ticket...
 
 
 ### Hardware setup

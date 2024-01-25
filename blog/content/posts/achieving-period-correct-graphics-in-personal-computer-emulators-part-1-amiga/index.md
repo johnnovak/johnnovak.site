@@ -902,7 +902,7 @@ the only time you can run into problems is when you use a PAL crack of an NTSC
 game that somehow breaks NTSC compatibility.)
 
 
-{{< note >}}
+{{< note title="The sad state of aspect ratio correctness on the Internet" >}}
 
 While online game databases such as [MobyGames](https://www.mobygames.com/)
 and [Hall of Light](https://hol.abime.net/) are certainly very useful
@@ -1013,7 +1013,7 @@ switch between them at will:
 ![Filter resize presets](img/winuae-filter-resize-presets.png)
 
 
-{{< note >}}
+{{< warning >}}
 
 If you have vsync enabled, your screen refresh rate *must be* 50 Hz for PAL
 and 60 Hz for NTSC, respectively; otherwise, you'll be experiencing all sorts
@@ -1111,7 +1111,7 @@ NTSC is as follows:
 {{< /figure >}}
 
 
-{{< note >}}
+{{< note title="Don't trust the circles!" >}}
 
 Although looking at circles and squares to determine the intended aspect ratio
 may help in many cases, it is _not_ a 100% fool-proof method! It certainly works for
@@ -1119,7 +1119,8 @@ most racing games and flight simulators where the circular gauges should
 usually appear as perfect circles when the correct aspect ratio is being used.
 But in general, it's better to look at some common objects and make sure they
 appear correctly---neither too tall nor too squashed (human faces and full
-human figures are the best candidates for this).
+human figures are the best candidates for this, but so are images of floppy
+disks in most cases).
 
 {{< /note >}}
 
@@ -1423,17 +1424,20 @@ it off---chances are you'll really miss it!
 {{< /figure >}}
 
 
-{{< note >}}
+{{< note title="Regaining brightness" >}}
 
 At this point, you will have noticed that the brightness of the resulting
 image with scanline, phosphor and shadow mask emulation enabled is a bit
 dimmer compared to the original. The best way to compensate for this is by
 increasing the contrast setting of your monitor by about 30% (_not_ the
 brightness; that sets the black point). If already have your contrast cranked
-up to the max, well, I guess you're out of luck! 😎 I use ClickMonitorDDC for
-this on Windows which lets you adjust your monitor controls via shortcuts. For
-general everyday use, I have a preset with brightness set to 35 and contrast to
-75, then another one for WinUAE with the contrast increased to 96.
+up to the max, well, I guess you're out of luck! 😎
+
+I use [ClickMonitorDDC](https://www.softpedia.com/get/System/System-Miscellaneous/ClickMonitorDDC.shtml)
+for this on Windows which lets you adjust your monitor controls via shortcuts.
+For general everyday use, I have a preset with brightness set to 35 and
+contrast to 75, then another one for WinUAE with the contrast increased to 96.
+[Twinkle Tray](https://twinkletray.com/) might be another good alternative.
 
 {{< /note >}}
 
@@ -1498,16 +1502,6 @@ I wrote a small AmigaDOS script called `SetGfx` to make switching between the
 8 supported shader and scaling presets even easier; for example, you can execute 
 `SetGfx ntsc35` to switch to the NTSC 3.5&times; preset. It's included in the
 downloadable shader pack.
-
-{{< warning >}}
-
-Switching between shaders and scaling factors while the emulated Amiga is
-running can result in WinUAE hanging if you're using ReShade and windowed of
-full-window mode. However, it works very well in fullscreen, so that's what I
-recommend if you're intending to switch shader presets on the fly (e.g. to set
-your preferred scaling factor in a game's launcher script).
-
-{{< /note >}}
 
 
 ## In closing

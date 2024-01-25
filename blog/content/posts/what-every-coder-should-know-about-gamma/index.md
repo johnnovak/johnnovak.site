@@ -637,9 +637,9 @@ problem right at the source...
 
 ## Conclusion
 
-This is pretty much all there is to gamma encoding and decoding.
+Alright, this is pretty much all there is to gamma encoding and decoding.
 Congratulations for making it so far, now you're an officially certified
-gamma-compliant developer! :)
+gamma-compliant developer! :sunglasses:
 
 To recap, the only reason to use gamma encoding for digital images is because
 it allows us to store images more efficiently on a limited bit-length. It
@@ -665,7 +665,7 @@ you're doing the correct thing. Be gamma-correct and always explicitly state
 your assumptions about the input and output colour spaces in the software's
 documentation.
 
-May all your lights be linear! :)
+May all your lights be linear! :smile:
 
 - - -
 

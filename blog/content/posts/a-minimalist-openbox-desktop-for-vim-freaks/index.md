@@ -614,7 +614,7 @@ the chosen wallpaper must be the *correct* one. Look no further than
 [this](img/lotus.png)! 
 
 ... aaaand congratulations, you're done. Enjoy your brand new vimified
-desktop! :)
+desktop! :sunglasses:
 
 
 <section class="links">

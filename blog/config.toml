@@ -4,6 +4,8 @@ title = "Recent posts"
 
 disqusShortname = "johnnovak"
 
+enableEmoji = true
+
 [taxonomies]
   tag = "tags"
 

@@ -615,6 +615,35 @@ screenshots.
 ## Conclusion
 
 
+
+
+Text mode screenshots
+http://steptail.com/guides:text_mode
+
+
+TODO
+
+The most common monochrome CGA system is probably the IBM 5155. It uses a
+composite signal, fed to a monochrome CRT which has NTSC-compatible timing.
+This can display about 8 shades of amber.
+
+
+"No markings" does sound fishy (there is normally at least something on the back) but it really depends. Can this 'supplier' at least tell you what the input jack looks like? 😀
+These are the types of monitors you're likely to be dealing with here:
+
+Composite - should work with any CGA card that provides composite output, which includes all IBM ones and most clones. Of course, this one is easily identifiable by the RCA video input.
+ 
+Monochrome TTL (18.4KHz only) - this is the common IBM 5151 type of display; works with MDA/Hercules/"MGA" cards, and with EGA set to mono operation, but *not* with standard CGA. Some clone CGA boards were able to work with these displays, as Scali mentioned, but a standard CGA may actually damage them, so you'd better be quite sure of what you have here.
+ 
+Dual-sync monochrome TTL - less common but shouldn't actually be *that* rare; these should work with standard CGA signals as well as MDA. Compaq's early Portable/Deskpro displays were of this type, among others. My old Turbo XT clone had one of them as well.
+
+
+All I can say is that the pictures clearly show that the monitor displays a 200-line mode (huge gaps between scanlines, typical of CGA).
+So that would imply that it is running on 15.7 kHz timing, which is NTSC/CGA, and not MDA/Hercules.
+So I would say that this is not an MDA/Hercules monitor.
+
+
+
 ---
 
 <section class="links">

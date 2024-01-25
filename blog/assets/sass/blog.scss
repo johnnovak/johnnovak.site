@@ -23,6 +23,7 @@ $sel-color:        adjust-hue(
 
 $light-font-color:   #777;
 $light-accent-color: mix($accent-color, $bg-color, 70);
+$lighter-accent-color: mix($accent-color, $bg-color, 50);
 $ultra-light-accent-color: mix($accent-color, $bg-color, 23);
 
 $monospace: "Inconsolata", serif;
@@ -191,7 +192,7 @@ blockquote {
   margin-left: 10px;
   padding-left: 20px;
   color: $light-font-color;
-  border-left: 3px solid #ccc;
+  border-left: 3px solid rgba(0,0,0, 0.16);
 
   p {
     margin: 0;
@@ -209,7 +210,8 @@ blockquote {
 }
 
 .admonition {
-  padding: 1.2em 1.3em 1.5em;
+  margin-top: 1.3em;
+  padding: 0 1.3em 1.5em;
 
   .body {
     p:last-child {
@@ -219,35 +221,37 @@ blockquote {
 
   .title {
     display: block;
-    margin-bottom: 0.5em;
-    text-transform: uppercase;
+    margin: 0 -1.3em 0.5em;
+    padding: 0.3em 1.3em;
     font-weight: $xbold;
-    font-size: 1.1em;
     color: $accent-color;
   }
 
-  &.note {
+  &.note, &.important {
     background: $ultra-light-accent-color;
-  }
-  &.warning {
-    background: #fae2e2;
 
     .title {
-      color: #944;
+      background: #5da799;
+      color: white;
+    }
+  }
+  &.warning {
+    background: #fae0e0;
+
+    .title {
+      background: #c56363;
+      color: white;
     }
     pre {
       background: #fbf2f2 !important;
     }
   }
-  &.important {
-    background: $ultra-light-accent-color;
-  }
 }
 
 hr {
   margin-top: 40px;
-  border: 1px solid #aaa;
-  border-width: 1px 0 0 0;
+  border: 2px solid rgba(0,0,0, 0.16);
+  border-width: 2px 0 0 0;
 
   &.noline {
     border-color: #fff;
@@ -411,21 +415,25 @@ article {
     color: $accent-color;
   }
   h4 {
+    margin: 2em 0 1em;
     font-size: 17px;
   }
+
   a {
     font-weight: $xbold;
   }
+
   p {
     clear: both;
-
-    code {
-      font: 16px $monospace;
-      padding: 0px 2px;
-      font-weight: $bold;
-      color: #555;
-    }
   }
+
+  code {
+    font: 16px $monospace;
+    background: rgba(0,0,0, 0.04);
+    padding: 0px 4px;
+    color: #555;
+  }
+
   ul, ol {
     margin: 0;
     padding-left: 2.2em;
@@ -437,6 +445,7 @@ article {
       padding-left: 0.2em;
     }
   }
+
   ul {
     list-style: square;
 
@@ -476,6 +485,7 @@ article {
       }
     }
   }
+
   .compact {
     li {
       margin: 0;
@@ -485,6 +495,7 @@ article {
       margin: 0;
     }
   }
+
   figure {
     margin: 1.2em 0;
     padding: 0;
@@ -501,9 +512,71 @@ article {
       font-weight: $bold;
     }
   }
+
   div.highlight {
     margin: 1.2em 0;
   }
+
+  details {
+    background: $ultra-light-accent-color;
+    margin: 1.6em 0;
+    padding: 0 1.3em;
+
+    summary {
+      background: #5da799;
+      color: white;
+      font-weight: $bold;
+      margin: 0 -1.3em;
+      padding: 0.4em 1em;
+      cursor: pointer;
+
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+
+      &:hover {
+        background: #6db7a9;
+      }
+
+      > * {
+        display: inline;
+      }
+      &::marker {
+        content: none;
+      }
+      &::before {
+        font-size: 86%;
+        content: '▶';
+        width: 30px;
+        display: inline-block;
+      }
+    }
+  }
+  details[open] {
+    padding-bottom: 1.5em;
+
+    summary {
+      &::before {
+        content: '▼';
+      }
+    }
+  }
+
+  .admonition {
+    &.warning {
+      details {
+        background: #f0cbcb;
+        summary {
+          background: #c56363;
+          &:hover {
+            background: #d57373;
+          }
+        }
+      }
+    }
+  }
+
   pre {
     margin: 0;
     padding: 0.6em 0 0.6em 14px;
@@ -514,7 +587,6 @@ article {
     overflow-x: auto;
 
     code {
-      font: 15px $monospace;
       background: none;
       color: $code-font-color;
     }
@@ -543,6 +615,7 @@ article {
       font-weight: $bold;
       color: $font-color;
     }
+
     li {
       margin: 0;
     }
@@ -551,6 +624,7 @@ article {
       margin: 0;
     }
   }
+
   .heightened-dramatic-tension {
     font: 200% 'Astloch';
     font-weight: bold;
@@ -593,7 +667,6 @@ article {
     }
   }
 }
-
 
 .static {
   header {
@@ -799,7 +872,7 @@ article {
       font-size: 21px;
     }
     h4 {
-      font-size: 18px;
+      font-size: 19px;
     }
     figure {
       margin: 2em 0;
@@ -815,10 +888,6 @@ article {
       padding-left: 12px;
       font-size: 16px;
       line-height: 20px;
-
-      code {
-        font-size: 16px;
-      }
     }
     div.highlight {
       margin: 2em 0;
@@ -968,10 +1037,6 @@ article {
     }
   }
 
-  hr {
-    margin-top: 50px;
-  }
-
   .list {
     h1 {
       margin-bottom: 1.4em;
@@ -1012,10 +1077,9 @@ article {
 
     p {
       margin: 20px 0;
-
-      code {
-        font-size: 18px;
-      }
+    }
+    code {
+      font-size: 18px;
     }
     h2 {
       font-size: 27px;
@@ -1032,10 +1096,6 @@ article {
       padding-left: 15px;
       font-size: 17px;
       line-height: 1.3em;
-
-      code {
-        font-size: 17px;
-      }
     }
 
     .references {

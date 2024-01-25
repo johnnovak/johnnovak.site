@@ -281,7 +281,7 @@ The reverb presets deserve a special mention:
 #define FMOD_PRESET_OFF { 1000, 7, 11, 5000, 100, 100, 100, 250, 0, 20, 96, -80.0f }
 {{< /highlight >}}
 
-Observer how nicer these look in Nim :)
+Observe how nicer these look in Nim :smile:
 
 {{< highlight nim >}}
 const
@@ -371,7 +371,7 @@ The finished version of the `nim-fmod` wrapper is available on
 [GitHub](https://github.com/johnnovak/nim-fmod) with some examples included
 and as a [Nimble](https://github.com/nim-lang/nimble) package.
 
-Happy Nimming! :)
+Happy Nimming! :sunglasses:
 
 
 [^javascript]: Of course, this is not true in case of the experimental
