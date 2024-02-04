@@ -5,3 +5,5 @@
 .sass-cache
 .DS_Store
 .jekyll-cache
+
+blog/.hugo_build.lock
