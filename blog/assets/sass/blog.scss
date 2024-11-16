@@ -383,8 +383,11 @@ article {
   margin-bottom: 0px;
 
   .intro {
-    color: $light-font-color;
     font-style: italic;
+
+    p, ul {
+      color: $light-font-color;
+    }
 
     em {
       font-weight: $xbold;
@@ -437,10 +440,9 @@ article {
   ul, ol {
     margin: 0;
     padding-left: 2.2em;
-    color: #888;
+    color: $font-color;
 
     li {
-      color: $font-color;
       margin: 1em 0;
       padding-left: 0.2em;
     }

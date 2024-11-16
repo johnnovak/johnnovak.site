@@ -35,136 +35,146 @@ Wing Commander - 1MB at least (enhancements?)
 
 ## How games use the memory
 
-Ideally, games should detect the type and amount of available RAM and make the
-best use of it, or display an error message if the RAM configuration doesn't
-meet the minimum requirements.
+Ideally, games should detect the type and amount of available memory (RAM) and make
+the best use of it or display an error message if the memory configuration
+doesn't meet their minimum requirements.
 
-In practice, almost no game indicates if the memory requirements are not
-met---most just hard crash during loading, or misbehave a little bit first,
-then crash.
+In practice, almost no game does that---most just crash during loading or
+appear to be working, then misbehave a little bit and crash if their memory
+requirements are not met.
 
 Later games that use the OS memory routines to detect the available RAM tend
 to work fine with all sorts of memory setups. A small but significant
-number of such games use the extra memory to enhance the experience---we'll
+number of those games use the extra memory to enhance the experience---we'll
 discuss this in detail later. But some earlier games (and demos, in
 particular) assume very specific fixed memory layouts. E.g., some titles
 expect the most common 1 MB Amiga 500 configuration (512 KB Chip RAM extended
 with a further 512 KB of Slow RAM via the trapdoor expansion slot).
 
 The problem is that different types of RAM are mapped to different address
-ranges. Slow RAM, in particular, is mapped to a specific start address. So if
+ranges. Slow RAM, in particular, is mapped to a specific start address. So, if
 a game is hardcoded to use Slow RAM, it does not matter if you have 8 MB of
 Fast RAM in your system instead. Fast RAM is mapped to an entirely different
-address range, so the game will try to use the non-existing Slow RAM anyway
-which will invariably result in a crash.
+address range, so when the game tries to use the non-existing Slow RAM, it
+will invariably crash.
 
 Another reason for failures and misbehaviour is dodgy home-grown memory
 detection methods that bypass the OS routines completely. These tend to get
 confused if you have a different memory configuration than what the developers
-were expecting. Some games will just not start by the mere _presence_ of
-Fast RAM (because it was expensive and thus uncommon in gaming circles).
+were expecting. Some games will just not start because of the mere _presence_
+of Fast RAM (because it was expensive and thus uncommon in gaming circles,
+many developers never tested their games on systems that had Fast RAM).
 
 TODO dungeon master no mem expansion
 
 Lastly, the CPU can use Fast RAM at full speed, so if a game assumes Slow RAM
-timings, even it doesn't crash outright on Fast RAM, it might misbehave
+timings, even if it doesn't crash outright on Fast RAM, it might misbehave
 because now certain operations will be performed "too quickly".
 
-The solution to these special cases is reading the manuals and
-experimentation. I'll present a streamlined method to simplify the process, so
-you'll be able to get all games running with the minimal amount of pain.
+The solution to these special cases is reading the game's manual and
+experimentation. Better manuals give you specific details on how the game can
+(or cannot) handle extra memory, but most manuals don't, so you'll just have
+to try things. I'll present a streamlined method to simplify the process to
+get any game running with minimal pain.
 
-Later re-releases have often corrected these problems as developers slowly
-started appreciating the value of cleaner coding practices. In a way, the
-original versions are the worst, especially for pre-1990 floppy only releases. Games that
-can be installed to the hard drive are far more system friendly and thus
-tend to have good support for various memory configurations (simply because
-you can't kill the OS if you need to access the HDD like you can with floppy
-games, so you might as well use the more robust OS memory routines then instead of rolling
-your own).
+Later re-releases have often corrected memory handling issues as developers
+slowly started appreciating the value of cleaner coding practices. In a way,
+the original versions are the worst, especially for pre-1990 floppy-only
+releases. Games that can be installed to the hard drive are far more
+system-friendly and thus tend to have good support for a wide range of memory
+configurations (simply because you can't kill the OS if you need to access the
+HDD like you can with floppy games, so you might as well use the more robust
+OS-provided memory routines instead of rolling your own).
 
 
 
 ## Floppy images
 
-One interesting quirk of the Amiga is that it does not have a full-fledged
-hardware floppy drive controller like a PC or Macintosh. Application level
-data (like program code, text, or image data) needs to be specially encoded so
-it can be stored on the floppy as a low-level data stream of magnetic flux
-transitions (usually via some sort of [MFM
+One interesting quirk of the Amiga is that it _does not_ have a full-fledged
+hardware floppy drive controller like a PC or Macintosh. Application-level
+data (such as program code, graphics, audio data, and text) must be
+specially encoded to be stored on the floppy as a low-level data stream
+of _magnetic flux transitions_ (usually via some sort of [MFM
 encoding](https://en.wikipedia.org/wiki/Modified_frequency_modulation)).
-Similarly, low-level data read from the floppy needs to be decoded before it
-can be passed to an application. This conversion is implemented in hardware in
-the floppy drive controller of a typical PC as a fixed, unchangeable process,
-transparent to the applications and even to the operating system. But on the
-Amiga, the conversion is entirely done in software which allows for
-unsurpassed flexibility. In truth, this was most likely just a cost-cutting
+Similarly, low-level flux transition data read from the floppy must be decoded
+before passing it to an application. This conversion is implemented in
+hardware in the floppy drive controller of a typical PC as a fixed, unchangeable process
+that is transparent to the applications and even to the operating system. However, on the
+Amiga, the conversion is entirely done in software, allowing unsurpassed flexibility. In truth, this was most likely just a cost-cutting
 measure, but it had far-reaching consequences.
 
 While a typical PC floppy drive can only read and write the PC floppy disk
 format and nothing else, the Amiga can be programmed to read PC, Macintosh,
 Apple II, or Commodore 64 disks due to this flexibility. But one doesn't have
 to stop there; it's entirely possible to invent any new wild and wonderful
-custom disk format one can imagine!
+custom disk format you can imagine!
 
-The standard encoding scheme is the **AmigaDOS format** which stores 880 KB of
-user data on a double-density 3.5" floppy. But it didn't take long for game
-and demo coders to come up with custom disk formats to cram more than 880 KB
-of data onto a single floppy (up to 980 KB!), speed up loading, obfuscate
-things, or to invent all sorts of fiendish copy protection schemes. There are
-literally _hundreds_ of different custom Amiga disk formats out there!
+And people just did that. There are literally _hundreds_ of different custom
+Amiga disk formats out there! The standard encoding scheme is the **AmigaDOS
+format**, which stores 880 KB of user data on a double-density 3.5" floppy. But
+it didn't take long for game and demo coders to come up with custom disk
+formats to cram more than 880 KB of data onto a single floppy (up to 980 KB!)
+to speed up loading, obfuscate things, or invent all sorts of fiendish copy
+protection schemes. 
 
 
 ### ADF and variants
 
 [ADF](https://en.wikipedia.org/wiki/Amiga_Disk_File) stands for **Amiga Disk
-File**. ADF images (`.adf` file extension) can store the contents of a standard
-AmigaDOS formatted 3.5" floppy disk. As such floppies can hold exactly 880 KB
-worth of user data, standard ADF images are exactly 901&thinsp;120 bytes long.
+File**. ADF images (`.adf` file extension) can store the contents of a
+standard AmigaDOS formatted 3.5" floppy disk. As such floppies can hold
+exactly 880 KB worth of user data, standard ADF images are exactly
+901&thinsp;120 bytes long.
 
-There are few variants of the format: **ADZ** files (`.adz` extension) are
+Amiga floppy drives have two heads on either side of the disk, so you don't
+need to flip it manually like on the Commodore 64 (most C64 floppy drives only
+had a single head). A single 880 KB ADF file holds all information for both sides
+of a single floppy disk—you won't find separate ADF files for side 1 and side
+2 of the same physical disk.
+
+There are a few variants of the format: **ADZ** files (`.adz` extension) are
 simple ADF files compressed with gzip. Similarly, **DMS** files are ADF files
-compressed with the proprietary Disk Masher System (`.dms` extension) which
+compressed with the proprietary Disk Masher System (`.dms` extension), which
 was particularly popular in demoscene and warez circles in the '90s. If you
 download demoscene productions, there's a high chance you'll download some DMS
 files.
 
-Standard ADF images and its variants cannot store disk-based protections so
-they're unsuited for the authentic archival of most uncracked floppy games.
-Amiga games you'll find online in ADF format are 99% cracked games. I highly
+Standard ADF images and their variants cannot store disk-based protections; this
+makes them unsuited for the authentic archival of most uncracked floppy games.
+Amiga games you'll find online in ADF format are 99% cracked. I highly
 recommend playing the untampered originals instead with the copy protection 
-instead for the reasons outlined in [my previous
+for the reasons outlined in [my previous
 article](/2023/01/02/gaming-on-the-amiga-part-1-amiga-500-is-all-you-need/#on-cracked-games).
 
 #### Extended ADF format
 
 There is a variant of the ADF format that is about 2 MB in size per disk
-image. These so-called **Extended ADF** images are capable of storing various
-custom encodings and even some copy protection schemes.
+image. These so-called **Extended ADF** images can store various custom
+encodings and even some copy protection schemes.
 
 In practice, however, archival-quality originals of Amiga floppy games are
-almost always stored in the [IPF format](#ipf). The main use of extended ADF
+almost always stored in the [IPF format](#ipf). The primary use of extended ADF
 images is for save disks. We'll discuss this in the TODO section.
 
 
 ### IPF
 
-This is a special disk format that is capable of storing all the information
+This is a special disk format that can store all the information
 contained on the original disks, including _almost all forms_ of copy
 protection. The only outliers I'm aware of are all **Dungeon Master**
-versions prior to the v3.6 Psygnosis re-release and **Chaos Strikes Back**.
+versions prior to the v3.6 Psygnosis re-release, and **Chaos Strikes Back**.
 
-To play uncracked originals, you _absolutely_ need IPF disk images, plain and
-simple.[^ipf] The IPF game library created by the SPS with the help of many
-volunteers was not publicly available for a long time, but eventually it has
+To play uncracked originals, you _absolutely need_ IPF disk images, plain and
+simple.[^ipf] The IPF game library created by the [Software Preservation Society (SPS)](http://www.sofpres.org/) with the help of many
+volunteers was not publicly available for a long time, but eventually, it was
 been "leaked". You can find the whole SPS pack in TOSEC and many other online
 places, including the FTP of a certain well-known English Amiga forum...
 
-[^ipf]: There are other low-level formats too that are capable of storing
-    disk-based copy protection schemes, such as SCP (Super Card Pro) and FDI
-    (Formatted Disk Image), but you'll come across these much less frequently.
-    So, in practical terms, you'll be using the IPF game library created by
-    the CAPS/SPS team 99% of the time.
+[^ipf]: There are other low-level formats too that can store disk-based copy
+    protection schemes, such as **SCP (SuperCard Pro)** and **FDI (Formatted Disk
+    Image)** disk images, but you'll come across these much less frequently. So, in
+    practical terms, you'll be using the IPF game library created by the
+    CAPS/SPS team 99% of the time.
 
 
 {{< note title="On software preservation" >}}
@@ -198,12 +208,12 @@ website](http://www.softpres.org/):
 
 {{< /note >}}
 
-#### Installation instructions
+#### Using IPF images in WinUAE
 
-To use IPF disk images in WinUAE, you'll need to download the CAPS plugin from
-the [SPS website](http://www.softpres.org/download) and copy it into your
-WinUAE root directory. The plugin has both 32-bit and 64-bit variants; the
-32-bit plugin will only work with 32-bit WinUAE, and vice versa.
+To use IPF images, you'll need to download the CAPS plugin from the [SPS
+website](http://www.softpres.org/download) and copy it into your WinUAE root
+directory. The plugin has 32-bit and 64-bit variants;
+the 32-bit plugin will only work with 32-bit WinUAE, and vice versa.
 
 1. Download version 5.1 of the IPF support library for Windows from the [SPS download page](http://www.softpres.org/download). Both the 32-bit and 64-bit versions reference the same ZIP file, so it doesn't matter which one you download.
 
@@ -215,32 +225,46 @@ WinUAE root directory. The plugin has both 32-bit and 64-bit variants; the
 
 {{< warning title="Important" >}}
 
-You _must_ always use 100% floppy speeds with IPF images. Turbo mode won't do
-anything at all (it will just silently revert to 100%), but the 200%, 400% and
-800% options do "work". That's in quotation marks because using anything else
-than 100% will most likely break disk-based copy protections that are
-timing-sensitive (e.g., [Rob Northen Copylock](https://en.wikipedia.org/wiki/Rob_Northen_copylock)).
+You _must_ always use the original floppy speeds (100% speed) with IPF images.
+Turbo mode won't do anything at all (it will just silently revert to 100%
+speed), but the 200%, 400% and 800% options do "work". That's in quotation
+marks because using anything other than 100% will most likely break disk-based
+copy protections that are timing-sensitive (e.g., [Rob Northen
+Copylock](https://en.wikipedia.org/wiki/Rob_Northen_copylock)).
 
-The cycle-exact emulation of a 68000 equipped Amiga 500 is often also needed.
-Faster CPUs or non-cycle exact emulation have a tendency to break some copy
-protection routines.
+The cycle-exact emulation of a 68000-equipped Amiga 500 is often also needed.
+Faster CPUs or non-cycle exact emulation tend to break some copy protection
+routines.
 
-The faster-than-100% option is really only there for the odd unprotected
+The faster-than-100% options are really only there for the odd unprotected
 AmigaDOS disk that happens to be in IPF format.
+
+You can never be completely sure whether a game has copy protection or not
+(without doing significant research, that is). 800% speed might appear to
+"work" as many games won't give you any obvious signs that something is wrong.
+But the protection mechanism might be silently triggered which could alter the
+game in subtly different ways (e.g., by making it substantially more difficult
+as in the case of **Populous** or **Gods**, or outright unwinnable by hiding
+certain key items necessary for completing the game; **Exile** is a prime
+example of this).
 
 {{< details "Games that use Rob Northen Copylock" >}}
 
-This is a probably complete list of all Amiga games that use the Rob Northen
-Copylock protection system (495 titles). All these games require
-cycle-exact emulation of a stock Amiga 500 with 100% floppy speed otherwise the
-copy protection might be triggered
-([source](https://codetapper.com/amiga/interviews/rob-northen/)):
+This is a probably complete list of all Amiga games that use the **Rob Northen
+Copylock** protection system (495 titles). All these games require cycle-exact
+emulation of a stock Amiga 500 with 100% floppy speed otherwise the copy
+protection might be triggered
+([source](https://codetapper.com/amiga/interviews/rob-northen/)).
+
+_Also note there are **far more** Amiga games that use disk-based protections
+other than Copylock!_
 
 - 3D Construction Set
 - 3D Pool
 - 5th Gear
 - A Rock Star Ate My Hamster
 - APB
+- Addams Family, The
 - Afterburner
 - Alien Breed Special Edition
 - Alien Syndrome
@@ -261,6 +285,7 @@ copy protection might be triggered
 - Back to the Future Part 3
 - Backlash
 - Badlands
+- Ball Game, The
 - Banshee
 - Barbarian
 - Barbarian 2
@@ -338,6 +363,7 @@ copy protection might be triggered
 - Cytron
 - D/Generation
 - Daley Thompson Olympic Challenge
+- Dark Man, The
 - Dark Side
 - Dark Stone
 - Darkmere
@@ -382,6 +408,7 @@ copy protection might be triggered
 - Fantasy World Dizzy
 - Fast Food
 - Fighting Soccer
+- Final Battle, The
 - Final Blow
 - Fire And Ice
 - Fireball
@@ -401,6 +428,7 @@ copy protection might be triggered
 - Future Basketball
 - G-Loc
 - Galaxy Force
+- Games Winter Edition, The
 - Garfield
 - Garfield's Winter Tail
 - Ghost Busters 2
@@ -456,6 +484,7 @@ copy protection might be triggered
 - Klax
 - Knightmare
 - Krusty's Fun House
+- Krystal, The
 - LED storm
 - Las Vegas
 - Last Battle
@@ -481,12 +510,12 @@ copy protection might be triggered
 - Mean Machines
 - Megalomania
 - Mercenary
+- MiG-29
+- MiG-29 2
 - Miami Chase
 - Micro Machines
 - Microprose Soccer
 - Midnight Resistance
-- MiG-29
-- MiG-29 2
 - Millennium 2.2
 - Monty Python
 - Moonshine
@@ -522,6 +551,7 @@ copy protection might be triggered
 - Paperboy 2
 - Paradroid
 - Parasol Stars
+- Park Mystery, Theme
 - Passing Shot
 - Paul Gascoine Super Soccer
 - Peanuts
@@ -607,6 +637,7 @@ copy protection might be triggered
 - Shoot-Em-Up Contruction Kit
 - Shut It!
 - Silly Putty
+- Simpsons, The
 - Simulcra
 - Skeleton Krew
 - Ski Simulator
@@ -631,6 +662,7 @@ copy protection might be triggered
 - Sphericules
 - Spike in Transylvania
 - Spindizzy Worlds
+- Spy Who Loved Me, The
 - Stack Up
 - Star Breaker
 - Star Wars
@@ -651,6 +683,7 @@ copy protection might be triggered
 - Super Tennis Champs
 - Super Wonder Boy
 - Superstar Ice Hockey
+- Sword and the Rose, The
 - THMT Electric Crayon
 - TV Sports Basketball
 - TV Sports Football
@@ -658,18 +691,8 @@ copy protection might be triggered
 - Tennis
 - Terminator 2
 - Thai Boxing
-- The Addams Family
-- The Ball Game
-- The Dark Man
-- The Final Battle
-- The Games Winter Edition
-- The Krystal
-- The Simpsons
-- The Spy Who Loved Me
-- The Sword and the Rose
-- The Three Stooges
-- Theme Park Mystery
 - Thomas the Tank Engine
+- Three Stooges, The
 - Thundercats
 - Thunderjaws
 - Tiger Road
@@ -735,21 +758,12 @@ copy protection might be triggered
 
 {{< /details >}}
 
-You can never be completely sure whether a game has copy protection or not
-(without doing significant research, that is). 800% speed might appear to
-"work" as many games won't give you any obvious signs that something is wrong.
-But the protection mechanism might be silently triggered which could alter the
-game in subtly different ways (e.g., by making it substantially more difficult
-as in the case of **Populous** or **Gods**, or outright unwinnable by hiding
-certain key items necessary for completing the game; **Exile** is a prime
-example of this).
-
 {{< /warning >}}
 
 {{< note title="What the hell is an IPF image anyway?" >}}
 
 Technically, IPF images don't contain the raw low-level magnetic flux
-transition data as other archival formats such as SCP (SuperCard Pro).
+transition data as other archival formats such as **SCP (SuperCard Pro)**.
 Instead, they describe the contents of the disk in a script language (!)
 suitable for disk mastering purposes which is reconstructed from the raw
 flux-level dump. That's the reason why IPF disk images are small (only around
@@ -771,27 +785,32 @@ know anything about this if you just want to play a few games.
 There was a time when I thought floppy sound emulation is something only crazy
 people do. Now I can't live without it.
 
-Have I gone crazy? That's beside the point. But allow me to explain why I'm convinced
-enabling floppy sounds is a really good idea.
+Have I gone crazy? That's beside the point. But allow me to explain why I'm
+convinced enabling floppy sounds is a really good idea.
 
 If you start a floppy game that takes say 20-30 seconds to load with the
 default WinUAE settings,
 you're just staring at a black screen with no feedback. Has the emulator
-crashed? Is anything happening? How much longer do I have to wait? It's
+crashed? Is anything happening? How much longer do I need to wait? It's
 anyone's guess!
 
 There is a good reason why the well-know progress bars and spinners have been
 invented. Waiting for 5 seconds while absolutely nothing is happening takes
-subjectively _longer_ than waiting for the _exact same_ amount of time
-watching some "in progress" animation. That gives you some psychological
-relief: "okay, I don't need to worry, the computer is still working". There is
-a lot of user experience research about this; it is just how humans work.
+subjectively _longer_ than waiting for the _exact same amount of time_
+watching some "in progress" animation. The progress indicator gives you some
+psychological relief: "okay, I don't need to worry, the computer is still
+working". There is a lot of user experience research about this; it is just
+how humans work.
 
 Okay, so in windowed mode you have the floppy drive activity indicators in the
-WinUAE window's status bar. But in fullscreen, you get nothing by default. So I recommend to enable the **Enable on-screen display** option in the
-**Miscellaneous** tab at the very least. This will display a nice little OSD indicator in the
-bottom right corner. The four little green rectangles show the activity of the
-four floppy drives. Green means reads, red means writes, and the number of the current track being read or written is also shown.
+WinUAE window's status bar. But in fullscreen, you get nothing by default. So
+I recommend to tick the **Enable on-screen display** option in the
+**Miscellaneous** tab at the very least, and you might also want to increase
+the OSD font size while you're at it. This will display a nice little OSD
+indicator in the bottom right corner. The four little green rectangles show
+the activity of the four floppy drives. Green means the floppy drive is
+reading the disk, red means it's writing to it, and the number of the current
+track being read or written is also shown.
 
 That's great, but auditory feedback via floppy sounds is even better. It's
 super nostalgic if you used to have an Amiga back in the day, and it you
@@ -808,9 +827,10 @@ use as a starting point for what we're gonna do next.
 
 There is one specific scenario where I like to disable the floppy sounds
 completely: demoscene productions where loading is happening almost all the
-time in the background. Some demos even leave the drive motor running after
-the loading has finished. This just adds a constant background noise to the
-music, and because it's constant, it gives you no useful feedback either. 
+time in the background. Some demos even leave the drive motor running all the
+time, regardless of whether the drive is reading data or not. This just adds a
+constant background noise to the music, and because it's constant, it gives
+you no useful feedback either. 
 
 
 ## Amiga 500 configurations
@@ -840,7 +860,7 @@ It's a good idea to save this config now as _A500 Floppy, 1 MB, PAL_ in the
 **Configurations** tab. Note the word "PAL" at the end. It's best to create
 two variants, one for PAL and one for NTSC, and I highly recommend to set them
 up for authentic CRT emulation [as per my
-article](https://blog.johnnovak.net/2022/04/15/achieving-period-correct-graphics-in-personal-computer-emulators-part-1-the-amiga/).
+article](/2022/04/15/achieving-period-correct-graphics-in-personal-computer-emulators-part-1-the-amiga/).
 
 To generate the NTSC config, you could tick the **NTSC** checkbox in the
 top-right corner of the **Quickstart** tab, then press **Set configuration**
@@ -848,7 +868,7 @@ again, but this would overwrite your whole config so you would lose any
 further manual tweaks. There's a better way: simply turn your PAL config into
 NTSC by going to the **Chipset** tab and ticking **NTSC** there. That's the
 easiest way to switch between PAL and NTSC in an existing config. Make sure to
-also update your shader setup for NTSC according to my article.
+also update your shader setup for NTSC according to [my article](/2022/04/15/achieving-period-correct-graphics-in-personal-computer-emulators-part-1-the-amiga/).
 
 #### Detailed description
 
@@ -864,11 +884,11 @@ doubt.
 
 In 1988, **Dungeon Master** was released for the Amiga and it required 1 MB of
 memory. Cinemaware's **It Came From the Desert** came out a year later in 1989
-and it also demanded 1 MB of RAM. These two were probably the first prominent
-games with a hard 1 MB memory requirement, and they can be rightfully
-considered "killer apps" of their time, responsible for selling many Amigas
-and RAM expansion boards. Some trapdoor RAM expansions were even bundled with
-a copy of Dungeon Master!
+and it also demanded 1 MB of RAM. These two were probably the first two
+prominent games with a hard 1 MB memory requirement, and they can be
+rightfully considered "killer apps" of their time, responsible for selling
+many Amigas and RAM expansion boards. Some trapdoor RAM expansions were even
+bundled with a copy of Dungeon Master!
 
     TODO image
 
@@ -925,7 +945,7 @@ or reduced loading times on 1 MB. For example:
 - **Fate: Gates of Dawn** will give you in-game sound
   effects on 1 MB only; on a stock Amiga 500, the game is silent.
 - **Rings of Medusa** has more sound effects on 1 MB.
-- Replays are only available on 1 MB in **Indianapolis 500**.
+- **Indianapolis 500** only allows replays if you have at least 1 MB of RAM.
 - **Nuclear War** has extra animations on 1 MB.
 - **MiG-29 Fulcrum** needs 1 MB for the best 320&times;256 32-colour PAL mode.
   On 512 KB, the game only uses 16 colours and 320&times;200 is the maximum
@@ -951,10 +971,22 @@ OCS in this classic config.
 
 ### Unexpanded Amiga 500 
 
-_Amiga 500, OCS chipset, Kickstart 1.3, 1.2 or 1.1 ROM<br>512 KB Chip RAM_
+_Amiga 500, OCS chipset, Kickstart 1.3, 1.2 or 1.1 ROM (in this order of
+preference)<br>512 KB Chip RAM_
 
-Save this as _A500 Floppy, PAL_, then create the NTSC variant, set up the shaders,
-etc. You know the drill.
+#### How to set it up
+
+TODO **Quickstart**
+
+Use Kickstart 1.3 for the base config; you'll very rarely need to change it to
+1.2 or 1.1, (this will be explained below). 
+Make sure the compatibility slider is at the far left (best
+compatibility), then press the **Set configuration** button.
+
+Save this as _A500 Floppy, PAL_, then create the NTSC variant, set up the
+shaders, as you've done for the previous [1 MB Amiga 500](#1-mb-amiga-500)
+config.
+
 
 #### Detailed description
 
@@ -973,27 +1005,28 @@ otherwise the game runs fine. Once you disable the memory expansion, the
 totems start to work. Unfortunately, you can only figure out problems like
 this by forum diving... but the good news is, such games are rare!
 
-_Really_ ancient games not only hate your extra RAM, but also Kickstart 1.3.
-You must dowgrade to Kickstart 1.2 if you want to play these games in their
-original form. An even smaller number of games require Kickstart 1.1.
+_Really_ ancient games not only hate your extra RAM, but are also mortal
+enemies of Kickstart 1.3. You must dowgrade to Kickstart 1.2 if you wish to
+enjoy these games in their original form. An even smaller number of games
+require Kickstart 1.1.
 
-Don't really trust what the manual you found online says as later re-releases
-have usually fixed the Kickstart compatibility problems. You can never be
-completely sure if the version of your PDF manual and the disk images match.
-People make all sorts of claims about the required Kickstart version in
-forums, but they're not aware that often the the version requirement was
-unintentially _downgraded_ by the crackers (usually because of their
-cracktros). The only 100% working way is to just try.
+Don't really trust what the game manuals you find online say as later
+re-releases would have usually fixed such Kickstart compatibility problems.
+You can never be completely sure if the version of your PDF manual and the
+disk images you found online match. People make all sorts of claims about the
+required Kickstart version for any particular game in internet forums, but
+they're not aware that the version requirement was often _downgraded_ by the
+crackers (usually as an unintended side-effect of their cracktros; e.g., the
+original game would handle 1.2 and 1.3 fine, but the cracker did his thing on
+a 1.2 machine, taking advantage of some 1.2-specific quirks, and never tested
+it on 1.3). The only 100% working way is the good old trial-and-error.
 
 For example, the SPS version of **Seven Cities of Gold** definitely needs
 Kickstart 1.1---it hard crashes before the title screen on any higher ROM
 version.
 
-These titles are claimed to require Kickstart 1.2 in various forums, but the
-SPS versions run just fine on Kickstart 1.3. Maybe I'm just lucky because I'm
-using the fixed re-releases? Maybe the guys who made those claims had the
-cracked versions? Or maybe some people just parrot the same misinformation
-they heard elsewhere without checking first? It's anyone's guess.
+For instance, these titles are claimed to require Kickstart 1.2 in various
+forums, but the SPS versions run just fine on Kickstart 1.3:
 
 - Archon (1985)
 - Marble Madness (1986)
@@ -1001,6 +1034,12 @@ they heard elsewhere without checking first? It's anyone's guess.
 - Times of Lore (1988) (TODO)
 - Starflight (TODO)
 {class="compact"}
+
+Maybe I'm just lucky because I'm using the fixed re-releases? Perhaps the guys
+who made those claims had the cracked versions? Or maybe some people just
+parrot the same misinformation they heard elsewhere without checking first?
+
+Misinformation on the internet---who would've thought that is even possible!
 
 ---
 
@@ -1017,7 +1056,7 @@ compatibility), then press the **Set configuration** button.
 
 The next thing to do is to max out the memory in the **Hardware / RAM** tab. Set
 **Chip** to **2 MB**, leave **Slow** at **512 KB**, and set **Z2 Fast** to **8
-MB**. We're done---it wasn't hard, was it?
+MB**.
 
 Let's call this _A500 Floppy, max mem, PAL_. Make sure to create the NTSC variant too.
 
@@ -1025,7 +1064,7 @@ Let's call this _A500 Floppy, max mem, PAL_. Make sure to create the NTSC varian
 #### Detailed description
 
 Okay, we're tackling the most advanced setup last: this is our kitchen sink
-"best possible A500" config.
+"best possible A500 money can buy" config.
 
 The successors of the Amiga 500 (the Amiga 500 Plus and the Amiga 600 released
 in 1991 and 1992, respectively) shipped with 1 MB of Chip RAM, expandable to 2
@@ -1033,20 +1072,20 @@ MB. The Amiga 1200 that came out at the end of 1992 had 2 MB of Chip RAM out
 of the box. You could expand all these machines with at least 4 MB of
 additional Fast RAM.
 
-High-end "big box" Amigas usually came with at least 1 MB of RAM
-starting from the late '80s, and often a lot more. These were generally more
+High-end "big box" Amigas usually came with at least 1 MB of RAM starting from
+the late '80s, and often with quite a bit more. These were generally more
 popular in the US, so North American developers tended to make sure their
-games ran on the big boys too.
+games ran on these big boys too.
 
 As a result of all this, game developers started to take advantage of the
 extra RAM of the newer Amiga models from the early '90s onwards. But as the
 majority of the userbase was stuck on the venerable Amiga 500, many developers
 took a "progressive enhancement" approach. The base game could run on the
-de-facto standard 1 MB Amiga 500, then if you had more memory, you would get
-extra animations, more varied graphics and sound effects, or maybe even some
-extra music. At the very least, the game would keep the already loaded data in
-memory, resulting in less loading from the slow floppies and less disk
-swapping.
+de-facto standard Amiga 500 expanded to 1 MB (via the 512 KB trapdoor Slow RAM
+expansion), then if you had more memory, you would get extra animations, more
+varied graphics and sound effects, or maybe even some extra music. At the very
+least, the game would keep the already loaded data in memory, resulting in
+less loading from the slow floppies and less disk swapping.
 
 Naturally, this approach meant they could not use the enhanced graphics
 capabilities of AGA Amigas as that would break compatibility with the huge
@@ -1054,25 +1093,25 @@ OCS/ECS user base. What this means for us is all we really need is the same
 old Amiga 500 setup, just with the RAM maxed out. Only the later ECS Agnus
 chip supports more than 512 KB of Chip RAM (also called as "Fat Agnus" because
 it was bigger than the original chip). So we'll need to emulate an **ECS
-Agnus** chipset, which is basically OCS, just the Agnus is ECS. WinUAE lets
-you configure more than 512 KB of Chip RAM with a full OCS chipset, but I
-don't think that's even possible on real hardware, and that will break some
-games (e.g., the music in **Pirates!** becomes very distorted with OCS
-and at least 1 MB of Chip RAM). 
+Agnus** chipset, which is basically OCS with the Agnus swapped out to the ECS
+version. Although WinUAE lets you configure more than 512 KB of Chip RAM with
+a full OCS chipset, I don't think that's even possible on real hardware, and
+that would definitely break some games (e.g., the music in **Pirates!**
+becomes very distorted with OCS and at least 1 MB of Chip RAM). 
 
 Although "full ECS" chipsets have an improved graphics chip (ECS Denise) which
 can display additional graphics modes, these were only used by high-end
 professional applications (because you needed a special expensive monitor). No
 game or demo used the new ECS features for anything. Even Commodore shipped
 the newer generation Amiga 500 models with this mixture of the ECS and OCS
-chips, and that's what we'll emulate as it has the widest compatibility (ECS
-Denise is not fully backward compatible with the old Denise).
+chips (OCS Paula and Denise with ECS Agnus), and that's what we'll emulate as
+it has the widest compatibility (ECS Denise is not fully backward compatible).
 
 Researching whether a particular game can benefit from extra RAM is time
 consuming, and sometimes the manual doesn't even contain relevant info about
 this, or even if it does, it might be vague or simply wrong. Therefore, it's a
-lot easier to simply just try this config first whenever you set up a new
-game. If it works fine, you're done---you can rest assured you're getting all
+lot easier to simply just try this "dream A500 config" first whenever you set up a new
+game. If it works fine, great, you're done---you can rest assured you're getting all
 the bells and whistles the game has to offer. If there are issues, then you
 can try the previous two scaled-down configs.
 
@@ -1089,8 +1128,8 @@ Ambermoon
 
 Spirit of Excalibur & Vengeance of Excalibur
 
-: 1 MB Chip RAM will give you more animations in the intro and the graphics of
-  the knight characters will be more varied (on 512 KB, all knights look the
+: 1 MB Chip RAM gives you more animations in the intro and the graphics of
+  the knight characters are more varied (on 512 KB, all knights look the
   same).
 
 
@@ -1125,8 +1164,8 @@ Settlers
   > Settlers is an "intelligent" program that thinks for you and a game where
   > you are not required to take care of everything yourself.
 
-  There's a detailed summary on what certain combinations of Chip and Fast RAM
-  will give you:
+  The manual includes a detailed summary of what certain combinations of Chip
+  and Fast RAM will get you:
 
   {{< figure name="img/settlers-memory-configs.png"
       alt="The Settlers -- Configuration examples" width="100%" >}}
@@ -1134,18 +1173,19 @@ Settlers
   {{< /figure >}}
 
   You can even check the currently supported features in-game. It doesn't get
-  better than that! As you can see, the game even recognises and uses a faster
-  68020 CPU which unlocks map size 7 if you're
+  better than this! As you can see, the game even recognises and uses the faster
+  68020 CPU which unlocks larger map sizes.
 
-  TODO
+  TODO screenshot
 
 
 ### Plan of action for Amiga 500 games
 
-Whenever you're about to play a new OCS floppy game, try the configs in the
-following order. Also make sure to use the PAL or NTSC config variants as
-appropriate; some PAL games won't even load on an NTSC Amiga, and vice versa
-(this is usually an early form or region locking).
+Whenever you're about to play a new OCS floppy game, try the previously
+presented configs in the following order. Also make sure to use the PAL or
+NTSC config variants as appropriate; some PAL games won't even load on an NTSC
+Amiga, and vice versa (this was sometimes intentionally done as an early form
+or region locking).
 
 A500 Floppy, max mem
 
@@ -1153,10 +1193,10 @@ A500 Floppy, max mem
   experience with this config. If it doesn't care about extra RAM but it's
   coded properly, it just won't use it so there's no harm.
 
-  If you get any weird behaviour (e.g., there's a just a black screen and
-  nothing happens, the game keeps rebooting or it crashes shortly after
-  loading, corrupted graphics, weird noises in the audio, etc.), then it
-  probably cannot handle the memory expansions. Time to try the next config!
+  If you get any weird behaviour (e.g., black screen with nothing happening,
+  the game keeps rebooting or it crashes shortly after loading, corrupted
+  graphics, weird noises in the audio, etc.), then it probably cannot handle
+  the memory expansions. Time to try the next config!
 
 A500 Floppy, 1 MB
 
@@ -1179,6 +1219,12 @@ A500 Floppy
 
 _Amiga 1200, AGA chipset, Kickstart 3.1<br>68020 CPU, 2 MB Chip RAM, 128 MB Fast RAM_
 
+#### How to set it up
+
+TODO
+
+#### Detailed description
+
 TODO
 
 
@@ -1196,8 +1242,8 @@ TODO
 I went into the various deal-breaking issues with cracked games in [my
 previous
 article](/2023/01/02/gaming-on-the-amiga-part-1-amiga-500-is-all-you-need/#on-cracked-games).
-Now that we're on more solid ground when it comes the pecularities of the
-Amiga, here are a few additional points on how cracks can cause problems other
+Now that we're on more solid ground when it comes to the pecularities of the
+Amiga, here are a few additional notes on how cracks can cause problems other
 than simply breaking the game:
 
 - Bad cracks can increase the memory requirements of a game (e.g., a bad crack
@@ -1207,25 +1253,27 @@ than simply breaking the game:
 - Scene intros inserted before the actual game sometimes degrade the Kickstart
   requirements (e.g., from 1.3 to 1.2).
 
-- Custom disk formats that crammed more than 880 KB onto a single-disk game
-  had to be unpacked to AmigaDOS, hence the cracked version could only be
-  stored on two floppies.
+- Custom disk formats that crammed more than 880 KB onto a single disk
+  often had to be unpacked to AmigaDOS, hence the cracked version could only
+  be stored on two floppies.
 
-- Similarly, the cracked versions of many releases took up one extra disk
+- Similarly, the cracked versions of many releases require one more disk
   because the cracktro had to fit somewhere, the disk layouts were changed
   after unpacking the data, and so on. Reshuffling the data across the disks
-  is also a source for bugs.
+  is also an error-prone process; bugs could creep in that were not present in
+  the original game.
 
-- Some teenagers inserted their own names or their group's name into the
+- Some teenagers inserted their own names or their scene group's name into the
   games' graphics, sometimes even altering the original credits. This is
-  simply adolescent-level hooliganism akin to destructive graffiti and is
-  completely unacceptable.
+  adolescent-level hooliganism akin to destructive graffiti and is completely
+  unacceptable.
 
 - Some games have half a dozen cracked versions. Are you really going to
   replay your game taking 10-20-30 or more hours half a dozen times to find
-  the single 100% working crack? Or do you trust the People of the Internet
-  when they say crack X of game Y is 100% correct? In some cases, a game
-  simply has no perfectly working cracks.
+  the _one_ 100% working crack? Or do you trust the People of the Internet
+  when they say crack X of game Y is 100% working? In some cases, a game
+  simply has no perfectly working cracks, regardless of what most people might
+  claim.
 
 
 ## Saving your progress
