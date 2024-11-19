@@ -1726,27 +1726,30 @@ And now the mandatory before/after comparison image:
 {{< /figure >}}
 
 
-## Changing shader settings from the Amiga
+## Overscan
 
-With the handy little `uae-configuration` utility included with WinUAE,
-you can control almost all emulator settings _from within_ the emulated
-Amiga! You just need to copy it to `SYS:C`, then you can execute it from the
-shell like any other Amiga program.
+Max normal is 724x283 non-interlaced hi-res PAL, 566 if laced
 
-For example, the following commands set the NTSC shader preset and 3.5x
-scaling factors:
 
-    uae-configuration gfx_filter D3D:CRT-A2080-NTSC.fx
-    uae-configuration gfx_filter_horiz_zoomf 1500
-    uae-configuration gfx_filter_vert_zoomf 2200
+Settlers
+The intro ran in 320x256, but the game ran in 352x272
 
-Pretty cool stuff, huh?!
 
-I wrote a small AmigaDOS script called `SetGfx` to make switching between the
-8 supported shader and scaling presets even easier; for example, you can execute
-`SetGfx ntsc35` to switch to the NTSC 3.5&times; preset. It's included in the
-downloadable shader pack.
+TODO
 
+  - Exile
+  - Kick Off
+  - Pacmania
+  - Pinball Dreams
+  - Pinball Fantasias
+  - Project-X
+  - SWIV
+  - Sensible World of Soccer
+  - Speedball
+  - The Settlers
+  - [Equality](https://amiga.abime.net/games/view/equality)
+  - Most [Team 17]() games
+{class="compact"}
 
 ## Interlaced screen modes
 
@@ -1816,17 +1819,23 @@ modes sparingly or in clever ways to take advantage of higher resolutions
 while minimising flicker. Here are a few notable examples:
 
 - [Agony](https://amiga.abime.net/games/view/agony) and [Pinball
-Fantasies](https://amiga.abime.net/games/view/pinball-fantasies) used hi-res
+Fantasies](https://amiga.abime.net/games/view/pinball-fantasies) use hi-res
 interlaced logo images in their intro sequences.
 
-- [Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast), [Unreal](https://amiga.abime.net/games/view/unreal),[Fish!](https://amiga.abime.net/games/view/fish), and [The Pawn](https://amiga.abime.net/games/view/the-pawn) feature beautiful interlaced title images.
+- [Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast),
+  [Unreal](https://amiga.abime.net/games/view/unreal),[Fish!](https://amiga.abime.net/games/view/fish),
+  and [The Pawn](https://amiga.abime.net/games/view/the-pawn) feature
+  beautiful interlaced title images.
 
-- [Agony](https://amiga.lychesis.net/games/Agony.html) and [Lionheart](https://amiga.abime.net/games/view/lionheart) interlace the in-game background gradient to create smoother colour transitions.
+- [Agony](https://amiga.lychesis.net/games/Agony.html) and
+  [Lionheart](https://amiga.abime.net/games/view/lionheart) interlace the
+  in-game background gradients to create smoother colour transitions.
 
-- [Pinball Illusions](), [Pinball Brain Damage] switches to interlaced high-res when multiball
-  mode is activated.
+- [Pinball Illusions](https://amiga.abime.net/games/view/pinball-illusions)
+  and [Pinball Brain Damage](https://amiga.abime.net/games/view/pinball-brain-damage) switches to
+  interlaced high-res in multiball mode.
 
-Then again, quite a few games use interlaced modes throughout the whole game:
+Then quite a few games use interlaced modes throughout the whole game:
 
   - [Big Red Adventure](https://amiga.abime.net/games/view/the-big-red-adventure)
   - [Biing!](https://amiga.abime.net/games/view/biing-sex-intrigen-und-skalpelle)
@@ -1835,13 +1844,15 @@ Then again, quite a few games use interlaced modes throughout the whole game:
   - [Evil's Doom](https://amiga.abime.net/games/view/evils-doom-se)
   - [Hollywood Poker Pro](https://amiga.abime.net/games/view/hollywood-poker-pro)
   - [Labyrinth of Time](https://amiga.abime.net/games/view/the-labyrinth-of-time)
-  - [Penthouse Hot Numbers Deluxe](https://amiga.abime.net/games/view/penthouse-hot-numbers-deluxe)
   - [Penthouse Hot Numbers](https://amiga.abime.net/games/view/penthouse-hot-numbers)
+  - [Penthouse Hot Numbers Deluxe](https://amiga.abime.net/games/view/penthouse-hot-numbers-deluxe)
   - [Wet: The Sexy Empire](https://amiga.abime.net/games/view/wet-the-sexy-empire)
   - [Wonderland: Dream the Dream](https://amiga.abime.net/games/view/wonderland-dream-the-dream)
   {class="compact"}
 
-Some games can optionally run in high-res laced modes (basically all Maxis games):
+Lastly, some games can optionally run in high-res laced modes as well in
+addition to the default non-interlaced resolution (basically all Maxis
+games):
 
   - [A-Train](https://amiga.abime.net/games/view/a-train)
   - [Sim City 2000](https://amiga.abime.net/games/view/sim-city-2000)
@@ -1852,19 +1863,18 @@ Some games can optionally run in high-res laced modes (basically all Maxis games
 
 Personally, I find interlaced screen modes very cool when used sparingly. I
 see interlacing as an effect (it brings movement and excitement to still
-images; you just have to see it to get what I'm talking about), and it can be
-a powerful nostalgia trigger for old-school Amiga fans (those beautiful title
-images and a round of **Hollywood Poker
-Pro** just doesn't hit
-the same way with progressive scan!)
+images, some kind of a cool "shimmering" quality; you just have to see it to
+get what I'm talking about), and it can be a powerful nostalgia trigger for
+old-school Amiga fans (those beautiful title screen still images or a round of
+**Hollywood Poker Pro** just don't hit the same way with progressive scan!)
 
 Now, playing strategy games such as **Sim City 2000** in high-res laced modes
-is a bit of a hard sell---I would just play those with progressive scan, or
+is a bit of a hard sell. I would just play those with progressive scan, or
 better yet, play the MS-DOS originals.
 
-In any case, at least give it a go and see for yourself if you enjoy emulating
-this particular quirk of the Amiga authentically, or you simply want to go
-with the "flicker-fixed" option.
+In any case, I recommend to at least give interlace emulation a chance to see
+if you enjoy this particular quirk of the Amiga's video hardware. You can
+always go back to the flicker-free option if you don't like it.
 
 
 ### Emulating interlaced modes
@@ -1901,6 +1911,29 @@ the section about interlacing in the [Amiga ROM Kernal Reference
 Manual](http://amigadev.elowar.com/read/ADCD_2.1/Libraries_Manual_guide/node0316.html).)
 
 TODO end 
+
+
+## Changing shader settings from the Amiga
+
+With the handy little `uae-configuration` utility included with WinUAE,
+you can control almost all emulator settings _from within_ the emulated
+Amiga! You just need to copy it to `SYS:C`, then you can execute it from the
+shell like any other Amiga program.
+
+For example, the following commands set the NTSC shader preset and 3.5x
+scaling factors:
+
+    uae-configuration gfx_filter D3D:CRT-A2080-NTSC.fx
+    uae-configuration gfx_filter_horiz_zoomf 1500
+    uae-configuration gfx_filter_vert_zoomf 2200
+
+Pretty cool stuff, huh?!
+
+I wrote a small AmigaDOS script called `SetGfx` to make switching between the
+8 supported shader and scaling presets even easier; for example, you can execute
+`SetGfx ntsc35` to switch to the NTSC 3.5&times; preset. It's included in the
+downloadable shader pack.
+
 
 
 ## In closing
