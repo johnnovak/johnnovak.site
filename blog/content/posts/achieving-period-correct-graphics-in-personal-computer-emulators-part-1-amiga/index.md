@@ -216,7 +216,6 @@ vernacular, and that's how these screen modes are named in every Amiga
 program and the operating system itself.
 
 
-
 ### Single vs double-scan
 
 A significant number of people really dislike the idea of using any kind of
@@ -283,7 +282,7 @@ illustrate single-scanning very well (enlarge them to inspect the details).
 
 {{< figure name="img/amiga-crt/monkey-island-ntsc.jpg" nameSmall="img/amiga-crt/monkey-island-ntsc-small.jpg" captionAlign="center" alt="Monkey Island, NTSC" width="90%" >}}
 
-  [The Secret of Monkey Island](https://hol.abime.net/1859), 320&times;200 NTSC ([source](https://www.reddit.com/r/crtgaming/comments/jdlr4h/monkey_island_on_a_1084s_in_60hz/))
+  [The Secret of Monkey Island](https://amiga.abime.net/games/view/the-secret-of-monkey-island), 320&times;200 NTSC ([source](https://www.reddit.com/r/crtgaming/comments/jdlr4h/monkey_island_on_a_1084s_in_60hz/))
 
 {{< /figure >}}
 
@@ -295,7 +294,7 @@ illustrate single-scanning very well (enlarge them to inspect the details).
 
 {{< figure name="img/amiga-crt/pinball-dreams-ntsc.jpg" nameSmall="img/amiga-crt/pinball-dreams-ntsc-small.jpg" captionAlign="center" alt="Pinball Dreams, NTSC" width="90%" >}}
 
-  [Pinball Dreams](https://hol.abime.net/1054), 320&times;200 NTSC
+  [Pinball Dreams](https://amiga.abime.net/games/view/pinball-dreams), 320&times;200 NTSC
   ([source](https://www.amigalove.com/viewtopic.php?f=8&t=1566&hilit=pinball+dreams&start=10))
 
 {{< /figure >}}
@@ -317,7 +316,7 @@ contributes to the overall "textured" quality of the image:
 
 {{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal-small.jpg" captionAlign="center" alt="Shadow of the Beast, PAL" width="90%" >}}
 
-  [Shadow of the Beast](https://hol.abime.net/1891), 320&times;256 PAL, [too many colours to count](https://codetapper.com/amiga/sprite-tricks/shadow-of-the-beast/)
+  [Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast), 320&times;256 PAL, [too many colours to count](https://codetapper.com/amiga/sprite-tricks/shadow-of-the-beast/)
 
 {{< /figure >}}
 
@@ -487,7 +486,7 @@ surprised to see the emulated results be this close to the real thing!
 {{< figure name="img/eob1.jpg" nameSmall="img/eob1-small.jpg"
     alt="Eye of the Beholder" width="90%" >}}
 
-  [Eye of the Beholder](https://hol.abime.net/2903) with CRT emulation in WinUAE (in correct NTSC aspect ratio, as the developers intended)
+  [Eye of the Beholder](https://amiga.abime.net/games/view/eye-of-the-beholder) with CRT emulation in WinUAE (in correct NTSC aspect ratio, as the developers intended)
 
 {{< /figure >}}
 
@@ -667,7 +666,7 @@ day, so that should always be your starting point.
 
 {{< figure name="img/ra-einstein.jpg" nameSmall="img/ra-einstein-small.jpg" alt="Einstein by Ra" width="90%" >}}
 
-  [Einstein](TODO) by [Ra/Sanity](https://demozoo.org/sceners/304/) (from the
+  **Einstein** by [Ra/Sanity](https://demozoo.org/sceners/304/) (from the
   Amiga 500 demo [Arte](https://demozoo.org/productions/5784/)). Proof that
   properly anti-aliased graphics look fabulous at 3.5&times; scaling too ---
   no hints of VGA-style chunkiness anywhere here! Who needs more than 32
@@ -825,6 +824,7 @@ This is nothing too controversial so far, is it? PAL users had square pixels,
 NTSC users slightly tall ones, and the image always filled the screen on both
 standards (not exactly 100%, as explained in the footnotes, but close enough).
 
+
 ### North American games on PAL computers
 
 Now, certain complications arise from the fact that most NTSC games designed
@@ -935,7 +935,7 @@ game that somehow breaks NTSC compatibility.)
 {{< note title="The sad state of aspect ratio correctness on the Internet" >}}
 
 While online game databases such as [MobyGames](https://www.mobygames.com/)
-and [Hall of Light](https://hol.abime.net/) are certainly very useful
+and [Hall of Light](https://amiga.abime.net/) are certainly very useful
 resources, they're not doing their part to promote aspect-ratio correctness.
 In fact, their net contribution is negative in this regard, as most of the
 screenshots on their websites are in the wrong aspect ratio (99.99% of them
@@ -946,7 +946,7 @@ games).
 To my knowledge, the maintainers of both websites have been called out about
 this issue repeatedly, but they don't seem to care and are generally
 uninterested in trying to improve the situation (to be somewhat fair to the
-[Hall of Light](https://hol.abime.net/), that's a website run by Europeans,
+[Hall of Light](https://amiga.abime.net/), that's a website run by Europeans,
 and, as I explained, most people on PAL Amigas experienced NTSC games with the
 wrong aspect ratio back in the day). The same goes for 90% of gaming related
 blogs and YouTube videos---they get the aspect ratio more often wrong than
@@ -1124,11 +1124,15 @@ played in **PAL**, **NTSC**, or **NTSC50** is as follows:
        the top and the bottom if they bothered to centre the graphics), that
        does *not* automatically mean the game needs NTSC stretch to look
        correct; the graphics might have been drawn with square pixels in mind.
-       [Perihelion](https://hol.abime.net/1029) (developed by two Hungarian
-       teenagers!) is a good example of this: the graphics is 320&times;200,
-       but it assumes square pixels. Other notable examples include
-       [Lemmings](TODO), [Fate: Gates of Dawn](TODO), [Legend of
-       Faerghail](TODO), [Knightmare](TODO), and [Rick Dangerous](TODO).
+       [Perihelion](https://amiga.abime.net/games/view/perihelion-the-prophecy)
+       (developed by two Hungarian teenagers!) is a good example of this: the
+       graphics is 320&times;200, but it assumes square pixels. Other notable
+       examples include
+       [Lemmings](https://amiga.abime.net/games/view/lemmings),
+       [Fate: Gates of Dawn](https://amiga.abime.net/games/view/fate-gates-of-dawn),
+       [Legend of Faerghail](https://amiga.abime.net/games/view/legend-of-faerghail),
+       [Knightmare](https://amiga.abime.net/games/view/knightmare-mindscape),
+       and [Rick Dangerous](https://amiga.abime.net/games/view/rick-dangerous).
 
        These developers probably just wanted to play it safe for an eventual
        future North American release, but at the same time, they put their
@@ -1231,14 +1235,14 @@ played in **PAL**, **NTSC**, or **NTSC50** is as follows:
          in-game graphics, although abstract, also looks squashed without
          NTSC stretch. Another fine **NTSC50** example.
 
-       - [IK+](https://amiga.abime.net/games/view/ik-plus) —
+       - [International Karate+ (IK+)](https://amiga.abime.net/games/view/ik-plus) —
          The Commodore 64 and ZX Spectrum originals came out in 1997, then the
          Amiga and Atari ST ports in 1998
          ([source](https://www.mobygames.com/game/7471/chop-n-drop/)). The
-         screenshots on the European [box art](TODO) feature NTSC screenshots,
-         the in-game IK+ logo needs NTSC strech to look like on the front of
-         the box, and the contestants appear way too stumpy in PAL mode.
-         Definitely needs **NTSC50**.
+         screenshots on the European [box art](https://amiga.abime.net/games/view/ik-plus#scans)
+         feature NTSC screenshots, the in-game IK+ logo needs NTSC strech to
+         look like on the front of the box, and the contestants appear way too
+         stumpy in PAL mode. Definitely needs **NTSC50**.
 
        - [Ishar 3: The Seven Gates of Infinity](https://amiga.abime.net/games/view/ishar-3-the-seven-gates-of-infinity) — Simultaneous Amiga, Atari&nbsp;ST, MS-DOS, and Macintosh release in 1994
          ([source](https://www.mobygames.com/game/1003/ishar-legend-of-the-fortress/)).
@@ -1246,7 +1250,7 @@ played in **PAL**, **NTSC**, or **NTSC50** is as follows:
          and Silmarils are known to consistently favour NTSC stretch in their
          muliplatform titles. The situation is the same for the other two
          installments of the [Ishar
-         series](https://hol.abime.net/hol_search.php?find=ishar). **NTSC50**,
+         series](https://amiga.abime.net/games/list/?gamename=ishar). **NTSC50**,
          next please.
 
        - [Captain Blood](https://amiga.abime.net/games/view/captain-blood).
@@ -1268,29 +1272,30 @@ played in **PAL**, **NTSC**, or **NTSC50** is as follows:
          mode in the team management screen. No doubt, the art was created
          assuming square pixels, so we'll go with **PAL**.
 
-       - [Powermonger](https://hol.abime.net/1125) —
+       - [Powermonger](https://amiga.abime.net/games/view/powermonger) —
          Simultaneous Amiga and Atari ST release in 1990, then an MS-DOS port
          in 1992 ([source](https://www.mobygames.com/game/1993/powermonger/)).
-         Both the European and US [box art](TODO) and adverts feature PAL
+         Both the European and US [box art](https://amiga.abime.net/games/view/powermonger#scans) and adverts feature PAL
          screenshots, the human figures would look too tall with NTSC stretch,
          and the circular stopwatch in the bottom left corner of the in-game
          screen is yet another minor clue. It's best to use **PAL**.
 
-       - [Populous](https://hol.abime.net/1102) — Simultaneous Amiga, Atari
-         ST, and MS-DOS release in 1989
+       - [Populous](https://amiga.abime.net/games/view/populous) —
+         Simultaneous Amiga, Atari ST, and MS-DOS release in 1989
          ([source](https://www.mobygames.com/game/613/populous/)). We know
          Peter Molyneaux developed this on his [effectively stolen Amiga 1000
          machines](https://www.gamespot.com/articles/molyneux-on-building-populous/1100-6302263/),
          so it's reasonable to assume the game needs square pixels to look as
          intended. But the screenshots are in PAL on the European [box
-         art](TODO) and in NTSC on the US box, so whatever---flip a coin. Well,
-         it's an abstract game (and there are no circles) so it really doesn't
-         matter much. I prefer **PAL** because it's a European game.
+         art](https://amiga.abime.net/games/view/populous#scans) and in NTSC
+         on the US box, so whatever---flip a coin. Well, it's an abstract game
+         (and there are no circles) so it really doesn't matter much. I prefer
+         **PAL** because it's a European game.
 
 {{< figure name="img/perihelion.jpg" nameSmall="img/perihelion-small.jpg" captionAlign="center"
     alt="Perihelion: The Prophecy (PAL, 3&times; scaling)" >}}
 
-  [Perihelion: The Prophecy](https://hol.abime.net/1029) (PAL, 3&times; scaling)<br>
+  [Perihelion: The Prophecy](https://amiga.abime.net/games/view/perihelion-the-prophecy) (PAL, 3&times; scaling)<br>
   A "true PAL" Amiga-exclusive game that uses the top 320&times;200
   area of the 320&times;256 PAL mode but assumes square pixels.
 
@@ -1300,7 +1305,7 @@ played in **PAL**, **NTSC**, or **NTSC50** is as follows:
 {{< figure name="img/ishar3aga.jpg" nameSmall="img/ishar3aga-small.jpg" captionAlign="center"
     alt="Ishar 3: The Seven Gates Of Infinity (PAL game with NTSC stretch applied, 3&times; scaling)" >}}
 
-  [Ishar 3: The Seven Gates Of Infinity](https://hol.abime.net/2669) (NTSC50, 3&times; scaling)<br>
+  [Ishar 3: The Seven Gates Of Infinity](https://amiga.abime.net/games/view/ishar-3-the-seven-gates-of-infinity) (NTSC50, 3&times; scaling)<br>
   European-made game that needs NTSC stretch to look correct (1:1.2 pixel aspect ratio).
 
 {{< /figure >}}
@@ -1309,7 +1314,7 @@ played in **PAL**, **NTSC**, or **NTSC50** is as follows:
 {{< figure name="img/captain-blood.jpg" nameSmall="img/captain-blood-small.jpg" captionAlign="center"
     alt="Captain Blood (PAL game with NTSC stretch applied, 3&times; scaling)" >}}
 
-  [Captain Blood](https://hol.abime.net/2924) (NTSC50, 3&times; scaling)<br>
+  [Captain Blood](https://amiga.abime.net/games/view/captain-blood) (NTSC50, 3&times; scaling)<br>
   European-made Atari ST port that assumes NTSC stretch (1:1.2 pixel aspect ratio).
 
 {{< /figure >}}
@@ -1384,7 +1389,7 @@ of the Beast, Apidya, Agony, all Magnetic Scrolls adventures, etc.)
 {{< figure name="img/scapeghost.jpg" nameSmall="img/scapeghost-small.jpg"
     alt="Scapeghost" width="90%" >}}
 
-  Start scene of [Scapeghost](https://hol.abime.net/1841) by [Magnetic
+  Start scene of [Scapeghost](https://amiga.abime.net/games/view/scapeghost) by [Magnetic
   Scrolls](https://en.wikipedia.org/wiki/Magnetic_Scrolls). The upper half of the
   screen is 320&times;256 low-res, while the bottom
   half displaying the text is 640&times;256 hi-res. As you can see,
@@ -1442,7 +1447,7 @@ Okay, so this is how to set up the CRT shaders:
 
 
 Detail view of the NTSC variant in action on a scene from [Defender of the
-Crown](https://hol.abime.net/305):
+Crown](https://amiga.abime.net/games/view/defender-of-the-crown):
 
 {{< figure name="img/doc.jpg" nameSmall="img/doc.jpg" captionAlign="center" alt="Defender of the Crown shader comparison">}}
 
@@ -1561,7 +1566,7 @@ looks too harsh and clinical in comparison.
 
 {{< figure name="img/centurion-colour-profile.jpg" nameSmall="img/centurion-colour-profile.jpg" captionAlign="center" alt="Centurion colour profile comparison" width="90%" >}}
 
-  Left: a scene from [Centurion: Defender of Rome](https://hol.abime.net/2965) by Jim Sachs, sRGB colours<br>
+  Left: a scene from [Centurion: Defender of Rome](https://amiga.abime.net/games/view/centurion-defender-of-rome) by Jim Sachs, sRGB colours<br>
   Right: the same image with the Philips colour profile applied
 
 {{< /figure >}}
@@ -1576,8 +1581,6 @@ screenshot:
   Right: same image with the Philips colour profile
 
 {{< /figure >}}
-
-
 
 
 ## Phosphor and shadow mask
@@ -1615,7 +1618,7 @@ effect is especially noticeable in NTSC as you can see in many of
 
 {{< figure name="img/slot-mask-2.jpg" nameSmall="img/slot-mask-2.jpg" captionAlign="center" alt="Close-up view of the effects of the slot mask - Pools of Darkness" width="90%" >}}
 
-  Close-up view of the effects of the slot mask---[Pools of Darkness](https://hol.abime.net/1100) ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
+  Close-up view of the effects of the slot mask---[Pools of Darkness](https://amiga.abime.net/games/view/pools-of-darkness) ([source](https://www.youtube.com/watch?v=b0sVz6hWO68))
 
 {{< /figure >}}
 
@@ -1625,7 +1628,7 @@ checkerboard-like texture.
 
 {{< figure name="img/amiga-crt/shadow-of-the-beast-pal-2.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal-2-small.jpg" captionAlign="center" alt="Shadow of the Beast game over screen" width="90%" >}}
 
-  [Shadow of the Beast](https://hol.abime.net/1891) game over screen (PAL)
+  [Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast) game over screen (PAL)
 
 {{< /figure >}}
 
@@ -1720,10 +1723,102 @@ And now the mandatory before/after comparison image:
 {{< figure name="img/eob-intro-glow.jpg" nameSmall="img/eob-intro-glow.jpg"
     captionAlign="center" alt="Eye of the Beholder, bloom and glow comparison" width="90%" >}}
 
-  Left: [Eye of the Beholder](https://hol.abime.net/2903) intro, no bloom and glow emulation<br>
+  Left: [Eye of the Beholder](https://amiga.abime.net/games/view/eye-of-the-beholder) intro, no bloom and glow emulation<br>
   Right: same image with subtle bloom and glow
 
 {{< /figure >}}
+
+
+## On dither
+
+Several people contacted me over the years after publishing the first version
+of this article about the "checkerboard" dither patterns you often see on
+Amiga pixel art. They thought the CRT shaders would make those dither patterns
+completely disappear. The short answer is no, the shaders won't do that as
+that would be inauthentic.
+
+The long answer: these dither patterns are visible on Commodore monitors
+connected via analog RGB. Moreover, you can clearly see the dither even on a
+Commodore 64 connected to a C= 1084S via S-Video. Hell, you can even see them when
+you hook up the C64 to a PAL TV via RF!
+
+Here's the proof!
+
+{{< figure name="img/c64-crt/c1084-c64-alien-syndrome-title.jpg" nameSmall="img/c64-crt/c1084-c64-alien-syndrome-title-small.jpg"
+    captionAlign="center" alt="Eye of the Beholder, bloom and glow comparison" width="90%" >}}
+
+  320&times;160 title screen of [Alien
+  Syndrome](https://www.lemon64.com/game/alien-syndrome) on the Commodore 64
+  connected to a Commodore 1084S monitor via S-Video.
+
+{{< /figure >}}
+
+
+{{< figure name="img/c64-crt/c1084-c64-geos-demo.jpg" nameSmall="img/c64-crt/c1084-c64-geos-demo-small.jpg"
+    captionAlign="center" alt="Eye of the Beholder, bloom and glow comparison" width="90%" >}}
+
+  [geoPaint](https://commodore64.fandom.com/wiki/GeoPaint) (the drawing
+  program of the [GEOS](https://commodore64.fandom.com/wiki/GEOS) operating
+  system) showcasing the 320&times;200 high-resolution mode of the C64 on a C= 1084S monitor via S-Video.
+
+{{< /figure >}}
+
+Going yet one step further, checkerboard dither patterns are also visible on a
+ZX Spectrum connected to a PAL TV via RF! Note I'm *not* talking about
+composite, which is a step up from RF; I'm talking about the lowest quality
+connection between a home computer and a CRT TV, the lowly coaxial RF input!
+
+TODO
+
+[CRT SCR$ Project](https://archive.org/details/crt-scr-v-0.1_202405)
+
+
+So what is going on here? Are the disappearing dither patterns yet another
+internet myth? Well, yes and no.
+
+On small 13-14" TV sets from the 1980s, dither patterns were greatly softened
+over RF as seen on the ZX Spectrum and C64 examples. Note that
+17" to 21" TV sets from the 1990s were used for these screenshots;
+these bigger screens make the dither appear a little bit sharper.
+
+The dither patterns are clearly visible even on the C64 via S-Video when using
+high contrast colour combinations (e.g., black and white on the geoPaint
+screenshot above). So naturally the same patterns would be even more visible on an
+Amiga connected via analog RGB. But the best Amiga artists used a trick to make the
+dither patterns melt away to a certain degree by using low-contrast colour
+combinations. If you examine the below Amiga screenshot
+carefully, you'll notice there is dithering all over it, but it's only
+obviously apparent in the more contrasty areas, such as the skyline between
+the two buildings.
+
+
+{{< figure name="img/perihelion.jpg" nameSmall="img/perihelion-small.jpg" captionAlign="center"
+    alt="Perihelion: The Prophecy (PAL, 3&times; scaling)" width="90%" >}}
+
+  [Perihelion: The Prophecy](https://amiga.abime.net/games/view/perihelion-the-prophecy) (PAL, 3&times; scaling)
+
+{{< /figure >}}
+
+
+So we can conclude dithering was clearly visible when you connected a home
+computer to a CRT monitor or TV via any method (analog RGB, S-Video,
+composite, or RF). Skillfull artists could make the patterns "blend" a bit
+more, and RF connections further softened them, but they never disappeared
+completely.
+
+One of the most likely source of this confusion is probably rooted in the
+history of the Sega Genesis/Mega Drive and Saturn consoles. These feature a
+truly abysmal, super blurry composite output---much blurrier than the
+composite signal of contemporary Nintendo consoles, for instance. Some developers
+exploited this heavy blur to create interesting transparency effects, knowing
+the majority of people hooked up their consoles to their TVs via composite. So
+there you go, this is a case of mistakenly generalising the quirk of one
+particular console brand to all other consoles and home computers of the era.
+
+Needless to say, dither patterns look even sharper on IBM PC monitors. There
+is absolutely _zero blur_ on Hercules, CGA, EGA, and VGA monitors which used
+digital signals up until EGA (yep, that's right, predating DVI and HDMI by
+_two decades!_)
 
 
 ## Overscan
@@ -1735,21 +1830,20 @@ Settlers
 The intro ran in 320x256, but the game ran in 352x272
 
 
-TODO
-
-  - Exile
-  - Kick Off
-  - Pacmania
-  - Pinball Dreams
-  - Pinball Fantasias
-  - Project-X
-  - SWIV
-  - Sensible World of Soccer
-  - Speedball
-  - The Settlers
+  - [Exile (OCS)](https://amiga.abime.net/games/view/exile)
+  - [Kick Off: Extra Time](https://amiga.abime.net/games/view/kick-off-extra-time)
+  - [Pac-Mania](https://amiga.abime.net/games/view/pac-mania)
+  - [Pinball Dreams](https://amiga.abime.net/games/view/pinball-dreams)
+  - [Pinball Fantasies](https://amiga.abime.net/games/view/pinball-fantasies)
+  - [Project-X](https://amiga.abime.net/games/view/project-x-revised-edition)
+  - [SWIV](https://amiga.abime.net/games/view/swiv)
+  - [Sensible World of Soccer](https://amiga.abime.net/games/view/sensible-world-of-soccer)
+  - [Speedball](https://amiga.abime.net/games/view/speedball)
+  - [The Settlers](https://amiga.abime.net/games/view/the-settlers)
   - [Equality](https://amiga.abime.net/games/view/equality)
-  - Most [Team 17]() games
+  - Most [Team 17](https://amiga.abime.net/games/list/?developer=team+17) games
 {class="compact"}
+
 
 ## Interlaced screen modes
 
@@ -1823,9 +1917,10 @@ Fantasies](https://amiga.abime.net/games/view/pinball-fantasies) use hi-res
 interlaced logo images in their intro sequences.
 
 - [Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast),
-  [Unreal](https://amiga.abime.net/games/view/unreal),[Fish!](https://amiga.abime.net/games/view/fish),
-  and [The Pawn](https://amiga.abime.net/games/view/the-pawn) feature
-  beautiful interlaced title images.
+  [Unreal](https://amiga.abime.net/games/view/unreal),
+  [Fish!](https://amiga.abime.net/games/view/fish), and
+  [The Pawn](https://amiga.abime.net/games/view/the-pawn) feature beautiful
+  interlaced title images.
 
 - [Agony](https://amiga.lychesis.net/games/Agony.html) and
   [Lionheart](https://amiga.abime.net/games/view/lionheart) interlace the
@@ -1879,7 +1974,7 @@ always go back to the flicker-free option if you don't like it.
 
 ### Emulating interlaced modes
 
-TODO start 
+TODO start
 
 In **interlaced
 modes** (or just **laced modes**) the display alternates rapidly between odd
@@ -1910,7 +2005,7 @@ video](https://en.wikipedia.org/wiki/Interlaced_video) Wikipedia article and
 the section about interlacing in the [Amiga ROM Kernal Reference
 Manual](http://amigadev.elowar.com/read/ADCD_2.1/Libraries_Manual_guide/node0316.html).)
 
-TODO end 
+TODO end
 
 
 ## Changing shader settings from the Amiga
@@ -1950,7 +2045,7 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/defender-of-the-crown.jpg" nameSmall="img/defender-of-the-crown-small.jpg" captionAlign="center"
     alt="Defender of the Crown (NTSC, 3&times; scaling" >}}
 
-  [Defender of the Crown](https://hol.abime.net/305) (NTSC, 3&times; scaling)
+  [Defender of the Crown](https://amiga.abime.net/games/view/defender-of-the-crown) (NTSC, 3&times; scaling)
 
 {{< /figure >}}
 
@@ -1958,7 +2053,7 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/desert.jpg" nameSmall="img/desert-small.jpg" captionAlign="center"
     alt="It Came From the Desert (NTSC, 3&times; scaling)" >}}
 
-  [It Came From the Desert](https://hol.abime.net/2674) (NTSC, 3.2&times; scaling)
+  [It Came From the Desert](https://amiga.abime.net/games/view/it-came-from-the-desert) (NTSC, 3.2&times; scaling)
 
 {{< /figure >}}
 
@@ -1974,7 +2069,7 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/legend-of-faerghail.jpg" nameSmall="img/legend-of-faerghail-small.jpg" captionAlign="center"
     alt="" >}}
 
-  [Legend of Faerghail](https://hol.abime.net/860) (PAL, 3&times; scaling)
+  [Legend of Faerghail](https://amiga.abime.net/games/view/legend-of-faerghail) (PAL, 3&times; scaling)
 
 {{< /figure >}}
 
@@ -1982,7 +2077,7 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/lemmings.jpg" nameSmall="img/lemmings-small.jpg" captionAlign="center"
     alt="Lemmings (PAL, 3.5&times; scaling, mixed low-res & high-res)" >}}
 
-  [Lemmings](https://hol.abime.net/872) (PAL, 3.5&times; scaling, mixed low-res & high-res)
+  [Lemmings](https://amiga.abime.net/games/view/lemmings) (PAL, 3.5&times; scaling, mixed low-res & high-res)
 
 {{< /figure >}}
 
@@ -1990,7 +2085,7 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/pinball-dreams.jpg" nameSmall="img/pinball-dreams-small.jpg" captionAlign="center"
     alt="Pinball Dreams (PAL, 3.5&times; scaling, overscan)" >}}
 
-  [Pinball Dreams](https://hol.abime.net/1054) (PAL, 3.5&times; scaling, overscan)
+  [Pinball Dreams](https://amiga.abime.net/games/view/pinball-dreams) (PAL, 3.5&times; scaling, overscan)
 
 {{< /figure >}}
 
@@ -1998,7 +2093,7 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/knightmare.jpg" nameSmall="img/knightmare-small.jpg" captionAlign="center"
     alt="Knightmare (PAL, 3&times; scaling)" >}}
 
-  [Knightmare](https://hol.abime.net/2595) (PAL, 3&times; scaling)
+  [Knightmare](https://amiga.abime.net/games/view/knightmare-mindscape) (PAL, 3&times; scaling)
 
 {{< /figure >}}
 
@@ -2006,7 +2101,7 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/perihelion.jpg" nameSmall="img/perihelion-small.jpg" captionAlign="center"
     alt="Perihelion: The Prophecy (PAL, 3&times; scaling)" >}}
 
-  [Perihelion: The Prophecy](https://hol.abime.net/1029) (PAL, 3&times; scaling)
+  [Perihelion: The Prophecy](https://amiga.abime.net/games/view/perihelion-the-prophecy) (PAL, 3&times; scaling)
 
 {{< /figure >}}
 
