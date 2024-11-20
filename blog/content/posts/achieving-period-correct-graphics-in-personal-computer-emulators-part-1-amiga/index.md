@@ -411,7 +411,7 @@ they consciously realised what they were really doing or not).
 
 {{< /figure >}}
 
-{{< figure name="img/guru5-dpaint3.png" nameSmall="img/guru5-dpaint3.png" alt="Dream retro-computing setup" width="100%" >}}
+{{< figure name="img/guru5-dpaint3.jpg" nameSmall="img/guru5-dpaint3-small.jpg" alt="Dream retro-computing setup" width="100%" >}}
 
   Inspecting the above image in Deluxe Paint 3 reveals the peculiar dual
   nature of "pixel art": you can clearly see the rectangular "pixels" on the
