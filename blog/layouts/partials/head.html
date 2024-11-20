@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Astloch&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 
-  {{ $style := resources.Get "sass/blog.scss" | resources.ToCSS (dict "outputStyle" "compressed") | fingerprint }}
+  {{ $style := resources.Get "sass/blog.scss" | css.Sass (dict "outputStyle" "compressed") | fingerprint }}
   <link rel="stylesheet" href="{{ $style.Permalink }}" type="text/css">
 
   <link rel="stylesheet" href="/css/jqmath-0.4.3.css" type="text/css">
