@@ -19,11 +19,10 @@ output of a C= 1084S monitor, plus some other improvements.
   perfect aspect ratio for any European release!
 {class="compact"}
 
-
-[before1]: img/elements-of-green.jpg
-[after1]: http://
-[before2]: img/king-for-a-day.jpg
-[after2]: http://
+[before1]: img/elements-of-green-before.jpg
+[after1]:  img/elements-of-green.jpg
+[before2]: img/king-for-a-day-before.jpg
+[after2]:  img/king-for-a-day.jpg
 
 **UPDATE 2023-02-19:** Add section explaining analog RGB, further elaborate my
 views on low-resolution "pixel art", plus wording improvements and grammar
