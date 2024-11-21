@@ -1517,31 +1517,33 @@ profile emulation _after_ it, as the last filter in the chain. Therefore, I
 duplicated **WinUaeColor** under the name **WinUaeColorProfile**, and our
 final ReShade filter chain will look like this:
 
-* WinUaeColor _(monitor controls only)_
-* WinUaeMask
-* WinUaeColorProfile _(Philips colour profile only)_
+* MonitorControls _(monitor controls only)_
+* WinUaeColor _(Philips CRT colour profile only)_
+* WinUaeMaskGlowAdvanced _(mask and glow only)_
 {class="compact"}
 
-Once you've set up everything correctly, just enable **WinUaeColor.fx** and
-set it up as shown below. **Colour Temperature** should stay at zero, and I
-like to bump up the **Color Saturation** a little so it resembles the
-vividness of the Commodore 1084S a bit more. A value around 1.100 should do the
-trick. You might not need (or want) to boost the saturation on wide-gamut
-displays, though.
+Once you've set up everything correctly, enable **MonitorControls.fx** and
+set it up as shown below.
 
-Similarly, I like to increase the **Color Contrast** to about 0.400 as well as
-my default setting. Some games look quite nice with the contrast cranked up
-almost to the max, while some look completely fine at near zero---just like
-on real hardware.
+Everything should be left at their default values, except for **Color
+Contrast** which I like to set to about 0.300 as my default setting. You can
+adjust it to taste later but this is a good starting point. Some
+games look quite nice with the contrast cranked up almost to the max, while
+some look completely fine at near zero---just like on real hardware.
 
-The almost homeopathic **Color Brightness** boost of 1.023 helps regain some
-of the brightness lost by the scanline emulation, and interestingly it also
-helps reduce moire artifacts at non-integer scaling ratios (or perhaps it's
-all in my head...)
+**Colour Temperature** should always stay at zero. You can bump up **Color
+Saturation** a little bit if you want, but try to be gentle as it's very easy
+to overdo it. Generally, try not to go above 1.100.
 
-<img src="img/winuaecolor.png" alt="WinUaeColor filter settings" width="auto">
+Later on, you might want to increase **Color Brightness** to compensate for
+the brighness loss introduced by the CRT shaders, but
+that will inevitably lead to some loss of detail in the highlights. It's much
+better to increase the contrast on you monitor instead, but more on this
+later.
 
-The next thing is to enable **WinUaeColorProfile.fx** as the second filter in
+<img src="img/monitorcontrols.png" alt="MonitorControls filter settings" width="auto">
+
+The next thing is to enable **WinUaeColor.fx** as the second filter in
 the chain. **Color Profile 4** is the Philips, most people
 should leave **Color Space** at 0 (sRGB), but if you're the lucky owner of a
 wide-gamut display, then you should definitely set it to match your display's
@@ -1550,7 +1552,7 @@ the instructions). Leave all the other controls at their default neutral
 settings---as I explained, we're using this second instance only for
 emulating the monitor's colour profile.
 
-<img src="img/winuaecolorprofile.png" alt="WinUaeColorProfile filter settings" width="auto">
+<img src="img/winuaecolor.png" alt="WinUaeColor filter settings" width="auto">
 
 As expected, the right half of the below example image with the Philips colour
 profile applied looks much warmer and cosier. Now we're cooking on gas! ---
@@ -1647,7 +1649,7 @@ hours of shader tweaking, and if you're going to modify them, be aware that
 *all settings* interact with each other, including the settings of the CRT
 emulation shader, so you need a holistic view when tweaking these things.
 
-<img src="img/winuaemask.png" alt="WinUaeMaskGlowAdvaned filter settings (phosphor and shadow mask)" width="auto">
+<img src="img/winuaemask.png" alt="WinUaeMaskGlowAdvanced filter settings (phosphor and shadow mask)" width="auto">
 
 
 And this is a before/after comparison on a blown-up PAL image. Doesn't seem
@@ -1711,7 +1713,7 @@ holds true for these as well: turning them on might not seem overly impressive
 at first (if you're impressed, rest assured you've overdone it!), but when you
 turn them off later, you'll probably miss the effect.
 
-<img src="img/winuaemaskglow.png" alt="WinUaeMaskGlowAdvaned filter settings (bloom and glow)" width="auto">
+<img src="img/winuaemaskglow.png" alt="WinUaeMaskGlowAdvanced filter settings (bloom and glow)" width="auto">
 
 And now the mandatory before/after comparison image:
 
