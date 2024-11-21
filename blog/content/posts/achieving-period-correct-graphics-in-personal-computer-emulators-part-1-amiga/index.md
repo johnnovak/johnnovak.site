@@ -19,7 +19,6 @@ output of a C= 1084S monitor, plus some other improvements.
   perfect aspect ratio for any European release!
 {class="compact"}
 
-
 [before1]: img/elements-of-green-before.jpg
 [after1]:  img/elements-of-green.jpg
 [before2]: img/king-for-a-day-before.jpg
@@ -395,7 +394,7 @@ the CRT was pretty obvious to every artist who didn't completely suck (whether
 they consciously realised what they were really doing or not).
 
 
-{{< figure name="img/guru5.png" nameSmall="img/guru5.png" alt="Dream retro-computing setup" width="90%" >}}
+{{< figure name="img/guru5.jpg" nameSmall="img/guru5-small.jpg" alt="Guru diskmag #5 title picture by Bruce of Cerberos" width="90%" >}}
 
   Title picture of the 5th issue of the [Guru
   diskmag](https://demozoo.org/groups/101854/) (a legendary Hungarian-only
@@ -411,7 +410,7 @@ they consciously realised what they were really doing or not).
 
 {{< /figure >}}
 
-{{< figure name="img/guru5-dpaint3.jpg" nameSmall="img/guru5-dpaint3-small.jpg" alt="Dream retro-computing setup" width="90%" >}}
+{{< figure name="img/guru5-dpaint3.jpg" nameSmall="img/guru5-dpaint3-small.jpg" alt="Guru 5 title picture in Deluxe Paint" width="90%" >}}
 
   Inspecting the above image in Deluxe Paint 3 reveals the peculiar dual
   nature of "pixel art": you can clearly see the rectangular "pixels" on the
@@ -1947,17 +1946,29 @@ early Windows-era graphics, and how to do it right!
 
 
 {{< figure name="img/defender-of-the-crown.jpg" nameSmall="img/defender-of-the-crown-small.jpg" captionAlign="center"
-    alt="Defender of the Crown (NTSC, 3&times; scaling" >}}
+    alt="Defender of the Crown (NTSC CRT shader, 3&times; scaling" >}}
 
-  [Defender of the Crown](https://hol.abime.net/305) (NTSC, 3&times; scaling)
+  [Defender of the Crown](https://hol.abime.net/305) (NTSC CRT shader, 3&times; scaling)
+
+{{< /figure >}}
+{{< figure name="img/defender-of-the-crown-raw.png" nameSmall="img/defender-of-the-crown-raw.png" captionAlign="center"
+    alt="Defender of the Crown (raw pixels, 3&times; scaling" >}}
+
+  [Defender of the Crown](https://hol.abime.net/305) (raw pixels, 3&times; scaling)
 
 {{< /figure >}}
 
 
 {{< figure name="img/desert.jpg" nameSmall="img/desert-small.jpg" captionAlign="center"
-    alt="It Came From the Desert (NTSC, 3&times; scaling)" >}}
+    alt="It Came From the Desert (NTSC CRT shader, 3.2&times; scaling)" >}}
 
-  [It Came From the Desert](https://hol.abime.net/2674) (NTSC, 3.2&times; scaling)
+  [It Came From the Desert](https://hol.abime.net/2674) (NTSC CRT shader, 3.2&times; scaling)
+
+{{< /figure >}}
+{{< figure name="img/desert-raw.png" nameSmall="img/desert-raw.png" captionAlign="center"
+    alt="It Came From the Desert (raw pixels, 3.2&times; scaling)" >}}
+
+  [It Came From the Desert](https://hol.abime.net/2674) (raw pixels, 3.2&times; scaling)
 
 {{< /figure >}}
 
@@ -1965,61 +1976,99 @@ early Windows-era graphics, and how to do it right!
 {{< figure name="img/elements-of-green.jpg" nameSmall="img/elements-of-green-small.jpg" captionAlign="center"
     alt="The Elements of Green (PAL, 3&times; scaling)" >}}
 
-  [The Elements of Green](https://demozoo.org/graphics/52054/) by [Prowler](https://demozoo.org/sceners/814/) (PAL, 3&times; scaling)
+  [The Elements of Green](https://demozoo.org/graphics/52054/) by [Prowler](https://demozoo.org/sceners/814/) (PAL CRT shader, 3&times; scaling)
+
+{{< /figure >}}
+{{< figure name="img/elements-of-green-raw.png" nameSmall="img/elements-of-green-raw.png" captionAlign="center"
+    alt="The Elements of Green (raw pixels, 3&times; scaling)" >}}
+
+  [The Elements of Green](https://demozoo.org/graphics/52054/) by [Prowler](https://demozoo.org/sceners/814/) (raw pixels, 3&times; scaling)
 
 {{< /figure >}}
 
 
 {{< figure name="img/legend-of-faerghail.jpg" nameSmall="img/legend-of-faerghail-small.jpg" captionAlign="center"
-    alt="" >}}
+    alt="Legend of Faerghail (PAL CRT shader, 3&times; scaling)" >}}
 
-  [Legend of Faerghail](https://hol.abime.net/860) (PAL, 3&times; scaling)
+  [Legend of Faerghail](https://hol.abime.net/860) (PAL CRT shader, 3&times; scaling)
+
+{{< /figure >}}
+{{< figure name="img/legend-of-faerghail-raw.png" nameSmall="img/legend-of-faerghail-raw.png" captionAlign="center"
+    alt="Legend of Faerghail (raw pixels, 3&times; scaling)" >}}
+
+  [Legend of Faerghail](https://hol.abime.net/860) (raw pixels, 3&times; scaling)
 
 {{< /figure >}}
 
 
 {{< figure name="img/lemmings.jpg" nameSmall="img/lemmings-small.jpg" captionAlign="center"
-    alt="Lemmings (PAL, 3.5&times; scaling, mixed low-res & high-res)" >}}
+    alt="Lemmings (PAL CRT shader, 3.5&times; scaling, mixed low-res & high-res)" >}}
 
-  [Lemmings](https://hol.abime.net/872) (PAL, 3.5&times; scaling, mixed low-res & high-res)
+  [Lemmings](https://hol.abime.net/872) (PAL CRT shader, 3.5&times; scaling, mixed low-res & high-res)
+
+{{< /figure >}}
+{{< figure name="img/lemmings-raw.png" nameSmall="img/lemmings-raw.png" captionAlign="center"
+    alt="Lemmings (raw pixels, 3.5&times; scaling, mixed low-res & high-res)" >}}
+
+  [Lemmings](https://hol.abime.net/872) (raw pixels, 3.5&times; scaling, mixed low-res & high-res)
 
 {{< /figure >}}
 
 
 {{< figure name="img/pinball-dreams.jpg" nameSmall="img/pinball-dreams-small.jpg" captionAlign="center"
-    alt="Pinball Dreams (PAL, 3.5&times; scaling, overscan)" >}}
+    alt="Pinball Dreams (PAL CRT shader, 3.5&times; scaling, overscan)" >}}
 
-  [Pinball Dreams](https://hol.abime.net/1054) (PAL, 3.5&times; scaling, overscan)
+  [Pinball Dreams](https://hol.abime.net/1054) (PAL CRT shader, 3.5&times; scaling, overscan)
+
+{{< /figure >}}
+{{< figure name="img/pinball-dreams-raw.png" nameSmall="img/pinball-dreams-raw.png" captionAlign="center"
+    alt="Pinball Dreams (raw pixels, 3.5&times; scaling, overscan)" >}}
+
+  [Pinball Dreams](https://hol.abime.net/1054) (raw pixels, 3.5&times; scaling, overscan)
 
 {{< /figure >}}
 
 
 {{< figure name="img/knightmare.jpg" nameSmall="img/knightmare-small.jpg" captionAlign="center"
-    alt="Knightmare (PAL, 3&times; scaling)" >}}
+    alt="Knightmare (PAL CRT shader, 3&times; scaling)" >}}
 
-  [Knightmare](https://hol.abime.net/2595) (PAL, 3&times; scaling)
+  [Knightmare](https://hol.abime.net/2595) (PAL CRT shader, 3&times; scaling)
+
+{{< /figure >}}
+{{< figure name="img/knightmare-raw.png" nameSmall="img/knightmare-raw.png" captionAlign="center"
+    alt="Knightmare (raw pixels, 3&times; scaling)" >}}
+
+  [Knightmare](https://hol.abime.net/2595) (raw pixels, 3&times; scaling)
 
 {{< /figure >}}
 
 
 {{< figure name="img/perihelion.jpg" nameSmall="img/perihelion-small.jpg" captionAlign="center"
-    alt="Perihelion: The Prophecy (PAL, 3&times; scaling)" >}}
+    alt="Perihelion: The Prophecy (PAL CRT shader, 3&times; scaling)" >}}
 
-  [Perihelion: The Prophecy](https://hol.abime.net/1029) (PAL, 3&times; scaling)
+  [Perihelion: The Prophecy](https://hol.abime.net/1029) (PAL CRT shader, 3&times; scaling)
+
+{{< /figure >}}
+{{< figure name="img/perihelion-raw.png" nameSmall="img/perihelion-raw.png" captionAlign="center"
+    alt="Perihelion: The Prophecy (raw pixels, 3&times; scaling)" >}}
+
+  [Perihelion: The Prophecy](https://hol.abime.net/1029) (raw pixels, 3&times; scaling)
 
 {{< /figure >}}
 
 
 {{< figure name="img/king-for-a-day.jpg" nameSmall="img/king-for-a-day-small.jpg" captionAlign="center"
-    alt="King for a Day (PAL, 3&times; scaling)" >}}
+    alt="King for a Day (PAL CRT shader, 3&times; scaling)" >}}
 
-  [King for a Day](https://demozoo.org/graphics/202738/) by [Facet](https://demozoo.org/sceners/235/) & [Magic](https://demozoo.org/sceners/12016/) (PAL, 3&times; scaling)
+  [King for a Day](https://demozoo.org/graphics/202738/) by [Facet](https://demozoo.org/sceners/235/) & [Magic](https://demozoo.org/sceners/12016/) (PAL CRT shader, 3&times; scaling)
 
 {{< /figure >}}
+{{< figure name="img/king-for-a-day-raw.png" nameSmall="img/king-for-a-day-raw.png" captionAlign="center"
+    alt="King for a Day (raw pixels, 3&times; scaling)" >}}
 
+  [King for a Day](https://demozoo.org/graphics/202738/) by [Facet](https://demozoo.org/sceners/235/) & [Magic](https://demozoo.org/sceners/12016/) (raw pixels, 3&times; scaling)
 
-
-
+{{< /figure >}}
 
 
 ---
