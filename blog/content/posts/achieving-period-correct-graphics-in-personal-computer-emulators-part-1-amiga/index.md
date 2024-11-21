@@ -20,10 +20,10 @@ output of a C= 1084S monitor, plus some other improvements.
 {class="compact"}
 
 
-[before1]: img/elements-of-green.jpg
-[after1]: http://
-[before2]: img/king-for-a-day.jpg
-[after2]: http://
+[before1]: img/elements-of-green-before.jpg
+[after1]:  img/elements-of-green.jpg
+[before2]: img/king-for-a-day-before.jpg
+[after2]:  img/king-for-a-day.jpg
 
 **UPDATE 2023-02-19:** Add section explaining analog RGB, further elaborate my
 views on low-resolution "pixel art", plus wording improvements and grammar
@@ -395,7 +395,7 @@ the CRT was pretty obvious to every artist who didn't completely suck (whether
 they consciously realised what they were really doing or not).
 
 
-{{< figure name="img/guru5.png" nameSmall="img/guru5.png" alt="Dream retro-computing setup" width="100%" >}}
+{{< figure name="img/guru5.png" nameSmall="img/guru5.png" alt="Dream retro-computing setup" width="90%" >}}
 
   Title picture of the 5th issue of the [Guru
   diskmag](https://demozoo.org/groups/101854/) (a legendary Hungarian-only
@@ -411,7 +411,7 @@ they consciously realised what they were really doing or not).
 
 {{< /figure >}}
 
-{{< figure name="img/guru5-dpaint3.jpg" nameSmall="img/guru5-dpaint3-small.jpg" alt="Dream retro-computing setup" width="100%" >}}
+{{< figure name="img/guru5-dpaint3.jpg" nameSmall="img/guru5-dpaint3-small.jpg" alt="Dream retro-computing setup" width="90%" >}}
 
   Inspecting the above image in Deluxe Paint 3 reveals the peculiar dual
   nature of "pixel art": you can clearly see the rectangular "pixels" on the
@@ -473,8 +473,7 @@ well-written and informative too. Close-up photos of CRTs viewed on LCD
 screens don't nearly tell you the whole story, but I'm actually quite
 surprised to see the emulated results be this close to the real thing!
 
-{{< figure name="img/eob-shader-comparison.jpg" nameSmall="img/eob-shader-comparison-small.jpg"
-    alt="Eye of the Beholder, real CRT vs shader comparison" width="100%" >}}
+{{< figure name="img/eob-shader-comparison.jpg" nameSmall="img/eob-shader-comparison-small.jpg" alt="Eye of the Beholder, real CRT vs shader comparison" width="90%" >}}
 
   Comparison of real Commodore 1084S monitor photos to the CRT emulation
   presented in this article, and to raw sharp bilinear upscaling. The image on
@@ -1559,7 +1558,7 @@ profile applied looks much warmer and cosier. Now we're cooking on gas! ---
 this is how I remember my Philips and Commodore monitors, the raw sRGB version
 looks too harsh and clinical in comparison.
 
-{{< figure name="img/centurion-colour-profile.jpg" nameSmall="img/centurion-colour-profile.jpg" captionAlign="center" alt="Centurion colour profile comparison" width="90%" >}}
+{{< figure name="img/centurion-colour-profile.jpg" nameSmall="img/centurion-colour-profile.jpg" captionAlign="center" alt="Centurion colour profile comparison" >}}
 
   Left: a scene from [Centurion: Defender of Rome](https://hol.abime.net/2965) by Jim Sachs, sRGB colours<br>
   Right: the same image with the Philips colour profile applied
@@ -1570,7 +1569,7 @@ looks too harsh and clinical in comparison.
 The difference is even more striking on greys, like on this Directory Opus
 screenshot:
 
-{{< figure name="img/diropus-colour-profile.jpg" nameSmall="img/diropus-colour-profile.jpg" captionAlign="center" alt="Directory Opus colour profile comparison" width="90%" >}}
+{{< figure name="img/diropus-colour-profile.jpg" nameSmall="img/diropus-colour-profile.jpg" captionAlign="center" alt="Directory Opus colour profile comparison" >}}
 
   Left: Directory Opus, sRGB colours<br>
   Right: same image with the Philips colour profile
@@ -1718,7 +1717,7 @@ turn them off later, you'll probably miss the effect.
 And now the mandatory before/after comparison image:
 
 {{< figure name="img/eob-intro-glow.jpg" nameSmall="img/eob-intro-glow.jpg"
-    captionAlign="center" alt="Eye of the Beholder, bloom and glow comparison" width="90%" >}}
+    captionAlign="center" alt="Eye of the Beholder, bloom and glow comparison" >}}
 
   Left: [Eye of the Beholder](https://hol.abime.net/2903) intro, no bloom and glow emulation<br>
   Right: same image with subtle bloom and glow
