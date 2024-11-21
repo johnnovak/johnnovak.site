@@ -2005,7 +2005,16 @@ video](https://en.wikipedia.org/wiki/Interlaced_video) Wikipedia article and
 the section about interlacing in the [Amiga ROM Kernal Reference
 Manual](http://amigadev.elowar.com/read/ADCD_2.1/Libraries_Manual_guide/node0316.html).)
 
-TODO end
+{{< figure name="img/fish-laced.gif" nameSmall="img/fish-laced.gif"
+    alt="High-res interlaced title screen of Fish!" width="100%" >}}
+
+  Left: a Commodore 64 paired with a small 13" colour TV. Middle: an Amiga 500
+  hooked up to the venerable Commodore 1084 monitor (it's not period-correct if the
+  front panel door is *not* broken off!). Right: an IBM PC compatible with a nice
+  15" Trinitron display. This Norwegian dude ([UncleAwesome](https://www.youtube.com/channel/UC_Exbgz-zDrEEEaGZmbfA9Q)) certainly knows how to have a good time!
+  ([source](https://www.amigalove.com/viewtopic.php?f=11&t=1593&p=10458&hilit=winter#p10458))
+
+{{< /figure >}}
 
 
 ## Changing shader settings from the Amiga
