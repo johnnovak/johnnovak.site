@@ -10,12 +10,13 @@ tags:  [graphics, amiga, gaming, shader]
 **UPDATE 2024-11-22:** Major overhaul of the shaders to more closely mimic the
 output of a C= 1084S monitor, plus some other improvements.
 
-- More vivid colours, increased contrast, improved highlights, and better gamma ([before1] / [after1]; [before2] / [after2]).
+- More vivid colours, increased contrast, improved highlights, and better
+  gamma ([before1] / [after1]; [before2] / [after2]).
 - Interlace support.
-- Reduced moire artefacts in PAL presets when using non-integer scaling
-  factors.
+- More authentic PAL emulation (less visible scanlines) with reduced moire
+  artefacts when using non-integer scaling factors.
 - A much easier method to create the scaling factor presets.
-- Explanation of the "mystery PAL games" (made by Europeans) that require NTSC
+- Explanation of the "mystery PAL games" made by Europeans that require NTSC
   strech to appear correctly. Now with concrete examples of deducing the
   perfect aspect ratio for any European release!
 {class="compact"}
@@ -164,10 +165,10 @@ monitor used the much superior RGB input!
 {{< figure name="img/sachs-amiga-demo.jpg" nameSmall="img/sachs-amiga-demo-small.jpg"
     alt="Amiga Demo by Jim Sachs" width="90%" >}}
 
-  Amiga Demo by the legendary [Jim
-  Sachs](https://amiga.lychesis.net/artist/JimSachs.html) displayed in WinUAE
-  with Commodore 1084S CRT emulation in correct NTSC aspect ratio.<br>(Click
-  on the image to enlarge it so you can appreciate the details.)
+  Amiga Demo by the legendary [Jim Sachs](https://amiga.lychesis.net/artist/JimSachs.html)
+  displayed in WinUAE with Commodore 1084S CRT emulation in correct NTSC
+  aspect ratio.<br>(Click on the image to enlarge it so you can appreciate the
+  details.)
 
 {{< /figure >}}
 
@@ -326,25 +327,26 @@ At 320&times;256 PAL resolution, the pixels are more densely packed together
 vertically, and although the scanline effect is weaker, it still subtly
 contributes to the overall "textured" quality of the image.
 
-{{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal-small.jpg" captionAlign="center" alt="Shadow of the Beast, PAL" width="90%" >}}
+{{< figure name="img/amiga-crt/shadow-of-the-beast-pal.jpg" nameSmall="img/amiga-crt/shadow-of-the-beast-pal-small.jpg" captionAlign="left" alt="Shadow of the Beast, PAL" width="90%" >}}
 
   [Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast), 320&times;256 PAL, [too many colours to count](https://codetapper.com/amiga/sprite-tricks/shadow-of-the-beast/). You cannot really discern individual scanlines, but the image definitely has a canvas-like textured quality.
 
 {{< /figure >}}
 
 
-{{< figure name="img/amiga-crt/protracker-1084s.jpg" nameSmall="img/amiga-crt/protracker-1084s.jpg" captionAlign="center" alt="Protracker, PAL" width="90%" >}}
+{{< figure name="img/amiga-crt/protracker-1084.jpg" nameSmall="img/amiga-crt/protracker-1084-small.jpg" captionAlign="left" alt="Protracker, PAL" width="90%" >}}
 
-  Protracker running on a PAL 1084S monitor. Similarly to the previous photo,
-  you cannot see scanlines just a subtle texture over the whole image.
+  Protracker running on a PAL Commodore 1084 monitor. Similarly to the
+  previous photo, you cannot see scanlines just a subtle texture over the
+  whole image.
 
 {{< /figure >}}
 
-{{< figure name="img/amiga-crt/amiga-wb31-1084s.jpg" nameSmall="img/amiga-crt/amiga-wb31-1084s.jpg" captionAlign="left" alt="Workbench 3.1, PAL" width="90%" >}}
+{{< figure name="img/amiga-crt/amiga-wb31-1084s.jpg" nameSmall="img/amiga-crt/amiga-wb31-1084s-small.jpg" captionAlign="left" alt="Workbench 3.1, PAL" width="90%" >}}
 
-  Workbench 3.1 running on a PAL 1084S monitor in 640&times;512 mode. The
-  scanlines are very faintly visible, but viewing this zoomed-in image is the
-  equivalent of pressing your nose right up to the front glass of the
+  Workbench 3.1 running on a PAL Commodore 1084 monitor in 640&times;512 mode.
+  The scanlines are very faintly visible, but viewing this zoomed-in image is
+  the equivalent of pressing your nose right up to the front glass of the
   screen... You wouldn't see any sign of scanlines under normaling viewing
   conditions (from 1 to 1.5 meters), but they subtly contribute to the "feel"
   of the image.
@@ -578,7 +580,7 @@ these mechanisms, otherwise they can be quite perplexing and could make
 you run around in circles.
 
 Because brighter always seems "better", and the CRT shaded output results in
-about 10-15% of brighness loss (unless you're ready to sacrifice the detail of
+about 10% of brighness loss (unless you're ready to sacrifice the detail of
 bright areas by intentionally blowing out the highlights---not something I
 would recommend), I have reduced the brightness of the "raw pixels" images to
 match that of the CRT shaded output. This is crucial to be able to make fair
@@ -772,7 +774,7 @@ quick & easy way is to download [my shader pack][shader-pack], open the
 included `winuae.ini` file, and copy the contents of the `[FilterPresets]`
 section into your own WinUAE config. You'll get this long list of preset shown
 below if you do that. Don't worry about the NTSC presets and
-interlace-supporting variants just yet, we'll get to them a bit later.
+"laced" variants just yet; we'll get to them a bit later.
 
 ![Filter resize presets](img/winuae-filter-resize-presets.png)
 
@@ -1757,13 +1759,21 @@ turn them off later, you'll probably miss the effect.
 
 <img src="img/winuaemaskglow.png" alt="WinUaeMaskGlowAdvanced filter settings (bloom and glow)" width="auto">
 
-And now the mandatory before/after comparison image:
+And now the mandatory before/after comparison image. The effect is rather
+subtle, so keep toggling between the two images and pay attention to the
+highlights and the white text on the black background.
 
-{{< figure name="img/eob-intro-glow.jpg" nameSmall="img/eob-intro-glow.jpg"
-    captionAlign="center" alt="Eye of the Beholder, bloom and glow comparison" >}}
+{{< figure name="img/eob-intro-no-glow.jpg" nameSmall="img/eob-intro-no-glow-small.jpg"
+    captionAlign="center" alt="Eye of the Beholder intro picture (no bloom and glow emulation)" >}}
 
-  Left: [Eye of the Beholder](https://amiga.abime.net/games/view/eye-of-the-beholder) intro, no bloom and glow emulation<br>
-  Right: same image with subtle bloom and glow
+  [Eye of the Beholder](https://amiga.abime.net/games/view/eye-of-the-beholder) intro, no bloom and glow emulation
+
+{{< /figure >}}
+
+{{< figure name="img/eob-intro-glow.jpg" nameSmall="img/eob-intro-glow-small.jpg"
+    captionAlign="center" alt="Eye of the Beholder intro picture (with bloom and glow emulation)" >}}
+
+  [Eye of the Beholder](https://amiga.abime.net/games/view/eye-of-the-beholder) intro, with bloom and glow emulation
 
 {{< /figure >}}
 
@@ -1808,7 +1818,7 @@ both 50 Hz and 60 Hz modes.
 
 In both cases, make sure to disable any driver-level vsync enforcements and
 overrides (leave it at the default "let the application decide" setting), and
-disable any external frame limiters (such as AMD Radeon:tm: Chill, any frame
+disable any external frame limiters (such as AMD Radeon Chill, the frame
 limiters in Nvidia Control Panel, or any 3rd party frame limiters).
 
 
@@ -1928,16 +1938,40 @@ Personally, I find interlaced screen modes very cool when used sparingly. I
 see interlacing as an effect (it brings movement and excitement to still
 images, some kind of a cool "shimmering" quality; you just have to see it to
 get what I'm talking about), and it can be a powerful nostalgia trigger for
-old-school Amiga fans (those beautiful title screen still images or a round of
-**Hollywood Poker Pro** just don't hit the same way with progressive scan!)
-
-Now, playing strategy games such as **Sim City 2000** in high-res laced modes
-is a bit of a hard sell. I would just play those with progressive scan, or
-better yet, play the MS-DOS originals.
+old-school Amiga fans. Those beautiful title screens or a round of **Hollywood
+Poker Pro** just doesn't hit the same way with progressive scan, hey! Besides,
+high-res without interlacing looks plain wrong to any true
+OCS Amiga fan---that just doesn't happen in real life on a 15 kHz Commodore
+monitor. Of course, playing strategy games such as **Sim City 2000** in
+high-res laced modes for hours on end is a bit of a hard sell. I would play
+those with progressive scan, or better yet, play the MS-DOS originals.
 
 In any case, I recommend to at least give interlace emulation a chance to see
-if you enjoy this particular quirk of the Amiga's video hardware. You can
-always go back to the flicker-free option if you don't like it.
+if you enjoy this particular quirk of the Amiga. You can always go back to the
+flicker-free option if you don't like it.
+
+The below two pictures illustrate the difference between interaced modes and
+progressive scan. This is just an emulation via an animated GIF, so the
+interlace flicker might seem uneven or jerky in your browser (Firefox seems to
+work better for this, at least on Windows). It looks a lot better in real life
+when the interlacing is synced to the 50 or 60 Hz refresh rate. Click on one
+of the images to zoom it in, the switch between them with the cursor keys.
+
+{{< figure name="img/fish-progressive.jpg" nameSmall="img/fish-progressive-small.jpg"
+    alt="Title screen of Fish! (progressive)" width="100%" >}}
+
+  Title screen of fish [Fish!](https://amiga.abime.net/games/view/fish) TODO
+
+{{< /figure >}}
+
+
+{{< figure name="img/fish-laced.gif" nameSmall="img/fish-laced.gif"
+    alt="Title screen of Fish! (interlaced)" width="100%" >}}
+
+  Title screen of [Fish!](https://amiga.abime.net/games/view/fish) TODO
+
+{{< /figure >}}
+
 
 
 ### Emulating interlaced modes
@@ -1967,22 +2001,12 @@ phosphor layer (which correspond to the "pixels" making up the image) from
 left to right, top to bottom, then the lit up phosphors exponentially fade
 away to black. So when the even lines are drawn, the odd lines are still
 30-50% lit, and so on, which reduces the interlace flicker by a great deal.
-
 (For a more in-depth explanation, refer to the [Interlaced
 video](https://en.wikipedia.org/wiki/Interlaced_video) Wikipedia article and
 the section about interlacing in the [Amiga ROM Kernal Reference
 Manual](http://amigadev.elowar.com/read/ADCD_2.1/Libraries_Manual_guide/node0316.html).)
 
-{{< figure name="img/fish-laced.gif" nameSmall="img/fish-laced.gif"
-    alt="High-res interlaced title screen of Fish!" width="100%" >}}
-
-  Left: a Commodore 64 paired with a small 13" colour TV. Middle: an Amiga 500
-  hooked up to the venerable Commodore 1084 monitor (it's not period-correct if the
-  front panel door is *not* broken off!). Right: an IBM PC compatible with a nice
-  15" Trinitron display. This Norwegian dude ([UncleAwesome](https://www.youtube.com/channel/UC_Exbgz-zDrEEEaGZmbfA9Q)) certainly knows how to have a good time!
-  ([source](https://www.amigalove.com/viewtopic.php?f=11&t=1593&p=10458&hilit=winter#p10458))
-
-{{< /figure >}}
+TODO
 
 
 ## Changing shader settings from the Amiga
@@ -2015,7 +2039,8 @@ ramblings and have learned something useful. I wish you a nice emulated Amiga
 experience, and in parting here are some more glorious example images that
 showcase this the shaders in action. The original raw pixel variants are also
 included; click on the images to enter the zoomed-in view, then toggle between
-them with the arrow keys.
+them with the arrow keys. The brightness of the raw pixel images has been
+reduced by 10% to make A/B comparisons to the CRT-shaded images fair.
 
 Stay tuned for the next episode where we'll be looking at MS-DOS and
 early Windows-era graphics, and how to do it right!
