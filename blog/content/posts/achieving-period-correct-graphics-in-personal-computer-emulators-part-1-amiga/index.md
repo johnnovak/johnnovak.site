@@ -161,12 +161,14 @@ we'll be looking at emulating this particular display in
 won't care about composite emulation at all---everybody who owned such a
 monitor used the much superior RGB input!
 
+The end result is shown below. You can also check out some before/after
+images in the [comparison images](#comparison-images) section.
 
 {{< figure name="img/sachs-amiga-demo.jpg" nameSmall="img/sachs-amiga-demo-small.jpg"
     alt="Amiga Demo by Jim Sachs" width="90%" >}}
 
   Amiga Demo by the legendary [Jim Sachs](https://amiga.lychesis.net/artist/JimSachs.html)
-  displayed in WinUAE with Commodore 1084S CRT emulation in correct NTSC
+  displayed in WinUAE with Commodore 1084S CRT emulation using the correct NTSC
   aspect ratio.<br>(Click on the image to enlarge it so you can appreciate the
   details.)
 
@@ -1400,30 +1402,33 @@ that results in crisp diagonal lines.
 
 Congratulations on making it so far; now the display of your emulated Amiga
 should resemble that of a PC VGA monitor in low-res mode (sharp blocky pixels
-and all). But unlike VGA, which is double-scanned at 31 kHz horizontal sync
-frequency, all stock Amigas output 15 kHz single-scanned video signals[^a3000], and
-not even the best Commodore monitors could enter the ring against any average
-14" VGA display from the 90s when it comes to sharpness (unsurprisingly, since
-the IBM PC was originally intended as a business machine, therefore text
-legibility was of primary concern).
+and all). But unlike VGA, which is double-scanned at a horizontal sync
+frequency of 31 kHz, all stock Amigas output 15 kHz single-scanned video
+signals[^a3000], and not even the best Commodore monitors could enter the ring
+against any average 14" VGA display from the 90s when it comes to sharpness
+(unsurprisingly, since the IBM PC was originally intended as a business
+machine, therefore text legibility was of primary concern).
 
-[^a3000]: Except for the [Amiga 3000](https://en.wikipedia.org/wiki/Amiga_3000)
+[^a3000]: Except for the [Amiga 3000](https://en.wikipedia.org/wiki/Amiga_3000),
 which includes a scan-doubled 31 kHz VGA output connector as well.
 
 To simulate the roundish "pixels" of the 1084S that slightly blend into each
 other (a rather nice "natural anti-aliasing" effect that makes low-res artwork
-so much more pleasant to look at, and lends the image this wonderful "fuzzy
+much more pleasant to look at and lends the image this wonderful "fuzzy
 analog quality") and the subtle scanlines (at least on PAL; on NTSC they're
 much more prominent), we'll need Guest's rather excellent
 **CRT-A2080-HiRes-SmartRes-Interlace** CRT shader. This shader is the star of
 the show, and this makes the biggest difference after matching the physical
 image dimensions of the 1084S monitor. One of its most remarkable features is
-that it provides seamless support for all OCS Amiga screen modes in a *single*
+that it has seamless support for all OCS Amiga screen modes in a *single*
 shader (320&times;256 Low Res, 640&times;256 High Res, 320&times;512 Low Res
 Laced, 640&times;512 High Res Laced, and naturally all their overscanned and
 NTSC variants). This thing handles _everything_ you throw at it, including
-interlaced modes and low-res/hi-res split-screen games (e.g Lemmings, Shadow
-of the Beast, Apidya, Agony, all Magnetic Scrolls adventures, etc.)
+low-res/hi-res split-screen games (e.g., [Lemmings](https://amiga.abime.net/games/view/lemmings),
+[Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast),
+[Apidya](https://amiga.abime.net/games/view/apidya),
+[Agony](https://amiga.abime.net/games/view/agony),
+all [Magnetic Scrolls](https://amiga.abime.net/games/list/?developer-id=368) adventures, etc.)
 
 
 {{< figure name="img/scapeghost.jpg" nameSmall="img/scapeghost-small.jpg"
@@ -1446,28 +1451,39 @@ Hardware](https://bigbookofamigahardware.com/bboah/product.aspx?id=864).)
 I have tweaked the shader settings a little bit, you can get the updated
 shaders by downloading [my shader pack][shader-pack]. They’re called
 **CRT-A2080-PAL**, **CRT-A2080-PAL-Sharp** and **CRT-A2080-NTSC**. I had to
-create copies because WinUAE doesn’t support shader presets yet.
+create three copies because WinUAE doesn’t support shader presets yet.
 
 Why do we need three different presets? The scalines are more densely packed
-in PAL modes, so I had to tweak the scanline strength of the PAL shader to
-reduce interference artefacts (moire patterns) at non-integer scaling
-factors on 1080p screens. This is much less of a problem on higher resolution
-displays (1440p, 4K, or higher) ---on these screens, you can probably get away
-with using **CRT-A2080-NTSC** for everything, including PAL modes.
+in PAL modes, so I had to tweak the scanline strength of the **CRT-A2080-PAL**
+shader to reduce interference artefacts (moire patterns) at non-integer
+scaling factors on 1080p screens. This is much less of a problem on higher
+resolution displays (1440p, 4K, or higher) ---on these screens, you can
+probably get away with using **CRT-A2080-NTSC** for everything, including PAL
+modes.
 
 The **CRT-A2080-PAL-Sharp** variant maximises horizontal sharpness for
 increased text legibility. You might want to use this for adventure games
 featuring 80-column text, but for general low-res gaming, this makes the image
 a bit _too_ sharp which reduces the beneficial "natural anti-aliasing" effects
-of the CRT shader. Interestingly, the less densely packed NTSC scanlines make
+of the CRT emulation. Interestingly, the less densely packed NTSC scanlines make
 the image look subjectively sharper, so I did not see the need for creating a
 "sharp NTSC" variant as well.
 
+Lastly, the **CRT-A2080-NTSC** preset has stronger, more distinct scanlines.
+It is safe to use at 1080p with non-integer scaling factors because the
+scanlines are spaced further apart due to the "NTSC stretch", so you won't get
+any moire. Of course, if you want softer scanlines, you can always simply
+just use the PAL preset for NTSC video modes as well. Commodore had
+[a vast range of CRT monitors](https://gona.mactar.hu/Commodore/monitor/Commodore_monitors_by_model_number.html)
+available back in the 80s, so naturally some were a bit less sharp, making
+this a valid choice that's still rooted in reality.
+
 Okay, so this is how to set up the CRT shaders:
 
-* In the **Miscellaneous** section, select **Direct3D 11** for the **Graphics
-  API** (and leave it at hardware accelerated, of course). *Do not use
-  Direct3D 9* as that will result in uneven scanlines for some reason.
+* In the **Miscellaneous** section, select **Direct3D 11** and **Hardware
+  D3D11** (quite confusingly, these are right under the _Windowed style_
+  drop-down). *Do not use Direct3D 9* as that will result in uneven
+  scanlines for some reason.
 
 * Put the `CRT-*.fx` shader files into ``plugins\filtershaders\direct3d`` in
   your WinUAE installation directory and restart WinUAE.
@@ -1480,7 +1496,7 @@ Okay, so this is how to set up the CRT shaders:
   look even and interference-free; 1x horizontal and 3x vertical is the
   recommended minimum). Oversampling takes a big hit on performance; e.g.,
   with 2x horizontal and 4x vertical oversampling, your GPU would need to
-  perform 2&times;4=8 times as much work!
+  perform 2&times;4=8 times more work!
 
 <img src="img/winuae-filter-shaders.png" alt="WinUAE filter presets" width="auto">
 
@@ -1499,22 +1515,22 @@ Crown](https://amiga.abime.net/games/view/defender-of-the-crown):
 {{< note title="Non-integer scaling factors" >}}
 
 3.2&times; scaling with the PAL shader is especially prone to showing vertical
-interference artefacts on large areas filled with a solid colour. These
-artefacts are more pronounced with certain colours than others; you can see it
-very clearly on fade ins and fade outs as those effects cycle through a wide
-range of colours (e.g., when some intro graphics with a full white background
-fades to black).
+interference artefacts (moire patterns) on large areas filled with a solid
+colour. These artefacts are more pronounced with certain colours than others;
+you can see it very clearly on fade ins and fade outs as those effects cycle
+through a wide range of colours (e.g., when some intro graphics with a full
+white background fades to black).
 
 There's not much to do about this; this is just a side-effect of using
 non-integer scaling factors at 1080p. If it really bothers you, either use
 3.5&times; scaling with the PAL shader (which greatly mitigates these
 artefacts), or simply restrict yourself to 3.0&times; or 4.0&times; scaling
-(which 100% eliminates them). Alternatively, buy a 4K monitor, then you can
+(which 100% eliminate them). Alternatively, buy a 4K monitor, then you can
 freely use pretty much any non-integer scaling factor and never have to worry
-about these artefacts.
+about moire patterns.
 
-The NTSC presets is far less affected as NTSC scanlines are spaced a bit
-further apart, which prevents such interference patterns from developing.
+The NTSC preset is not affected as NTSC scanlines are spaced a bit further
+apart, which prevents such interference patterns from developing.
 
 {{< /note >}}
 
@@ -1524,8 +1540,8 @@ further apart, which prevents such interference patterns from developing.
 The next thing that will make a huge difference in replicating an authentic
 CRT experience is emulating the colour profile of the Commodore 1084S monitor.
 Most modern displays are calibrated for
-[sRGB](https://en.wikipedia.org/wiki/SRGB) out-of-the-box that uses
-[D65](https://en.wikipedia.org/wiki/Illuminant_D65) (6500K) white point. This
+[sRGB](https://en.wikipedia.org/wiki/SRGB) out-of-the-box which uses
+the [D65](https://en.wikipedia.org/wiki/Illuminant_D65) (6500K) white point. This
 is noticeably cooler (bluer) looking than the more warmish/yellowish look of a
 typical CRT from the 80s, which was closer to 5000K (CRT manufacturers more or
 less just did whatever they felt like back then; the [sRGB
@@ -1557,18 +1573,20 @@ them from [here](https://github.com/crosire/reshade-shaders/tree/slim/Shaders)
 pack][shader-pack], by the way).
 
 The **WinUaeColor** filter also implements brightness, contrast, and
-saturation monitor adjustment controls. But for best results, we need to apply
-the monitor adjustments _before_ the shadow mask emulation, and the colour
-profile emulation _after_ it, as the last filter in the chain. Therefore, I
-duplicated **WinUaeColor** under the name **WinUaeColorProfile**, and our
-final ReShade filter chain will look like this:
+saturation monitor adjustment controls. So I've done some customisations to
+make things a bit more user friendly: I've created two copies of
+**WinUaeColor** under the names **MonitorControls** and **ColorProfile** and
+have exposed only the relevant controls in each plugin in the ReShade UI. I've
+also renamed **WinUaeMaskGlowAdvanced** to **MaskAndGlow**. You know the
+drill, get these modified versions from my preset pack. Our final ReShade
+filter chain should then look like this:
 
-* MonitorControls _(monitor controls only)_
-* WinUaeColor _(Philips CRT colour profile only)_
-* WinUaeMaskGlowAdvanced _(mask and glow only)_
+* MonitorControls 
+* ColorProfile 
+* MaskAndGlow
 {class="compact"}
 
-Once you've set up everything correctly, enable **MonitorControls.fx** and
+Once you've set up everything correctly, enable **MonitorControls** and
 set it up as shown below.
 
 Everything should be left at their default values, except for **Color
@@ -2032,19 +2050,27 @@ downloadable shader pack.
 
 
 
-## In closing
+## Comparison images
 
 Phew, that was one long article, indeed! Hopefully, you've enjoyed my
 ramblings and have learned something useful. I wish you a nice emulated Amiga
 experience, and in parting here are some more glorious example images that
-showcase this the shaders in action. The original raw pixel variants are also
-included; click on the images to enter the zoomed-in view, then toggle between
-them with the arrow keys. The brightness of the raw pixel images has been
-reduced by 10% to make A/B comparisons to the CRT-shaded images fair.
+showcase the shaders in action. The original raw pixel variants are also
+included; click on the images to enter the zoomed-in view, then use the left
+and right arrow keys to toggle between them.
 
 Stay tuned for the next episode where we'll be looking at MS-DOS and
 early Windows-era graphics, and how to do it right!
 
+{{< note title="Leveling the playing field" >}}
+
+The brightness of the raw pixel images has been reduced by 10% to match that
+of the CRT shaded output (the CRT shaders result in a roughly 10% brightness
+drop; as previously mentioned, it's best to compensate for this using the
+controls of your physical monitor). Brighter always seems "better" to us
+humans, so this adjustment is necessary for fair before/after comparisons.
+
+{{< /note >}}
 
 {{< figure name="img/defender-of-the-crown.jpg" nameSmall="img/defender-of-the-crown-small.jpg" captionAlign="center"
     alt="Defender of the Crown (NTSC CRT shader, 3&times; scaling" >}}
