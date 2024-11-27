@@ -1823,21 +1823,88 @@ The intro ran in 320x256, but the game ran in 352x272
 ## Vertical syncing
 
 If you have vertical syncing (vsync) enabled, and you're on a fixed refresh
-rate (non-VRR) monitor, your screen refresh rate *must
-be* 50 Hz for PAL and 60 Hz for NTSC, respectively, otherwise, you'll be
-experiencing all sorts of weird speed issues (e.g., jumpy scrolling, audio
-glitches, music playing much slower or faster than it should, etc.) With vsync
-off, this is not a problem, so that's a good quick way to examine how a
-WHDLoad game behaves in PAL vs NTSC without having to change the screen
-refresh rate and restart the WinUAE.
+rate (non-VRR) monitor, your screen refresh rate *must be* 50 Hz for PAL and
+60 Hz for NTSC, respectively, otherwise, you'll be experiencing all sorts of
+weird speed issues (e.g., jumpy scrolling, audio glitches, music playing much
+slower or faster than it should, etc.) You won't get these problems with vsync
+off, so that's a good quick way to examine how a WHDLoad game behaves in PAL
+vs NTSC without having to change the screen refresh rate and restart the
+WinUAE.
 
-If you're a lucky owner of a VRR, turn vsync off and enjoy perfect sync in
-both 50 Hz and 60 Hz modes.
+If you're a lucky owner of a VRR (Variable Refresh Rate) display, turn vsync
+off and enjoy perfect sync in both 50 Hz and 60 Hz modes.
 
-In both cases, make sure to disable any driver-level vsync enforcements and
-overrides (leave it at the default "let the application decide" setting), and
-disable any external frame limiters (such as AMD Radeon Chill, the frame
-limiters in Nvidia Control Panel, or any 3rd party frame limiters).
+If you like playing fast-paced games that feature smooth scrolling (a staple
+of Amiga action games), you really need to get vsync working properly for the
+best experience. If you're serious about this, the recommended way is to bite
+the bullet and get a good VRR monitor. This will help get vsync working
+properly not just in WinUAE, but in every other home computer and console
+emulator as well, so it's one of the best investments if you're into
+emulation.
+
+Two Amiga classics that are very useful for vsync and input lag testing are
+[Pinball Dreams](https://amiga.abime.net/games/view/pinball-dreams) and
+[Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast).
+If you can get 100% butter smooth vertical and horizontal scrolling in both
+games with zero audio glitches, preferably with lagless vsync enabled to
+minimise input lag as well, then you're done.
+
+### Vsync tips & tricks
+
+Getting vsync work correctly in WinUAE without any visual or auditory glitches
+whatsoever can be rather finicky. Here are a few general recommendations and
+troubleshooting tips: 
+
+- Disable any driver-level vsync enforcements and overrides (e.g., leave vsync
+  at the default "let the application decide" setting in Nvidia Control
+  Panel).
+
+- Disable any frame limiters (such as AMD Radeon Chill, the frame limiter in
+  Nvidia Control Panel, or any 3rd party frame capper).
+
+- On fixed refresh rate monitors, make sure your desktop is 50 Hz or 60 Hz
+  mode when playing a PAL or NTSC game, respectively. On my Windows 10 box,
+  I must set the correct refresh rate manually before running WinUAE. In
+  theory, WinUAE can request specific refresh rates in exclusive fullscreen
+  mode, but it's hard to get that working from Windows 10 onwards.
+
+- Switching back and forth between windowed/fullscreen and different vsync
+  modes can lead to some really weird behaviour. It's always best to restart
+  WinUAE when you change these settings.
+
+- Using the standard vsync modes on non-VRR monitors will make the music play
+  too fast in windowed modes if the WinUAE window becomes inactive. The
+  solution is to enable pausing the audio when the emulator is becomes
+  inactive, or to disable vsync altogether if you want to use WinUAE as a
+  music player in the background (well, or get a VRR monitor).
+
+
+And some lagless vsync specific advice:
+
+- Lagless vsync with a frame slice of 1 is in theory always better than
+  standard vsync as it results in lower input lag (a good test for this is a
+  game of [Pinball Dreams](https://amiga.abime.net/games/view/pinball-dreams)).
+  Experiment with different frame slice values between 1 and 10, and always
+  use fullscreen (not full windowed!) with lagless vsync.
+
+- Lagless vsync gets "confused" very easily; any number of seemingly minor
+  things can throw it off then you'll need to wait a seconds until it gets
+  back "into the groove" again. These things include opening the WinUAE GUI with
+  F12, switching back and forth between WinUAE and other windows, various
+  in-game overlays, and even the standard Windows volume adjustment overlay.
+
+- The audio driver and audio buffer sizes can also have an effect on vsync
+  performance, especially in lagless mode. Try both the **DSOUND** and
+  **WASAPI** options (don't just assume WASAPI is "better", that's not
+  necessarily true as it's driver-dependent).
+
+- If you're using an external audio interface and you can't get lagless vsync
+  working smoothly and/or you're getting audio glitches even with large
+  buffer sizes, try using onboard audio.
+
+- As a last resort, you can also try uninstalling ReShade from your WinUAE
+  folder. But that would be rather unfortunate because then you
+  would not be able to set up the CRT shaders properly...
 
 
 ## Interlaced screen modes
