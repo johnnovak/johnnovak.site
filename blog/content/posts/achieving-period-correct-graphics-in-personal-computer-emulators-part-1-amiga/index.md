@@ -915,30 +915,32 @@ cheapest option was not to care.
 
 Now, some people from PAL countries might concur that they only ever
 experienced these games with squashed art (and potentially running 17% slower
-because of the 60 vs 50 Hz difference); that's how they remember them, and
-that's what they want to emulate for nostalgic reasons. It's hard to argue
-with that logic, indeed---if those are your memories, then that's the end of
-it. But keep in mind the "PAL squash" only happened because of practical
-considerations (mainly due to budgetary limitations); it wasn't a deliberate
-artistic or creative intention, but an unfortunate necessity. Then the real
-question is this: do you want to emulate these games as you remember them, or
-how their creators intended them to be experienced? And wouldn't it be nice,
-after all these years, to finally enjoy them in their most authentic,
-undistorted form?
+because of the 60 vs 50 Hz difference); that's how
+they remember them, and that's what they want to emulate for nostalgic
+reasons. It's hard to argue with that logic, indeed---if those are your
+memories, then that's the end of it. But keep in mind the "PAL squash" only
+happened because of practical considerations (mainly due to budgetary
+limitations); it wasn't a deliberate artistic or creative intention, but an
+unfortunate necessity. Then the real question is this: do you want to emulate
+these games as you remember them, or how their creators intended them to be
+experienced? And wouldn't it be nice, after all these years, to finally enjoy
+them in their most authentic, undistorted form?
 
 
 ### It's not just about the video
 
 Many of these PAL conversions were less than perfect and did not account for
 the ~17% slowdown that happens when a game synced to the 60 Hz NTSC vertical
-refresh rate is running in 50 Hz PAL mode. Quite often, the music playback is
-synced to the screen refresh rate, which makes the slowdown fairly
-easy to spot (if the game also has a MS-DOS port, one somewhat reliable way
-to ascertain the correct music playback speed is to listen to the MS-DOS version.
-But this is not a 100% method; sometimes the composers changed the music's
-tempo in the ports. Also be careful: just because the music plays at the
-supposedly correct speed, it doesn't mean it's OK to run the game in PAL---the
-aspect ratio of the graphics is still wrong!)
+refresh rate is running in 50 Hz PAL mode (most people from Europe who owned
+PAL consoles back in the day are painfully aware of this slowdown issue in
+shoddily ported NTSC games). Quite often, the music playback is synced to the
+screen refresh rate, which makes the slowdown fairly easy to spot (if the game
+also has a MS-DOS port, one somewhat reliable way to ascertain the correct
+music playback speed is to listen to the MS-DOS version. But this is not a
+100% method; sometimes the composers changed the music's tempo in the ports.
+Also be careful: just because the music plays at the supposedly correct speed,
+it doesn't mean it's OK to run the game in PAL---the aspect ratio of the
+graphics is still wrong!)
 
 Check out this video for a demonstration of the PAL vs NTSC differences on the
 classic game Secret of Monkey Island. (By the way, it's worth watching the
@@ -1478,6 +1480,10 @@ just use the PAL preset for NTSC video modes as well. Commodore had
 available back in the 80s, so naturally some were a bit less sharp, making
 this a valid choice that's still rooted in reality.
 
+Similarly, feel free to use the **CRT-A2080-NTSC** preset for PAL modes as
+well if you want stronger scanlines at higher than 3&times; scaling factors.
+But stick to integer scaling factors only at 1080p with the NTSC shader.
+
 Okay, so this is how to set up the CRT shaders:
 
 * In the **Miscellaneous** section, select **Direct3D 11** and **Hardware
@@ -1488,15 +1494,14 @@ Okay, so this is how to set up the CRT shaders:
 * Put the `CRT-*.fx` shader files into ``plugins\filtershaders\direct3d`` in
   your WinUAE installation directory and restart WinUAE.
 
-* In the **Filter**
-  section, select one of the **CRT-*** shaders in slot 0, and set 2x
-  horizontal and 4x vertical oversampling. If you have a slower GPU and
-  you're getting dropouts, you might want to reduce this a little, but don't
-  go below 3x vertical oversampling (this is essential to make the scanlines
-  look even and interference-free; 1x horizontal and 3x vertical is the
-  recommended minimum). Oversampling takes a big hit on performance; e.g.,
-  with 2x horizontal and 4x vertical oversampling, your GPU would need to
-  perform 2&times;4=8 times more work!
+* In the **Filter** section, select one of the **CRT-*** shaders in slot 0,
+  and set 2&times; horizontal and 4&times; vertical oversampling. If you have
+  a slower GPU and you're getting dropouts, you might want to reduce this a
+  little, but don't go below 3&times; vertical oversampling (this is essential
+  to make the scanlines look even and interference-free; 1&times; horizontal
+  and 3&times; vertical is the recommended minimum). Oversampling takes a big
+  hit on performance; e.g., with 2&times; horizontal and 4&times; vertical
+  oversampling, your GPU would need to perform 2&times;4=8 times more work!
 
 <img src="img/winuae-filter-shaders.png" alt="WinUAE filter presets" width="auto">
 
@@ -1798,13 +1803,37 @@ highlights and the white text on the black background.
 
 ## Overscan
 
-Max normal is 724x283 non-interlaced hi-res PAL, 566 if laced
+Most Amiga games use the standard resolutions which are 320 or 640 pixels
+wide, and 256 or 512 pixels tall on PAL (200 or 400 on NTSC). But the Amiga is
+capable of displaying any resolution freely choosen by the programmer (within
+certain hardware limits). This is put to good use in the so called
+**overscanned modes** where the objective is to make the regular black borders
+around the image completely disappear on a typical CRT monitor or TV.
 
+In overscanned modes, the size of a single pixel is the same as in the
+corresponding non-overscanned mode, just the image extends further towards the
+edges of the CRT screen. In this sense, the _resolution_ is technically
+unaltered---what changes is the _dimension_ (physical size) of the image. For
+example, the maximum achievable overscanned image dimensions for the
+640&times;256 hi-res PAL mode are 724&times;283.
 
-Settlers
-The intro ran in 320x256, but the game ran in 352x272
+A handful of European games used overscanned modes to get rid of the border
+and provide a more "immersive" experience. [The
+Settlers](https://amiga.abime.net/games/view/the-settlers) is a good example:
+the intro uses the standard 320&times;256 PAL mode, but the game itself is
+presented in 352&times;272 overscanned glory.
 
+TODO settlers image
 
+Now, overscan looked quite dramatic on CRTs back in the day (_"Whoa, no
+borders! How cool is that!"_), but in our emulated environment the image is
+simply just a bit bigger and that's it. It's just worth mentioning it here
+because encountering games that use slightly larger image dimensions might
+confuse a few people.
+
+Here's a non-exhaustive list of games that use overscanned screen modes:
+
+  - [Equality](https://amiga.abime.net/games/view/equality)
   - [Exile (OCS)](https://amiga.abime.net/games/view/exile)
   - [Kick Off: Extra Time](https://amiga.abime.net/games/view/kick-off-extra-time)
   - [Pac-Mania](https://amiga.abime.net/games/view/pac-mania)
@@ -1815,28 +1844,34 @@ The intro ran in 320x256, but the game ran in 352x272
   - [Sensible World of Soccer](https://amiga.abime.net/games/view/sensible-world-of-soccer)
   - [Speedball](https://amiga.abime.net/games/view/speedball)
   - [The Settlers](https://amiga.abime.net/games/view/the-settlers)
-  - [Equality](https://amiga.abime.net/games/view/equality)
   - Most [Team 17](https://amiga.abime.net/games/list/?developer=team+17) games
 {class="compact"}
+
+Another slightly confusing thing which is the conceptual opposite of overscan
+(but it doesn't have a name) is when a game don't use the entire screen, so
+the image is smaller and the black borders around it are bigger. This was
+probably done to save CPU cycles when pushing the pixels around. A few notable
+examples are [Flashback](https://amiga.abime.net/games/view/flashback),
+[Shadow of the Beast](https://amiga.abime.net/games/view/shadow-of-the-beast),
+and [Rick Dangerous](https://amiga.abime.net/games/view/rick-dangerous).
 
 
 ## Vertical syncing
 
-If you have vertical syncing (vsync) enabled, and you're on a fixed refresh
-rate (non-VRR) monitor, your screen refresh rate *must be* 50 Hz for PAL and
-60 Hz for NTSC, respectively, otherwise, you'll be experiencing all sorts of
-weird speed issues (e.g., jumpy scrolling, audio glitches, music playing much
-slower or faster than it should, etc.) You won't get these problems with vsync
-off, so that's a good quick way to examine how a WHDLoad game behaves in PAL
-vs NTSC without having to change the screen refresh rate and restart the
-WinUAE.
-
-If you're a lucky owner of a VRR (Variable Refresh Rate) display, turn vsync
-off and enjoy perfect sync in both 50 Hz and 60 Hz modes.
-
 If you like playing fast-paced games that feature smooth scrolling (a staple
-of Amiga action games), you really need to get vsync working properly for the
-best experience. If you're serious about this, the recommended way is to bite
+of Amiga action games and most demoscene productions), you really need to get
+vsync working properly for the best experience. 
+
+- **If you have a fixed refresh rate (non-VRR) monitor** and you enable vsync
+  (in the WinUAE display preferences, *not* at the GPU driver level!), your
+  screen refresh rate *must be* 50 Hz for PAL and 60 Hz for NTSC. Failing to
+  do so will result in all sorts of weird speed issues (e.g., jumpy scrolling,
+  audio glitches, music playing much slower or faster than it should, etc.)
+
+- **If you're a lucky owner of a VRR (Variable Refresh Rate) monitor**, simply
+  turn vsync off and enjoy perfect sync in both 50 Hz and 60 Hz modes. That's it!
+
+If you're serious about Amiga emulation, the recommended way is to bite
 the bullet and get a good VRR monitor. This will help get vsync working
 properly not just in WinUAE, but in every other home computer and console
 emulator as well, so it's one of the best investments if you're into
@@ -1849,11 +1884,12 @@ If you can get 100% butter smooth vertical and horizontal scrolling in both
 games with zero audio glitches, preferably with lagless vsync enabled to
 minimise input lag as well, then you're done.
 
+
 ### Vsync tips & tricks
 
 Getting vsync work correctly in WinUAE without any visual or auditory glitches
-whatsoever can be rather finicky. Here are a few general recommendations and
-troubleshooting tips: 
+whatsoever can be rather finicky and there are a few pitfalls to be aware of.
+Here are a few useful tips for younger players: 
 
 - Disable any driver-level vsync enforcements and overrides (e.g., leave vsync
   at the default "let the application decide" setting in Nvidia Control
@@ -1862,15 +1898,20 @@ troubleshooting tips:
 - Disable any frame limiters (such as AMD Radeon Chill, the frame limiter in
   Nvidia Control Panel, or any 3rd party frame capper).
 
-- On fixed refresh rate monitors, make sure your desktop is 50 Hz or 60 Hz
+- On fixed refresh rate monitors, ensure your desktop is 50 Hz or 60 Hz
   mode when playing a PAL or NTSC game, respectively. On my Windows 10 box,
   I must set the correct refresh rate manually before running WinUAE. In
   theory, WinUAE can request specific refresh rates in exclusive fullscreen
   mode, but it's hard to get that working from Windows 10 onwards.
 
+- If you cannot set your desktop to 50 Hz out-of-the-box, you can
+  create a custom 50 Hz resolution in Nvidia Control Panel or with the
+  [Custom Resolution Utility (CRU)](https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU).
+
 - Switching back and forth between windowed/fullscreen and different vsync
-  modes can lead to some really weird behaviour. It's always best to restart
-  WinUAE when you change these settings.
+  modes can lead to some really weird behaviour, especially when you throw
+  ReShade into the mix as well. If you get any weird behaviour after changing
+  these settings, just restart WinUAE.
 
 - Using the standard vsync modes on non-VRR monitors will make the music play
   too fast in windowed modes if the WinUAE window becomes inactive. The
@@ -1881,30 +1922,34 @@ troubleshooting tips:
 
 And some lagless vsync specific advice:
 
-- Lagless vsync with a frame slice of 1 is in theory always better than
+- Lagless vsync with a frame slice of 1 is always better than
   standard vsync as it results in lower input lag (a good test for this is a
-  game of [Pinball Dreams](https://amiga.abime.net/games/view/pinball-dreams)).
-  Experiment with different frame slice values between 1 and 10, and always
-  use fullscreen (not full windowed!) with lagless vsync.
+  game of [Pinball Dreams](https://amiga.abime.net/games/view/pinball-dreams)
+  or [Arkanoid](https://amiga.abime.net/games/view/arkanoid)). Experiment with
+  different frame slice values between 1 and 10, and always use fullscreen
+  (not full windowed) for stable lagless vsync performance.
 
 - Lagless vsync gets "confused" very easily; any number of seemingly minor
-  things can throw it off then you'll need to wait a seconds until it gets
-  back "into the groove" again. These things include opening the WinUAE GUI with
-  F12, switching back and forth between WinUAE and other windows, various
-  in-game overlays, and even the standard Windows volume adjustment overlay.
+  things can throw it off, then you'll need to wait a few seconds until it
+  gets back "into the groove" again. These things include opening the WinUAE
+  GUI with F12, switching back and forth between WinUAE and other windows,
+  various in-game overlays (even the standard Windows volume adjustment
+  overlay can cause some micro-glitches).
 
-- The audio driver and audio buffer sizes can also have an effect on vsync
-  performance, especially in lagless mode. Try both the **DSOUND** and
-  **WASAPI** options (don't just assume WASAPI is "better", that's not
-  necessarily true as it's driver-dependent).
+- The audio driver and audio buffer sizes can also have an effect on lagless
+  vsync performance. Try both the **DSOUND** and **WASAPI** options; don't
+  just assume WASAPI is "better", that's not necessarily true as it's
+  driver-dependent. Similarly, larger buffer sizes are not necessarily better;
+  try to find the sweet spot.
 
 - If you're using an external audio interface and you can't get lagless vsync
-  working smoothly and/or you're getting audio glitches even with large
-  buffer sizes, try using onboard audio.
+  working smoothly and/or you're getting audio glitches no matter what
+  settings you use, try using onboard audio (with 48 kHz sample rate, as
+  that's the native rate for the majority of DACs in circulation these days).
 
 - As a last resort, you can also try uninstalling ReShade from your WinUAE
   folder. But that would be rather unfortunate because then you
-  would not be able to set up the CRT shaders properly...
+  would be missing out on half of the CRT shader experience...
 
 
 ## Interlaced screen modes
