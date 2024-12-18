@@ -686,6 +686,10 @@ of the longest and best Amiga-exclusive RPGs:
   > save progress frequently. These checks only hinder progress rather than
   > making the game impossible.
 
+  <div class="video-wrapper">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VheNpiSZxf0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
 
 - This commenter is probably [reminiscing](https://hackaday.com/2019/06/25/copy-protection-in-the-80s-showcased-by-classic-game-dungeon-master/#comment-6309734) about the copy protection of [Dragonflight](https://hol.abime.net/412):
 
